@@ -51,8 +51,9 @@ Task("GenerateVersionInfo")
 	.Does(context =>
 	{
 		var majorVersion = 1;
-		var clearVersion = GetVersionFromTag();
-		var semanticVersion = GetSemanticVersionV2(clearVersion) ?? "1.36.1-dev";
+		var clearVersion = GetVersionFromTag() ?? "1.36.1";
+		var semanticVersionForNuget = GetSemanticVersionV1(clearVersion);
+		var semanticVersion = GetSemanticVersionV2(clearVersion);
 		if (!string.IsNullOrEmpty(semanticVersion))
 		{
 			Information("Version from tag: {0}", semanticVersion);
@@ -65,7 +66,7 @@ Task("GenerateVersionInfo")
 		var assemblyInfo = new AssemblyInfoSettings
 		{
 			Version = string.Format("{0}.0.0.0", majorVersion),
-			FileVersion = clearVersion,
+			FileVersion = semanticVersionForNuget,
 			InformationalVersion = semanticVersion
 		};
 		packageVersion = assemblyInfo.FileVersion;
@@ -206,6 +207,23 @@ public string GetVersionFromTag()
 	return ClearVersionTag(lastestTag);
 }
 
+public string GetSemanticVersionV1(string clearVersion)
+{
+	if (BuildSystem.IsRunningOnAppVeyor)
+	{
+		var tag = BuildSystem.AppVeyor.Environment.Repository.Tag;
+		if (tag.IsTag)
+		{
+			return clearVersion;
+		}
+		
+		var buildNumber = BuildSystem.AppVeyor.Environment.Build.Number;
+		return string.Format("{0}-CI.{1}", clearVersion, buildNumber);
+	}
+	
+	return string.Format("{0}-dev", clearVersion);
+}
+
 public string GetSemanticVersionV2(string clearVersion)
 {
 	if (BuildSystem.IsRunningOnAppVeyor)
@@ -238,7 +256,11 @@ public static string ClearVersionTag(string lastestTag)
 	}
 	
 	var match = Regex.Match(lastestTag, @"^([0-9]+.[0-9]+.[0-9]*)");
-	return match.Success
+	lastestTag = match.Success
 		? match.Value
+		: lastestTag;
+		
+	return string.IsNullOrEmpty(lastestTag)
+		? null
 		: lastestTag;
 }
