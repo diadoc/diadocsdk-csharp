@@ -1,0 +1,10 @@
+import "DocumentId.proto";
+
+package Diadoc.Api.Proto;
+
+message Content_v2 {
+	optional bytes Content = 1;
+	optional string NameOnShelf = 2;
+	optional string PatchedContentId = 3;
+	optional DocumentIdEx DocumentId = 4;
+}

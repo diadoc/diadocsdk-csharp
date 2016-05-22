@@ -1,0 +1,6 @@
+package Diadoc.Api.Proto;
+
+message Content {
+	required sfixed32 Size = 1;	// -1 if content size is unknown
+	optional bytes Data = 2;	// null <=> entity content exists but is not included in proto buffer
+}

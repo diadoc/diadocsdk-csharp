@@ -1,0 +1,77 @@
+import "DocumentType.proto";
+import "DocumentDirection.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message DocumentInfo
+{
+	optional DocumentType DocumentType = 1 [default = UnknownDocumentType];
+	optional DocumentDirection DocumentDirection = 2 [default = UnknownDocumentDirection];
+	optional bool IsTest = 3;
+	optional string CustomDocumentId = 4;
+	optional string FromDepartmentId = 5;
+	optional string ToDepartmentId = 6;
+	optional string CounteragentBoxId = 7;
+	optional DocumentDateAndNumber DocumentDateAndNumber = 8;
+	optional BasicDocumentInfo BasicDocumentInfo = 9;                  // for XmlTorg12, XmlAcceptanceCertificate, Torg12, AcceptanceCertificate, ProformaInvoice, Torg13
+	optional InvoiceDocumentInfo InvoiceInfo = 10;                     // for Invoice, InvoiceRevision
+	optional InvoiceCorrectionDocumentInfo InvoiceCorrectionInfo = 11; // for InvoiceCorrection, InvoiceCorrectionRevision
+	optional PriceListDocumentInfo PriceListInfo = 12;
+	optional ContractDocumentInfo ContractInfo = 13;
+	optional SupplementaryAgreementDocumentInfo SupplementaryAgreementInfo = 14;
+}
+
+message DocumentDateAndNumber
+{
+	optional string DocumentDate = 1;
+	optional string DocumentNumber = 2;
+}
+
+message BasicDocumentInfo
+{
+	optional string Total = 1;
+	optional bool NoVat = 2;
+	optional string Vat = 3;
+	optional string Grounds = 4;
+}
+
+message InvoiceDocumentInfo
+{
+	optional string Total = 1;
+	optional string Vat = 2;
+	optional int32 CurrencyCode = 3;
+	optional DocumentDateAndNumber OriginalInvoiceDateAndNumber = 4; // for InvoiceRevision
+}
+
+message InvoiceCorrectionDocumentInfo
+{
+	optional string TotalInc = 1;
+	optional string TotalDec = 2;
+	optional string VatInc = 3;
+	optional string VatDec = 4;
+	optional int32 CurrencyCode = 5;
+	optional DocumentDateAndNumber OriginalInvoiceDateAndNumber = 6;
+	optional DocumentDateAndNumber OriginalInvoiceRevisionDateAndNumber = 7;
+	optional DocumentDateAndNumber OriginalInvoiceCorrectionDateAndNumber = 8; // for InvoiceCorrectionRevision
+}
+
+message PriceListDocumentInfo
+{
+	optional string PriceListEffectiveDate = 1;
+	optional DocumentDateAndNumber ContractDocumentDateAndNumber = 2;
+}
+
+message ContractDocumentInfo
+{
+	optional string ContractPrice = 1;
+	optional string ContractType = 2;
+}
+
+message SupplementaryAgreementDocumentInfo
+{
+	optional string Total = 1;
+	optional string ContractType = 2;
+	optional string ContractNumber = 3;
+	optional string ContractDate = 4;
+}
+

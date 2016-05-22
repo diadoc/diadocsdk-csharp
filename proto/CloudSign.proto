@@ -1,0 +1,20 @@
+import "Content_v2.proto";
+
+package Diadoc.Api.Proto;
+
+message CloudSignRequest {
+	repeated CloudSignFile Files = 1; 
+}
+
+message CloudSignFile {
+	optional Content_v2 Content = 1;
+	optional string FileName = 2;
+}
+
+message CloudSignResult {
+	optional string Token = 1;
+}
+
+message CloudSignConfirmResult {
+	repeated Content_v2 Signatures = 1;
+} 

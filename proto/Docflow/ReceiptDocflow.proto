@@ -1,0 +1,10 @@
+import "Docflow/Attachment.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message ReceiptDocflow
+{
+	optional bool IsFinished = 1;
+
+	optional SignedAttachment ReceiptAttachment = 2;
+}

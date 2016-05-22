@@ -1,0 +1,9 @@
+package Diadoc.Api.Proto;
+
+enum DocumentDirection
+{
+	UnknownDocumentDirection = 0; // reserved for backward compatibility
+	Inbound = 1;
+	Outbound = 2;
+	Internal = 3;
+}

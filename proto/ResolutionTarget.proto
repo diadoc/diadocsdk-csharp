@@ -1,0 +1,8 @@
+package Diadoc.Api.Proto;
+
+message ResolutionTarget {
+	optional string Department = 1;
+	optional string DepartmentId = 2;
+	optional string User = 3;
+	optional string UserId = 4;
+}

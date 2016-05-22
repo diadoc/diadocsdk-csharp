@@ -1,0 +1,30 @@
+import "Documents/ReceiptStatus.proto";
+
+package Diadoc.Api.Proto.Documents.NonformalizedDocument;
+
+message NonformalizedDocumentMetadata {
+	optional NonformalizedDocumentStatus DocumentStatus = 1 [default = UnknownNonformalizedDocumentStatus];
+	optional ReceiptStatus ReceiptStatus = 2 [default = UnknownReceiptStatus];
+}
+
+enum NonformalizedDocumentStatus {
+	UnknownNonformalizedDocumentStatus = 0; // Reserved state to report to legacy client for new statuses
+	OutboundNoRecipientSignatureRequest = 1;
+	OutboundWaitingForRecipientSignature = 2;
+	OutboundWithRecipientSignature = 3;
+	OutboundRecipientSignatureRequestRejected = 4;
+	OutboundWaitingForSenderSignature = 13;
+	OutboundInvalidSenderSignature = 14;
+	InboundNoRecipientSignatureRequest = 5;
+	InboundWaitingForRecipientSignature = 6;
+	InboundWithRecipientSignature = 7;
+	InboundRecipientSignatureRequestRejected = 8;
+	InboundInvalidRecipientSignature = 15;
+	InternalNoRecipientSignatureRequest = 9;
+	InternalWaitingForRecipientSignature = 10;
+	InternalWithRecipientSignature = 11;
+	InternalRecipientSignatureRequestRejected = 12;
+	InternalWaitingForSenderSignature = 16;
+	InternalInvalidSenderSignature = 17;
+	InternalInvalidRecipientSignature = 18;
+}

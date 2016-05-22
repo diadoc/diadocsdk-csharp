@@ -1,0 +1,64 @@
+package Diadoc.Api.Proto.Documents.InvoiceDocument;
+
+message InvoiceMetadata {
+	optional InvoiceStatus InvoiceStatus = 1 [default = UnknownInvoiceStatus];
+	required string Total = 2;
+	required string Vat = 3;
+	required int32 Currency = 4;
+	required sfixed64 ConfirmationDateTimeTicks = 5;
+	required int32 InvoiceAmendmentFlags = 6;
+}
+
+message InvoiceRevisionMetadata {
+	optional InvoiceStatus InvoiceRevisionStatus = 1 [default = UnknownInvoiceStatus];
+	required string OriginalInvoiceNumber = 2;
+	required string OriginalInvoiceDate = 3;
+	required string Total = 4;
+	required string Vat = 5;
+	required int32 Currency = 6;
+	required sfixed64 ConfirmationDateTimeTicks = 7;
+	required int32 InvoiceAmendmentFlags = 8;
+}
+
+message InvoiceCorrectionMetadata {
+	optional InvoiceStatus InvoiceCorrectionStatus = 1 [default = UnknownInvoiceStatus];
+	required string OriginalInvoiceNumber = 2;
+	required string OriginalInvoiceDate = 3;
+	optional string OriginalInvoiceRevisionNumber = 4;
+	optional string OriginalInvoiceRevisionDate = 5;
+	required string TotalInc = 6;
+	required string TotalDec = 7;
+	required string VatInc = 8;
+	required string VatDec = 9;
+	required int32 Currency = 10;
+	required sfixed64 ConfirmationDateTimeTicks = 11;
+	required int32 InvoiceAmendmentFlags = 12;
+}
+
+message InvoiceCorrectionRevisionMetadata {
+	optional InvoiceStatus InvoiceCorrectionRevisionStatus = 1 [default = UnknownInvoiceStatus];
+	required string OriginalInvoiceNumber = 2;
+	required string OriginalInvoiceDate = 3;
+	optional string OriginalInvoiceRevisionNumber = 4;
+	optional string OriginalInvoiceRevisionDate = 5;
+	required string OriginalInvoiceCorrectionNumber = 6;
+	required string OriginalInvoiceCorrectionDate = 7;
+	required string TotalInc = 8;
+	required string TotalDec = 9;
+	required string VatInc = 10;
+	required string VatDec = 11;
+	required int32 Currency = 12;
+	required sfixed64 ConfirmationDateTimeTicks = 13;
+	required int32 InvoiceAmendmentFlags = 14;
+}
+
+enum InvoiceStatus {
+    UnknownInvoiceStatus = 0;	// This type will be reported to legacy client when it receives unknown status from server
+	OutboundWaitingForInvoiceReceipt = 1;
+	OutboundNotFinished = 2;
+	OutboundFinished = 3;
+	OutboundWaitingForSenderSignature = 6;
+	OutboundInvalidSenderSignature = 7;
+	InboundNotFinished = 4;
+	InboundFinished = 5;
+}

@@ -1,0 +1,33 @@
+import "Address.proto";
+
+package Diadoc.Api.Proto.Invoicing;
+
+message DocflowParticipant {
+	optional string BoxId = 1;								// идентификатор ящика в Диадоке
+	optional string Inn = 2;								// ИНН организации-участника обмена
+	optional string Kpp = 3;								// КПП организации-участника обмена
+	optional string FnsParticipantId = 4;					// идентификатор участника ЭДО
+}
+
+message DiadocOrganizationInfo {
+	optional string BoxId = 1;								// идентификатор ящика в Диадоке
+	optional OrganizationInfo OrgInfo = 2;					// реквизиты организации
+}
+
+message OrganizationInfo {
+	required string Name = 1;								// название
+	optional string Inn = 2;								// ИНН
+	optional string Kpp = 3;								// КПП
+	required Address Address = 4;							// адрес
+	optional bool IsSoleProprietor = 5 [default = false];	// организация - это ИП
+	optional string Okopf = 6;								// код организационно-правовой формы по ОКОПФ
+	optional string Okpo = 7;								// код в общероссийском классификаторе предприятий и организаций
+	optional string Okdp = 8;								// код основного вида деятельности по ОКДП
+	optional string Phone = 9;								// телефон
+	optional string Fax = 10;								// факс
+	optional string BankAccountNumber = 11;					// номер банковского счета
+	optional string BankName = 12;							// название банка
+	optional string BankId = 13;							// БИК
+	optional string Department = 14;						// структурное подразделение
+	optional string FnsParticipantId = 15;					// идентификатор участника ЭДО
+}

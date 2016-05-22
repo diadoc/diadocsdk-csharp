@@ -1,0 +1,19 @@
+import "Timestamp.proto";
+import "DocumentId.proto";
+import "Docflow/DocumentWithDocflow.proto";
+
+package Diadoc.Api.Proto.Forwarding;
+
+message ForwardedDocumentId
+{
+	optional string FromBoxId = 1;
+	optional DocumentId DocumentId = 2;
+	optional string ForwardEventId = 3;
+}
+
+message ForwardedDocument
+{
+	optional Timestamp ForwardTimestamp = 1;
+	optional ForwardedDocumentId ForwardedDocumentId = 2;
+	optional Docflow.DocumentWithDocflow DocumentWithDocflow = 3;
+}

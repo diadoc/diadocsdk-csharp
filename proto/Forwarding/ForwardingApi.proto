@@ -1,0 +1,56 @@
+// forwarded documents api
+// ForwardDocument(boxId, ForwardDocumentRequest) : void
+// GetForwardedDocuments(boxId, GetForwardedDocumentsRequest) : GetForwardedDocumentsResponse
+// GetForwardedDocumentEvents(boxId, GetForwardedDocumentEventsRequest) : GetForwardedDocumentEventsResponse
+
+import "Timestamp.proto";
+import "DocumentId.proto";
+import "TimeBasedFilter.proto";
+import "Forwarding/ForwardedDocument.proto";
+
+package Diadoc.Api.Proto.Forwarding;
+
+message ForwardDocumentRequest
+{
+	required string ToBoxId = 1;
+	required DocumentId DocumentId = 2;
+}
+
+message ForwardDocumentResponse
+{
+	optional Timestamp ForwardTimestamp = 1;
+	optional ForwardedDocumentId ForwardedDocumentId = 2;
+}
+
+message GetForwardedDocumentsRequest
+{
+	repeated ForwardedDocumentId ForwardedDocumentIds = 1;
+	optional bool InjectEntityContent = 2 [default = false];
+}
+
+message GetForwardedDocumentsResponse
+{
+	repeated ForwardedDocument ForwardedDocuments = 1;
+}
+
+message GetForwardedDocumentEventsRequest
+{
+	required TimeBasedFilter Filter = 1;
+	optional bytes AfterIndexKey = 2;
+	optional bool PopulateForwardedDocuments = 3 [default = false];
+	optional bool InjectEntityContent = 4 [default = false];
+}
+
+message GetForwardedDocumentEventsResponse
+{
+	optional int32 TotalCount = 1;
+	repeated ForwardedDocumentEvent Events = 2;
+}
+
+message ForwardedDocumentEvent
+{
+	optional Timestamp Timestamp = 1;
+	optional ForwardedDocumentId ForwardedDocumentId = 2;
+	optional bytes IndexKey = 3;
+	optional ForwardedDocument ForwardedDocument = 4;
+}

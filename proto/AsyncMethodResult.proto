@@ -1,0 +1,5 @@
+package Diadoc.Api.Proto;
+
+message AsyncMethodResult {
+	optional string TaskId = 1;
+}

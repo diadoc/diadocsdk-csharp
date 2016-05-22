@@ -1,0 +1,5 @@
+package Diadoc.Api.Proto.Invoicing;
+
+message FnsRegistrationMessageInfo {
+	repeated bytes Certificates = 1;
+}

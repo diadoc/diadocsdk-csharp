@@ -1,0 +1,17 @@
+import "Organization.proto";
+import "Counteragent.proto";
+
+package Diadoc.Api.Proto;
+
+message GetOrganizationsByInnListRequest {
+	repeated string InnList = 1;
+}
+
+message OrganizationWithCounteragentStatus {
+	required Organization Organization = 1;
+	optional CounteragentStatus CounteragentStatus = 2 [default = UnknownCounteragentStatus];
+}
+
+message GetOrganizationsByInnListResponse {
+	repeated OrganizationWithCounteragentStatus Organizations = 1;
+}

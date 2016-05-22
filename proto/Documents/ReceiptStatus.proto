@@ -1,0 +1,9 @@
+package Diadoc.Api.Proto.Documents;
+
+enum ReceiptStatus {
+	UnknownReceiptStatus = 0; // Reserved state to report to legacy client for new statuses
+	ReceiptStatusNone = 1;
+	ReceiptStatusFinished = 2;
+	ReceiptStatusHaveToCreateReceipt = 3;
+	ReceiptStatusWaitingForReceipt = 4;
+}

@@ -1,0 +1,97 @@
+// docflow api
+// GetDocflows(boxId, GetDocflowBatchRequest) : GetDocflowBatchResponse
+// GetDocflowEvents(boxId, GetDocflowEventsRequest) : GetDocflowEventsResponse
+
+import "Timestamp.proto";
+import "DocumentId.proto";
+import "TimeBasedFilter.proto";
+import "Docflow/DocumentWithDocflow.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message GetDocflowBatchRequest
+{
+	repeated GetDocflowRequest Requests = 1;
+}
+
+message GetDocflowRequest
+{
+	required DocumentId DocumentId = 1;
+	optional string LastEventId = 2;
+	optional bool InjectEntityContent = 3 [default = false];
+}
+
+message GetDocflowBatchResponse
+{
+	repeated DocumentWithDocflow Documents = 1;
+}
+
+enum SearchScope
+{
+	SearchScopeAny = 0;
+	SearchScopeIncoming = 1;
+	SearchScopeOutgoing = 2;
+	SearchScopeDeleted = 3;
+	SearchScopeInternal = 4;
+}
+
+message SearchDocflowsRequest
+{
+	required string QueryString = 1;
+	optional int32 Count = 2 [default = 100];
+	optional int32 FirstIndex = 3;
+	optional SearchScope Scope = 4 [default = SearchScopeAny];
+	optional bool InjectEntityContent = 5 [default = false];
+}
+
+message SearchDocflowsResponse
+{
+	repeated DocumentWithDocflow Documents = 1;
+	optional bool HaveMoreDocuments = 2;
+}
+
+message GetDocflowsByPacketIdRequest
+{
+	required string PacketId = 1;
+	optional int32 Count = 2 [default = 100];
+	optional bool InjectEntityContent = 3 [default = false];
+	optional bytes AfterIndexKey = 4;
+}
+
+message FetchedDocument
+{
+	required DocumentWithDocflow Document = 1;
+	required bytes IndexKey = 2;
+}
+
+message GetDocflowsByPacketIdResponse
+{
+	repeated FetchedDocument Documents = 1;
+	optional bytes NextPageIndexKey = 2;
+}
+
+message GetDocflowEventsRequest
+{
+	required TimeBasedFilter Filter = 1;
+	optional bytes AfterIndexKey = 2;
+	optional bool PopulateDocuments = 3 [default = false];
+	optional bool InjectEntityContent = 4 [default = false];
+	optional bool PopulatePreviousDocumentStates = 5 [default = false];
+}
+
+message GetDocflowEventsResponse
+{
+	optional int32 TotalCount = 1;
+	repeated DocflowEvent Events = 2;
+}
+
+message DocflowEvent
+{
+	optional string EventId = 1;
+	optional Timestamp Timestamp = 2;
+	optional DocumentId DocumentId = 3;
+	optional bytes IndexKey = 4;
+	optional DocumentWithDocflow Document = 5;
+	optional string PreviousEventId = 6;
+	optional DocumentWithDocflow PreviousDocumentState = 7;
+}

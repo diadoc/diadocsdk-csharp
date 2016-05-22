@@ -1,0 +1,20 @@
+package Diadoc.Api.Proto.Recognition;
+
+message Recognized {
+	required string RecognitionId = 1;
+	optional string ErrorMessage = 2;
+	optional string FileName = 3;
+	optional RecognizedDocumentType DocumentType = 4 [default = UnknownRecognizedDocumentType];
+	optional bytes Content = 5;
+	optional RecognizedInvoice Invoice = 6;
+}
+
+enum RecognizedDocumentType {
+	UnknownRecognizedDocumentType = -1; // Reserved type to report to legacy clients for newly introduced types
+	Invoice = 1;
+}
+
+message RecognizedInvoice {
+	required string MetadataJson = 1;
+	optional string ValidationErrorMessage = 2;
+}

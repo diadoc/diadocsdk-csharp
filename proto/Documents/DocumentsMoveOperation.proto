@@ -1,0 +1,10 @@
+import "DocumentId.proto";
+
+package Diadoc.Api.Proto.Documents;
+
+message DocumentsMoveOperation
+{
+	required string BoxId = 1;
+	optional string ToDepartmentId = 2;
+	repeated DocumentId DocumentIds = 3;
+}

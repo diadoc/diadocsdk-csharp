@@ -1,0 +1,146 @@
+///////////////////////////////////////////////////////////////////////////////
+// Протобуферы для читающих методов API:
+//	GetEvent(string boxId, Guid eventId) : BoxEvent
+//	GetNewEvents(string boxId, Guid afterEventId) : BoxEventList
+//	GetMessage(string boxId, Guid messageId) : Message
+
+import "Content.proto";
+import "DocumentId.proto";
+import "Documents/Document.proto";
+import "Events/ResolutionInfo.proto";
+import "Events/ResolutionRequestInfo.proto";
+import "Events/ResolutionRequestDenialInfo.proto";
+
+package Diadoc.Api.Proto.Events;
+
+message BoxEventList {
+	repeated BoxEvent Events = 1;
+	optional int32 TotalCount = 2;
+}
+
+message BoxEvent {
+	required string EventId = 1;
+	optional Message Message = 2;
+	optional MessagePatch Patch = 3;
+}
+
+message Message {
+	required string MessageId = 1;
+	required sfixed64 TimestampTicks = 2;			// DateTime.Ticks in UTC
+	required sfixed64 LastPatchTimestampTicks = 3;	// DateTime.Ticks in UTC
+	required string FromBoxId = 4;
+	required string FromTitle = 5;
+	optional string ToBoxId = 6;
+	optional string ToTitle = 7;
+	repeated Entity Entities = 8;
+	optional bool IsDraft = 9 [default = false];
+	optional bool DraftIsLocked = 10 [default = false];
+	optional bool DraftIsRecycled = 11 [default = false];
+	optional string CreatedFromDraftId = 12;
+	repeated string DraftIsTransformedToMessageIdList = 13;
+	optional bool IsDeleted = 14 [default = false];
+	optional bool IsTest = 15 [default = false];
+	optional bool IsInternal = 16 [default = false];
+	optional bool IsProxified = 17 [default = false];
+	optional string ProxyBoxId = 18;
+	optional string ProxyTitle = 19;
+	optional bool PacketIsLocked = 20 [default = false];
+}
+
+message MessagePatch {
+	required string MessageId = 1;
+	required sfixed64 TimestampTicks = 2;	// DateTime.Ticks in UTC
+	repeated Entity Entities = 3;
+	optional bool ForDraft = 4 [default = false];
+	optional bool DraftIsRecycled = 5 [default = false];
+	repeated string DraftIsTransformedToMessageIdList = 6;
+	optional bool DraftIsLocked = 7 [default = false];
+	optional bool MessageIsDeleted = 8 [default = false];
+	repeated EntityPatch EntityPatches = 9;
+	optional bool MessageIsRestored = 10 [default = false];
+	optional bool MessageIsDelivered = 11 [default = false];
+	optional string DeliveredPatchId = 12;
+	required string PatchId = 13;
+}
+
+message Entity {
+	optional EntityType EntityType = 1 [default = UnknownEntityType];
+	required string EntityId = 2;
+	optional string ParentEntityId = 3;
+	optional Content Content = 4;											// null <=> there is no content for this entity (very unlikely to happen)
+	optional AttachmentType AttachmentType = 5 [default = UnknownAttachmentType];	// only for EntityType.Attachment
+	optional string FileName = 6;											// only for EntityType.Attachment
+	optional bool NeedRecipientSignature = 7 [default = false];				// only for EntityType.Attachment
+	optional string SignerBoxId = 8;										// only for EntityType.Signature
+	optional string NotDeliveredEventId = 10;								// only for Attachment/DeliveryFailureNotification
+	optional Documents.Document DocumentInfo = 11;							// only for EntityType.Attachment
+	optional sfixed64 RawCreationDate = 12 [default = 0];
+	optional ResolutionInfo ResolutionInfo = 13;
+	optional string SignerDepartmentId = 14;								// only for EntityType.Signature
+	optional ResolutionRequestInfo ResolutionRequestInfo = 15;
+	optional ResolutionRequestDenialInfo ResolutionRequestDenialInfo = 16;
+	optional bool NeedReceipt = 17 [default = false];						// only for EntityType.Attachment
+	optional string PacketId = 18;
+	optional bool IsApprovementSignature = 19 [default = false];			// only for EntityType.Signature
+	optional bool IsEncryptedContent = 20 [default = false];
+}
+
+message EntityPatch {
+	required string EntityId = 1;
+	optional bool DocumentIsDeleted = 2 [default = false];
+	optional string MovedToDepartment = 3;
+	optional bool DocumentIsRestored = 4 [default = false];
+	optional bool ContentIsPatched = 5 [default = false];
+	optional string ForwardedToBoxId = 6;
+}
+
+enum EntityType {
+	UnknownEntityType = 0;	// Reserved type to report to legacy clients for newly introduced entity types
+	Attachment = 1;
+	Signature = 2;
+	//Неизвестные типы должны обрабатываться клиентом как cущность Attachment с типом вложения AttachmentType.Nonformalized
+}
+
+enum AttachmentType {
+	UnknownAttachmentType = -1; // Reserved attachment type to report to legacy clients for newly introduced attachment types
+	Nonformalized = 0;
+	Invoice = 1;
+	InvoiceReceipt = 2;
+	InvoiceConfirmation = 3;
+	InvoiceCorrectionRequest = 4;
+	AttachmentComment = 5;
+	DeliveryFailureNotification = 6;
+	EancomInvoic = 7;
+	SignatureRequestRejection = 8;
+	EcrCatConformanceCertificateMetadata = 9;
+	SignatureVerificationReport = 10;
+	TrustConnectionRequest = 11;
+	Torg12 = 12;
+	InvoiceRevision = 13;
+	InvoiceCorrection = 14;
+	InvoiceCorrectionRevision = 15;
+	AcceptanceCertificate = 16;
+	StructuredData = 17;
+	ProformaInvoice = 18;
+	XmlTorg12 = 19;
+	XmlAcceptanceCertificate = 20;
+	XmlTorg12BuyerTitle = 21;
+	XmlAcceptanceCertificateBuyerTitle = 22;
+	Resolution = 23;
+	ResolutionRequest = 24;
+	ResolutionRequestDenial = 25;
+	PriceList = 26;
+	Receipt = 27;
+	XmlSignatureRejection = 28;
+	RevocationRequest = 29;
+	PriceListAgreement = 30;
+	CertificateRegistry = 34;
+	ReconciliationAct = 35;
+	Contract = 36;
+	Torg13 = 37;
+	ServiceDetails = 38;
+	RoamingNotification = 39;
+	SupplementaryAgreement = 40;
+	CustomData = 64;
+	//Неизвестные типы должны обрабатываться как Nonformalized
+}

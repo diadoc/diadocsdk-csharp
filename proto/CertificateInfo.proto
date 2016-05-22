@@ -1,0 +1,7 @@
+package Diadoc.Api.Proto;
+
+message CertificateInfo {
+	optional string Thumbprint = 1;
+	optional sfixed64 ValidFrom = 2;
+	optional sfixed64 ValidTo = 3;
+}

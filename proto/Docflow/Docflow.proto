@@ -1,0 +1,59 @@
+import "Timestamp.proto";
+import "CustomDataItem.proto";
+import "Docflow/Attachment.proto";
+import "Docflow/InvoiceDocflow.proto";
+import "Docflow/UnilateralDocflow.proto";
+import "Docflow/BilateralDocflow.proto";
+import "Docflow/XmlBilateralDocflow.proto";
+import "Docflow/RevocationDocflow.proto";
+import "Docflow/ResolutionDocflow.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message Docflow
+{
+	optional bool IsFinished = 1;
+
+	optional SignedAttachment DocumentAttachment = 2;
+
+	optional string DepartmentId = 3;
+	optional bool DocumentIsDeleted = 4;
+	optional DocflowStatus DocflowStatus = 5;
+	optional Timestamp SendTimestamp = 6;
+	optional Timestamp DeliveryTimestamp = 7;
+
+	optional InboundInvoiceDocflow InboundInvoiceDocflow = 8;   // for Invoice, InvoiceRevision, InvoiceCorrection, InvoiceCorrectionRevision
+	optional OutboundInvoiceDocflow OutboundInvoiceDocflow = 9; // for Invoice, InvoiceRevision, InvoiceCorrection, InvoiceCorrectionRevision
+	optional XmlBilateralDocflow XmlBilateralDocflow = 10;      // for XmlTorg12, XmlAcceptanceCertificate
+	optional BilateralDocflow BilateralDocflow = 11;            // for Nonformalized, Torg12, AcceptanceCertificate, TrustConnectionRequest, PriceList, PriceListAgreement, CertificateRegistry, ReconciliationAct, Contract, Torg13
+	optional UnilateralDocflow UnilateralDocflow = 12;          // for ProformaInvoice, ServiceDetails
+	optional RevocationDocflow RevocationDocflow = 13;
+	optional ResolutionDocflow ResolutionDocflow = 14;
+
+	optional bool CanDocumentBeRevokedUnilaterallyBySender = 15;
+	optional string PacketId = 16;
+
+	repeated CustomDataItem CustomData = 17;
+}
+
+message DocflowStatus
+{
+	optional DocflowStatusModel PrimaryStatus = 1;
+	optional DocflowStatusModel SecondaryStatus = 2;
+}
+
+message DocflowStatusModel
+{
+	optional DocflowStatusSeverity Severity = 1 [default = UnknownDocflowStatusSeverity];
+	optional string StatusText = 2;
+	optional string StatusHint = 3;
+}
+
+enum DocflowStatusSeverity
+{
+	UnknownDocflowStatusSeverity = 0; // reserved for backward compatibility
+	Info = 1;
+	Success = 2;
+	Warning = 3;
+	Error = 4;
+}

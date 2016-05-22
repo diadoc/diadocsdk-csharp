@@ -1,0 +1,28 @@
+import "Documents/ReceiptStatus.proto";
+
+package Diadoc.Api.Proto.Documents.UnilateralDocument;
+
+message ProformaInvoiceMetadata {
+	optional UnilateralDocumentStatus DocumentStatus = 1 [default = UnknownUnilateralDocumentStatus];
+	required string Total = 2;
+	optional string Vat = 3;
+	optional string Grounds = 4;
+	optional ReceiptStatus ReceiptStatus = 5 [default = UnknownReceiptStatus];
+}
+
+
+message ServiceDetailsMetadata {
+	required UnilateralDocumentStatus DocumentStatus = 1 [default = UnknownUnilateralDocumentStatus];
+	required ReceiptStatus ReceiptStatus = 2 [default = UnknownReceiptStatus];
+}
+
+enum UnilateralDocumentStatus {
+	UnknownUnilateralDocumentStatus = 0;	// Reserved status to report to legacy clients for newly introduced statuses
+	Outbound = 1;
+	OutboundWaitingForSenderSignature = 4;
+	OutboundInvalidSenderSignature = 5;
+	Inbound = 2;
+	Internal = 3;
+	InternalWaitingForSenderSignature = 6;
+	InternalInvalidSenderSignature = 7;
+}

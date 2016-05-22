@@ -1,0 +1,21 @@
+import "Address.proto";
+
+package Diadoc.Api.Proto;
+
+message StringValue {
+	optional string Value = 1;
+}
+
+message OrganizationPropertiesToUpdate {
+	required string OrgId = 1;
+	optional StringValue Ogrn = 2;
+	optional StringValue IfnsCode = 3;
+	optional Address Address = 4;
+	optional HeadOrganizationPropertiesToUpdate HeadOrganizationProperties = 5;
+}
+
+message HeadOrganizationPropertiesToUpdate {
+	optional StringValue Kpp = 1;
+	optional StringValue FullName = 2;
+	optional Address Address = 3;
+}

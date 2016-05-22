@@ -1,0 +1,64 @@
+import "Timestamp.proto";
+import "Docflow/Attachment.proto";
+import "Docflow/ReceiptDocflow.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message InboundInvoiceDocflow
+{
+	optional bool IsFinished = 1;
+
+	optional InboundInvoiceReceiptDocflow ReceiptDocflow = 2;
+	optional InvoiceConfirmationDocflow ConfirmationDocflow = 3;
+	optional InvoiceCorrectionRequestDocflow CorrectionRequestDocflow = 4;
+
+	optional Timestamp ConfirmationTimestamp = 5;
+
+	optional bool IsAmendmentRequested = 6;
+	optional bool IsRevised = 7;
+	optional bool IsCorrected = 8;
+}
+
+message OutboundInvoiceDocflow
+{
+	optional bool IsFinished = 1;
+
+	optional ReceiptDocflow ReceiptDocflow = 2;
+	optional InvoiceConfirmationDocflow ConfirmationDocflow = 3;
+	optional InvoiceCorrectionRequestDocflow CorrectionRequestDocflow = 4;
+
+	optional Timestamp ConfirmationTimestamp = 5;
+
+	optional bool IsAmendmentRequested = 6;
+	optional bool IsRevised = 7;
+	optional bool IsCorrected = 8;
+
+	optional bool CanDocumentBeSignedBySender = 9;
+}
+
+message InvoiceConfirmationDocflow
+{
+	optional bool IsFinished = 1;
+
+	optional SignedAttachment ConfirmationAttachment = 2;
+
+	optional ReceiptDocflow ReceiptDocflow = 3;
+}
+
+message InboundInvoiceReceiptDocflow
+{
+	optional bool IsFinished = 1;
+
+	optional SignedAttachment ReceiptAttachment = 2;
+
+	optional InvoiceConfirmationDocflow ConfirmationDocflow = 3;
+}
+
+message InvoiceCorrectionRequestDocflow
+{
+	optional bool IsFinished = 1;
+
+	optional SignedAttachment CorrectionRequestAttachment = 2;
+
+	optional ReceiptDocflow ReceiptDocflow = 3;
+}

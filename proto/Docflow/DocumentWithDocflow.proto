@@ -1,0 +1,19 @@
+import "Timestamp.proto";
+import "DocumentId.proto";
+import "ForwardDocumentEvent.proto";
+import "Docflow/Docflow.proto";
+import "Docflow/DocumentInfo.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message DocumentWithDocflow
+{
+	optional DocumentId DocumentId = 1;
+	optional string LastEventId = 2;
+	optional Timestamp LastEventTimestamp = 3;
+	optional DocumentInfo DocumentInfo = 4;
+	optional Docflow Docflow = 5;
+	repeated DocumentId InitialDocumentIds = 6;
+	repeated DocumentId SubordinateDocumentIds = 7;
+	repeated ForwardDocumentEvent ForwardDocumentEvents = 8;
+}

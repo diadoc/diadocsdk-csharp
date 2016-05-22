@@ -1,0 +1,16 @@
+package Diadoc.Api.Proto.Invoicing;
+
+message Signer {
+	optional bytes SignerCertificate = 1;
+	optional SignerDetails SignerDetails = 2;
+	optional string SignerCertificateThumbprint = 3;
+}
+
+message SignerDetails {
+	required string Surname = 1;
+	required string FirstName = 2;
+	optional string Patronymic = 3;
+	optional string JobTitle = 4;
+	optional string Inn = 5;
+	optional string SoleProprietorRegistrationCertificate = 6;
+}

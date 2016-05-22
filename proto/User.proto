@@ -1,0 +1,11 @@
+import "CertificateInfo.proto";
+
+package Diadoc.Api.Proto;
+
+message User {
+	optional string Id = 1;
+	optional string LastName = 2;
+	optional string FirstName = 3;
+	optional string MiddleName = 4;
+	repeated CertificateInfo CloudCertificates = 5;
+}

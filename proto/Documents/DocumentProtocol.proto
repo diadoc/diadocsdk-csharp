@@ -1,0 +1,6 @@
+package Diadoc.Api.Proto.Documents;
+
+message DocumentProtocol {
+	required bytes PrintForm = 1;
+	required bytes Signature = 2;
+}

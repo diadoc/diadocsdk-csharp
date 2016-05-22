@@ -1,0 +1,15 @@
+import "OrganizationUserPermissions.proto";
+
+package Diadoc.Api.Proto;
+
+message OrganizationUser {
+	required string Id = 1;
+	required string Name = 2; // ФИО сотрудника
+	required OrganizationUserPermissions Permissions = 3;
+        required string Position = 4;
+}
+
+message OrganizationUsersList {
+	repeated OrganizationUser Users = 1;
+	required string CurrentUserId = 2;
+}

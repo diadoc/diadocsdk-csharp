@@ -1,0 +1,50 @@
+import "Address.proto";
+
+package Diadoc.Api.Proto;
+
+message OrganizationList {
+	repeated Organization Organizations = 1;
+}
+
+message Organization {
+	required string OrgId = 1;
+	required string Inn = 2;
+	optional string Kpp = 3;
+	required string FullName = 4;
+	optional string ShortName = 5;
+	repeated Box Boxes = 7;
+	optional string Ogrn = 8;
+	optional string FnsParticipantId = 9;
+	optional Address Address = 10;
+	optional string FnsRegistrationDate = 11;
+	repeated Department Departments = 12;
+	optional string IfnsCode = 13;
+	optional bool IsPilot = 14;
+	optional bool IsActive = 15;
+	optional bool IsTest = 16;
+	optional bool IsBranch = 17;
+	optional bool IsRoaming = 18;
+	optional bool IsEmployee = 19;
+}
+
+message Department {
+	required string DepartmentId = 1;
+	required string ParentDepartmentId = 2;
+	required string Name = 3;
+	optional string Abbreviation = 4;
+	optional string Kpp = 5;
+	optional Address Address = 6;
+	optional bool IsDisabled = 7 [default = false];
+}
+
+enum OrganizationInvoiceFormatVersion {
+	v5_01 = 1;
+	v5_02 = 2;
+}
+
+message Box {
+	required string BoxId = 1;
+	required string Title = 2;
+	optional Organization Organization = 3;
+	optional OrganizationInvoiceFormatVersion InvoiceFormatVersion = 4 [default = v5_02];
+}

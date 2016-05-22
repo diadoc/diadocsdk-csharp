@@ -1,0 +1,31 @@
+package Diadoc.Api.Proto.KeyValueStorage;
+
+///////////////////////////////////////////////////////////////////////////////
+// Протобуфер для представления записи хранилища, то есть пары (ключ, значение)
+
+// Пара (ключ, значение) для хранения в хранилище
+message KeyValueStorageEntry {
+	required string Key = 1;
+	required string Value = 2;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Протобуферы для читающих методов API по работе с хранилищем неструктурированных данных (KeyValueStorage):
+//	Get(KeyValueStorageApiGetRequest request) : KeyValueStorageApiGetResponse
+
+message KeyValueStorageApiGetRequest {
+	repeated string Keys = 1;
+}
+
+message KeyValueStorageApiGetResponse {
+	repeated KeyValueStorageEntry Entries = 1;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Протобуферы для пишущих методов API по работе с хранилищем неструктурированных данных (KeyValueStorage):
+//	Put(KeyValueStorageApiPutRequest request)
+
+message KeyValueStorageApiPutRequest {
+	repeated KeyValueStorageEntry Entries = 1;
+}
+

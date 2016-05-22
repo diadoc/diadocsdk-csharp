@@ -1,0 +1,20 @@
+import "Docflow/Attachment.proto";
+import "Docflow/RecipientSignatureDocflow.proto";
+import "Docflow/RecipientSignatureRejectionDocflow.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message RevocationDocflow
+{
+	optional bool IsFinished = 1;
+	
+	optional SignedAttachment RevocationRequestAttachment = 2;
+
+	optional RecipientSignatureDocflow RecipientSignatureDocflow = 3;
+	optional RecipientSignatureRejectionDocflow RecipientSignatureRejectionDocflow = 4;
+
+	optional string InitiatorBoxId = 5;
+
+	optional bool IsRevocationAccepted = 6;
+	optional bool IsRevocationRejected = 7;
+}
