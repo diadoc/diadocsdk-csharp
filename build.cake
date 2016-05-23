@@ -8,8 +8,11 @@ var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 var dbgSuffix = (configuration == "Debug" ? "-dbg" : "");
 
-var buildDir = (Directory("./bin") + Directory(configuration)).Path;
+var buildDir = new DirectoryPath("./bin").Combine(configuration);
+var buildDirNuget = buildDir.Combine("DiadocApi.Nuget");
 var DiadocApiSolutionPath = "./DiadocApi.sln";
+var binariesZip = buildDir.CombineWithFilePath("diadocsdk-csharp-binaries.zip");
+var sourcesZip = buildDir.CombineWithFilePath("diadocsdk-csharp-sources.zip");
 
 const string protobufNetDll = "./packages/protobuf-net.1.0.0.280/lib/protobuf-net.dll";
 var packageVersion = ""; 
@@ -54,10 +57,12 @@ Task("GenerateVersionInfo")
 		var clearVersion = GetVersionFromTag() ?? "1.36.1";
 		var semanticVersionForNuget = GetSemanticVersionV1(clearVersion);
 		var semanticVersion = GetSemanticVersionV2(clearVersion);
-		if (!string.IsNullOrEmpty(semanticVersion))
+		if (!string.IsNullOrEmpty(clearVersion))
 		{
-			Information("Version from tag: {0}", semanticVersion);
-			var versionParts = semanticVersion.Split('.');
+			Information("Version from tag: {0}", clearVersion);
+			Information("Nuget version: {0}", semanticVersionForNuget);
+			Information("Semantic version: {0}", semanticVersion);
+			var versionParts = clearVersion.Split('.');
 			int.TryParse(versionParts[0], out majorVersion);
 		}
 
@@ -73,13 +78,18 @@ Task("GenerateVersionInfo")
 		CreateAssemblyInfo("./DiadocApi/Properties/AssemblyVersion.cs", assemblyInfo);
 		CreateAssemblyInfo("./Samples/Diadoc.Console/Properties/AssemblyVersion.cs", assemblyInfo);
 		CreateAssemblyInfo("./Samples/Diadoc.Samples/Properties/AssemblyVersion.cs", assemblyInfo);
+
+		if (BuildSystem.IsRunningOnAppVeyor)
+		{
+			AppVeyor.UpdateBuildVersion(semanticVersion);
+		}
 	});
 
 Task("GenerateProtoFiles")
 	.IsDependentOn("Restore-NuGet-Packages")
 	.Does(() =>
 	{
-		if (!FileExists(protobufNetDll))
+		if (!FileExists("./packages/protobuf-net.1.0.0.280/Tools/protobuf-net.dll"))
 			CopyFileToDirectory(protobufNetDll, "./packages/protobuf-net.1.0.0.280/Tools");
 			
 		var sourceProtoDir = new DirectoryPath("./proto/").MakeAbsolute(Context.Environment);
@@ -134,21 +144,58 @@ Task("ILMerge")
 				Internalize = true,
 			});
 	});
-
-Task("Nuget-Pack")
+	
+Task("PrepareSources")
+	.IsDependentOn("Clean")
+	.Does(() =>
+	{
+		var sources = GetFiles("./**/*.*",
+			x => {
+				var excludeFolders = new [] { "bin", "obj", "packages", "tools" };
+				return !x.Path.Segments.Any(segment => segment.StartsWith("."))
+					&& !x.Path.Segments.Any(segment => excludeFolders.Any(shouldBeExcluded => shouldBeExcluded.Equals(segment, StringComparison.OrdinalIgnoreCase)));
+			});
+		Zip(".", sourcesZip, sources);
+	});
+	
+Task("PrepareBinaries")
 	.IsDependentOn("GenerateVersionInfo")
 	.IsDependentOn("ILMerge")
+	.Does(() =>
+	{
+		var files = GetFiles(buildDir.FullPath + "/DiadocApi/**/*.*")
+			.Where(x =>
+				!x.FullPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) &&
+				!x.FullPath.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase));
+		CopyFiles(files, buildDirNuget.Combine("net35"));
+		CopyFileToDirectory("./LICENSE.md", buildDirNuget);
+		Zip(buildDirNuget, binariesZip, GetFiles(buildDirNuget + "/**/*.*"));
+	});
+
+Task("Nuget-Pack")
+	.IsDependentOn("PrepareBinaries")
 	.Does(() =>
 	{
 		var nuGetPackSettings = new NuGetPackSettings
 		{
 			Version = packageVersion,
-			BasePath = buildDir.FullPath,
+			BasePath = buildDirNuget.FullPath,
 			OutputDirectory = buildDir.FullPath
 		};
-		CopyFileToDirectory("./LICENSE.md", nuGetPackSettings.BasePath);
-            
 		NuGetPack("./nuspec/DiadocApi.nuspec", nuGetPackSettings);
+	});
+	
+Task("PublishArtifactsToAppVeyor")
+	.IsDependentOn("Nuget-Pack")
+	.WithCriteria(x => BuildSystem.IsRunningOnAppVeyor)
+	.Does(() =>
+	{
+		AppVeyor.UploadArtifact(binariesZip);
+		AppVeyor.UploadArtifact(sourcesZip);
+		foreach (var upload in GetFiles(buildDir + "/*.nupkg"))
+		{
+			AppVeyor.UploadArtifact(upload​);
+		}
 	});
 
 //////////////////////////////////////////////////////////////////////
@@ -156,17 +203,24 @@ Task("Nuget-Pack")
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-	.IsDependentOn("Nuget-Pack");
+	.IsDependentOn("Rebuild");
 
-Task("FullRebuild")
+Task("FullBuild")
+	.IsDependentOn("GenerateVersionInfo")
+	.IsDependentOn("Build");
+	
+Task("Rebuild")
 	.IsDependentOn("Clean")
 	.IsDependentOn("GenerateVersionInfo")
 	.IsDependentOn("Build");
 
 Task("Appveyor")
-	.IsDependentOn("FullRebuild")
+	.IsDependentOn("PrepareSources")
+	.IsDependentOn("PrepareBinaries")
+	.IsDependentOn("Build")
 	.IsDependentOn("ILMerge")
-	.IsDependentOn("Nuget-Pack");
+	.IsDependentOn("Nuget-Pack")
+	.IsDependentOn("PublishArtifactsToAppVeyor");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
@@ -237,7 +291,7 @@ public string GetSemanticVersionV1(string clearVersion)
 		}
 		
 		var buildNumber = BuildSystem.AppVeyor.Environment.Build.Number;
-		return string.Format("{0}-CI.{1}", clearVersion, buildNumber);
+		return string.Format("{0}-CI{1}", clearVersion, buildNumber);
 	}
 	
 	return string.Format("{0}-dev", clearVersion);
@@ -254,7 +308,7 @@ public string GetSemanticVersionV2(string clearVersion)
 		}
 		
 		var buildNumber = BuildSystem.AppVeyor.Environment.Build.Number;
-		clearVersion += string.Format("-CI.{0}-", buildNumber);
+		clearVersion += string.Format("-CI.{0}", buildNumber);
 		return (AppVeyor.Environment.PullRequest.IsPullRequest
 			? clearVersion += string.Format("-PR.{0}", AppVeyor.Environment.PullRequest.Number)
 			: clearVersion += "-" + AppVeyor.Environment.Repository.Branch)

@@ -1,0 +1,10 @@
+version: 1.36.{build}
+assembly_info:
+  patch: false
+platform: Any CPU
+configuration:
+  - Debug
+  - Release
+
+build_script:
+- ps: .\build.ps1 -Target "AppVeyor" -Configuration $env:configuration -Verbosity Diagnostic
