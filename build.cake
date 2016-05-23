@@ -12,7 +12,6 @@ var buildDir = new DirectoryPath("./bin").Combine(configuration);
 var buildDirNuget = buildDir.Combine("DiadocApi.Nuget");
 var DiadocApiSolutionPath = "./DiadocApi.sln";
 var binariesZip = buildDir.CombineWithFilePath("diadocsdk-csharp-binaries.zip");
-var sourcesZip = buildDir.CombineWithFilePath("diadocsdk-csharp-sources.zip");
 
 const string protobufNetDll = "./packages/protobuf-net.1.0.0.280/lib/protobuf-net.dll";
 var packageVersion = ""; 
@@ -145,19 +144,6 @@ Task("ILMerge")
 			});
 	});
 	
-Task("PrepareSources")
-	.IsDependentOn("Clean")
-	.Does(() =>
-	{
-		var sources = GetFiles("./**/*.*",
-			x => {
-				var excludeFolders = new [] { "bin", "obj", "packages", "tools" };
-				return !x.Path.Segments.Any(segment => segment.StartsWith("."))
-					&& !x.Path.Segments.Any(segment => excludeFolders.Any(shouldBeExcluded => shouldBeExcluded.Equals(segment, StringComparison.OrdinalIgnoreCase)));
-			});
-		Zip(".", sourcesZip, sources);
-	});
-	
 Task("PrepareBinaries")
 	.IsDependentOn("GenerateVersionInfo")
 	.IsDependentOn("ILMerge")
@@ -191,7 +177,6 @@ Task("PublishArtifactsToAppVeyor")
 	.Does(() =>
 	{
 		AppVeyor.UploadArtifact(binariesZip);
-		AppVeyor.UploadArtifact(sourcesZip);
 		foreach (var upload in GetFiles(buildDir + "/*.nupkg"))
 		{
 			AppVeyor.UploadArtifact(upload​);
@@ -215,7 +200,6 @@ Task("Rebuild")
 	.IsDependentOn("Build");
 
 Task("Appveyor")
-	.IsDependentOn("PrepareSources")
 	.IsDependentOn("PrepareBinaries")
 	.IsDependentOn("Build")
 	.IsDependentOn("ILMerge")
