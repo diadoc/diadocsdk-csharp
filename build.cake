@@ -1,5 +1,6 @@
 #addin "Cake.Git"
 #tool "ILMerge"
+#tool "secure-file"
 using Cake.Common.Diagnostics;
 using Cake.Git;
 using System.Text.RegularExpressions;
@@ -12,6 +13,7 @@ var buildDir = new DirectoryPath("./bin").Combine(configuration);
 var buildDirNuget = buildDir.Combine("DiadocApi.Nuget");
 var DiadocApiSolutionPath = "./DiadocApi.sln";
 var binariesZip = buildDir.CombineWithFilePath("diadocsdk-csharp-binaries.zip");
+var needSigning = false;
 
 const string protobufNetDll = "./packages/protobuf-net.1.0.0.280/lib/protobuf-net.dll";
 var packageVersion = ""; 
@@ -19,6 +21,37 @@ var packageVersion = "";
 //////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
+
+Setup(() =>
+{
+	if (BuildSystem.IsRunningOnAppVeyor && AppVeyor.Environment.PullRequest.IsPullRequest)
+	{
+		needSigning = false;
+		return;
+	}
+	
+	if (FileExists("diadoc.snk"))
+	{
+		needSigning = true;
+		return;
+	}
+
+	if (HasEnvironmentVariable("diadoc_signing_secret"))
+	{
+		var secureFileArguments = new ProcessSettings()
+			.WithArguments(x =>	x
+				.AppendSwitch("-decrypt", @"DiadocApi\diadoc.snk.enc")
+				.AppendSwitch("-secret", EnvironmentVariable("diadoc_signing_secret")));
+		var exitCode = StartProcess("./tools/secure-file/tools/secure-file.exe", secureFileArguments);
+		if (exitCode != 0)
+		{
+			Warning("secure-file exit with error {0}", exitCode);
+			return;
+		}
+		needSigning = true;
+		return;
+	}
+});
 
 Task("Clean")
 	.Does(() =>
@@ -131,17 +164,21 @@ Task("ILMerge")
 	{
 		var sourceDir = buildDir.Combine("DiadocApi");
 		var outputDir = buildDir.Combine("DiadocApi.Nuget");
-		//var keyFile = new FilePath("./DiadocApi/diadoc.snk").MakeAbsolute(Context.Environment).FullPath;
 		CreateDirectory(outputDir.Combine("net35"));
+		var ilMergeSettings = new ILMergeSettings
+		{
+			Internalize = true,
+		};
+		if (needSigning)
+		{
+			var keyFile = new FilePath("./DiadocApi/diadoc.snk").MakeAbsolute(Context.Environment).FullPath;
+			ilMergeSettings.ArgumentCustomization = args => args.Append("/keyfile:" + keyFile);
+		}
 		ILMerge(
 			outputDir.CombineWithFilePath("net35/DiadocApi.dll"),
 			sourceDir.CombineWithFilePath("net35/DiadocApi.dll"),
 			new FilePath[] { protobufNetDll },
-			new ILMergeSettings
-			{
-				//ArgumentCustomization = args => args.Append("/keyfile:" + keyFile),
-				Internalize = true,
-			});
+			ilMergeSettings);
 	});
 	
 Task("PrepareBinaries")
