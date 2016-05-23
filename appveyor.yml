@@ -6,5 +6,24 @@ configuration:
   - Debug
   - Release
 
+environment:
+  github_releases_auth_token:
+    secure: zLJKfCFYSNM3Pv10x3js66vH7RiA0D/C9Ww5uymd5IntAzthBnehqYqQNpDvnLnf
+
+
 build_script:
 - ps: .\build.ps1 -Target "AppVeyor" -Configuration $env:configuration -Verbosity Diagnostic
+
+deploy:
+  release: diadocsdk-csharp-v$(appveyor_build_version)
+  description: 'diadocsdk-csharp'
+  provider: GitHub
+  auth_token:
+    secure: zLJKfCFYSNM3Pv10x3js66vH7RiA0D # encrypted token from GitHub
+  artifact: diadocsdk-csharp-binaries.zip;/\.nupkg$/
+  draft: false
+  prerelease: false
+  on:
+    branch: master                 # release from master branch only
+    configuration: Release         # deploy release configuration
+    appveyor_repo_tag: true        # deploy on tag push only
