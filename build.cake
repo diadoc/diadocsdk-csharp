@@ -330,12 +330,8 @@ public string GetSemanticVersionV2(string clearVersion)
 		{
 			return clearVersion;
 		}
-		
-		var buildNumber = BuildSystem.AppVeyor.Environment.Build.Number;
-		clearVersion += string.Format("-CI.{0}", buildNumber);
-		return (AppVeyor.Environment.PullRequest.IsPullRequest
-			? clearVersion += string.Format("-PR.{0}", AppVeyor.Environment.PullRequest.Number)
-			: clearVersion += "-" + AppVeyor.Environment.Repository.Branch);
+
+		return GetAppVeyorBuildVersion(clearVersion);		
 	}
 
 	var currentDate = DateTime.Now;
@@ -348,13 +344,13 @@ public string GetAppVeyorBuildVersion(string clearVersion)
 {
 	if (BuildSystem.IsRunningOnAppVeyor)
 	{
-		var tag = BuildSystem.AppVeyor.Environment.Repository.Tag;
-		if (tag.IsTag)
-		{
-			return tag.Name;
-		}
+		var buildNumber = BuildSystem.AppVeyor.Environment.Build.Number;
+		clearVersion += string.Format("-CI.{0}", buildNumber);
+		return (AppVeyor.Environment.PullRequest.IsPullRequest
+			? clearVersion += string.Format("-PR.{0}", AppVeyor.Environment.PullRequest.Number)
+			: clearVersion += "-" + AppVeyor.Environment.Repository.Branch);
 	}
-	return GetSemanticVersionV2(clearVersion);
+	return clearVersion;
 }
 
 public static string ClearVersionTag(string lastestTag)
