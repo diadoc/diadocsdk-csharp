@@ -1,5 +1,5 @@
 #addin "Cake.Git"
-#tool "ILMerge"
+#tool nuget:?package=ILMerge&version=2.12.803
 #tool "secure-file"
 using Cake.Common.Diagnostics;
 using Cake.Git;
@@ -86,14 +86,17 @@ Task("GenerateVersionInfo")
 	.Does(context =>
 	{
 		var majorVersion = 1;
-		var clearVersion = GetVersionFromTag() ?? "1.36.1";
+		var tagVersion = GetVersionFromTag();
+		var clearVersion = ClearVersionTag(tagVersion) ?? "1.36.1";
 		var semanticVersionForNuget = GetSemanticVersionV1(clearVersion);
-		var semanticVersion = GetSemanticVersionV2(clearVersion);
+		var semanticVersion = GetSemanticVersionV2(clearVersion) + dbgSuffix;
+		var appveyorVersion = GetAppVeyorBuildVersion(clearVersion);
 		if (!string.IsNullOrEmpty(clearVersion))
 		{
 			Information("Version from tag: {0}", clearVersion);
 			Information("Nuget version: {0}", semanticVersionForNuget);
 			Information("Semantic version: {0}", semanticVersion);
+			Information("AppVeyor version: {0}", appveyorVersion);
 			var versionParts = clearVersion.Split('.');
 			int.TryParse(versionParts[0], out majorVersion);
 		}
@@ -113,7 +116,7 @@ Task("GenerateVersionInfo")
 
 		if (BuildSystem.IsRunningOnAppVeyor)
 		{
-			AppVeyor.UpdateBuildVersion(semanticVersion);
+			AppVeyor.UpdateBuildVersion(appveyorVersion);
 		}
 	});
 
@@ -262,7 +265,7 @@ public string GetVersionFromTag()
 		var tag = BuildSystem.AppVeyor.Environment.Repository.Tag;
 		if (tag.IsTag)
 		{
-			return ClearVersionTag(tag.Name);
+			return tag.Name;
 		}
 	}
 	
@@ -298,7 +301,7 @@ public string GetVersionFromTag()
 		}
 	}
 	
-	return ClearVersionTag(lastestTag);
+	return lastestTag;
 }
 
 public string GetSemanticVersionV1(string clearVersion)
@@ -332,29 +335,40 @@ public string GetSemanticVersionV2(string clearVersion)
 		clearVersion += string.Format("-CI.{0}", buildNumber);
 		return (AppVeyor.Environment.PullRequest.IsPullRequest
 			? clearVersion += string.Format("-PR.{0}", AppVeyor.Environment.PullRequest.Number)
-			: clearVersion += "-" + AppVeyor.Environment.Repository.Branch)
-			+ dbgSuffix;
+			: clearVersion += "-" + AppVeyor.Environment.Repository.Branch);
 	}
 
 	var currentDate = DateTime.Now;
 	var daysPart = (currentDate - new DateTime(2010, 01, 01)).Days;
 	var secondsPart = Math.Floor((currentDate - currentDate.Date).TotalSeconds/2);
-	return string.Format("{0}-dev.{1}.{2}{3}", clearVersion, daysPart, secondsPart, dbgSuffix); 
+	return string.Format("{0}-dev.{1}.{2}", clearVersion, daysPart, secondsPart); 
+}
+
+public string GetAppVeyorBuildVersion(string clearVersion)
+{
+	if (BuildSystem.IsRunningOnAppVeyor)
+	{
+		var tag = BuildSystem.AppVeyor.Environment.Repository.Tag;
+		if (tag.IsTag)
+		{
+			return tag.Name;
+		}
+	}
+	return GetSemanticVersionV2(clearVersion);
 }
 
 public static string ClearVersionTag(string lastestTag)
 {
+	if (string.IsNullOrEmpty(lastestTag))
+		return null;
+		
 	if (lastestTag.StartsWith("versions/"))
 	{
 		lastestTag = lastestTag.Substring("versions/".Length);
 	}
 	
 	var match = Regex.Match(lastestTag, @"^([0-9]+.[0-9]+.[0-9]*)");
-	lastestTag = match.Success
+	return match.Success
 		? match.Value
-		: lastestTag;
-		
-	return string.IsNullOrEmpty(lastestTag)
-		? null
 		: lastestTag;
 }

@@ -18,7 +18,7 @@ build_script:
 - ps: .\build.ps1 -Target "AppVeyor" -Configuration $env:configuration -Verbosity Diagnostic
 
 deploy:
-  release: diadocsdk-csharp-v$(appveyor_build_version)
+  release: $(appveyor_build_version)
   description: 'diadocsdk-csharp'
   provider: GitHub
   auth_token:
