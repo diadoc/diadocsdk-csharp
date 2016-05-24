@@ -228,7 +228,7 @@ Task("PublishArtifactsToAppVeyor")
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-	.IsDependentOn("Rebuild");
+	.IsDependentOn("AppVeyor");
 
 Task("FullBuild")
 	.IsDependentOn("GenerateVersionInfo")

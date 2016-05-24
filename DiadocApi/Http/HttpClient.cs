@@ -171,7 +171,7 @@ namespace Diadoc.Api.Http
 			}
 			else webRequest.ContentLength = 0;
 
-			webRequest.Headers.Add("User-Agent", UserAgentString);
+			webRequest.UserAgent = UserAgentString;
 			return webRequest;
 		}
 
