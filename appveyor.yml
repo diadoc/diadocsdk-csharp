@@ -5,6 +5,10 @@ platform: Any CPU
 configuration:
   - Debug
   - Release
+  
+branches:
+  except:
+    - /^diadocsdk-csharp-v/
 
 environment:
   diadoc_signing_secret:
@@ -20,9 +24,10 @@ deploy:
   auth_token:
     secure: zLJKfCFYSNM3Pv10x3js66vH7RiA0D/C9Ww5uymd5IntAzthBnehqYqQNpDvnLnf # encrypted token from GitHub
   artifact: diadocsdk-csharp-binaries.zip;/\.nupkg$/
-  draft: false
+  draft: true
   prerelease: false
   on:
     branch: master                 # release from master branch only
     configuration: Release         # deploy release configuration
     appveyor_repo_tag: true        # deploy on tag push only
+    appveyor_repo_tag_name: /^versions/
