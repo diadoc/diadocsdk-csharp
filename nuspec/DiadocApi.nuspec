@@ -6,7 +6,7 @@
     <owners>SKB Kontur</owners>
     <licenseUrl>https://github.com/diadoc/diadocsdk-charp/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/diadoc/diadocsdk-charp</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/diadoc/diadocsdk-csharp/master/nuspec/diadoc-icon-64-64.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/diadoc/diadocsdk-csharp/master/nuspec/diadoc-icon-128-128.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Official Diadoc SDK</description>
     <copyright>Copyright 2016</copyright>

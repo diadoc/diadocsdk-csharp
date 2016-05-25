@@ -85,27 +85,34 @@ Task("Build")
 Task("GenerateVersionInfo")
 	.Does(context =>
 	{
-		var majorVersion = 1;
 		var tagVersion = GetVersionFromTag();
-		var clearVersion = ClearVersionTag(tagVersion) ?? "1.36.1";
+		var clearVersion = ClearVersionTag(tagVersion) ?? "1.0.0";
 		var semanticVersionForNuget = GetSemanticVersionV1(clearVersion);
 		var semanticVersion = GetSemanticVersionV2(clearVersion) + dbgSuffix;
 		var appveyorVersion = GetAppVeyorBuildVersion(clearVersion);
+
+		var versionParts = clearVersion.Split('.');
+		var majorVersion = 1;
+		var minorVersion = 0;
+		int.TryParse(versionParts[0], out majorVersion);
+		if (versionParts.Length > 1)
+			int.TryParse(versionParts[1], out minorVersion);
+		var assemblyVersion = string.Format("{0}.{1}.0.0", majorVersion, minorVersion);
+		
 		if (!string.IsNullOrEmpty(clearVersion))
 		{
 			Information("Version from tag: {0}", clearVersion);
+			Information("Assembly version: {0}", assemblyVersion);
 			Information("Nuget version: {0}", semanticVersionForNuget);
 			Information("Semantic version: {0}", semanticVersion);
 			Information("AppVeyor version: {0}", appveyorVersion);
-			var versionParts = clearVersion.Split('.');
-			int.TryParse(versionParts[0], out majorVersion);
 		}
 
 		var datetimeNow = DateTime.Now;
 		var secondsPart = (long)datetimeNow.TimeOfDay.TotalSeconds;
 		var assemblyInfo = new AssemblyInfoSettings
 		{
-			Version = string.Format("{0}.0.0.0", majorVersion),
+			Version = assemblyVersion,
 			FileVersion = semanticVersionForNuget,
 			InformationalVersion = semanticVersion
 		};

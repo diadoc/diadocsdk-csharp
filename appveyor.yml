@@ -6,10 +6,6 @@ configuration:
   - Debug
   - Release
   
-branches:
-  except:
-    - /^diadocsdk-csharp-v/
-
 environment:
   diadoc_signing_secret:
     secure: anZ3SPfv+ZQGxXQdwHzCqwo0sKmdAVySXJr6j8sDIcuUjFqit9n1V+Va+UG+dIw8
