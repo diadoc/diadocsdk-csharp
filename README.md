@@ -3,7 +3,7 @@
 master       | [![Build status (master)](https://ci.appveyor.com/api/projects/status/mfypanwf6t25akud/branch/master?svg=true)](https://ci.appveyor.com/project/halex2005/diadocsdk-csharp/branch/master)
 lastest      | [![Build status (lastest)](https://ci.appveyor.com/api/projects/status/mfypanwf6t25akud?svg=true)](https://ci.appveyor.com/project/halex2005/diadocsdk-csharp)
 
-# diadocsdk-charp
+# diadocsdk-csharp
 
 diadocsdk-csharp является официальной C#-реализацией клиента, использующего [публичный API Диадока](http://api-docs.diadoc.ru/).
 
