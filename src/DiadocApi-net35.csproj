@@ -18,6 +18,9 @@
     <DocumentationFile>$(OutputPath)DiadocApi.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition="Exists('diadoc.snk')">
+    <AssemblyOriginatorKeyFile>diadoc.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
