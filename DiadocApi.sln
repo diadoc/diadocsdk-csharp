@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiadocApi-net35", "DiadocApi\DiadocApi-net35.csproj", "{992AFD96-B3EE-4124-8788-022F867E2EF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiadocApi-net35", "src\DiadocApi-net35.csproj", "{992AFD96-B3EE-4124-8788-022F867E2EF0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diadoc.Console", "Samples\Diadoc.Console\Diadoc.Console.csproj", "{6560AB73-5F94-4AB6-8B99-D87C023235EE}"
 EndProject

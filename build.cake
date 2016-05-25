@@ -40,7 +40,7 @@ Setup(() =>
 	{
 		var secureFileArguments = new ProcessSettings()
 			.WithArguments(x =>	x
-				.AppendSwitch("-decrypt", @"DiadocApi\diadoc.snk.enc")
+				.AppendSwitch("-decrypt", @"src\diadoc.snk.enc")
 				.AppendSwitch("-secret", EnvironmentVariable("diadoc_signing_secret")));
 		var exitCode = StartProcess("./tools/secure-file/tools/secure-file.exe", secureFileArguments);
 		if (exitCode != 0)
@@ -110,7 +110,7 @@ Task("GenerateVersionInfo")
 			InformationalVersion = semanticVersion
 		};
 		packageVersion = assemblyInfo.FileVersion;
-		CreateAssemblyInfo("./DiadocApi/Properties/AssemblyVersion.cs", assemblyInfo);
+		CreateAssemblyInfo("./src/Properties/AssemblyVersion.cs", assemblyInfo);
 		CreateAssemblyInfo("./Samples/Diadoc.Console/Properties/AssemblyVersion.cs", assemblyInfo);
 		CreateAssemblyInfo("./Samples/Diadoc.Samples/Properties/AssemblyVersion.cs", assemblyInfo);
 
@@ -128,7 +128,7 @@ Task("GenerateProtoFiles")
 			CopyFileToDirectory(protobufNetDll, "./packages/protobuf-net.1.0.0.280/Tools");
 			
 		var sourceProtoDir = new DirectoryPath("./proto/").MakeAbsolute(Context.Environment);
-		var destinationProtoDir = new DirectoryPath("./DiadocApi/Proto/").MakeAbsolute(Context.Environment);
+		var destinationProtoDir = new DirectoryPath("./src/Proto/").MakeAbsolute(Context.Environment);
 
 		var files = GetFiles("./proto/**/*.proto");
 		foreach (var file in files)
@@ -174,7 +174,7 @@ Task("ILMerge")
 		};
 		if (needSigning)
 		{
-			var keyFile = new FilePath("./DiadocApi/diadoc.snk").MakeAbsolute(Context.Environment).FullPath;
+			var keyFile = new FilePath("./src/diadoc.snk").MakeAbsolute(Context.Environment).FullPath;
 			ilMergeSettings.ArgumentCustomization = args => args.Append("/keyfile:" + keyFile);
 		}
 		ILMerge(
