@@ -8,7 +8,7 @@ configuration:
   
 environment:
   diadoc_signing_secret:
-    secure: anZ3SPfv+ZQGxXQdwHzCqwo0sKmdAVySXJr6j8sDIcuUjFqit9n1V+Va+UG+dIw8
+    secure: prJOj46LFF9HWKRH4PZ8vSS7wgSkkAFIkSCkfqWfAoPNGhUcYqplF4h4PyxEmMjb
 
 build_script:
 - ps: .\build.ps1 -Target "AppVeyor" -Configuration $env:configuration -Verbosity Diagnostic
@@ -18,7 +18,7 @@ deploy:
     release: $(appveyor_repo_tag_name)
     description: 'diadocsdk-csharp'
     auth_token:
-      secure: zLJKfCFYSNM3Pv10x3js66vH7RiA0D/C9Ww5uymd5IntAzthBnehqYqQNpDvnLnf # encrypted token from GitHub
+      secure: BSnVMByuW1RN2cKD//7Y2+RRjsmhSfgBd2QK7IpyAadKDh8dIsYe4MF9bvX0SnEz # encrypted token from GitHub
     artifact: diadocsdk-csharp-binaries.zip;/\.nupkg$/
     draft: false
     prerelease: false

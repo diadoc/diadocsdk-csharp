@@ -1,7 +1,7 @@
              | Build Status
 -------------|--------------
-master       | [![Build status (master)](https://ci.appveyor.com/api/projects/status/mfypanwf6t25akud/branch/master?svg=true)](https://ci.appveyor.com/project/halex2005/diadocsdk-csharp/branch/master)
-lastest      | [![Build status (lastest)](https://ci.appveyor.com/api/projects/status/mfypanwf6t25akud?svg=true)](https://ci.appveyor.com/project/halex2005/diadocsdk-csharp)
+master       | [![Build status (master)](https://ci.appveyor.com/api/projects/status/7mgixoupt0oagwse/branch/master?svg=true)](https://ci.appveyor.com/project/diadoc-admin/diadocsdk-csharp/branch/master)
+lastest      | [![Build status (lastest)](https://ci.appveyor.com/api/projects/status/7mgixoupt0oagwse?svg=true)](https://ci.appveyor.com/project/diadoc-admin/diadocsdk-csharp)
 
 # diadocsdk-csharp
 
