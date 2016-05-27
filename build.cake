@@ -280,27 +280,7 @@ public string GetVersionFromTag()
 	{
 		try
 		{
-			var processSettings = new ProcessSettings()
-				.SetRedirectStandardOutput(true)
-				.WithArguments(x => {
-					x.Append("describe")
-						.Append("--tags")
-						.AppendSwitch("--match", "versions/*")
-						.Append("--abbrev=0");
-				});
-			using (var describeProcess = StartAndReturnProcess("git", processSettings))
-			{
-				describeProcess.WaitForExit();
-				var lines = describeProcess.GetStandardOutput().ToList();
-				if (lines.Count == 0 || lines.Count > 1)
-				{
-					Warning("git describe returns no tags [{0}]", string.Join("\n", lines));
-					return null;
-				}
-				lastestTag = lines.FirstOrDefault();
-			}
-			// var gitRoot = GitAliases.GitFindRootFromPath(Context, System.IO.Directory.GetCurrentDirectory());
-			// lastestTag = GitAliases.GitDescribe(Context, gitRoot, GitDescribeStrategy.Tags);
+			lastestTag = GitDescribe(".", false, GitDescribeStrategy.Tags);
 		}
 		catch (Exception ex)
 		{

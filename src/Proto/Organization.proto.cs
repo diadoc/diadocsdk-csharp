@@ -185,6 +185,24 @@ namespace Diadoc.Api.Proto
       get { return _IsEmployee; }
       set { _IsEmployee = value; }
     }
+
+    private int _InvitationCount = default(int);
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"InvitationCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int InvitationCount
+    {
+      get { return _InvitationCount; }
+      set { _InvitationCount = value; }
+    }
+
+    private int _SearchCount = default(int);
+    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"SearchCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int SearchCount
+    {
+      get { return _SearchCount; }
+      set { _SearchCount = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
