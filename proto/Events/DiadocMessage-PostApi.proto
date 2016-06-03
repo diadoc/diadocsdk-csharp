@@ -45,6 +45,7 @@ message MessageToPost {
 	repeated EncryptedXmlDocumentAttachment EncryptedXmlAcceptanceCertificateSellerTitles = 30;
 	repeated SupplementaryAgreementAttachment SupplementaryAgreements = 31;
 	optional bool LockPacket = 32 [default = false];
+	repeated XmlDocumentAttachment UniversalTransferDocumentSellerTitles = 33;
 }
 
 message EncryptedXmlDocumentAttachment {
