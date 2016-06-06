@@ -22,3 +22,11 @@ diadocsdk-csharp является официальной C#-реализацие
 - ILMerge (сборка protobuf-net включается в DiadocApi)
 - подписание сборки строгим именем
 - создание nuget-пакета
+
+## Добавление функциональности
+
+- [Сделайте Fork](https://guides.github.com/activities/forking/)
+- Создайте ветку для новой фичи (git checkout -b my-new-feature)
+- Сделайте Commit изменений (git commit -am 'Add some feature')
+- Сделайте Push новой ветки (git push origin my-new-feature)
+- Создайте новый Pull Request
