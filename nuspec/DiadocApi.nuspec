@@ -4,8 +4,8 @@
     <id>DiadocSDK</id>
     <authors>SKB Kontur</authors>
     <owners>SKB Kontur</owners>
-    <licenseUrl>https://github.com/diadoc/diadocsdk-charp/blob/master/LICENSE.md</licenseUrl>
-    <projectUrl>https://github.com/diadoc/diadocsdk-charp</projectUrl>
+    <licenseUrl>https://github.com/diadoc/diadocsdk-csharp/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/diadoc/diadocsdk-csharp</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/diadoc/diadocsdk-csharp/master/nuspec/diadoc-icon-128-128.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Official Diadoc SDK</description>
