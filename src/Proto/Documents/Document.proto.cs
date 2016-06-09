@@ -13,13 +13,14 @@
 // Note: requires additional types generated from: CustomDataItem.proto
 // Note: requires additional types generated from: DocumentType.proto
 // Note: requires additional types generated from: DocumentDirection.proto
+// Note: requires additional types generated from: Documents/AcceptanceCertificateDocument.proto
+// Note: requires additional types generated from: Documents/BilateralDocument.proto
+// Note: requires additional types generated from: Documents/InvoiceDocument.proto
+// Note: requires additional types generated from: Documents/NonformalizedDocument.proto
+// Note: requires additional types generated from: Documents/UnilateralDocument.proto
+// Note: requires additional types generated from: Documents/UniversalTransferDocument.proto
 // Note: requires additional types generated from: ResolutionTarget.proto
 // Note: requires additional types generated from: ForwardDocumentEvent.proto
-// Note: requires additional types generated from: Documents/InvoiceDocument.proto
-// Note: requires additional types generated from: Documents/BilateralDocument.proto
-// Note: requires additional types generated from: Documents/UnilateralDocument.proto
-// Note: requires additional types generated from: Documents/NonformalizedDocument.proto
-// Note: requires additional types generated from: Documents/AcceptanceCertificateDocument.proto
 namespace Diadoc.Api.Proto.Documents
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"Document")]
@@ -489,6 +490,15 @@ namespace Diadoc.Api.Proto.Documents
     {
       get { return _CertificateRegistryMetadata; }
       set { _CertificateRegistryMetadata = value; }
+    }
+
+    private Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentMetadata _UniversalTransferDocumentMetadata = null;
+    [global::ProtoBuf.ProtoMember(56, IsRequired = false, Name=@"UniversalTransferDocumentMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentMetadata UniversalTransferDocumentMetadata
+    {
+      get { return _UniversalTransferDocumentMetadata; }
+      set { _UniversalTransferDocumentMetadata = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

@@ -1,0 +1,21 @@
+package Diadoc.Api.Proto.Documents.UniversalTransferDocument;
+
+message UniversalTransferDocumentMetadata {
+	optional UniversalTransferDocumentStatus Status = 1;
+	required string Total = 2;
+	required string Vat = 3;
+	required int32 Currency = 4;
+	required sfixed64 ConfirmationDateTimeTicks = 5;
+	required int32 AmendmentFlags = 6;
+}
+
+enum UniversalTransferDocumentStatus {
+//    UnknownInvoiceStatus = 0;	// This type will be reported to legacy client when it receives unknown status from server
+	OutboundWaitingForReceipt = 1;
+	OutboundNotFinished = 2;
+	OutboundFinished = 3;
+	OutboundWaitingForSenderSignature = 6;
+	OutboundInvalidSenderSignature = 7;
+	InboundNotFinished = 4;
+	InboundFinished = 5;
+}

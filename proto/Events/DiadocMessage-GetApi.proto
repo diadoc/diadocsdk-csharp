@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// Протобуферы для читающих методов API:
+// РџСЂРѕС‚РѕР±СѓС„РµСЂС‹ РґР»СЏ С‡РёС‚Р°СЋС‰РёС… РјРµС‚РѕРґРѕРІ API:
 //	GetEvent(string boxId, Guid eventId) : BoxEvent
 //	GetNewEvents(string boxId, Guid afterEventId) : BoxEventList
 //	GetMessage(string boxId, Guid messageId) : Message
@@ -98,7 +98,7 @@ enum EntityType {
 	UnknownEntityType = 0;	// Reserved type to report to legacy clients for newly introduced entity types
 	Attachment = 1;
 	Signature = 2;
-	//Неизвестные типы должны обрабатываться клиентом как cущность Attachment с типом вложения AttachmentType.Nonformalized
+	//РќРµРёР·РІРµСЃС‚РЅС‹Рµ С‚РёРїС‹ РґРѕР»Р¶РЅС‹ РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊСЃСЏ РєР»РёРµРЅС‚РѕРј РєР°Рє cСѓС‰РЅРѕСЃС‚СЊ Attachment СЃ С‚РёРїРѕРј РІР»РѕР¶РµРЅРёСЏ AttachmentType.Nonformalized
 }
 
 enum AttachmentType {
@@ -141,6 +141,10 @@ enum AttachmentType {
 	ServiceDetails = 38;
 	RoamingNotification = 39;
 	SupplementaryAgreement = 40;
+	UniversalTransferDocumentSellerTitle = 41;
+	UniversalTransferDocumentBuyerTitle = 42;
+	UniversalTransferDocumentReceipt = 43;
+	UniversalTransferDocumentConfirmation = 44;
 	CustomData = 64;
-	//Неизвестные типы должны обрабатываться как Nonformalized
+	//РќРµРёР·РІРµСЃС‚РЅС‹Рµ С‚РёРїС‹ РґРѕР»Р¶РЅС‹ РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊСЃСЏ РєР°Рє Nonformalized
 }
