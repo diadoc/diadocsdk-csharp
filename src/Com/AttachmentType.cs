@@ -49,6 +49,7 @@ namespace Diadoc.Api.Com
 		UniversalTransferDocumentBuyerTitle = 42,
 		UniversalTransferDocumentReceipt = 43,
 		UniversalTransferDocumentConfirmation = 44,
+		UniversalTransferDocumentSellerTitleRevision = 45,
 		CustomData = 64
 	}
 }

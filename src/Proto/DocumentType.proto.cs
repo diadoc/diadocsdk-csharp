@@ -78,7 +78,10 @@ namespace Diadoc.Api.Proto
       UniversalTransferDocumentSellerTitle = 41,
             
       [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentBuyerTitle", Value=42)]
-      UniversalTransferDocumentBuyerTitle = 42
+      UniversalTransferDocumentBuyerTitle = 42,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentSellerTitleRevision", Value=45)]
+      UniversalTransferDocumentSellerTitleRevision = 45
     }
   
 }

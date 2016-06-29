@@ -28,5 +28,6 @@ namespace Diadoc.Api.Com
 		SupplementaryAgreement = 40,
 		UniversalTransferDocumentSellerTitle = 41,
 		UniversalTransferDocumentBuyerTitle = 42,
+		UniversalTransferDocumentSellerTitleRevision = 45,
 	}
 }

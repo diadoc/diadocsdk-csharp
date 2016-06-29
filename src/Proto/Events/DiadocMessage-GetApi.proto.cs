@@ -756,6 +756,9 @@ namespace Diadoc.Api.Proto.Events
       [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentConfirmation", Value=44)]
       UniversalTransferDocumentConfirmation = 44,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentSellerTitleRevision", Value=45)]
+      UniversalTransferDocumentSellerTitleRevision = 45,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"CustomData", Value=64)]
       CustomData = 64
     }
