@@ -33,6 +33,15 @@ namespace Diadoc.Api.Proto
       get { return _ForeignAddress; }
       set { _ForeignAddress = value; }
     }
+
+    private string _AddressCode = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"AddressCode", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AddressCode
+    {
+      get { return _AddressCode; }
+      set { _AddressCode = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

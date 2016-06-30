@@ -151,12 +151,14 @@ Task("GenerateProtoFiles")
 				continue;
 			}
 
+			EnsureDirectoryExists(destinationFile.GetDirectory());
+
 			var protogenArguments = new ProcessSettings
 			{
 				Arguments = string.Format("-i:{0} -o:{1} -q", file, destinationFile),
 				WorkingDirectory = sourceProtoDir 
 			};
-			
+
 			var exitCode = StartProcess("./packages/protobuf-net.1.0.0.280/Tools/protogen.exe", protogenArguments);
 			if (exitCode != 0)
 			{

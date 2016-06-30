@@ -760,7 +760,10 @@ namespace Diadoc.Api.Proto.Events
       UniversalTransferDocumentSellerTitleRevision = 45,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CustomData", Value=64)]
-      CustomData = 64
+      CustomData = 64,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MoveDocument", Value=65)]
+      MoveDocument = 65
     }
   
 }
