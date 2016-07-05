@@ -212,17 +212,17 @@ namespace Diadoc.Api.Proto.Invoicing
     public enum SignerStatus
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SellerEmployee", Value=0)]
-      SellerEmployee = 0,
+      [global::ProtoBuf.ProtoEnum(Name=@"SellerEmployee", Value=1)]
+      SellerEmployee = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"InformationCreatorEmployee", Value=1)]
-      InformationCreatorEmployee = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"InformationCreatorEmployee", Value=2)]
+      InformationCreatorEmployee = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OtherOrganizationEmployee", Value=2)]
-      OtherOrganizationEmployee = 2,
+      [global::ProtoBuf.ProtoEnum(Name=@"OtherOrganizationEmployee", Value=3)]
+      OtherOrganizationEmployee = 3,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"AuthorizedPerson", Value=3)]
-      AuthorizedPerson = 3
+      [global::ProtoBuf.ProtoEnum(Name=@"AuthorizedPerson", Value=4)]
+      AuthorizedPerson = 4
     }
   
 }

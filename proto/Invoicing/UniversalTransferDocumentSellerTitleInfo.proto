@@ -23,8 +23,9 @@ message UniversalTransferDocumentSellerTitleInfo {
 	optional string RevisionNumber = 15;                // номер ИСФ (обязательно при формировании UniversalTransferDocumentSellerTitleRevision) // НомИспрСчФ
 	optional AdditionalInfoId AdditionalInfoId = 16;    // информационное поле документа // ИнфПолФХЖ1
 	optional TransferInfo TransferInfo = 17;            // Сведения о передаче (сдаче) // СвПер
-	optional string DocumentCreatorBase = 18;           // Основание, по которому экономический субъект является составителем файла обмена счета-фактуры //ОснДоверОргСост
-	optional string GovermentContractInfo = 19;         // ИдГосКон
+	required string DocumentCreator = 18;               // Составитель файла обмена счета-фактуры (информации продавца) // НаимЭконСубСост
+	optional string DocumentCreatorBase = 19;           // Основание, по которому экономический субъект является составителем файла обмена счета-фактуры //ОснДоверОргСост
+	optional string GovermentContractInfo = 20;         // ИдГосКон
 }
 
 enum FunctionType {

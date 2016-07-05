@@ -744,8 +744,8 @@ namespace Diadoc.Api.Proto.Events
       [global::ProtoBuf.ProtoEnum(Name=@"SupplementaryAgreement", Value=40)]
       SupplementaryAgreement = 40,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentSellerTitle", Value=41)]
-      UniversalTransferDocumentSellerTitle = 41,
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocument", Value=41)]
+      UniversalTransferDocument = 41,
             
       [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentBuyerTitle", Value=42)]
       UniversalTransferDocumentBuyerTitle = 42,
@@ -756,8 +756,8 @@ namespace Diadoc.Api.Proto.Events
       [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentConfirmation", Value=44)]
       UniversalTransferDocumentConfirmation = 44,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentSellerTitleRevision", Value=45)]
-      UniversalTransferDocumentSellerTitleRevision = 45,
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentRevision", Value=45)]
+      UniversalTransferDocumentRevision = 45,
             
       [global::ProtoBuf.ProtoEnum(Name=@"CustomData", Value=64)]
       CustomData = 64,

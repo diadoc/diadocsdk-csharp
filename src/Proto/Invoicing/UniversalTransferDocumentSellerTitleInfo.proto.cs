@@ -155,9 +155,16 @@ namespace Diadoc.Api.Proto.Invoicing
       get { return _TransferInfo; }
       set { _TransferInfo = value; }
     }
+    private string _DocumentCreator;
+    [global::ProtoBuf.ProtoMember(18, IsRequired = true, Name=@"DocumentCreator", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocumentCreator
+    {
+      get { return _DocumentCreator; }
+      set { _DocumentCreator = value; }
+    }
 
     private string _DocumentCreatorBase = "";
-    [global::ProtoBuf.ProtoMember(18, IsRequired = false, Name=@"DocumentCreatorBase", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"DocumentCreatorBase", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string DocumentCreatorBase
     {
@@ -166,7 +173,7 @@ namespace Diadoc.Api.Proto.Invoicing
     }
 
     private string _GovermentContractInfo = "";
-    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"GovermentContractInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"GovermentContractInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string GovermentContractInfo
     {

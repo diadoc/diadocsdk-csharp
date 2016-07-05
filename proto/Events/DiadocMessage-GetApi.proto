@@ -141,11 +141,11 @@ enum AttachmentType {
 	ServiceDetails = 38;
 	RoamingNotification = 39;
 	SupplementaryAgreement = 40;
-	UniversalTransferDocumentSellerTitle = 41;
+	UniversalTransferDocument = 41;
 	UniversalTransferDocumentBuyerTitle = 42;
 	UniversalTransferDocumentReceipt = 43;
 	UniversalTransferDocumentConfirmation = 44;
-	UniversalTransferDocumentSellerTitleRevision = 45;
+	UniversalTransferDocumentRevision = 45;
 	CustomData = 64;
 	MoveDocument = 65;
 	//Неизвестные типы должны обрабатываться как Nonformalized
