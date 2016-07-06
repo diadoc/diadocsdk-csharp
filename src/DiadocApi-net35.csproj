@@ -126,7 +126,7 @@
     <Compile Include="Com\ComWrappers.cs" />
     <Compile Include="Proto\Invoicing\ExtendedOrganizationInfo.proto.cs" />
     <Compile Include="Proto\Invoicing\ExtendedSigner.proto.cs" />
-    <Compile Include="Proto\Invoicing\UniversalTransferDocumentSellerTitleInfo.proto.cs" />
+    <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.proto.cs" />
     <Compile Include="Proto\ResolutionChainList.proto.cs" />
     <Compile Include="Proto\RoamingNotification.proto.cs" />
     <Compile Include="Proto\Serializer.cs" />

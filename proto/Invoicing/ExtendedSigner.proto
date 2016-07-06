@@ -39,7 +39,7 @@ enum SignerPowers {
 	ResponsibleForOperationAndSignerForInvoice = 6;     // лицо, ответственное за оформление свершившегося события и за подписание счетов-фактур
 }
 
-enum SignerStatus{
+enum SignerStatus {
 	SellerEmployee = 1;             // Работник организации продавца товаров (работ, услуг, имущественных прав);
 	InformationCreatorEmployee = 2; // Работник организации - составителя информации продавца;
 	OtherOrganizationEmployee = 3;  // Работник иной уполномоченной организации;

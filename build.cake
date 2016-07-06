@@ -138,6 +138,7 @@ Task("GenerateProtoFiles")
 		var destinationProtoDir = new DirectoryPath("./src/Proto/").MakeAbsolute(Context.Environment);
 
 		var files = GetFiles("./proto/**/*.proto");
+		var filesWithError = new List<FilePath>();
 		foreach (var file in files)
 		{
 			var outputFile = file.AppendExtension("cs");
@@ -166,8 +167,11 @@ Task("GenerateProtoFiles")
 					file,
 					outputFile,
 					exitCode);
+				filesWithError.Add(file);
 			}
 		}
+		if (filesWithError.Count > 0)
+			throw new Exception("There was several errors when generating proto classes");
 	});
 
 Task("ILMerge")
