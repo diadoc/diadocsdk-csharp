@@ -10,11 +10,11 @@ message UniversalTransferDocumentSellerTitleInfo {
 	required string DocumentDate  = 3;   // дата УПД // ДатаСчФ
 	required string DocumentNumber  = 4; // номер УПД // НомерСчФ
 
-	required ExtendedOrganizationInfo Seller = 5;       // продавец // СвПрод
-	required ExtendedOrganizationInfo Buyer = 6;        // покупатель //СвПокуп
-	optional Shipper Shipper = 7;                       // грузоотправитель //ГрузОт
-	optional ExtendedOrganizationInfo Consignee = 8;    // грузополучатель //ГрузПолуч
-	repeated ExtendedSigner Signers = 9;                // подписант // Подписант
+	required Organizations.ExtendedOrganizationInfo Seller = 5;    // продавец // СвПрод
+	required Organizations.ExtendedOrganizationInfo Buyer = 6;     // покупатель //СвПокуп
+	optional Shipper Shipper = 7;                                  // грузоотправитель //ГрузОт
+	optional Organizations.ExtendedOrganizationInfo Consignee = 8; // грузополучатель //ГрузПолуч
+	repeated Signers.ExtendedSigner Signers = 9;        // подписант // Подписант
 	repeated PaymentDocumentInfo PaymentDocuments = 10; // платежно-расчетные документы // СвПРД
 	optional InvoiceTable InvoiceTable = 11;            // Сведения таблицы счет фактуры // ТаблСчФакт
 	required string Currency = 12;                      // валюта (код) // КодОКВ
@@ -35,8 +35,8 @@ enum FunctionType {
 }
 
 message Shipper {
-	optional bool SameAsSeller = 1;                // совпадает с продавцом // ОнЖе
-	optional ExtendedOrganizationInfo OrgInfo = 2; // реквизиты организации // ГрузОтпр
+	optional bool SameAsSeller = 1; // совпадает с продавцом // ОнЖе
+	optional Organizations.ExtendedOrganizationInfo OrgInfo = 2; // реквизиты организации // ГрузОтпр
 }
 
 message InvoiceTable {
@@ -84,7 +84,7 @@ message TransferInfo {
 	repeated TransferBase TransferBase = 4;          // Основание отгрузки //ОснПер
 	optional string TransferTextInfo = 5;            // Сведения о транспортировке и грузе // СвТранГруз
 	repeated Waybill Waybill = 6;                    // Транспортная накладная //ТранНакл
-	optional ExtendedOrganizationInfo Carrier = 7;   // Перевозчик // Перевозчик
+	optional Organizations.ExtendedOrganizationInfo Carrier = 7; // Перевозчик // Перевозчик
 	optional Employee Employee = 8;                  // Работник организации продавца //РабОргПрод
 	optional OtherIssuer  OtherIssuer = 9;           // Иное лицо //ИнЛицо
 	optional string CreatedThingTransferDate = 10;   // Дата передачи вещи, изготовленной по договору //ДатаПерВещ

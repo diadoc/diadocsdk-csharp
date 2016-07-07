@@ -9,7 +9,7 @@
 
 // Generated from: Invoicing/ExtendedOrganizationInfo.proto
 // Note: requires additional types generated from: Address.proto
-namespace Diadoc.Api.Proto.Invoicing
+namespace Diadoc.Api.Proto.Invoicing.Organizations
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ExtendedOrganizationInfo")]
   public partial class ExtendedOrganizationInfo : global::ProtoBuf.IExtensible
@@ -62,17 +62,24 @@ namespace Diadoc.Api.Proto.Invoicing
       set { _Address = value; }
     }
 
-    private bool _IsIndividualEntity = (bool)false;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"IsIndividualEntity", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue((bool)false)]
-    public bool IsIndividualEntity
+    private string _FnsParticipantId = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"FnsParticipantId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string FnsParticipantId
     {
-      get { return _IsIndividualEntity; }
-      set { _IsIndividualEntity = value; }
+      get { return _FnsParticipantId; }
+      set { _FnsParticipantId = value; }
+    }
+    private Diadoc.Api.Proto.Invoicing.Organizations.OrgType _OrgType;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"OrgType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Invoicing.Organizations.OrgType OrgType
+    {
+      get { return _OrgType; }
+      set { _OrgType = value; }
     }
 
     private string _Okopf = "";
-    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"Okopf", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"Okopf", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string Okopf
     {
@@ -81,7 +88,7 @@ namespace Diadoc.Api.Proto.Invoicing
     }
 
     private string _Okpo = "";
-    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"Okpo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"Okpo", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string Okpo
     {
@@ -90,7 +97,7 @@ namespace Diadoc.Api.Proto.Invoicing
     }
 
     private string _Okdp = "";
-    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"Okdp", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"Okdp", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string Okdp
     {
@@ -99,7 +106,7 @@ namespace Diadoc.Api.Proto.Invoicing
     }
 
     private string _Phone = "";
-    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"Phone", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"Phone", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string Phone
     {
@@ -107,8 +114,26 @@ namespace Diadoc.Api.Proto.Invoicing
       set { _Phone = value; }
     }
 
+    private string _Email = "";
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"Email", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Email
+    {
+      get { return _Email; }
+      set { _Email = value; }
+    }
+
+    private string _CorrespondentAccount = "";
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"CorrespondentAccount", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string CorrespondentAccount
+    {
+      get { return _CorrespondentAccount; }
+      set { _CorrespondentAccount = value; }
+    }
+
     private string _BankAccountNumber = "";
-    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"BankAccountNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"BankAccountNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string BankAccountNumber
     {
@@ -117,7 +142,7 @@ namespace Diadoc.Api.Proto.Invoicing
     }
 
     private string _BankName = "";
-    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"BankName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"BankName", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string BankName
     {
@@ -126,7 +151,7 @@ namespace Diadoc.Api.Proto.Invoicing
     }
 
     private string _BankId = "";
-    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"BankId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"BankId", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string BankId
     {
@@ -135,39 +160,12 @@ namespace Diadoc.Api.Proto.Invoicing
     }
 
     private string _Department = "";
-    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"Department", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"Department", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string Department
     {
       get { return _Department; }
       set { _Department = value; }
-    }
-
-    private string _FnsParticipantId = "";
-    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"FnsParticipantId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string FnsParticipantId
-    {
-      get { return _FnsParticipantId; }
-      set { _FnsParticipantId = value; }
-    }
-
-    private string _CorrespondentAccount = "";
-    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"CorrespondentAccount", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string CorrespondentAccount
-    {
-      get { return _CorrespondentAccount; }
-      set { _CorrespondentAccount = value; }
-    }
-
-    private string _Email = "";
-    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"Email", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string Email
-    {
-      get { return _Email; }
-      set { _Email = value; }
     }
 
     private string _OrganizationAdditionalInfo = "";
@@ -179,44 +177,17 @@ namespace Diadoc.Api.Proto.Invoicing
       set { _OrganizationAdditionalInfo = value; }
     }
 
-    private string _OrganizationPersonInfo = "";
-    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"OrganizationPersonInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private string _OrganizationOrPersonInfo = "";
+    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"OrganizationOrPersonInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
-    public string OrganizationPersonInfo
+    public string OrganizationOrPersonInfo
     {
-      get { return _OrganizationPersonInfo; }
-      set { _OrganizationPersonInfo = value; }
-    }
-
-    private string _Surname = "";
-    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"Surname", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string Surname
-    {
-      get { return _Surname; }
-      set { _Surname = value; }
-    }
-
-    private string _FirstName = "";
-    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"FirstName", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string FirstName
-    {
-      get { return _FirstName; }
-      set { _FirstName = value; }
-    }
-
-    private string _Patronymic = "";
-    [global::ProtoBuf.ProtoMember(22, IsRequired = false, Name=@"Patronymic", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string Patronymic
-    {
-      get { return _Patronymic; }
-      set { _Patronymic = value; }
+      get { return _OrganizationOrPersonInfo; }
+      set { _OrganizationOrPersonInfo = value; }
     }
 
     private string _IndividualEntityRegistrationCertificate = "";
-    [global::ProtoBuf.ProtoMember(23, IsRequired = false, Name=@"IndividualEntityRegistrationCertificate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"IndividualEntityRegistrationCertificate", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string IndividualEntityRegistrationCertificate
     {
@@ -227,5 +198,19 @@ namespace Diadoc.Api.Proto.Invoicing
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"OrgType")]
+    public enum OrgType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LegalEntity", Value=0)]
+      LegalEntity = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IndividualEntity", Value=1)]
+      IndividualEntity = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ForeignEntity", Value=2)]
+      ForeignEntity = 2
+    }
   
 }
