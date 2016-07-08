@@ -203,6 +203,13 @@ namespace Diadoc.Api.Proto
       get { return _SearchCount; }
       set { _SearchCount = value; }
     }
+    private Diadoc.Api.Proto.Sociability _Sociability;
+    [global::ProtoBuf.ProtoMember(22, IsRequired = true, Name=@"Sociability", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Sociability Sociability
+    {
+      get { return _Sociability; }
+      set { _Sociability = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -326,6 +333,17 @@ namespace Diadoc.Api.Proto
             
       [global::ProtoBuf.ProtoEnum(Name=@"v5_02", Value=2)]
       v5_02 = 2
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"Sociability")]
+    public enum Sociability
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"AllOrganizations", Value=0)]
+      AllOrganizations = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CounteragentsOnly", Value=1)]
+      CounteragentsOnly = 1
     }
   
 }
