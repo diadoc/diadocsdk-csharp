@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using Microsoft.Win32.SafeHandles;
 
 namespace Diadoc.Api.Cryptography
 {
@@ -36,6 +37,33 @@ namespace Diadoc.Api.Cryptography
 
 		[DllImport("Crypt32.dll", SetLastError = true)]
 		public static extern IntPtr CertOpenStore(IntPtr storeProvider, Int32 encoding, IntPtr cryptoProvider, Int32 flags, Byte[] parameters);
+
+		[DllImport("advapi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+		public static extern bool CryptAcquireContext(ref IntPtr hProv, string pszContainer, string pszProvider, int dwProvType, int dwFlags);
+
+		[DllImport("Crypt32.dll", SetLastError = true)]
+		public static extern IntPtr CryptMsgOpenToEncode(int dwMsgEncodingType, int dwFlags, int dwMsgType, ref CMSG_SIGNED_ENCODE_INFO pvMsgEncodeInfo, string pszInnerContentObjID, ref CMSG_STREAM_INFO pStreamInfo);
+
+		[DllImport("Crypt32.dll", SetLastError = true)]
+		public static extern bool CryptMsgClose(IntPtr hCryptMsg);
+
+		[DllImport("Crypt32.dll", SetLastError = true)]
+		public static extern bool CryptMsgUpdate(IntPtr hCryptMsg, IntPtr pbData, int cbData, bool fFinal);
+
+		[DllImport("advapi32.dll", SetLastError = true)]
+		public static extern bool CryptReleaseContext(IntPtr hProv, int dwFlags);
+
+		[DllImport("crypt32.dll", EntryPoint = "CertDuplicateCertificateContext", CharSet = CharSet.Auto, SetLastError = true)]
+		internal static extern CertHandle CertDuplicateCertificateContextEx([In] IntPtr pCertContext);
+
+		[DllImport("kernel32.dll", SetLastError = true)]
+		private static extern IntPtr LocalFree(IntPtr handle);
+
+		[DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+		internal static extern SafeHandle LocalAlloc([In] uint uFlags, [In] IntPtr sizetdwBytes);
+
+		[DllImport("crypt32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+		internal static extern bool CertGetCertificateContextProperty([In] CertHandle pCertContext, [In] uint dwPropId, [In, Out] IntPtr pvData, [In, Out] ref uint pcbData);
 
 		[StructLayout(LayoutKind.Sequential)]
 		public struct CRYPT_SIGN_MESSAGE_PARA
@@ -128,6 +156,77 @@ namespace Diadoc.Api.Cryptography
 			public IntPtr data;
 		}
 
+		[StructLayout(LayoutKind.Sequential)]
+		public struct CERT_ID
+		{
+			public int dwIdChoice;
+			public BLOB issuerSerialNumberOrKeyIdOrHashId;
+		}
+
+		[StructLayout(LayoutKind.Sequential)]
+		public struct CMSG_SIGNER_ENCODE_INFO
+		{
+			public int cbSize;
+			public IntPtr pCertInfo;
+			public IntPtr hCryptProvOrhNCryptKey;
+			public int dwKeySpec;
+			public CRYPT_ALGORITHM_IDENTIFIER hashAlgorithm;
+			public IntPtr pvHashAuxInfo;
+			public int cAuthAttr;
+			public IntPtr rgAuthAttr;
+			public int cUnauthAttr;
+			public IntPtr rgUnauthAttr;
+			public CERT_ID signerId;
+			public CRYPT_ALGORITHM_IDENTIFIER hashEncryptionAlgorithm;
+			public IntPtr pvHashEncryptionAuxInfo;
+		}
+
+		[StructLayout(LayoutKind.Sequential)]
+		public struct BLOB
+		{
+			public int cbData;
+			public IntPtr pbData;
+		}
+
+		[StructLayout(LayoutKind.Sequential)]
+		public struct CMSG_SIGNED_ENCODE_INFO
+		{
+			public int cbSize;
+			public int cSigners;
+			public IntPtr rgSigners;
+			public int cCertEncoded;
+			public IntPtr rgCertEncoded;
+			public int cCrlEncoded;
+			public IntPtr rgCrlEncoded;
+			public int cAttrCertEncoded;
+			public IntPtr rgAttrCertEncoded;
+		}
+
+		[StructLayout(LayoutKind.Sequential)]
+		public struct CMSG_STREAM_INFO
+		{
+			public int cbContent;
+			public StreamOutputCallbackDelegate pfnStreamOutput;
+			public IntPtr pvArg;
+		}
+
+		public delegate bool StreamOutputCallbackDelegate(IntPtr pvArg, IntPtr pbData, int cbData, bool fFinal);
+
+		[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+		[ComVisible(false)]
+		internal struct CRYPT_KEY_PROV_INFO
+		{
+			internal string pwszContainerName;
+			internal string pwszProvName;
+			internal uint dwProvType;
+			internal uint dwFlags;
+			internal uint cProvParam;
+			internal IntPtr rgProvParam;
+			internal uint dwKeySpec;
+		}
+
+
+
 		public const int CERT_KEY_PROV_INFO_PROP_ID = 2;
 		public const int CERT_HASH_PROP_ID = 3;
 		public const int CERT_STORE_PROV_SYSTEM = 10;
@@ -141,6 +240,44 @@ namespace Diadoc.Api.Cryptography
 		public const int PKCS_7_ASN_ENCODING = 0x00010000;
 		public const int X509_ASN_ENCODING = 0x00000001;
 		public const int NTE_BAD_SIGNATURE = unchecked((int)0x80090006);
+		public const int CMSG_SIGNED = 2;
+		public const int CMSG_DETACHED_FLAG = 0x00000004;
 		public const string OID_GOST_34_11_94 = "1.2.643.2.2.9";
+
+		public class CertHandle : SafeHandleZeroOrMinusOneIsInvalid
+		{
+			public CertHandle()
+				: base(true)
+			{}
+
+			public CertHandle(bool ownsHandle)
+				: base(ownsHandle)
+			{}
+
+			protected override bool ReleaseHandle()
+			{
+				return CertFreeCertificateContext(handle);
+			}
+		}
+
+
+		public class SafeHandle : SafeHandleZeroOrMinusOneIsInvalid
+		{
+			public SafeHandle(IntPtr handle)
+				: base(true)
+			{
+				SetHandle(handle);
+			}
+
+
+			public SafeHandle()
+				: base(true)
+			{}
+
+			protected override bool ReleaseHandle()
+			{
+				return LocalFree(handle) == IntPtr.Zero;
+			}
+		}
 	}
 }
