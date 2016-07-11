@@ -45,6 +45,11 @@ namespace Diadoc.Api.Com
 		ServiceDetails = 38,
 		RoamingNotification = 39,
 		SupplementaryAgreement = 40,
+		UniversalTransferDocument = 41,
+		UniversalTransferDocumentBuyerTitle = 42,
+		UniversalTransferDocumentReceipt = 43,
+		UniversalTransferDocumentConfirmation = 44,
+		UniversalTransferDocumentRevision = 45,
 		CustomData = 64
 	}
 }

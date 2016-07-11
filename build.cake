@@ -138,25 +138,28 @@ Task("GenerateProtoFiles")
 		var destinationProtoDir = new DirectoryPath("./src/Proto/").MakeAbsolute(Context.Environment);
 
 		var files = GetFiles("./proto/**/*.proto");
+		var filesWithError = new List<FilePath>();
 		foreach (var file in files)
 		{
 			var outputFile = file.AppendExtension("cs");
 			var relativeFile = sourceProtoDir.GetRelativePath(file);
 			var destinationFile = destinationProtoDir.CombineWithFilePath(relativeFile).AppendExtension("cs");
-			
+
 			if (FileExists(destinationFile) &&
 				System.IO.File.GetLastWriteTime(file.FullPath) < System.IO.File.GetLastWriteTime(destinationFile.FullPath))
 			{
 				Debug("Skip protogen for file: {0}", file.FullPath);
 				continue;
 			}
-			
+
+			EnsureDirectoryExists(destinationFile.GetDirectory());
+
 			var protogenArguments = new ProcessSettings
 			{
-				Arguments = string.Format("-i:{0} -o:{1}", file, destinationFile),
+				Arguments = string.Format("-i:{0} -o:{1} -q", file, destinationFile),
 				WorkingDirectory = sourceProtoDir 
 			};
-			
+
 			var exitCode = StartProcess("./packages/protobuf-net.1.0.0.280/Tools/protogen.exe", protogenArguments);
 			if (exitCode != 0)
 			{
@@ -164,8 +167,11 @@ Task("GenerateProtoFiles")
 					file,
 					outputFile,
 					exitCode);
+				filesWithError.Add(file);
 			}
 		}
+		if (filesWithError.Count > 0)
+			throw new Exception("There was several errors when generating proto classes");
 	});
 
 Task("ILMerge")

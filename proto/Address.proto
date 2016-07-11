@@ -3,6 +3,7 @@ package Diadoc.Api.Proto;
 message Address {
 	optional RussianAddress RussianAddress = 1;
 	optional ForeignAddress ForeignAddress = 2;
+	optional string AddressCode = 3;
 }
 
 message RussianAddress {
