@@ -142,5 +142,7 @@ enum AttachmentType {
 	RoamingNotification = 39;
 	SupplementaryAgreement = 40;
 	CustomData = 64;
+	MoveDocument = 65;
+	ResolutionChainAssignmentAttachment = 66;
 	//Неизвестные типы должны обрабатываться как Nonformalized
 }
