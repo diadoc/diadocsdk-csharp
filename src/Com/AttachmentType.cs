@@ -45,6 +45,8 @@ namespace Diadoc.Api.Com
 		ServiceDetails = 38,
 		RoamingNotification = 39,
 		SupplementaryAgreement = 40,
-		CustomData = 64
+		CustomData = 64,
+		MoveDocument = 65,
+		ResolutionChainAssignmentAttachment = 66
 	}
 }
