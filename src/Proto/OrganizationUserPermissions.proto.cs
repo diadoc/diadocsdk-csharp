@@ -66,6 +66,15 @@ namespace Diadoc.Api.Proto
       get { return _SelectedDepartmentIds; }
     }
   
+
+    private string _JobTitle = "";
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"JobTitle", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string JobTitle
+    {
+      get { return _JobTitle; }
+      set { _JobTitle = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
