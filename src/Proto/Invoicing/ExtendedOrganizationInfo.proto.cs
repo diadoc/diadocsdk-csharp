@@ -203,14 +203,14 @@ namespace Diadoc.Api.Proto.Invoicing.Organizations
     public enum OrgType
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"LegalEntity", Value=0)]
-      LegalEntity = 0,
+      [global::ProtoBuf.ProtoEnum(Name=@"LegalEntity", Value=1)]
+      LegalEntity = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"IndividualEntity", Value=1)]
-      IndividualEntity = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"IndividualEntity", Value=2)]
+      IndividualEntity = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ForeignEntity", Value=2)]
-      ForeignEntity = 2
+      [global::ProtoBuf.ProtoEnum(Name=@"ForeignEntity", Value=3)]
+      ForeignEntity = 3
     }
   
 }

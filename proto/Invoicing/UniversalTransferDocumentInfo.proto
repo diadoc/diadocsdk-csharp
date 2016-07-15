@@ -118,7 +118,7 @@ message OtherIssuer {
 	optional string TransferEmployeeInfo = 2;     // Иные сведения, идентифицирующие физическое лицо // ИныеСвед
 	optional string TransferOrganizationName = 3; //Наименование организации, которой доверена передача // НаимОргПер
 	optional string TransferOrganizationBase = 4; // Основание, по которому организации доверена передача // ОснДоверОргПер
-	optional string TransferEmployeeBase = 5;     //Основание полномочий предстваителя // ОснПолнПредОформ (ОснДоверФЛ)
+	optional string TransferEmployeeBase = 5;     //Основание полномочий предстваителя // ОснПолнПредПер (ОснДоверФЛ)
 	required string TransferSurname = 6;    //Фамилия //Фамилия
 	required string TransferFirstName = 7;  //Имя //Имя
 	optional string TransferPatronymic = 8; //Отчество //Отчество

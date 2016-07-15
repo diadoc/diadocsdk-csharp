@@ -1,12 +1,6 @@
 package Diadoc.Api.Proto.Invoicing.Signers;
 
 message ExtendedSigner {
-	optional bytes SignerCertificate = 1;
-	optional string SignerCertificateThumbprint = 2;
-	optional ExtendedSignerDetails SignerDetails = 3;
-}
-
-message ExtendedSignerDetails {
 	required string Surname = 1;
 	required string FirstName = 2;
 	optional string Patronymic = 3;
@@ -19,14 +13,14 @@ message ExtendedSignerDetails {
 	optional string SignerInfo = 9;             // Иные сведения, идентифицирующие физическое лицо (ИныеСвед)
 	required SignerPowers SignerPowers = 10;    // Область полномочий (ОблПолн)
 	required SignerStatus SignerStatus = 11;    // Статус (Статус)
-	required string SignerPowersBase = 12;      // Основание полномочий (доверия) (ОснПолн)
+	optional string SignerPowersBase = 12;      // Основание полномочий (доверия) (ОснПолн)
 	optional string SignerOrgPowersBase = 13;   // Основание полномочий (доверия) организации (ОснПолнОрг)
 }
 
 enum SignerType {
-	LegalEntity = 0;      // Представитель юридического лица
-	IndividualEntity = 1; // Индивидуальный предприниматель
-	PhysicalPerson = 2;   // Физическое лицо
+	LegalEntity = 1;      // Представитель юридического лица
+	IndividualEntity = 2; // Индивидуальный предприниматель
+	PhysicalPerson = 3;   // Физическое лицо
 }
 
 enum SignerPowers {
@@ -40,9 +34,8 @@ enum SignerPowers {
 }
 
 enum SignerStatus {
-	SellerEmployee = 0;             // Работник организации продавца товаров (работ, услуг, имущественных прав);
-	InformationCreatorEmployee = 1; // Работник организации - составителя информации продавца;
-	OtherOrganizationEmployee = 2;  // Работник иной уполномоченной организации;
-	AuthorizedPerson= 3;            // Уполномоченное физическое лицо (в том числе индивидуальный предприниматель)
+	SellerEmployee = 1;             // Работник организации продавца товаров (работ, услуг, имущественных прав);
+	InformationCreatorEmployee = 2; // Работник организации - составителя информации продавца;
+	OtherOrganizationEmployee = 3;  // Работник иной уполномоченной организации;
+	AuthorizedPerson= 4;            // Уполномоченное физическое лицо (в том числе индивидуальный предприниматель)
 }
-

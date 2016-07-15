@@ -15,43 +15,6 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
   {
     public ExtendedSigner() {}
     
-
-    private byte[] _SignerCertificate = null;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"SignerCertificate", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public byte[] SignerCertificate
-    {
-      get { return _SignerCertificate; }
-      set { _SignerCertificate = value; }
-    }
-
-    private string _SignerCertificateThumbprint = "";
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SignerCertificateThumbprint", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string SignerCertificateThumbprint
-    {
-      get { return _SignerCertificateThumbprint; }
-      set { _SignerCertificateThumbprint = value; }
-    }
-
-    private Diadoc.Api.Proto.Invoicing.Signers.ExtendedSignerDetails _SignerDetails = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SignerDetails", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Invoicing.Signers.ExtendedSignerDetails SignerDetails
-    {
-      get { return _SignerDetails; }
-      set { _SignerDetails = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ExtendedSignerDetails")]
-  public partial class ExtendedSignerDetails : global::ProtoBuf.IExtensible
-  {
-    public ExtendedSignerDetails() {}
-    
     private string _Surname;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Surname", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string Surname
@@ -141,8 +104,10 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       get { return _SignerStatus; }
       set { _SignerStatus = value; }
     }
-    private string _SignerPowersBase;
-    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"SignerPowersBase", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _SignerPowersBase = "";
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"SignerPowersBase", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string SignerPowersBase
     {
       get { return _SignerPowersBase; }
@@ -166,14 +131,14 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
     public enum SignerType
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"LegalEntity", Value=0)]
-      LegalEntity = 0,
+      [global::ProtoBuf.ProtoEnum(Name=@"LegalEntity", Value=1)]
+      LegalEntity = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"IndividualEntity", Value=1)]
-      IndividualEntity = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"IndividualEntity", Value=2)]
+      IndividualEntity = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PhysicalPerson", Value=2)]
-      PhysicalPerson = 2
+      [global::ProtoBuf.ProtoEnum(Name=@"PhysicalPerson", Value=3)]
+      PhysicalPerson = 3
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"SignerPowers")]
@@ -206,17 +171,17 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
     public enum SignerStatus
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SellerEmployee", Value=0)]
-      SellerEmployee = 0,
+      [global::ProtoBuf.ProtoEnum(Name=@"SellerEmployee", Value=1)]
+      SellerEmployee = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"InformationCreatorEmployee", Value=1)]
-      InformationCreatorEmployee = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"InformationCreatorEmployee", Value=2)]
+      InformationCreatorEmployee = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OtherOrganizationEmployee", Value=2)]
-      OtherOrganizationEmployee = 2,
+      [global::ProtoBuf.ProtoEnum(Name=@"OtherOrganizationEmployee", Value=3)]
+      OtherOrganizationEmployee = 3,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"AuthorizedPerson", Value=3)]
-      AuthorizedPerson = 3
+      [global::ProtoBuf.ProtoEnum(Name=@"AuthorizedPerson", Value=4)]
+      AuthorizedPerson = 4
     }
   
 }
