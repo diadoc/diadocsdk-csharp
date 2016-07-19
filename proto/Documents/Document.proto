@@ -3,13 +3,14 @@ import "DocumentId.proto";
 import "CustomDataItem.proto";
 import "DocumentType.proto";
 import "DocumentDirection.proto";
+import "Documents/AcceptanceCertificateDocument.proto";
+import "Documents/BilateralDocument.proto";
+import "Documents/InvoiceDocument.proto";
+import "Documents/NonformalizedDocument.proto";
+import "Documents/UnilateralDocument.proto";
+import "Documents/UniversalTransferDocument.proto";
 import "ResolutionTarget.proto";
 import "ForwardDocumentEvent.proto";
-import "Documents/InvoiceDocument.proto";
-import "Documents/BilateralDocument.proto";
-import "Documents/UnilateralDocument.proto";
-import "Documents/NonformalizedDocument.proto";
-import "Documents/AcceptanceCertificateDocument.proto";
 
 package Diadoc.Api.Proto.Documents;
 
@@ -67,6 +68,7 @@ message Document {
 	optional bool PacketIsLocked = 53 [default = false];
 	optional NonformalizedDocument.NonformalizedDocumentMetadata PriceListAgreementMetadata = 54;
 	optional NonformalizedDocument.NonformalizedDocumentMetadata CertificateRegistryMetadata = 55;
+	optional UniversalTransferDocument.UniversalTransferDocumentMetadata UniversalTransferDocumentMetadata = 56;
 }
 
 message ResolutionStatus {

@@ -72,7 +72,10 @@ namespace Diadoc.Api.Proto
       ServiceDetails = 38,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SupplementaryAgreement", Value=40)]
-      SupplementaryAgreement = 40
+      SupplementaryAgreement = 40,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocument", Value=41)]
+      UniversalTransferDocument = 41
     }
   
 }

@@ -1,0 +1,32 @@
+import "Address.proto";
+
+package Diadoc.Api.Proto.Invoicing.Organizations;
+
+message ExtendedOrganizationInfo {
+  optional string BoxId = 1;       // идентификатор ящика в Диадоке
+  optional string OrgName = 2;     // название //НаимОрг
+  optional string Inn = 3;         // ИНН //ИНН ФЛ-ИНН
+  optional string Kpp = 4;         // КПП //КПП
+  optional Address Address = 5;    // адрес //Адрес
+  optional string FnsParticipantId = 6; // идентификатор участника ЭДО
+  required OrgType OrgType = 7;    // СвИП - СвЮЛУч - СвИнНеУч
+  optional string Okopf = 8;       // код организационно-правовой формы по ОКОПФ
+  optional string Okpo = 9;        // код в общероссийском классификаторе предприятий и организаций //ОКПО
+  optional string Okdp = 10;       // код основного вида деятельности по ОКДП
+  optional string Phone = 11;      // Номер контактного телефона/факс //Тлф 
+  optional string Email = 12;      // Адрес электронной почты // ЭлПочта
+  optional string CorrespondentAccount = 13; // Корреспондентский счёт // КорСчет
+  optional string BankAccountNumber = 14; // номер банковского счета //НамерСчета
+  optional string BankName = 15;   // название банка //НаимБанк
+  optional string BankId = 16;     // БИК //БИК
+  optional string Department = 17; // структурное подразделение //СтруктПодр
+  optional string OrganizationAdditionalInfo = 18; // Информация для участника // ИнфДляУчаст
+  optional string OrganizationOrPersonInfo = 19;   // Иные сведения, идентифицирующие ФЛ или ЮЛ //ИныеСвед
+  optional string IndividualEntityRegistrationCertificate = 20; // Реквизиты свидетельства о государственной регистрации ИП //СвГосРегИп
+}
+
+enum OrgType {
+  LegalEntity = 1;      // Сведения о юридическом лице, состоящем на учете в налоговых органах // СвЮЛУч
+  IndividualEntity = 2; // Сведения об индивидуальном предпринимателе// СвИП
+  ForeignEntity = 3;    // Сведения об иностранном лице, не состоящем на учете в налоговых органах // СвЮлНеУч
+}

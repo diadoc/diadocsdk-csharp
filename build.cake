@@ -134,38 +134,14 @@ Task("GenerateProtoFiles")
 		if (!FileExists("./packages/protobuf-net.1.0.0.280/Tools/protobuf-net.dll"))
 			CopyFileToDirectory(protobufNetDll, "./packages/protobuf-net.1.0.0.280/Tools");
 			
-		var sourceProtoDir = new DirectoryPath("./proto/").MakeAbsolute(Context.Environment);
-		var destinationProtoDir = new DirectoryPath("./src/Proto/").MakeAbsolute(Context.Environment);
-
 		var files = GetFiles("./proto/**/*.proto");
-		foreach (var file in files)
-		{
-			var outputFile = file.AppendExtension("cs");
-			var relativeFile = sourceProtoDir.GetRelativePath(file);
-			var destinationFile = destinationProtoDir.CombineWithFilePath(relativeFile).AppendExtension("cs");
-			
-			if (FileExists(destinationFile) &&
-				System.IO.File.GetLastWriteTime(file.FullPath) < System.IO.File.GetLastWriteTime(destinationFile.FullPath))
-			{
-				Debug("Skip protogen for file: {0}", file.FullPath);
-				continue;
-			}
-			
-			var protogenArguments = new ProcessSettings
-			{
-				Arguments = string.Format("-i:{0} -o:{1}", file, destinationFile),
-				WorkingDirectory = sourceProtoDir 
-			};
-			
-			var exitCode = StartProcess("./packages/protobuf-net.1.0.0.280/Tools/protogen.exe", protogenArguments);
-			if (exitCode != 0)
-			{
-				Error("Error processing file {0} to {1}, protogen exit code: {2}",
-					file,
-					outputFile,
-					exitCode);
-			}
-		}
+		var filesWithError = files.AsParallel()
+			.Select(x => GenerateProtoFile(x))
+			.Where(x => x != null)
+			.ToList();
+
+		if (filesWithError.Count > 0)
+			throw new Exception("There was several errors when generating proto classes");
 	});
 
 Task("ILMerge")
@@ -354,4 +330,33 @@ public static string ClearVersionTag(string lastestTag)
 	return match.Success
 		? match.Value
 		: lastestTag;
+}
+
+FilePath GenerateProtoFile(FilePath file)
+{
+	var sourceProtoDir = new DirectoryPath("./proto/").MakeAbsolute(Context.Environment);
+	var destinationProtoDir = new DirectoryPath("./src/Proto/").MakeAbsolute(Context.Environment);
+
+	var outputFile = file.AppendExtension("cs");
+	var relativeFile = sourceProtoDir.GetRelativePath(file);
+	var destinationFile = destinationProtoDir.CombineWithFilePath(relativeFile).AppendExtension("cs");
+
+	EnsureDirectoryExists(destinationFile.GetDirectory());
+
+	var protogenArguments = new ProcessSettings
+	{
+		Arguments = string.Format("-i:{0} -o:{1} -q", file, destinationFile),
+		WorkingDirectory = sourceProtoDir 
+	};
+
+	var exitCode = StartProcess("./packages/protobuf-net.1.0.0.280/Tools/protogen.exe", protogenArguments);
+	if (exitCode != 0)
+	{
+		Error("Error processing file {0} to {1}, protogen exit code: {2}",
+			file,
+			outputFile,
+			exitCode);
+		return file;
+	}
+	return null;
 }
