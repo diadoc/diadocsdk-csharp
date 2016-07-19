@@ -80,6 +80,7 @@
     <Compile Include="Com\UnilateralDocumentStatus.cs" />
     <Compile Include="ContentLocationPreference.cs" />
     <Compile Include="DiadocHttpApi.ExternalServices.cs" />
+    <Compile Include="DiadocHttpApi.UniversalTransferDocument.cs" />
     <Compile Include="DiadocHttpApi.WaitTaskResult.cs" />
     <Compile Include="DiadocHttpApi.CloudCrypt.cs" />
     <Compile Include="DiadocHttpApi.Zip.cs" />
@@ -123,6 +124,9 @@
     <Compile Include="Proto\Documents\UniversalTransferDocument.proto.cs" />
     <Compile Include="Proto\ExternalServiceAuthInfo.proto.cs" />
     <Compile Include="Com\ComWrappers.cs" />
+    <Compile Include="Proto\Invoicing\ExtendedOrganizationInfo.proto.cs" />
+    <Compile Include="Proto\Invoicing\ExtendedSigner.proto.cs" />
+    <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.proto.cs" />
     <Compile Include="Proto\ResolutionChainList.proto.cs" />
     <Compile Include="Proto\RoamingNotification.proto.cs" />
     <Compile Include="Proto\Serializer.cs" />
@@ -248,7 +252,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-    <None Include="Proto\generate.bat" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
