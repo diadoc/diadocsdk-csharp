@@ -261,6 +261,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _LockPacket; }
       set { _LockPacket = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.XmlDocumentAttachment> _UniversalTransferDocumentSellerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.XmlDocumentAttachment>();
+    [global::ProtoBuf.ProtoMember(33, Name=@"UniversalTransferDocumentSellerTitles", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.XmlDocumentAttachment> UniversalTransferDocumentSellerTitles
+    {
+      get { return _UniversalTransferDocumentSellerTitles; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

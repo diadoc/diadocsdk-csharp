@@ -143,17 +143,17 @@ Task("GenerateProtoFiles")
 			var outputFile = file.AppendExtension("cs");
 			var relativeFile = sourceProtoDir.GetRelativePath(file);
 			var destinationFile = destinationProtoDir.CombineWithFilePath(relativeFile).AppendExtension("cs");
-			
+
 			if (FileExists(destinationFile) &&
 				System.IO.File.GetLastWriteTime(file.FullPath) < System.IO.File.GetLastWriteTime(destinationFile.FullPath))
 			{
 				Debug("Skip protogen for file: {0}", file.FullPath);
 				continue;
 			}
-			
+
 			var protogenArguments = new ProcessSettings
 			{
-				Arguments = string.Format("-i:{0} -o:{1}", file, destinationFile),
+				Arguments = string.Format("-i:{0} -o:{1} -q", file, destinationFile),
 				WorkingDirectory = sourceProtoDir 
 			};
 			

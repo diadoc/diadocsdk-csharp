@@ -26,5 +26,7 @@ namespace Diadoc.Api.Com
 		Torg13 = 37,
 		ServiceDetails = 38,
 		SupplementaryAgreement = 40,
+		UniversalTransferDocumentSellerTitle = 41,
+		UniversalTransferDocumentBuyerTitle = 42,
 	}
 }
