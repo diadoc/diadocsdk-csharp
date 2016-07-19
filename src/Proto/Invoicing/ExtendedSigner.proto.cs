@@ -8,49 +8,12 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Invoicing/ExtendedSigner.proto
-namespace Diadoc.Api.Proto.Invoicing
+namespace Diadoc.Api.Proto.Invoicing.Signers
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ExtendedSigner")]
   public partial class ExtendedSigner : global::ProtoBuf.IExtensible
   {
     public ExtendedSigner() {}
-    
-
-    private byte[] _SignerCertificate = null;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"SignerCertificate", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public byte[] SignerCertificate
-    {
-      get { return _SignerCertificate; }
-      set { _SignerCertificate = value; }
-    }
-
-    private string _SignerCertificateThumbprint = "";
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SignerCertificateThumbprint", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string SignerCertificateThumbprint
-    {
-      get { return _SignerCertificateThumbprint; }
-      set { _SignerCertificateThumbprint = value; }
-    }
-
-    private Diadoc.Api.Proto.Invoicing.ExtendedSignerDetails _SignerDetails = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SignerDetails", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Invoicing.ExtendedSignerDetails SignerDetails
-    {
-      get { return _SignerDetails; }
-      set { _SignerDetails = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ExtendedSignerDetails")]
-  public partial class ExtendedSignerDetails : global::ProtoBuf.IExtensible
-  {
-    public ExtendedSignerDetails() {}
     
     private string _Surname;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Surname", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -102,9 +65,9 @@ namespace Diadoc.Api.Proto.Invoicing
       get { return _RegistrationCertificate; }
       set { _RegistrationCertificate = value; }
     }
-    private Diadoc.Api.Proto.Invoicing.SignerType _SignerType;
+    private Diadoc.Api.Proto.Invoicing.Signers.SignerType _SignerType;
     [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"SignerType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Diadoc.Api.Proto.Invoicing.SignerType SignerType
+    public Diadoc.Api.Proto.Invoicing.Signers.SignerType SignerType
     {
       get { return _SignerType; }
       set { _SignerType = value; }
@@ -127,20 +90,16 @@ namespace Diadoc.Api.Proto.Invoicing
       get { return _SignerInfo; }
       set { _SignerInfo = value; }
     }
-
-    private Diadoc.Api.Proto.Invoicing.SignerPowers _SignerPowers = Diadoc.Api.Proto.Invoicing.SignerPowers.InvoiceSigner;
-    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"SignerPowers", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Invoicing.SignerPowers.InvoiceSigner)]
-    public Diadoc.Api.Proto.Invoicing.SignerPowers SignerPowers
+    private Diadoc.Api.Proto.Invoicing.Signers.SignerPowers _SignerPowers;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"SignerPowers", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Invoicing.Signers.SignerPowers SignerPowers
     {
       get { return _SignerPowers; }
       set { _SignerPowers = value; }
     }
-
-    private Diadoc.Api.Proto.Invoicing.SignerStatus _SignerStatus = Diadoc.Api.Proto.Invoicing.SignerStatus.SellerEmployee;
-    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"SignerStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Invoicing.SignerStatus.SellerEmployee)]
-    public Diadoc.Api.Proto.Invoicing.SignerStatus SignerStatus
+    private Diadoc.Api.Proto.Invoicing.Signers.SignerStatus _SignerStatus;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"SignerStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Invoicing.Signers.SignerStatus SignerStatus
     {
       get { return _SignerStatus; }
       set { _SignerStatus = value; }
@@ -172,14 +131,14 @@ namespace Diadoc.Api.Proto.Invoicing
     public enum SignerType
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"IndividualEntity", Value=0)]
-      IndividualEntity = 0,
+      [global::ProtoBuf.ProtoEnum(Name=@"LegalEntity", Value=1)]
+      LegalEntity = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PhisicalPerson", Value=1)]
-      PhisicalPerson = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"IndividualEntity", Value=2)]
+      IndividualEntity = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"LegalEntity", Value=2)]
-      LegalEntity = 2
+      [global::ProtoBuf.ProtoEnum(Name=@"PhysicalPerson", Value=3)]
+      PhysicalPerson = 3
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"SignerPowers")]

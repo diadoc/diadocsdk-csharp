@@ -29,7 +29,10 @@ namespace Diadoc.Api.Com
 		CtlNotTimeValid = 131072,
 		CtlNotSignatureValid = 262144,
 		CtlNotValidForUsage = 524288,
+		HasWeakSignature = 1048576,
 		OfflineRevocation = 16777216,
 		NoIssuanceChainPolicy = 33554432,
+		ExplicitDistrust = 67108864,
+		HasNotSupportedCriticalExtension = 134217728,
 	}
 }

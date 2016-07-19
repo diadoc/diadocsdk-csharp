@@ -1,12 +1,6 @@
-package Diadoc.Api.Proto.Invoicing;
+package Diadoc.Api.Proto.Invoicing.Signers;
 
 message ExtendedSigner {
-	optional bytes SignerCertificate = 1;
-	optional string SignerCertificateThumbprint = 2;
-	optional ExtendedSignerDetails SignerDetails = 3;
-}
-
-message ExtendedSignerDetails {
 	required string Surname = 1;
 	required string FirstName = 2;
 	optional string Patronymic = 3;
@@ -14,19 +8,19 @@ message ExtendedSignerDetails {
 	optional string Inn = 5;
 	optional string RegistrationCertificate = 6;
 
-	required SignerType SignerType = 7;         // Физическое лицо-Индивидуальный предприниматель – представитель юридического лица (ФЛ-ИП-ЮЛ)
+	required SignerType SignerType = 7 [default = LegalEntity]; // Физическое лицо-Индивидуальный предприниматель – представитель юридического лица (ФЛ-ИП-ЮЛ)
 	optional string SignerOrganizationName = 8; // Наименование (НаимОрг)
 	optional string SignerInfo = 9;             // Иные сведения, идентифицирующие физическое лицо (ИныеСвед)
-	optional SignerPowers SignerPowers = 10;    // Область полномочий (ОблПолн)
-	optional SignerStatus SignerStatus = 11;    // Статус (Статус)
+	required SignerPowers SignerPowers = 10;    // Область полномочий (ОблПолн)
+	required SignerStatus SignerStatus = 11;    // Статус (Статус)
 	optional string SignerPowersBase = 12;      // Основание полномочий (доверия) (ОснПолн)
 	optional string SignerOrgPowersBase = 13;   // Основание полномочий (доверия) организации (ОснПолнОрг)
 }
 
 enum SignerType {
-	IndividualEntity = 0; // Индивидуальный предприниматель
-	PhisicalPerson = 1;   // Физическое лицо
-	LegalEntity = 2;      // Представитель юридического лица
+	LegalEntity = 1;      // Представитель юридического лица
+	IndividualEntity = 2; // Индивидуальный предприниматель
+	PhysicalPerson = 3;   // Физическое лицо
 }
 
 enum SignerPowers {
@@ -45,4 +39,3 @@ enum SignerStatus {
 	OtherOrganizationEmployee = 3;  // Работник иной уполномоченной организации;
 	AuthorizedPerson= 4;            // Уполномоченное физическое лицо (в том числе индивидуальный предприниматель)
 }
-

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: Invoicing/UniversalTransferDocumentSellerTitleInfo.proto
+// Generated from: Invoicing/UniversalTransferDocumentInfo.proto
 // Note: requires additional types generated from: Invoicing/InvoiceInfo.proto
 // Note: requires additional types generated from: Invoicing/ExtendedSigner.proto
 // Note: requires additional types generated from: Invoicing/ExtendedOrganizationInfo.proto
@@ -48,16 +48,16 @@ namespace Diadoc.Api.Proto.Invoicing
       get { return _DocumentNumber; }
       set { _DocumentNumber = value; }
     }
-    private Diadoc.Api.Proto.Invoicing.ExtendedOrganizationInfo _Seller;
+    private Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo _Seller;
     [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"Seller", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.Invoicing.ExtendedOrganizationInfo Seller
+    public Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo Seller
     {
       get { return _Seller; }
       set { _Seller = value; }
     }
-    private Diadoc.Api.Proto.Invoicing.ExtendedOrganizationInfo _Buyer;
+    private Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo _Buyer;
     [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"Buyer", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.Invoicing.ExtendedOrganizationInfo Buyer
+    public Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo Buyer
     {
       get { return _Buyer; }
       set { _Buyer = value; }
@@ -72,17 +72,17 @@ namespace Diadoc.Api.Proto.Invoicing
       set { _Shipper = value; }
     }
 
-    private Diadoc.Api.Proto.Invoicing.ExtendedOrganizationInfo _Consignee = null;
+    private Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo _Consignee = null;
     [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"Consignee", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Invoicing.ExtendedOrganizationInfo Consignee
+    public Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo Consignee
     {
       get { return _Consignee; }
       set { _Consignee = value; }
     }
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.ExtendedSigner> _Signers = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.ExtendedSigner>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> _Signers = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner>();
     [global::ProtoBuf.ProtoMember(9, Name=@"Signers", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.ExtendedSigner> Signers
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> Signers
     {
       get { return _Signers; }
     }
@@ -200,10 +200,10 @@ namespace Diadoc.Api.Proto.Invoicing
       set { _SameAsSeller = value; }
     }
 
-    private Diadoc.Api.Proto.Invoicing.ExtendedOrganizationInfo _OrgInfo = null;
+    private Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo _OrgInfo = null;
     [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"OrgInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Invoicing.ExtendedOrganizationInfo OrgInfo
+    public Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo OrgInfo
     {
       get { return _OrgInfo; }
       set { _OrgInfo = value; }
@@ -478,10 +478,10 @@ namespace Diadoc.Api.Proto.Invoicing
     }
   
 
-    private Diadoc.Api.Proto.Invoicing.ExtendedOrganizationInfo _Carrier = null;
+    private Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo _Carrier = null;
     [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"Carrier", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Invoicing.ExtendedOrganizationInfo Carrier
+    public Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo Carrier
     {
       get { return _Carrier; }
       set { _Carrier = value; }

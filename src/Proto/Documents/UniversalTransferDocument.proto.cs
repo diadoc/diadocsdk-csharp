@@ -24,36 +24,46 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
       get { return _Status; }
       set { _Status = value; }
     }
-    private string _Total;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Total", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _Total = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Total", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string Total
     {
       get { return _Total; }
       set { _Total = value; }
     }
-    private string _Vat;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"Vat", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _Vat = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Vat", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string Vat
     {
       get { return _Vat; }
       set { _Vat = value; }
     }
-    private int _Currency;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"Currency", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+
+    private int _Currency = default(int);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Currency", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
     public int Currency
     {
       get { return _Currency; }
       set { _Currency = value; }
     }
-    private long _ConfirmationDateTimeTicks;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"ConfirmationDateTimeTicks", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+
+    private long _ConfirmationDateTimeTicks = default(long);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ConfirmationDateTimeTicks", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(long))]
     public long ConfirmationDateTimeTicks
     {
       get { return _ConfirmationDateTimeTicks; }
       set { _ConfirmationDateTimeTicks = value; }
     }
-    private int _AmendmentFlags;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"AmendmentFlags", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+
+    private int _AmendmentFlags = default(int);
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"AmendmentFlags", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
     public int AmendmentFlags
     {
       get { return _AmendmentFlags; }
