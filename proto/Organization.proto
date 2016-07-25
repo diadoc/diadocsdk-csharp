@@ -27,6 +27,7 @@ message Organization {
 	optional bool IsEmployee = 19;
 	optional int32 InvitationCount = 20;
 	optional int32 SearchCount = 21;
+	required Sociability Sociability = 22;
 }
 
 message Department {
@@ -49,4 +50,9 @@ message Box {
 	required string Title = 2;
 	optional Organization Organization = 3;
 	optional OrganizationInvoiceFormatVersion InvoiceFormatVersion = 4 [default = v5_02];
+}
+
+enum Sociability {
+	AllOrganizations = 0;
+	CounteragentsOnly = 1;
 }
