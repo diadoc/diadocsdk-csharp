@@ -1,16 +1,19 @@
+import "Documents/ReceiptStatus.proto";
+
 package Diadoc.Api.Proto.Documents.UniversalTransferDocument;
 
 message UniversalTransferDocumentMetadata {
-	optional UniversalTransferDocumentStatus Status = 1;
-	optional string Total = 2;
-	optional string Vat = 3;
-	optional int32 Currency = 4;
-	optional sfixed64 ConfirmationDateTimeTicks = 5;
-	optional int32 AmendmentFlags = 6;
+	required UniversalTransferDocumentStatus DocumentStatus = 1;
+	optional string Total = 2; // TotalSum;
+	optional string Vat = 3; //TotalVat;
+	optional string Grounds = 4; // DocumentGrounds
+	optional string DocumentFunction = 5;
+	optional int32 Currency = 6;
+	required ReceiptStatus ReceiptStatus = 7;	
 }
 
 enum UniversalTransferDocumentStatus {
-//    UnknownInvoiceStatus = 0;	// This type will be reported to legacy client when it receives unknown status from server
+	UnknownInvoiceStatus = 0;	// This type will be reported to legacy client when it receives unknown status from server
 	OutboundWaitingForReceipt = 1;
 	OutboundNotFinished = 2;
 	OutboundFinished = 3;
