@@ -120,7 +120,7 @@ namespace Diadoc.Api.Cryptography
 			if (content == null)
 				throw new ArgumentNullException(nameof(content));
 			if (content.Length == 0)
-				throw new ArgumentOutOfRangeException(nameof(content), $"{nameof(content)} is empty");
+				throw new ArgumentOutOfRangeException(nameof(content), nameof(content) + " is empty");
 
 
 			using (var memoryStream = new MemoryStream())
