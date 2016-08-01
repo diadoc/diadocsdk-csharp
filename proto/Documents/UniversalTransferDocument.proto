@@ -4,11 +4,11 @@ package Diadoc.Api.Proto.Documents.UniversalTransferDocument;
 
 message UniversalTransferDocumentMetadata {
 	required UniversalTransferDocumentStatus DocumentStatus = 1;
-	optional string Total = 2; // TotalSum;
+	required string Total = 2; // TotalSum;
 	optional string Vat = 3; //TotalVat;
 	optional string Grounds = 4; // DocumentGrounds
-	optional string DocumentFunction = 5;
-	optional int32 Currency = 6;
+	required string DocumentFunction = 5;
+	required int32 Currency = 6;
 	required ReceiptStatus ReceiptStatus = 7;	
 }
 

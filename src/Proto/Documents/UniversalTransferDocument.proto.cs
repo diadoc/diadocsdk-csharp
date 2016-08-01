@@ -23,10 +23,8 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
       get { return _DocumentStatus; }
       set { _DocumentStatus = value; }
     }
-
-    private string _Total = "";
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Total", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
+    private string _Total;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Total", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string Total
     {
       get { return _Total; }
@@ -50,19 +48,15 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
       get { return _Grounds; }
       set { _Grounds = value; }
     }
-
-    private string _DocumentFunction = "";
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"DocumentFunction", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
+    private string _DocumentFunction;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"DocumentFunction", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string DocumentFunction
     {
       get { return _DocumentFunction; }
       set { _DocumentFunction = value; }
     }
-
-    private int _Currency = default(int);
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Currency", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _Currency;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"Currency", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int Currency
     {
       get { return _Currency; }
