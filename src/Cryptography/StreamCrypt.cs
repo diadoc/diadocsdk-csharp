@@ -118,9 +118,9 @@ namespace Diadoc.Api.Cryptography
 		public byte[] Encode([NotNull] byte[] content)
 		{
 			if (content == null)
-				throw new ArgumentNullException(nameof(content));
+				throw new ArgumentNullException("content");
 			if (content.Length == 0)
-				throw new ArgumentOutOfRangeException(nameof(content), nameof(content) + " is empty");
+				throw new ArgumentOutOfRangeException("content", "[content] is empty");
 
 
 			using (var memoryStream = new MemoryStream())

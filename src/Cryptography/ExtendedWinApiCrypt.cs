@@ -24,23 +24,35 @@ namespace Diadoc.Api.Cryptography
 			streamCrypt = new StreamCrypt(new X509Certificate2(certificate));
 		}
 
-		public byte[] Sign(byte[] content) =>
-			streamCrypt.Encode(content);
+		public byte[] Sign(byte[] content)
+		{
+			return streamCrypt.Encode(content);
+		}
 
-		public byte[] Sign(byte[] content, byte[] certificateContent) =>
-			winApiCrypt.Sign(content, certificateContent);
+		public byte[] Sign(byte[] content, byte[] certificateContent)
+		{
+			return winApiCrypt.Sign(content, certificateContent);	
+		}
 
-		public List<byte[]> VerifySignature(byte[] content, byte[] signatures) =>
-			winApiCrypt.VerifySignature(content, signatures);
+		public List<byte[]> VerifySignature(byte[] content, byte[] signatures)
+		{
+			return winApiCrypt.VerifySignature(content, signatures);
+		}
 
-		public byte[] Decrypt(byte[] encryptedContent, bool userLocalSystemStorage = false) =>
-			winApiCrypt.Decrypt(encryptedContent, userLocalSystemStorage);
+		public byte[] Decrypt(byte[] encryptedContent, bool userLocalSystemStorage = false)
+		{
+			return winApiCrypt.Decrypt(encryptedContent, userLocalSystemStorage);
+		}
 
-		public List<X509Certificate2> GetPersonalCertificates(bool onlyWithPrivateKey, bool useLocalSystemStorage = false) =>
-			winApiCrypt.GetPersonalCertificates(onlyWithPrivateKey, useLocalSystemStorage);
+		public List<X509Certificate2> GetPersonalCertificates(bool onlyWithPrivateKey, bool useLocalSystemStorage = false)
+		{
+			return winApiCrypt.GetPersonalCertificates(onlyWithPrivateKey, useLocalSystemStorage);	
+		}
 
-		public X509Certificate2 GetCertificateWithPrivateKey(string thumbprint, bool useLocalSystemStorage = false) =>
-			winApiCrypt.GetCertificateWithPrivateKey(thumbprint, useLocalSystemStorage);
+		public X509Certificate2 GetCertificateWithPrivateKey(string thumbprint, bool useLocalSystemStorage = false)
+		{
+			return winApiCrypt.GetCertificateWithPrivateKey(thumbprint, useLocalSystemStorage);
+		}
 
 		public void Dispose()
 		{
