@@ -276,6 +276,7 @@ message MessagePatchToPost {
 	repeated ResolutionChainAssignment ResolutionChainAssignments = 17;
 	repeated SignatureVerification SignatureVerifications = 18;
 	repeated EditDocumentPacketCommand EditDocumentPacketCommands = 19;
+	repeated ReceiptAttachment UniversalTransferDocumentBuyerTitles = 20;
 }
 
 message SignatureVerification {
