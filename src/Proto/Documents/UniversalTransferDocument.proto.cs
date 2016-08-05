@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Documents/UniversalTransferDocument.proto
+// Note: requires additional types generated from: Documents/ReceiptStatus.proto
 namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UniversalTransferDocumentMetadata")]
@@ -16,18 +17,16 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
     public UniversalTransferDocumentMetadata() {}
     
 
-    private Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus _Status = Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus.OutboundWaitingForReceipt;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus.OutboundWaitingForReceipt)]
-    public Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus Status
+    private Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus _DocumentStatus = Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus.UnknownDocumentStatus;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"DocumentStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus.UnknownDocumentStatus)]
+    public Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus DocumentStatus
     {
-      get { return _Status; }
-      set { _Status = value; }
+      get { return _DocumentStatus; }
+      set { _DocumentStatus = value; }
     }
-
-    private string _Total = "";
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Total", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
+    private string _Total;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Total", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string Total
     {
       get { return _Total; }
@@ -43,31 +42,36 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
       set { _Vat = value; }
     }
 
-    private int _Currency = default(int);
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Currency", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private string _Grounds = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Grounds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Grounds
+    {
+      get { return _Grounds; }
+      set { _Grounds = value; }
+    }
+    private string _DocumentFunction;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"DocumentFunction", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocumentFunction
+    {
+      get { return _DocumentFunction; }
+      set { _DocumentFunction = value; }
+    }
+    private int _Currency;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"Currency", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int Currency
     {
       get { return _Currency; }
       set { _Currency = value; }
     }
 
-    private long _ConfirmationDateTimeTicks = default(long);
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ConfirmationDateTimeTicks", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    [global::System.ComponentModel.DefaultValue(default(long))]
-    public long ConfirmationDateTimeTicks
+    private Diadoc.Api.Proto.Documents.ReceiptStatus _ReceiptStatus = Diadoc.Api.Proto.Documents.ReceiptStatus.UnknownReceiptStatus;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"ReceiptStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Documents.ReceiptStatus.UnknownReceiptStatus)]
+    public Diadoc.Api.Proto.Documents.ReceiptStatus ReceiptStatus
     {
-      get { return _ConfirmationDateTimeTicks; }
-      set { _ConfirmationDateTimeTicks = value; }
-    }
-
-    private int _AmendmentFlags = default(int);
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"AmendmentFlags", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
-    public int AmendmentFlags
-    {
-      get { return _AmendmentFlags; }
-      set { _AmendmentFlags = value; }
+      get { return _ReceiptStatus; }
+      set { _ReceiptStatus = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -78,26 +82,38 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
     public enum UniversalTransferDocumentStatus
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OutboundWaitingForReceipt", Value=1)]
-      OutboundWaitingForReceipt = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownDocumentStatus", Value=0)]
+      UnknownDocumentStatus = 0,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OutboundNotFinished", Value=2)]
-      OutboundNotFinished = 2,
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundWaitingForSenderSignature", Value=1)]
+      OutboundWaitingForSenderSignature = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OutboundFinished", Value=3)]
-      OutboundFinished = 3,
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundWaitingForInvoiceReceiptAndRecipientSignature", Value=2)]
+      OutboundWaitingForInvoiceReceiptAndRecipientSignature = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OutboundWaitingForSenderSignature", Value=6)]
-      OutboundWaitingForSenderSignature = 6,
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundWaitingForInvoiceReceipt", Value=3)]
+      OutboundWaitingForInvoiceReceipt = 3,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OutboundInvalidSenderSignature", Value=7)]
-      OutboundInvalidSenderSignature = 7,
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundWaitingForRecipientSignature", Value=4)]
+      OutboundWaitingForRecipientSignature = 4,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"InboundNotFinished", Value=4)]
-      InboundNotFinished = 4,
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundInvalidSenderSignature", Value=5)]
+      OutboundInvalidSenderSignature = 5,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"InboundFinished", Value=5)]
-      InboundFinished = 5
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundWaitingForInvoiceReceiptAndRecipientSignature", Value=6)]
+      InboundWaitingForInvoiceReceiptAndRecipientSignature = 6,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundWaitingForRecipientSignature", Value=7)]
+      InboundWaitingForRecipientSignature = 7,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundWaitingForInvoiceReceipt", Value=8)]
+      InboundWaitingForInvoiceReceipt = 8,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundWithRecipientSignature", Value=9)]
+      InboundWithRecipientSignature = 9,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundInvalidRecipientSignature", Value=10)]
+      InboundInvalidRecipientSignature = 10
     }
   
 }

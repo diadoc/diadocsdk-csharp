@@ -1,21 +1,27 @@
+import "Documents/ReceiptStatus.proto";
+
 package Diadoc.Api.Proto.Documents.UniversalTransferDocument;
 
 message UniversalTransferDocumentMetadata {
-	optional UniversalTransferDocumentStatus Status = 1;
-	optional string Total = 2;
-	optional string Vat = 3;
-	optional int32 Currency = 4;
-	optional sfixed64 ConfirmationDateTimeTicks = 5;
-	optional int32 AmendmentFlags = 6;
+	optional UniversalTransferDocumentStatus DocumentStatus = 1 [default = UnknownDocumentStatus];
+	required string Total = 2; // TotalSum;
+	optional string Vat = 3; //TotalVat;
+	optional string Grounds = 4; // DocumentGrounds
+	required string DocumentFunction = 5;
+	required int32 Currency = 6;
+	optional ReceiptStatus ReceiptStatus = 7 [default = UnknownReceiptStatus];	
 }
 
 enum UniversalTransferDocumentStatus {
-//    UnknownInvoiceStatus = 0;	// This type will be reported to legacy client when it receives unknown status from server
-	OutboundWaitingForReceipt = 1;
-	OutboundNotFinished = 2;
-	OutboundFinished = 3;
-	OutboundWaitingForSenderSignature = 6;
-	OutboundInvalidSenderSignature = 7;
-	InboundNotFinished = 4;
-	InboundFinished = 5;
+	UnknownDocumentStatus = 0;	// This type will be reported to legacy client when it receives unknown status from server
+	OutboundWaitingForSenderSignature = 1;
+	OutboundWaitingForInvoiceReceiptAndRecipientSignature = 2;
+	OutboundWaitingForInvoiceReceipt = 3; 
+	OutboundWaitingForRecipientSignature = 4;
+	OutboundInvalidSenderSignature = 5;
+	InboundWaitingForInvoiceReceiptAndRecipientSignature = 6;
+	InboundWaitingForRecipientSignature = 7; 
+	InboundWaitingForInvoiceReceipt = 8;
+	InboundWithRecipientSignature = 9; 
+	InboundInvalidRecipientSignature = 10;
 }
