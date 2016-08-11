@@ -79,55 +79,73 @@ namespace Diadoc.Api.Cryptography
 		/// <returns>Подпись</returns>
 		public byte[] Sign(byte[] content, byte[] certificateContent)
 		{
-			IntPtr certificate = CertificateWithPrivateKeyFinder.GetCertificateWithPrivateKey(certificateContent);
-			GCHandle certificatesHandle = GCHandle.Alloc(new[] {certificate}, GCHandleType.Pinned);
-			GCHandle contentHandle = GCHandle.Alloc(content, GCHandleType.Pinned);
+			var certificate = CertificateWithPrivateKeyFinder.GetCertificateWithPrivateKey(certificateContent);
+			var certificatesHandle = GCHandle.Alloc(new[] { certificate }, GCHandleType.Pinned);
+
+			try
 			{
-				try
+				return Sign(content, certificate, certificatesHandle);
+			}
+			finally
+			{
+				certificatesHandle.Free();
+				Api.CertFreeCertificateContext(certificate);
+			}
+		}
+
+		protected static byte[] Sign(byte[] content, IntPtr certificate, GCHandle certificatesHandle)
+		{
+			var contentHandle = GCHandle.Alloc(content, GCHandleType.Pinned);
+
+			try
+			{
+				var signParameters = new Api.CRYPT_SIGN_MESSAGE_PARA();
+				signParameters.size = Marshal.SizeOf(signParameters);
+				signParameters.encoding = Api.ENCODING;
+				signParameters.signerCertificate = certificate;
+				signParameters.hashAlgorithm.objectIdAnsiString = Api.OID_GOST_34_11_94;
+				signParameters.certificatesCount = 1;
+				signParameters.certificates = certificatesHandle.AddrOfPinnedObject();
+
+				var localSignParameters = signParameters;
+				var signatureSize = 0;
+
+				if (!Api.CryptSignMessage(ref localSignParameters, true, 1, new[] { contentHandle.AddrOfPinnedObject() }, new[] { content.Length }, IntPtr.Zero, ref signatureSize))
+					throw new Win32Exception();
+
+				var bufferLength = signatureSize + 1024;
+
+				while (true)
 				{
-					var signParameters = new Api.CRYPT_SIGN_MESSAGE_PARA();
-					signParameters.size = Marshal.SizeOf(signParameters);
-					signParameters.encoding = Api.ENCODING;
-					signParameters.signerCertificate = certificate;
-					signParameters.hashAlgorithm.objectIdAnsiString = Api.OID_GOST_34_11_94;
-					signParameters.certificatesCount = 1;
-					signParameters.certificates = certificatesHandle.AddrOfPinnedObject();
-					Api.CRYPT_SIGN_MESSAGE_PARA localSignParameters = signParameters;
-					Int32 signatureSize = 0;
-					if (!Api.CryptSignMessage(ref localSignParameters, true, 1, new[] {contentHandle.AddrOfPinnedObject()}, new[] {content.Length}, IntPtr.Zero, ref signatureSize))
-						throw new Win32Exception();
-					int bufferLength = signatureSize + 1024;
-					while (true)
+					var buffer = new byte[bufferLength];
+					var bytesWritten = bufferLength;
+					var signatureHandle = GCHandle.Alloc(buffer, GCHandleType.Pinned);
+
+					try
 					{
-						var buffer = new byte[bufferLength];
-						int bytesWritten = bufferLength;
-						GCHandle signatureHandle = GCHandle.Alloc(buffer, GCHandleType.Pinned);
-						try
-						{
-							if (!Api.CryptSignMessage(ref signParameters, true, 1, new[] {contentHandle.AddrOfPinnedObject()}, new[] {content.Length}, signatureHandle.AddrOfPinnedObject(), ref bufferLength))
-								throw new Win32Exception();
-							Array.Resize(ref buffer, bytesWritten);
-							return buffer;
-						}
-						catch (Exception exception)
-						{
-							var win32Exception = exception.InnerException as Win32Exception;
-							if (win32Exception != null && win32Exception.NativeErrorCode == 234)
-								bufferLength *= 2;
-							else throw;
-						}
-						finally
-						{
-							signatureHandle.Free();
-						}
+						if (!Api.CryptSignMessage(ref signParameters, true, 1, new[] { contentHandle.AddrOfPinnedObject() }, new[] { content.Length }, signatureHandle.AddrOfPinnedObject(), ref bufferLength))
+							throw new Win32Exception();
+
+						Array.Resize(ref buffer, bytesWritten);
+						return buffer;
+					}
+					catch (Exception exception)
+					{
+						var win32Exception = exception.InnerException as Win32Exception;
+						if (win32Exception != null && win32Exception.NativeErrorCode == 234)
+							bufferLength *= 2;
+						else
+							throw;
+					}
+					finally
+					{
+						signatureHandle.Free();
 					}
 				}
-				finally
-				{
-					certificatesHandle.Free();
-					contentHandle.Free();
-					Api.CertFreeCertificateContext(certificate);
-				}
+			}
+			finally
+			{
+				contentHandle.Free();
 			}
 		}
 

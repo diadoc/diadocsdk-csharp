@@ -79,7 +79,6 @@
     <Compile Include="Com\TaxRate.cs" />
     <Compile Include="Com\UnilateralDocumentStatus.cs" />
     <Compile Include="ContentLocationPreference.cs" />
-    <Compile Include="Cryptography\StreamCrypt.cs" />
     <Compile Include="Cryptography\ExtendedWinApiCrypt.cs" />
     <Compile Include="DiadocHttpApi.ExternalServices.cs" />
     <Compile Include="DiadocHttpApi.UniversalTransferDocument.cs" />
