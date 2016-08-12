@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -31,16 +31,16 @@ namespace Diadoc.Api.Cryptography
 			var cert = GetPersonalCertificates(true, useLocalSystemStorage)
 				.FirstOrDefault(c => c.Thumbprint != null && c.Thumbprint.Equals(thumbprint, StringComparison.OrdinalIgnoreCase));
 			if (cert == null)
-				throw new Exception("Не найден сертификат с закрытым ключом и отпечатком " + thumbprint);
+				throw new Exception("РќРµ РЅР°Р№РґРµРЅ СЃРµСЂС‚РёС„РёРєР°С‚ СЃ Р·Р°РєСЂС‹С‚С‹Рј РєР»СЋС‡РѕРј Рё РѕС‚РїРµС‡Р°С‚РєРѕРј " + thumbprint);
 			return cert;
 		}
 
 		/// <summary>
-		/// Проверка подписи
+		/// РџСЂРѕРІРµСЂРєР° РїРѕРґРїРёСЃРё
 		/// </summary>
-		/// <param name="content">Подписанные данные</param>
-		/// <param name="signatures">Содержимое подписи</param>
-		/// <returns>Список сертификатов из подписи</returns>
+		/// <param name="content">РџРѕРґРїРёСЃР°РЅРЅС‹Рµ РґР°РЅРЅС‹Рµ</param>
+		/// <param name="signatures">РЎРѕРґРµСЂР¶РёРјРѕРµ РїРѕРґРїРёСЃРё</param>
+		/// <returns>РЎРїРёСЃРѕРє СЃРµСЂС‚РёС„РёРєР°С‚РѕРІ РёР· РїРѕРґРїРёСЃРё</returns>
 		public List<byte[]> VerifySignature(byte[] content, byte[] signatures)
 		{
 			GCHandle contentHandle = GCHandle.Alloc(content, GCHandleType.Pinned);
@@ -57,8 +57,8 @@ namespace Diadoc.Api.Cryptography
 					{
 						Int32 errorCode = Marshal.GetLastWin32Error();
 						if (errorCode == Api.CRYPT_E_NO_SIGNER) break;
-						if (errorCode == Api.NTE_BAD_SIGNATURE) throw new Exception("Неправильная подпись");
-						throw new Exception("Неправильная подпись", new Win32Exception(errorCode));
+						if (errorCode == Api.NTE_BAD_SIGNATURE) throw new Exception("РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РїРѕРґРїРёСЃСЊ");
+						throw new Exception("РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РїРѕРґРїРёСЃСЊ", new Win32Exception(errorCode));
 					}
 					signersCertificateContents.Add(SerializeCertificateToBinaryData(certificate));
 					Api.CertFreeCertificateContext(certificate);
@@ -72,11 +72,11 @@ namespace Diadoc.Api.Cryptography
 		}
 
 		/// <summary>
-		/// Подписывание данных
+		/// РџРѕРґРїРёСЃС‹РІР°РЅРёРµ РґР°РЅРЅС‹С…
 		/// </summary>
-		/// <param name="content">Содержимое</param>
-		/// <param name="certificateContent">Содержимое сертификата</param>
-		/// <returns>Подпись</returns>
+		/// <param name="content">РЎРѕРґРµСЂР¶РёРјРѕРµ</param>
+		/// <param name="certificateContent">РЎРѕРґРµСЂР¶РёРјРѕРµ СЃРµСЂС‚РёС„РёРєР°С‚Р°</param>
+		/// <returns>РџРѕРґРїРёСЃСЊ</returns>
 		public byte[] Sign(byte[] content, byte[] certificateContent)
 		{
 			var certificate = CertificateWithPrivateKeyFinder.GetCertificateWithPrivateKey(certificateContent);
