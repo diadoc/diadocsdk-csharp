@@ -345,6 +345,13 @@ namespace Diadoc.Api
 				sellerTitleAttachmentId);
 		}
 
+		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken,
+			UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false)
+		{
+			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
+			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForSeller(authToken, sellerInfo, disableValidation);
+		}
+
 		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
