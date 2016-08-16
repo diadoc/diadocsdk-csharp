@@ -403,6 +403,11 @@ namespace Diadoc.Api.Proto.Events
 		{
 			SupplementaryAgreements.Add((SupplementaryAgreementAttachment)supplementaryAgreement);
 		}
+
+		public void AddUniversalTransferDocumentSellerTitle(object attachment)
+		{
+			UniversalTransferDocumentSellerTitles.Add((XmlDocumentAttachment)attachment);
+		}
 	}
 
 	[ComVisible(true)]
@@ -505,6 +510,11 @@ namespace Diadoc.Api.Proto.Events
 		public void AddXmlAcceptanceCertificateBuyerTitle(object attachment)
 		{
 			XmlAcceptanceCertificateBuyerTitles.Add((ReceiptAttachment)attachment);
+		}
+
+		public void AddUniversalTransferDocumentBuyerTitle(object attachment)
+		{
+			UniversalTransferDocumentBuyerTitles.Add((ReceiptAttachment)attachment);
 		}
 
 		public void AddResolution(object attachment)
