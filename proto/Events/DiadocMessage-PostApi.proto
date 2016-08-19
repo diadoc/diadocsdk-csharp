@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// ����������� ��� ������� ������� API:
+// Протобуферы для пишущих методов API:
 //	PostMessage(MessageToPost message) : Message
 //	PostMessagePatch(MessagePatchToPost messagePatch) : MessagePatch
 
