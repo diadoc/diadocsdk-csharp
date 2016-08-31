@@ -572,6 +572,11 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXml(xmlContent);
 		}
 
+		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent)
+		{
+			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXml(xmlContent);
+		}
+
 		public OrganizationUsersList GetOrganizationUsers(string authToken, string orgId)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");

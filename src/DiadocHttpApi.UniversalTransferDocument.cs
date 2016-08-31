@@ -16,5 +16,10 @@ namespace Diadoc.Api
 				query.AddParameter("disableValidation", "");
 			return PerformGenerateXmlHttpRequest(authToken, query.BuildPathAndQuery(), info);
 		}
+
+		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent)
+		{
+			return PerformHttpRequest<UniversalTransferDocumentSellerTitleInfo>(null, "POST", "/ParseUniversalTransferDocumentSellerTitleXml", xmlContent);
+		}
 	}
 }

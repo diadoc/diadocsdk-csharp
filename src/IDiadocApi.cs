@@ -95,6 +95,7 @@ namespace Diadoc.Api
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
+		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent);
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
 		SignatureRejectionInfo ParseSignatureRejectionXml(byte[] signatureRejectionXmlContent);
 		IDocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId);
