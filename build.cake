@@ -296,11 +296,7 @@ public string GetSemanticVersionV2(string clearVersion)
 
 		return GetAppVeyorBuildVersion(clearVersion);		
 	}
-
-	var currentDate = DateTime.Now;
-	var daysPart = (currentDate - new DateTime(2010, 01, 01)).Days;
-	var secondsPart = Math.Floor((currentDate - currentDate.Date).TotalSeconds/2);
-	return string.Format("{0}-dev.{1}.{2}", clearVersion, daysPart, secondsPart); 
+	return string.Format("{0}-dev", clearVersion); 
 }
 
 public string GetAppVeyorBuildVersion(string clearVersion)
