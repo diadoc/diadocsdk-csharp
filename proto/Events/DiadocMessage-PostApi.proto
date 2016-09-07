@@ -47,6 +47,7 @@ message MessageToPost {
 	repeated SupplementaryAgreementAttachment SupplementaryAgreements = 31;
 	optional bool LockPacket = 32 [default = false];
 	repeated XmlDocumentAttachment UniversalTransferDocumentSellerTitles = 33;
+	repeated CustomDocumentAttachment CustomDocumentAttachments = 34;
 }
 
 message EncryptedXmlDocumentAttachment {
@@ -255,6 +256,21 @@ message ServiceDetailsAttachment {
 	optional string CustomDocumentId = 9;
 	optional bool NeedReceipt = 10 [default = false];
 	repeated CustomDataItem CustomData = 11;
+}
+
+message CustomDocumentAttachment {
+	required SignedContent SignedContent = 1;
+	required string FileName = 2;
+	optional string Comment = 3;
+	// reserved 4 for NeedRecipientSignature
+	repeated DocumentId InitialDocumentIds = 5;
+	repeated DocumentId SubordinateDocumentIds = 6;
+	// reserved 7 for DocumentDate
+	// reserved 8 for DocumentNumber
+	optional string CustomDocumentId = 9;
+	//reserved 10 for NeedReceipt
+	repeated CustomDataItem CustomData = 11;
+	required string Type = 12;
 }
 
 message MessagePatchToPost {

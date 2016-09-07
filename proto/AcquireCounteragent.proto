@@ -13,6 +13,11 @@ message InvitationDocument {
 	required Events.SignedContent SignedContent = 1;
 	required string FileName = 2;
 	optional bool SignatureRequested = 3 [default = false];
+	optional string Type = 4;
+}
+
+message CustomDocument {
+	required string Type = 1;
 }
 
 message AcquireCounteragentResult {
