@@ -4,76 +4,76 @@ import "Invoicing/OrganizationInfo.proto";
 
 package Diadoc.Api.Proto.Invoicing;
 
-// Со стороны продавца
+// РЎРѕ СЃС‚РѕСЂРѕРЅС‹ РїСЂРѕРґР°РІС†Р°
 message Torg12SellerTitleInfo {
-	required string DocumentDate = 1;										// дата товарной накладной
-	optional string DocumentNumber = 2;										// номер товарной накладной
-	required DocflowParticipant SellerDocflowParticipant = 3;				// участник документооборота, отпустивший товар
-	required DocflowParticipant BuyerDocflowParticipant = 4;				// участник документооборота, которому отпущен товар
-	optional OrganizationInfo Shipper = 5;									// грузоотправитель
-	optional OrganizationInfo Consignee = 6;								// грузополучатель
-	optional OrganizationInfo Supplier = 7;									// поставщик
-	optional OrganizationInfo Payer = 8;									// плательщик
-	optional Grounds Grounds = 9;											// основание
-	optional string WaybillDate = 10;										// дата составления транспортной накладной
-	optional string WaybillNumber = 11;										// номер транспортной накладной
-	optional string OperationCode = 12;										// код вида операции
-	repeated Torg12Item Items = 13;											// табличные сведения товарной накладной
-	optional string ParcelsQuantityTotal = 14;								// количество мест, штук - всего по накладной
-	optional string ParcelsQuantityTotalInWords = 15;						// количество мест, штук - всего по накладной, прописью
-	optional string GrossQuantityTotal = 16;								// брутто - всего по накладной
-	optional string GrossQuantityTotalInWords = 17;							// брутто - всего по накладной, прописью
-	optional string NetQuantityTotal = 18;									// нетто - всего по накладной
-	optional string NetQuantityTotalInWords = 19;							// нетто - всего по накладной, прописью
-	optional string QuantityTotal = 20;										// количество (масса нетто) - всего по накладной
-	optional string TotalWithVatExcluded = 21;								// сумма без учета НДС - всего по накладной
-	optional string Vat = 22;												// сумма НДС - всего по накладной
-	required string Total = 23;												// сумма с учетом НДС - всего по накладной
-	optional string TotalInWords = 24;										// сумма с учетом НДС - всего по накладной, прописью
-	optional string SupplyDate = 25;										// дата отпуска
-	optional Official SupplyAllowedBy = 26;									// отпуск разрешил
-	optional Official SupplyPerformedBy = 27;								// отпуск произвел
-	optional Official ChiefAccountant = 28;									// главный бухгалтер
-	required Signer Signer = 29;											// подписант
-	optional string AdditionalInfo = 30;									// дополнительные сведения
-	optional string AttachmentSheetsQuantity = 31;							// приложение, количество листов
+	required string DocumentDate = 1;										// РґР°С‚Р° С‚РѕРІР°СЂРЅРѕР№ РЅР°РєР»Р°РґРЅРѕР№
+	optional string DocumentNumber = 2;										// РЅРѕРјРµСЂ С‚РѕРІР°СЂРЅРѕР№ РЅР°РєР»Р°РґРЅРѕР№
+	required DocflowParticipant SellerDocflowParticipant = 3;				// СѓС‡Р°СЃС‚РЅРёРє РґРѕРєСѓРјРµРЅС‚РѕРѕР±РѕСЂРѕС‚Р°, РѕС‚РїСѓСЃС‚РёРІС€РёР№ С‚РѕРІР°СЂ
+	required DocflowParticipant BuyerDocflowParticipant = 4;				// СѓС‡Р°СЃС‚РЅРёРє РґРѕРєСѓРјРµРЅС‚РѕРѕР±РѕСЂРѕС‚Р°, РєРѕС‚РѕСЂРѕРјСѓ РѕС‚РїСѓС‰РµРЅ С‚РѕРІР°СЂ
+	optional OrganizationInfo Shipper = 5;									// РіСЂСѓР·РѕРѕС‚РїСЂР°РІРёС‚РµР»СЊ
+	optional OrganizationInfo Consignee = 6;								// РіСЂСѓР·РѕРїРѕР»СѓС‡Р°С‚РµР»СЊ
+	optional OrganizationInfo Supplier = 7;									// РїРѕСЃС‚Р°РІС‰РёРє
+	optional OrganizationInfo Payer = 8;									// РїР»Р°С‚РµР»СЊС‰РёРє
+	optional Grounds Grounds = 9;											// РѕСЃРЅРѕРІР°РЅРёРµ
+	optional string WaybillDate = 10;										// РґР°С‚Р° СЃРѕСЃС‚Р°РІР»РµРЅРёСЏ С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕР№ РЅР°РєР»Р°РґРЅРѕР№
+	optional string WaybillNumber = 11;										// РЅРѕРјРµСЂ С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕР№ РЅР°РєР»Р°РґРЅРѕР№
+	optional string OperationCode = 12;										// РєРѕРґ РІРёРґР° РѕРїРµСЂР°С†РёРё
+	repeated Torg12Item Items = 13;											// С‚Р°Р±Р»РёС‡РЅС‹Рµ СЃРІРµРґРµРЅРёСЏ С‚РѕРІР°СЂРЅРѕР№ РЅР°РєР»Р°РґРЅРѕР№
+	optional string ParcelsQuantityTotal = 14;								// РєРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃС‚, С€С‚СѓРє - РІСЃРµРіРѕ РїРѕ РЅР°РєР»Р°РґРЅРѕР№
+	optional string ParcelsQuantityTotalInWords = 15;						// РєРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃС‚, С€С‚СѓРє - РІСЃРµРіРѕ РїРѕ РЅР°РєР»Р°РґРЅРѕР№, РїСЂРѕРїРёСЃСЊСЋ
+	optional string GrossQuantityTotal = 16;								// Р±СЂСѓС‚С‚Рѕ - РІСЃРµРіРѕ РїРѕ РЅР°РєР»Р°РґРЅРѕР№
+	optional string GrossQuantityTotalInWords = 17;							// Р±СЂСѓС‚С‚Рѕ - РІСЃРµРіРѕ РїРѕ РЅР°РєР»Р°РґРЅРѕР№, РїСЂРѕРїРёСЃСЊСЋ
+	optional string NetQuantityTotal = 18;									// РЅРµС‚С‚Рѕ - РІСЃРµРіРѕ РїРѕ РЅР°РєР»Р°РґРЅРѕР№
+	optional string NetQuantityTotalInWords = 19;							// РЅРµС‚С‚Рѕ - РІСЃРµРіРѕ РїРѕ РЅР°РєР»Р°РґРЅРѕР№, РїСЂРѕРїРёСЃСЊСЋ
+	optional string QuantityTotal = 20;										// РєРѕР»РёС‡РµСЃС‚РІРѕ (РјР°СЃСЃР° РЅРµС‚С‚Рѕ) - РІСЃРµРіРѕ РїРѕ РЅР°РєР»Р°РґРЅРѕР№
+	optional string TotalWithVatExcluded = 21;								// СЃСѓРјРјР° Р±РµР· СѓС‡РµС‚Р° РќР”РЎ - РІСЃРµРіРѕ РїРѕ РЅР°РєР»Р°РґРЅРѕР№
+	optional string Vat = 22;												// СЃСѓРјРјР° РќР”РЎ - РІСЃРµРіРѕ РїРѕ РЅР°РєР»Р°РґРЅРѕР№
+	required string Total = 23;												// СЃСѓРјРјР° СЃ СѓС‡РµС‚РѕРј РќР”РЎ - РІСЃРµРіРѕ РїРѕ РЅР°РєР»Р°РґРЅРѕР№
+	optional string TotalInWords = 24;										// СЃСѓРјРјР° СЃ СѓС‡РµС‚РѕРј РќР”РЎ - РІСЃРµРіРѕ РїРѕ РЅР°РєР»Р°РґРЅРѕР№, РїСЂРѕРїРёСЃСЊСЋ
+	optional string SupplyDate = 25;										// РґР°С‚Р° РѕС‚РїСѓСЃРєР°
+	optional Official SupplyAllowedBy = 26;									// РѕС‚РїСѓСЃРє СЂР°Р·СЂРµС€РёР»
+	optional Official SupplyPerformedBy = 27;								// РѕС‚РїСѓСЃРє РїСЂРѕРёР·РІРµР»
+	optional Official ChiefAccountant = 28;									// РіР»Р°РІРЅС‹Р№ Р±СѓС…РіР°Р»С‚РµСЂ
+	required Signer Signer = 29;											// РїРѕРґРїРёСЃР°РЅС‚
+	optional string AdditionalInfo = 30;									// РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРІРµРґРµРЅРёСЏ
+	optional string AttachmentSheetsQuantity = 31;							// РїСЂРёР»РѕР¶РµРЅРёРµ, РєРѕР»РёС‡РµСЃС‚РІРѕ Р»РёСЃС‚РѕРІ
 }
 
-// Со стороны покупателя
+// РЎРѕ СЃС‚РѕСЂРѕРЅС‹ РїРѕРєСѓРїР°С‚РµР»СЏ
 message Torg12BuyerTitleInfo {
-	required string ShipmentReceiptDate = 1;								// дата получения груза
-	optional Attorney Attorney = 2;											// сведения по доверенности
-	optional Official AcceptedBy = 3;										// лицо, принявшее груз
-	optional Official ReceivedBy = 4;										// лицо, получившее груз
-	required Signer Signer = 5;												// подписант
-	optional string AdditionalInfo = 6;										// дополнительная информация
+	required string ShipmentReceiptDate = 1;								// РґР°С‚Р° РїРѕР»СѓС‡РµРЅРёСЏ РіСЂСѓР·Р°
+	optional Attorney Attorney = 2;											// СЃРІРµРґРµРЅРёСЏ РїРѕ РґРѕРІРµСЂРµРЅРЅРѕСЃС‚Рё
+	optional Official AcceptedBy = 3;										// Р»РёС†Рѕ, РїСЂРёРЅСЏРІС€РµРµ РіСЂСѓР·
+	optional Official ReceivedBy = 4;										// Р»РёС†Рѕ, РїРѕР»СѓС‡РёРІС€РµРµ РіСЂСѓР·
+	required Signer Signer = 5;												// РїРѕРґРїРёСЃР°РЅС‚
+	optional string AdditionalInfo = 6;										// РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
 }
 
 message Torg12Item {
-	required string Name = 1;												// наименование
-	optional string Feature = 2;											// характеристика
-	optional string Sort = 3;												// сорт товара
-	optional string NomenclatureArticle = 4;								// артикул
-	optional string Code = 5;												// код товара
-	optional string UnitCode = 6;											// код единицы измерения
-	required string UnitName = 7;											// наименование единицы измерения
-	optional string ParcelType = 8;											// вид упаковки
-	optional string ParcelCapacity = 9;										// количество в одном месте
-	optional string ParcelsQuantity = 10;									// количество мест
-	optional string GrossQuantity = 11;										// брутто
-	required string Quantity = 12;										// нетто // количество (масса)
-	optional string Price = 13;												// цена
-	required string TaxRate = 14;											// ставка налога
-	optional string SubtotalWithVatExcluded = 15;							// сумма без учета налога
-	optional string Vat = 16;												// сумма налога
-	required string Subtotal = 17;											// сумма всего
-	optional string AdditionalInfo = 18;									// информационное поле сведений о товаре
+	required string Name = 1;												// РЅР°РёРјРµРЅРѕРІР°РЅРёРµ
+	optional string Feature = 2;											// С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєР°
+	optional string Sort = 3;												// СЃРѕСЂС‚ С‚РѕРІР°СЂР°
+	optional string NomenclatureArticle = 4;								// Р°СЂС‚РёРєСѓР»
+	optional string Code = 5;												// РєРѕРґ С‚РѕРІР°СЂР°
+	optional string UnitCode = 6;											// РєРѕРґ РµРґРёРЅРёС†С‹ РёР·РјРµСЂРµРЅРёСЏ
+	required string UnitName = 7;											// РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РµРґРёРЅРёС†С‹ РёР·РјРµСЂРµРЅРёСЏ
+	optional string ParcelType = 8;											// РІРёРґ СѓРїР°РєРѕРІРєРё
+	optional string ParcelCapacity = 9;										// РєРѕР»РёС‡РµСЃС‚РІРѕ РІ РѕРґРЅРѕРј РјРµСЃС‚Рµ
+	optional string ParcelsQuantity = 10;									// РєРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃС‚
+	optional string GrossQuantity = 11;										// Р±СЂСѓС‚С‚Рѕ
+	required string Quantity = 12;										// РЅРµС‚С‚Рѕ // РєРѕР»РёС‡РµСЃС‚РІРѕ (РјР°СЃСЃР°)
+	optional string Price = 13;												// С†РµРЅР°
+	required string TaxRate = 14;											// СЃС‚Р°РІРєР° РЅР°Р»РѕРіР°
+	optional string SubtotalWithVatExcluded = 15;							// СЃСѓРјРјР° Р±РµР· СѓС‡РµС‚Р° РЅР°Р»РѕРіР°
+	optional string Vat = 16;												// СЃСѓРјРјР° РЅР°Р»РѕРіР°
+	required string Subtotal = 17;											// СЃСѓРјРјР° РІСЃРµРіРѕ
+	optional string AdditionalInfo = 18;									// РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ СЃРІРµРґРµРЅРёР№ Рѕ С‚РѕРІР°СЂРµ
 }
 
-// Документ-основание
+// Р”РѕРєСѓРјРµРЅС‚-РѕСЃРЅРѕРІР°РЅРёРµ
 message Grounds {
-	optional string DocumentName = 1;										// имя документа
-	optional string DocumentNumber = 2;										// номер документа
-	optional string DocumentDate = 3;										// дата документа
-	optional string AdditionalInfo = 4;										// дополнительные сведения
+	optional string DocumentName = 1;										// РёРјСЏ РґРѕРєСѓРјРµРЅС‚Р°
+	optional string DocumentNumber = 2;										// РЅРѕРјРµСЂ РґРѕРєСѓРјРµРЅС‚Р°
+	optional string DocumentDate = 3;										// РґР°С‚Р° РґРѕРєСѓРјРµРЅС‚Р°
+	optional string AdditionalInfo = 4;										// РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРІРµРґРµРЅРёСЏ
 }

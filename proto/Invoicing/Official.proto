@@ -1,6 +1,6 @@
 package Diadoc.Api.Proto.Invoicing;
 
-// Должностное лицо
+// Р”РѕР»Р¶РЅРѕСЃС‚РЅРѕРµ Р»РёС†Рѕ
 message Official {
 	required string Surname = 1;
 	required string FirstName = 2;
@@ -9,11 +9,11 @@ message Official {
 }
 
 message Attorney {
-	optional string Date = 1;						// дата выдачи доверенности
-	optional string Number = 2;						// номер доверенности
-	optional string IssuerOrganizationName = 3;		// организация, представитель которой выдал доверенность
-	optional Official IssuerPerson = 4;				// лицо, выдавшее доверенность
-	optional string IssuerAdditionalInfo = 5;		// дополнительная информация о выдавшем доверенность
-	optional Official RecipientPerson = 6;			// лицо, получившее доверенность
-	optional string RecipientAdditionalInfo = 7;	// дополнительная информация о получившем доверенность
+	optional string Date = 1;						// РґР°С‚Р° РІС‹РґР°С‡Рё РґРѕРІРµСЂРµРЅРЅРѕСЃС‚Рё
+	optional string Number = 2;						// РЅРѕРјРµСЂ РґРѕРІРµСЂРµРЅРЅРѕСЃС‚Рё
+	optional string IssuerOrganizationName = 3;		// РѕСЂРіР°РЅРёР·Р°С†РёСЏ, РїСЂРµРґСЃС‚Р°РІРёС‚РµР»СЊ РєРѕС‚РѕСЂРѕР№ РІС‹РґР°Р» РґРѕРІРµСЂРµРЅРЅРѕСЃС‚СЊ
+	optional Official IssuerPerson = 4;				// Р»РёС†Рѕ, РІС‹РґР°РІС€РµРµ РґРѕРІРµСЂРµРЅРЅРѕСЃС‚СЊ
+	optional string IssuerAdditionalInfo = 5;		// РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІС‹РґР°РІС€РµРј РґРѕРІРµСЂРµРЅРЅРѕСЃС‚СЊ
+	optional Official RecipientPerson = 6;			// Р»РёС†Рѕ, РїРѕР»СѓС‡РёРІС€РµРµ РґРѕРІРµСЂРµРЅРЅРѕСЃС‚СЊ
+	optional string RecipientAdditionalInfo = 7;	// РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕР»СѓС‡РёРІС€РµРј РґРѕРІРµСЂРµРЅРЅРѕСЃС‚СЊ
 }

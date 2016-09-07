@@ -4,29 +4,29 @@ import "Invoicing/OrganizationInfo.proto";
 package Diadoc.Api.Proto.Invoicing;
 
 message InvoiceInfo {
-	required string InvoiceDate = 1;					// дата СФ
-	required string InvoiceNumber = 2;					// номер СФ
-	required DiadocOrganizationInfo Seller = 3;			// продавец
-	required DiadocOrganizationInfo Buyer = 4;			// покупатель
-	optional ShipperOrConsignee Shipper = 5;			// грузоотправитель
-	optional ShipperOrConsignee Consignee = 6;			// грузополучатель
-	required Signer Signer = 7;							// подписант
-	repeated PaymentDocumentInfo PaymentDocuments = 8;	// платежно-расчетные документы
-	repeated InvoiceItem Items = 9;						// информация о товарах
-	optional string Currency = 10;						// валюта (код)
-	optional string TotalWithVatExcluded = 11;			// сумма без учета налога
-	optional string Vat = 12;							// сумма налога
-	required string Total = 13;							// сумма всего
-	optional string AdditionalInfo = 14;				// информационное поле документа v5.01
-	optional string InvoiceRevisionDate = 15;			// дата ИСФ (обязательно при формировании InvoiceRevision)
-	optional string InvoiceRevisionNumber = 16;			// номер ИСФ (обязательно при формировании InvoiceRevision)
-	repeated AdditionalInfo AdditionalInfos = 17;		// информационное поле документа v5.02
-	optional InvoiceFormatVersion Version = 18 [default = DefaultInvoiceFormatVersion];	// версия формата ФУФа (для тестирования систем в переходном периоде)
+	required string InvoiceDate = 1;					// РґР°С‚Р° РЎР¤
+	required string InvoiceNumber = 2;					// РЅРѕРјРµСЂ РЎР¤
+	required DiadocOrganizationInfo Seller = 3;			// РїСЂРѕРґР°РІРµС†
+	required DiadocOrganizationInfo Buyer = 4;			// РїРѕРєСѓРїР°С‚РµР»СЊ
+	optional ShipperOrConsignee Shipper = 5;			// РіСЂСѓР·РѕРѕС‚РїСЂР°РІРёС‚РµР»СЊ
+	optional ShipperOrConsignee Consignee = 6;			// РіСЂСѓР·РѕРїРѕР»СѓС‡Р°С‚РµР»СЊ
+	required Signer Signer = 7;							// РїРѕРґРїРёСЃР°РЅС‚
+	repeated PaymentDocumentInfo PaymentDocuments = 8;	// РїР»Р°С‚РµР¶РЅРѕ-СЂР°СЃС‡РµС‚РЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹
+	repeated InvoiceItem Items = 9;						// РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РѕРІР°СЂР°С…
+	optional string Currency = 10;						// РІР°Р»СЋС‚Р° (РєРѕРґ)
+	optional string TotalWithVatExcluded = 11;			// СЃСѓРјРјР° Р±РµР· СѓС‡РµС‚Р° РЅР°Р»РѕРіР°
+	optional string Vat = 12;							// СЃСѓРјРјР° РЅР°Р»РѕРіР°
+	required string Total = 13;							// СЃСѓРјРјР° РІСЃРµРіРѕ
+	optional string AdditionalInfo = 14;				// РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ РґРѕРєСѓРјРµРЅС‚Р° v5.01
+	optional string InvoiceRevisionDate = 15;			// РґР°С‚Р° РРЎР¤ (РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РїСЂРё С„РѕСЂРјРёСЂРѕРІР°РЅРёРё InvoiceRevision)
+	optional string InvoiceRevisionNumber = 16;			// РЅРѕРјРµСЂ РРЎР¤ (РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РїСЂРё С„РѕСЂРјРёСЂРѕРІР°РЅРёРё InvoiceRevision)
+	repeated AdditionalInfo AdditionalInfos = 17;		// РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ РґРѕРєСѓРјРµРЅС‚Р° v5.02
+	optional InvoiceFormatVersion Version = 18 [default = DefaultInvoiceFormatVersion];	// РІРµСЂСЃРёСЏ С„РѕСЂРјР°С‚Р° Р¤РЈР¤Р° (РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ СЃРёСЃС‚РµРј РІ РїРµСЂРµС…РѕРґРЅРѕРј РїРµСЂРёРѕРґРµ)
 }
 
 message AdditionalInfo {
-	required string Id = 1;		// Идентификатор
-	required string Value = 2;	// Значение
+	required string Id = 1;		// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ
+	required string Value = 2;	// Р—РЅР°С‡РµРЅРёРµ
 }
 
 enum InvoiceFormatVersion {
@@ -36,25 +36,25 @@ enum InvoiceFormatVersion {
 }
 
 message InvoiceItem {
-	required string Product = 1;					// наименование товара
-	optional string Unit = 2;						// единицы измерения товара (код)
-	optional string Quantity = 3;					// количество единиц товара
-	optional string Price = 4;						// цена за единицу товара
-	repeated string CountriesOfOrigin = 5;			// страны происхождения товара (коды)  v5.01
-	repeated string CustomsDeclarationNumbers = 6;	// номера таможенных деклараций        v5.01
-	optional string Excise = 7;						// акциз
-	required TaxRate TaxRate = 8; 					// ставка налога
-	optional string SubtotalWithVatExcluded = 9;	// сумма без учета налога
-	optional string Vat = 10;						// сумма налога
-	required string Subtotal = 11;					// сумма всего
-	optional string AdditionalInfo = 12;			// информационное поле товара v5.01	
-	repeated CustomsDeclaration CustomsDeclarations = 13; // номера таможенных деклараций v5.02
-	repeated AdditionalInfo AdditionalInfos = 14;	// информационное поле товара v5.02
+	required string Product = 1;					// РЅР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РѕРІР°СЂР°
+	optional string Unit = 2;						// РµРґРёРЅРёС†С‹ РёР·РјРµСЂРµРЅРёСЏ С‚РѕРІР°СЂР° (РєРѕРґ)
+	optional string Quantity = 3;					// РєРѕР»РёС‡РµСЃС‚РІРѕ РµРґРёРЅРёС† С‚РѕРІР°СЂР°
+	optional string Price = 4;						// С†РµРЅР° Р·Р° РµРґРёРЅРёС†Сѓ С‚РѕРІР°СЂР°
+	repeated string CountriesOfOrigin = 5;			// СЃС‚СЂР°РЅС‹ РїСЂРѕРёСЃС…РѕР¶РґРµРЅРёСЏ С‚РѕРІР°СЂР° (РєРѕРґС‹)  v5.01
+	repeated string CustomsDeclarationNumbers = 6;	// РЅРѕРјРµСЂР° С‚Р°РјРѕР¶РµРЅРЅС‹С… РґРµРєР»Р°СЂР°С†РёР№        v5.01
+	optional string Excise = 7;						// Р°РєС†РёР·
+	required TaxRate TaxRate = 8; 					// СЃС‚Р°РІРєР° РЅР°Р»РѕРіР°
+	optional string SubtotalWithVatExcluded = 9;	// СЃСѓРјРјР° Р±РµР· СѓС‡РµС‚Р° РЅР°Р»РѕРіР°
+	optional string Vat = 10;						// СЃСѓРјРјР° РЅР°Р»РѕРіР°
+	required string Subtotal = 11;					// СЃСѓРјРјР° РІСЃРµРіРѕ
+	optional string AdditionalInfo = 12;			// РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ С‚РѕРІР°СЂР° v5.01	
+	repeated CustomsDeclaration CustomsDeclarations = 13; // РЅРѕРјРµСЂР° С‚Р°РјРѕР¶РµРЅРЅС‹С… РґРµРєР»Р°СЂР°С†РёР№ v5.02
+	repeated AdditionalInfo AdditionalInfos = 14;	// РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ С‚РѕРІР°СЂР° v5.02
 }
 
 message CustomsDeclaration {
-	required string CountryCode = 1;				// код страны происхождения товара
-	required string DeclarationNumber = 2;			// номер таможенной декларации
+	required string CountryCode = 1;				// РєРѕРґ СЃС‚СЂР°РЅС‹ РїСЂРѕРёСЃС…РѕР¶РґРµРЅРёСЏ С‚РѕРІР°СЂР°
+	required string DeclarationNumber = 2;			// РЅРѕРјРµСЂ С‚Р°РјРѕР¶РµРЅРЅРѕР№ РґРµРєР»Р°СЂР°С†РёРё
 }
 
 message PaymentDocumentInfo {
@@ -63,8 +63,8 @@ message PaymentDocumentInfo {
 }
 
 message ShipperOrConsignee {
-	optional bool SameAsSellerOrBuyer = 1;	// совпадает с продавцом/покупателем
-	optional OrganizationInfo OrgInfo = 2;	// реквизиты организации
+	optional bool SameAsSellerOrBuyer = 1;	// СЃРѕРІРїР°РґР°РµС‚ СЃ РїСЂРѕРґР°РІС†РѕРј/РїРѕРєСѓРїР°С‚РµР»РµРј
+	optional OrganizationInfo OrgInfo = 2;	// СЂРµРєРІРёР·РёС‚С‹ РѕСЂРіР°РЅРёР·Р°С†РёРё
 }
 
 enum TaxRate {
@@ -78,56 +78,56 @@ enum TaxRate {
 }
 
 message InvoiceCorrectionInfo {
-	required string InvoiceDate = 1;						// дата СФ
-	required string InvoiceNumber = 2;						// номер СФ
-	optional string InvoiceRevisionDate = 3;				// дата ИСФ (заполняется, если КСФ/ИКСФ формируется на исправленный СФ)
-	optional string InvoiceRevisionNumber = 4;				// номер ИСФ (заполняется, если КСФ/ИКСФ формируется на исправленный СФ)
-	required string InvoiceCorrectionDate = 5;				// дата КСФ
-	required string InvoiceCorrectionNumber = 6;			// номер КСФ
-	optional string InvoiceCorrectionRevisionDate = 7;		// дата ИКСФ (обязательно при формировании InvoiceCorrectionRevision)
-	optional string InvoiceCorrectionRevisionNumber = 8;	// номер ИКСФ (обязательно при формировании InvoiceCorrectionRevision)
-	required DiadocOrganizationInfo Seller = 9;				// продавец
-	required DiadocOrganizationInfo Buyer = 10;				// покупатель
-	required Signer Signer = 11;							// подписант
-	repeated InvoiceCorrectionItem Items = 12;				// информация о товарах
-	optional string Currency = 13;							// валюта (код)
-	optional InvoiceTotalsDiff TotalsInc = 14;				// суммы к увеличению
-	optional InvoiceTotalsDiff TotalsDec = 15;				// суммы к уменьшению
-	optional string AdditionalInfo = 16;					// информационное поле документа v5.01
-	repeated AdditionalInfo AdditionalInfos = 17;			// информационное поле документа v5.02
-	optional InvoiceFormatVersion Version = 18 [default = DefaultInvoiceFormatVersion];	// версия формата ФУФа (для тестирования систем в переходном периоде)
+	required string InvoiceDate = 1;						// РґР°С‚Р° РЎР¤
+	required string InvoiceNumber = 2;						// РЅРѕРјРµСЂ РЎР¤
+	optional string InvoiceRevisionDate = 3;				// РґР°С‚Р° РРЎР¤ (Р·Р°РїРѕР»РЅСЏРµС‚СЃСЏ, РµСЃР»Рё РљРЎР¤/РРљРЎР¤ С„РѕСЂРјРёСЂСѓРµС‚СЃСЏ РЅР° РёСЃРїСЂР°РІР»РµРЅРЅС‹Р№ РЎР¤)
+	optional string InvoiceRevisionNumber = 4;				// РЅРѕРјРµСЂ РРЎР¤ (Р·Р°РїРѕР»РЅСЏРµС‚СЃСЏ, РµСЃР»Рё РљРЎР¤/РРљРЎР¤ С„РѕСЂРјРёСЂСѓРµС‚СЃСЏ РЅР° РёСЃРїСЂР°РІР»РµРЅРЅС‹Р№ РЎР¤)
+	required string InvoiceCorrectionDate = 5;				// РґР°С‚Р° РљРЎР¤
+	required string InvoiceCorrectionNumber = 6;			// РЅРѕРјРµСЂ РљРЎР¤
+	optional string InvoiceCorrectionRevisionDate = 7;		// РґР°С‚Р° РРљРЎР¤ (РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РїСЂРё С„РѕСЂРјРёСЂРѕРІР°РЅРёРё InvoiceCorrectionRevision)
+	optional string InvoiceCorrectionRevisionNumber = 8;	// РЅРѕРјРµСЂ РРљРЎР¤ (РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РїСЂРё С„РѕСЂРјРёСЂРѕРІР°РЅРёРё InvoiceCorrectionRevision)
+	required DiadocOrganizationInfo Seller = 9;				// РїСЂРѕРґР°РІРµС†
+	required DiadocOrganizationInfo Buyer = 10;				// РїРѕРєСѓРїР°С‚РµР»СЊ
+	required Signer Signer = 11;							// РїРѕРґРїРёСЃР°РЅС‚
+	repeated InvoiceCorrectionItem Items = 12;				// РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РѕРІР°СЂР°С…
+	optional string Currency = 13;							// РІР°Р»СЋС‚Р° (РєРѕРґ)
+	optional InvoiceTotalsDiff TotalsInc = 14;				// СЃСѓРјРјС‹ Рє СѓРІРµР»РёС‡РµРЅРёСЋ
+	optional InvoiceTotalsDiff TotalsDec = 15;				// СЃСѓРјРјС‹ Рє СѓРјРµРЅСЊС€РµРЅРёСЋ
+	optional string AdditionalInfo = 16;					// РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ РґРѕРєСѓРјРµРЅС‚Р° v5.01
+	repeated AdditionalInfo AdditionalInfos = 17;			// РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ РґРѕРєСѓРјРµРЅС‚Р° v5.02
+	optional InvoiceFormatVersion Version = 18 [default = DefaultInvoiceFormatVersion];	// РІРµСЂСЃРёСЏ С„РѕСЂРјР°С‚Р° Р¤РЈР¤Р° (РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ СЃРёСЃС‚РµРј РІ РїРµСЂРµС…РѕРґРЅРѕРј РїРµСЂРёРѕРґРµ)
 }
 
 message InvoiceTotalsDiff {
-	optional string TotalWithVatExcluded = 1;	// сумма без учета налога
-	optional string Vat = 2;					// сумма налога
-	required string Total = 3;					// сумма всего
+	optional string TotalWithVatExcluded = 1;	// СЃСѓРјРјР° Р±РµР· СѓС‡РµС‚Р° РЅР°Р»РѕРіР°
+	optional string Vat = 2;					// СЃСѓРјРјР° РЅР°Р»РѕРіР°
+	required string Total = 3;					// СЃСѓРјРјР° РІСЃРµРіРѕ
 }
 
 message InvoiceCorrectionItem {
-	required string Product = 1;								// наименование товара
-	required CorrectableInvoiceItemFields OriginalValues = 2;	// значения до изменения
-	required CorrectableInvoiceItemFields CorrectedValues = 3;	// значения после изменения
-	optional InvoiceItemAmountsDiff AmountsInc = 4;				// суммы к увеличению
-	optional InvoiceItemAmountsDiff AmountsDec = 5;				// суммы к уменьшению
-	optional string AdditionalInfo = 6;							// информационное поле товара v5.01
-	repeated AdditionalInfo AdditionalInfos = 7;			// информационное поле документа v5.02
+	required string Product = 1;								// РЅР°РёРјРµРЅРѕРІР°РЅРёРµ С‚РѕРІР°СЂР°
+	required CorrectableInvoiceItemFields OriginalValues = 2;	// Р·РЅР°С‡РµРЅРёСЏ РґРѕ РёР·РјРµРЅРµРЅРёСЏ
+	required CorrectableInvoiceItemFields CorrectedValues = 3;	// Р·РЅР°С‡РµРЅРёСЏ РїРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ
+	optional InvoiceItemAmountsDiff AmountsInc = 4;				// СЃСѓРјРјС‹ Рє СѓРІРµР»РёС‡РµРЅРёСЋ
+	optional InvoiceItemAmountsDiff AmountsDec = 5;				// СЃСѓРјРјС‹ Рє СѓРјРµРЅСЊС€РµРЅРёСЋ
+	optional string AdditionalInfo = 6;							// РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ С‚РѕРІР°СЂР° v5.01
+	repeated AdditionalInfo AdditionalInfos = 7;			// РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ РґРѕРєСѓРјРµРЅС‚Р° v5.02
 }
 
 message CorrectableInvoiceItemFields {
-	optional string Unit = 1;						// единицы измерения товара (код)
-	optional string Quantity = 2;					// количество единиц товара
-	optional string Price = 3;						// цена за единицу товара
-	optional string Excise = 4;						// акциз
-	required TaxRate TaxRate = 5;					// ставка налога
-	optional string SubtotalWithVatExcluded = 6;	// сумма без учета налога
-	optional string Vat = 7;						// сумма налога
-	required string Subtotal = 8;					// сумма с учетом налога
+	optional string Unit = 1;						// РµРґРёРЅРёС†С‹ РёР·РјРµСЂРµРЅРёСЏ С‚РѕРІР°СЂР° (РєРѕРґ)
+	optional string Quantity = 2;					// РєРѕР»РёС‡РµСЃС‚РІРѕ РµРґРёРЅРёС† С‚РѕРІР°СЂР°
+	optional string Price = 3;						// С†РµРЅР° Р·Р° РµРґРёРЅРёС†Сѓ С‚РѕРІР°СЂР°
+	optional string Excise = 4;						// Р°РєС†РёР·
+	required TaxRate TaxRate = 5;					// СЃС‚Р°РІРєР° РЅР°Р»РѕРіР°
+	optional string SubtotalWithVatExcluded = 6;	// СЃСѓРјРјР° Р±РµР· СѓС‡РµС‚Р° РЅР°Р»РѕРіР°
+	optional string Vat = 7;						// СЃСѓРјРјР° РЅР°Р»РѕРіР°
+	required string Subtotal = 8;					// СЃСѓРјРјР° СЃ СѓС‡РµС‚РѕРј РЅР°Р»РѕРіР°
 }
 
 message InvoiceItemAmountsDiff {
-	optional string Excise = 1;						// акциз
-	optional string SubtotalWithVatExcluded = 2;	// сумма без учета налога
-	optional string Vat = 3;						// сумма налога
-	required string Subtotal = 4;					// сумма с учетом налога
+	optional string Excise = 1;						// Р°РєС†РёР·
+	optional string SubtotalWithVatExcluded = 2;	// СЃСѓРјРјР° Р±РµР· СѓС‡РµС‚Р° РЅР°Р»РѕРіР°
+	optional string Vat = 3;						// СЃСѓРјРјР° РЅР°Р»РѕРіР°
+	required string Subtotal = 4;					// СЃСѓРјРјР° СЃ СѓС‡РµС‚РѕРј РЅР°Р»РѕРіР°
 }
