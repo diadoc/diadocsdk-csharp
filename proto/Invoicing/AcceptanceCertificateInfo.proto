@@ -4,52 +4,52 @@ import "Invoicing/OrganizationInfo.proto";
 
 package Diadoc.Api.Proto.Invoicing;
 
-// Со стороны исполнителя
+// РЎРѕ СЃС‚РѕСЂРѕРЅС‹ РёСЃРїРѕР»РЅРёС‚РµР»СЏ
 message AcceptanceCertificateSellerTitleInfo {
-	required DiadocOrganizationInfo Seller = 1;								// исполнитель (продавец услуг)
-	required DocflowParticipant Buyer = 2;									// заказчик (покупатель услуг)
-	required string DocumentDate = 3;										// дата составления акта о выполнении
-	optional string DocumentNumber = 4;										// номер акта
-	required string DocumentTitle = 5;										// заголовок документа
-	repeated WorkDescription Works = 6;										// описание выполненных работ
-	required AcceptanceCertificateSignatureInfo Signature = 7;				// сведения о подписи акта
-	required Signer Signer = 8;												// подписант
-	optional string AdditionalInfo = 9;										// дополнительная информация
+	required DiadocOrganizationInfo Seller = 1;								// РёСЃРїРѕР»РЅРёС‚РµР»СЊ (РїСЂРѕРґР°РІРµС† СѓСЃР»СѓРі)
+	required DocflowParticipant Buyer = 2;									// Р·Р°РєР°Р·С‡РёРє (РїРѕРєСѓРїР°С‚РµР»СЊ СѓСЃР»СѓРі)
+	required string DocumentDate = 3;										// РґР°С‚Р° СЃРѕСЃС‚Р°РІР»РµРЅРёСЏ Р°РєС‚Р° Рѕ РІС‹РїРѕР»РЅРµРЅРёРё
+	optional string DocumentNumber = 4;										// РЅРѕРјРµСЂ Р°РєС‚Р°
+	required string DocumentTitle = 5;										// Р·Р°РіРѕР»РѕРІРѕРє РґРѕРєСѓРјРµРЅС‚Р°
+	repeated WorkDescription Works = 6;										// РѕРїРёСЃР°РЅРёРµ РІС‹РїРѕР»РЅРµРЅРЅС‹С… СЂР°Р±РѕС‚
+	required AcceptanceCertificateSignatureInfo Signature = 7;				// СЃРІРµРґРµРЅРёСЏ Рѕ РїРѕРґРїРёСЃРё Р°РєС‚Р°
+	required Signer Signer = 8;												// РїРѕРґРїРёСЃР°РЅС‚
+	optional string AdditionalInfo = 9;										// РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
 }
 
-// Со стороны заказчика
+// РЎРѕ СЃС‚РѕСЂРѕРЅС‹ Р·Р°РєР°Р·С‡РёРєР°
 message AcceptanceCertificateBuyerTitleInfo {
-	optional string Complaints = 1;											// претензии
-	required AcceptanceCertificateSignatureInfo Signature = 2;				// сведения о подписи акта
-	required Signer Signer = 3;												// подписант
-	optional string AdditionalInfo = 4;										// дополнительная информация
+	optional string Complaints = 1;											// РїСЂРµС‚РµРЅР·РёРё
+	required AcceptanceCertificateSignatureInfo Signature = 2;				// СЃРІРµРґРµРЅРёСЏ Рѕ РїРѕРґРїРёСЃРё Р°РєС‚Р°
+	required Signer Signer = 3;												// РїРѕРґРїРёСЃР°РЅС‚
+	optional string AdditionalInfo = 4;										// РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
 }
 
 message AcceptanceCertificateSignatureInfo {
-	optional string SignatureDate = 1;										// дата подписи акта исполнителем / заказчиком
-	optional Official Official = 2;											// лицо, подписывающее со стороны исполнителя / заказчика
-	optional Attorney Attorney = 3;											// сведения о доверенности подписывающего со стороны исполнителя / заказчика
+	optional string SignatureDate = 1;										// РґР°С‚Р° РїРѕРґРїРёСЃРё Р°РєС‚Р° РёСЃРїРѕР»РЅРёС‚РµР»РµРј / Р·Р°РєР°Р·С‡РёРєРѕРј
+	optional Official Official = 2;											// Р»РёС†Рѕ, РїРѕРґРїРёСЃС‹РІР°СЋС‰РµРµ СЃРѕ СЃС‚РѕСЂРѕРЅС‹ РёСЃРїРѕР»РЅРёС‚РµР»СЏ / Р·Р°РєР°Р·С‡РёРєР°
+	optional Attorney Attorney = 3;											// СЃРІРµРґРµРЅРёСЏ Рѕ РґРѕРІРµСЂРµРЅРЅРѕСЃС‚Рё РїРѕРґРїРёСЃС‹РІР°СЋС‰РµРіРѕ СЃРѕ СЃС‚РѕСЂРѕРЅС‹ РёСЃРїРѕР»РЅРёС‚РµР»СЏ / Р·Р°РєР°Р·С‡РёРєР°
 }
 
-// Описание работ
+// РћРїРёСЃР°РЅРёРµ СЂР°Р±РѕС‚
 message WorkDescription {
-	optional string StartingDate = 1;										// начало периода выполнения работ
-	optional string CompletionDate = 2;										// окончание периода выполнения работ
-	optional string TotalWithVatExcluded = 3;								// сумма без учета НДС - итого
-	optional string Vat = 4;												// сумма НДС - итого
-	required string Total = 5;												// сумма с учетом НДС - итого
-	repeated WorkItem Items = 6;											// сведения о произведенной работе
+	optional string StartingDate = 1;										// РЅР°С‡Р°Р»Рѕ РїРµСЂРёРѕРґР° РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚
+	optional string CompletionDate = 2;										// РѕРєРѕРЅС‡Р°РЅРёРµ РїРµСЂРёРѕРґР° РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚
+	optional string TotalWithVatExcluded = 3;								// СЃСѓРјРјР° Р±РµР· СѓС‡РµС‚Р° РќР”РЎ - РёС‚РѕРіРѕ
+	optional string Vat = 4;												// СЃСѓРјРјР° РќР”РЎ - РёС‚РѕРіРѕ
+	required string Total = 5;												// СЃСѓРјРјР° СЃ СѓС‡РµС‚РѕРј РќР”РЎ - РёС‚РѕРіРѕ
+	repeated WorkItem Items = 6;											// СЃРІРµРґРµРЅРёСЏ Рѕ РїСЂРѕРёР·РІРµРґРµРЅРЅРѕР№ СЂР°Р±РѕС‚Рµ
 }
 
 message WorkItem {
-	optional string Name = 1;												// наименование
-	optional string Description = 2;										// описание работы
-	optional string UnitCode = 3;											// код единицы измерения
-	optional string UnitName = 4;											// наименование единицы измерения
-	optional string Price = 5;												// цена
-	optional string Quantity = 6;											// количество
-	optional string SubtotalWithVatExcluded = 7;							// сумма без учета НДС
-	optional string Vat = 8;												// сумма НДС
-	optional string Subtotal = 9;											// сумма с учетом НДС
-	optional string AdditionalInfo = 10;									// информационное поле сведений о работе (услуге)
+	optional string Name = 1;												// РЅР°РёРјРµРЅРѕРІР°РЅРёРµ
+	optional string Description = 2;										// РѕРїРёСЃР°РЅРёРµ СЂР°Р±РѕС‚С‹
+	optional string UnitCode = 3;											// РєРѕРґ РµРґРёРЅРёС†С‹ РёР·РјРµСЂРµРЅРёСЏ
+	optional string UnitName = 4;											// РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РµРґРёРЅРёС†С‹ РёР·РјРµСЂРµРЅРёСЏ
+	optional string Price = 5;												// С†РµРЅР°
+	optional string Quantity = 6;											// РєРѕР»РёС‡РµСЃС‚РІРѕ
+	optional string SubtotalWithVatExcluded = 7;							// СЃСѓРјРјР° Р±РµР· СѓС‡РµС‚Р° РќР”РЎ
+	optional string Vat = 8;												// СЃСѓРјРјР° РќР”РЎ
+	optional string Subtotal = 9;											// СЃСѓРјРјР° СЃ СѓС‡РµС‚РѕРј РќР”РЎ
+	optional string AdditionalInfo = 10;									// РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ СЃРІРµРґРµРЅРёР№ Рѕ СЂР°Р±РѕС‚Рµ (СѓСЃР»СѓРіРµ)
 }

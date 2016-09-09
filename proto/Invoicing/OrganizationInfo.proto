@@ -3,31 +3,31 @@ import "Address.proto";
 package Diadoc.Api.Proto.Invoicing;
 
 message DocflowParticipant {
-	optional string BoxId = 1;								// идентификатор ящика в Диадоке
-	optional string Inn = 2;								// ИНН организации-участника обмена
-	optional string Kpp = 3;								// КПП организации-участника обмена
-	optional string FnsParticipantId = 4;					// идентификатор участника ЭДО
+	optional string BoxId = 1;								// РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЏС‰РёРєР° РІ Р”РёР°РґРѕРєРµ
+	optional string Inn = 2;								// РРќРќ РѕСЂРіР°РЅРёР·Р°С†РёРё-СѓС‡Р°СЃС‚РЅРёРєР° РѕР±РјРµРЅР°
+	optional string Kpp = 3;								// РљРџРџ РѕСЂРіР°РЅРёР·Р°С†РёРё-СѓС‡Р°СЃС‚РЅРёРєР° РѕР±РјРµРЅР°
+	optional string FnsParticipantId = 4;					// РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СѓС‡Р°СЃС‚РЅРёРєР° Р­Р”Рћ
 }
 
 message DiadocOrganizationInfo {
-	optional string BoxId = 1;								// идентификатор ящика в Диадоке
-	optional OrganizationInfo OrgInfo = 2;					// реквизиты организации
+	optional string BoxId = 1;								// РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЏС‰РёРєР° РІ Р”РёР°РґРѕРєРµ
+	optional OrganizationInfo OrgInfo = 2;					// СЂРµРєРІРёР·РёС‚С‹ РѕСЂРіР°РЅРёР·Р°С†РёРё
 }
 
 message OrganizationInfo {
-	required string Name = 1;								// название
-	optional string Inn = 2;								// ИНН
-	optional string Kpp = 3;								// КПП
-	required Address Address = 4;							// адрес
-	optional bool IsSoleProprietor = 5 [default = false];	// организация - это ИП
-	optional string Okopf = 6;								// код организационно-правовой формы по ОКОПФ
-	optional string Okpo = 7;								// код в общероссийском классификаторе предприятий и организаций
-	optional string Okdp = 8;								// код основного вида деятельности по ОКДП
-	optional string Phone = 9;								// телефон
-	optional string Fax = 10;								// факс
-	optional string BankAccountNumber = 11;					// номер банковского счета
-	optional string BankName = 12;							// название банка
-	optional string BankId = 13;							// БИК
-	optional string Department = 14;						// структурное подразделение
-	optional string FnsParticipantId = 15;					// идентификатор участника ЭДО
+	required string Name = 1;								// РЅР°Р·РІР°РЅРёРµ
+	optional string Inn = 2;								// РРќРќ
+	optional string Kpp = 3;								// РљРџРџ
+	required Address Address = 4;							// Р°РґСЂРµСЃ
+	optional bool IsSoleProprietor = 5 [default = false];	// РѕСЂРіР°РЅРёР·Р°С†РёСЏ - СЌС‚Рѕ РРџ
+	optional string Okopf = 6;								// РєРѕРґ РѕСЂРіР°РЅРёР·Р°С†РёРѕРЅРЅРѕ-РїСЂР°РІРѕРІРѕР№ С„РѕСЂРјС‹ РїРѕ РћРљРћРџР¤
+	optional string Okpo = 7;								// РєРѕРґ РІ РѕР±С‰РµСЂРѕСЃСЃРёР№СЃРєРѕРј РєР»Р°СЃСЃРёС„РёРєР°С‚РѕСЂРµ РїСЂРµРґРїСЂРёСЏС‚РёР№ Рё РѕСЂРіР°РЅРёР·Р°С†РёР№
+	optional string Okdp = 8;								// РєРѕРґ РѕСЃРЅРѕРІРЅРѕРіРѕ РІРёРґР° РґРµСЏС‚РµР»СЊРЅРѕСЃС‚Рё РїРѕ РћРљР”Рџ
+	optional string Phone = 9;								// С‚РµР»РµС„РѕРЅ
+	optional string Fax = 10;								// С„Р°РєСЃ
+	optional string BankAccountNumber = 11;					// РЅРѕРјРµСЂ Р±Р°РЅРєРѕРІСЃРєРѕРіРѕ СЃС‡РµС‚Р°
+	optional string BankName = 12;							// РЅР°Р·РІР°РЅРёРµ Р±Р°РЅРєР°
+	optional string BankId = 13;							// Р‘РРљ
+	optional string Department = 14;						// СЃС‚СЂСѓРєС‚СѓСЂРЅРѕРµ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ
+	optional string FnsParticipantId = 15;					// РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СѓС‡Р°СЃС‚РЅРёРєР° Р­Р”Рћ
 }
