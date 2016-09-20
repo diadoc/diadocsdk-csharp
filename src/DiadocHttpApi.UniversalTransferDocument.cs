@@ -17,9 +17,21 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, query.BuildPathAndQuery(), info);
 		}
 
+		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo info,
+			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			var queryString = string.Format("/GenerateUniversalTransferDocumentXmlForBuyer?boxId={0}&sellerTitleMessageId={1}&sellerTitleAttachmentId={2}", boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+			return PerformGenerateXmlHttpRequest(authToken, queryString, info);
+		}
+
 		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent)
 		{
 			return PerformHttpRequest<UniversalTransferDocumentSellerTitleInfo>(null, "POST", "/ParseUniversalTransferDocumentSellerTitleXml", xmlContent);
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent)
+		{
+			return PerformHttpRequest<UniversalTransferDocumentBuyerTitleInfo>(null, "POST", "/ParseUniversalTransferDocumentBuyerTitleXml", xmlContent);
 		}
 	}
 }

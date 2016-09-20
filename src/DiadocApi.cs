@@ -352,6 +352,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForSeller(authToken, sellerInfo, disableValidation);
 		}
 
+		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo,
+			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
+			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+		}
+
 		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -575,6 +582,11 @@ namespace Diadoc.Api
 		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXml(xmlContent);
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent)
+		{
+			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXml(xmlContent);
 		}
 
 		public OrganizationUsersList GetOrganizationUsers(string authToken, string orgId)

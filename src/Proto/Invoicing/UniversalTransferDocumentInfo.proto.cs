@@ -766,6 +766,91 @@ namespace Diadoc.Api.Proto.Invoicing
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UniversalTransferDocumentBuyerTitleInfo")]
+  public partial class UniversalTransferDocumentBuyerTitleInfo : global::ProtoBuf.IExtensible
+  {
+    public UniversalTransferDocumentBuyerTitleInfo() {}
+    
+    private string _DocumentCreator;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"DocumentCreator", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocumentCreator
+    {
+      get { return _DocumentCreator; }
+      set { _DocumentCreator = value; }
+    }
+
+    private string _DocumentCreatorBase = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DocumentCreatorBase", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DocumentCreatorBase
+    {
+      get { return _DocumentCreatorBase; }
+      set { _DocumentCreatorBase = value; }
+    }
+
+    private string _OperationCode = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"OperationCode", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string OperationCode
+    {
+      get { return _OperationCode; }
+      set { _OperationCode = value; }
+    }
+    private string _OperationContent;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"OperationContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OperationContent
+    {
+      get { return _OperationContent; }
+      set { _OperationContent = value; }
+    }
+
+    private string _AcceptanceDate = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"AcceptanceDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AcceptanceDate
+    {
+      get { return _AcceptanceDate; }
+      set { _AcceptanceDate = value; }
+    }
+
+    private Diadoc.Api.Proto.Invoicing.Employee _Employee = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Employee", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Invoicing.Employee Employee
+    {
+      get { return _Employee; }
+      set { _Employee = value; }
+    }
+
+    private Diadoc.Api.Proto.Invoicing.OtherIssuer _OtherIssuer = null;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"OtherIssuer", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Invoicing.OtherIssuer OtherIssuer
+    {
+      get { return _OtherIssuer; }
+      set { _OtherIssuer = value; }
+    }
+
+    private Diadoc.Api.Proto.Invoicing.AdditionalInfoId _AdditionalInfoId = null;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"AdditionalInfoId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Invoicing.AdditionalInfoId AdditionalInfoId
+    {
+      get { return _AdditionalInfoId; }
+      set { _AdditionalInfoId = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> _Signers = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner>();
+    [global::ProtoBuf.ProtoMember(9, Name=@"Signers", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> Signers
+    {
+      get { return _Signers; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"FunctionType")]
     public enum FunctionType
     {

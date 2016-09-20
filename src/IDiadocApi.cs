@@ -63,6 +63,7 @@ namespace Diadoc.Api
 		GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken, UniversalTransferDocumentSellerTitleInfo info, bool disableValidation = false);
+		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, DraftToSend draftToSend, string operationId = null);
@@ -96,6 +97,7 @@ namespace Diadoc.Api
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent);
+		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
 		SignatureRejectionInfo ParseSignatureRejectionXml(byte[] signatureRejectionXmlContent);
 		IDocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId);
