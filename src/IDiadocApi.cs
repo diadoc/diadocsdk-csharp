@@ -9,6 +9,7 @@ using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Recognition;
+using System.Collections.Generic;
 
 namespace Diadoc.Api
 {
@@ -62,9 +63,10 @@ namespace Diadoc.Api
 		GeneratedFile GenerateTorg12XmlForBuyer(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 		GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
-		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken, UniversalTransferDocumentSellerTitleInfo info, bool disableValidation = false);
+		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken, UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false);
+		Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, DraftToSend draftToSend, string operationId = null);
 		PrintFormResult GeneratePrintForm(string authToken, string boxId, string messageId, string documentId);
@@ -98,6 +100,9 @@ namespace Diadoc.Api
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
+		OrganizationUsersList GetOrganizationUsers(string authToken, string orgId);
+		List<Organization> GetOrganizationsByInnList(GetOrganizationsByInnListRequest innList);
+		List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList);
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
 		SignatureRejectionInfo ParseSignatureRejectionXml(byte[] signatureRejectionXmlContent);
 		IDocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId);
