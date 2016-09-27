@@ -15,6 +15,52 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
   {
     public ExtendedSigner() {}
     
+
+    private string _BoxId = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"BoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string BoxId
+    {
+      get { return _BoxId; }
+      set { _BoxId = value; }
+    }
+
+    private byte[] _SignerCertificate = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SignerCertificate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public byte[] SignerCertificate
+    {
+      get { return _SignerCertificate; }
+      set { _SignerCertificate = value; }
+    }
+
+    private string _SignerCertificateThumbprint = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SignerCertificateThumbprint", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string SignerCertificateThumbprint
+    {
+      get { return _SignerCertificateThumbprint; }
+      set { _SignerCertificateThumbprint = value; }
+    }
+
+    private Diadoc.Api.Proto.Invoicing.Signers.ExtendedSignerDetails _SignerDetails = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"SignerDetails", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Invoicing.Signers.ExtendedSignerDetails SignerDetails
+    {
+      get { return _SignerDetails; }
+      set { _SignerDetails = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ExtendedSignerDetails")]
+  public partial class ExtendedSignerDetails : global::ProtoBuf.IExtensible
+  {
+    public ExtendedSignerDetails() {}
+    
     private string _Surname;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Surname", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string Surname
