@@ -6,6 +6,7 @@
 import "DocumentId.proto";
 import "CustomDataItem.proto";
 import "Invoicing/Signer.proto";
+import "Invoicing/ExtendedSigner.proto";
 import "Events/ResolutionInfo.proto";
 import "Events/ResolutionRequestInfo.proto";
 import "Invoicing/OrganizationInfo.proto";
@@ -380,11 +381,13 @@ message DraftDocumentToPatch {
 	required DocumentId DocumentId = 1;
 	optional string ToBoxId = 2;
 	optional Invoicing.Signer Signer = 3;
+	repeated Invoicing.Signers.ExtendedSigner ExtendedSigner = 4;
 }
 
 message DocumentToPatch {
 	required DocumentId DocumentId = 1;
 	optional Invoicing.Signer Signer = 2;
+	repeated Invoicing.Signers.ExtendedSigner ExtendedSigner = 3;
 }
 
 message DocumentPatchedContent {
