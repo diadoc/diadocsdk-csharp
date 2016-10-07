@@ -11,6 +11,7 @@
 // Note: requires additional types generated from: DocumentId.proto
 // Note: requires additional types generated from: CustomDataItem.proto
 // Note: requires additional types generated from: Invoicing/Signer.proto
+// Note: requires additional types generated from: Invoicing/ExtendedSigner.proto
 // Note: requires additional types generated from: Events/ResolutionInfo.proto
 // Note: requires additional types generated from: Events/ResolutionRequestInfo.proto
 // Note: requires additional types generated from: Invoicing/OrganizationInfo.proto
@@ -2343,6 +2344,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _Signer; }
       set { _Signer = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> _ExtendedSigner = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"ExtendedSigner", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> ExtendedSigner
+    {
+      get { return _ExtendedSigner; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2369,6 +2377,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _Signer; }
       set { _Signer = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> _ExtendedSigner = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"ExtendedSigner", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> ExtendedSigner
+    {
+      get { return _ExtendedSigner; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
