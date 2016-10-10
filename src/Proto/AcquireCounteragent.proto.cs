@@ -85,6 +85,32 @@ namespace Diadoc.Api.Proto
       get { return _SignatureRequested; }
       set { _SignatureRequested = value; }
     }
+
+    private string _Type = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Type
+    {
+      get { return _Type; }
+      set { _Type = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CustomDocument")]
+  public partial class CustomDocument : global::ProtoBuf.IExtensible
+  {
+    public CustomDocument() {}
+    
+    private string _Type;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Type
+    {
+      get { return _Type; }
+      set { _Type = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

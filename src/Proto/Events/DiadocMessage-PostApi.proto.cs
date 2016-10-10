@@ -269,6 +269,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _UniversalTransferDocumentSellerTitles; }
     }
   
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDocumentAttachment> _CustomDocumentAttachments = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDocumentAttachment>();
+    [global::ProtoBuf.ProtoMember(34, Name=@"CustomDocumentAttachments", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDocumentAttachment> CustomDocumentAttachments
+    {
+      get { return _CustomDocumentAttachments; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -1618,6 +1625,76 @@ namespace Diadoc.Api.Proto.Events
       get { return _CustomData; }
     }
   
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CustomDocumentAttachment")]
+  public partial class CustomDocumentAttachment : global::ProtoBuf.IExtensible
+  {
+    public CustomDocumentAttachment() {}
+    
+    private Diadoc.Api.Proto.Events.SignedContent _SignedContent;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"SignedContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Events.SignedContent SignedContent
+    {
+      get { return _SignedContent; }
+      set { _SignedContent = value; }
+    }
+    private string _FileName;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"FileName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string FileName
+    {
+      get { return _FileName; }
+      set { _FileName = value; }
+    }
+
+    private string _Comment = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Comment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Comment
+    {
+      get { return _Comment; }
+      set { _Comment = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId> _InitialDocumentIds = new global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId>();
+    [global::ProtoBuf.ProtoMember(5, Name=@"InitialDocumentIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId> InitialDocumentIds
+    {
+      get { return _InitialDocumentIds; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId> _SubordinateDocumentIds = new global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"SubordinateDocumentIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId> SubordinateDocumentIds
+    {
+      get { return _SubordinateDocumentIds; }
+    }
+  
+
+    private string _CustomDocumentId = "";
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"CustomDocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string CustomDocumentId
+    {
+      get { return _CustomDocumentId; }
+      set { _CustomDocumentId = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.CustomDataItem> _CustomData = new global::System.Collections.Generic.List<Diadoc.Api.Proto.CustomDataItem>();
+    [global::ProtoBuf.ProtoMember(11, Name=@"CustomData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.CustomDataItem> CustomData
+    {
+      get { return _CustomData; }
+    }
+  
+    private string _Type;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Type
+    {
+      get { return _Type; }
+      set { _Type = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
