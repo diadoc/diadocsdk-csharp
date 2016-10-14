@@ -322,7 +322,7 @@ public static string ClearVersionTag(string lastestTag)
 		lastestTag = lastestTag.Substring("versions/".Length);
 	}
 	
-	var match = Regex.Match(lastestTag, @"^([0-9]+.[0-9]+.[0-9]*)");
+	var match = Regex.Match(lastestTag, @"^([0-9]+\.[0-9]+(\.[0-9])*)");
 	return match.Success
 		? match.Value
 		: lastestTag;
