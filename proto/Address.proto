@@ -7,18 +7,18 @@ message Address {
 }
 
 message RussianAddress {
-	optional string ZipCode = 1;	// индекс
-	required string Region = 2;		// регион (код)
-	optional string Territory = 3;	// район
-	optional string City = 4;		// город
-	optional string Locality = 5;	// населенный пункт
-	optional string Street = 6;		// улица
-	optional string Building = 7;	// дом
-	optional string Block = 8;		// корпус
-	optional string Apartment = 9;	// квартира
+	optional string ZipCode = 1;	// РёРЅРґРµРєСЃ
+	required string Region = 2;		// СЂРµРіРёРѕРЅ (РєРѕРґ)
+	optional string Territory = 3;	// СЂР°Р№РѕРЅ
+	optional string City = 4;		// РіРѕСЂРѕРґ
+	optional string Locality = 5;	// РЅР°СЃРµР»РµРЅРЅС‹Р№ РїСѓРЅРєС‚
+	optional string Street = 6;		// СѓР»РёС†Р°
+	optional string Building = 7;	// РґРѕРј
+	optional string Block = 8;		// РєРѕСЂРїСѓСЃ
+	optional string Apartment = 9;	// РєРІР°СЂС‚РёСЂР°
 }
 
 message ForeignAddress {
-	required string Country = 1;	// страна (код)
-	required string Address = 2;	// текст адреса
+	required string Country = 1;	// СЃС‚СЂР°РЅР° (РєРѕРґ)
+	required string Address = 2;	// С‚РµРєСЃС‚ Р°РґСЂРµСЃР°
 }
