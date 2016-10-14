@@ -2,7 +2,7 @@ package Diadoc.Api.Proto.Events;
 
 message ResolutionInfo {
 	optional ResolutionType ResolutionType = 1 [default = UnknownResolutionType];
-	required string Author = 2;	// ФИО согласователя
+	required string Author = 2;	// Р¤РРћ СЃРѕРіР»Р°СЃРѕРІР°С‚РµР»СЏ
 	optional string InitialRequestId = 3;
 }
 
