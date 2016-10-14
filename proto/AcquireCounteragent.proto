@@ -16,10 +16,6 @@ message InvitationDocument {
 	optional string Type = 4;
 }
 
-message CustomDocument {
-	required string Type = 1;
-}
-
 message AcquireCounteragentResult {
 	required string OrgId = 1;
 }
