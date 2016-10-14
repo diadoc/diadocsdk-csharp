@@ -83,6 +83,7 @@ message Entity {
 	optional string PacketId = 18;
 	optional bool IsApprovementSignature = 19 [default = false];			// only for EntityType.Signature
 	optional bool IsEncryptedContent = 20 [default = false];
+	optional string AttachmentFormat = 21;
 }
 
 message EntityPatch {

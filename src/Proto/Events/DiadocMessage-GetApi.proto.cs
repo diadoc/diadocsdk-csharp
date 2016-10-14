@@ -542,6 +542,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _IsEncryptedContent; }
       set { _IsEncryptedContent = value; }
     }
+
+    private string _AttachmentFormat = "";
+    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"AttachmentFormat", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AttachmentFormat
+    {
+      get { return _AttachmentFormat; }
+      set { _AttachmentFormat = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
