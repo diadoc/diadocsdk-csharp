@@ -9,7 +9,8 @@ message UniversalTransferDocumentMetadata {
 	optional string Grounds = 4; // DocumentGrounds
 	required string DocumentFunction = 5;
 	required int32 Currency = 6;
-	optional ReceiptStatus ReceiptStatus = 7 [default = UnknownReceiptStatus];	
+	optional ReceiptStatus ReceiptStatus = 7 [default = UnknownReceiptStatus];
+	optional sfixed64 ConfirmationDateTimeTicks = 8;
 }
 
 enum UniversalTransferDocumentStatus {
