@@ -1,6 +1,9 @@
 ﻿using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
+using Diadoc.Api.Proto.Invoicing.Signers;
 
 namespace Diadoc.Api
 {
@@ -124,6 +127,38 @@ namespace Diadoc.Api
 		public SignatureRejectionInfo ParseSignatureRejectionXml(byte[] xmlContent)
 		{
 			return PerformHttpRequest<SignatureRejectionInfo>(null, "POST", "/ParseSignatureRejectionXml", xmlContent);
+		}
+
+		public ExtendedSignerDetailsToPost GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/ExtendedSignerDetails");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("thumbprint", thumbprint);
+			if (forBuyer)
+				queryBuilder.AddParameter("buyer");
+			return PerformHttpRequest<ExtendedSignerDetailsToPost>(token, "GET", queryBuilder.ToString());
+		}
+
+		public ExtendedSignerDetailsToPost GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer)
+		{
+			var certificate = new X509Certificate2(certificateBytes);
+			return GetExtendedSignerDetails(token, boxId, certificate.Thumbprint, forBuyer);
+		}
+
+		public ExtendedSignerDetailsToPost PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, ExtendedSignerDetailsToPost signerDetails)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/ExtendedSignerDetails");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("thumbprint", thumbprint);
+			if (forBuyer)
+				queryBuilder.AddParameter("buyer");
+			return PerformHttpRequest<ExtendedSignerDetailsToPost>(token, "POST", queryBuilder.ToString(), Serialize(signerDetails));
+		}
+
+		public ExtendedSignerDetailsToPost PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, ExtendedSignerDetailsToPost signerDetails)
+		{
+			var certificate = new X509Certificate2(certificateBytes);
+			return PostExtendedSignerDetails(token, boxId, certificate.Thumbprint, forBuyer, signerDetails);
 		}
 	}
 }

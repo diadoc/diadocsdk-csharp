@@ -173,6 +173,82 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ExtendedSignerDetailsToPost")]
+  public partial class ExtendedSignerDetailsToPost : global::ProtoBuf.IExtensible
+  {
+    public ExtendedSignerDetailsToPost() {}
+    
+
+    private string _JobTitle = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"JobTitle", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string JobTitle
+    {
+      get { return _JobTitle; }
+      set { _JobTitle = value; }
+    }
+
+    private string _RegistrationCertificate = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"RegistrationCertificate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string RegistrationCertificate
+    {
+      get { return _RegistrationCertificate; }
+      set { _RegistrationCertificate = value; }
+    }
+    private Diadoc.Api.Proto.Invoicing.Signers.SignerType _SignerType;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"SignerType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Invoicing.Signers.SignerType SignerType
+    {
+      get { return _SignerType; }
+      set { _SignerType = value; }
+    }
+
+    private string _SignerInfo = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"SignerInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string SignerInfo
+    {
+      get { return _SignerInfo; }
+      set { _SignerInfo = value; }
+    }
+    private Diadoc.Api.Proto.Invoicing.Signers.SignerPowers _SignerPowers;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"SignerPowers", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Invoicing.Signers.SignerPowers SignerPowers
+    {
+      get { return _SignerPowers; }
+      set { _SignerPowers = value; }
+    }
+    private Diadoc.Api.Proto.Invoicing.Signers.SignerStatus _SignerStatus;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"SignerStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Invoicing.Signers.SignerStatus SignerStatus
+    {
+      get { return _SignerStatus; }
+      set { _SignerStatus = value; }
+    }
+
+    private string _SignerPowersBase = "";
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"SignerPowersBase", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string SignerPowersBase
+    {
+      get { return _SignerPowersBase; }
+      set { _SignerPowersBase = value; }
+    }
+
+    private string _SignerOrgPowersBase = "";
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"SignerOrgPowersBase", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string SignerOrgPowersBase
+    {
+      get { return _SignerOrgPowersBase; }
+      set { _SignerOrgPowersBase = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"SignerType")]
     public enum SignerType
     {
