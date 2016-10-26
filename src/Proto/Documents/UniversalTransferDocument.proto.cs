@@ -73,6 +73,15 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
       get { return _ReceiptStatus; }
       set { _ReceiptStatus = value; }
     }
+
+    private long _ConfirmationDateTimeTicks = default(long);
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"ConfirmationDateTimeTicks", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(long))]
+    public long ConfirmationDateTimeTicks
+    {
+      get { return _ConfirmationDateTimeTicks; }
+      set { _ConfirmationDateTimeTicks = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
