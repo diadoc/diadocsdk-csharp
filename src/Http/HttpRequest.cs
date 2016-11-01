@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Diadoc.Api.Annotations;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api.Http
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Diadoc.Api.Annotations;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api.Http
 {

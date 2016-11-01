@@ -1,5 +1,5 @@
-﻿using Diadoc.Api.Annotations;
-using Diadoc.Api.Proto.Docflow;
+﻿using Diadoc.Api.Proto.Docflow;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api
 {

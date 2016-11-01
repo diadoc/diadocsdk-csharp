@@ -1,7 +1,7 @@
 ﻿using System.Text;
-using Diadoc.Api.Annotations;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Documents;
+using JetBrains.Annotations;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 
 namespace Diadoc.Api

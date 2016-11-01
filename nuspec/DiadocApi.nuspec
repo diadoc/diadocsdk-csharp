@@ -11,6 +11,9 @@
     <description>Official Diadoc SDK</description>
     <copyright>Copyright 2016</copyright>
     <tags>diadoc diadoc-api diadoc-sdk kontur skbkontur</tags>
+    <dependencies>
+      <dependency id="JetBrains.Annotations" version="10.2.1" />
+    </dependencies>
   </metadata>
   <files>
     <file src="LICENSE.md" />

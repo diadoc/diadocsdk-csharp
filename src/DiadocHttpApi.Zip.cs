@@ -1,6 +1,6 @@
-﻿using Diadoc.Api.Annotations;
-using Diadoc.Api.Http;
+﻿using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Documents;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api
 {

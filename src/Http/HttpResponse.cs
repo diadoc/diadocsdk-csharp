@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using System.Text;
-using Diadoc.Api.Annotations;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api.Http
 {
