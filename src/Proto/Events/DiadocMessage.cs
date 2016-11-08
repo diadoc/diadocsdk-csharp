@@ -1054,6 +1054,29 @@ namespace Diadoc.Api.Proto.Events
 	}
 
 	[ComVisible(true)]
+	[Guid("D9B32F6D-C203-49DB-B224-6B30BB1F2BAA")]
+	public interface IDocumentSenderSignature
+	{
+		string ParentEntityId { get; set; }
+		byte[] Signature { get; set; }
+		bool SignWithTestSignature { get; set; }
+		void LoadFromFile(string fileName);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.DocumentSenderSignature")]
+	[Guid("19CB816D-F518-4E91-94A2-F19B0CF7CC71")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IDocumentSenderSignature))]
+	public partial class DocumentSenderSignature : SafeComObject, IDocumentSenderSignature
+	{
+		public void LoadFromFile(string fileName)
+		{
+			Signature = File.ReadAllBytes(fileName);
+		}
+	}
+
+	[ComVisible(true)]
 	[Guid("BDCD849E-F6A9-4EA4-8B84-482E10173DED")]
 	public interface IDraftToSend
 	{
@@ -1061,7 +1084,7 @@ namespace Diadoc.Api.Proto.Events
 		string DraftId { get; set; }
 		string ToBoxId { get; set; }
 		string ToDepartmentId { get; set; }
-		void AddDocumentSignature([MarshalAs(UnmanagedType.IDispatch)] DocumentSenderSignature signature);
+		void AddDocumentSignature([MarshalAs(UnmanagedType.IDispatch)] object signature);
 	}
 
 	[ComVisible(true)]
@@ -1071,9 +1094,9 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof (IDraftToSend))]
 	public partial class DraftToSend : SafeComObject, IDraftToSend
 	{
-		public void AddDocumentSignature(DocumentSenderSignature signature)
+		public void AddDocumentSignature(object signature)
 		{
-			DocumentSignatures.Add(signature);
+			DocumentSignatures.Add((DocumentSenderSignature) signature);
 		}
 	}
 
