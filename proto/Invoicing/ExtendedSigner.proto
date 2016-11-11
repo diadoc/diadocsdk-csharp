@@ -24,6 +24,17 @@ message ExtendedSignerDetails {
 	optional string SignerOrgPowersBase = 13;   // Основание полномочий (доверия) организации (ОснПолнОрг)
 }
 
+message ExtendedSignerDetailsToPost {
+	optional string JobTitle = 1;
+	optional string RegistrationCertificate = 2;
+	required SignerType SignerType = 3;        // Физическое лицо-Индивидуальный предприниматель – представитель юридического лица (ФЛ-ИП-ЮЛ)
+	optional string SignerInfo = 4;            // Иные сведения, идентифицирующие лицо (Юл.ИныеСвед или СвИП.ИныеСвед  или ФЛ.ИныеСвед)
+	required SignerPowers SignerPowers = 5;    // Область полномочий (ОблПолн)
+	required SignerStatus SignerStatus = 6;    // Статус (Статус)
+	optional string SignerPowersBase = 7;      // Основание полномочий (доверия) (ОснПолн)
+	optional string SignerOrgPowersBase = 8;   // Основание полномочий (доверия) организации (ОснПолнОрг)
+}
+
 enum SignerType {
 	LegalEntity = 1;      // Представитель юридического лица
 	IndividualEntity = 2; // Индивидуальный предприниматель
