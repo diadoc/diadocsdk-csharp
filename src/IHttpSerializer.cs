@@ -1,4 +1,4 @@
-﻿using Diadoc.Api.Annotations;
+﻿using JetBrains.Annotations;
 
 namespace Diadoc.Api
 {

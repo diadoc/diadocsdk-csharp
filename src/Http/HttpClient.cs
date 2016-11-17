@@ -2,12 +2,11 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using Diadoc.Api.Annotations;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api.Http
 {

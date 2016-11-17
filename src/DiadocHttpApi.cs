@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
-using Diadoc.Api.Annotations;
 using Diadoc.Api.Cryptography;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api
 {

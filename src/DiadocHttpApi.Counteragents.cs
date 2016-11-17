@@ -1,7 +1,7 @@
 ﻿using System;
-using Diadoc.Api.Annotations;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api
 {

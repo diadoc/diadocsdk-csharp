@@ -45,6 +45,10 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="protobuf-net, Version=1.0.0.280, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <HintPath>..\packages\protobuf-net.1.0.0.280\lib\protobuf-net.dll</HintPath>
       <Private>True</Private>
@@ -55,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AggregateException.cs" />
-    <Compile Include="Annotations\CodeAnnotations.cs" />
     <Compile Include="Com\AcceptanceCertificateDocumentStatus.cs" />
     <Compile Include="Com\AttachmentType.cs" />
     <Compile Include="Com\BilateralDocumentStatus.cs" />

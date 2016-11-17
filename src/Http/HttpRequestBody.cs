@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using Diadoc.Api.Annotations;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api.Http
 {

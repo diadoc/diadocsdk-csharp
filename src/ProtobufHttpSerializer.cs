@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using Diadoc.Api.Annotations;
+using JetBrains.Annotations;
 using ProtoBuf;
 
 namespace Diadoc.Api

@@ -1,5 +1,5 @@
-﻿using Diadoc.Api.Annotations;
-using Diadoc.Api.Proto.Forwarding;
+﻿using Diadoc.Api.Proto.Forwarding;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api.Http
 {

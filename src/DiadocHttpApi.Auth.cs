@@ -45,7 +45,7 @@ namespace Diadoc.Api
 		public string AuthenticateWithKey(byte[] certificateBytes, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true)
 		{
 			var qsb = new PathAndQueryBuilder("/V2/Authenticate");
-			var authenticationWithKey = !string.IsNullOrEmpty("key");
+			var authenticationWithKey = !string.IsNullOrEmpty(key);
 			if (authenticationWithKey)
 			{
 				qsb.AddParameter("key", key);
