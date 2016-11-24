@@ -106,23 +106,38 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
       [global::ProtoBuf.ProtoEnum(Name=@"OutboundWaitingForRecipientSignature", Value=4)]
       OutboundWaitingForRecipientSignature = 4,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OutboundInvalidSenderSignature", Value=5)]
-      OutboundInvalidSenderSignature = 5,
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundWithRecipientSignature", Value=5)]
+      OutboundWithRecipientSignature = 5,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"InboundWaitingForInvoiceReceiptAndRecipientSignature", Value=6)]
-      InboundWaitingForInvoiceReceiptAndRecipientSignature = 6,
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundRecipientSignatureRequestRejected", Value=6)]
+      OutboundRecipientSignatureRequestRejected = 6,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"InboundWaitingForRecipientSignature", Value=7)]
-      InboundWaitingForRecipientSignature = 7,
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundInvalidSenderSignature", Value=7)]
+      OutboundInvalidSenderSignature = 7,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"InboundWaitingForInvoiceReceipt", Value=8)]
-      InboundWaitingForInvoiceReceipt = 8,
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundNotFinished", Value=8)]
+      OutboundNotFinished = 8,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"InboundWithRecipientSignature", Value=9)]
-      InboundWithRecipientSignature = 9,
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundFinished", Value=9)]
+      OutboundFinished = 9,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"InboundInvalidRecipientSignature", Value=10)]
-      InboundInvalidRecipientSignature = 10
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundWaitingForRecipientSignature", Value=16)]
+      InboundWaitingForRecipientSignature = 16,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundWithRecipientSignature", Value=17)]
+      InboundWithRecipientSignature = 17,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundRecipientSignatureRequestRejected", Value=18)]
+      InboundRecipientSignatureRequestRejected = 18,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundInvalidRecipientSignature", Value=19)]
+      InboundInvalidRecipientSignature = 19,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundNotFinished", Value=20)]
+      InboundNotFinished = 20,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundFinished", Value=21)]
+      InboundFinished = 21
     }
   
 }

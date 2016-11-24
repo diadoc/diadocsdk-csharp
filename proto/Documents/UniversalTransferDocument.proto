@@ -19,10 +19,16 @@ enum UniversalTransferDocumentStatus {
 	OutboundWaitingForInvoiceReceiptAndRecipientSignature = 2;
 	OutboundWaitingForInvoiceReceipt = 3; 
 	OutboundWaitingForRecipientSignature = 4;
-	OutboundInvalidSenderSignature = 5;
-	InboundWaitingForInvoiceReceiptAndRecipientSignature = 6;
-	InboundWaitingForRecipientSignature = 7; 
-	InboundWaitingForInvoiceReceipt = 8;
-	InboundWithRecipientSignature = 9; 
-	InboundInvalidRecipientSignature = 10;
+	OutboundWithRecipientSignature = 5;
+	OutboundRecipientSignatureRequestRejected = 6;
+	OutboundInvalidSenderSignature = 7;
+	OutboundNotFinished = 8;
+	OutboundFinished = 9;
+
+	InboundWaitingForRecipientSignature = 16;
+	InboundWithRecipientSignature = 17;
+	InboundRecipientSignatureRequestRejected = 18;
+	InboundInvalidRecipientSignature = 19;
+	InboundNotFinished = 20;
+	InboundFinished = 21;
 }

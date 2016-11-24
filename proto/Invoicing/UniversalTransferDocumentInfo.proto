@@ -116,17 +116,17 @@ message Employee {
 message OtherIssuer {
 	optional string TransferEmployeePosition = 1; // Должность предстваителя организации // Должность //если заполнено 0 формируется структура «ПредОргПер», если не заполнено – «ФЛПер»
 	optional string TransferEmployeeInfo = 2;     // Иные сведения, идентифицирующие физическое лицо // ИныеСвед
-	optional string TransferOrganizationName = 3; //Наименование организации, которой доверена передача // НаимОргПер
+	optional string TransferOrganizationName = 3; // Наименование организации, которой доверена передача // НаимОргПер
 	optional string TransferOrganizationBase = 4; // Основание, по которому организации доверена передача // ОснДоверОргПер
-	optional string TransferEmployeeBase = 5;     //Основание полномочий предстваителя // ОснПолнПредПер (ОснДоверФЛ)
-	required string TransferSurname = 6;    //Фамилия //Фамилия
-	required string TransferFirstName = 7;  //Имя //Имя
-	optional string TransferPatronymic = 8; //Отчество //Отчество
+	optional string TransferEmployeeBase = 5;     // Основание полномочий предстваителя // ОснПолнПредПер (ОснДоверФЛ)
+	required string TransferSurname = 6;    // Фамилия //Фамилия
+	required string TransferFirstName = 7;  // Имя //Имя
+	optional string TransferPatronymic = 8; // Отчество //Отчество
 }
 
 message AdditionalInfoId {
 	optional string InfoFileId = 1;             // Идентификатор файла информационного поля // ИдФайлИнфПол
-	repeated AdditionalInfo AdditionalInfo = 2; //Текстовая информация // ТекстИнф
+	repeated AdditionalInfo AdditionalInfo = 2; // Текстовая информация // ТекстИнф
 }
 
 message UniversalTransferDocumentBuyerTitleInfo {
