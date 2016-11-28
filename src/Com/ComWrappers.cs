@@ -154,6 +154,7 @@ namespace Diadoc.Api.Proto.Docflow
 		PriceListDocumentInfo PriceListInfo { get; }
 		ContractDocumentInfo ContractInfo { get; }
 		SupplementaryAgreementDocumentInfo SupplementaryAgreementInfo { get; }
+		UniversalTransferDocumentInfo UniversalTransferDocumentInfo { get; }
 	}
 
 	[ComVisible(true)]
@@ -237,6 +238,27 @@ namespace Diadoc.Api.Proto.Docflow
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof (IInvoiceDocumentInfo))]
 	public partial class InvoiceDocumentInfo : SafeComObject, IInvoiceDocumentInfo
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("C3780B81-50E3-4AF3-9B0D-83A71BC052FE")]
+	public interface IUniversalTransferDocumentInfo
+	{
+		string Total { get; }
+		string Vat { get; }
+		int CurrencyCode { get; }
+		string Grounds { get; }
+		FunctionType Function { get; }
+		DocumentDateAndNumber OriginalDocumentDateAndNumber { get; }
+	}
+
+	[ComVisible(true)]
+	[Guid("E1BCADF2-7D17-444B-BEC3-6E01A30F00D1")]
+	[ProgId("Diadoc.Api.UniversalTransferDocumentInfo")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof (IUniversalTransferDocumentInfo))]
+	public partial class UniversalTransferDocumentInfo : SafeComObject, IUniversalTransferDocumentInfo
 	{
 	}
 }
@@ -349,6 +371,8 @@ namespace Diadoc.Api.Proto.Docflow
 		bool CanDocumentBeRevokedUnilaterallyBySender { get; }
 		string PacketId { get; }
 		ReadonlyList CustomDataList { get; }
+		InboundUniversalTransferDocumentDocflow InboundUniversalTransferDocumentDocflow { get; }
+		OutboundUniversalTransferDocumentDocflow OutboundUniversalTransferDocumentDocflow { get; }
 	}
 
 	[ComVisible(true)]
@@ -521,6 +545,37 @@ namespace Diadoc.Api.Proto.Docflow
 	public partial class InboundInvoiceDocflow : SafeComObject, IInboundInvoiceDocflow
 	{
 	}
+
+	[ComVisible(true)]
+	[Guid("672B6A0B-D012-4A11-BCD2-919829AA10C7")]
+	public interface IInboundUniversalTransferDocumentDocflow
+	{
+		bool IsFinished { get; }
+		InboundInvoiceReceiptDocflow ReceiptDocflow { get; }
+		InvoiceConfirmationDocflow ConfirmationDocflow { get; }
+		InvoiceCorrectionRequestDocflow CorrectionRequestDocflow { get; }
+		Timestamp ConfirmationTimestamp { get; }
+		bool IsAmendmentRequested { get; }
+		bool IsRevised { get; }
+		bool IsCorrected { get; }
+		BuyerTitleDocflow BuyerTitleDocflow { get; }
+		RecipientSignatureRejectionDocflow RecipientSignatureRejectionDocflow { get; }
+		bool IsReceiptRequested { get; }
+		bool IsRecipientSignatureRequested { get; }
+		bool IsDocumentSignedByRecipient { get; }
+		bool IsDocumentRejectedByRecipient { get; }
+		bool CanDocumentBeReceipted { get; }
+		bool CanDocumentBeSignedOrRejectedByRecipient { get; }
+	}
+
+	[ComVisible(true)]
+	[Guid("85EC89E0-C8BD-4AE1-916B-8D786D1AB817")]
+	[ProgId("Diadoc.Api.InboundUniversalTransferDocumentDocflow")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof (IInboundUniversalTransferDocumentDocflow))]
+	public partial class InboundUniversalTransferDocumentDocflow : SafeComObject, IInboundUniversalTransferDocumentDocflow
+	{
+	}
 }
 
 namespace Diadoc.Api.Proto.Docflow
@@ -629,6 +684,38 @@ namespace Diadoc.Api.Proto.Docflow
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof (IOutboundInvoiceDocflow))]
 	public partial class OutboundInvoiceDocflow : SafeComObject, IOutboundInvoiceDocflow
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("C734468F-EBD5-4975-A213-FC08C1F2A84E")]
+	public interface IOutboundUniversalTransferDocumentDocflow
+	{
+		bool IsFinished { get; }
+		ReceiptDocflow ReceiptDocflow { get; }
+		InvoiceConfirmationDocflow ConfirmationDocflow { get; }
+		InvoiceCorrectionRequestDocflow CorrectionRequestDocflow { get; }
+		Timestamp ConfirmationTimestamp { get; }
+		bool IsAmendmentRequested { get; }
+		bool IsRevised { get; }
+		bool IsCorrected { get; }
+		bool CanDocumentBeSignedBySender { get; }
+		BuyerTitleDocflow BuyerTitleDocflow { get; }
+		RecipientSignatureRejectionDocflow RecipientSignatureRejectionDocflow { get; }
+		bool IsReceiptRequested { get; }
+		bool IsRecipientSignatureRequested { get; }
+		bool IsDocumentSignedByRecipient { get; }
+		bool IsDocumentRejectedByRecipient { get; }
+		bool CanDocumentBeReceipted { get; }
+		bool CanDocumentBeSignedOrRejectedByRecipient { get; }
+	}
+
+	[ComVisible(true)]
+	[Guid("7E45E673-18D4-4DD4-88E2-5149B04F13C7")]
+	[ProgId("Diadoc.Api.OutboundUniversalTransferDocumentDocflow")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof (IOutboundUniversalTransferDocumentDocflow))]
+	public partial class OutboundUniversalTransferDocumentDocflow : SafeComObject, IOutboundUniversalTransferDocumentDocflow
 	{
 	}
 }

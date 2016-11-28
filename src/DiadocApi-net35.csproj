@@ -119,6 +119,7 @@
     <Compile Include="Proto\CloudSign.proto.cs" />
     <Compile Include="Proto\Content_v2.proto.cs" />
     <Compile Include="Proto\CustomDataItem.proto.cs" />
+    <Compile Include="Proto\Docflow\UniversalTransferDocumentDocflow.proto.cs" />
     <Compile Include="Proto\DocumentDirection.proto.cs" />
     <Compile Include="Proto\Documents\DocumentZip.cs" />
     <Compile Include="Proto\Documents\Document.proto.cs" />

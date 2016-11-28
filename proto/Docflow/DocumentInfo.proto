@@ -1,5 +1,6 @@
 import "DocumentType.proto";
 import "DocumentDirection.proto";
+import "Invoicing/UniversalTransferDocumentInfo.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
@@ -19,6 +20,7 @@ message DocumentInfo
 	optional PriceListDocumentInfo PriceListInfo = 12;
 	optional ContractDocumentInfo ContractInfo = 13;
 	optional SupplementaryAgreementDocumentInfo SupplementaryAgreementInfo = 14;
+	optional UniversalTransferDocumentInfo UniversalTransferDocumentInfo = 15;
 }
 
 message DocumentDateAndNumber
@@ -75,3 +77,12 @@ message SupplementaryAgreementDocumentInfo
 	optional string ContractDate = 4;
 }
 
+message UniversalTransferDocumentInfo
+{
+	optional string Total = 1;
+	optional string Vat = 2;
+	optional int32 CurrencyCode = 3;
+	optional string Grounds = 4;
+	required Invoicing.FunctionType Function = 5;
+	optional DocumentDateAndNumber OriginalDocumentDateAndNumber = 6; // for UniversalTransferDocumentRevision
+}

@@ -10,6 +10,7 @@
 // Generated from: Docflow/DocumentInfo.proto
 // Note: requires additional types generated from: DocumentType.proto
 // Note: requires additional types generated from: DocumentDirection.proto
+// Note: requires additional types generated from: Invoicing/UniversalTransferDocumentInfo.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentInfo")]
@@ -142,6 +143,15 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _SupplementaryAgreementInfo; }
       set { _SupplementaryAgreementInfo = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.UniversalTransferDocumentInfo _UniversalTransferDocumentInfo = null;
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"UniversalTransferDocumentInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.UniversalTransferDocumentInfo UniversalTransferDocumentInfo
+    {
+      get { return _UniversalTransferDocumentInfo; }
+      set { _UniversalTransferDocumentInfo = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -446,6 +456,68 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _ContractDate; }
       set { _ContractDate = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UniversalTransferDocumentInfo")]
+  public partial class UniversalTransferDocumentInfo : global::ProtoBuf.IExtensible
+  {
+    public UniversalTransferDocumentInfo() {}
+    
+
+    private string _Total = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Total", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Total
+    {
+      get { return _Total; }
+      set { _Total = value; }
+    }
+
+    private string _Vat = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Vat", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Vat
+    {
+      get { return _Vat; }
+      set { _Vat = value; }
+    }
+
+    private int _CurrencyCode = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"CurrencyCode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int CurrencyCode
+    {
+      get { return _CurrencyCode; }
+      set { _CurrencyCode = value; }
+    }
+
+    private string _Grounds = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Grounds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Grounds
+    {
+      get { return _Grounds; }
+      set { _Grounds = value; }
+    }
+    private Diadoc.Api.Proto.Invoicing.FunctionType _Function;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"Function", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Invoicing.FunctionType Function
+    {
+      get { return _Function; }
+      set { _Function = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.DocumentDateAndNumber _OriginalDocumentDateAndNumber = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"OriginalDocumentDateAndNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.DocumentDateAndNumber OriginalDocumentDateAndNumber
+    {
+      get { return _OriginalDocumentDateAndNumber; }
+      set { _OriginalDocumentDateAndNumber = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
