@@ -104,12 +104,14 @@
     <Compile Include="DiadocHttpApi.Shelf.cs" />
     <Compile Include="DiadocHttpApi.KeyValueStorage.cs" />
     <Compile Include="DocumentsFilter.cs" />
+    <Compile Include="Http\ContentRange.cs" />
     <Compile Include="Http\HttpClient.cs" />
     <Compile Include="Http\HttpClientException.cs" />
     <Compile Include="Http\HttpRequest.cs" />
     <Compile Include="Http\HttpRequestBody.cs" />
     <Compile Include="Http\HttpResponse.cs" />
     <Compile Include="Http\PathAndQueryBuilderExtensions.cs" />
+    <Compile Include="Http\Range.cs" />
     <Compile Include="Http\UserDomain.cs" />
     <Compile Include="IDiadocApi.cs" />
     <Compile Include="IHttpSerializer.cs" />
