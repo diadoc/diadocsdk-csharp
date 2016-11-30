@@ -75,7 +75,16 @@ namespace Diadoc.Api.Proto
       SupplementaryAgreement = 40,
             
       [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocument", Value=41)]
-      UniversalTransferDocument = 41
+      UniversalTransferDocument = 41,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentRevision", Value=45)]
+      UniversalTransferDocumentRevision = 45,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalCorrectionDocument", Value=49)]
+      UniversalCorrectionDocument = 49,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalCorrectionDocumentRevision", Value=50)]
+      UniversalCorrectionDocumentRevision = 50
     }
   
 }

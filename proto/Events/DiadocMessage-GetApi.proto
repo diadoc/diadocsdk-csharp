@@ -145,6 +145,9 @@ enum AttachmentType {
 	UniversalTransferDocument = 41;
 	UniversalTransferDocumentBuyerTitle = 42;
 	UniversalTransferDocumentRevision = 45;
+	UniversalCorrectionDocument = 49;
+	UniversalCorrectionDocumentRevision = 50;
+	UniversalCorrectionDocumentBuyerTitle = 51;
 	CustomData = 64;
 	MoveDocument = 65;
 	ResolutionChainAssignmentAttachment = 66;

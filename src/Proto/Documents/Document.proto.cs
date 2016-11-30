@@ -500,6 +500,33 @@ namespace Diadoc.Api.Proto.Documents
       get { return _UniversalTransferDocumentMetadata; }
       set { _UniversalTransferDocumentMetadata = value; }
     }
+
+    private Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentRevisionMetadata _UniversalTransferDocumentRevisionMetadata = null;
+    [global::ProtoBuf.ProtoMember(57, IsRequired = false, Name=@"UniversalTransferDocumentRevisionMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentRevisionMetadata UniversalTransferDocumentRevisionMetadata
+    {
+      get { return _UniversalTransferDocumentRevisionMetadata; }
+      set { _UniversalTransferDocumentRevisionMetadata = value; }
+    }
+
+    private Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalCorrectionDocumentMetadata _UniversalCorrectionDocumentMetadata = null;
+    [global::ProtoBuf.ProtoMember(58, IsRequired = false, Name=@"UniversalCorrectionDocumentMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalCorrectionDocumentMetadata UniversalCorrectionDocumentMetadata
+    {
+      get { return _UniversalCorrectionDocumentMetadata; }
+      set { _UniversalCorrectionDocumentMetadata = value; }
+    }
+
+    private Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalCorrectionDocumentRevisionMetadata _UniversalCorrectionDocumentRevisionMetadata = null;
+    [global::ProtoBuf.ProtoMember(59, IsRequired = false, Name=@"UniversalCorrectionDocumentRevisionMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalCorrectionDocumentRevisionMetadata UniversalCorrectionDocumentRevisionMetadata
+    {
+      get { return _UniversalCorrectionDocumentRevisionMetadata; }
+      set { _UniversalCorrectionDocumentRevisionMetadata = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

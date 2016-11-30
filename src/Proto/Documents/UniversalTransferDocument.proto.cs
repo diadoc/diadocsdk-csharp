@@ -8,7 +8,6 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Documents/UniversalTransferDocument.proto
-// Note: requires additional types generated from: Documents/ReceiptStatus.proto
 namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UniversalTransferDocumentMetadata")]
@@ -65,15 +64,6 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
       set { _Currency = value; }
     }
 
-    private Diadoc.Api.Proto.Documents.ReceiptStatus _ReceiptStatus = Diadoc.Api.Proto.Documents.ReceiptStatus.UnknownReceiptStatus;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"ReceiptStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Documents.ReceiptStatus.UnknownReceiptStatus)]
-    public Diadoc.Api.Proto.Documents.ReceiptStatus ReceiptStatus
-    {
-      get { return _ReceiptStatus; }
-      set { _ReceiptStatus = value; }
-    }
-
     private long _ConfirmationDateTimeTicks = default(long);
     [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"ConfirmationDateTimeTicks", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     [global::System.ComponentModel.DefaultValue(default(long))]
@@ -81,6 +71,343 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
     {
       get { return _ConfirmationDateTimeTicks; }
       set { _ConfirmationDateTimeTicks = value; }
+    }
+
+    private int _InvoiceAmendmentFlags = default(int);
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"InvoiceAmendmentFlags", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int InvoiceAmendmentFlags
+    {
+      get { return _InvoiceAmendmentFlags; }
+      set { _InvoiceAmendmentFlags = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UniversalTransferDocumentRevisionMetadata")]
+  public partial class UniversalTransferDocumentRevisionMetadata : global::ProtoBuf.IExtensible
+  {
+    public UniversalTransferDocumentRevisionMetadata() {}
+    
+    private Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus _DocumentStatus;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"DocumentStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus DocumentStatus
+    {
+      get { return _DocumentStatus; }
+      set { _DocumentStatus = value; }
+    }
+    private string _Total;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Total", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Total
+    {
+      get { return _Total; }
+      set { _Total = value; }
+    }
+
+    private string _Vat = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Vat", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Vat
+    {
+      get { return _Vat; }
+      set { _Vat = value; }
+    }
+
+    private string _Grounds = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Grounds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Grounds
+    {
+      get { return _Grounds; }
+      set { _Grounds = value; }
+    }
+    private string _DocumentFunction;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"DocumentFunction", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocumentFunction
+    {
+      get { return _DocumentFunction; }
+      set { _DocumentFunction = value; }
+    }
+    private int _Currency;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"Currency", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int Currency
+    {
+      get { return _Currency; }
+      set { _Currency = value; }
+    }
+
+    private long _ConfirmationDateTimeTicks = default(long);
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"ConfirmationDateTimeTicks", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(long))]
+    public long ConfirmationDateTimeTicks
+    {
+      get { return _ConfirmationDateTimeTicks; }
+      set { _ConfirmationDateTimeTicks = value; }
+    }
+    private int _InvoiceAmendmentFlags;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"InvoiceAmendmentFlags", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int InvoiceAmendmentFlags
+    {
+      get { return _InvoiceAmendmentFlags; }
+      set { _InvoiceAmendmentFlags = value; }
+    }
+    private string _OriginalInvoiceNumber;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"OriginalInvoiceNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OriginalInvoiceNumber
+    {
+      get { return _OriginalInvoiceNumber; }
+      set { _OriginalInvoiceNumber = value; }
+    }
+    private string _OriginalInvoiceDate;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"OriginalInvoiceDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OriginalInvoiceDate
+    {
+      get { return _OriginalInvoiceDate; }
+      set { _OriginalInvoiceDate = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UniversalCorrectionDocumentMetadata")]
+  public partial class UniversalCorrectionDocumentMetadata : global::ProtoBuf.IExtensible
+  {
+    public UniversalCorrectionDocumentMetadata() {}
+    
+    private Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus _DocumentStatus;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"DocumentStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus DocumentStatus
+    {
+      get { return _DocumentStatus; }
+      set { _DocumentStatus = value; }
+    }
+    private string _TotalInc;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"TotalInc", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string TotalInc
+    {
+      get { return _TotalInc; }
+      set { _TotalInc = value; }
+    }
+    private string _TotalDec;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"TotalDec", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string TotalDec
+    {
+      get { return _TotalDec; }
+      set { _TotalDec = value; }
+    }
+    private string _VatInc;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"VatInc", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string VatInc
+    {
+      get { return _VatInc; }
+      set { _VatInc = value; }
+    }
+    private string _VatDec;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"VatDec", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string VatDec
+    {
+      get { return _VatDec; }
+      set { _VatDec = value; }
+    }
+
+    private string _Grounds = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Grounds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Grounds
+    {
+      get { return _Grounds; }
+      set { _Grounds = value; }
+    }
+    private string _DocumentFunction;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"DocumentFunction", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocumentFunction
+    {
+      get { return _DocumentFunction; }
+      set { _DocumentFunction = value; }
+    }
+    private int _Currency;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"Currency", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int Currency
+    {
+      get { return _Currency; }
+      set { _Currency = value; }
+    }
+    private long _ConfirmationDateTimeTicks;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"ConfirmationDateTimeTicks", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public long ConfirmationDateTimeTicks
+    {
+      get { return _ConfirmationDateTimeTicks; }
+      set { _ConfirmationDateTimeTicks = value; }
+    }
+    private int _InvoiceAmendmentFlags;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"InvoiceAmendmentFlags", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int InvoiceAmendmentFlags
+    {
+      get { return _InvoiceAmendmentFlags; }
+      set { _InvoiceAmendmentFlags = value; }
+    }
+    private string _OriginalInvoiceNumber;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"OriginalInvoiceNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OriginalInvoiceNumber
+    {
+      get { return _OriginalInvoiceNumber; }
+      set { _OriginalInvoiceNumber = value; }
+    }
+    private string _OriginalInvoiceDate;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"OriginalInvoiceDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OriginalInvoiceDate
+    {
+      get { return _OriginalInvoiceDate; }
+      set { _OriginalInvoiceDate = value; }
+    }
+
+    private string _OriginalInvoiceRevisionNumber = "";
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"OriginalInvoiceRevisionNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string OriginalInvoiceRevisionNumber
+    {
+      get { return _OriginalInvoiceRevisionNumber; }
+      set { _OriginalInvoiceRevisionNumber = value; }
+    }
+
+    private string _OriginalInvoiceRevisionDate = "";
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"OriginalInvoiceRevisionDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string OriginalInvoiceRevisionDate
+    {
+      get { return _OriginalInvoiceRevisionDate; }
+      set { _OriginalInvoiceRevisionDate = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UniversalCorrectionDocumentRevisionMetadata")]
+  public partial class UniversalCorrectionDocumentRevisionMetadata : global::ProtoBuf.IExtensible
+  {
+    public UniversalCorrectionDocumentRevisionMetadata() {}
+    
+    private Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus _DocumentStatus;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"DocumentStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.UniversalTransferDocument.UniversalTransferDocumentStatus DocumentStatus
+    {
+      get { return _DocumentStatus; }
+      set { _DocumentStatus = value; }
+    }
+    private string _TotalInc;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"TotalInc", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string TotalInc
+    {
+      get { return _TotalInc; }
+      set { _TotalInc = value; }
+    }
+    private string _TotalDec;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"TotalDec", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string TotalDec
+    {
+      get { return _TotalDec; }
+      set { _TotalDec = value; }
+    }
+    private string _VatInc;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"VatInc", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string VatInc
+    {
+      get { return _VatInc; }
+      set { _VatInc = value; }
+    }
+    private string _VatDec;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"VatDec", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string VatDec
+    {
+      get { return _VatDec; }
+      set { _VatDec = value; }
+    }
+
+    private string _Grounds = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Grounds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Grounds
+    {
+      get { return _Grounds; }
+      set { _Grounds = value; }
+    }
+    private string _DocumentFunction;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"DocumentFunction", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocumentFunction
+    {
+      get { return _DocumentFunction; }
+      set { _DocumentFunction = value; }
+    }
+    private int _Currency;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"Currency", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int Currency
+    {
+      get { return _Currency; }
+      set { _Currency = value; }
+    }
+    private long _ConfirmationDateTimeTicks;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"ConfirmationDateTimeTicks", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public long ConfirmationDateTimeTicks
+    {
+      get { return _ConfirmationDateTimeTicks; }
+      set { _ConfirmationDateTimeTicks = value; }
+    }
+    private int _InvoiceAmendmentFlags;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"InvoiceAmendmentFlags", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int InvoiceAmendmentFlags
+    {
+      get { return _InvoiceAmendmentFlags; }
+      set { _InvoiceAmendmentFlags = value; }
+    }
+    private string _OriginalInvoiceNumber;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"OriginalInvoiceNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OriginalInvoiceNumber
+    {
+      get { return _OriginalInvoiceNumber; }
+      set { _OriginalInvoiceNumber = value; }
+    }
+    private string _OriginalInvoiceDate;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"OriginalInvoiceDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OriginalInvoiceDate
+    {
+      get { return _OriginalInvoiceDate; }
+      set { _OriginalInvoiceDate = value; }
+    }
+
+    private string _OriginalInvoiceRevisionNumber = "";
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"OriginalInvoiceRevisionNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string OriginalInvoiceRevisionNumber
+    {
+      get { return _OriginalInvoiceRevisionNumber; }
+      set { _OriginalInvoiceRevisionNumber = value; }
+    }
+
+    private string _OriginalInvoiceRevisionDate = "";
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"OriginalInvoiceRevisionDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string OriginalInvoiceRevisionDate
+    {
+      get { return _OriginalInvoiceRevisionDate; }
+      set { _OriginalInvoiceRevisionDate = value; }
+    }
+    private string _OriginalInvoiceCorrectionNumber;
+    [global::ProtoBuf.ProtoMember(15, IsRequired = true, Name=@"OriginalInvoiceCorrectionNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OriginalInvoiceCorrectionNumber
+    {
+      get { return _OriginalInvoiceCorrectionNumber; }
+      set { _OriginalInvoiceCorrectionNumber = value; }
+    }
+    private string _OriginalInvoiceCorrectionDate;
+    [global::ProtoBuf.ProtoMember(16, IsRequired = true, Name=@"OriginalInvoiceCorrectionDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OriginalInvoiceCorrectionDate
+    {
+      get { return _OriginalInvoiceCorrectionDate; }
+      set { _OriginalInvoiceCorrectionDate = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

@@ -1,5 +1,3 @@
-import "Documents/ReceiptStatus.proto";
-
 package Diadoc.Api.Proto.Documents.UniversalTransferDocument;
 
 message UniversalTransferDocumentMetadata {
@@ -9,8 +7,57 @@ message UniversalTransferDocumentMetadata {
 	optional string Grounds = 4; // DocumentGrounds
 	required string DocumentFunction = 5;
 	required int32 Currency = 6;
-	optional ReceiptStatus ReceiptStatus = 7 [default = UnknownReceiptStatus];
 	optional sfixed64 ConfirmationDateTimeTicks = 8;
+	optional int32 InvoiceAmendmentFlags = 9;
+}
+
+message UniversalTransferDocumentRevisionMetadata {
+	required UniversalTransferDocument.UniversalTransferDocumentStatus DocumentStatus = 1;
+	required string Total = 2; // TotalSum;
+	optional string Vat = 3; //TotalVat;
+	optional string Grounds = 4; // DocumentGrounds
+	required string DocumentFunction = 5;
+	required int32 Currency = 6;
+	optional sfixed64 ConfirmationDateTimeTicks = 7;
+	required int32 InvoiceAmendmentFlags = 8;
+	required string OriginalInvoiceNumber = 9;
+	required string OriginalInvoiceDate = 10;
+}
+
+message UniversalCorrectionDocumentMetadata {
+	required UniversalTransferDocument.UniversalTransferDocumentStatus DocumentStatus = 1;
+	required string TotalInc = 2;
+	required string TotalDec = 3;
+	required string VatInc = 4;
+	required string VatDec = 5;
+	optional string Grounds = 6; // DocumentGrounds
+	required string DocumentFunction = 7;
+	required int32 Currency = 8;
+	required sfixed64 ConfirmationDateTimeTicks = 9;
+	required int32 InvoiceAmendmentFlags = 10;
+	required string OriginalInvoiceNumber = 11;
+	required string OriginalInvoiceDate = 12;
+	optional string OriginalInvoiceRevisionNumber = 13;
+	optional string OriginalInvoiceRevisionDate = 14;
+}
+
+message UniversalCorrectionDocumentRevisionMetadata {
+	required UniversalTransferDocument.UniversalTransferDocumentStatus DocumentStatus = 1;
+	required string TotalInc = 2;
+	required string TotalDec = 3;
+	required string VatInc = 4;
+	required string VatDec = 5;
+	optional string Grounds = 6; // DocumentGrounds
+	required string DocumentFunction = 7;
+	required int32 Currency = 8;
+	required sfixed64 ConfirmationDateTimeTicks = 9;
+	required int32 InvoiceAmendmentFlags = 10;
+	required string OriginalInvoiceNumber = 11;
+	required string OriginalInvoiceDate = 12;
+	optional string OriginalInvoiceRevisionNumber = 13;
+	optional string OriginalInvoiceRevisionDate = 14;
+	required string OriginalInvoiceCorrectionNumber = 15;
+	required string OriginalInvoiceCorrectionDate = 16;
 }
 
 enum UniversalTransferDocumentStatus {
