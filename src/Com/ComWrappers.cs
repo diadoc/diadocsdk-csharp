@@ -261,6 +261,31 @@ namespace Diadoc.Api.Proto.Docflow
 	public partial class UniversalTransferDocumentInfo : SafeComObject, IUniversalTransferDocumentInfo
 	{
 	}
+
+	[ComVisible(true)]
+	[Guid("41F28B5A-0B9D-4322-BA86-4D25F5307B94")]
+	public interface IUniversalCorrectionDocumentInfo
+	{
+		string TotalInc { get; }
+		string TotalDec { get; }
+		string VatInc { get; }
+		string VatDec { get; }
+		int CurrencyCode { get; }
+		string Grounds { get; }
+		FunctionType Function { get; }
+		DocumentDateAndNumber OriginalDocumentDateAndNumber { get; }
+		DocumentDateAndNumber OriginalDocumentRevisionDateAndNumber { get; }
+		DocumentDateAndNumber OriginalDocumentCorrectionDateAndNumber { get; }
+	}
+
+	[ComVisible(true)]
+	[Guid("CB5B366A-1074-4002-B925-D5B68CCD687B")]
+	[ProgId("Diadoc.Api.UniversalCorrectionDocumentInfo")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IUniversalCorrectionDocumentInfo))]
+	public partial class UniversalCorrectionDocumentInfo : SafeComObject, IUniversalCorrectionDocumentInfo
+	{
+	}
 }
 
 namespace Diadoc.Api.Proto.Docflow
