@@ -129,36 +129,40 @@ namespace Diadoc.Api
 			return PerformHttpRequest<SignatureRejectionInfo>(null, "POST", "/ParseSignatureRejectionXml", xmlContent);
 		}
 
-		public ExtendedSignerDetailsToPost GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer)
+		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/ExtendedSignerDetails");
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("thumbprint", thumbprint);
 			if (forBuyer)
 				queryBuilder.AddParameter("buyer");
-			return PerformHttpRequest<ExtendedSignerDetailsToPost>(token, "GET", queryBuilder.ToString());
+			if (forCorrection)
+				queryBuilder.AddParameter("correction");
+			return PerformHttpRequest<ExtendedSignerDetails>(token, "GET", queryBuilder.ToString());
 		}
 
-		public ExtendedSignerDetailsToPost GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer)
+		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
-			return GetExtendedSignerDetails(token, boxId, certificate.Thumbprint, forBuyer);
+			return GetExtendedSignerDetails(token, boxId, certificate.Thumbprint, forBuyer, forCorrection);
 		}
 
-		public ExtendedSignerDetailsToPost PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, ExtendedSignerDetailsToPost signerDetails)
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/ExtendedSignerDetails");
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("thumbprint", thumbprint);
 			if (forBuyer)
 				queryBuilder.AddParameter("buyer");
-			return PerformHttpRequest<ExtendedSignerDetailsToPost>(token, "POST", queryBuilder.ToString(), Serialize(signerDetails));
+			if (forCorrection)
+				queryBuilder.AddParameter("correction");
+			return PerformHttpRequest<ExtendedSignerDetails>(token, "POST", queryBuilder.ToString(), Serialize(signerDetails));
 		}
 
-		public ExtendedSignerDetailsToPost PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, ExtendedSignerDetailsToPost signerDetails)
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
-			return PostExtendedSignerDetails(token, boxId, certificate.Thumbprint, forBuyer, signerDetails);
+			return PostExtendedSignerDetails(token, boxId, certificate.Thumbprint, forBuyer, forCorrection, signerDetails);
 		}
 	}
 }
