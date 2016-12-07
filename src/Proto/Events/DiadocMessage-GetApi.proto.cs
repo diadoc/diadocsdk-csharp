@@ -762,6 +762,15 @@ namespace Diadoc.Api.Proto.Events
       [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentRevision", Value=45)]
       UniversalTransferDocumentRevision = 45,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalCorrectionDocument", Value=49)]
+      UniversalCorrectionDocument = 49,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalCorrectionDocumentRevision", Value=50)]
+      UniversalCorrectionDocumentRevision = 50,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalCorrectionDocumentBuyerTitle", Value=51)]
+      UniversalCorrectionDocumentBuyerTitle = 51,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"CustomData", Value=64)]
       CustomData = 64,
             

@@ -27,5 +27,8 @@ namespace Diadoc.Api.Com
 		ServiceDetails = 38,
 		SupplementaryAgreement = 40,
 		UniversalTransferDocument = 41,
+		UniversalTransferDocumentRevision = 45,
+		UniversalCorrectionDocument = 49,
+		UniversalCorrectionDocumentRevision = 50,
 	}
 }
