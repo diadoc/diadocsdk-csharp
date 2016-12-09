@@ -78,6 +78,21 @@ namespace Diadoc.Api
 			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo, string boxId, string sellerTitleMessageId,
 			string sellerTitleAttachmentId);
 
+		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object info, bool disableValidation = false);
+
+		GeneratedFile GenerateUniversalTransferDocumentRevisionXmlForSeller(string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object revisionInfo, bool disableValidation = false);
+
+		GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object correctionInfo, bool disableValidation = false);
+
+		GeneratedFile GenerateUniversalCorrectionDocumentRevisionXmlForSeller(string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object correctionRevisionInfo, bool disableValidation = false);
+
+		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
 		InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId,
 			string entityId);
 
@@ -434,6 +449,40 @@ namespace Diadoc.Api
 		{
 			return diadoc.GenerateAcceptanceCertificateXmlForBuyer(authToken, (AcceptanceCertificateBuyerTitleInfo) buyerInfo,
 				boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+		}
+
+		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
+			string authToken, object info, bool disableValidation = false)
+		{
+			return diadoc.GenerateUniversalTransferDocumentXmlForSeller(
+				authToken, (UniversalTransferDocumentSellerTitleInfo)info, disableValidation);
+		}
+
+		public GeneratedFile GenerateUniversalTransferDocumentRevisionXmlForSeller(
+			string authToken, object revisionInfo, bool disableValidation = false)
+		{
+			return diadoc.GenerateUniversalTransferDocumentRevisionXmlForSeller(
+				authToken, (UniversalTransferDocumentSellerTitleInfo)revisionInfo, disableValidation);
+		}
+
+		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
+			string authToken, object correctionInfo, bool disableValidation = false)
+		{
+			return diadoc.GenerateUniversalCorrectionDocumentXmlForSeller(
+				authToken, (UniversalCorrectionDocumentSellerTitleInfo)correctionInfo, disableValidation);
+		}
+
+		public GeneratedFile GenerateUniversalCorrectionDocumentRevisionXmlForSeller(
+			string authToken, object correctionRevisionInfo, bool disableValidation = false)
+		{
+			return diadoc.GenerateUniversalCorrectionDocumentRevisionXmlForSeller(
+				authToken, (UniversalCorrectionDocumentSellerTitleInfo)correctionRevisionInfo, disableValidation);
+		}
+
+		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(
+			string authToken, object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			return diadoc.GenerateUniversalTransferDocumentXmlForBuyer(authToken, (UniversalTransferDocumentBuyerTitleInfo)buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
 		public InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId,

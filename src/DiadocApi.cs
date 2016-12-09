@@ -352,6 +352,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForSeller(authToken, sellerInfo, disableValidation);
 		}
 
+		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(string authToken,
+			UniversalCorrectionDocumentSellerTitleInfo sellerInfo, bool disableValidation = false)
+		{
+			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
+			return diadocHttpApi.GenerateUniversalCorrectionDocumentXmlForSeller(authToken, sellerInfo, disableValidation);
+		}
+
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo,
 			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{

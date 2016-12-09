@@ -64,6 +64,7 @@ namespace Diadoc.Api
 		GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken, UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
+		GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(string authToken, UniversalCorrectionDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false);
 		Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false);
