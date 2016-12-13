@@ -195,6 +195,7 @@ namespace Diadoc.Api.Cryptography
 			finally
 			{
 				CloseStore(storeHandle);
+				pinnedStoreHandle.Free();
 			}
 		}
 
