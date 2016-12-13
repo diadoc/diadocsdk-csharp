@@ -7,12 +7,13 @@ namespace Diadoc.Api.Http
 {
 	public class HttpRequest
 	{
-		public HttpRequest(string httpMethod, string pathAndQuery, [CanBeNull] HttpRequestBody requestBody = null, int? timeoutInSeconds = null, string accept = null)
+		public HttpRequest(string httpMethod, string pathAndQuery, [CanBeNull] HttpRequestBody requestBody = null, int? timeoutInSeconds = null, string accept = null, Range range = null)
 		{
 			Method = httpMethod.ToUpper();
 			PathAndQuery = pathAndQuery;
 			Body = requestBody;
 			Accept = accept;
+			Range = range;
 			TimeoutInSeconds = timeoutInSeconds ?? (Debugger.IsAttached ? 100500 : 100);
 		}
 
@@ -23,6 +24,9 @@ namespace Diadoc.Api.Http
 		public int TimeoutInSeconds { get; private set; }
 
 		public string Accept { get; private set; }
+
+		[CanBeNull]
+		public Range Range { get; private set; }
 
 		[CanBeNull]
 		public HttpRequestBody Body { get; private set; }

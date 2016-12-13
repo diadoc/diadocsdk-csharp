@@ -161,6 +161,8 @@ namespace Diadoc.Api.Http
 			}
 			if (!string.IsNullOrEmpty(request.Accept))
 				webRequest.Accept = request.Accept;
+			if (request.Range != null)
+				webRequest.AddRange(request.Range.From, request.Range.To);
 			if (request.Body != null && request.Body.ContentLength > 0)
 			{
 				webRequest.ContentType = request.Body.ContentType;

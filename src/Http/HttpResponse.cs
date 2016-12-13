@@ -24,6 +24,7 @@ namespace Diadoc.Api.Http
 			RetryAfter = TryGetRetryAfter(webResponseHeaders);
 			Content = GetResponseContent(webResponse);
 			DiadocErrorCode = TryGetDiadocErrorCode(webResponseHeaders);
+			ContentRange = TryGetContentRange(webResponseHeaders);
 		}
 
 		public HttpStatusCode StatusCode { get; private set; }
@@ -36,6 +37,9 @@ namespace Diadoc.Api.Http
 
 		[CanBeNull]
 		public int? RetryAfter { get; private set; }
+
+		[CanBeNull]
+		public ContentRange ContentRange { get; private set; }
 
 		[NotNull]
 		public byte[] Content { get; private set; }
@@ -133,6 +137,51 @@ namespace Diadoc.Api.Http
 			if (errorCodes == null || errorCodes.Length == 0)
 				return null;
 			return errorCodes[0];
+		}
+
+		[CanBeNull]
+		private static ContentRange TryGetContentRange([NotNull] NameValueCollection webResponseHeaders)
+		{
+			// https://tools.ietf.org/html/rfc7233#section-4.2
+			// Content-Range       = byte-content-range / other-content-range
+			//
+			// byte-content-range  = bytes-unit SP ( byte-range-resp / unsatisfied-range )
+			//
+			// byte-range-resp     = byte-range "/" ( complete-length / "*" )
+			// byte-range          = first-byte-pos "-" last-byte-pos
+			// unsatisfied-range   = "*/" complete-length
+			//
+			// complete-length     = 1*DIGIT
+			//
+			// other-content-range = other-range-unit SP other-range-resp
+			// other-range-resp    = *CHAR
+
+			var values = webResponseHeaders.GetValues("Content-Range");
+			if (values == null || values.Length == 0)
+				return null;
+
+			var parts = values[0].Split(' ', '-', '/');
+			if (parts.Length < 3)
+				return null;
+
+			if (parts[1] == "*")
+			{
+				// Content-Range: bytes */1234
+				return new ContentRange(Convert.ToInt64(parts[2], CultureInfo.InvariantCulture));
+			}
+
+			var range = new Range(
+				Convert.ToInt32(parts[1], CultureInfo.InvariantCulture),
+				Convert.ToInt32(parts[2], CultureInfo.InvariantCulture));
+
+			if (parts[3] == "*")
+			{
+				// Content-Range: bytes 42-1233/*
+				return new ContentRange(range);
+			}
+
+			// Content-Range: bytes 42-1233/1234
+			return new ContentRange(range, Convert.ToInt64(parts[3], CultureInfo.InvariantCulture));
 		}
 	}
 }
