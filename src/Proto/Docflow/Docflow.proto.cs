@@ -17,6 +17,7 @@
 // Note: requires additional types generated from: Docflow/XmlBilateralDocflow.proto
 // Note: requires additional types generated from: Docflow/RevocationDocflow.proto
 // Note: requires additional types generated from: Docflow/ResolutionDocflow.proto
+// Note: requires additional types generated from: Docflow/UniversalTransferDocumentDocflow.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"Docflow")]
@@ -175,6 +176,24 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _CustomData; }
     }
   
+
+    private Diadoc.Api.Proto.Docflow.InboundUniversalTransferDocumentDocflow _InboundUniversalTransferDocumentDocflow = null;
+    [global::ProtoBuf.ProtoMember(18, IsRequired = false, Name=@"InboundUniversalTransferDocumentDocflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.InboundUniversalTransferDocumentDocflow InboundUniversalTransferDocumentDocflow
+    {
+      get { return _InboundUniversalTransferDocumentDocflow; }
+      set { _InboundUniversalTransferDocumentDocflow = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.OutboundUniversalTransferDocumentDocflow _OutboundUniversalTransferDocumentDocflow = null;
+    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"OutboundUniversalTransferDocumentDocflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.OutboundUniversalTransferDocumentDocflow OutboundUniversalTransferDocumentDocflow
+    {
+      get { return _OutboundUniversalTransferDocumentDocflow; }
+      set { _OutboundUniversalTransferDocumentDocflow = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

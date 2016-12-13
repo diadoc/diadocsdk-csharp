@@ -1,0 +1,62 @@
+import "Timestamp.proto";
+import "Docflow/Attachment.proto";
+import "Docflow/ReceiptDocflow.proto";
+import "Docflow/XmlBilateralDocflow.proto";
+import "Docflow/RecipientSignatureRejectionDocflow.proto";
+import "Docflow/InvoiceDocflow.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message InboundUniversalTransferDocumentDocflow
+{
+  optional bool IsFinished = 1;
+
+  optional InboundInvoiceReceiptDocflow ReceiptDocflow = 2;
+  optional InvoiceConfirmationDocflow ConfirmationDocflow = 3;
+  optional InvoiceCorrectionRequestDocflow CorrectionRequestDocflow = 4;
+
+  optional Timestamp ConfirmationTimestamp = 5;
+
+  optional bool IsAmendmentRequested = 6;
+  optional bool IsRevised = 7;
+  optional bool IsCorrected = 8;
+
+  optional BuyerTitleDocflow BuyerTitleDocflow = 9;
+  optional RecipientSignatureRejectionDocflow RecipientSignatureRejectionDocflow = 10;
+
+  optional bool IsReceiptRequested = 11;
+  optional bool IsRecipientSignatureRequested = 12;
+  optional bool IsDocumentSignedByRecipient = 13;
+  optional bool IsDocumentRejectedByRecipient = 14;
+
+  optional bool CanDocumentBeReceipted = 15;
+  optional bool CanDocumentBeSignedOrRejectedByRecipient = 16;
+}
+
+message OutboundUniversalTransferDocumentDocflow
+{
+  optional bool IsFinished = 1;
+
+  optional ReceiptDocflow ReceiptDocflow = 2;
+  optional InvoiceConfirmationDocflow ConfirmationDocflow = 3;
+  optional InvoiceCorrectionRequestDocflow CorrectionRequestDocflow = 4;
+
+  optional Timestamp ConfirmationTimestamp = 5;
+
+  optional bool IsAmendmentRequested = 6;
+  optional bool IsRevised = 7;
+  optional bool IsCorrected = 8;
+
+  optional bool CanDocumentBeSignedBySender = 9;
+
+  optional BuyerTitleDocflow BuyerTitleDocflow = 10;
+  optional RecipientSignatureRejectionDocflow RecipientSignatureRejectionDocflow = 11;
+
+  optional bool IsReceiptRequested = 12;
+  optional bool IsRecipientSignatureRequested = 13;
+  optional bool IsDocumentSignedByRecipient = 14;
+  optional bool IsDocumentRejectedByRecipient = 15;
+
+  optional bool CanDocumentBeReceipted = 16;
+  optional bool CanDocumentBeSignedOrRejectedByRecipient = 17;
+}
