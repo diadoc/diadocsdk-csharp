@@ -78,6 +78,15 @@ namespace Diadoc.Api
 			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo, string boxId, string sellerTitleMessageId,
 			string sellerTitleAttachmentId);
 
+		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object info, bool disableValidation = false);
+
+		GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object correctionInfo, bool disableValidation = false);
+
+		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
 		InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId,
 			string entityId);
 
@@ -434,6 +443,26 @@ namespace Diadoc.Api
 		{
 			return diadoc.GenerateAcceptanceCertificateXmlForBuyer(authToken, (AcceptanceCertificateBuyerTitleInfo) buyerInfo,
 				boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+		}
+
+		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
+			string authToken, object info, bool disableValidation = false)
+		{
+			return diadoc.GenerateUniversalTransferDocumentXmlForSeller(
+				authToken, (UniversalTransferDocumentSellerTitleInfo)info, disableValidation);
+		}
+
+		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
+			string authToken, object correctionInfo, bool disableValidation = false)
+		{
+			return diadoc.GenerateUniversalCorrectionDocumentXmlForSeller(
+				authToken, (UniversalCorrectionDocumentSellerTitleInfo)correctionInfo, disableValidation);
+		}
+
+		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(
+			string authToken, object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			return diadoc.GenerateUniversalTransferDocumentXmlForBuyer(authToken, (UniversalTransferDocumentBuyerTitleInfo)buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
 		public InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId,

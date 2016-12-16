@@ -41,6 +41,10 @@ namespace Diadoc.Api.Proto.Documents
 		BilateralDocument.ContractMetadata ContractMetadata { get; }
 		BilateralDocument.BasicDocumentMetadata Torg13Metadata { get; }
 		UnilateralDocument.ServiceDetailsMetadata ServiceDetailsMetadata { get; }
+		UniversalTransferDocument.UniversalTransferDocumentMetadata UniversalTransferDocumentMetadata { get; }
+		UniversalTransferDocument.UniversalTransferDocumentRevisionMetadata UniversalTransferDocumentRevisionMetadata { get; }
+		UniversalTransferDocument.UniversalCorrectionDocumentMetadata UniversalCorrectionDocumentMetadata { get; }
+		UniversalTransferDocument.UniversalCorrectionDocumentRevisionMetadata UniversalCorrectionDocumentRevisionMetadata { get; }
 		bool IsDeleted { get; }
 		bool IsTest { get; }
 		string DepartmentId { get; }

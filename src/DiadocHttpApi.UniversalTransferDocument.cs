@@ -1,4 +1,5 @@
 ﻿using Diadoc.Api.Http;
+using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
 
@@ -11,17 +12,36 @@ namespace Diadoc.Api
 			UniversalTransferDocumentSellerTitleInfo info,
 			bool disableValidation = false)
 		{
+
+			return GenerateUniversalTransferDocumentXml(authToken, info, false, disableValidation);
+		}
+
+		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
+			string authToken,
+			UniversalCorrectionDocumentSellerTitleInfo correctionInfo,
+			bool disableValidation = false)
+		{
+			return GenerateUniversalTransferDocumentXml(authToken, correctionInfo, true, disableValidation);
+		}
+
+		private GeneratedFile GenerateUniversalTransferDocumentXml<T>(string authToken, T protoInfo, bool isCorrection, bool disableValidation = false) where T : class
+		{
 			var query = new PathAndQueryBuilder("/GenerateUniversalTransferDocumentXmlForSeller");
+			if (isCorrection)
+				query.AddParameter("correction", "");
 			if (disableValidation)
 				query.AddParameter("disableValidation", "");
-			return PerformGenerateXmlHttpRequest(authToken, query.BuildPathAndQuery(), info);
+			return PerformGenerateXmlHttpRequest(authToken, query.BuildPathAndQuery(), protoInfo);
 		}
 
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo info,
 			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
-			var queryString = string.Format("/GenerateUniversalTransferDocumentXmlForBuyer?boxId={0}&sellerTitleMessageId={1}&sellerTitleAttachmentId={2}", boxId, sellerTitleMessageId, sellerTitleAttachmentId);
-			return PerformGenerateXmlHttpRequest(authToken, queryString, info);
+			var query = new PathAndQueryBuilder("/GenerateUniversalTransferDocumentXmlForBuyer");
+			query.AddParameter("boxId", boxId);
+			query.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
+			query.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
+			return PerformGenerateXmlHttpRequest(authToken, query.BuildPathAndQuery(), info);
 		}
 
 		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent)

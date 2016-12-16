@@ -172,13 +172,13 @@ namespace Diadoc.Api.Proto.Invoicing
       set { _DocumentCreatorBase = value; }
     }
 
-    private string _GovermentContractInfo = "";
-    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"GovermentContractInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private string _GovernmentContractInfo = "";
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"GovernmentContractInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
-    public string GovermentContractInfo
+    public string GovernmentContractInfo
     {
-      get { return _GovermentContractInfo; }
-      set { _GovermentContractInfo = value; }
+      get { return _GovernmentContractInfo; }
+      set { _GovernmentContractInfo = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -844,6 +844,413 @@ namespace Diadoc.Api.Proto.Invoicing
     public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> Signers
     {
       get { return _Signers; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UniversalCorrectionDocumentSellerTitleInfo")]
+  public partial class UniversalCorrectionDocumentSellerTitleInfo : global::ProtoBuf.IExtensible
+  {
+    public UniversalCorrectionDocumentSellerTitleInfo() {}
+    
+    private Diadoc.Api.Proto.Invoicing.FunctionType _Function;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Function", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Invoicing.FunctionType Function
+    {
+      get { return _Function; }
+      set { _Function = value; }
+    }
+
+    private string _DocumentName = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DocumentName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DocumentName
+    {
+      get { return _DocumentName; }
+      set { _DocumentName = value; }
+    }
+    private string _DocumentDate;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"DocumentDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocumentDate
+    {
+      get { return _DocumentDate; }
+      set { _DocumentDate = value; }
+    }
+    private string _DocumentNumber;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"DocumentNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocumentNumber
+    {
+      get { return _DocumentNumber; }
+      set { _DocumentNumber = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.InvoiceForCorrectionInfo> _Invoices = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.InvoiceForCorrectionInfo>();
+    [global::ProtoBuf.ProtoMember(5, Name=@"Invoices", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.InvoiceForCorrectionInfo> Invoices
+    {
+      get { return _Invoices; }
+    }
+  
+    private Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo _Seller;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"Seller", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo Seller
+    {
+      get { return _Seller; }
+      set { _Seller = value; }
+    }
+    private Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo _Buyer;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"Buyer", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Invoicing.Organizations.ExtendedOrganizationInfo Buyer
+    {
+      get { return _Buyer; }
+      set { _Buyer = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> _Signers = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner>();
+    [global::ProtoBuf.ProtoMember(8, Name=@"Signers", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> Signers
+    {
+      get { return _Signers; }
+    }
+  
+    private Diadoc.Api.Proto.Invoicing.EventContent _EventContent;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"EventContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Invoicing.EventContent EventContent
+    {
+      get { return _EventContent; }
+      set { _EventContent = value; }
+    }
+    private Diadoc.Api.Proto.Invoicing.InvoiceCorrectionTable _InvoiceCorrectionTable;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"InvoiceCorrectionTable", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Invoicing.InvoiceCorrectionTable InvoiceCorrectionTable
+    {
+      get { return _InvoiceCorrectionTable; }
+      set { _InvoiceCorrectionTable = value; }
+    }
+    private string _Currency;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"Currency", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Currency
+    {
+      get { return _Currency; }
+      set { _Currency = value; }
+    }
+
+    private string _CurrencyRate = "";
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"CurrencyRate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string CurrencyRate
+    {
+      get { return _CurrencyRate; }
+      set { _CurrencyRate = value; }
+    }
+
+    private string _CorrectionRevisionDate = "";
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"CorrectionRevisionDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string CorrectionRevisionDate
+    {
+      get { return _CorrectionRevisionDate; }
+      set { _CorrectionRevisionDate = value; }
+    }
+
+    private string _CorrectionRevisionNumber = "";
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"CorrectionRevisionNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string CorrectionRevisionNumber
+    {
+      get { return _CorrectionRevisionNumber; }
+      set { _CorrectionRevisionNumber = value; }
+    }
+
+    private Diadoc.Api.Proto.Invoicing.AdditionalInfoId _AdditionalInfoId = null;
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"AdditionalInfoId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Invoicing.AdditionalInfoId AdditionalInfoId
+    {
+      get { return _AdditionalInfoId; }
+      set { _AdditionalInfoId = value; }
+    }
+    private string _DocumentCreator;
+    [global::ProtoBuf.ProtoMember(16, IsRequired = true, Name=@"DocumentCreator", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocumentCreator
+    {
+      get { return _DocumentCreator; }
+      set { _DocumentCreator = value; }
+    }
+
+    private string _DocumentCreatorBase = "";
+    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"DocumentCreatorBase", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DocumentCreatorBase
+    {
+      get { return _DocumentCreatorBase; }
+      set { _DocumentCreatorBase = value; }
+    }
+
+    private string _GovernmentContractInfo = "";
+    [global::ProtoBuf.ProtoMember(18, IsRequired = false, Name=@"GovernmentContractInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string GovernmentContractInfo
+    {
+      get { return _GovernmentContractInfo; }
+      set { _GovernmentContractInfo = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"InvoiceForCorrectionInfo")]
+  public partial class InvoiceForCorrectionInfo : global::ProtoBuf.IExtensible
+  {
+    public InvoiceForCorrectionInfo() {}
+    
+    private string _InvoiceDate;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"InvoiceDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string InvoiceDate
+    {
+      get { return _InvoiceDate; }
+      set { _InvoiceDate = value; }
+    }
+    private string _InvoiceNumber;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"InvoiceNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string InvoiceNumber
+    {
+      get { return _InvoiceNumber; }
+      set { _InvoiceNumber = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.InvoiceRevisionInfo> _InvoiceRevisions = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.InvoiceRevisionInfo>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"InvoiceRevisions", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.InvoiceRevisionInfo> InvoiceRevisions
+    {
+      get { return _InvoiceRevisions; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"InvoiceRevisionInfo")]
+  public partial class InvoiceRevisionInfo : global::ProtoBuf.IExtensible
+  {
+    public InvoiceRevisionInfo() {}
+    
+    private string _InvoiceRevisionDate;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"InvoiceRevisionDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string InvoiceRevisionDate
+    {
+      get { return _InvoiceRevisionDate; }
+      set { _InvoiceRevisionDate = value; }
+    }
+    private string _InvoiceRevisionNumber;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"InvoiceRevisionNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string InvoiceRevisionNumber
+    {
+      get { return _InvoiceRevisionNumber; }
+      set { _InvoiceRevisionNumber = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"EventContent")]
+  public partial class EventContent : global::ProtoBuf.IExtensible
+  {
+    public EventContent() {}
+    
+
+    private string _CostChangeInfo = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"CostChangeInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string CostChangeInfo
+    {
+      get { return _CostChangeInfo; }
+      set { _CostChangeInfo = value; }
+    }
+    private string _TransferDocDetails;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"TransferDocDetails", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string TransferDocDetails
+    {
+      get { return _TransferDocDetails; }
+      set { _TransferDocDetails = value; }
+    }
+    private string _OperationContent;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"OperationContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OperationContent
+    {
+      get { return _OperationContent; }
+      set { _OperationContent = value; }
+    }
+
+    private string _NotificationDate = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"NotificationDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string NotificationDate
+    {
+      get { return _NotificationDate; }
+      set { _NotificationDate = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.CorrectionBase> _CorrectionBase = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.CorrectionBase>();
+    [global::ProtoBuf.ProtoMember(5, Name=@"CorrectionBase", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.CorrectionBase> CorrectionBase
+    {
+      get { return _CorrectionBase; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CorrectionBase")]
+  public partial class CorrectionBase : global::ProtoBuf.IExtensible
+  {
+    public CorrectionBase() {}
+    
+    private string _BaseDocumentName;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"BaseDocumentName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string BaseDocumentName
+    {
+      get { return _BaseDocumentName; }
+      set { _BaseDocumentName = value; }
+    }
+
+    private string _BaseDocumentNumber = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"BaseDocumentNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string BaseDocumentNumber
+    {
+      get { return _BaseDocumentNumber; }
+      set { _BaseDocumentNumber = value; }
+    }
+
+    private string _BaseDocumentDate = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"BaseDocumentDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string BaseDocumentDate
+    {
+      get { return _BaseDocumentDate; }
+      set { _BaseDocumentDate = value; }
+    }
+
+    private string _AdditionalInfo = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"AdditionalInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AdditionalInfo
+    {
+      get { return _AdditionalInfo; }
+      set { _AdditionalInfo = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"InvoiceCorrectionTable")]
+  public partial class InvoiceCorrectionTable : global::ProtoBuf.IExtensible
+  {
+    public InvoiceCorrectionTable() {}
+    
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.ExtendedInvoiceCorrectionItem> _Items = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.ExtendedInvoiceCorrectionItem>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"Items", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.ExtendedInvoiceCorrectionItem> Items
+    {
+      get { return _Items; }
+    }
+  
+
+    private Diadoc.Api.Proto.Invoicing.InvoiceTotalsDiff _TotalsInc = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TotalsInc", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Invoicing.InvoiceTotalsDiff TotalsInc
+    {
+      get { return _TotalsInc; }
+      set { _TotalsInc = value; }
+    }
+
+    private Diadoc.Api.Proto.Invoicing.InvoiceTotalsDiff _TotalsDec = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"TotalsDec", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Invoicing.InvoiceTotalsDiff TotalsDec
+    {
+      get { return _TotalsDec; }
+      set { _TotalsDec = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ExtendedInvoiceCorrectionItem")]
+  public partial class ExtendedInvoiceCorrectionItem : global::ProtoBuf.IExtensible
+  {
+    public ExtendedInvoiceCorrectionItem() {}
+    
+    private string _Product;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Product", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Product
+    {
+      get { return _Product; }
+      set { _Product = value; }
+    }
+    private Diadoc.Api.Proto.Invoicing.CorrectableInvoiceItemFields _OriginalValues;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"OriginalValues", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Invoicing.CorrectableInvoiceItemFields OriginalValues
+    {
+      get { return _OriginalValues; }
+      set { _OriginalValues = value; }
+    }
+    private Diadoc.Api.Proto.Invoicing.CorrectableInvoiceItemFields _CorrectedValues;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"CorrectedValues", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Invoicing.CorrectableInvoiceItemFields CorrectedValues
+    {
+      get { return _CorrectedValues; }
+      set { _CorrectedValues = value; }
+    }
+
+    private Diadoc.Api.Proto.Invoicing.InvoiceItemAmountsDiff _AmountsInc = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"AmountsInc", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Invoicing.InvoiceItemAmountsDiff AmountsInc
+    {
+      get { return _AmountsInc; }
+      set { _AmountsInc = value; }
+    }
+
+    private Diadoc.Api.Proto.Invoicing.InvoiceItemAmountsDiff _AmountsDec = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"AmountsDec", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Invoicing.InvoiceItemAmountsDiff AmountsDec
+    {
+      get { return _AmountsDec; }
+      set { _AmountsDec = value; }
+    }
+
+    private string _ItemAccountDebit = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"ItemAccountDebit", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ItemAccountDebit
+    {
+      get { return _ItemAccountDebit; }
+      set { _ItemAccountDebit = value; }
+    }
+
+    private string _ItemAccountCredit = "";
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"ItemAccountCredit", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ItemAccountCredit
+    {
+      get { return _ItemAccountCredit; }
+      set { _ItemAccountCredit = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.AdditionalInfo> _AdditionalInfo = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.AdditionalInfo>();
+    [global::ProtoBuf.ProtoMember(8, Name=@"AdditionalInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.AdditionalInfo> AdditionalInfo
+    {
+      get { return _AdditionalInfo; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;
