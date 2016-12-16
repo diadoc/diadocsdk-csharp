@@ -249,7 +249,7 @@ namespace Diadoc.Api.Proto.Docflow
 		string Vat { get; }
 		int CurrencyCode { get; }
 		string Grounds { get; }
-		FunctionType Function { get; }
+		Com.FunctionType Function { get; }
 		DocumentDateAndNumber OriginalDocumentDateAndNumber { get; }
 	}
 
@@ -260,6 +260,10 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof (IUniversalTransferDocumentInfo))]
 	public partial class UniversalTransferDocumentInfo : SafeComObject, IUniversalTransferDocumentInfo
 	{
+		Com.FunctionType IUniversalTransferDocumentInfo.Function
+		{
+			get { return (Com.FunctionType) Function; }
+		}
 	}
 
 	[ComVisible(true)]
@@ -272,7 +276,7 @@ namespace Diadoc.Api.Proto.Docflow
 		string VatDec { get; }
 		int CurrencyCode { get; }
 		string Grounds { get; }
-		FunctionType Function { get; }
+		Com.FunctionType Function { get; }
 		DocumentDateAndNumber OriginalDocumentDateAndNumber { get; }
 		DocumentDateAndNumber OriginalDocumentRevisionDateAndNumber { get; }
 		DocumentDateAndNumber OriginalDocumentCorrectionDateAndNumber { get; }
@@ -285,6 +289,10 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IUniversalCorrectionDocumentInfo))]
 	public partial class UniversalCorrectionDocumentInfo : SafeComObject, IUniversalCorrectionDocumentInfo
 	{
+		Com.FunctionType IUniversalCorrectionDocumentInfo.Function
+		{
+			get { return (Com.FunctionType) Function; }
+		}
 	}
 }
 

@@ -8,6 +8,7 @@ namespace Diadoc.Api.Proto.Invoicing
 	{
 		byte[] SignerCertificate { get; set; }
 		SignerDetails SignerDetails { get; set; }
+		string SignerCertificateThumbprint { get; set; }
 	}
 
 	[ComVisible(true)]

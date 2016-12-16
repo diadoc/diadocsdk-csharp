@@ -81,14 +81,8 @@ namespace Diadoc.Api
 		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object info, bool disableValidation = false);
 
-		GeneratedFile GenerateUniversalTransferDocumentRevisionXmlForSeller(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object revisionInfo, bool disableValidation = false);
-
 		GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object correctionInfo, bool disableValidation = false);
-
-		GeneratedFile GenerateUniversalCorrectionDocumentRevisionXmlForSeller(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object correctionRevisionInfo, bool disableValidation = false);
 
 		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
@@ -458,25 +452,11 @@ namespace Diadoc.Api
 				authToken, (UniversalTransferDocumentSellerTitleInfo)info, disableValidation);
 		}
 
-		public GeneratedFile GenerateUniversalTransferDocumentRevisionXmlForSeller(
-			string authToken, object revisionInfo, bool disableValidation = false)
-		{
-			return diadoc.GenerateUniversalTransferDocumentRevisionXmlForSeller(
-				authToken, (UniversalTransferDocumentSellerTitleInfo)revisionInfo, disableValidation);
-		}
-
 		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
 			string authToken, object correctionInfo, bool disableValidation = false)
 		{
 			return diadoc.GenerateUniversalCorrectionDocumentXmlForSeller(
 				authToken, (UniversalCorrectionDocumentSellerTitleInfo)correctionInfo, disableValidation);
-		}
-
-		public GeneratedFile GenerateUniversalCorrectionDocumentRevisionXmlForSeller(
-			string authToken, object correctionRevisionInfo, bool disableValidation = false)
-		{
-			return diadoc.GenerateUniversalCorrectionDocumentRevisionXmlForSeller(
-				authToken, (UniversalCorrectionDocumentSellerTitleInfo)correctionRevisionInfo, disableValidation);
 		}
 
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(
