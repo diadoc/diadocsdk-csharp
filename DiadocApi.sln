@@ -1,12 +1,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiadocApi-net35", "src\DiadocApi-net35.csproj", "{992AFD96-B3EE-4124-8788-022F867E2EF0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diadoc.Console", "Samples\Diadoc.Console\Diadoc.Console.csproj", "{6560AB73-5F94-4AB6-8B99-D87C023235EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diadoc.Samples", "Samples\Diadoc.Samples\Diadoc.Samples.csproj", "{0B9032A3-6EC6-4C08-A912-CA1B523C3685}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiadocApi-Tests", "tests\DiadocApi-Tests.csproj", "{AAD2465C-D1A8-4C93-955C-5461CD7F483E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,18 @@ Global
 		{0B9032A3-6EC6-4C08-A912-CA1B523C3685}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0B9032A3-6EC6-4C08-A912-CA1B523C3685}.Release|x86.ActiveCfg = Release|Any CPU
 		{0B9032A3-6EC6-4C08-A912-CA1B523C3685}.Release|x86.Build.0 = Release|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Debug|x86.Build.0 = Debug|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Release|x86.ActiveCfg = Release|Any CPU
+		{AAD2465C-D1A8-4C93-955C-5461CD7F483E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -92,7 +92,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\DiadocApi-net35.csproj">
       <Project>{992AFD96-B3EE-4124-8788-022F867E2EF0}</Project>
-      <Name>DiadocApi</Name>
+      <Name>DiadocApi-net35</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Xml.Serialization;
 
 namespace Diadoc.Api.Com
 {
 	[Flags]
 	[ComVisible(true)]
 	[Guid("5198883B-F68A-480B-A4D2-1AFF7BA50A01")]
+	//NOTE: Это хотели, чтобы можно было использовать XML-сериализацию для классов
+	[XmlType(TypeName = "CertificateChainStatus", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum CertificateChainStatus
 	{
 		NoError = 0,
