@@ -1,9 +1,12 @@
 ﻿using System.Runtime.InteropServices;
+using System.Xml.Serialization;
 
 namespace Diadoc.Api.Com
 {
 	[ComVisible(true)]
 	[Guid("445699DE-6BB3-4D2E-9151-18EED629A3BA")]
+	//NOTE: Это хотели, чтобы можно было использовать XML-сериализацию для классов
+	[XmlType(TypeName = "BilateralDocumentStatus", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum BilateralDocumentStatus
 	{
 		UnknownBilateralDocumentStatus = 0,

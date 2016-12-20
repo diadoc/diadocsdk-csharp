@@ -1,9 +1,12 @@
 ﻿using System.Runtime.InteropServices;
+using System.Xml.Serialization;
 
 namespace Diadoc.Api.Com
 {
 	[ComVisible(true)]
 	[Guid("E6445859-B3E2-46FB-853A-AEB0E3F66207")]
+	//NOTE: Это хотели, чтобы можно было использовать XML-сериализацию для классов
+	[XmlType(TypeName = "AttachmentType", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum AttachmentType
 	{
 		UnknownAttachmentType = -1,

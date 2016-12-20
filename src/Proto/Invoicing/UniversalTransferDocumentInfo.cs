@@ -56,7 +56,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(Signers); }
 		}
 
-		public void AddSigner(object signer)
+		void IUniversalTransferDocumentSellerTitleInfo.AddSigner(object signer)
 		{
 			Signers.Add((ExtendedSigner)signer);
 		}
@@ -66,7 +66,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(PaymentDocuments); }
 		}
 
-		public void AddPaymentDocument(object paymentDocument)
+		void IUniversalTransferDocumentSellerTitleInfo.AddPaymentDocument(object paymentDocument)
 		{
 			PaymentDocuments.Add((PaymentDocumentInfo)paymentDocument);
 		}
@@ -118,7 +118,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(Items); }
 		}
 
-		public void AddItem(object item)
+		void IUtdInvoiceTable.AddItem(object item)
 		{
 			Items.Add((ExtendedInvoiceItem)item);
 		}
@@ -178,7 +178,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get {  return new ReadonlyList(AdditionalInfo);}
 		}
 
-		public void AddAdditionalInfo([MarshalAs(UnmanagedType.IDispatch)] object additionalInfo)
+		void IExtendedInvoiceItem.AddAdditionalInfo([MarshalAs(UnmanagedType.IDispatch)] object additionalInfo)
 		{
 			AdditionalInfo.Add((AdditionalInfo)additionalInfo);
 		}
@@ -188,7 +188,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(CustomsDeclarations);}
 		}
 
-		public void AddCustomsDeclaration([MarshalAs(UnmanagedType.IDispatch)] object customsDeclaration)
+		void IExtendedInvoiceItem.AddCustomsDeclaration([MarshalAs(UnmanagedType.IDispatch)] object customsDeclaration)
 		{
 			CustomsDeclarations.Add((CustomsDeclaration)customsDeclaration);
 		}
@@ -230,7 +230,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(TransferBase);}
 		}
 
-		public void AddTransferBase(object transferBase)
+		void ITransferInfo.AddTransferBase(object transferBase)
 		{
 			TransferBase.Add((TransferBase)transferBase);
 		}
@@ -240,7 +240,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(Waybill);}
 		}
 
-		public void AddWaybill(object waybill)
+		void ITransferInfo.AddWaybill(object waybill)
 		{
 			Waybill.Add((Waybill)waybill);
 		}
@@ -352,7 +352,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(AdditionalInfo); }
 		}
 
-		public void AddAdditionalInfo(object additionalInfo)
+		void IAdditionalInfoId.AddAdditionalInfo(object additionalInfo)
 		{
 			AdditionalInfo.Add((AdditionalInfo)additionalInfo);
 		}
@@ -389,7 +389,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(Signers); }
 		}
 
-		public void AddSigner(object signer)
+		void IUniversalTransferDocumentBuyerTitleInfo.AddSigner(object signer)
 		{
 			Signers.Add((ExtendedSigner)signer);
 		}
@@ -443,7 +443,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(Invoices); }
 		}
 
-		public void AddInvoice([MarshalAs(UnmanagedType.IDispatch)] object invoice)
+		void IUniversalCorrectionDocumentSellerTitleInfo.AddInvoice([MarshalAs(UnmanagedType.IDispatch)] object invoice)
 		{
 			Invoices.Add((InvoiceForCorrectionInfo)invoice);
 		}
@@ -453,7 +453,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(Signers); }
 		}
 
-		public void AddSigner([MarshalAs(UnmanagedType.IDispatch)] object signer)
+		void IUniversalCorrectionDocumentSellerTitleInfo.AddSigner([MarshalAs(UnmanagedType.IDispatch)] object signer)
 		{
 			Signers.Add((ExtendedSigner)signer);
 		}
@@ -484,7 +484,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(InvoiceRevisions); }
 		}
 
-		public void AddInvoiceRevision([MarshalAs(UnmanagedType.IDispatch)] object invoiceRevision)
+		void IInvoiceForCorrectionInfo.AddInvoiceRevision([MarshalAs(UnmanagedType.IDispatch)] object invoiceRevision)
 		{
 			InvoiceRevisions.Add((InvoiceRevisionInfo)invoiceRevision);
 		}
@@ -532,7 +532,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(CorrectionBase); }
 		}
 
-		public void AddCorrectionBase([MarshalAs(UnmanagedType.IDispatch)] object correctionBase)
+		void IEventContent.AddCorrectionBase([MarshalAs(UnmanagedType.IDispatch)] object correctionBase)
 		{
 			CorrectionBase.Add((CorrectionBase)correctionBase);
 		}
@@ -580,7 +580,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(Items);}
 		}
 
-		public void AddItem([MarshalAs(UnmanagedType.IDispatch)] object item)
+		void IUtdInvoiceCorrectionTable.AddItem([MarshalAs(UnmanagedType.IDispatch)] object item)
 		{
 			Items.Add((ExtendedInvoiceCorrectionItem)item);
 		}
@@ -616,7 +616,7 @@ namespace Diadoc.Api.Proto.Invoicing
 			get { return new ReadonlyList(AdditionalInfo); }
 		}
 
-		public void AddAdditionalInfo([MarshalAs(UnmanagedType.IDispatch)] object additionalInfo)
+		void IExtendedInvoiceCorrectionItem.AddAdditionalInfo([MarshalAs(UnmanagedType.IDispatch)] object additionalInfo)
 		{
 			AdditionalInfo.Add((AdditionalInfo)additionalInfo);
 		}

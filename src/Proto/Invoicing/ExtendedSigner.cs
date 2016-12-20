@@ -50,19 +50,19 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
 	public partial class ExtendedSignerDetails
 		: SafeComObject, IExtendedSignerDetails
 	{
-		public Com.SignerType SignerTypeValue
+		Com.SignerType IExtendedSignerDetails.SignerTypeValue
 		{
 			get { return (Com.SignerType)(int)SignerType; }
 			set { SignerType = (SignerType)(int)value; }
 		}
 
-		public Com.SignerPowers SignerPowersValue
+		Com.SignerPowers IExtendedSignerDetails.SignerPowersValue
 		{
 			get { return (Com.SignerPowers)(int)SignerPowers; }
 			set { SignerPowers = (SignerPowers)(int)value; }
 		}
 
-		public Com.SignerStatus SignerStatusValue
+		Com.SignerStatus IExtendedSignerDetails.SignerStatusValue
 		{
 			get { return (Com.SignerStatus)(int)SignerStatus; }
 			set { SignerStatus = (SignerStatus)(int)value; }

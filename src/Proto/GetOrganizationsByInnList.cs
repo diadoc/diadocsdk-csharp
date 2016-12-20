@@ -23,12 +23,20 @@ namespace Diadoc.Api.Proto
 	}
 
 	[ComVisible(true)]
+	[Guid("FA34221F-ABC3-4AE8-B986-BBCDB533B9AE")]
+	public interface IOrganizationWithCounteragentStatus
+	{
+		IOrganization CounteragentOrganization { get; }
+		Com.CounteragentStatus CounteragentStatusValue { get; }
+	}
+
+	[ComVisible(true)]
 	[Guid("60B53C24-0E52-4790-AF40-BBAD0AB8D89E")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IOrganizationWithCounteragentStatus))]
 	public partial class OrganizationWithCounteragentStatus : SafeComObject, IOrganizationWithCounteragentStatus
 	{
-		public IOrganization CounteragentOrganization
+		IOrganization IOrganizationWithCounteragentStatus.CounteragentOrganization
 		{
 			get
 			{
@@ -36,17 +44,9 @@ namespace Diadoc.Api.Proto
 			}
 		}
 
-		public Com.CounteragentStatus CounteragentStatusValue
+		Com.CounteragentStatus IOrganizationWithCounteragentStatus.CounteragentStatusValue
 		{
-			get { return (Com.CounteragentStatus)((int)CounteragentStatus); }
+			get { return (Com.CounteragentStatus)CounteragentStatus; }
 		}
-	}
-
-	[ComVisible(true)]
-	[Guid("FA34221F-ABC3-4AE8-B986-BBCDB533B9AE")]
-	public interface IOrganizationWithCounteragentStatus
-	{
-		IOrganization CounteragentOrganization { get; }
-		Com.CounteragentStatus CounteragentStatusValue { get; }
 	}
 }

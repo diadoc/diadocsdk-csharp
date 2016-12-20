@@ -41,15 +41,15 @@ namespace Diadoc.Api.Proto.Invoicing
 	[ComDefaultInterface(typeof(IInvoiceInfo))]
 	public partial class InvoiceInfo : SafeComObject, IInvoiceInfo
 	{
-		public ReadonlyList ItemsList { get { return new ReadonlyList(Items); } }
-		public ReadonlyList PaymentDocumentsList { get { return new ReadonlyList(PaymentDocuments); } }
+		ReadonlyList IInvoiceInfo.ItemsList { get { return new ReadonlyList(Items); } }
+		ReadonlyList IInvoiceInfo.PaymentDocumentsList { get { return new ReadonlyList(PaymentDocuments); } }
 
-		public void AddPaymentDocument(object paymentDocument)
+		void IInvoiceInfo.AddPaymentDocument(object paymentDocument)
 		{
 			PaymentDocuments.Add((PaymentDocumentInfo) paymentDocument);
 		}
 
-		public void AddItem(object item)
+		void IInvoiceInfo.AddItem(object item)
 		{
 			Items.Add((InvoiceItem) item);
 		}
@@ -110,20 +110,20 @@ namespace Diadoc.Api.Proto.Invoicing
 	[ComDefaultInterface(typeof(IInvoiceItem))]
 	public partial class InvoiceItem : SafeComObject, IInvoiceItem
 	{
-		public ReadonlyList CountriesOfOriginList { get { return new ReadonlyList(CountriesOfOrigin); } }
-		public ReadonlyList CustomsDeclarationNumbersList { get { return new ReadonlyList(CustomsDeclarationNumbers); } }
+		ReadonlyList IInvoiceItem.CountriesOfOriginList { get { return new ReadonlyList(CountriesOfOrigin); } }
+		ReadonlyList IInvoiceItem.CustomsDeclarationNumbersList { get { return new ReadonlyList(CustomsDeclarationNumbers); } }
 
-		public void AddCountryOfOrigin(string countryOfOrigin)
+		void IInvoiceItem.AddCountryOfOrigin(string countryOfOrigin)
 		{
 			CountriesOfOrigin.Add(countryOfOrigin);
 		}
 
-		public void AddCustomsDeclarationNumber(string customsDeclarationNumber)
+		void IInvoiceItem.AddCustomsDeclarationNumber(string customsDeclarationNumber)
 		{
 			CustomsDeclarationNumbers.Add(customsDeclarationNumber);
 		}
 
-		public Com.TaxRate TaxRateValue
+		Com.TaxRate IInvoiceItem.TaxRateValue
 		{
 			get { return (Com.TaxRate)((int)TaxRate); }
 			set { TaxRate = (TaxRate)((int)value); }
@@ -195,9 +195,9 @@ namespace Diadoc.Api.Proto.Invoicing
 	[ComDefaultInterface(typeof(IInvoiceCorrectionInfo))]
 	public partial class InvoiceCorrectionInfo : SafeComObject, IInvoiceCorrectionInfo
 	{
-		public ReadonlyList ItemsList { get { return new ReadonlyList(Items); } }
+		ReadonlyList IInvoiceCorrectionInfo.ItemsList { get { return new ReadonlyList(Items); } }
 
-		public void AddItem(object item)
+		void IInvoiceCorrectionInfo.AddItem(object item)
 		{
 			Items.Add((InvoiceCorrectionItem) item);
 		}
@@ -263,7 +263,7 @@ namespace Diadoc.Api.Proto.Invoicing
 	[ComDefaultInterface(typeof(ICorrectableInvoiceItemFields))]
 	public partial class CorrectableInvoiceItemFields : SafeComObject, ICorrectableInvoiceItemFields
 	{
-		public Com.TaxRate TaxRateValue
+		Com.TaxRate ICorrectableInvoiceItemFields.TaxRateValue
 		{
 			get { return (Com.TaxRate)((int)TaxRate); }
 			set { TaxRate = (TaxRate)((int)value); }

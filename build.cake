@@ -1,5 +1,6 @@
 #addin "Cake.Git"
-#tool nuget:?package=ILMerge&version=2.12.803
+#tool "nuget:?package=ILMerge&version=2.12.803"
+#tool "nuget:?package=NUnit.Runners&version=2.6.4"
 #tool "secure-file"
 using Cake.Common.Diagnostics;
 using Cake.Git;
@@ -206,6 +207,13 @@ Task("PublishArtifactsToAppVeyor")
 		}
 	});
 
+Task("Test")
+	.IsDependentOn("Build")
+	.Does(() =>
+	{
+		NUnit(buildDir + "/**/*Tests.dll");
+	});
+
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
@@ -225,6 +233,7 @@ Task("Rebuild")
 Task("Appveyor")
 	.IsDependentOn("PrepareBinaries")
 	.IsDependentOn("Build")
+	.IsDependentOn("Test")
 	.IsDependentOn("ILMerge")
 	.IsDependentOn("Nuget-Pack")
 	.IsDependentOn("PublishArtifactsToAppVeyor");

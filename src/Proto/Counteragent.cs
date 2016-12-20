@@ -18,7 +18,7 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof (ICounteragentList))]
 	public partial class CounteragentList : SafeComObject, ICounteragentList
 	{
-		public ReadonlyList CounteragentsList
+		ReadonlyList ICounteragentList.CounteragentsList
 		{
 			get { return new ReadonlyList(Counteragents); }
 		}
@@ -52,7 +52,7 @@ namespace Diadoc.Api.Proto
 			return string.Format("IndexKey: {0}, Organization: {1}, CurrentStatus: {2}, LastEventTimestampTicks: {3}", IndexKey, Organization, CurrentStatus, LastEventTimestampTicks);
 		}
 
-		public Com.CounteragentStatus CurrentCounteragentStatus
+		Com.CounteragentStatus ICounteragent.CurrentCounteragentStatus
 		{
 			get { return (Com.CounteragentStatus) CurrentStatus; }
 		}
@@ -71,7 +71,7 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(ICounteragentCertificateList))]
 	public partial class CounteragentCertificateList : SafeComObject, ICounteragentCertificateList
 	{
-		public ReadonlyList CertificatesList
+		ReadonlyList ICounteragentCertificateList.CertificatesList
 		{
 			get { return new ReadonlyList(Certificates); }
 		}

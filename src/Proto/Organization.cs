@@ -17,7 +17,10 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(IOrganizationList))]
 	public partial class OrganizationList : SafeComObject, IOrganizationList
 	{
-		public ReadonlyList OrganizationsList { get { return new ReadonlyList(Organizations); } }
+		ReadonlyList IOrganizationList.OrganizationsList
+		{
+			get { return new ReadonlyList(Organizations); }
+		}
 
 		public override string ToString()
 		{
@@ -51,8 +54,15 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(IOrganization))]
 	public partial class Organization : SafeComObject, IOrganization
 	{
-		public ReadonlyList BoxesList { get { return new ReadonlyList(Boxes); } }
-		public ReadonlyList DepartmentsList { get { return new ReadonlyList(Departments); } }
+		ReadonlyList IOrganization.BoxesList
+		{
+			get { return new ReadonlyList(Boxes); }
+		}
+
+		ReadonlyList IOrganization.DepartmentsList
+		{
+			get { return new ReadonlyList(Departments); }
+		}
 
 		public override string ToString()
 		{
