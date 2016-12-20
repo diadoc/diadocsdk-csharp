@@ -19,7 +19,10 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(ICertificateVerificationResult))]
 	public partial class CertificateVerificationResult : SafeComObject, ICertificateVerificationResult
 	{
-		public DateTime VerificationDateTime { get { return new DateTime(VerificationTime.Ticks, DateTimeKind.Utc); } }
+		public DateTime VerificationDateTime
+		{
+			get { return new DateTime(VerificationTime.Ticks, DateTimeKind.Utc); }
+		}
 
 		ReadonlyList ICertificateVerificationResult.CertificateChainList
 		{

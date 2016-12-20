@@ -143,12 +143,23 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public string MessageId
 		{
-			get { return Message != null ? Message.MessageId : Patch.MessageId; }
+			get
+			{
+				return (Message != null ? Message.MessageId : null)
+					?? (Patch != null ? Patch.MessageId : null);
+			}
 		}
 
 		public DateTime Timestamp
 		{
-			get { return Message != null ? Message.Timestamp : Patch.Timestamp; }
+			get
+			{
+				if (Message != null)
+					return Message.Timestamp;
+				if (Patch != null)
+					return Patch.Timestamp;
+				return default(DateTime);
+			}
 		}
 
 		ReadonlyList IBoxEvent.EntitiesList
@@ -158,7 +169,14 @@ namespace Diadoc.Api.Proto.Events
 
 		public List<Entity> Entities
 		{
-			get { return new List<Entity>(Message != null ? Message.Entities : Patch.Entities); }
+			get
+			{
+				var entities = (Message != null ? Message.Entities : null)
+					?? (Patch != null ? Patch.Entities : null);
+				return entities != null
+					? new List<Entity>(entities)
+					: new List<Entity>();
+			}
 		}
 
 		public bool HasMessage
