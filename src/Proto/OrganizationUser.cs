@@ -17,7 +17,7 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(IOrganizationUser))]
 	public partial class OrganizationUser : SafeComObject, IOrganizationUser
 	{
-		public IOrganizationUserPermissions UserPermissions
+		IOrganizationUserPermissions IOrganizationUser.UserPermissions
 		{
 			get { return Permissions; }
 		}

@@ -164,16 +164,14 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof (IDocumentInfo))]
 	public partial class DocumentInfo : SafeComObject, IDocumentInfo
 	{
-		public Com.DocumentType DocumentTypeValue
+		Com.DocumentType IDocumentInfo.DocumentTypeValue
 		{
 			get { return (Com.DocumentType) DocumentType; }
-			set { DocumentType = (DocumentType) value; }
 		}
 
-		public Com.DocumentDirection DocumentDirectionValue
+		Com.DocumentDirection IDocumentInfo.DocumentDirectionValue
 		{
 			get { return (Com.DocumentDirection) DocumentDirection; }
-			set { DocumentDirection = (DocumentDirection) value; }
 		}
 	}
 }
@@ -546,10 +544,9 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof (IDocflowStatusModel))]
 	public partial class DocflowStatusModel : SafeComObject, IDocflowStatusModel
 	{
-		public Com.DocflowStatusSeverity SeverityValue
+		Com.DocflowStatusSeverity IDocflowStatusModel.SeverityValue
 		{
 			get { return (Com.DocflowStatusSeverity) Severity; }
-			set { Severity = (DocflowStatusSeverity) value; }
 		}
 	}
 }
@@ -1130,7 +1127,7 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof (ITimeBasedFilter))]
 	public partial class TimeBasedFilter : SafeComObject, ITimeBasedFilter
 	{
-		public Com.SortDirection SortDirectionValue
+		Com.SortDirection ITimeBasedFilter.SortDirectionValue
 		{
 			get { return (Com.SortDirection) SortDirection; }
 			set { SortDirection = (SortDirection) value; }
@@ -1321,7 +1318,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof (ISearchDocflowsRequest))]
 	public partial class SearchDocflowsRequest : SafeComObject, ISearchDocflowsRequest
 	{
-		public Com.SearchScope ScopeValue
+		Com.SearchScope ISearchDocflowsRequest.ScopeValue
 		{
 			get { return (Com.SearchScope) Scope; }
 			set { Scope = (SearchScope) value; }

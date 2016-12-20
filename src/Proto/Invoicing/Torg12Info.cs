@@ -49,12 +49,12 @@ namespace Diadoc.Api.Proto.Invoicing
 	[ComDefaultInterface(typeof (ITorg12SellerTitleInfo))]
 	public partial class Torg12SellerTitleInfo : SafeComObject, ITorg12SellerTitleInfo
 	{
-		public ReadonlyList ItemsList
+		ReadonlyList ITorg12SellerTitleInfo.ItemsList
 		{
 			get { return new ReadonlyList(Items); }
 		}
 
-		public void AddItem(object item)
+		void ITorg12SellerTitleInfo.AddItem(object item)
 		{
 			Items.Add((Torg12Item) item);
 		}

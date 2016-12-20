@@ -51,7 +51,7 @@ namespace Diadoc.Api.Proto.Events
 			get { return new DateTime(LastPatchTimestampTicks, DateTimeKind.Utc); }
 		}
 
-		public ReadonlyList EntitiesList
+		ReadonlyList IMessage.EntitiesList
 		{
 			get { return new ReadonlyList(Entities); }
 		}
@@ -91,12 +91,12 @@ namespace Diadoc.Api.Proto.Events
 			get { return new DateTime(RawCreationDate, DateTimeKind.Utc); }
 		}
 
-		public Com.EntityType EntityTypeValue
+		Com.EntityType IEntity.EntityTypeValue
 		{
 			get { return (Com.EntityType) ((int) EntityType); }
 		}
 
-		public Com.AttachmentType AttachmentTypeValue
+		Com.AttachmentType IEntity.AttachmentTypeValue
 		{
 			get { return (Com.AttachmentType) ((int) AttachmentType); }
 		}
@@ -151,7 +151,7 @@ namespace Diadoc.Api.Proto.Events
 			get { return Message != null ? Message.Timestamp : Patch.Timestamp; }
 		}
 
-		public ReadonlyList EntitiesList
+		ReadonlyList IBoxEvent.EntitiesList
 		{
 			get { return new ReadonlyList(Message != null ? Message.Entities : Patch.Entities); }
 		}
@@ -227,12 +227,12 @@ namespace Diadoc.Api.Proto.Events
 			get { return DraftIsTransformedToMessageIdList.FirstOrDefault(); }
 		}
 
-		public ReadonlyList EntitiesList
+		ReadonlyList IMessagePatch.EntitiesList
 		{
 			get { return new ReadonlyList(Entities); }
 		}
 
-		public ReadonlyList EntityPatchesList
+		ReadonlyList IMessagePatch.EntityPatchesList
 		{
 			get { return new ReadonlyList(EntityPatches); }
 		}
@@ -308,6 +308,7 @@ namespace Diadoc.Api.Proto.Events
 		void AddTorg13([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddServiceDetails([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddSupplementaryAgreement([MarshalAs(UnmanagedType.IDispatch)] object supplementaryAgreement);
+		void AddUniversalTransferDocumentSellerTitle([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 	}
 
 	[ComVisible(true)]
@@ -471,8 +472,8 @@ namespace Diadoc.Api.Proto.Events
 		void AddResolution([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddRevocationRequestAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 
-		void AddXmlSignatureRejectionAttachment(
-			[MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddXmlSignatureRejectionAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddUniversalTransferDocumentBuyerTitleAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 	}
 
 	[ComVisible(true)]
@@ -550,6 +551,11 @@ namespace Diadoc.Api.Proto.Events
 		public void AddXmlSignatureRejectionAttachment(object attachment)
 		{
 			XmlSignatureRejections.Add((XmlSignatureRejectionAttachment)attachment);
+		}
+
+		public void AddUniversalTransferDocumentBuyerTitleAttachment(object attachment)
+		{
+			UniversalTransferDocumentBuyerTitles.Add((ReceiptAttachment)attachment);
 		}
 	}
 
@@ -949,7 +955,7 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof (IResolutionAttachment))]
 	public partial class ResolutionAttachment : SafeComObject, IResolutionAttachment
 	{
-		public Com.ResolutionType ResolutionTypeValue
+		Com.ResolutionType IResolutionAttachment.ResolutionTypeValue
 		{
 			get { return (Com.ResolutionType) ResolutionType; }
 			set { ResolutionType = (ResolutionType) value; }
@@ -974,7 +980,7 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof (IResolutionRequestAttachment))]
 	public partial class ResolutionRequestAttachment : SafeComObject, IResolutionRequestAttachment
 	{
-		public Com.ResolutionRequestType RequestType
+		Com.ResolutionRequestType IResolutionRequestAttachment.RequestType
 		{
 			get { return (Com.ResolutionRequestType) Type; }
 			set { Type = (ResolutionRequestType) value; }
