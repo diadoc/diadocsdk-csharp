@@ -307,6 +307,7 @@ namespace Diadoc.Api.Proto.Events
 		bool IsInternal { get; set; }
 		bool IsDraft { get; set; }
 		bool LockDraft { get; set; }
+		bool LockPacket { get; set; }
 		bool StrictDraftValidation { get; set; }
 		bool DelaySend { get; set; }
 		TrustConnectionRequestAttachment TrustConnectionRequest { get; set; }
