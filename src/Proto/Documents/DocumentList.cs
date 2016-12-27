@@ -17,6 +17,9 @@ namespace Diadoc.Api.Proto.Documents
 	[ComDefaultInterface(typeof(IDocumentList))]
 	public partial class DocumentList : SafeComObject, IDocumentList
 	{
-		public ReadonlyList DocumentsList { get { return new ReadonlyList(Documents); } }
+		public ReadonlyList DocumentsList
+		{
+			get { return new ReadonlyList(Documents); }
+		}
 	}
 }

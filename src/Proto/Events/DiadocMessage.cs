@@ -51,7 +51,7 @@ namespace Diadoc.Api.Proto.Events
 			get { return new DateTime(LastPatchTimestampTicks, DateTimeKind.Utc); }
 		}
 
-		ReadonlyList IMessage.EntitiesList
+		public ReadonlyList EntitiesList
 		{
 			get { return new ReadonlyList(Entities); }
 		}
@@ -91,12 +91,12 @@ namespace Diadoc.Api.Proto.Events
 			get { return new DateTime(RawCreationDate, DateTimeKind.Utc); }
 		}
 
-		Com.EntityType IEntity.EntityTypeValue
+		public Com.EntityType EntityTypeValue
 		{
 			get { return (Com.EntityType) ((int) EntityType); }
 		}
 
-		Com.AttachmentType IEntity.AttachmentTypeValue
+		public Com.AttachmentType AttachmentTypeValue
 		{
 			get { return (Com.AttachmentType) ((int) AttachmentType); }
 		}
@@ -162,9 +162,16 @@ namespace Diadoc.Api.Proto.Events
 			}
 		}
 
-		ReadonlyList IBoxEvent.EntitiesList
+		public ReadonlyList EntitiesList
 		{
-			get { return new ReadonlyList(Message != null ? Message.Entities : Patch.Entities); }
+			get
+			{
+				var entities = (Message != null ? Message.Entities : null)
+					?? (Patch != null ? Patch.Entities : null);
+				return entities != null
+					? new ReadonlyList(entities)
+					: null;
+			}
 		}
 
 		public List<Entity> Entities
@@ -245,12 +252,12 @@ namespace Diadoc.Api.Proto.Events
 			get { return DraftIsTransformedToMessageIdList.FirstOrDefault(); }
 		}
 
-		ReadonlyList IMessagePatch.EntitiesList
+		public ReadonlyList EntitiesList
 		{
 			get { return new ReadonlyList(Entities); }
 		}
 
-		ReadonlyList IMessagePatch.EntityPatchesList
+		public ReadonlyList EntityPatchesList
 		{
 			get { return new ReadonlyList(EntityPatches); }
 		}
@@ -974,7 +981,7 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof (IResolutionAttachment))]
 	public partial class ResolutionAttachment : SafeComObject, IResolutionAttachment
 	{
-		Com.ResolutionType IResolutionAttachment.ResolutionTypeValue
+		public Com.ResolutionType ResolutionTypeValue
 		{
 			get { return (Com.ResolutionType) ResolutionType; }
 			set { ResolutionType = (ResolutionType) value; }
@@ -999,7 +1006,7 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof (IResolutionRequestAttachment))]
 	public partial class ResolutionRequestAttachment : SafeComObject, IResolutionRequestAttachment
 	{
-		Com.ResolutionRequestType IResolutionRequestAttachment.RequestType
+		public Com.ResolutionRequestType RequestType
 		{
 			get { return (Com.ResolutionRequestType) Type; }
 			set { Type = (ResolutionRequestType) value; }

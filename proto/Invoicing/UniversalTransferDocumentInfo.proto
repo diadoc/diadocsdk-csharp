@@ -140,6 +140,7 @@ message UniversalTransferDocumentBuyerTitleInfo {
 	optional AdditionalInfoId AdditionalInfoId = 8; // ИнфПолФХЖ4
 	repeated Signers.ExtendedSigner Signers = 9; // Подписант
 }
+
 message UniversalCorrectionDocumentSellerTitleInfo {
 	required FunctionType Function = 1;                          // Функция документа // Функция
 	optional string DocumentName = 2;                            // Наименование первичного документа, определенное организацией // НаимДокОпр

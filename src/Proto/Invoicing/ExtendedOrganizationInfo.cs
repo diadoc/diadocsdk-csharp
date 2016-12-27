@@ -37,7 +37,7 @@ namespace Diadoc.Api.Proto.Invoicing.Organizations
 		: SafeComObject
 		, IExtendedOrganizationInfo
 	{
-		Com.OrgType IExtendedOrganizationInfo.OrgTypeValue
+		public Com.OrgType OrgTypeValue
 		{
 			get { return (Com.OrgType)(int)OrgType; }
 			set { OrgType = (OrgType)(int)value; }
