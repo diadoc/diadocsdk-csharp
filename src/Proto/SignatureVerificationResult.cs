@@ -24,7 +24,7 @@ namespace Diadoc.Api.Proto
 			get { return new DateTime(VerificationTime.Ticks, DateTimeKind.Utc); }
 		}
 
-		ReadonlyList ICertificateVerificationResult.CertificateChainList
+		public ReadonlyList CertificateChainList
 		{
 			get { return new ReadonlyList(CertificateChain); }
 		}
@@ -44,7 +44,7 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(ICertificateChainElement))]
 	public partial class CertificateChainElement : SafeComObject, ICertificateChainElement
 	{
-		Com.CertificateChainStatus ICertificateChainElement.CertificateChainStatus
+		public CertificateChainStatus CertificateChainStatus
 		{
 			get { return (CertificateChainStatus)CertificateChainStatusFlags; }
 		}

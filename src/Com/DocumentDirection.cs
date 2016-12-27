@@ -5,7 +5,7 @@ namespace Diadoc.Api.Com
 {
 	[ComVisible(true)]
 	[Guid("E426A34C-85D6-44FB-97E0-2BBF4F1490E7")]
-	//NOTE: Это хотели, чтобы можно было использовать XML-сериализацию для классов https://yt.skbkontur.ru/issue/ddsupport-373
+	//NOTE: Это хотели, чтобы можно было использовать XML-сериализацию для классов
 	[XmlType(TypeName = "DocumentDirection", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum DocumentDirection
 	{

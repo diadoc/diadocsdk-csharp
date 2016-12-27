@@ -31,14 +31,14 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
 			get { return new DateTime(ConfirmationDateTimeTicks); }
 		}
 
-		Com.InvoiceAmendmentFlags IUniversalTransferDocumentMetadata.AmendmentFlags
+		public Com.InvoiceAmendmentFlags AmendmentFlags
 		{
 			get { return (Com.InvoiceAmendmentFlags)InvoiceAmendmentFlags; }
 		}
 
-		Com.UniversalTransferDocumentStatus IUniversalTransferDocumentMetadata.Status
+		public Com.UniversalTransferDocumentStatus Status
 		{
-			get { return (Com.UniversalTransferDocumentStatus)(int)DocumentStatus; }
+			get { return (Com.UniversalTransferDocumentStatus)DocumentStatus; }
 		}
 	}
 
@@ -69,14 +69,14 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
 			get { return new DateTime(ConfirmationDateTimeTicks); }
 		}
 
-		Com.InvoiceAmendmentFlags IUniversalTransferDocumentRevisionMetadata.AmendmentFlags
+		public Com.InvoiceAmendmentFlags AmendmentFlags
 		{
 			get { return (Com.InvoiceAmendmentFlags)InvoiceAmendmentFlags; }
 		}
 
-		Com.UniversalTransferDocumentStatus IUniversalTransferDocumentRevisionMetadata.Status
+		public Com.UniversalTransferDocumentStatus Status
 		{
-			get { return (Com.UniversalTransferDocumentStatus)(int)DocumentStatus; }
+			get { return (Com.UniversalTransferDocumentStatus)DocumentStatus; }
 		}
 	}
 
@@ -95,7 +95,7 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
 		int Currency { get; }
 		Com.UniversalTransferDocumentStatus Status { get; }
 		DateTime ConfirmationDateTime { get; }
-		InvoiceAmendmentFlags AmendmentFlags { get; }
+		Com.InvoiceAmendmentFlags AmendmentFlags { get; }
 	}
 
 	[ComVisible(true)]
@@ -111,14 +111,14 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
 			get { return new DateTime(ConfirmationDateTimeTicks); }
 		}
 
-		Com.InvoiceAmendmentFlags IUniversalCorrectionDocumentMetadata.AmendmentFlags
+		public Com.InvoiceAmendmentFlags AmendmentFlags
 		{
 			get { return (Com.InvoiceAmendmentFlags)InvoiceAmendmentFlags; }
 		}
 
-		Com.UniversalTransferDocumentStatus IUniversalCorrectionDocumentMetadata.Status
+		public Com.UniversalTransferDocumentStatus Status
 		{
-			get { return (Com.UniversalTransferDocumentStatus)(int)DocumentStatus; }
+			get { return (Com.UniversalTransferDocumentStatus)DocumentStatus; }
 		}
 	}
 
@@ -155,14 +155,14 @@ namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
 			get { return new DateTime(ConfirmationDateTimeTicks); }
 		}
 
-		Com.InvoiceAmendmentFlags IUniversalCorrectionDocumentRevisionMetadata.AmendmentFlags
+		public Com.InvoiceAmendmentFlags AmendmentFlags
 		{
-			get { return (InvoiceAmendmentFlags)InvoiceAmendmentFlags; }
+			get { return (Com.InvoiceAmendmentFlags)InvoiceAmendmentFlags; }
 		}
 
-		Com.UniversalTransferDocumentStatus IUniversalCorrectionDocumentRevisionMetadata.Status
+		public Com.UniversalTransferDocumentStatus Status
 		{
-			get { return (Com.UniversalTransferDocumentStatus)(int)DocumentStatus; }
+			get { return (Com.UniversalTransferDocumentStatus)DocumentStatus; }
 		}
 	}
 }

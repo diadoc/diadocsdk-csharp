@@ -36,7 +36,7 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(IOrganizationWithCounteragentStatus))]
 	public partial class OrganizationWithCounteragentStatus : SafeComObject, IOrganizationWithCounteragentStatus
 	{
-		IOrganization IOrganizationWithCounteragentStatus.CounteragentOrganization
+		public IOrganization CounteragentOrganization
 		{
 			get
 			{
@@ -44,7 +44,7 @@ namespace Diadoc.Api.Proto
 			}
 		}
 
-		Com.CounteragentStatus IOrganizationWithCounteragentStatus.CounteragentStatusValue
+		public Com.CounteragentStatus CounteragentStatusValue
 		{
 			get { return (Com.CounteragentStatus)CounteragentStatus; }
 		}

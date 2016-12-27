@@ -17,7 +17,7 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(IOrganizationList))]
 	public partial class OrganizationList : SafeComObject, IOrganizationList
 	{
-		ReadonlyList IOrganizationList.OrganizationsList
+		public ReadonlyList OrganizationsList
 		{
 			get { return new ReadonlyList(Organizations); }
 		}
@@ -54,12 +54,12 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(IOrganization))]
 	public partial class Organization : SafeComObject, IOrganization
 	{
-		ReadonlyList IOrganization.BoxesList
+		public ReadonlyList BoxesList
 		{
 			get { return new ReadonlyList(Boxes); }
 		}
 
-		ReadonlyList IOrganization.DepartmentsList
+		public ReadonlyList DepartmentsList
 		{
 			get { return new ReadonlyList(Departments); }
 		}

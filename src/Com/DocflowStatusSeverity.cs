@@ -5,7 +5,7 @@ namespace Diadoc.Api.Com
 {
 	[ComVisible(true)]
 	[Guid("5E689AEA-C664-43ED-A934-134EDB8ADC2F")]
-	//NOTE: Это хотели, чтобы можно было использовать XML-сериализацию для классов https://yt.skbkontur.ru/issue/ddsupport-373
+	//NOTE: Это хотели, чтобы можно было использовать XML-сериализацию для классов
 	[XmlType(TypeName = "DocflowStatusSeverity", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum DocflowStatusSeverity
 	{

@@ -103,8 +103,16 @@ namespace Diadoc.Api.Proto.Documents
 			get { return new DateTime(DeliveryTimestampTicks, DateTimeKind.Utc); }
 		}
 
-		public ReadonlyList InitialDocumentIdsList { get { return new ReadonlyList(InitialDocumentIds); } }
-		public ReadonlyList SubordinateDocumentIdsList { get { return new ReadonlyList(SubordinateDocumentIds); } }
+		public ReadonlyList InitialDocumentIdsList
+		{
+			get { return new ReadonlyList(InitialDocumentIds); }
+		}
+
+		public ReadonlyList SubordinateDocumentIdsList
+		{
+			get { return new ReadonlyList(SubordinateDocumentIds); }
+		}
+
 		public Com.DocumentType Type
 		{
 			get { return (Com.DocumentType)((int)DocumentType); }

@@ -26,7 +26,7 @@ namespace Diadoc.Api.Proto
 				UserDepartmentId, IsAdministrator, DocumentAccessLevel, CanSignDocuments, CanAddResolutions, CanRequestResolutions);
 		}
 
-		Com.DocumentAccessLevel IOrganizationUserPermissions.DocumentAccessLevelValue
+		public Com.DocumentAccessLevel DocumentAccessLevelValue
 		{
 			get { return (Com.DocumentAccessLevel)((int)DocumentAccessLevel); }
 		}

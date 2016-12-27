@@ -28,12 +28,12 @@ namespace Diadoc.Api.Proto.Invoicing
 	[ComDefaultInterface(typeof (IAcceptanceCertificateSellerTitleInfo))]
 	public partial class AcceptanceCertificateSellerTitleInfo : SafeComObject, IAcceptanceCertificateSellerTitleInfo
 	{
-		ReadonlyList IAcceptanceCertificateSellerTitleInfo.WorksList
+		public ReadonlyList WorksList
 		{
 			get { return new ReadonlyList(Works); }
 		}
 
-		void IAcceptanceCertificateSellerTitleInfo.AddWork(object work)
+		public void AddWork(object work)
 		{
 			Works.Add((WorkDescription) work);
 		}
@@ -96,12 +96,12 @@ namespace Diadoc.Api.Proto.Invoicing
 	[ComDefaultInterface(typeof (IWorkDescription))]
 	public partial class WorkDescription : SafeComObject, IWorkDescription
 	{
-		ReadonlyList IWorkDescription.ItemsList
+		public ReadonlyList ItemsList
 		{
 			get { return new ReadonlyList(Items); }
 		}
 
-		void IWorkDescription.AddItem(object item)
+		public void AddItem(object item)
 		{
 			Items.Add((WorkItem) item);
 		}
