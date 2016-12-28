@@ -9,6 +9,7 @@ namespace Diadoc.Api.Com
 	[XmlType(TypeName = "ResolutionRequestType", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum ResolutionRequestType
 	{
+		UnknownResolutionRequestType = Proto.Events.ResolutionRequestType.UnknownResolutionRequestType,
 		ApprovementRequest = Proto.Events.ResolutionRequestType.ApprovementRequest,
 		SignatureRequest = Proto.Events.ResolutionRequestType.SignatureRequest,
 		ApprovementSignatureRequest = Proto.Events.ResolutionRequestType.ApprovementSignatureRequest
