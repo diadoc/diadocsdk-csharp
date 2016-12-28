@@ -248,8 +248,10 @@ namespace Diadoc.Api.Proto.Events
       get { return _PacketIsLocked; }
       set { _PacketIsLocked = value; }
     }
-    private string _FromDepartmentId;
-    [global::ProtoBuf.ProtoMember(21, IsRequired = true, Name=@"FromDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _FromDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"FromDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string FromDepartmentId
     {
       get { return _FromDepartmentId; }
