@@ -3,8 +3,8 @@ using System.Runtime.InteropServices;
 
 namespace Diadoc.Api.Cryptography
 {
-	//Классы и константы для работы с Api
-	//Описание функций и констант можно найти в MSDN
+	//РљР»Р°СЃСЃС‹ Рё РєРѕРЅСЃС‚Р°РЅС‚С‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Api
+	//РћРїРёСЃР°РЅРёРµ С„СѓРЅРєС†РёР№ Рё РєРѕРЅСЃС‚Р°РЅС‚ РјРѕР¶РЅРѕ РЅР°Р№С‚Рё РІ MSDN
 	public static class Api
 	{
 		[DllImport("Crypt32.dll", SetLastError = true)]

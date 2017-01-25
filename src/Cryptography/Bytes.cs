@@ -5,7 +5,7 @@ namespace Diadoc.Api.Cryptography
 	public static class Bytes
 	{
 		/// <summary>
-		/// Сравнение двух массивов байт
+		/// РЎСЂР°РІРЅРµРЅРёРµ РґРІСѓС… РјР°СЃСЃРёРІРѕРІ Р±Р°Р№С‚
 		/// </summary>
 		/// <param name="d1"></param>
 		/// <param name="d2"></param>

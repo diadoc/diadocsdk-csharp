@@ -9,10 +9,10 @@ namespace Diadoc.Api.Cryptography
 	public static class CertificateWithPrivateKeyFinder
 	{
 		/// <summary>
-		/// Поиск сертификата с закрытым ключом по содержимому
+		/// РџРѕРёСЃРє СЃРµСЂС‚РёС„РёРєР°С‚Р° СЃ Р·Р°РєСЂС‹С‚С‹Рј РєР»СЋС‡РѕРј РїРѕ СЃРѕРґРµСЂР¶РёРјРѕРјСѓ
 		/// </summary>
-		/// <param name="certificateContent">Содержимое сертификата</param>
-		/// <returns>Указатель на сертификат</returns>
+		/// <param name="certificateContent">РЎРѕРґРµСЂР¶РёРјРѕРµ СЃРµСЂС‚РёС„РёРєР°С‚Р°</param>
+		/// <returns>РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРµСЂС‚РёС„РёРєР°С‚</returns>
 		public static IntPtr GetCertificateWithPrivateKey(byte[] certificateContent)
 		{
 			IntPtr signerCertificate = Api.CertCreateCertificateContext(Api.ENCODING, certificateContent, certificateContent.Length);
@@ -20,7 +20,7 @@ namespace Diadoc.Api.Cryptography
 		}
 
 		/// <summary>
-		/// Получение списка хранилищ по-умлочанию
+		/// РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° С…СЂР°РЅРёР»РёС‰ РїРѕ-СѓРјР»РѕС‡Р°РЅРёСЋ
 		/// </summary>
 		/// <returns></returns>
 		private static List<IntPtr> GetDefaultStores()
@@ -51,12 +51,12 @@ namespace Diadoc.Api.Cryptography
 			if (HasPrivateKey(initialCertificate)) return initialCertificate;
 			IntPtr certificateWithPrivateKey = FindCertificateWithPrivateKey(initialCertificate);
 			if (certificateWithPrivateKey == IntPtr.Zero)
-				throw new Exception("Сертификат с закрытым ключом не найдет");
+				throw new Exception("РЎРµСЂС‚РёС„РёРєР°С‚ СЃ Р·Р°РєСЂС‹С‚С‹Рј РєР»СЋС‡РѕРј РЅРµ РЅР°Р№РґРµС‚");
 			return certificateWithPrivateKey;
 		}
 
 		/// <summary>
-		/// Проверка на наличие закрытого ключа у сертификата
+		/// РџСЂРѕРІРµСЂРєР° РЅР° РЅР°Р»РёС‡РёРµ Р·Р°РєСЂС‹С‚РѕРіРѕ РєР»СЋС‡Р° Сѓ СЃРµСЂС‚РёС„РёРєР°С‚Р°
 		/// </summary>
 		/// <param name="certificate"></param>
 		/// <returns></returns>
@@ -70,10 +70,10 @@ namespace Diadoc.Api.Cryptography
 		}
 
 		/// <summary>
-		/// Поиск сертификата, совпрадающего с исходным в известных хранилищах
+		/// РџРѕРёСЃРє СЃРµСЂС‚РёС„РёРєР°С‚Р°, СЃРѕРІРїСЂР°РґР°СЋС‰РµРіРѕ СЃ РёСЃС…РѕРґРЅС‹Рј РІ РёР·РІРµСЃС‚РЅС‹С… С…СЂР°РЅРёР»РёС‰Р°С…
 		/// </summary>
-		/// <param name="initialCertificate">Исходный сертификат</param>
-		/// <returns>Сертификат с закрытым ключом. IntPtr.Zero, если не найден</returns>
+		/// <param name="initialCertificate">РСЃС…РѕРґРЅС‹Р№ СЃРµСЂС‚РёС„РёРєР°С‚</param>
+		/// <returns>РЎРµСЂС‚РёС„РёРєР°С‚ СЃ Р·Р°РєСЂС‹С‚С‹Рј РєР»СЋС‡РѕРј. IntPtr.Zero, РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅ</returns>
 		private static IntPtr FindCertificateWithPrivateKey(IntPtr initialCertificate)
 		{
 			List<IntPtr> stores = GetDefaultStores();
@@ -99,7 +99,7 @@ namespace Diadoc.Api.Cryptography
 		}
 
 		/// <summary>
-		/// Получение указателя на хранилище сертификатов
+		/// РџРѕР»СѓС‡РµРЅРёРµ СѓРєР°Р·Р°С‚РµР»СЏ РЅР° С…СЂР°РЅРёР»РёС‰Рµ СЃРµСЂС‚РёС„РёРєР°С‚РѕРІ
 		/// </summary>
 		/// <param name="store"></param>
 		/// <param name="name"></param>
@@ -113,7 +113,7 @@ namespace Diadoc.Api.Cryptography
 			return storeHandle;
 		}
 		/// <summary>
-		/// Возвращает список сертификатов из хранилища
+		/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє СЃРµСЂС‚РёС„РёРєР°С‚РѕРІ РёР· С…СЂР°РЅРёР»РёС‰Р°
 		/// </summary>
 		/// <param name="storeHandle"></param>
 		/// <returns></returns>
@@ -147,7 +147,7 @@ namespace Diadoc.Api.Cryptography
 		}
 
 		/// <summary>
-		/// Хэш для сертификата
+		/// РҐСЌС€ РґР»СЏ СЃРµСЂС‚РёС„РёРєР°С‚Р°
 		/// </summary>
 		/// <param name="certificate"></param>
 		/// <returns></returns>
