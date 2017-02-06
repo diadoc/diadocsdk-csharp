@@ -53,7 +53,7 @@ namespace Diadoc.Api.Proto.Invoicing
 
 		public void AddItem(object item)
 		{
-			Items.Add((InvoiceItem)item);
+			Items.Add((InvoiceItem) item);
 		}
 
 		public void AddPaymentDocument(object paymentDocument)
@@ -75,13 +75,13 @@ namespace Diadoc.Api.Proto.Invoicing
 						return "5.02";
 					default:
 						throw new ArgumentOutOfRangeException();
-				}	
+				}
 			}
 			set
 			{
 				if (string.Equals(value, "5.01"))
 					Version = InvoiceFormatVersion.v5_01;
- 				else if (string.Equals(value, "5.02"))
+				else if (string.Equals(value, "5.02"))
 					Version = InvoiceFormatVersion.v5_02;
 				else
 					Version = InvoiceFormatVersion.DefaultInvoiceFormatVersion;
@@ -108,6 +108,9 @@ namespace Diadoc.Api.Proto.Invoicing
 		ReadonlyList CustomsDeclarationNumbersList { get; }
 		void AddCountryOfOrigin(string countryOfOrigin);
 		void AddCustomsDeclarationNumber(string customsDeclarationNumber);
+
+		ReadonlyList CustomsDeclarationsList { get; }
+		void AddCustomsDeclaration([MarshalAs(UnmanagedType.IDispatch)] object customsDeclaration);
 	}
 
 	[ComVisible(true)]
@@ -139,8 +142,18 @@ namespace Diadoc.Api.Proto.Invoicing
 
 		public Com.TaxRate TaxRateValue
 		{
-			get { return (Com.TaxRate)((int)TaxRate); }
-			set { TaxRate = (TaxRate)((int)value); }
+			get { return (Com.TaxRate) ((int) TaxRate); }
+			set { TaxRate = (TaxRate) ((int) value); }
+		}
+
+		public ReadonlyList CustomsDeclarationsList
+		{
+			get { return new ReadonlyList(CustomsDeclarations); }
+		}
+
+		public void AddCustomsDeclaration([MarshalAs(UnmanagedType.IDispatch)] object customsDeclaration)
+		{
+			CustomsDeclarations.Add((CustomsDeclaration) customsDeclaration);
 		}
 	}
 
@@ -282,8 +295,8 @@ namespace Diadoc.Api.Proto.Invoicing
 	{
 		public Com.TaxRate TaxRateValue
 		{
-			get { return (Com.TaxRate)((int)TaxRate); }
-			set { TaxRate = (TaxRate)((int)value); }
+			get { return (Com.TaxRate) ((int) TaxRate); }
+			set { TaxRate = (TaxRate) ((int) value); }
 		}
 	}
 
@@ -303,6 +316,23 @@ namespace Diadoc.Api.Proto.Invoicing
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IInvoiceItemAmountsDiff))]
 	public partial class InvoiceItemAmountsDiff : SafeComObject, IInvoiceItemAmountsDiff
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("ACCBA4AF-77FA-49CA-AFDC-EDB27F4DF251")]
+	public interface ICustomsDeclaration
+	{
+		string CountryCode { get; set; }
+		string DeclarationNumber { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.CustomsDeclaration")]
+	[Guid("C7497F31-742F-401E-B7A4-4D53A7BC4BDF")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ICustomsDeclaration))]
+	public partial class CustomsDeclaration : SafeComObject, ICustomsDeclaration
 	{
 	}
 }
