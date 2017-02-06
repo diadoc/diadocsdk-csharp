@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComClasses_Test.cs" />
+    <Compile Include="ComEnumsAreCompatibleWithProtoEnums_Test.cs" />
     <Compile Include="XmlSerialization_Test.cs" />
   </ItemGroup>
   <ItemGroup>
