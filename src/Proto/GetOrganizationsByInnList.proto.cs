@@ -50,6 +50,15 @@ namespace Diadoc.Api.Proto
       get { return _CounteragentStatus; }
       set { _CounteragentStatus = value; }
     }
+
+    private long _LastEventTimestampTicks = default(long);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"LastEventTimestampTicks", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue(default(long))]
+    public long LastEventTimestampTicks
+    {
+      get { return _LastEventTimestampTicks; }
+      set { _LastEventTimestampTicks = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
