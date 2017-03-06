@@ -136,6 +136,10 @@ namespace Diadoc.Api
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string fileName);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string fileName);
+		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent);
+		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string fileName);
+		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
+		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string fileName);
 
 		GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId, string attachmentId,
 			[MarshalAs(UnmanagedType.IDispatch)] object revocationRequestInfo);
@@ -736,6 +740,26 @@ namespace Diadoc.Api
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string fileName)
 		{
 			return ParseAcceptanceCertificateSellerTitleXml(File.ReadAllBytes(fileName));
+		}
+
+		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent)
+		{
+			return diadoc.ParseUniversalTransferDocumentSellerTitleXml(xmlContent);
+		}
+
+		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string fileName)
+		{
+			return ParseUniversalTransferDocumentSellerTitleXml(File.ReadAllBytes(fileName));
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent)
+		{
+			return diadoc.ParseUniversalTransferDocumentBuyerTitleXml(xmlContent);
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string fileName)
+		{
+			return ParseUniversalTransferDocumentBuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
 		#endregion
