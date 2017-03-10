@@ -53,5 +53,15 @@ namespace Diadoc.Api
 		{
 			return PerformHttpRequest<UniversalTransferDocumentBuyerTitleInfo>(null, "POST", "/ParseUniversalTransferDocumentBuyerTitleXml", xmlContent);
 		}
+
+		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent)
+		{
+			return PerformHttpRequest<UniversalCorrectionDocumentSellerTitleInfo>(null, "POST", "/ParseUniversalCorrectionDocumentSellerTitleXml", xmlContent);
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent)
+		{
+			return PerformHttpRequest<UniversalTransferDocumentBuyerTitleInfo>(null, "POST", "/ParseUniversalCorrectionDocumentBuyerTitleXml", xmlContent);
+		}
 	}
 }
