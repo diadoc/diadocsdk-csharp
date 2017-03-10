@@ -1817,11 +1817,11 @@ namespace Diadoc.Api.Proto.Events
       get { return _CustomDataPatches; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionChainAssignment> _ResolutionChainAssignments = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionChainAssignment>();
-    [global::ProtoBuf.ProtoMember(17, Name=@"ResolutionChainAssignments", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionChainAssignment> ResolutionChainAssignments
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteAssignment> _ResolutionRouteAssignments = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteAssignment>();
+    [global::ProtoBuf.ProtoMember(17, Name=@"ResolutionRouteAssignments", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteAssignment> ResolutionRouteAssignments
     {
-      get { return _ResolutionChainAssignments; }
+      get { return _ResolutionRouteAssignments; }
     }
   
     private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.SignatureVerification> _SignatureVerifications = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.SignatureVerification>();
@@ -1934,10 +1934,10 @@ namespace Diadoc.Api.Proto.Events
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResolutionChainAssignment")]
-  public partial class ResolutionChainAssignment : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResolutionRouteAssignment")]
+  public partial class ResolutionRouteAssignment : global::ProtoBuf.IExtensible
   {
-    public ResolutionChainAssignment() {}
+    public ResolutionRouteAssignment() {}
     
     private string _InitialDocumentId;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"InitialDocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -1946,12 +1946,12 @@ namespace Diadoc.Api.Proto.Events
       get { return _InitialDocumentId; }
       set { _InitialDocumentId = value; }
     }
-    private string _ChainId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"ChainId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string ChainId
+    private string _RouteId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"RouteId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string RouteId
     {
-      get { return _ChainId; }
-      set { _ChainId = value; }
+      get { return _RouteId; }
+      set { _RouteId = value; }
     }
 
     private string _Comment = "";

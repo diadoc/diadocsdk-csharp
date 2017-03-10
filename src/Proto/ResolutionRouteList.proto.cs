@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: ResolutionChainList.proto
+// Generated from: ResolutionRouteList.proto
 namespace Diadoc.Api.Proto
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResolutionChainList")]
-  public partial class ResolutionChainList : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResolutionRouteList")]
+  public partial class ResolutionRouteList : global::ProtoBuf.IExtensible
   {
-    public ResolutionChainList() {}
+    public ResolutionRouteList() {}
     
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.ResolutionChain> _ResolutionChains = new global::System.Collections.Generic.List<Diadoc.Api.Proto.ResolutionChain>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"ResolutionChains", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.ResolutionChain> ResolutionChains
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.ResolutionRoute> _ResolutionRoutes = new global::System.Collections.Generic.List<Diadoc.Api.Proto.ResolutionRoute>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"ResolutionRoutes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.ResolutionRoute> ResolutionRoutes
     {
-      get { return _ResolutionChains; }
+      get { return _ResolutionRoutes; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;
@@ -27,17 +27,17 @@ namespace Diadoc.Api.Proto
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResolutionChain")]
-  public partial class ResolutionChain : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResolutionRoute")]
+  public partial class ResolutionRoute : global::ProtoBuf.IExtensible
   {
-    public ResolutionChain() {}
+    public ResolutionRoute() {}
     
-    private string _ChainId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ChainId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string ChainId
+    private string _RouteId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"RouteId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string RouteId
     {
-      get { return _ChainId; }
-      set { _ChainId = value; }
+      get { return _RouteId; }
+      set { _RouteId = value; }
     }
     private string _Name;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Name", DataFormat = global::ProtoBuf.DataFormat.Default)]

@@ -109,10 +109,10 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
-		public ResolutionChainList GetResolutionChainsForOrganization([NotNull] string authToken, [NotNull] string orgId)
+		public ResolutionRouteList GetResolutionRoutesForOrganization([NotNull] string authToken, [NotNull] string orgId)
 		{
-			var queryString = string.Format("/GetResolutionChainsForOrganization?orgId={0}", orgId);
-			return PerformHttpRequest<ResolutionChainList>(authToken, "GET", queryString);
+			var queryString = string.Format("/GetResolutionRoutesForOrganization?orgId={0}", orgId);
+			return PerformHttpRequest<ResolutionRouteList>(authToken, "GET", queryString);
 		}
 	}
 }

@@ -1,0 +1,10 @@
+package Diadoc.Api.Proto;
+
+message ResolutionRouteList {
+	repeated ResolutionRoute ResolutionRoutes = 1;
+}
+
+message ResolutionRoute {
+	required string RouteId = 1;
+	required string Name = 2;
+}

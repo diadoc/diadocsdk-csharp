@@ -56,6 +56,6 @@ namespace Diadoc.Api.Com
 		UniversalCorrectionDocumentBuyerTitle = 51,
 		CustomData = 64,
 		MoveDocument = 65,
-		ResolutionChainAssignmentAttachment = 66,
+		ResolutionRouteAssignmentAttachment = 66,
 	}
 }

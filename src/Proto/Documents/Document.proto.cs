@@ -527,6 +527,15 @@ namespace Diadoc.Api.Proto.Documents
       get { return _UniversalCorrectionDocumentRevisionMetadata; }
       set { _UniversalCorrectionDocumentRevisionMetadata = value; }
     }
+
+    private string _ResolutionRouteId = "";
+    [global::ProtoBuf.ProtoMember(60, IsRequired = false, Name=@"ResolutionRouteId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ResolutionRouteId
+    {
+      get { return _ResolutionRouteId; }
+      set { _ResolutionRouteId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

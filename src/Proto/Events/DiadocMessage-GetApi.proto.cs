@@ -777,8 +777,8 @@ namespace Diadoc.Api.Proto.Events
       [global::ProtoBuf.ProtoEnum(Name=@"MoveDocument", Value=65)]
       MoveDocument = 65,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ResolutionChainAssignmentAttachment", Value=66)]
-      ResolutionChainAssignmentAttachment = 66
+      [global::ProtoBuf.ProtoEnum(Name=@"ResolutionRouteAssignmentAttachment", Value=66)]
+      ResolutionRouteAssignmentAttachment = 66
     }
   
 }

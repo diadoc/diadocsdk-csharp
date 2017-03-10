@@ -145,7 +145,7 @@
     <Compile Include="Proto\Invoicing\ExtendedSigner.proto.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.proto.cs" />
-    <Compile Include="Proto\ResolutionChainList.proto.cs" />
+    <Compile Include="Proto\ResolutionRouteList.proto.cs" />
     <Compile Include="Proto\RoamingNotification.proto.cs" />
     <Compile Include="Proto\Serializer.cs" />
     <Compile Include="Proto\Timestamp.cs" />
