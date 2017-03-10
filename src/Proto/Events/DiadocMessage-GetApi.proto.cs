@@ -14,6 +14,7 @@
 // Note: requires additional types generated from: Events/ResolutionInfo.proto
 // Note: requires additional types generated from: Events/ResolutionRequestInfo.proto
 // Note: requires additional types generated from: Events/ResolutionRequestDenialInfo.proto
+// Note: requires additional types generated from: Events/ResolutionRouteInfo.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BoxEventList")]
@@ -551,6 +552,24 @@ namespace Diadoc.Api.Proto.Events
       get { return _AttachmentFormat; }
       set { _AttachmentFormat = value; }
     }
+
+    private Diadoc.Api.Proto.Events.ResolutionRouteAssignmentInfo _ResolutionRouteAssignmentInfo = null;
+    [global::ProtoBuf.ProtoMember(22, IsRequired = false, Name=@"ResolutionRouteAssignmentInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.ResolutionRouteAssignmentInfo ResolutionRouteAssignmentInfo
+    {
+      get { return _ResolutionRouteAssignmentInfo; }
+      set { _ResolutionRouteAssignmentInfo = value; }
+    }
+
+    private Diadoc.Api.Proto.Events.ResolutionRouteRemovalInfo _ResolutionRouteRemovalInfo = null;
+    [global::ProtoBuf.ProtoMember(23, IsRequired = false, Name=@"ResolutionRouteRemovalInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.ResolutionRouteRemovalInfo ResolutionRouteRemovalInfo
+    {
+      get { return _ResolutionRouteRemovalInfo; }
+      set { _ResolutionRouteRemovalInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -778,7 +797,10 @@ namespace Diadoc.Api.Proto.Events
       MoveDocument = 65,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ResolutionRouteAssignmentAttachment", Value=66)]
-      ResolutionRouteAssignmentAttachment = 66
+      ResolutionRouteAssignmentAttachment = 66,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ResolutionRouteRemovalAttachment", Value=67)]
+      ResolutionRouteRemovalAttachment = 67
     }
   
 }

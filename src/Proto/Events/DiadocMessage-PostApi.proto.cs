@@ -1845,6 +1845,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _UniversalTransferDocumentBuyerTitles; }
     }
   
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteRemoval> _ResolutionRouteRemovals = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteRemoval>();
+    [global::ProtoBuf.ProtoMember(21, Name=@"ResolutionRouteRemovals", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteRemoval> ResolutionRouteRemovals
+    {
+      get { return _ResolutionRouteRemovals; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2701,6 +2708,39 @@ namespace Diadoc.Api.Proto.Events
       get { return _RemoveDocumentsFromPacket; }
     }
   
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResolutionRouteRemoval")]
+  public partial class ResolutionRouteRemoval : global::ProtoBuf.IExtensible
+  {
+    public ResolutionRouteRemoval() {}
+    
+    private string _ParentEntityId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ParentEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ParentEntityId
+    {
+      get { return _ParentEntityId; }
+      set { _ParentEntityId = value; }
+    }
+    private string _RouteId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"RouteId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string RouteId
+    {
+      get { return _RouteId; }
+      set { _RouteId = value; }
+    }
+
+    private string _Comment = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Comment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Comment
+    {
+      get { return _Comment; }
+      set { _Comment = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

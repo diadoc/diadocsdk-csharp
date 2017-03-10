@@ -294,6 +294,7 @@ message MessagePatchToPost {
 	repeated SignatureVerification SignatureVerifications = 18;
 	repeated EditDocumentPacketCommand EditDocumentPacketCommands = 19;
 	repeated ReceiptAttachment UniversalTransferDocumentBuyerTitles = 20;
+	repeated ResolutionRouteRemoval ResolutionRouteRemovals = 21;
 }
 
 message SignatureVerification {
@@ -455,4 +456,10 @@ message EditDocumentPacketCommand {
 	required string DocumentId = 1;
 	repeated DocumentId AddDocumentsToPacket = 2;
 	repeated DocumentId RemoveDocumentsFromPacket = 3;
+}
+
+message ResolutionRouteRemoval {
+	required string ParentEntityId = 1; // EntityId документа, который нужно снять с маршрута согласования
+	required string RouteId = 2; // Идентификатор маршрута, с которого нужно снять документ
+	optional string Comment = 3 [default = ""]; // Текстовый комментарий, ограничение - 256 символов
 }

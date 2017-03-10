@@ -137,6 +137,7 @@
     <Compile Include="Proto\Documents\DocumentZip.proto.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.proto.cs" />
+    <Compile Include="Proto\Events\ResolutionRouteInfo.proto.cs" />
     <Compile Include="Proto\ExternalServiceAuthInfo.proto.cs" />
     <Compile Include="Com\ComWrappers.cs" />
     <Compile Include="Proto\Invoicing\ExtendedOrganizationInfo.cs" />
