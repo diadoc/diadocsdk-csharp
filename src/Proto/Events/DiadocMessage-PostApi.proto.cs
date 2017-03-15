@@ -974,8 +974,10 @@ namespace Diadoc.Api.Proto.Events
       get { return _DocumentDate; }
       set { _DocumentDate = value; }
     }
-    private string _DocumentNumber;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"DocumentNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _DocumentNumber = "";
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"DocumentNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string DocumentNumber
     {
       get { return _DocumentNumber; }
@@ -1281,8 +1283,10 @@ namespace Diadoc.Api.Proto.Events
       get { return _DocumentDate; }
       set { _DocumentDate = value; }
     }
-    private string _DocumentNumber;
-    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"DocumentNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _DocumentNumber = "";
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"DocumentNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string DocumentNumber
     {
       get { return _DocumentNumber; }
