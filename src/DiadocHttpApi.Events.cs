@@ -7,7 +7,7 @@ namespace Diadoc.Api
 	{
 		public BoxEventList GetNewEvents(string authToken, string boxId, string afterEventId = null)
 		{
-			var qsb = new PathAndQueryBuilder("/V4/GetNewEvents");
+			var qsb = new PathAndQueryBuilder("/V5/GetNewEvents");
 			qsb.AddParameter("includeDrafts");
 			qsb.AddParameter("boxId", boxId);
 			if (!string.IsNullOrEmpty(afterEventId)) qsb.AddParameter("afterEventId", afterEventId);
