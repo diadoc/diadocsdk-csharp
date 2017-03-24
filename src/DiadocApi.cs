@@ -595,6 +595,16 @@ namespace Diadoc.Api
 		{
 			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXml(xmlContent);
 		}
+		
+		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent)
+		{
+			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(xmlContent);
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent)
+		{
+			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXml(xmlContent);
+		}
 
 		public OrganizationUsersList GetOrganizationUsers(string authToken, string orgId)
 		{
