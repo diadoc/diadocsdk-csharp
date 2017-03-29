@@ -10,6 +10,7 @@ import "Documents/Document.proto";
 import "Events/ResolutionInfo.proto";
 import "Events/ResolutionRequestInfo.proto";
 import "Events/ResolutionRequestDenialInfo.proto";
+import "Events/ResolutionRouteInfo.proto";
 
 package Diadoc.Api.Proto.Events;
 
@@ -84,6 +85,8 @@ message Entity {
 	optional bool IsApprovementSignature = 19 [default = false];			// only for EntityType.Signature
 	optional bool IsEncryptedContent = 20 [default = false];
 	optional string AttachmentFormat = 21;
+	optional ResolutionRouteAssignmentInfo ResolutionRouteAssignmentInfo = 22; // only for AttachmentType.ResolutionRouteAssignmentAttachment
+	optional ResolutionRouteRemovalInfo ResolutionRouteRemovalInfo = 23;	// only for AttachmentType.ResolutionRouteRemovalAttachment
 }
 
 message EntityPatch {
@@ -150,6 +153,7 @@ enum AttachmentType {
 	UniversalCorrectionDocumentBuyerTitle = 51;
 	CustomData = 64;
 	MoveDocument = 65;
-	ResolutionChainAssignmentAttachment = 66;
+	ResolutionRouteAssignmentAttachment = 66;
+	ResolutionRouteRemovalAttachment = 67;
 	//Неизвестные типы должны обрабатываться как Nonformalized
 }

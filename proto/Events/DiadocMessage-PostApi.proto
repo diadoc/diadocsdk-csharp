@@ -290,10 +290,11 @@ message MessagePatchToPost {
 	repeated RevocationRequestAttachment RevocationRequests = 14;
 	repeated XmlSignatureRejectionAttachment XmlSignatureRejections = 15;
 	repeated CustomDataPatch CustomDataPatches = 16;
-	repeated ResolutionChainAssignment ResolutionChainAssignments = 17;
+	repeated ResolutionRouteAssignment ResolutionRouteAssignments = 17;
 	repeated SignatureVerification SignatureVerifications = 18;
 	repeated EditDocumentPacketCommand EditDocumentPacketCommands = 19;
 	repeated ReceiptAttachment UniversalTransferDocumentBuyerTitles = 20;
+	repeated ResolutionRouteRemoval ResolutionRouteRemovals = 21;
 }
 
 message SignatureVerification {
@@ -310,10 +311,10 @@ message ResolutionRequestAttachment {
 	optional string Comment = 5;
 }
 
-message ResolutionChainAssignment
+message ResolutionRouteAssignment
 {
 	required string InitialDocumentId = 1;
-	required string ChainId = 2;
+	required string RouteId = 2;
 	optional string Comment = 3;
 }
 
@@ -455,4 +456,10 @@ message EditDocumentPacketCommand {
 	required string DocumentId = 1;
 	repeated DocumentId AddDocumentsToPacket = 2;
 	repeated DocumentId RemoveDocumentsFromPacket = 3;
+}
+
+message ResolutionRouteRemoval {
+	required string ParentEntityId = 1; // EntityId документа, который нужно снять с маршрута согласования
+	required string RouteId = 2; // Идентификатор маршрута, с которого нужно снять документ
+	optional string Comment = 3 [default = ""]; // Текстовый комментарий, ограничение - 256 символов
 }

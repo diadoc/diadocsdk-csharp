@@ -72,6 +72,7 @@ message Document {
 	optional UniversalTransferDocument.UniversalTransferDocumentRevisionMetadata UniversalTransferDocumentRevisionMetadata = 57;
 	optional UniversalTransferDocument.UniversalCorrectionDocumentMetadata UniversalCorrectionDocumentMetadata = 58;
 	optional UniversalTransferDocument.UniversalCorrectionDocumentRevisionMetadata UniversalCorrectionDocumentRevisionMetadata = 59;
+	optional string ResolutionRouteId = 60 [default = ""];
 }
 
 message ResolutionStatus {

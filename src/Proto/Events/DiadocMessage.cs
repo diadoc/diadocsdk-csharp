@@ -78,6 +78,8 @@ namespace Diadoc.Api.Proto.Events
 		DateTime CreationTime { get; }
 
 		string NotDeliveredEventId { get; }
+		ResolutionRouteAssignmentInfo ResolutionRouteAssignmentInfo { get; }
+		ResolutionRouteRemovalInfo ResolutionRouteRemovalInfo { get; }
 	}
 
 	[ComVisible(true)]
@@ -500,6 +502,8 @@ namespace Diadoc.Api.Proto.Events
 
 		void AddXmlSignatureRejectionAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddUniversalTransferDocumentBuyerTitleAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddResolutionRouteAssignment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddResolutoinRouteRemoval([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 	}
 
 	[ComVisible(true)]
@@ -582,6 +586,16 @@ namespace Diadoc.Api.Proto.Events
 		public void AddUniversalTransferDocumentBuyerTitleAttachment(object attachment)
 		{
 			UniversalTransferDocumentBuyerTitles.Add((ReceiptAttachment)attachment);
+		}
+
+		public void AddResolutionRouteAssignment(object attachment)
+		{
+			ResolutionRouteAssignments.Add((ResolutionRouteAssignment)attachment);
+		}
+
+		public void AddResolutoinRouteRemoval(object attachment)
+		{
+			ResolutionRouteRemovals.Add((ResolutionRouteRemoval)attachment);
 		}
 	}
 
@@ -1174,5 +1188,73 @@ namespace Diadoc.Api.Proto.Events
 		{
 			SignedContent = (SignedContent) signedContent;
 		}
+	}
+
+	[ComVisible(true)]
+	[Guid("1B7169E9-455A-47C8-BD0F-5227B436CC61")]
+	public interface IResolutionRouteAssignment
+	{
+		string InitialDocumentId { get; set; }
+		string RouteId { get; set; }
+		string Comment { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.ResolutionRouteAssignment")]
+	[Guid("B4C90587-3DB9-4BFB-84A0-E1A8E082978D")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IResolutionRouteAssignment))]
+	public partial class ResolutionRouteAssignment : SafeComObject, IResolutionRouteAssignment
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("DBCE6766-25F7-4EAB-9C4F-C59AB0054E57")]
+	public interface IResolutionRouteRemoval
+	{
+		string ParentEntityId { get; set; }
+		string RouteId { get; set; }
+		string Comment { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.ResolutionRouteRemoval")]
+	[Guid("F1356D51-625B-4A24-AF11-3402D72908C8")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IResolutionRouteRemoval))]
+	public partial class ResolutionRouteRemoval : SafeComObject, IResolutionRouteRemoval
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("12A46076-9F0F-4E89-8E49-68E3C5FC8C04")]
+	public interface IResolutionRouteAssignmentInfo
+	{
+		string RouteId { get; }
+		string Author { get; }
+	}
+
+	[ComVisible(true)]
+	[Guid("AF775D73-D1BB-40C7-9DF5-D0305B606DC7")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IResolutionRouteAssignmentInfo))]
+	public partial class ResolutionRouteAssignmentInfo : SafeComObject, IResolutionRouteAssignmentInfo
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("180C7D5E-7E8B-48ED-BAA4-AAA29D9467CC")]
+	public interface IResolutionRouteRemovalInfo
+	{
+		string RouteId { get; }
+		string Author { get; }
+	}
+
+	[ComVisible(true)]
+	[Guid("AAB466D3-6BF3-4DB4-B7C9-DA7BD8F74837")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IResolutionRouteRemovalInfo))]
+	public partial class ResolutionRouteRemovalInfo : SafeComObject, IResolutionRouteRemovalInfo
+	{
 	}
 }
