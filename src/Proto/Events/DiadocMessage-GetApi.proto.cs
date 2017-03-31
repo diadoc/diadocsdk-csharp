@@ -544,13 +544,13 @@ namespace Diadoc.Api.Proto.Events
       set { _IsEncryptedContent = value; }
     }
 
-    private string _AttachmentFormat = "";
-    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"AttachmentFormat", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private string _AttachmentVersion = "";
+    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"AttachmentVersion", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
-    public string AttachmentFormat
+    public string AttachmentVersion
     {
-      get { return _AttachmentFormat; }
-      set { _AttachmentFormat = value; }
+      get { return _AttachmentVersion; }
+      set { _AttachmentVersion = value; }
     }
 
     private Diadoc.Api.Proto.Events.ResolutionRouteAssignmentInfo _ResolutionRouteAssignmentInfo = null;
