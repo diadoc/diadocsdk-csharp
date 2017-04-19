@@ -46,6 +46,7 @@ namespace Diadoc.Api.Proto
 		bool IsPilot { get; }
 		bool IsActive { get; }
 		bool IsTest { get; }
+		bool IsRoaming { get; }
 	}
 
 	[ComVisible(true)]
