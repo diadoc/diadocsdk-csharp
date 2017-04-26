@@ -545,6 +545,15 @@ namespace Diadoc.Api.Proto.Documents
       get { return _AttachmentVersion; }
       set { _AttachmentVersion = value; }
     }
+
+    private Diadoc.Api.Proto.Documents.ProxySignatureStatus _ProxySignatureStatus = Diadoc.Api.Proto.Documents.ProxySignatureStatus.UnknownProxySignatureStatus;
+    [global::ProtoBuf.ProtoMember(62, IsRequired = false, Name=@"ProxySignatureStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Documents.ProxySignatureStatus.UnknownProxySignatureStatus)]
+    public Diadoc.Api.Proto.Documents.ProxySignatureStatus ProxySignatureStatus
+    {
+      get { return _ProxySignatureStatus; }
+      set { _ProxySignatureStatus = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -676,6 +685,29 @@ namespace Diadoc.Api.Proto.Documents
             
       [global::ProtoBuf.ProtoEnum(Name=@"SenderSignatureCheckedAndInvalid", Value=4)]
       SenderSignatureCheckedAndInvalid = 4
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ProxySignatureStatus")]
+    public enum ProxySignatureStatus
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownProxySignatureStatus", Value=0)]
+      UnknownProxySignatureStatus = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ProxySignatureStatusNone", Value=1)]
+      ProxySignatureStatusNone = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WaitingForProxySignature", Value=2)]
+      WaitingForProxySignature = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WithProxySignature", Value=3)]
+      WithProxySignature = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ProxySignatureRejected", Value=4)]
+      ProxySignatureRejected = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InvalidProxySignature", Value=5)]
+      InvalidProxySignature = 5
     }
   
 }

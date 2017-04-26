@@ -74,6 +74,7 @@ message Document {
 	optional UniversalTransferDocument.UniversalCorrectionDocumentRevisionMetadata UniversalCorrectionDocumentRevisionMetadata = 59;
 	optional string ResolutionRouteId = 60 [default = ""];
 	optional string AttachmentVersion = 61;
+	optional ProxySignatureStatus ProxySignatureStatus = 62;
 }
 
 message ResolutionStatus {
@@ -115,4 +116,13 @@ enum SenderSignatureStatus {
 	SenderSignatureUnchecked = 2;
 	SenderSignatureCheckedAndValid = 3;
 	SenderSignatureCheckedAndInvalid = 4;
+}
+
+enum ProxySignatureStatus {
+	UnknownProxySignatureStatus = 0;
+	ProxySignatureStatusNone = 1;
+	WaitingForProxySignature = 2;
+	WithProxySignature = 3;
+	ProxySignatureRejected = 4;
+	InvalidProxySignature = 5;
 }
