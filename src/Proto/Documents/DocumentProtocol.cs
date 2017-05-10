@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Diadoc.Api.Proto.Documents
 {
@@ -8,6 +10,8 @@ namespace Diadoc.Api.Proto.Documents
 	{
 		byte[] PrintForm { get; }
 		byte[] Signature { get; }
+		void SavePrintFormToFile(string path);
+		void SaveSignatureToFile(string path);
 	}
 
 	[ComVisible(true)]
@@ -16,6 +20,25 @@ namespace Diadoc.Api.Proto.Documents
 	[ComDefaultInterface(typeof(IDocumentProtocol))]
 	public partial class DocumentProtocol: SafeComObject, IDocumentProtocol
 	{
+		public void SavePrintFormToFile(string path)
+		{
+			if (PrintForm == null)
+			{
+				throw new Exception("There is no content to save");
+			}
+
+			File.WriteAllBytes(path, PrintForm);
+		}
+
+		public void SaveSignatureToFile(string path)
+		{
+			if (Signature == null)
+			{
+				throw new Exception("There is no content to save");
+			}
+
+			File.WriteAllBytes(path, Signature);
+		}
 	}
 
 	[ComVisible(true)]
