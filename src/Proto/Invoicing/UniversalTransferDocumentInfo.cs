@@ -359,6 +359,23 @@ namespace Diadoc.Api.Proto.Invoicing
 	}
 
 	[ComVisible(true)]
+	[Guid("1431B8CD-B759-4C80-BB03-D566FB327223")]
+	public interface IAdditionalInfo
+	{
+		string Id { get; set; }
+		string Value { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.AdditionalInfo")]
+	[Guid("9B73C3DD-21AE-449B-AAEC-BECC8C463681")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IAdditionalInfo))]
+	public partial class AdditionalInfo : IAdditionalInfo
+	{
+	}
+
+	[ComVisible(true)]
 	[Guid("82470E2B-2E1C-44D7-BF85-FB6EA755F3BF")]
 	public interface IUniversalTransferDocumentBuyerTitleInfo
 	{
