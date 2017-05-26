@@ -83,6 +83,7 @@ message EncryptedDocumentMetadata {
 message EncryptedXmlBasicDocumentMetadata {
 	required string FormationDate = 1;
 	required string FormationTime = 2;
+	optional string DocumentName = 3;
 }
 
 message EncryptedInvoiceMetadata {
