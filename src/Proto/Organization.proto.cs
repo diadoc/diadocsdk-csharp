@@ -210,6 +210,15 @@ namespace Diadoc.Api.Proto
       get { return _Sociability; }
       set { _Sociability = value; }
     }
+
+    private string _LiquidationDate = "";
+    [global::ProtoBuf.ProtoMember(23, IsRequired = false, Name=@"LiquidationDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string LiquidationDate
+    {
+      get { return _LiquidationDate; }
+      set { _LiquidationDate = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
