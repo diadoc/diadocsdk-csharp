@@ -535,6 +535,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetCounteragents(authToken, myOrgId, counteragentStatus, afterIndexKey);
 		}
 
+		public CounteragentList GetCounteragentsByQuery(string authToken, string myOrgId, string counteragentStatus, string query)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(myOrgId)) throw new ArgumentNullException("myOrgId");
+			return diadocHttpApi.GetCounteragentsByQuery(authToken, myOrgId, counteragentStatus, query);
+		}
+
 		public CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId,
 			string counteragentOrgId)
 		{

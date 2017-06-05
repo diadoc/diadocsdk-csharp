@@ -17,9 +17,15 @@ namespace Diadoc.Api
 
 		public CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey)
 		{
-			var qsb = GetCounteragentsPathAndQuery(myOrgId, counteragentStatus, afterIndexKey);
+			var qsb = GetCounteragentsPathAndQuery(myOrgId, counteragentStatus, afterIndexKey, null, null);
 			return PerformHttpRequest<CounteragentList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
+
+		public CounteragentList GetCounteragentsByQuery(string authToken, string myOrgId, string counteragentStatus, string query)
+		{
+			var qsb = GetCounteragentsPathAndQuery(myOrgId, counteragentStatus, null, query, null);
+			return PerformHttpRequest<CounteragentList>(authToken, "GET", qsb.BuildPathAndQuery());
+		} 
 
 		public CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId,
 			string counteragentOrgId)
@@ -30,12 +36,14 @@ namespace Diadoc.Api
 			return PerformHttpRequest<CounteragentCertificateList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		protected static PathAndQueryBuilder GetCounteragentsPathAndQuery(string myOrgId, string counteragentStatus, string afterIndexKey)
+		protected static PathAndQueryBuilder GetCounteragentsPathAndQuery(string myOrgId, string counteragentStatus, string afterIndexKey, string query, string pageSize)
 		{
 			var qsb = new PathAndQueryBuilder("V2/GetCounteragents");
 			qsb.AddParameter("myOrgId", myOrgId);
 			if (!string.IsNullOrEmpty(counteragentStatus)) qsb.AddParameter("counteragentStatus", counteragentStatus);
 			if (!string.IsNullOrEmpty(afterIndexKey)) qsb.AddParameter("afterIndexKey", afterIndexKey);
+			if (!string.IsNullOrEmpty(query)) qsb.AddParameter("query", query);
+			if (!string.IsNullOrEmpty(pageSize)) qsb.AddParameter("pageSize", pageSize); 
 			return qsb;
 		}
 
