@@ -10,6 +10,7 @@ import "Invoicing/ExtendedSigner.proto";
 import "Events/ResolutionInfo.proto";
 import "Events/ResolutionRequestInfo.proto";
 import "Invoicing/OrganizationInfo.proto";
+import "Invoicing/UniversalTransferDocumentInfo.proto";
 import "Docflow/DocumentInfo.proto";
 
 package Diadoc.Api.Proto.Events;
@@ -83,6 +84,8 @@ message EncryptedDocumentMetadata {
 message EncryptedXmlBasicDocumentMetadata {
 	required string FormationDate = 1;
 	required string FormationTime = 2;
+	optional Diadoc.Api.Proto.Invoicing.FunctionType Function = 3 [default = Basic];
+	optional string DocumentName = 4;
 }
 
 message EncryptedInvoiceMetadata {

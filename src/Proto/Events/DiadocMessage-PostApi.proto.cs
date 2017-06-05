@@ -15,6 +15,7 @@
 // Note: requires additional types generated from: Events/ResolutionInfo.proto
 // Note: requires additional types generated from: Events/ResolutionRequestInfo.proto
 // Note: requires additional types generated from: Invoicing/OrganizationInfo.proto
+// Note: requires additional types generated from: Invoicing/UniversalTransferDocumentInfo.proto
 // Note: requires additional types generated from: Docflow/DocumentInfo.proto
 namespace Diadoc.Api.Proto.Events
 {
@@ -488,6 +489,24 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _FormationTime; }
       set { _FormationTime = value; }
+    }
+
+    private Diadoc.Api.Proto.Invoicing.FunctionType _Function = Diadoc.Api.Proto.Invoicing.FunctionType.Basic;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Function", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Invoicing.FunctionType.Basic)]
+    public Diadoc.Api.Proto.Invoicing.FunctionType Function
+    {
+      get { return _Function; }
+      set { _Function = value; }
+    }
+
+    private string _DocumentName = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"DocumentName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DocumentName
+    {
+      get { return _DocumentName; }
+      set { _DocumentName = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
