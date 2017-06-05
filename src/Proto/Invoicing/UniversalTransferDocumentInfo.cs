@@ -371,7 +371,9 @@ namespace Diadoc.Api.Proto.Invoicing
 	[Guid("9B73C3DD-21AE-449B-AAEC-BECC8C463681")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IAdditionalInfo))]
-	public partial class AdditionalInfo : IAdditionalInfo
+	public partial class AdditionalInfo
+		: SafeComObject
+		, IAdditionalInfo
 	{
 	}
 
