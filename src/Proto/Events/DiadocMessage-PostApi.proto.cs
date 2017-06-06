@@ -489,6 +489,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _FormationTime; }
       set { _FormationTime = value; }
     }
+
+    private string _DocumentName = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"DocumentName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DocumentName
+    {
+      get { return _DocumentName; }
+      set { _DocumentName = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
