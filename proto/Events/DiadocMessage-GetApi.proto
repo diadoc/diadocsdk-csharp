@@ -46,6 +46,8 @@ message Message {
 	optional string ProxyBoxId = 18;
 	optional string ProxyTitle = 19;
 	optional bool PacketIsLocked = 20 [default = false];
+	optional string FromDepartmentId = 21;
+	optional string ToDepartmentId = 22;
 }
 
 message MessagePatch {

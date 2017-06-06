@@ -249,6 +249,24 @@ namespace Diadoc.Api.Proto.Events
       get { return _PacketIsLocked; }
       set { _PacketIsLocked = value; }
     }
+
+    private string _FromDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"FromDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string FromDepartmentId
+    {
+      get { return _FromDepartmentId; }
+      set { _FromDepartmentId = value; }
+    }
+
+    private string _ToDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(22, IsRequired = false, Name=@"ToDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ToDepartmentId
+    {
+      get { return _ToDepartmentId; }
+      set { _ToDepartmentId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
