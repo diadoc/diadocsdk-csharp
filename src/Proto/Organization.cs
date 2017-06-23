@@ -79,6 +79,8 @@ namespace Diadoc.Api.Proto
 		string BoxId { get; }
 		string Title { get; }
 		Organization Organization { get; }
+		OrganizationInvoiceFormatVersion InvoiceFormatVersion { get; }
+		bool EncryptedDocumentsAllowed { get; }
 	}
 
 	[ComVisible(true)]
