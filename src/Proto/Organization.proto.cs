@@ -328,6 +328,15 @@ namespace Diadoc.Api.Proto
       get { return _InvoiceFormatVersion; }
       set { _InvoiceFormatVersion = value; }
     }
+
+    private bool _EncryptedDocumentsAllowed = default(bool);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"EncryptedDocumentsAllowed", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool EncryptedDocumentsAllowed
+    {
+      get { return _EncryptedDocumentsAllowed; }
+      set { _EncryptedDocumentsAllowed = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
