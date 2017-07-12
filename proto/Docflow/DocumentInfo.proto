@@ -22,6 +22,7 @@ message DocumentInfo
 	optional SupplementaryAgreementDocumentInfo SupplementaryAgreementInfo = 14;
 	optional UniversalTransferDocumentInfo UniversalTransferDocumentInfo = 15; // for UniversalTransferDocument, UniversalTransferDocumentRevision
 	optional UniversalCorrectionDocumentInfo UniversalCorrectionDocumentInfo = 16; // for UniversalCorrectionDocument, UniversalCorrectionDocumentRevision
+	optional string AttachmentVersion = 17;
 }
 
 message DocumentDateAndNumber
