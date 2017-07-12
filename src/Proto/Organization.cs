@@ -1,3 +1,4 @@
+using System.CodeDom;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
@@ -68,7 +69,12 @@ namespace Diadoc.Api.Proto
 		public override string ToString()
 		{
 			var boxes = string.Join("\r\n", Boxes.Select(b => b.ToString()).ToArray());
-			return string.Format("OrgId: {0}, Inn: {1}, Kpp: {2}, FullName: {3}, ShortName: {4}, Boxes:\r\n{5}, Ogrn: {6}, IsPilot: {7}, IsActive: {8}, IsTest: {9}", OrgId, Inn, Kpp, FullName, ShortName, boxes, Ogrn, IsPilot, IsActive, IsTest);
+			return 
+				$"OrgId: {OrgId}, Inn: {Inn}, Kpp: {Kpp}, FullName: {FullName}, ShortName: {ShortName}, Boxes:\r\n {boxes}," +
+				$" Ogrn: {Ogrn}, FnsParticipantId: {FnsParticipantId}, Address: {Address}, FnsRegistrationDate: {FnsRegistrationDate}," +
+				$" Departments: {Departments}, IfnsCode: {IfnsCode}, IsPilot: {IsPilot}, IsActive: {IsActive}, IsTest: {IsTest}," +
+				$" IsBranch: {IsBranch}, IsRoaming: {IsRoaming}, IsEmployee: {IsEmployee}, InvitationCount: {InvitationCount}," +
+				$" SearchCount: {SearchCount}, Sociability: {Sociability}, LiquidationDate: {LiquidationDate}, CertificateOfRegistryInfo: {CertificateOfRegistryInfo}";
 		}
 	}
 
@@ -91,7 +97,9 @@ namespace Diadoc.Api.Proto
 	{
 		public override string ToString()
 		{
-			return string.Format("BoxId: {0}, Title: {1}, Org: {2}", BoxId, Title, Organization);
+			return
+				$"BoxId: {BoxId}, Title: {Title}, Organization: {Organization}," +
+				$" InvoiceFormatVersion: {InvoiceFormatVersion}, EncryptedDocumentsAllowed: {EncryptedDocumentsAllowed}";
 		}
 	}
 
@@ -115,7 +123,9 @@ namespace Diadoc.Api.Proto
 	{
 		public override string ToString()
 		{
-			return string.Format("DepartmentId: {0}, Name: {1}", DepartmentId, Name);
+			return 
+				$"DepartmentId: {DepartmentId}, ParentDepartmentId: {ParentDepartmentId}, " +
+				$"Name: {Name}, Abbreviation: {Abbreviation}, Kpp: {Kpp}, Address: {Address}, IsDisabled: {IsDisabled}";
 		}
 	}
 }
