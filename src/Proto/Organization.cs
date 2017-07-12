@@ -66,15 +66,18 @@ namespace Diadoc.Api.Proto
 			get { return new ReadonlyList(Departments); }
 		}
 
+
 		public override string ToString()
 		{
 			var boxes = string.Join("\r\n", Boxes.Select(b => b.ToString()).ToArray());
-			return 
-				$"OrgId: {OrgId}, Inn: {Inn}, Kpp: {Kpp}, FullName: {FullName}, ShortName: {ShortName}, Boxes:\r\n {boxes}," +
-				$" Ogrn: {Ogrn}, FnsParticipantId: {FnsParticipantId}, Address: {Address}, FnsRegistrationDate: {FnsRegistrationDate}," +
-				$" Departments: {Departments}, IfnsCode: {IfnsCode}, IsPilot: {IsPilot}, IsActive: {IsActive}, IsTest: {IsTest}," +
-				$" IsBranch: {IsBranch}, IsRoaming: {IsRoaming}, IsEmployee: {IsEmployee}, InvitationCount: {InvitationCount}," +
-				$" SearchCount: {SearchCount}, Sociability: {Sociability}, LiquidationDate: {LiquidationDate}, CertificateOfRegistryInfo: {CertificateOfRegistryInfo}";
+			return string.Format("OrgId: {0}, Inn: {1}, Kpp: {2}, FullName: {3}, ShortName: {4}, Boxes:\r\n {5}, " +
+								"Ogrn: {6}, FnsParticipantId: {7}, Address: {8}, FnsRegistrationDate: {9}, " +
+								"Departments: {10}, IfnsCode: {11}, IsPilot: {12}, IsActive: {13}, IsTest: {14}, " +
+								"IsBranch: {15}, IsRoaming: {16}, IsEmployee: {17}, InvitationCount: {18}, " +
+								"SearchCount: {19}, Sociability: {20}, LiquidationDate: {21}, CertificateOfRegistryInfo: {22}",
+								OrgId, Inn, Kpp, FullName, ShortName, boxes, Ogrn, FnsParticipantId, Address, FnsRegistrationDate,
+								Departments, IfnsCode, IsPilot, IsActive, IsTest, IsBranch, IsRoaming, IsEmployee, InvitationCount,
+								SearchCount, Sociability, LiquidationDate, CertificateOfRegistryInfo);
 		}
 	}
 
@@ -97,9 +100,9 @@ namespace Diadoc.Api.Proto
 	{
 		public override string ToString()
 		{
-			return
-				$"BoxId: {BoxId}, Title: {Title}, Organization: {Organization}," +
-				$" InvoiceFormatVersion: {InvoiceFormatVersion}, EncryptedDocumentsAllowed: {EncryptedDocumentsAllowed}";
+			return string.Format("BoxId: {0}, Title: {1}, Organization: {2}, " +
+								 "InvoiceFormatVersion: {3}, EncryptedDocumentsAllowed: {4}", 
+								 BoxId, Title, Organization, InvoiceFormatVersion, EncryptedDocumentsAllowed);
 		}
 	}
 
@@ -123,9 +126,9 @@ namespace Diadoc.Api.Proto
 	{
 		public override string ToString()
 		{
-			return 
-				$"DepartmentId: {DepartmentId}, ParentDepartmentId: {ParentDepartmentId}, " +
-				$"Name: {Name}, Abbreviation: {Abbreviation}, Kpp: {Kpp}, Address: {Address}, IsDisabled: {IsDisabled}";
+			return string.Format("DepartmentId: {0}, Name: {1}, ParentDepartmentId: {2}, " +
+			                     "Abbreviation: {3}, Kpp: {4}, Address: {5}, IsDisabled: {6}", 
+								 DepartmentId, Name, ParentDepartmentId, Abbreviation, Kpp, Address, IsDisabled);
 		}
 	}
 }
