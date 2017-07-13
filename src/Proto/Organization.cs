@@ -1,3 +1,4 @@
+using System.CodeDom;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
@@ -65,10 +66,18 @@ namespace Diadoc.Api.Proto
 			get { return new ReadonlyList(Departments); }
 		}
 
+
 		public override string ToString()
 		{
 			var boxes = string.Join("\r\n", Boxes.Select(b => b.ToString()).ToArray());
-			return string.Format("OrgId: {0}, Inn: {1}, Kpp: {2}, FullName: {3}, ShortName: {4}, Boxes:\r\n{5}, Ogrn: {6}, IsPilot: {7}, IsActive: {8}, IsTest: {9}", OrgId, Inn, Kpp, FullName, ShortName, boxes, Ogrn, IsPilot, IsActive, IsTest);
+			return string.Format("OrgId: {0}, Inn: {1}, Kpp: {2}, FullName: {3}, ShortName: {4}, Boxes:\r\n {5}, " +
+								"Ogrn: {6}, FnsParticipantId: {7}, Address: {8}, FnsRegistrationDate: {9}, " +
+								"Departments: {10}, IfnsCode: {11}, IsPilot: {12}, IsActive: {13}, IsTest: {14}, " +
+								"IsBranch: {15}, IsRoaming: {16}, IsEmployee: {17}, InvitationCount: {18}, " +
+								"SearchCount: {19}, Sociability: {20}, LiquidationDate: {21}, CertificateOfRegistryInfo: {22}",
+								OrgId, Inn, Kpp, FullName, ShortName, boxes, Ogrn, FnsParticipantId, Address, FnsRegistrationDate,
+								Departments, IfnsCode, IsPilot, IsActive, IsTest, IsBranch, IsRoaming, IsEmployee, InvitationCount,
+								SearchCount, Sociability, LiquidationDate, CertificateOfRegistryInfo);
 		}
 	}
 
@@ -91,7 +100,9 @@ namespace Diadoc.Api.Proto
 	{
 		public override string ToString()
 		{
-			return string.Format("BoxId: {0}, Title: {1}, Org: {2}", BoxId, Title, Organization);
+			return string.Format("BoxId: {0}, Title: {1}, Organization: {2}, " +
+								 "InvoiceFormatVersion: {3}, EncryptedDocumentsAllowed: {4}", 
+								 BoxId, Title, Organization, InvoiceFormatVersion, EncryptedDocumentsAllowed);
 		}
 	}
 
@@ -115,7 +126,9 @@ namespace Diadoc.Api.Proto
 	{
 		public override string ToString()
 		{
-			return string.Format("DepartmentId: {0}, Name: {1}", DepartmentId, Name);
+			return string.Format("DepartmentId: {0}, Name: {1}, ParentDepartmentId: {2}, " +
+			                     "Abbreviation: {3}, Kpp: {4}, Address: {5}, IsDisabled: {6}", 
+								 DepartmentId, Name, ParentDepartmentId, Abbreviation, Kpp, Address, IsDisabled);
 		}
 	}
 }

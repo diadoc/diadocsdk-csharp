@@ -162,6 +162,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _UniversalCorrectionDocumentInfo; }
       set { _UniversalCorrectionDocumentInfo = value; }
     }
+
+    private string _AttachmentVersion = "";
+    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"AttachmentVersion", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AttachmentVersion
+    {
+      get { return _AttachmentVersion; }
+      set { _AttachmentVersion = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

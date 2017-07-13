@@ -219,6 +219,15 @@ namespace Diadoc.Api.Proto
       get { return _LiquidationDate; }
       set { _LiquidationDate = value; }
     }
+
+    private string _CertificateOfRegistryInfo = "";
+    [global::ProtoBuf.ProtoMember(24, IsRequired = false, Name=@"CertificateOfRegistryInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string CertificateOfRegistryInfo
+    {
+      get { return _CertificateOfRegistryInfo; }
+      set { _CertificateOfRegistryInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
