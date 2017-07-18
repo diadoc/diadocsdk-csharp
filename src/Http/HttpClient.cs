@@ -8,6 +8,10 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using JetBrains.Annotations;
 
+#if !NET35
+using System.Threading.Tasks;
+#endif
+
 namespace Diadoc.Api.Http
 {
 	public interface IHttpClient
@@ -20,6 +24,13 @@ namespace Diadoc.Api.Http
 
 		[NotNull]
 		HttpResponse PerformHttpRequest([NotNull] HttpRequest request, params HttpStatusCode[] allowedStatusCodes);
+
+		#if !NET35
+		
+		[NotNull]
+		Task<HttpResponse> PerformHttpRequestAsync([NotNull] HttpRequest request, params HttpStatusCode[] allowedStatusCodes);
+	
+		#endif
 	}
 
 	public class HttpClient : IHttpClient
@@ -121,6 +132,48 @@ namespace Diadoc.Api.Http
 				throw new HttpClientException(message, additionalMessage, request.PathAndQuery, e, response);
 			}
 		}
+		
+		#if !NET35
+
+		[NotNull]
+		public virtual async Task<HttpResponse> PerformHttpRequestAsync(HttpRequest request, params HttpStatusCode[] allowedStatusCodes)
+		{
+			HttpResponse response = null;
+			try
+			{
+				var webRequest = PrepareWebRequest(request);
+				using (var webResponse = await webRequest.GetResponseAsync().ConfigureAwait(false))
+					response = new HttpResponse((HttpWebResponse)webResponse);
+				if (!StatusCodeIsAllowed(response.StatusCode, allowedStatusCodes))
+				{
+					var message = string.Format("Unexpected http status code: {0}", response.StatusCode);
+					throw new WebException(message, null, WebExceptionStatus.ProtocolError, null);
+				}
+				return response;
+			}
+			catch (WebException e)
+			{
+				var webResponse = e.Response as HttpWebResponse;
+				if (webResponse != null)
+					response = new HttpResponse(webResponse);
+				string diadocErrorCode = null;
+				var additionalMessage = string.Empty;
+				HttpStatusCode? statusCode = null;
+				if (response != null)
+				{
+					statusCode = response.StatusCode;
+					if (StatusCodeIsAllowed(statusCode.Value, allowedStatusCodes)) return response;
+					additionalMessage = GetAdditionalMessage(response);
+					diadocErrorCode = response.DiadocErrorCode;
+				}
+				if (e.Status == WebExceptionStatus.ReceiveFailure)
+					additionalMessage += " Ошибка подключения: Возможно, неправильные аутентификационные данные для прокси.";
+				var message = string.Format("BaseUrl={0}, PathAndQuery={1}, AdditionalMessage={2}, StatusCode={3}, DiadocErrorCode: {4}", baseUrl, request.PathAndQuery, additionalMessage, statusCode, diadocErrorCode);
+				throw new HttpClientException(message, additionalMessage, request.PathAndQuery, e, response);
+			}
+		}
+	
+		#endif
 
 		private static bool StatusCodeIsAllowed(HttpStatusCode statusCode, params HttpStatusCode[] allowedStatusCodes)
 		{

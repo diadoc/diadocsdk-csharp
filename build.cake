@@ -13,7 +13,8 @@ var dbgSuffix = (configuration == "Debug" ? "-dbg" : "");
 var buildDir = new DirectoryPath("./bin").Combine(configuration);
 var buildDirNuget = buildDir.Combine("DiadocApi.Nuget");
 var DiadocApiSolutionPath = "./DiadocApi.sln";
-var binariesZip = buildDir.CombineWithFilePath("diadocsdk-csharp-binaries.zip");
+var binariesNet35Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net35-binaries.zip");
+var binariesNet45Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net45-binaries.zip");
 var needSigning = false;
 
 const string protobufNetDll = "./packages/protobuf-net.1.0.0.280/lib/protobuf-net.dll";
@@ -152,6 +153,7 @@ Task("ILMerge")
 		var sourceDir = buildDir.Combine("DiadocApi");
 		var outputDir = buildDir.Combine("DiadocApi.Nuget");
 		CreateDirectory(outputDir.Combine("net35"));
+		CreateDirectory(outputDir.Combine("net45"));
 		var ilMergeSettings = new ILMergeSettings
 		{
 			Internalize = true,
@@ -166,20 +168,36 @@ Task("ILMerge")
 			sourceDir.CombineWithFilePath("net35/DiadocApi.dll"),
 			new FilePath[] { protobufNetDll },
 			ilMergeSettings);
+		ilMergeSettings.TargetPlatform = new TargetPlatform(TargetPlatformVersion.v4);
+		ILMerge(
+			outputDir.CombineWithFilePath("net45/DiadocApi.dll"),
+			sourceDir.CombineWithFilePath("net45/DiadocApi.dll"),
+			new FilePath[] { protobufNetDll },
+			ilMergeSettings);
 	});
-	
+
 Task("PrepareBinaries")
 	.IsDependentOn("GenerateVersionInfo")
 	.IsDependentOn("ILMerge")
 	.Does(() =>
 	{
-		var files = GetFiles(buildDir.FullPath + "/DiadocApi/**/*.*")
+		DeleteFiles(GetFiles(buildDir.FullPath + "/**/JetBrains.Annotations*"));
+
+		var net35Files = GetFiles(buildDir.FullPath + "/DiadocApi/net35/*.*")
 			.Where(x =>
 				!x.FullPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) &&
 				!x.FullPath.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase));
-		CopyFiles(files, buildDirNuget.Combine("net35"));
+		CopyFiles(net35Files, buildDirNuget.Combine("net35"));
+
+		var net45Files = GetFiles(buildDir.FullPath + "/DiadocApi/net45/*.*")
+			.Where(x =>
+				!x.FullPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) &&
+				!x.FullPath.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase));
+		CopyFiles(net45Files, buildDirNuget.Combine("net45"));
+
 		CopyFileToDirectory("./LICENSE.md", buildDirNuget);
-		Zip(buildDirNuget, binariesZip, GetFiles(buildDirNuget + "/**/*.*"));
+		Zip(buildDirNuget, binariesNet35Zip, GetFiles(buildDirNuget + "/net35/*.*"));
+		Zip(buildDirNuget, binariesNet45Zip, GetFiles(buildDirNuget + "/net45/*.*"));
 	});
 
 Task("Nuget-Pack")
@@ -200,7 +218,8 @@ Task("PublishArtifactsToAppVeyor")
 	.WithCriteria(x => BuildSystem.IsRunningOnAppVeyor)
 	.Does(() =>
 	{
-		AppVeyor.UploadArtifact(binariesZip);
+		AppVeyor.UploadArtifact(binariesNet35Zip);
+		AppVeyor.UploadArtifact(binariesNet45Zip);
 		foreach (var upload in GetFiles(buildDir + "/*.nupkg"))
 		{
 			AppVeyor.UploadArtifact(upload​);

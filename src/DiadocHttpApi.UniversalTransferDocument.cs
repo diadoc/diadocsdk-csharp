@@ -1,5 +1,4 @@
 ﻿using Diadoc.Api.Http;
-using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
 

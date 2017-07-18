@@ -22,5 +22,7 @@
     <file src="net35/Diadoc_Unreg.bat" target="lib/net35" />
     <file src="net35/Diadoc_Unreg64.bat" target="lib/net35" />
     <file src="net35/readme.txt" target="lib/net35" />
+    <file src="net45/DiadocApi.dll" target="lib/net45" />
+    <file src="net45/DiadocApi.xml" target="lib/net45" />
   </files>
 </package>

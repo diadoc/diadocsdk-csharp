@@ -17,7 +17,7 @@ using JetBrains.Annotations;
 
 namespace Diadoc.Api
 {
-	public class DiadocApi : IDiadocApi
+	public partial class DiadocApi : IDiadocApi
 	{
 		private readonly DiadocHttpApi diadocHttpApi;
 
