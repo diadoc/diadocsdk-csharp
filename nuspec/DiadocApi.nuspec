@@ -11,6 +11,13 @@
     <description>Official Diadoc SDK</description>
     <copyright>Copyright 2016</copyright>
     <tags>diadoc diadoc-api diadoc-sdk kontur skbkontur</tags>
+    <dependencies>
+      <group targetFramework="net35" />
+      <group targetFramework="net40">
+        <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+      </group>
+      <group targetFramework="net45" />
+    </dependencies>
   </metadata>
   <files>
     <file src="LICENSE.md" />
@@ -22,6 +29,8 @@
     <file src="net35/Diadoc_Unreg.bat" target="lib/net35" />
     <file src="net35/Diadoc_Unreg64.bat" target="lib/net35" />
     <file src="net35/readme.txt" target="lib/net35" />
+    <file src="net40/DiadocApi.dll" target="lib/net40" />
+    <file src="net40/DiadocApi.xml" target="lib/net40" />
     <file src="net45/DiadocApi.dll" target="lib/net45" />
     <file src="net45/DiadocApi.xml" target="lib/net45" />
   </files>
