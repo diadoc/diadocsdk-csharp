@@ -504,6 +504,12 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateForwardedDocumentProtocol(authToken, boxId, forwardedDocumentId);
 		}
 
+		public PrintFormResult GenerateForwardedDocumentPrintForm(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GenerateForwardedDocumentPrintForm(authToken, boxId, forwardedDocumentId);
+		}
+
 		public bool CanSendInvoice(string authToken, string boxId, byte[] certificateBytes)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
