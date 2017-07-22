@@ -7,7 +7,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		public async Task<TResult> WaitTaskResultAsync<TResult>(
+		protected async Task<TResult> WaitTaskResultAsync<TResult>(
 			string authToken,
 			string url,
 			string taskId,

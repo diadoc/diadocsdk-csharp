@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -13,8 +13,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiadocApi-net45", "src\DiadocApi-net45.csproj", "{24329A1E-CF27-4045-BEA0-26C227442735}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiadocApi-Tests-net45", "tests\DiadocApi-Tests-net45.csproj", "{D61FA897-DB05-4B4F-BDF9-AC7E4F798920}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiadocApi-net40", "src\DiadocApi-net40.csproj", "{0D855BC6-666A-43C4-BD1D-76DF54D75E89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,10 +44,6 @@ Global
 		{D61FA897-DB05-4B4F-BDF9-AC7E4F798920}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D61FA897-DB05-4B4F-BDF9-AC7E4F798920}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D61FA897-DB05-4B4F-BDF9-AC7E4F798920}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D855BC6-666A-43C4-BD1D-76DF54D75E89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D855BC6-666A-43C4-BD1D-76DF54D75E89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D855BC6-666A-43C4-BD1D-76DF54D75E89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D855BC6-666A-43C4-BD1D-76DF54D75E89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

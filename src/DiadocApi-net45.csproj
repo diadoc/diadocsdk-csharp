@@ -158,18 +158,26 @@
     <Compile Include="Proto\Documents\DocumentZip.proto.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.proto.cs" />
+    <Compile Include="Proto\Events\CancellationInfo.cs" />
+    <Compile Include="Proto\Events\CancellationInfo.proto.cs" />
     <Compile Include="Proto\Events\ResolutionRouteInfo.proto.cs" />
     <Compile Include="Proto\ExternalServiceAuthInfo.proto.cs" />
     <Compile Include="Com\ComWrappers.cs" />
+    <Compile Include="Proto\Invoicing\AcceptanceCertificate552Info.cs" />
+    <Compile Include="Proto\Invoicing\AcceptanceCertificate552Info.proto.cs" />
     <Compile Include="Proto\Invoicing\ExtendedOrganizationInfo.cs" />
     <Compile Include="Proto\Invoicing\ExtendedOrganizationInfo.proto.cs" />
     <Compile Include="Proto\Invoicing\ExtendedSigner.cs" />
     <Compile Include="Proto\Invoicing\ExtendedSigner.proto.cs" />
+    <Compile Include="Proto\Invoicing\TovTorgInfo.cs" />
+    <Compile Include="Proto\Invoicing\TovTorgInfo.proto.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.proto.cs" />
     <Compile Include="Proto\ResolutionRouteList.proto.cs" />
     <Compile Include="Proto\RoamingNotification.proto.cs" />
     <Compile Include="Proto\Serializer.cs" />
+    <Compile Include="Proto\SignatureInfo.cs" />
+    <Compile Include="Proto\SignatureInfo.proto.cs" />
     <Compile Include="Proto\Timestamp.cs" />
     <Compile Include="Proto\Docflow\Attachment.proto.cs" />
     <Compile Include="Proto\Docflow\BilateralDocflow.proto.cs" />
@@ -296,9 +304,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="readme.txt">
+    <None Include="readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

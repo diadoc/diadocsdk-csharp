@@ -11,6 +11,7 @@ using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
+using Diadoc.Api.Proto.KeyValueStorage;
 
 #if !NET35
 using System.Threading.Tasks;
@@ -31,10 +32,14 @@ namespace Diadoc.Api
 		void SetProxyCredentials([CanBeNull] NetworkCredential proxyCredentials);
 		void SetProxyCredentials([NotNull] string user, [NotNull] string password);
 		void SetProxyCredentials([NotNull] string user, [NotNull] SecureString password);
-		string Authenticate(string login, string password);
+		string Authenticate(string login, string password, string key = null, string id = null);
 		string AuthenticateByKey([NotNull] string key, [NotNull] string id);
 		string Authenticate(byte[] certificateBytes, bool useLocalSystemStorage = false);
 		string Authenticate(string thumbprint, bool useLocalSystemStorage = false);
+		string AuthenticateWithKey(string thumbprint, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true);
+		string AuthenticateWithKey(byte[] certificateBytes, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true);
+		string AuthenticateWithKeyConfirm(byte[] certificateBytes, string token, bool saveBinding = false);
+		string AuthenticateWithKeyConfirm(string thumbprint, string token, bool saveBinding = false);
 		OrganizationUserPermissions GetMyPermissions(string authToken, string orgId);
 		OrganizationList GetMyOrganizations(string authToken, bool autoRegister = true);
 		OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false);
@@ -95,7 +100,7 @@ namespace Diadoc.Api
 		GetForwardedDocumentsResponse GetForwardedDocuments(string authToken, string boxId, GetForwardedDocumentsRequest request);
 		GetForwardedDocumentEventsResponse GetForwardedDocumentEvents(string authToken, string boxId, GetForwardedDocumentEventsRequest request);
 		byte[] GetForwardedEntityContent(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId, string entityId);
-		IDocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
+		DocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
 		PrintFormResult GenerateForwardedDocumentPrintForm(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
 		bool CanSendInvoice(string authToken, string boxId, byte[] certificateBytes);
 		void SendFnsRegistrationMessage(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);
@@ -124,8 +129,8 @@ namespace Diadoc.Api
 		List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList);
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
 		SignatureRejectionInfo ParseSignatureRejectionXml(byte[] signatureRejectionXmlContent);
-		IDocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId);
-		IDocumentZipGenerationResult GenerateDocumentZip(string authToken, string boxId, string messageId, string documentId, bool fullDocflow);
+		DocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId);
+		DocumentZipGenerationResult GenerateDocumentZip(string authToken, string boxId, string messageId, string documentId, bool fullDocflow);
 		DocumentList GetDocumentsByCustomId(string authToken, string boxId, string customDocumentId);
 		PrepareDocumentsToSignResponse PrepareDocumentsToSign(string authToken, PrepareDocumentsToSignRequest request, bool excludeContent = false);
 		User GetMyUser(string authToken);
@@ -135,7 +140,7 @@ namespace Diadoc.Api
 		CloudSignConfirmResult WaitCloudSignConfirmResult(string authToken, string taskId, TimeSpan? timeout = null);
 
 		AsyncMethodResult AcquireCounteragent(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
-		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null);
+		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
 		SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId);
 
@@ -146,10 +151,14 @@ namespace Diadoc.Api
 
 #if !NET35
 
-		Task<string> AuthenticateAsync(string login, string password);
+		Task<string> AuthenticateAsync(string login, string password, string key = null, string id = null);
 		Task<string> AuthenticateByKeyAsync([NotNull] string key, [NotNull] string id);
 		Task<string> AuthenticateAsync(byte[] certificateBytes, bool useLocalSystemStorage = false);
 		Task<string> AuthenticateAsync(string thumbprint, bool useLocalSystemStorage = false);
+		Task<string> AuthenticateWithKeyAsync(string thumbprint, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true);
+		Task<string> AuthenticateWithKeyAsync(byte[] certificateBytes, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true);
+		Task<string> AuthenticateWithKeyConfirmAsync(byte[] certificateBytes, string token, bool saveBinding = false);
+		Task<string> AuthenticateWithKeyConfirmAsync(string thumbprint, string token, bool saveBinding = false);
 		Task<OrganizationUserPermissions> GetMyPermissionsAsync(string authToken, string orgId);
 		Task<OrganizationList> GetMyOrganizationsAsync(string authToken, bool autoRegister = true);
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false);
@@ -207,11 +216,12 @@ namespace Diadoc.Api
 		Task<GetForwardedDocumentEventsResponse> GetForwardedDocumentEventsAsync(string authToken, string boxId, GetForwardedDocumentEventsRequest request);
 		Task<byte[]> GetForwardedEntityContentAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId, string entityId);
 		Task<DocumentProtocolResult> GenerateForwardedDocumentProtocolAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
+		Task<PrintFormResult> GenerateForwardedDocumentPrintFormAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
 		Task<bool> CanSendInvoiceAsync(string authToken, string boxId, byte[] certificateBytes);
 		Task SendFnsRegistrationMessageAsync(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);
 		Task<Counteragent> GetCounteragentAsync(string authToken, string myOrgId, string counteragentOrgId);
 		Task<CounteragentCertificateList> GetCounteragentCertificatesAsync(string authToken, string myOrgId, string counteragentOrgId);
-		Task<CounteragentList> GetCounteragentsAsync(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey);
+		Task<CounteragentList> GetCounteragentsAsync(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null);
 		Task BreakWithCounteragentAsync(string authToken, string myOrgId, string counteragentOrgId, string comment);
 		Task<string> UploadFileToShelfAsync(string authToken, byte[] data);
 		Task<byte[]> GetFileFromShelfAsync(string authToken, string nameOnShelf);
@@ -238,8 +248,18 @@ namespace Diadoc.Api
 		Task<AsyncMethodResult> CloudSignConfirmAsync(string authToken, string cloudSignToken, string confirmationCode, ContentLocationPreference? locationPreference = null);
 		Task<CloudSignConfirmResult> WaitCloudSignConfirmResultAsync(string authToken, string taskId, TimeSpan? timeout = null);
 		Task<AsyncMethodResult> AcquireCounteragentAsync(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
-		Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout = null);
+		Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
 		Task<DocumentList> GetDocumentsByMessageIdAsync(string authToken, string boxId, string messageId);
+		Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string orgId, IEnumerable<string> keys);
+		Task PutOrganizationStorageEntriesAsync(string authToken, string orgId, IEnumerable<KeyValueStorageEntry> entries);
+		Task<AsyncMethodResult> AutoSignReceiptsAsync(string authToken, string boxId, string certificateThumbprint, string batchKey);
+		Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout = null);
+		Task<ExternalServiceAuthInfo> GetExternalServiceAuthInfoAsync(string key);
+		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
+		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
+		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
+		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
+		Task<ResolutionRouteList> GetResolutionRoutesForOrganizationAsync(string authToken, string orgId);
 
 #endif
 

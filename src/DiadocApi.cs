@@ -12,6 +12,7 @@ using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
+using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 
@@ -70,9 +71,9 @@ namespace Diadoc.Api
 			diadocHttpApi.HttpClient.SetProxyCredentials(user, password);
 		}
 
-		public string Authenticate(string login, string password)
+		public string Authenticate(string login, string password, string key = null, string id = null)
 		{
-			return diadocHttpApi.Authenticate(login, password);
+			return diadocHttpApi.Authenticate(login, password, key, id);
 		}
 
 		public string AuthenticateByKey([NotNull] string key, [NotNull] string id)
@@ -92,6 +93,32 @@ namespace Diadoc.Api
 		{
 			if (thumbprint == null) throw new ArgumentNullException("thumbprint");
 			return diadocHttpApi.Authenticate(thumbprint, useLocalSystemStorage);
+		}
+
+		public string AuthenticateWithKey(string thumbprint, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true)
+		{
+			if (thumbprint == null) throw new ArgumentNullException("thumbprint");
+			return diadocHttpApi.AuthenticateWithKey(thumbprint, useLocalSystemStorage, key, id, autoConfirm);
+		}
+
+		public string AuthenticateWithKey(byte[] certificateBytes, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true)
+		{
+			if (certificateBytes == null) throw new ArgumentNullException("certificateBytes");
+			return diadocHttpApi.AuthenticateWithKey(certificateBytes, useLocalSystemStorage, key, id, autoConfirm);
+		}
+
+		public string AuthenticateWithKeyConfirm(byte[] certificateBytes, string token, bool saveBinding = false)
+		{
+			if (certificateBytes == null) throw new ArgumentNullException("certificateBytes");
+			if (string.IsNullOrEmpty(token)) throw new ArgumentNullException("token");
+			return diadocHttpApi.AuthenticateWithKeyConfirm(certificateBytes, token, saveBinding);
+		}
+
+		public string AuthenticateWithKeyConfirm(string thumbprint, string token, bool saveBinding = false)
+		{
+			if (thumbprint == null) throw new ArgumentNullException("thumbprint");
+			if (string.IsNullOrEmpty(token)) throw new ArgumentNullException("token");
+			return diadocHttpApi.AuthenticateWithKeyConfirm(thumbprint, token, saveBinding);
 		}
 
 		public OrganizationUserPermissions GetMyPermissions(string authToken, string orgId)
@@ -548,7 +575,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetForwardedEntityContent(authToken, boxId, forwardedDocumentId, entityId);
 		}
 
-		public IDocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken, string boxId,
+		public DocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken, string boxId,
 			ForwardedDocumentId forwardedDocumentId)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
@@ -728,13 +755,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseSignatureRejectionXml(signatureRejectionXmlContent);
 		}
 
-		public IDocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId,
+		public DocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId,
 			string documentId)
 		{
 			return diadocHttpApi.GenerateDocumentProtocol(authToken, boxId, messageId, documentId);
 		}
 
-		public IDocumentZipGenerationResult GenerateDocumentZip(string authToken, string boxId, string messageId,
+		public DocumentZipGenerationResult GenerateDocumentZip(string authToken, string boxId, string messageId,
 			string documentId, bool fullDocflow)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -792,11 +819,10 @@ namespace Diadoc.Api
 			return diadocHttpApi.AcquireCounteragent(authToken, myOrgId, request, myDepartmentId);
 		}
 
-		public AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId,
-			TimeSpan? timeout = null)
+		public AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
 		{
 			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
-			return diadocHttpApi.WaitAcquireCounteragentResult(authToken, taskId, timeout);
+			return diadocHttpApi.WaitAcquireCounteragentResult(authToken, taskId, timeout, delay);
 		}
 
 		public DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId)
@@ -808,6 +834,110 @@ namespace Diadoc.Api
 			if (string.IsNullOrEmpty(messageId))
 				throw new ArgumentNullException("messageId");
 			return diadocHttpApi.GetDocumentsByMessageId(authToken, boxId, messageId);
+		}
+
+		public List<KeyValueStorageEntry> GetOrganizationStorageEntries(string authToken, string orgId, IEnumerable<string> keys)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(orgId))
+				throw new ArgumentNullException("orgId");
+			if (keys == null)
+				throw new ArgumentNullException("keys");
+			return diadocHttpApi.GetOrganizationStorageEntries(authToken, orgId, keys);
+	}
+
+		public void PutOrganizationStorageEntries(string authToken, string orgId, IEnumerable<KeyValueStorageEntry> entries)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(orgId))
+				throw new ArgumentNullException("orgId");
+			if (entries == null)
+				throw new ArgumentNullException("entries");
+			diadocHttpApi.PutOrganizationStorageEntries(authToken, orgId, entries);
+		}
+
+		public AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			return diadocHttpApi.AutoSignReceipts(authToken, boxId, certificateThumbprint, batchKey);
+		}
+
+		public AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId, TimeSpan? timeout = null)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(taskId))
+				throw new ArgumentNullException("taskId");
+			return diadocHttpApi.WaitAutosignReceiptsResult(authToken, taskId, timeout);
+		}
+
+		public ExternalServiceAuthInfo GetExternalServiceAuthInfo(string key)
+		{
+			if (string.IsNullOrEmpty(key))
+				throw new ArgumentNullException("key");
+			return diadocHttpApi.GetExternalServiceAuthInfo(key);
+		}
+
+		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
+		{
+			if (string.IsNullOrEmpty(token))
+				throw new ArgumentNullException("token");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			if (string.IsNullOrEmpty(thumbprint))
+				throw new ArgumentNullException("thumbprint");
+			return diadocHttpApi.GetExtendedSignerDetails(token, boxId, thumbprint, forBuyer, forCorrection);
+		}
+
+		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection)
+		{
+			if (string.IsNullOrEmpty(token))
+				throw new ArgumentNullException("token");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			if (certificateBytes == null)
+				throw new ArgumentNullException("certificateBytes");
+			return diadocHttpApi.GetExtendedSignerDetails(token, boxId, certificateBytes, forBuyer, forCorrection);
+		}
+
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
+		{
+			if (string.IsNullOrEmpty(token))
+				throw new ArgumentNullException("token");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			if (certificateBytes == null)
+				throw new ArgumentNullException("certificateBytes");
+			if (signerDetails == null)
+				throw new ArgumentNullException("signerDetails");
+			return diadocHttpApi.PostExtendedSignerDetails(token, boxId, certificateBytes, forBuyer, forCorrection, signerDetails);
+		}
+
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
+		{
+			if (string.IsNullOrEmpty(token))
+				throw new ArgumentNullException("token");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			if (string.IsNullOrEmpty(thumbprint))
+				throw new ArgumentNullException("thumbprint");
+			if (signerDetails == null)
+				throw new ArgumentNullException("signerDetails");
+			return diadocHttpApi.PostExtendedSignerDetails(token, boxId, thumbprint, forBuyer, forCorrection, signerDetails);
+		}
+
+		public ResolutionRouteList GetResolutionRoutesForOrganization(string authToken, string orgId)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(orgId))
+				throw new ArgumentNullException("orgId");
+			return diadocHttpApi.GetResolutionRoutesForOrganization(authToken, orgId);
 		}
 	}
 }

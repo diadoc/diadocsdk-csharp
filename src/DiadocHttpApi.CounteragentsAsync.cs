@@ -15,11 +15,17 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Counteragent>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		public Task<CounteragentList> GetCounteragentsAsync(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey)
+		public Task<CounteragentList> GetCounteragentsAsync(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null)
 		{
-			var qsb = GetCounteragentsPathAndQuery(myOrgId, counteragentStatus, afterIndexKey);
+			var qsb = new PathAndQueryBuilder("V2/GetCounteragents");
+			qsb.AddParameter("myOrgId", myOrgId);
+			if (!string.IsNullOrEmpty(counteragentStatus)) qsb.AddParameter("counteragentStatus", counteragentStatus);
+			if (!string.IsNullOrEmpty(afterIndexKey)) qsb.AddParameter("afterIndexKey", afterIndexKey);
+			if (!string.IsNullOrEmpty(query)) qsb.AddParameter("query", query);
+			if (pageSize != null) qsb.AddParameter("pageSize", pageSize.ToString());
 			return PerformHttpRequestAsync<CounteragentList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
+
 
 		public Task<CounteragentCertificateList> GetCounteragentCertificatesAsync(
 			string authToken,

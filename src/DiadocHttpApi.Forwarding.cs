@@ -40,7 +40,7 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
-		public IDocumentProtocolResult GenerateForwardedDocumentProtocol([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardedDocumentId forwardedDocumentId)
+		public DocumentProtocolResult GenerateForwardedDocumentProtocol([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardedDocumentId forwardedDocumentId)
 		{
 			var queryString = new PathAndQueryBuilder("/V2/GenerateForwardedDocumentProtocol")
 				.WithBoxId(boxId)

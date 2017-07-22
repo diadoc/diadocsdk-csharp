@@ -8,6 +8,8 @@ using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
+using Diadoc.Api.Proto.Invoicing.Signers;
+using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 
@@ -15,9 +17,9 @@ namespace Diadoc.Api
 {
 	public partial class DiadocApi
 	{
-		public Task<string> AuthenticateAsync(string login, string password)
+		public Task<string> AuthenticateAsync(string login, string password, string key = null, string id = null)
 		{
-			return diadocHttpApi.AuthenticateAsync(login, password);
+			return diadocHttpApi.AuthenticateAsync(login, password, key, id);
 		}
 
 		public Task<string> AuthenticateByKeyAsync([NotNull] string key, [NotNull] string id)
@@ -37,6 +39,32 @@ namespace Diadoc.Api
 		{
 			if (thumbprint == null) throw new ArgumentNullException("thumbprint");
 			return diadocHttpApi.AuthenticateAsync(thumbprint, useLocalSystemStorage);
+		}
+
+		public Task<string> AuthenticateWithKeyAsync(string thumbprint, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true)
+		{
+			if (thumbprint == null) throw new ArgumentNullException("thumbprint");
+			return diadocHttpApi.AuthenticateWithKeyAsync(thumbprint, useLocalSystemStorage, key, id, autoConfirm);
+		}
+
+		public Task<string> AuthenticateWithKeyAsync(byte[] certificateBytes, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true)
+		{
+			if (certificateBytes == null) throw new ArgumentNullException("certificateBytes");
+			return diadocHttpApi.AuthenticateWithKeyAsync(certificateBytes, useLocalSystemStorage, key, id, autoConfirm);
+		}
+
+		public Task<string> AuthenticateWithKeyConfirmAsync(byte[] certificateBytes, string token, bool saveBinding = false)
+		{
+			if (certificateBytes == null) throw new ArgumentNullException("certificateBytes");
+			if (string.IsNullOrEmpty(token)) throw new ArgumentNullException("token");
+			return diadocHttpApi.AuthenticateWithKeyConfirmAsync(certificateBytes, token, saveBinding);
+		}
+
+		public Task<string> AuthenticateWithKeyConfirmAsync(string thumbprint, string token, bool saveBinding = false)
+		{
+			if (thumbprint == null) throw new ArgumentNullException("thumbprint");
+			if (string.IsNullOrEmpty(token)) throw new ArgumentNullException("token");
+			return diadocHttpApi.AuthenticateWithKeyConfirmAsync(thumbprint, token, saveBinding);
 		}
 
 		public Task<OrganizationUserPermissions> GetMyPermissionsAsync(string authToken, string orgId)
@@ -448,6 +476,12 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateForwardedDocumentProtocolAsync(authToken, boxId, forwardedDocumentId);
 		}
 
+		public Task<PrintFormResult> GenerateForwardedDocumentPrintFormAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GenerateForwardedDocumentPrintFormAsync(authToken, boxId, forwardedDocumentId);
+		}
+
 		public Task<bool> CanSendInvoiceAsync(string authToken, string boxId, byte[] certificateBytes)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
@@ -471,12 +505,11 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetCounteragentAsync(authToken, myOrgId, counteragentOrgId);
 		}
 
-		public Task<CounteragentList> GetCounteragentsAsync(string authToken, string myOrgId, string counteragentStatus,
-			string afterIndexKey)
+		public Task<CounteragentList> GetCounteragentsAsync(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
 			if (string.IsNullOrEmpty(myOrgId)) throw new ArgumentNullException("myOrgId");
-			return diadocHttpApi.GetCounteragentsAsync(authToken, myOrgId, counteragentStatus, afterIndexKey);
+			return diadocHttpApi.GetCounteragentsAsync(authToken, myOrgId, counteragentStatus, afterIndexKey, query, pageSize);
 		}
 
 		public Task<CounteragentCertificateList> GetCounteragentCertificatesAsync(string authToken, string myOrgId,
@@ -650,11 +683,10 @@ namespace Diadoc.Api
 			return diadocHttpApi.AcquireCounteragentAsync(authToken, myOrgId, request, myDepartmentId);
 		}
 
-		public Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId,
-			TimeSpan? timeout = null)
+		public Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
 		{
 			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
-			return diadocHttpApi.WaitAcquireCounteragentResultAsync(authToken, taskId, timeout);
+			return diadocHttpApi.WaitAcquireCounteragentResultAsync(authToken, taskId, timeout, delay);
 		}
 
 		public Task<DocumentList> GetDocumentsByMessageIdAsync(string authToken, string boxId, string messageId)
@@ -666,6 +698,110 @@ namespace Diadoc.Api
 			if (string.IsNullOrEmpty(messageId))
 				throw new ArgumentNullException("messageId");
 			return diadocHttpApi.GetDocumentsByMessageIdAsync(authToken, boxId, messageId);
+		}
+
+		public Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string orgId, IEnumerable<string> keys)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(orgId))
+				throw new ArgumentNullException("orgId");
+			if (keys == null)
+				throw new ArgumentNullException("keys");
+			return diadocHttpApi.GetOrganizationStorageEntriesAsync(authToken, orgId, keys);
+		}
+
+		public Task PutOrganizationStorageEntriesAsync(string authToken, string orgId, IEnumerable<KeyValueStorageEntry> entries)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(orgId))
+				throw new ArgumentNullException("orgId");
+			if (entries == null)
+				throw new ArgumentNullException("entries");
+			return diadocHttpApi.PutOrganizationStorageEntriesAsync(authToken, orgId, entries);
+		}
+
+		public Task<AsyncMethodResult> AutoSignReceiptsAsync(string authToken, string boxId, string certificateThumbprint, string batchKey)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			return diadocHttpApi.AutoSignReceiptsAsync(authToken, boxId, certificateThumbprint, batchKey);
+		}
+
+		public Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout = null)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(taskId))
+				throw new ArgumentNullException("taskId");
+			return diadocHttpApi.WaitAutosignReceiptsResultAsync(authToken, taskId, timeout);
+		}
+
+		public Task<ExternalServiceAuthInfo> GetExternalServiceAuthInfoAsync(string key)
+		{
+			if (string.IsNullOrEmpty(key))
+				throw new ArgumentNullException("key");
+			return diadocHttpApi.GetExternalServiceAuthInfoAsync(key);
+		}
+
+		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
+		{
+			if (string.IsNullOrEmpty(token))
+				throw new ArgumentNullException("token");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			if (string.IsNullOrEmpty(thumbprint))
+				throw new ArgumentNullException("thumbprint");
+			return diadocHttpApi.GetExtendedSignerDetailsAsync(token, boxId, thumbprint, forBuyer, forCorrection);
+		}
+
+		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection)
+		{
+			if (string.IsNullOrEmpty(token))
+				throw new ArgumentNullException("token");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			if (certificateBytes == null)
+				throw new ArgumentNullException("certificateBytes");
+			return diadocHttpApi.GetExtendedSignerDetailsAsync(token, boxId, certificateBytes, forBuyer, forCorrection);
+		}
+
+		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
+		{
+			if (string.IsNullOrEmpty(token))
+				throw new ArgumentNullException("token");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			if (certificateBytes == null)
+				throw new ArgumentNullException("certificateBytes");
+			if (signerDetails == null)
+				throw new ArgumentNullException("signerDetails");
+			return diadocHttpApi.PostExtendedSignerDetailsAsync(token, boxId, certificateBytes, forBuyer, forCorrection, signerDetails);
+		}
+
+		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
+		{
+			if (string.IsNullOrEmpty(token))
+				throw new ArgumentNullException("token");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			if (string.IsNullOrEmpty(thumbprint))
+				throw new ArgumentNullException("thumbprint");
+			if (signerDetails == null)
+				throw new ArgumentNullException("signerDetails");
+			return diadocHttpApi.PostExtendedSignerDetailsAsync(token, boxId, thumbprint, forBuyer, forCorrection, signerDetails);
+		}
+
+		public Task<ResolutionRouteList> GetResolutionRoutesForOrganizationAsync(string authToken, string orgId)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(orgId))
+				throw new ArgumentNullException("orgId");
+			return diadocHttpApi.GetResolutionRoutesForOrganizationAsync(authToken, orgId);
 		}
 	}
 }
