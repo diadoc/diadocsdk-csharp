@@ -92,7 +92,7 @@ namespace Diadoc.Api
 		void SendFnsRegistrationMessage(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);
 		Counteragent GetCounteragent(string authToken, string myOrgId, string counteragentOrgId);
 		CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId, string counteragentOrgId);
-		CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey);
+		CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null);
 		void BreakWithCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment);
 		string UploadFileToShelf(string authToken, byte[] data);
 		byte[] GetFileFromShelf(string authToken, string nameOnShelf);
