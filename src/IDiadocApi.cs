@@ -61,7 +61,9 @@ namespace Diadoc.Api
 		GeneratedFile GenerateInvoiceCorrectionXml(string authToken, InvoiceCorrectionInfo invoiceCorrectionInfo, bool disableValidation = false);
 		GeneratedFile GenerateInvoiceCorrectionRevisionXml(string authToken, InvoiceCorrectionInfo invoiceCorrectionRevision, bool disableValidation = false);
 		GeneratedFile GenerateTorg12XmlForSeller(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation = false);
+		GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateTorg12XmlForBuyer(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+		GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 		GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken, UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
@@ -100,6 +102,9 @@ namespace Diadoc.Api
 		RussianAddress ParseRussianAddress(string address);
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent);
+		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] xmlContent);
+		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent);
+		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);

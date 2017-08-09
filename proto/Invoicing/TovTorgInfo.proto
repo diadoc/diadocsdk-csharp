@@ -1,0 +1,86 @@
+import "Invoicing/InvoiceInfo.proto";
+import "Invoicing/ExtendedSigner.proto";
+import "Invoicing/ExtendedOrganizationInfo.proto";
+import "Invoicing/UniversalTransferDocumentInfo.proto";
+
+package Diadoc.Api.Proto.Invoicing;
+
+message TovTorgSellerTitleInfo {
+	required Organizations.ExtendedOrganizationInfo Seller = 1; // Продавец // СодФХЖ1.Продавец
+	required Organizations.ExtendedOrganizationInfo Buyer = 2; // Покупатель // СодФХЖ1.Покупатель
+	optional Organizations.ExtendedOrganizationInfo Shipper = 3; // Грузоотправитель // СодФХЖ1.ГрузОтпр
+	optional Organizations.ExtendedOrganizationInfo Consignee = 4; // Грузополучатель // СодФХЖ1.ГрузПолуч
+	optional Organizations.ExtendedOrganizationInfo Carrier = 5; // Перевозчик // СодФХЖ1.Перевозчик
+	repeated Signers.ExtendedSigner Signers = 6; // Подписант // Документ.Подписант
+	repeated TransferBase Bases = 7; // Основание // Основание
+	required string Currency = 8; // Валюта (код) // КодОКВ
+	optional string CurrencyRate = 9; // Курс валюты // КурсВал
+	required string DocumentDate = 10; // Дата составления документа о передаче товара // ИдентДок.ДатаДокПТ
+	optional string DocumentNumber = 11; // Номер документа о передаче товара // ИдентДок.НомДокПТ
+	optional string RevisionDate = 12; // Дата исправления документа о передаче товара// ИспрДокПТ.ДатаИспрДокПТ
+	optional string RevisionNumber = 13; // Номер исправления документа о передаче товара // ИспрДокПт.НомИспрДокПТ
+	required TovTorgTransferInfo TransferInfo = 14; // Сведения о факте передачи (об отпуске груза) // СодФХЖ3
+	required string DocumentCreator = 15; // Составитель файла информации продавца // НаимЭконСубСост
+	optional string DocumentCreatorBase = 16; // Основание, по которому экономический субъект является составителем файла //ОснДоверОргСост
+	optional string OperationType = 17; // Вид операции // ВидОперации
+	optional string GovernmentContractInfo = 18; // ИдГосКон
+	optional TovTorgTable Table = 19; // Сведения об ассортименте, количестве, стоимости и другой информации о товарных позициях // СодФХЖ2
+	optional AdditionalInfoId AdditionalInfoId = 20; // Информационное поле документа // ИнфПолФХЖ1
+	required string DocumentName = 21; // Наименование первичного документа, определенное организацией // НаимДок.НаимДокОпр
+}
+
+message TovTorgBuyerTitleInfo {
+	required string DocumentCreator = 1; // Наименование экономического субъекта - составителя файла обмена информации покупателя // Документ.НаимЭконСубСост
+	optional string DocumentCreatorBase = 2; // Основание, по которому экономический субъект является составителем файла обмена информации покупателя // ОснДоверОргСост
+	optional string OperationCode = 3; // Вид операции // СодФХЖ4.ВидОперации
+	required string OperationContent = 4; // Содержание операции // СодОпер
+	optional string AcceptanceDate = 5; // Дата принятия товаров (результатов выполненных работ), имущественных прав (подтверждения факта оказания услуг) // ДатаПолуч
+	optional Employee Employee = 6; // работник организации покупателя // СвЛицПолГруз.РабОргПок
+	optional OtherIssuer OtherIssuer = 7; // Иное Лицо // СвЛицПолГруз.ИнЛицо 
+	optional AdditionalInfoId AdditionalInfoId = 8; // Информационное поле факта хозяйственной жизни (4) // ИнфПолФХЖ4
+	repeated Signers.ExtendedSigner Signers = 9; // Подписант // Документ.Подписант
+}
+
+message TovTorgTable {
+	repeated TovTorgItem Items = 1; // информация о товарах // СвТов
+	optional string TotalQuantity = 2; // Количество мест всего по документу // КолМестВс
+	optional string TotalGross = 3; // Масса брутто всего по документу // БруттоВС
+	optional string TotalNet = 4; // Масса нетто всего по документу // НеттоВс
+	optional string TotalWithVatExcluded = 5; // Сумма без учета налога // СтТовБезНДСВс
+	optional string TotalVat = 6; // Сумма НДС - всего по документу // СумНДСВс
+	optional string Total = 7; // Сумма всего // СтУчНДСВс
+}
+
+message TovTorgItem {
+	optional string Product = 1; // наименование товара // НаимТов
+	optional string Feature = 2; // характеристика товара // ХарактерТов
+	optional string Sort = 3; // сорт товара // СортТов
+	optional string VendorCode = 4; // артикул товара
+	optional string ProductCode = 5; // Код товара // КодТов
+	optional string UnitName = 6; // наименование единицы измерения товара. Пользователь заполняет, если ОКЕИ_Тов=’0000’// НаимЕдИзм
+	required string Unit = 7; // единицы измерения товара (код) // ОКЕИ_Тов
+	optional string PackageType = 8; // вид упаковки товара // ВидУпак
+	optional string QuantityInPack = 9; // количество мест в 1 упаковке // Место;
+	optional string Quantity = 10; // количество единиц товара // КолМест;
+	optional string Gross = 11; // масса брутто // брутто
+	required string Net = 12; // масса нетто, количество передано (отпущено) // НеттоПередано
+	optional string ItemToRelease = 13; // Количество надлежит отпустить // НадлОтп
+	optional string Price = 14; // цена за единицу товара // ЦенаТов
+	optional string SubtotalWithVatExcluded = 15; // сумма без учета налога // СтБезНДС
+	optional TaxRate TaxRate = 16 [default = Percent_18]; // ставка налога // НалСт
+	optional string Vat = 17; // сумма налога // СумНДС
+	required string Subtotal = 18; // сумма всего // СтУчНДС
+	optional string ItemAccountDebit = 19; // Корреспондирующие счета: дебет // КорСчДеб
+	optional string ItemAccountCredit = 20; // Корреспондирующие счета: кредит // КорСчКред
+	repeated AdditionalInfo AdditionalInfos = 21; // Информационное поле документа // ИнфПолФХЖ2
+}
+
+message TovTorgTransferInfo {
+	required string OperationInfo = 1; // Содержание операции // СодОпер
+	optional string TransferDate = 2; // Дата отгрузки // ДатаОтпуск
+	optional string Attachment = 3; // Приложение, сертификаты и прочее // КолПрил
+	repeated Waybill Waybills = 4; // Транспортная накладная //ТранНакл
+	optional Employee Employee = 5; // Работник организации продавца // СвЛицОтпГруз.РабОргПрод
+	optional OtherIssuer OtherIssuer = 6; // Иное лицо // СвЛицОтпГруз.ИнЛицо
+	repeated AdditionalInfo AdditionalInfos = 7; // Информационное поле документа // ИнфПолФХЖ3
+}
