@@ -752,8 +752,10 @@ namespace Diadoc.Api.Proto.Invoicing
       get { return _Vat; }
       set { _Vat = value; }
     }
-    private string _Subtotal;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"Subtotal", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _Subtotal = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Subtotal", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string Subtotal
     {
       get { return _Subtotal; }
