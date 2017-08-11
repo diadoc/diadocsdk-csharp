@@ -19,5 +19,5 @@ message SignatureInfo
 	optional string FirstName = 12;   //Имя-отчество 
 	optional string Surname = 13;     //Фамилия 
 	optional string Snils = 14;       //СНИЛС 
-	optional string Email = 15;       //EMAIL 
+	optional string Email = 15;       //Email 
 }

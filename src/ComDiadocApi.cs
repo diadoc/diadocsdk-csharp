@@ -111,6 +111,7 @@ namespace Diadoc.Api
 			bool excludeSubdepartments, string afterIndexKey);
 
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
+		SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId);
 		Counteragent GetCounteragent(string authToken, string myOrgId, string counteragentOrgId);
 		CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId, string counteragentOrgId);
 		CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null);
