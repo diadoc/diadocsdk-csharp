@@ -568,6 +568,11 @@ namespace Diadoc.Api
 			return diadoc.GetDocument(authToken, boxId, messageId, entityId);
 		}
 
+		public SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId)
+		{
+			return diadoc.GetSignatureInfo(authToken, boxId, messageId, entityId);
+		}
+
 		public GetDocflowBatchResponse GetDocflows(string authToken, string boxId, object request)
 		{
 			return diadoc.GetDocflows(authToken, boxId, (GetDocflowBatchRequest) request);

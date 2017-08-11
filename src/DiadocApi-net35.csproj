@@ -149,6 +149,7 @@
     <Compile Include="Proto\ResolutionRouteList.proto.cs" />
     <Compile Include="Proto\RoamingNotification.proto.cs" />
     <Compile Include="Proto\Serializer.cs" />
+    <Compile Include="Proto\SignatureInfo.proto.cs" />
     <Compile Include="Proto\Timestamp.cs" />
     <Compile Include="Proto\Docflow\Attachment.proto.cs" />
     <Compile Include="Proto\Docflow\BilateralDocflow.proto.cs" />

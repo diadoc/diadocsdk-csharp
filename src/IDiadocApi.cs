@@ -122,5 +122,6 @@ namespace Diadoc.Api
 		AsyncMethodResult AcquireCounteragent(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
 		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null);
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
+		SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId);
 	}
 }
