@@ -108,6 +108,15 @@ namespace Diadoc.Api
 			return PerformHttpRequest<DocumentList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		public SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId)
+		{
+			var qsb = new PathAndQueryBuilder("/GetSignatureInfo");
+			qsb.AddParameter("boxId", boxId);
+			qsb.AddParameter("messageId", messageId);
+			qsb.AddParameter("entityId", entityId);
+			return PerformHttpRequest<SignatureInfo>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+
 		[NotNull]
 		public ResolutionRouteList GetResolutionRoutesForOrganization([NotNull] string authToken, [NotNull] string orgId)
 		{

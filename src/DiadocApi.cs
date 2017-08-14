@@ -445,6 +445,11 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocument(authToken, boxId, messageId, entityId);
 		}
 
+		public SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId)
+		{
+			return diadocHttpApi.GetSignatureInfo(authToken, boxId, messageId, entityId);
+		}
+
 		public GetDocflowBatchResponse GetDocflows(string authToken, string boxId, GetDocflowBatchRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
