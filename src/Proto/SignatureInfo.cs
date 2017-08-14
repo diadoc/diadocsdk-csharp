@@ -1,7 +1,5 @@
-﻿using System.Runtime.InteropServices;
-using System.Text;
-using Diadoc.Api.Com;
-using Diadoc.Api.Proto;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Diadoc.Api.Proto
 {
@@ -9,8 +7,8 @@ namespace Diadoc.Api.Proto
 	[Guid("8774CD83-0E8E-4FEC-8AEA-3CB854FCCE56")]
 	public interface ISignatureInfo
 	{
-		Timestamp SigningTime { get; set; }
-		Timestamp SignatureVerificationTime { get; set; }
+		DateTime SigningDateTime { get; }
+		DateTime SignatureVerificationDateTime { get; }
 		SignatureVerificationResult SignatureVerificationResult { get; set; }
 		string Thumbprint { get; set; }
 		string SerialNumber { get; set; }
@@ -33,5 +31,14 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(ISignatureInfo))]
 	public partial class SignatureInfo : SafeComObject, ISignatureInfo
 	{
+		public DateTime SigningDateTime
+		{
+			get { return new DateTime(SigningTime.Ticks, DateTimeKind.Utc); }
+		}
+
+		public DateTime SignatureVerificationDateTime
+		{
+			get { return new DateTime(SignatureVerificationTime.Ticks, DateTimeKind.Utc); }
+		}
 	}
 }
