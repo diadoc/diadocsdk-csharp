@@ -27,6 +27,7 @@ namespace Diadoc.Api.Proto
 	}
 
 	[ComVisible(true)]
+	[ProgId("Diadoc.Api.SignatureInfo")]
 	[Guid("0FE4F19C-70AA-47F3-99C9-E10268850382")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(ISignatureInfo))]
