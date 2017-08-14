@@ -123,7 +123,7 @@ namespace Diadoc.Api.Cryptography
 
 					try
 					{
-						if (!Api.CryptSignMessage(ref signParameters, true, 1, new[] { contentHandle.AddrOfPinnedObject() }, new[] { content.Length }, signatureHandle.AddrOfPinnedObject(), ref bufferLength))
+						if (!Api.CryptSignMessage(ref signParameters, true, 1, new[] { contentHandle.AddrOfPinnedObject() }, new[] { content.Length }, signatureHandle.AddrOfPinnedObject(), ref bytesWritten))
 							throw new Win32Exception();
 
 						Array.Resize(ref buffer, bytesWritten);
