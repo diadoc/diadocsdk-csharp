@@ -130,14 +130,14 @@ namespace Diadoc.Api
 			return PerformHttpRequest<SignatureRejectionInfo>(null, "POST", "/ParseSignatureRejectionXml", xmlContent);
 		}
 
-		[Obsolete]
+		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
 		{
 			var documentTitleType = CreateDocumentTitleType(forBuyer, forCorrection);
 			return GetExtendedSignerDetails(token, boxId, thumbprint, documentTitleType);
 		}
 
-		[Obsolete]
+		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
@@ -159,14 +159,14 @@ namespace Diadoc.Api
 			return GetExtendedSignerDetails(token, boxId, certificate.Thumbprint, documentTitleType);
 		}
 
-		[Obsolete]
+		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var documentTitleType = CreateDocumentTitleType(forBuyer, forCorrection);
 			return PostExtendedSignerDetails(token, boxId, thumbprint, documentTitleType, signerDetails);
 		}
 
-		[Obsolete]
+		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
@@ -191,8 +191,8 @@ namespace Diadoc.Api
 		private static DocumentTitleType CreateDocumentTitleType(bool forBuyer, bool forCorrection)
 		{
 			return forBuyer
-				? (forCorrection ? DocumentTitleType.BuyerUCD : DocumentTitleType.BuyerUTD)
-				: (forCorrection ? DocumentTitleType.SellerUCD : DocumentTitleType.SellerUTD);
+				? (forCorrection ? DocumentTitleType.UcdBuyer : DocumentTitleType.UtdBuyer)
+				: (forCorrection ? DocumentTitleType.UcdSeller : DocumentTitleType.UtdSeller);
 		}
 	}
 }

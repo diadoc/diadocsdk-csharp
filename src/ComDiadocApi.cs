@@ -10,6 +10,7 @@ using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
+using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Recognition;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 
@@ -193,6 +194,11 @@ namespace Diadoc.Api
 
 		User GetMyUser(string authToken);
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
+		
+		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType);
+		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType);
+		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType, [MarshalAs(UnmanagedType.IDispatch)] object signerDetails);
+		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType, [MarshalAs(UnmanagedType.IDispatch)] object signerDetails);
 	}
 
 	[ComVisible(true)]
@@ -647,6 +653,26 @@ namespace Diadoc.Api
 		public DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId)
 		{
 			return diadoc.GetDocumentsByMessageId(authToken, boxId, messageId);
+		}
+
+		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType)
+		{
+			return diadoc.GetExtendedSignerDetails(token, boxId, thumbprint, (DocumentTitleType) documentTitleType);
+		}
+
+		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType)
+		{
+			return diadoc.GetExtendedSignerDetails(token, boxId, certificateBytes, (DocumentTitleType) documentTitleType);
+		}
+
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType, object signerDetails)
+		{
+			return diadoc.PostExtendedSignerDetails(token, boxId, thumbprint, (DocumentTitleType) documentTitleType, (ExtendedSignerDetailsToPost) signerDetails);
+		}
+
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType, object signerDetails)
+		{
+			return diadoc.PostExtendedSignerDetails(token, boxId, certificateBytes, (DocumentTitleType) documentTitleType, (ExtendedSignerDetailsToPost) signerDetails);
 		}
 
 		#region Counteragents

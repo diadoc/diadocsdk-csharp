@@ -310,17 +310,17 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
     public enum DocumentTitleType
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SellerUTD", Value=0)]
-      SellerUTD = 0,
+      [global::ProtoBuf.ProtoEnum(Name=@"UtdSeller", Value=0)]
+      UtdSeller = 0,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"BuyerUTD", Value=1)]
-      BuyerUTD = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"UtdBuyer", Value=1)]
+      UtdBuyer = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"SellerUCD", Value=2)]
-      SellerUCD = 2,
+      [global::ProtoBuf.ProtoEnum(Name=@"UcdSeller", Value=2)]
+      UcdSeller = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"BuyerUCD", Value=3)]
-      BuyerUCD = 3,
+      [global::ProtoBuf.ProtoEnum(Name=@"UcdBuyer", Value=3)]
+      UcdBuyer = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"TovTorg551Seller", Value=4)]
       TovTorg551Seller = 4,
