@@ -133,7 +133,7 @@ namespace Diadoc.Api
 		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
 		{
-			var documentTitleType = CreateDocumentTitleType(forBuyer, forCorrection);
+			var documentTitleType = CreateUtdDocumentTitleType(forBuyer, forCorrection);
 			return GetExtendedSignerDetails(token, boxId, thumbprint, documentTitleType);
 		}
 
@@ -162,7 +162,7 @@ namespace Diadoc.Api
 		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
-			var documentTitleType = CreateDocumentTitleType(forBuyer, forCorrection);
+			var documentTitleType = CreateUtdDocumentTitleType(forBuyer, forCorrection);
 			return PostExtendedSignerDetails(token, boxId, thumbprint, documentTitleType, signerDetails);
 		}
 
@@ -188,7 +188,7 @@ namespace Diadoc.Api
 			return PostExtendedSignerDetails(token, boxId, certificate.Thumbprint, documentTitleType, signerDetails);
 		}
 
-		private static DocumentTitleType CreateDocumentTitleType(bool forBuyer, bool forCorrection)
+		private static DocumentTitleType CreateUtdDocumentTitleType(bool forBuyer, bool forCorrection)
 		{
 			return forBuyer
 				? (forCorrection ? DocumentTitleType.UcdBuyer : DocumentTitleType.UtdBuyer)
