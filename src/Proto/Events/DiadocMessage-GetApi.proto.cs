@@ -11,6 +11,7 @@
 // Note: requires additional types generated from: Content.proto
 // Note: requires additional types generated from: DocumentId.proto
 // Note: requires additional types generated from: Documents/Document.proto
+// Note: requires additional types generated from: Events/CancellationInfo.proto
 // Note: requires additional types generated from: Events/ResolutionInfo.proto
 // Note: requires additional types generated from: Events/ResolutionRequestInfo.proto
 // Note: requires additional types generated from: Events/ResolutionRequestDenialInfo.proto
@@ -570,6 +571,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _ResolutionRouteRemovalInfo; }
       set { _ResolutionRouteRemovalInfo = value; }
     }
+
+    private Diadoc.Api.Proto.Events.CancellationInfo _CancellationInfo = null;
+    [global::ProtoBuf.ProtoMember(24, IsRequired = false, Name=@"CancellationInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.CancellationInfo CancellationInfo
+    {
+      get { return _CancellationInfo; }
+      set { _CancellationInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -800,7 +810,10 @@ namespace Diadoc.Api.Proto.Events
       ResolutionRouteAssignmentAttachment = 66,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ResolutionRouteRemovalAttachment", Value=67)]
-      ResolutionRouteRemovalAttachment = 67
+      ResolutionRouteRemovalAttachment = 67,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Cancellation", Value=69)]
+      Cancellation = 69
     }
   
 }

@@ -1999,6 +1999,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _InitialResolutionRequestId; }
       set { _InitialResolutionRequestId = value; }
     }
+
+    private string _Comment = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Comment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Comment
+    {
+      get { return _Comment; }
+      set { _Comment = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

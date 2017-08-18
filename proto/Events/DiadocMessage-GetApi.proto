@@ -7,6 +7,7 @@
 import "Content.proto";
 import "DocumentId.proto";
 import "Documents/Document.proto";
+import "Events/CancellationInfo.proto";
 import "Events/ResolutionInfo.proto";
 import "Events/ResolutionRequestInfo.proto";
 import "Events/ResolutionRequestDenialInfo.proto";
@@ -87,6 +88,7 @@ message Entity {
 	optional string AttachmentVersion = 21;
 	optional ResolutionRouteAssignmentInfo ResolutionRouteAssignmentInfo = 22; // only for AttachmentType.ResolutionRouteAssignmentAttachment
 	optional ResolutionRouteRemovalInfo ResolutionRouteRemovalInfo = 23;	// only for AttachmentType.ResolutionRouteRemovalAttachment
+	optional CancellationInfo CancellationInfo = 24;						// only for AttachmentType.Cancellation
 }
 
 message EntityPatch {
@@ -155,5 +157,7 @@ enum AttachmentType {
 	MoveDocument = 65;
 	ResolutionRouteAssignmentAttachment = 66;
 	ResolutionRouteRemovalAttachment = 67;
+	// 68 - Зарезервировано
+	Cancellation = 69;
 	//Неизвестные типы должны обрабатываться как Nonformalized
 }

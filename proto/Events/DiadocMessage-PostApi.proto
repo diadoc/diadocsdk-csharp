@@ -321,6 +321,7 @@ message ResolutionRouteAssignment
 
 message ResolutionRequestCancellationAttachment {
 	required string InitialResolutionRequestId = 1;
+	optional string Comment = 2;
 }
 
 message ResolutionRequestDenialCancellationAttachment {

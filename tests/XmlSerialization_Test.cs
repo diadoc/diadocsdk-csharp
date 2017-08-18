@@ -4,7 +4,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Xml.Serialization;
 using Diadoc.Api.Proto;
 using Newtonsoft.Json;
@@ -114,5 +113,4 @@ namespace Diadoc.Api.Tests
 			return new XmlSerializer(info.GetType());
 		}
 	}
-
 }
