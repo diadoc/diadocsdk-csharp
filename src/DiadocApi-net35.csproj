@@ -142,6 +142,8 @@
     <Compile Include="Proto\Events\ResolutionRouteInfo.proto.cs" />
     <Compile Include="Proto\ExternalServiceAuthInfo.proto.cs" />
     <Compile Include="Com\ComWrappers.cs" />
+    <Compile Include="Proto\Invoicing\AcceptanceCertificate552Info.cs" />
+    <Compile Include="Proto\Invoicing\AcceptanceCertificate552Info.proto.cs" />
     <Compile Include="Proto\Invoicing\ExtendedOrganizationInfo.cs" />
     <Compile Include="Proto\Invoicing\ExtendedOrganizationInfo.proto.cs" />
     <Compile Include="Proto\Invoicing\ExtendedSigner.cs" />

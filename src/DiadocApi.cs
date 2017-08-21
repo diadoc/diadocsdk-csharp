@@ -355,6 +355,22 @@ namespace Diadoc.Api
 				sellerTitleAttachmentId);
 		}
 
+		public GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(string authToken,
+			AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation = false)
+		{
+			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
+			return diadocHttpApi.GenerateAcceptanceCertificate552XmlForSeller(authToken, sellerInfo, disableValidation);
+		}
+
+		public GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(string authToken,
+			AcceptanceCertificate552BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId,
+			string sellerTitleAttachmentId)
+		{
+			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
+			return diadocHttpApi.GenerateAcceptanceCertificate552XmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId,
+				sellerTitleAttachmentId);
+		}
+
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken,
 			UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
@@ -639,6 +655,21 @@ namespace Diadoc.Api
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXml(xmlContent);
+		}
+
+		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent)
+		{
+			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXml(xmlContent);
+		}
+
+		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent)
+		{
+			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXml(xmlContent);
+		}
+
+		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent)
+		{
+			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXml(xmlContent);
 		}
 
 		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent)

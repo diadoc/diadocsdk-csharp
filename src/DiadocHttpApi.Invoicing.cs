@@ -112,6 +112,24 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryString, buyerInfo);
 		}
 
+		public GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(string authToken, AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation = false)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GenerateAcceptanceCertificateXmlForSeller");
+			if (disableValidation) queryBuilder.AddParameter("disableValidation");
+			queryBuilder.AddParameter("documentVersion", "rezru_05_01_01");
+			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
+		}
+
+		public GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(string authToken, AcceptanceCertificate552BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GenerateAcceptanceCertificateXmlForBuyer");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
+			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
+			queryBuilder.AddParameter("documentVersion", "rezru_05_01_01");
+			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
+		}
+
 		public bool CanSendInvoice(string authToken, string boxId, byte[] certificateBytes)
 		{
 			var queryString = string.Format("/CanSendInvoice?boxId={0}", boxId);
@@ -155,6 +173,21 @@ namespace Diadoc.Api
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)
 		{
 			return PerformHttpRequest<AcceptanceCertificateSellerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateSellerTitleXml", xmlContent);
+		}
+
+		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent)
+		{
+			return PerformHttpRequest<AcceptanceCertificateBuyerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateBuyerTitleXml", xmlContent);
+		}
+
+		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent)
+		{
+			return PerformHttpRequest<AcceptanceCertificate552SellerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateSellerTitleXml?documentVersion=rezru_05_01_01", xmlContent);
+		}
+
+		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent)
+		{
+			return PerformHttpRequest<AcceptanceCertificate552BuyerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateBuyerTitleXml?documentVersion=rezru_05_01_01", xmlContent);
 		}
 
 		public RevocationRequestInfo ParseRevocationRequestXml(byte[] xmlContent)

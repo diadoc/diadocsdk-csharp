@@ -1,0 +1,75 @@
+import "Invoicing/InvoiceInfo.proto";
+import "Invoicing/ExtendedSigner.proto";
+import "Invoicing/ExtendedOrganizationInfo.proto";
+import "Invoicing/UniversalTransferDocumentInfo.proto";
+import "Invoicing/TovTorgInfo.proto";
+
+package Diadoc.Api.Proto.Invoicing;
+
+message AcceptanceCertificate552SellerTitleInfo {
+	required Organizations.ExtendedOrganizationInfo Seller = 1; // Исполнитель (продавец услуг) // Исполнитель
+	required Organizations.ExtendedOrganizationInfo Buyer = 2; // Заказчик (покупатель услуг) // Заказчик
+	repeated Signers.ExtendedSigner Signers = 3; // Подписант // Документ.Подписант
+	repeated GroundInfo Grounds = 4; // Основание // Основание
+	required string Currency = 5; // Валюта (код) // КодОКВ
+	optional string CurrencyRate = 6; // Курс валюты // КурсВал
+	repeated AcceptanceCertificate552WorkDescription Works = 7; // описание выполненных работ // ОписРабот
+	required string DocumentDate = 8; // Дата составления документа о передаче товара // ИдентДок.ДатаДокПРУ
+	optional string DocumentNumber = 9; // Номер документа о передаче товара // ИдентДок.НомДокПРУ
+	optional string RevisionDate = 10; // Дата исправления документа // ИспрДокПРУ.ДатаИспрДокПРУ
+	optional string RevisionNumber = 11; // Номер исправления документа // ИспрДокПРУ.НомИспрДокПРУ
+	required string DocumentCreator = 12; // Составитель файла информации продавца // НаимЭконСубСост
+	optional string DocumentCreatorBase = 13; // Основание, по которому экономический субъект является составителем файла //ОснДоверОргСост
+	optional string OperationType = 14; // Вид операции // ВидОперации
+	optional string OperationTitle = 15; // Заголовок содержания операции // ЗагСодОпер
+	optional string GovernmentContractInfo = 16; // Идентификатор государственного контракта // ИдГосКон
+	optional AdditionalInfoId AdditionalInfoId = 17; // Информационное поле документа // ИнфПолФХЖ1
+	required string DocumentName = 18; // Наименование первичного документа, определенное организацией // НаимДок.НаимДокОпр
+	required AcceptanceCertificate552TransferInfo TransferInfo = 19; // Содержание факта хозяйственной жизни - сведения о передаче результатов работ (о предъявлении оказанных услуг) // СодФХЖ2
+}
+
+message AcceptanceCertificate552TransferInfo {
+	required string OperationInfo = 1; // Содержание операции // СодОпер
+	optional string TransferDate = 2; // Дата передачи результатов работ // ДатаПер
+	optional string CreatedThingTransferDate = 3; // Дата передачи вещи, изготовленной по договору подряда // СвПерВещи.ДатаПерВещ
+	optional string CreatedThingInfo = 4; // Сведения о передаче // СвПерВещи.СвПерВещ
+	repeated AdditionalInfo AdditionalInfos = 5; // Информационное поле документа // ИнфПолФХЖ2
+}
+
+message AcceptanceCertificate552WorkDescription {
+	optional string StartingDate = 1; // начало периода выполнения работ // НачРабот
+	optional string CompletionDate = 2; // окончание периода выполнения работ // КонРабот
+	optional string TotalWithVatExcluded = 3; // сумма без учета НДС - итого // СтБезНДСИт
+	optional string TotalVat = 4; // сумма НДС - итого // СумНДСИт
+	required string Total = 5; // сумма с учетом НДС - итого // СтУчНДСИт
+	repeated AcceptanceCertificate552WorkItem Items = 6; // сведения о произведенной работе // Работа
+}
+
+message AcceptanceCertificate552WorkItem {
+	optional string Name = 1; // наименование // НаимРабот
+	optional string Description = 2; // описание работы // Описание
+	optional string UnitCode = 3; // код единицы измерения // ОКЕИ
+	optional string UnitName = 4; // наименование единицы измерения // НаимЕдИзм
+	optional string Price = 5; // цена // Цена
+	optional string Quantity = 6; // количество // Количество
+	optional string SubtotalWithVatExcluded = 7; // сумма без учета НДС // СтоимБезНДС
+	optional string Vat = 8; // сумма НДС // СумНДС
+	optional string Subtotal = 9; // сумма с учетом НДС // СтоимУчНДС
+	repeated AdditionalInfo AdditionalInfos = 10; // информационное поле сведений о работе (услуге) // ИнфПолеОписРабот
+	optional TaxRate TaxRate = 11 [default = Percent_18]; // ставка налога // НалСт
+	optional string ItemAccountDebit = 12; // Корреспондирующие счета: дебет // КоррСчДебет
+	optional string ItemAccountCredit = 13; // Корреспондирующие счета: кредит // КоррСчКредит
+}
+
+message AcceptanceCertificate552BuyerTitleInfo {
+	repeated Signers.ExtendedSigner Signers = 1; // Подписант // Документ.Подписант
+	required string DocumentCreator = 2; // Составитель файла информации продавца // НаимЭконСубСост
+	optional string DocumentCreatorBase = 3; // Основание, по которому экономический субъект является составителем файла //ОснДоверОргСост
+	optional string OperationType = 4; // Вид операции // ВидОперации
+	required string DocumentName = 5; // Наименование первичного документа, определенное организацией // НаимДокОпрИсп
+	required string OperationInfo = 6; // Содержание операции // СодОпер
+	optional string AcceptDate = 7; // Дата приемки результатов работ // ДатаПрием
+	optional string CreatedThingAcceptDate = 8; // Дата получения вещи, изготовленной  по договору подряда // СвПолВещи.ДатаПол
+	optional string CreatedThingInfo = 9; // Сведения о получении // СвПолВещи.СвПол
+	optional AdditionalInfoId AdditionalInfoId = 10; // Информационное поле документа // ИнфПолФХЖ3
+}

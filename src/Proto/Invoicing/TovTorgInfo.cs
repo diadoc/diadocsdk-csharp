@@ -31,8 +31,8 @@ namespace Diadoc.Api.Proto.Invoicing
 		ReadonlyList SignersList { get; }
 		void AddSigner([MarshalAs(UnmanagedType.IDispatch)] object signer);
 
-		ReadonlyList BasesList { get; }
-		void AddBase([MarshalAs(UnmanagedType.IDispatch)] object baseInfo);
+		ReadonlyList GroundsList { get; }
+		void AddGround([MarshalAs(UnmanagedType.IDispatch)] object ground);
 	}
 
 	[ComVisible(true)]
@@ -48,10 +48,10 @@ namespace Diadoc.Api.Proto.Invoicing
 			Signers.Add((ExtendedSigner)signer);
 		}
 
-		public ReadonlyList BasesList { get { return new ReadonlyList(Bases);} }
-		public void AddBase([MarshalAs(UnmanagedType.IDispatch)] object baseInfo)
+		public ReadonlyList GroundsList { get { return new ReadonlyList(Grounds);} }
+		public void AddGround([MarshalAs(UnmanagedType.IDispatch)] object ground)
 		{
-			Bases.Add((TransferBase)baseInfo);
+			Grounds.Add((GroundInfo)ground);
 		}
 	}
 

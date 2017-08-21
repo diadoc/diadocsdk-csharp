@@ -12,7 +12,7 @@ message TovTorgSellerTitleInfo {
 	optional Organizations.ExtendedOrganizationInfo Consignee = 4; // Грузополучатель // СодФХЖ1.ГрузПолуч
 	optional Organizations.ExtendedOrganizationInfo Carrier = 5; // Перевозчик // СодФХЖ1.Перевозчик
 	repeated Signers.ExtendedSigner Signers = 6; // Подписант // Документ.Подписант
-	repeated TransferBase Bases = 7; // Основание // Основание
+	repeated GroundInfo Grounds = 7; // Основание // Основание
 	required string Currency = 8; // Валюта (код) // КодОКВ
 	optional string CurrencyRate = 9; // Курс валюты // КурсВал
 	required string DocumentDate = 10; // Дата составления документа о передаче товара // ИдентДок.ДатаДокПТ
@@ -83,4 +83,11 @@ message TovTorgTransferInfo {
 	optional Employee Employee = 5; // Работник организации продавца // СвЛицОтпГруз.РабОргПрод
 	optional OtherIssuer OtherIssuer = 6; // Иное лицо // СвЛицОтпГруз.ИнЛицо
 	repeated AdditionalInfo AdditionalInfos = 7; // Информационное поле документа // ИнфПолФХЖ3
+}
+
+message GroundInfo {
+	required string Name = 1; // НаимОсн
+	optional string Number = 2; // НомОсн
+	optional string Date = 3; // ДатаОсн
+	optional string Info = 4; // ДопСвОсн
 }

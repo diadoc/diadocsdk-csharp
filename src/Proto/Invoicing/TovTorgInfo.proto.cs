@@ -67,11 +67,11 @@ namespace Diadoc.Api.Proto.Invoicing
       get { return _Signers; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.TransferBase> _Bases = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.TransferBase>();
-    [global::ProtoBuf.ProtoMember(7, Name=@"Bases", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.TransferBase> Bases
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.GroundInfo> _Grounds = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.GroundInfo>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"Grounds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.GroundInfo> Grounds
     {
-      get { return _Bases; }
+      get { return _Grounds; }
     }
   
     private string _Currency;
@@ -604,6 +604,50 @@ namespace Diadoc.Api.Proto.Invoicing
       get { return _AdditionalInfos; }
     }
   
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GroundInfo")]
+  public partial class GroundInfo : global::ProtoBuf.IExtensible
+  {
+    public GroundInfo() {}
+    
+    private string _Name;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Name
+    {
+      get { return _Name; }
+      set { _Name = value; }
+    }
+
+    private string _Number = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Number", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Number
+    {
+      get { return _Number; }
+      set { _Number = value; }
+    }
+
+    private string _Date = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Date", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Date
+    {
+      get { return _Date; }
+      set { _Date = value; }
+    }
+
+    private string _Info = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Info", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Info
+    {
+      get { return _Info; }
+      set { _Info = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
