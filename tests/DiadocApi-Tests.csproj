@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Diadoc.Api.Tests</RootNamespace>
     <AssemblyName>DiadocApiTests</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <BaseIntermediateOutputPath>$(SolutionDir)\obj\$(AssemblyName)\net35\</BaseIntermediateOutputPath>
@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="ComClasses_Test.cs" />
     <Compile Include="ComEnumsAreCompatibleWithProtoEnums_Test.cs" />
+    <Compile Include="ComInterfaceAttributes_Test.cs" />
     <Compile Include="XmlSerialization_Test.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -43,13 +43,13 @@ namespace Diadoc.Api.Proto.Invoicing
 	public partial class TovTorgSellerTitleInfo : SafeComObject, ITovTorgSellerTitleInfo
 	{
 		public ReadonlyList SignersList { get { return new ReadonlyList(Signers);} }
-		public void AddSigner(object signer)
+		public void AddSigner([MarshalAs(UnmanagedType.IDispatch)] object signer)
 		{
 			Signers.Add((ExtendedSigner)signer);
 		}
 
 		public ReadonlyList BasesList { get { return new ReadonlyList(Bases);} }
-		public void AddBase(object baseInfo)
+		public void AddBase([MarshalAs(UnmanagedType.IDispatch)] object baseInfo)
 		{
 			Bases.Add((TransferBase)baseInfo);
 		}
@@ -80,7 +80,7 @@ namespace Diadoc.Api.Proto.Invoicing
 	public partial class TovTorgBuyerTitleInfo : SafeComObject, ITovTorgBuyerTitleInfo
 	{
 		public ReadonlyList SignersList { get { return new ReadonlyList(Signers); } }
-		public void AddSigner(object signer)
+		public void AddSigner([MarshalAs(UnmanagedType.IDispatch)] object signer)
 		{
 			Signers.Add((ExtendedSigner)signer);
 		}
@@ -97,10 +97,10 @@ namespace Diadoc.Api.Proto.Invoicing
 		OtherIssuer OtherIssuer { get; set; }
 
 		ReadonlyList WaybillsList { get; }
-		void AddWaybill(object waybill);
+		void AddWaybill([MarshalAs(UnmanagedType.IDispatch)] object waybill);
 
 		ReadonlyList AdditionalInfosList { get; }
-		void AddAdditionalInfo(object additionalInfo);
+		void AddAdditionalInfo([MarshalAs(UnmanagedType.IDispatch)] object additionalInfo);
 	}
 
 	[ComVisible(true)]
@@ -111,13 +111,13 @@ namespace Diadoc.Api.Proto.Invoicing
 	public partial class TovTorgTransferInfo : SafeComObject, ITovTorgTransferInfo
 	{
 		public ReadonlyList WaybillsList { get { return new ReadonlyList(Waybills); } }
-		public void AddWaybill(object waybill)
+		public void AddWaybill([MarshalAs(UnmanagedType.IDispatch)] object waybill)
 		{
 			Waybills.Add((Waybill)waybill);
 		}
 
 		public ReadonlyList AdditionalInfosList { get { return new ReadonlyList(AdditionalInfos); } }
-		public void AddAdditionalInfo(object additionalInfo)
+		public void AddAdditionalInfo([MarshalAs(UnmanagedType.IDispatch)] object additionalInfo)
 		{
 			AdditionalInfos.Add((AdditionalInfo)additionalInfo);
 		}
@@ -135,7 +135,7 @@ namespace Diadoc.Api.Proto.Invoicing
 		string Total { get; set; }
 
 		ReadonlyList ItemsList { get; }
-		void AddItem(object item);
+		void AddItem([MarshalAs(UnmanagedType.IDispatch)] object item);
 	}
 
 	[ComVisible(true)]
@@ -146,7 +146,7 @@ namespace Diadoc.Api.Proto.Invoicing
 	public partial class TovTorgTable : SafeComObject, ITovTorgTable
 	{
 		public ReadonlyList ItemsList { get { return new ReadonlyList(Items);} }
-		public void AddItem(object item)
+		public void AddItem([MarshalAs(UnmanagedType.IDispatch)] object item)
 		{
 			Items.Add((TovTorgItem)item);
 		}
@@ -178,7 +178,7 @@ namespace Diadoc.Api.Proto.Invoicing
 		string ItemAccountCredit { get; set; }
 
 		ReadonlyList AdditionalInfosList { get; }
-		void AddAdditionalInfo(object additionalInfo);
+		void AddAdditionalInfo([MarshalAs(UnmanagedType.IDispatch)] object additionalInfo);
 	}
 
 	[ComVisible(true)]
@@ -195,7 +195,7 @@ namespace Diadoc.Api.Proto.Invoicing
 		}
 
 		public ReadonlyList AdditionalInfosList { get { return new ReadonlyList(AdditionalInfos);} }
-		public void AddAdditionalInfo(object additionalInfo)
+		public void AddAdditionalInfo([MarshalAs(UnmanagedType.IDispatch)] object additionalInfo)
 		{
 			AdditionalInfos.Add((AdditionalInfo)additionalInfo);
 		}
