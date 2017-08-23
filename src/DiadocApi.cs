@@ -11,6 +11,7 @@ using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
+using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 
@@ -448,6 +449,26 @@ namespace Diadoc.Api
 		public SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId)
 		{
 			return diadocHttpApi.GetSignatureInfo(authToken, boxId, messageId, entityId);
+		}
+
+		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType)
+		{
+			return diadocHttpApi.GetExtendedSignerDetails(token, boxId, thumbprint, documentTitleType);
+		}
+
+		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType)
+		{
+			return diadocHttpApi.GetExtendedSignerDetails(token, boxId, certificateBytes, documentTitleType);
+		}
+
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails)
+		{
+			return diadocHttpApi.PostExtendedSignerDetails(token, boxId, thumbprint, documentTitleType, signerDetails);
+		}
+
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails)
+		{
+			return diadocHttpApi.PostExtendedSignerDetails(token, boxId, certificateBytes, documentTitleType, signerDetails);
 		}
 
 		public GetDocflowBatchResponse GetDocflows(string authToken, string boxId, GetDocflowBatchRequest request)

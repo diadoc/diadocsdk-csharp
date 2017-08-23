@@ -306,4 +306,33 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       AuthorizedPerson = 4
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"DocumentTitleType")]
+    public enum DocumentTitleType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UtdSeller", Value=0)]
+      UtdSeller = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UtdBuyer", Value=1)]
+      UtdBuyer = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UcdSeller", Value=2)]
+      UcdSeller = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UcdBuyer", Value=3)]
+      UcdBuyer = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TovTorg551Seller", Value=4)]
+      TovTorg551Seller = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TovTorg551Buyer", Value=5)]
+      TovTorg551Buyer = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"AccCert552Seller", Value=6)]
+      AccCert552Seller = 6,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"AccCert552Buyer", Value=7)]
+      AccCert552Buyer = 7
+    }
+  
 }

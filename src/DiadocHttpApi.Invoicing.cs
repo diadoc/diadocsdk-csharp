@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
@@ -129,40 +130,69 @@ namespace Diadoc.Api
 			return PerformHttpRequest<SignatureRejectionInfo>(null, "POST", "/ParseSignatureRejectionXml", xmlContent);
 		}
 
+		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
 		{
-			var queryBuilder = new PathAndQueryBuilder("/ExtendedSignerDetails");
-			queryBuilder.AddParameter("boxId", boxId);
-			queryBuilder.AddParameter("thumbprint", thumbprint);
-			if (forBuyer)
-				queryBuilder.AddParameter("buyer");
-			if (forCorrection)
-				queryBuilder.AddParameter("correction");
-			return PerformHttpRequest<ExtendedSignerDetails>(token, "GET", queryBuilder.ToString());
+			var documentTitleType = CreateUtdDocumentTitleType(forBuyer, forCorrection);
+			return GetExtendedSignerDetails(token, boxId, thumbprint, documentTitleType);
 		}
 
+		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
 			return GetExtendedSignerDetails(token, boxId, certificate.Thumbprint, forBuyer, forCorrection);
 		}
 
-		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
+		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType)
 		{
-			var queryBuilder = new PathAndQueryBuilder("/ExtendedSignerDetails");
+			var queryBuilder = new PathAndQueryBuilder("/V2/ExtendedSignerDetails");
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("thumbprint", thumbprint);
-			if (forBuyer)
-				queryBuilder.AddParameter("buyer");
-			if (forCorrection)
-				queryBuilder.AddParameter("correction");
-			return PerformHttpRequest<ExtendedSignerDetails>(token, "POST", queryBuilder.ToString(), Serialize(signerDetails));
+			queryBuilder.AddParameter("documentTitleType", ((int) documentTitleType).ToString());
+			return PerformHttpRequest<ExtendedSignerDetails>(token, "GET", queryBuilder.ToString());
 		}
 
+		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType)
+		{
+			var certificate = new X509Certificate2(certificateBytes);
+			return GetExtendedSignerDetails(token, boxId, certificate.Thumbprint, documentTitleType);
+		}
+
+		[Obsolete("Use overload with DocumentTitleType parameter")]
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
+		{
+			var documentTitleType = CreateUtdDocumentTitleType(forBuyer, forCorrection);
+			return PostExtendedSignerDetails(token, boxId, thumbprint, documentTitleType, signerDetails);
+		}
+
+		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
 			return PostExtendedSignerDetails(token, boxId, certificate.Thumbprint, forBuyer, forCorrection, signerDetails);
+		}
+
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/V2/ExtendedSignerDetails");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("thumbprint", thumbprint);
+			queryBuilder.AddParameter("documentTitleType", ((int) documentTitleType).ToString());
+			return PerformHttpRequest<ExtendedSignerDetails>(token, "POST", queryBuilder.ToString(), Serialize(signerDetails));
+		}
+
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails)
+		{
+			var certificate = new X509Certificate2(certificateBytes);
+			return PostExtendedSignerDetails(token, boxId, certificate.Thumbprint, documentTitleType, signerDetails);
+		}
+
+		private static DocumentTitleType CreateUtdDocumentTitleType(bool forBuyer, bool forCorrection)
+		{
+			return forBuyer
+				? (forCorrection ? DocumentTitleType.UcdBuyer : DocumentTitleType.UtdBuyer)
+				: (forCorrection ? DocumentTitleType.UcdSeller : DocumentTitleType.UtdSeller);
 		}
 	}
 }
