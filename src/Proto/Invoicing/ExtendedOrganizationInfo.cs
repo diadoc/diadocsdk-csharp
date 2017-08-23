@@ -26,6 +26,7 @@ namespace Diadoc.Api.Proto.Invoicing.Organizations
 		string OrganizationAdditionalInfo { get; set; }
 		string OrganizationOrPersonInfo { get; set; }
 		string IndividualEntityRegistrationCertificate { get; set; }
+		string Country { get; set; }
 	}
 
 	[ComVisible(true)]

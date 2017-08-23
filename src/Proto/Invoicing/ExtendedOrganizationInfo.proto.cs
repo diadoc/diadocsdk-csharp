@@ -194,6 +194,15 @@ namespace Diadoc.Api.Proto.Invoicing.Organizations
       get { return _IndividualEntityRegistrationCertificate; }
       set { _IndividualEntityRegistrationCertificate = value; }
     }
+
+    private string _Country = "";
+    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"Country", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Country
+    {
+      get { return _Country; }
+      set { _Country = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -210,7 +219,10 @@ namespace Diadoc.Api.Proto.Invoicing.Organizations
       IndividualEntity = 2,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ForeignEntity", Value=3)]
-      ForeignEntity = 3
+      ForeignEntity = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PhysicalEntity", Value=4)]
+      PhysicalEntity = 4
     }
   
 }

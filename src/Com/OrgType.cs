@@ -11,6 +11,7 @@ namespace Diadoc.Api.Com
 	{
 		LegalEntity = 1,
 		IndividualEntity = 2,
-		ForeignEntity = 3
+		ForeignEntity = 3,
+		PhysicalEntity = 4
 	}
 }

@@ -66,10 +66,14 @@ namespace Diadoc.Api
 		GeneratedFile GenerateInvoiceCorrectionRevisionXml(string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object invoiceCorrectionRevisionInfo, bool disableValidation = false);
 
-		GeneratedFile GenerateTorg12XmlForSeller(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object sellerInfo,
-			bool disableValidation = false);
+		GeneratedFile GenerateTorg12XmlForSeller(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object sellerInfo, bool disableValidation = false);
+
+		GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object sellerInfo, bool disableValidation = false);
 
 		GeneratedFile GenerateTorg12XmlForBuyer(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
+			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
+		GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
 			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 
 		GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken,
@@ -136,6 +140,12 @@ namespace Diadoc.Api
 
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] torg12SellerTitleXmlContent);
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string fileName);
+		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] content);
+		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string fileName);
+		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] torg12SellerTitleXmlContent);
+		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string fileName);
+		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] content);
+		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string fileName);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string fileName);
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent);
@@ -435,10 +445,26 @@ namespace Diadoc.Api
 			return diadoc.GenerateTorg12XmlForSeller(authToken, (Torg12SellerTitleInfo) sellerInfo, disableValidation);
 		}
 
-		public GeneratedFile GenerateTorg12XmlForBuyer(string authToken, object buyerInfo, string boxId,
-			string sellerTitleMessageId, string sellerTitleAttachmentId)
+		public GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, object sellerInfo, bool disableValidation = false)
 		{
-			return diadoc.GenerateTorg12XmlForBuyer(authToken, (Torg12BuyerTitleInfo) buyerInfo, boxId, sellerTitleMessageId,
+			return diadoc.GenerateTovTorg551XmlForSeller(authToken, (TovTorgSellerTitleInfo)sellerInfo, disableValidation);
+		}
+
+		public GeneratedFile GenerateTorg12XmlForBuyer(string authToken, object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			return diadoc.GenerateTorg12XmlForBuyer(authToken,
+				(Torg12BuyerTitleInfo) buyerInfo,
+				boxId,
+				sellerTitleMessageId,
+				sellerTitleAttachmentId);
+		}
+
+		public GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			return diadoc.GenerateTovTorg551XmlForBuyer(authToken,
+				(TovTorgBuyerTitleInfo) buyerInfo,
+				boxId,
+				sellerTitleMessageId,
 				sellerTitleAttachmentId);
 		}
 
@@ -762,6 +788,36 @@ namespace Diadoc.Api
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string fileName)
 		{
 			return ParseTorg12SellerTitleXml(File.ReadAllBytes(fileName));
+		}
+
+		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] content)
+		{
+			return diadoc.ParseTorg12BuyerTitleXml(content);
+		}
+
+		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string fileName)
+		{
+			return ParseTorg12BuyerTitleXml(File.ReadAllBytes(fileName));
+		}
+
+		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] torg12SellerTitleXmlContent)
+		{
+			return diadoc.ParseTovTorg551SellerTitleXml(torg12SellerTitleXmlContent);
+		}
+
+		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string fileName)
+		{
+			return ParseTovTorg551SellerTitleXml(File.ReadAllBytes(fileName));
+		}
+
+		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] content)
+		{
+			return diadoc.ParseTovTorg551BuyerTitleXml(content);
+		}
+
+		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string fileName)
+		{
+			return ParseTovTorg551BuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)

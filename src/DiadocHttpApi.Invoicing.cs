@@ -68,14 +68,36 @@ namespace Diadoc.Api
 
 		public GeneratedFile GenerateTorg12XmlForSeller(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
-			var queryString = string.Format("/GenerateTorg12XmlForSeller{0}", disableValidation ? "?disableValidation" : "");
-			return PerformGenerateXmlHttpRequest(authToken, queryString, sellerInfo);
+			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
+			if (disableValidation) queryBuilder.AddParameter("disableValidation");
+			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
+		}
+
+		public GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation = false)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
+			if (disableValidation) queryBuilder.AddParameter("disableValidation");
+			queryBuilder.AddParameter("documentVersion", "tovtorg_05_01_02");
+			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
 		public GeneratedFile GenerateTorg12XmlForBuyer(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
-			var queryString = string.Format("/GenerateTorg12XmlForBuyer?boxId={0}&sellerTitleMessageId={1}&sellerTitleAttachmentId={2}", boxId, sellerTitleMessageId, sellerTitleAttachmentId);
-			return PerformGenerateXmlHttpRequest(authToken, queryString, buyerInfo);
+			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForBuyer");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
+			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
+			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
+		}
+
+		public GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForBuyer");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
+			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
+			queryBuilder.AddParameter("documentVersion", "tovtorg_05_01_02");
+			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
 		public GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false)
@@ -113,6 +135,21 @@ namespace Diadoc.Api
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent)
 		{
 			return PerformHttpRequest<Torg12SellerTitleInfo>(null, "POST", "/ParseTorg12SellerTitleXml", xmlContent);
+		}
+
+		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] xmlContent)
+		{
+			return PerformHttpRequest<Torg12BuyerTitleInfo>(null, "POST", "/ParseTorg12BuyerTitleXml", xmlContent);
+		}
+
+		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent)
+		{
+			return PerformHttpRequest<TovTorgSellerTitleInfo>(null, "POST", "/ParseTorg12SellerTitleXml?documentVersion=tovtorg_05_01_02", xmlContent);
+		}
+
+		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent)
+		{
+			return PerformHttpRequest<TovTorgBuyerTitleInfo>(null, "POST", "/ParseTorg12BuyerTitleXml?documentVersion=tovtorg_05_01_02", xmlContent);
 		}
 
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)

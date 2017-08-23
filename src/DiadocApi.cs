@@ -315,19 +315,28 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateInvoiceCorrectionRevisionXml(authToken, invoiceCorrectionRevision, disableValidation);
 		}
 
-		public GeneratedFile GenerateTorg12XmlForSeller(string authToken, Torg12SellerTitleInfo sellerInfo,
-			bool disableValidation = false)
+		public GeneratedFile GenerateTorg12XmlForSeller(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
 			return diadocHttpApi.GenerateTorg12XmlForSeller(authToken, sellerInfo, disableValidation);
 		}
 
-		public GeneratedFile GenerateTorg12XmlForBuyer(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId,
-			string sellerTitleMessageId, string sellerTitleAttachmentId)
+		public GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation = false)
+		{
+			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
+			return diadocHttpApi.GenerateTovTorg551XmlForSeller(authToken, sellerInfo, disableValidation);
+		}
+
+		public GeneratedFile GenerateTorg12XmlForBuyer(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
-			return diadocHttpApi.GenerateTorg12XmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId,
-				sellerTitleAttachmentId);
+			return diadocHttpApi.GenerateTorg12XmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+		}
+
+		public GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
+			return diadocHttpApi.GenerateTovTorg551XmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
 		public GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken,
@@ -612,6 +621,21 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseTorg12SellerTitleXml(xmlContent);
 		}
 
+		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] xmlContent)
+		{
+			return diadocHttpApi.ParseTorg12BuyerTitleXml(xmlContent);
+		}
+
+		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent)
+		{
+			return diadocHttpApi.ParseTovTorg551SellerTitleXml(xmlContent);
+		}
+
+		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent)
+		{
+			return diadocHttpApi.ParseTovTorg551BuyerTitleXml(xmlContent);
+		}
+
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXml(xmlContent);
@@ -626,7 +650,7 @@ namespace Diadoc.Api
 		{
 			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXml(xmlContent);
 		}
-		
+
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(xmlContent);

@@ -23,10 +23,12 @@ message ExtendedOrganizationInfo {
   optional string OrganizationAdditionalInfo = 18; // Информация для участника // ИнфДляУчаст
   optional string OrganizationOrPersonInfo = 19;   // Иные сведения, идентифицирующие ФЛ или ЮЛ //ИныеСвед
   optional string IndividualEntityRegistrationCertificate = 20; // Реквизиты свидетельства о государственной регистрации ИП //СвГосРегИп
+  optional string Country = 21; // Страна //Страна
 }
 
 enum OrgType {
   LegalEntity = 1;      // Сведения о юридическом лице, состоящем на учете в налоговых органах // СвЮЛУч
   IndividualEntity = 2; // Сведения об индивидуальном предпринимателе// СвИП
   ForeignEntity = 3;    // Сведения об иностранном лице, не состоящем на учете в налоговых органах // СвЮлНеУч
+  PhysicalEntity = 4;   // Сведения о физическом лице // СвФл
 }
