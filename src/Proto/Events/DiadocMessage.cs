@@ -80,6 +80,7 @@ namespace Diadoc.Api.Proto.Events
 		string NotDeliveredEventId { get; }
 		ResolutionRouteAssignmentInfo ResolutionRouteAssignmentInfo { get; }
 		ResolutionRouteRemovalInfo ResolutionRouteRemovalInfo { get; }
+		CancellationInfo CancellationInfo { get; }
 	}
 
 	[ComVisible(true)]
@@ -1032,6 +1033,7 @@ namespace Diadoc.Api.Proto.Events
 	public interface IResolutionRequestCancellationAttachment
 	{
 		string InitialResolutionRequestId { get; set; }
+		string Comment { get; set; }
 	}
 
 	[ComVisible(true)]

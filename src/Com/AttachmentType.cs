@@ -57,6 +57,7 @@ namespace Diadoc.Api.Com
 		CustomData = 64,
 		MoveDocument = 65,
 		ResolutionRouteAssignmentAttachment = 66,
-		ResolutionRouteRemovalAttachment = 67
+		ResolutionRouteRemovalAttachment = 67,
+		Cancellation = 69
 	}
 }
