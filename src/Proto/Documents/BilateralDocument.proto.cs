@@ -78,6 +78,24 @@ namespace Diadoc.Api.Proto.Documents.BilateralDocument
       get { return _ReceiptStatus; }
       set { _ReceiptStatus = value; }
     }
+
+    private string _RevisionDate = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"RevisionDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string RevisionDate
+    {
+      get { return _RevisionDate; }
+      set { _RevisionDate = value; }
+    }
+
+    private string _RevisionNumber = "";
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"RevisionNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string RevisionNumber
+    {
+      get { return _RevisionNumber; }
+      set { _RevisionNumber = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -245,6 +245,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _Grounds; }
       set { _Grounds = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.DocumentDateAndNumber _RevisionDateAndNumber = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"RevisionDateAndNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.DocumentDateAndNumber RevisionDateAndNumber
+    {
+      get { return _RevisionDateAndNumber; }
+      set { _RevisionDateAndNumber = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

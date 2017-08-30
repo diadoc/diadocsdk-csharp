@@ -208,6 +208,7 @@ namespace Diadoc.Api.Proto.Docflow
 		bool NoVat { get; }
 		string Vat { get; }
 		string Grounds { get; }
+		DocumentDateAndNumber RevisionDateAndNumber { get; }
 	}
 
 	[ComVisible(true)]

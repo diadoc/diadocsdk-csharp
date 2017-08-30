@@ -36,7 +36,8 @@ message BasicDocumentInfo
 	optional string Total = 1;
 	optional bool NoVat = 2;
 	optional string Vat = 3;
-	optional string Grounds = 4;
+	optional string Grounds = 4;       
+	optional DocumentDateAndNumber RevisionDateAndNumber = 5;
 }
 
 message InvoiceDocumentInfo
