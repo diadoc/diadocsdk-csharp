@@ -2,6 +2,8 @@
 
 namespace Diadoc.Api.Proto.Events
 {
+	[ComVisible(true)]
+	[Guid("07C9B40F-E0B4-44F6-B2DD-5CFCB5ECB58E")]
 	public interface ICancellationInfo
 	{
 		string Author { get; set; }
