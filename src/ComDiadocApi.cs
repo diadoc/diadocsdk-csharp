@@ -83,6 +83,13 @@ namespace Diadoc.Api
 			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo, string boxId, string sellerTitleMessageId,
 			string sellerTitleAttachmentId);
 
+		GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object sellerInfo, bool disableValidation = false);
+
+		GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo, string boxId, string sellerTitleMessageId,
+			string sellerTitleAttachmentId);
+
 		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object info, bool disableValidation = false);
 
@@ -148,6 +155,12 @@ namespace Diadoc.Api
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string fileName);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string fileName);
+		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent);
+		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string fileName);
+		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent);
+		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string fileName);
+		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent);
+		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string fileName);
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string fileName);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
@@ -478,7 +491,21 @@ namespace Diadoc.Api
 		public GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken, object buyerInfo, string boxId,
 			string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
-			return diadoc.GenerateAcceptanceCertificateXmlForBuyer(authToken, (AcceptanceCertificateBuyerTitleInfo) buyerInfo,
+			return diadoc.GenerateAcceptanceCertificateXmlForBuyer(authToken, (AcceptanceCertificateBuyerTitleInfo)buyerInfo,
+				boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+		}
+
+		public GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(string authToken, object sellerInfo,
+			bool disableValidation = false)
+		{
+			return diadoc.GenerateAcceptanceCertificate552XmlForSeller(authToken, (AcceptanceCertificate552SellerTitleInfo)sellerInfo,
+				disableValidation);
+		}
+
+		public GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(string authToken, object buyerInfo, string boxId,
+			string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			return diadoc.GenerateAcceptanceCertificate552XmlForBuyer(authToken, (AcceptanceCertificate552BuyerTitleInfo)buyerInfo,
 				boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
@@ -828,6 +855,36 @@ namespace Diadoc.Api
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string fileName)
 		{
 			return ParseAcceptanceCertificateSellerTitleXml(File.ReadAllBytes(fileName));
+		}
+
+		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent)
+		{
+			return diadoc.ParseAcceptanceCertificateBuyerTitleXml(xmlContent);
+		}
+
+		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string fileName)
+		{
+			return ParseAcceptanceCertificateBuyerTitleXml(File.ReadAllBytes(fileName));
+		}
+
+		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent)
+		{
+			return diadoc.ParseAcceptanceCertificate552SellerTitleXml(xmlContent);
+		}
+
+		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string fileName)
+		{
+			return ParseAcceptanceCertificate552SellerTitleXml(File.ReadAllBytes(fileName));
+		}
+
+		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent)
+		{
+			return diadoc.ParseAcceptanceCertificate552BuyerTitleXml(xmlContent);
+		}
+
+		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string fileName)
+		{
+			return ParseAcceptanceCertificate552BuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
 		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent)
