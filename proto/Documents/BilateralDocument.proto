@@ -12,6 +12,8 @@ message BasicDocumentMetadata {
 	optional string Vat = 3;
 	optional string Grounds = 4;
 	optional ReceiptStatus ReceiptStatus = 5 [default = UnknownReceiptStatus];
+	optional string RevisionDate = 6;
+	optional string RevisionNumber = 7;
 }
 
 message PriceListMetadata {
