@@ -102,8 +102,8 @@ namespace Diadoc.Api
 		InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId,
 			string entityId);
 
-		Message GetMessage(string authToken, string boxId, string messageId);
-		Message GetMessage(string authToken, string boxId, string messageId, string entityId);
+		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+		Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object draftToSend);
 		void Delete(string authToken, string boxId, string messageId, string documentId);
@@ -535,14 +535,14 @@ namespace Diadoc.Api
 			return diadoc.GetInvoiceCorrectionRequestInfo(authToken, boxId, messageId, entityId);
 		}
 
-		public Message GetMessage(string authToken, string boxId, string messageId)
+		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
-			return diadoc.GetMessage(authToken, boxId, messageId);
+			return diadoc.GetMessage(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
 		}
 
-		public Message GetMessage(string authToken, string boxId, string messageId, string entityId)
+		public Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
-			return diadoc.GetMessage(authToken, boxId, messageId, entityId);
+			return diadoc.GetMessage(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
 		}
 
 		public void RecycleDraft(string authToken, string boxId, string draftId)

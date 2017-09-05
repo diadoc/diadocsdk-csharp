@@ -392,21 +392,21 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
-		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false)
+		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
-			return diadocHttpApi.GetMessage(authToken, boxId, messageId, withOriginalSignature);
+			return diadocHttpApi.GetMessage(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
 		}
 
-		public Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false)
+		public Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (entityId == null) throw new ArgumentNullException("entityId");
-			return diadocHttpApi.GetMessage(authToken, boxId, messageId, entityId, withOriginalSignature);
+			return diadocHttpApi.GetMessage(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
 		}
 
 		public void RecycleDraft(string authToken, string boxId, string draftId)
