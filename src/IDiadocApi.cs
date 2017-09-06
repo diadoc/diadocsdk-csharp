@@ -71,8 +71,8 @@ namespace Diadoc.Api
 		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken, UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(string authToken, UniversalCorrectionDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
-		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false);
-		Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false);
+		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = true);
+		Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = true);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, DraftToSend draftToSend, string operationId = null);
 		PrintFormResult GeneratePrintForm(string authToken, string boxId, string messageId, string documentId);
