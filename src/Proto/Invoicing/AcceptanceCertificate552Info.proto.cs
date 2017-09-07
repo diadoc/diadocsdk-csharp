@@ -381,9 +381,9 @@ namespace Diadoc.Api.Proto.Invoicing
     }
   
 
-    private Diadoc.Api.Proto.Invoicing.TaxRate _TaxRate = Diadoc.Api.Proto.Invoicing.TaxRate.Percent_18;
+    private Diadoc.Api.Proto.Invoicing.TaxRate _TaxRate = Diadoc.Api.Proto.Invoicing.TaxRate.TaxRateNotSpecified;
     [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"TaxRate", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Invoicing.TaxRate.Percent_18)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Invoicing.TaxRate.TaxRateNotSpecified)]
     public Diadoc.Api.Proto.Invoicing.TaxRate TaxRate
     {
       get { return _TaxRate; }

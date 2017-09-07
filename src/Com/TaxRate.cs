@@ -15,6 +15,7 @@ namespace Diadoc.Api.Com
 		Percent_18 = 3,
 		Percent_20 = 4,
 		Fraction_10_110 = 5,
-		Fraction_18_118 = 6
+		Fraction_18_118 = 6,
+		TaxRateNotSpecified = 7,
 	}
 }

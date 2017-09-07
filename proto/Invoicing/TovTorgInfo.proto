@@ -67,7 +67,7 @@ message TovTorgItem {
 	optional string ItemToRelease = 13; // Количество надлежит отпустить // НадлОтп
 	optional string Price = 14; // цена за единицу товара // ЦенаТов
 	optional string SubtotalWithVatExcluded = 15; // сумма без учета налога // СтБезНДС
-	optional TaxRate TaxRate = 16 [default = Percent_18]; // ставка налога // НалСт
+	optional TaxRate TaxRate = 16 [default = TaxRateNotSpecified]; // ставка налога // НалСт
 	optional string Vat = 17; // сумма налога // СумНДС
 	required string Subtotal = 18; // сумма всего // СтУчНДС
 	optional string ItemAccountDebit = 19; // Корреспондирующие счета: дебет // КорСчДеб
