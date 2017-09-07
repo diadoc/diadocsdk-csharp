@@ -56,7 +56,7 @@ message AcceptanceCertificate552WorkItem {
 	optional string Vat = 8; // сумма НДС // СумНДС
 	optional string Subtotal = 9; // сумма с учетом НДС // СтоимУчНДС
 	repeated AdditionalInfo AdditionalInfos = 10; // информационное поле сведений о работе (услуге) // ИнфПолеОписРабот
-	optional TaxRate TaxRate = 11 [default = Percent_18]; // ставка налога // НалСт
+	optional TaxRate TaxRate = 11 [default = TaxRateNotSpecified]; // ставка налога // НалСт
 	optional string ItemAccountDebit = 12; // Корреспондирующие счета: дебет // КоррСчДебет
 	optional string ItemAccountCredit = 13; // Корреспондирующие счета: кредит // КоррСчКредит
 }
