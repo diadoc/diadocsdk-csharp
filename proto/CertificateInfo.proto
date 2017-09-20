@@ -4,4 +4,6 @@ message CertificateInfo {
 	optional string Thumbprint = 1;
 	optional sfixed64 ValidFrom = 2;
 	optional sfixed64 ValidTo = 3;
+	optional string OrganizationName = 4;
+	optional string Inn = 5;
 }

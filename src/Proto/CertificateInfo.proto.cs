@@ -42,6 +42,24 @@ namespace Diadoc.Api.Proto
       get { return _ValidTo; }
       set { _ValidTo = value; }
     }
+
+    private string _OrganizationName = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"OrganizationName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string OrganizationName
+    {
+      get { return _OrganizationName; }
+      set { _OrganizationName = value; }
+    }
+
+    private string _Inn = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Inn", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Inn
+    {
+      get { return _Inn; }
+      set { _Inn = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
