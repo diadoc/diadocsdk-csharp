@@ -3,6 +3,7 @@ using System.Globalization;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Documents;
+using Diadoc.Api.Proto.Documents.Types;
 using JetBrains.Annotations;
 
 namespace Diadoc.Api
@@ -122,6 +123,27 @@ namespace Diadoc.Api
 		{
 			var queryString = string.Format("/GetResolutionRoutesForOrganization?orgId={0}", orgId);
 			return PerformHttpRequest<ResolutionRouteList>(authToken, "GET", queryString);
+		}
+
+		public GetDocumentTypesResponse GetDocumentTypes(string authToken, string boxId)
+		{
+			var qsb = new PathAndQueryBuilder("/GetDocumentTypes");
+			qsb.AddParameter("boxId", boxId);
+			return PerformHttpRequest<GetDocumentTypesResponse>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+
+		public FileContent GetContent(string authToken, string typeNamedId, string function, string version, int titleIndex)
+		{
+			var qsb = new PathAndQueryBuilder("/GetContent");
+			qsb.AddParameter("typeNamedId", typeNamedId);
+			qsb.AddParameter("function", function);
+			qsb.AddParameter("version", version);
+			qsb.AddParameter("titleIndex", titleIndex.ToString());
+
+			var request = BuildHttpRequest(authToken, "GET", qsb.BuildPathAndQuery(), null);
+			var response = HttpClient.PerformHttpRequest(request);
+
+			return new FileContent(response.Content, response.ContentDispositionFileName);
 		}
 	}
 }

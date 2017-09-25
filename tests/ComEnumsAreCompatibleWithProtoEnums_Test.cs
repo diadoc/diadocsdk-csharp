@@ -8,6 +8,7 @@ using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.BilateralDocument;
 using Diadoc.Api.Proto.Documents.InvoiceDocument;
 using Diadoc.Api.Proto.Documents.NonformalizedDocument;
+using Diadoc.Api.Proto.Documents.Types;
 using Diadoc.Api.Proto.Documents.UnilateralDocument;
 using Diadoc.Api.Proto.Documents.UniversalTransferDocument;
 using Diadoc.Api.Proto.Events;
@@ -187,6 +188,30 @@ namespace Diadoc.Api.Tests
 			AssertEnumsAreCompatible(
 				typeof(Com.SignerType),
 				typeof(SignerType));
+		}
+
+		[Test]
+		public void Test_DocumentDocflow()
+		{
+			AssertEnumsAreCompatible(
+				typeof(Com.DocumentDocflow),
+				typeof(DocumentDocflow));
+		}
+
+		[Test]
+		public void Test_DocumentMetadataItemType()
+		{
+			AssertEnumsAreCompatible(
+				typeof(Com.DocumentMetadataItemType),
+				typeof(DocumentMetadataItemType));
+		}
+
+		[Test]
+		public void Test_DocumentMetadataSource()
+		{
+			AssertEnumsAreCompatible(
+				typeof(Com.DocumentMetadataSource),
+				typeof(DocumentMetadataSource));
 		}
 
 		private static void AssertEnumsAreCompatible(Type comEnumType, Type protoEnumType)

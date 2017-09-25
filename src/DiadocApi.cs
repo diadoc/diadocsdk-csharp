@@ -8,6 +8,7 @@ using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
+using Diadoc.Api.Proto.Documents.Types;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
@@ -15,6 +16,7 @@ using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
+using DocumentType = Diadoc.Api.Proto.DocumentType;
 
 namespace Diadoc.Api
 {
@@ -936,6 +938,30 @@ namespace Diadoc.Api
 			if (string.IsNullOrEmpty(orgId))
 				throw new ArgumentNullException("orgId");
 			return diadocHttpApi.GetResolutionRoutesForOrganization(authToken, orgId);
+		}
+
+		public GetDocumentTypesResponse GetDocumentTypes(string authToken, string boxId)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetDocumentTypes(authToken, boxId);
+		}
+
+		public FileContent GetContent(string authToken, string typeNamedId, string function, string version, int titleIndex)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(typeNamedId))
+				throw new ArgumentNullException("typeNamedId");
+			if (string.IsNullOrEmpty(function))
+				throw new ArgumentNullException("function");
+			if (string.IsNullOrEmpty(version))
+				throw new ArgumentNullException("version");
+			if (titleIndex < 0)
+				throw new ArgumentOutOfRangeException("titleIndex", titleIndex, "Title index should be non-negative");
+			return diadocHttpApi.GetContent(authToken, typeNamedId, function, version, titleIndex);
 		}
 	}
 }

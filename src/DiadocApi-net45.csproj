@@ -67,6 +67,9 @@
     <Compile Include="Com\DocflowStatusSeverity.cs" />
     <Compile Include="Com\DocumentAccessLevel.cs" />
     <Compile Include="Com\DocumentDirection.cs" />
+    <Compile Include="Com\DocumentDocflow.cs" />
+    <Compile Include="Com\DocumentMetadataItemType.cs" />
+    <Compile Include="Com\DocumentMetadataSource.cs" />
     <Compile Include="Com\DocumentType.cs" />
     <Compile Include="Com\EntityType.cs" />
     <Compile Include="Com\FunctionType.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="DiadocHttpApi.KeyValueStorage.cs" />
     <Compile Include="DiadocHttpApi.ZipAsync.cs" />
     <Compile Include="DocumentsFilter.cs" />
+    <Compile Include="FileContent.cs" />
     <Compile Include="Http\ContentRange.cs" />
     <Compile Include="Http\HttpClient.cs" />
     <Compile Include="Http\HttpClientException.cs" />
@@ -156,6 +160,8 @@
     <Compile Include="Proto\Documents\DocumentProtocol.cs" />
     <Compile Include="Proto\Documents\DocumentProtocol.proto.cs" />
     <Compile Include="Proto\Documents\DocumentZip.proto.cs" />
+    <Compile Include="Proto\Documents\Types\DocumentTypeDescription.cs" />
+    <Compile Include="Proto\Documents\Types\DocumentTypeDescription.proto.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.proto.cs" />
     <Compile Include="Proto\Events\CancellationInfo.cs" />

@@ -67,8 +67,12 @@
     <Compile Include="Com\DocflowStatusSeverity.cs" />
     <Compile Include="Com\DocumentAccessLevel.cs" />
     <Compile Include="Com\DocumentDirection.cs" />
+    <Compile Include="Com\DocumentDocflow.cs" />
+    <Compile Include="Com\DocumentMetadataItemType.cs" />
+    <Compile Include="Com\DocumentMetadataSource.cs" />
     <Compile Include="Com\DocumentType.cs" />
     <Compile Include="Com\EntityType.cs" />
+    <Compile Include="FileContent.cs" />
     <Compile Include="Com\FunctionType.cs" />
     <Compile Include="Com\ItemMark.cs" />
     <Compile Include="Com\OrgType.cs" />
@@ -135,6 +139,8 @@
     <Compile Include="Proto\Documents\DocumentProtocol.cs" />
     <Compile Include="Proto\Documents\DocumentProtocol.proto.cs" />
     <Compile Include="Proto\Documents\DocumentZip.proto.cs" />
+    <Compile Include="Proto\Documents\Types\DocumentTypeDescription.cs" />
+    <Compile Include="Proto\Documents\Types\DocumentTypeDescription.proto.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.proto.cs" />
     <Compile Include="Proto\Events\CancellationInfo.cs" />

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Documents;
+using Diadoc.Api.Proto.Documents.Types;
 using JetBrains.Annotations;
 
 namespace Diadoc.Api
@@ -124,6 +125,27 @@ namespace Diadoc.Api
 			var qsb = new PathAndQueryBuilder("/GetResolutionRoutesForOrganization");
 			qsb.AddParameter("orgId", orgId);
 			return PerformHttpRequestAsync<ResolutionRouteList>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+		
+		public Task<GetDocumentTypesResponse> GetDocumentTypesAsync(string authToken, string boxId)
+		{
+			var qsb = new PathAndQueryBuilder("/GetDocumentTypes");
+			qsb.AddParameter("boxId", boxId);
+			return PerformHttpRequestAsync<GetDocumentTypesResponse>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+
+		public async Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex)
+		{
+			var qsb = new PathAndQueryBuilder("/GetContent");
+			qsb.AddParameter("typeNamedId", typeNamedId);
+			qsb.AddParameter("function", function);
+			qsb.AddParameter("version", version);
+			qsb.AddParameter("titleIndex", titleIndex.ToString());
+
+			var request = BuildHttpRequest(authToken, "GET", qsb.BuildPathAndQuery(), null);
+			var response = await HttpClient.PerformHttpRequestAsync(request);
+
+			return new FileContent(response.Content, response.ContentDispositionFileName);
 		}
 	}
 }

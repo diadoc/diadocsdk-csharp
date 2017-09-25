@@ -7,6 +7,7 @@ using Diadoc.Api.Cryptography;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
+using Diadoc.Api.Proto.Documents.Types;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
@@ -222,6 +223,9 @@ namespace Diadoc.Api
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType, [MarshalAs(UnmanagedType.IDispatch)] object signerDetails);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType, [MarshalAs(UnmanagedType.IDispatch)] object signerDetails);
+
+		GetDocumentTypesResponse GetDocumentTypes(string token, string boxId);
+		FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex);
 	}
 
 	[ComVisible(true)]
@@ -726,6 +730,16 @@ namespace Diadoc.Api
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType, object signerDetails)
 		{
 			return diadoc.PostExtendedSignerDetails(token, boxId, certificateBytes, (DocumentTitleType) documentTitleType, (ExtendedSignerDetailsToPost) signerDetails);
+		}
+
+		public GetDocumentTypesResponse GetDocumentTypes(string token, string boxId)
+		{
+			return diadoc.GetDocumentTypes(token, boxId);
+		}
+
+		public FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex)
+		{
+			return diadoc.GetContent(token, typeNamedId, function, version, titleIndex);
 		}
 
 		#region Counteragents

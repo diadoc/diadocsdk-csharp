@@ -5,6 +5,7 @@ using System.Security;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
+using Diadoc.Api.Proto.Documents.Types;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
@@ -158,6 +159,8 @@ namespace Diadoc.Api
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails);
+		GetDocumentTypesResponse GetDocumentTypes(string authToken, string boxId);
+		FileContent GetContent(string authToken, string typeNamedId, string function, string version, int titleIndex);
 
 #if !NET35
 
@@ -285,8 +288,8 @@ namespace Diadoc.Api
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
 		Task<ResolutionRouteList> GetResolutionRoutesForOrganizationAsync(string authToken, string orgId);
-
+		Task<GetDocumentTypesResponse> GetDocumentTypesAsync(string authToken, string boxId);
+		Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex);
 #endif
-
 	}
 }

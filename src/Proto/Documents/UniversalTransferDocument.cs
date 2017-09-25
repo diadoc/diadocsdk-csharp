@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using Diadoc.Api.Com;
-using Diadoc.Api.Proto.Documents.InvoiceDocument;
 
 namespace Diadoc.Api.Proto.Documents.UniversalTransferDocument
 {

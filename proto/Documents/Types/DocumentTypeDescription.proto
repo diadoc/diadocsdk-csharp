@@ -1,0 +1,69 @@
+package Diadoc.Api.Proto.Documents.Types;
+
+message DocumentTypeDescription {
+	required string Name = 1;
+	required string Title = 2;
+	repeated DocumentDocflow SupportedDocflows = 3;
+	required bool RequiresFnsRegistration = 4;
+	repeated DocumentFunction Functions = 9;
+}
+
+message GetDocumentTypesResponse {
+	repeated DocumentTypeDescription DocumentTypes = 1;
+}
+
+enum DocumentDocflow {
+	External = 0;
+	Internal = 1;
+}
+
+message DocumentFunction {
+	required string Name = 1;
+	repeated DocumentVersion Versions = 2;
+	repeated DocumentWorkflow Workflows = 3;
+}
+
+message DocumentVersion {
+	required string Version = 1;
+	required bool SupportsContentPatching = 2;
+	required bool SupportsEncrypting = 3;
+	repeated DocumentTitle Titles = 4;
+	required bool IsActual = 5;
+}
+
+message DocumentWorkflow {
+	required int32 Id = 1;
+	required bool IsDefault = 2;
+}
+
+message DocumentTitle {
+	required bool IsFormal = 1;
+	optional string XsdUrl = 2;
+	repeated DocumentMetadataItem MetadataItems = 3;
+	repeated DocumentEncryptedMetadataItem EncryptedMetadataItems = 4;
+}
+
+message DocumentMetadataItem {
+	required string Id = 1;
+	required DocumentMetadataItemType Type = 2;
+	required bool IsRequired = 3;
+	required DocumentMetadataSource Source = 4;
+}
+
+message DocumentEncryptedMetadataItem {
+	required string Id = 1;
+	required DocumentMetadataItemType Type = 2;
+}
+
+enum DocumentMetadataItemType {
+	String = 0;
+	Integer = 1;
+	Decimal = 2;
+	Date = 3;
+	Time = 4;
+}
+
+enum DocumentMetadataSource {
+	Xml = 0;
+	User = 1;
+}

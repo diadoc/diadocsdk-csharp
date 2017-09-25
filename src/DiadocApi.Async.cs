@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
+using Diadoc.Api.Proto.Documents.Types;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
@@ -878,6 +879,30 @@ namespace Diadoc.Api
 			if (string.IsNullOrEmpty(orgId))
 				throw new ArgumentNullException("orgId");
 			return diadocHttpApi.GetResolutionRoutesForOrganizationAsync(authToken, orgId);
+		}
+
+		public Task<GetDocumentTypesResponse> GetDocumentTypesAsync(string authToken, string boxId)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetDocumentTypesAsync(authToken, boxId);
+		}
+
+		public Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(typeNamedId))
+				throw new ArgumentNullException("typeNamedId");
+			if (string.IsNullOrEmpty(function))
+				throw new ArgumentNullException("function");
+			if (string.IsNullOrEmpty(version))
+				throw new ArgumentNullException("version");
+			if (titleIndex < 0)
+				throw new ArgumentOutOfRangeException("titleIndex", titleIndex, "Title index should be non-negative");
+			return diadocHttpApi.GetContentAsync(authToken, typeNamedId, function, version, titleIndex);
 		}
 	}
 }
