@@ -449,28 +449,21 @@ namespace Diadoc.Api.Proto.Invoicing
       get { return _OperationType; }
       set { _OperationType = value; }
     }
-    private string _DocumentName;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"DocumentName", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string DocumentName
+    private string _OperationContent;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"OperationContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OperationContent
     {
-      get { return _DocumentName; }
-      set { _DocumentName = value; }
-    }
-    private string _OperationInfo;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"OperationInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string OperationInfo
-    {
-      get { return _OperationInfo; }
-      set { _OperationInfo = value; }
+      get { return _OperationContent; }
+      set { _OperationContent = value; }
     }
 
-    private string _AcceptDate = "";
-    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"AcceptDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private string _AcceptanceDate = "";
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"AcceptanceDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
-    public string AcceptDate
+    public string AcceptanceDate
     {
-      get { return _AcceptDate; }
-      set { _AcceptDate = value; }
+      get { return _AcceptanceDate; }
+      set { _AcceptanceDate = value; }
     }
 
     private string _CreatedThingAcceptDate = "";
