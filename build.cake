@@ -44,7 +44,7 @@ Setup(() =>
 			.WithArguments(x =>	x
 				.AppendSwitch("-decrypt", @"src\diadoc.snk.enc")
 				.AppendSwitch("-secret", EnvironmentVariable("diadoc_signing_secret")));
-		var exitCode = StartProcess("./tools/secure-file/tools/secure-file.exe", secureFileArguments);
+		var exitCode = StartProcess("./tools/secure-file/secure-file/tools/secure-file.exe", secureFileArguments);
 		if (exitCode != 0)
 		{
 			Warning("secure-file exit with error {0}", exitCode);
