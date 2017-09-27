@@ -9,7 +9,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		[NotNull]
+		[ItemNotNull]
 		public async Task<string> GeneratePrintFormFromAttachmentAsync(string authToken, DocumentType documentType, byte[] content, string fromBoxId = null)
 		{
 			var qsb = new PathAndQueryBuilder("/GeneratePrintFormFromAttachment")
@@ -20,7 +20,7 @@ namespace Diadoc.Api
 			return Encoding.UTF8.GetString(responseBytes);
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<PrintFormResult> GeneratePrintFormAsync(string authToken, string boxId, string messageId, string documentId)
 		{
 			var qsb = new PathAndQueryBuilder("/GeneratePrintForm")
@@ -30,7 +30,7 @@ namespace Diadoc.Api
 			return GetPrintFormResultAsync(authToken, qsb.BuildPathAndQuery());
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, DocumentType documentType, string printFormId)
 		{
 			var qsb = new PathAndQueryBuilder("/GetGeneratedPrintForm")
@@ -39,7 +39,7 @@ namespace Diadoc.Api
 			return GetPrintFormResultAsync(authToken, qsb.BuildPathAndQuery());
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		protected async Task<PrintFormResult> GetPrintFormResultAsync([CanBeNull] string authToken, [NotNull] string queryString)
 		{
 			var request = BuildHttpRequest(authToken, "GET", queryString, null);
@@ -49,7 +49,7 @@ namespace Diadoc.Api
 				: new PrintFormResult(new PrintFormContent(response.ContentType, response.ContentDispositionFileName, response.Content));
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<DocumentProtocolResult> GenerateDocumentProtocolAsync(string authToken, string boxId, string messageId, string documentId)
 		{
 			var qsb = new PathAndQueryBuilder("/GenerateDocumentProtocol")
@@ -60,7 +60,7 @@ namespace Diadoc.Api
 			return GenerateDocumentProtocolAsync(request);
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		protected async Task<DocumentProtocolResult> GenerateDocumentProtocolAsync([NotNull] HttpRequest request)
 		{
 			var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);

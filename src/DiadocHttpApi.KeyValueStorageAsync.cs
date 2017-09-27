@@ -8,7 +8,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		[NotNull]
+		[ItemNotNull]
 		public async Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync([NotNull] string authToken, [NotNull] string orgId, [NotNull] IEnumerable<string> keys)
 		{
 			var qsb = new PathAndQueryBuilder("/KeyValueStorageGet");

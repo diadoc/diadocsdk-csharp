@@ -7,7 +7,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		[NotNull]
+		[ItemNotNull]
 		public async Task<DocumentZipGenerationResult> GenerateDocumentZipAsync(string authToken, string boxId, string messageId, string documentId, bool fullDocflow)
 		{
 			var qsb = new PathAndQueryBuilder("/GenerateDocumentZip");

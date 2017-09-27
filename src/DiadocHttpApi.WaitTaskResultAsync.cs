@@ -27,12 +27,7 @@ namespace Diadoc.Api
 					if (stopwatch.Elapsed > timeout)
 						throw new TimeoutException(
 							$"Can't GET '{queryString}'. Timeout {stopwatch.Elapsed.TotalSeconds}s expired.");
-
-#if NET40
-					await TaskEx.Delay(delay ?? TimeSpan.FromSeconds(response.RetryAfter.HasValue ? Math.Min(response.RetryAfter.Value, DefaultDelayInSeconds) : DefaultDelayInSeconds));
-#else
 					await Task.Delay(delay ?? TimeSpan.FromSeconds(response.RetryAfter.HasValue ? Math.Min(response.RetryAfter.Value, DefaultDelayInSeconds) : DefaultDelayInSeconds));
-#endif
 					continue;
 				}
 				return DeserializeResponse(request, response, Deserialize<TResult>);

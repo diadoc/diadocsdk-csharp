@@ -8,28 +8,28 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		[NotNull]
+		[ItemNotNull]
 		public Task<ForwardDocumentResponse> ForwardDocumentAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardDocumentRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/ForwardDocument", boxId);
 			return PerformHttpRequestAsync<ForwardDocumentRequest, ForwardDocumentResponse>(authToken, queryString, request);
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<GetForwardedDocumentsResponse> GetForwardedDocumentsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetForwardedDocumentsRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetForwardedDocuments", boxId);
 			return PerformHttpRequestAsync<GetForwardedDocumentsRequest, GetForwardedDocumentsResponse>(authToken, queryString, request);
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<GetForwardedDocumentEventsResponse> GetForwardedDocumentEventsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetForwardedDocumentEventsRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetForwardedDocumentEvents", boxId);
 			return PerformHttpRequestAsync<GetForwardedDocumentEventsRequest, GetForwardedDocumentEventsResponse>(authToken, queryString, request);
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<byte[]> GetForwardedEntityContentAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardedDocumentId forwardedDocumentId, [NotNull] string entityId)
 		{
 			var queryString = new PathAndQueryBuilder("/V2/GetForwardedEntityContent")
@@ -40,7 +40,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync(authToken, "GET", queryString);
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<DocumentProtocolResult> GenerateForwardedDocumentProtocolAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardedDocumentId forwardedDocumentId)
 		{
 			var queryString = new PathAndQueryBuilder("/V2/GenerateForwardedDocumentProtocol")
@@ -51,7 +51,7 @@ namespace Diadoc.Api
 			return GenerateDocumentProtocolAsync(request);
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<PrintFormResult> GenerateForwardedDocumentPrintFormAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardedDocumentId forwardedDocumentId)
 		{
 			var queryString = new PathAndQueryBuilder("/GenerateForwardedDocumentPrintForm")

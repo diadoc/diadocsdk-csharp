@@ -28,7 +28,7 @@ namespace Diadoc.Api
 			return nameOnShelf;
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		private async Task<int[]> PutMissingPartsAsync(string authToken, string nameOnShelf, [NotNull] IList<ArraySegment<byte>> allParts, [NotNull] IList<int> missingParts, [NotNull] ICollection<HttpClientException> httpErrors)
 		{
 			int[] currentMissingParts = null;
@@ -50,7 +50,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync(authToken, "GET", queryString);
 		}
 
-		[CanBeNull]
+		[ItemCanBeNull]
 		private async Task<int[]> PutPartAsync(string authToken, string nameOnShelf, ArraySegment<byte> part, int partIndex, bool isLast, ICollection<HttpClientException> httpErrors)
 		{
 			var queryString = $"ShelfUpload?nameOnShelf=__userId__/{nameOnShelf}&partIndex={partIndex}";

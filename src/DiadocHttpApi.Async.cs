@@ -7,25 +7,25 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		[NotNull]
+		[ItemNotNull]
 		protected Task<byte[]> PerformHttpRequestAsync([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
 		{
 			return PerformHttpRequestAsync(token, method, queryString, requestBody, responseContent => responseContent);
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		protected Task<TResponse> PerformHttpRequestAsync<TRequest, TResponse>([CanBeNull] string token, [NotNull] string queryString, [NotNull] TRequest request)
 		{
 			return PerformHttpRequestAsync(token, "POST", queryString, Serialize(request), Deserialize<TResponse>);
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		protected Task<TResponse> PerformHttpRequestAsync<TResponse>([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
 		{
 			return PerformHttpRequestAsync(token, method, queryString, requestBody, Deserialize<TResponse>);
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		protected async Task<TResponse> PerformHttpRequestAsync<TResponse>([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody, [NotNull] Func<byte[], TResponse> convertResponse)
 		{
 			var request = BuildHttpRequest(token, method, queryString, requestBody);
@@ -33,7 +33,7 @@ namespace Diadoc.Api
 			return DeserializeResponse(request, response, convertResponse);
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		protected async Task<GeneratedFile> PerformGenerateXmlHttpRequestAsync<TRequest>([CanBeNull] string token, [NotNull] string queryString, [NotNull] TRequest requestObject)
 		{
 			var request = BuildHttpRequest(token, "POST", queryString, Serialize(requestObject));

@@ -10,7 +10,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		[NotNull]
+		[ItemNotNull]
 		public Task<DocumentList> GetDocumentsAsync([NotNull] string authToken, [NotNull] DocumentsFilter filter)
 		{
 			var qsb = new PathAndQueryBuilder("/V3/GetDocuments");
@@ -30,7 +30,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<DocumentList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<DocumentList> GetDocumentsAsync(
 			[NotNull] string authToken,
 			[NotNull] string boxId,
@@ -57,7 +57,7 @@ namespace Diadoc.Api
 			});
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<Document> GetDocumentAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] string messageId, [NotNull] string entityId)
 		{
 			var qsb = new PathAndQueryBuilder("/V3/GetDocument");
@@ -92,7 +92,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync(authToken, "POST", qsb.BuildPathAndQuery(), Serialize(query));
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<DocumentList> GetDocumentsByCustomIdAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] string customDocumentId)
 		{
 			var qsb = new PathAndQueryBuilder("/GetDocumentsByCustomId");
@@ -118,7 +118,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<SignatureInfo>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		[NotNull]
+		[ItemNotNull]
 		public Task<ResolutionRouteList> GetResolutionRoutesForOrganizationAsync([NotNull] string authToken, [NotNull] string orgId)
 		{
 			var qsb = new PathAndQueryBuilder("/GetResolutionRoutesForOrganization");

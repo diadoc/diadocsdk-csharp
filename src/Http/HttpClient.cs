@@ -26,10 +26,10 @@ namespace Diadoc.Api.Http
 		HttpResponse PerformHttpRequest([NotNull] HttpRequest request, params HttpStatusCode[] allowedStatusCodes);
 
 		#if !NET35
-		
-		[NotNull]
+
+		[ItemNotNull]
 		Task<HttpResponse> PerformHttpRequestAsync([NotNull] HttpRequest request, params HttpStatusCode[] allowedStatusCodes);
-	
+
 		#endif
 	}
 
@@ -132,10 +132,10 @@ namespace Diadoc.Api.Http
 				throw new HttpClientException(message, additionalMessage, request.PathAndQuery, e, response);
 			}
 		}
-		
+
 		#if !NET35
 
-		[NotNull]
+		[ItemNotNull]
 		public virtual async Task<HttpResponse> PerformHttpRequestAsync(HttpRequest request, params HttpStatusCode[] allowedStatusCodes)
 		{
 			HttpResponse response = null;
@@ -172,7 +172,7 @@ namespace Diadoc.Api.Http
 				throw new HttpClientException(message, additionalMessage, request.PathAndQuery, e, response);
 			}
 		}
-	
+
 		#endif
 
 		private static bool StatusCodeIsAllowed(HttpStatusCode statusCode, params HttpStatusCode[] allowedStatusCodes)
