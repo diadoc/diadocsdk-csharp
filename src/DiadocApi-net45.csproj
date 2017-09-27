@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{992AFD96-B3EE-4124-8788-022F867E2EF0}</ProjectGuid>
+    <ProjectGuid>{24329A1E-CF27-4045-BEA0-26C227442735}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Diadoc.Api</RootNamespace>
     <AssemblyName>DiadocApi</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <BaseIntermediateOutputPath>$(SolutionDir)\obj\$(AssemblyName)\net35\</BaseIntermediateOutputPath>
-    <OutputPath>$(SolutionDir)\bin\$(Configuration)\$(AssemblyName)\net35\</OutputPath>
+    <BaseIntermediateOutputPath>$(SolutionDir)\obj\$(AssemblyName)\net45\</BaseIntermediateOutputPath>
+    <OutputPath>$(SolutionDir)\bin\$(Configuration)\$(AssemblyName)\net45\</OutputPath>
     <DocumentationFile>$(OutputPath)DiadocApi.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
@@ -25,7 +25,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE;NET35</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NET45</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,7 +35,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <DefineConstants>TRACE;NET35</DefineConstants>
+    <DefineConstants>TRACE;NET45</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -90,10 +90,30 @@
     <Compile Include="Com\UniversalTransferDocumentStatus.cs" />
     <Compile Include="ContentLocationPreference.cs" />
     <Compile Include="Cryptography\ExtendedWinApiCrypt.cs" />
+    <Compile Include="DiadocApi.Async.cs" />
+    <Compile Include="DiadocHttpApi.Async.cs" />
+    <Compile Include="DiadocHttpApi.AuthAsync.cs" />
+    <Compile Include="DiadocHttpApi.CloudCryptAsync.cs" />
+    <Compile Include="DiadocHttpApi.CounteragentsAsync.cs" />
+    <Compile Include="DiadocHttpApi.DocflowAsync.cs" />
+    <Compile Include="DiadocHttpApi.DocumentsAsync.cs" />
+    <Compile Include="DiadocHttpApi.DraftsAsync.cs" />
+    <Compile Include="DiadocHttpApi.EventsAsync.cs" />
     <Compile Include="DiadocHttpApi.ExternalServices.cs" />
+    <Compile Include="DiadocHttpApi.ExternalServicesAsync.cs" />
+    <Compile Include="DiadocHttpApi.ForwardingAsync.cs" />
+    <Compile Include="DiadocHttpApi.InvoicingAsync.cs" />
+    <Compile Include="DiadocHttpApi.KeyValueStorageAsync.cs" />
+    <Compile Include="DiadocHttpApi.PrintAsync.cs" />
+    <Compile Include="DiadocHttpApi.ReceiptsAsync.cs" />
+    <Compile Include="DiadocHttpApi.RecognizeAsync.cs" />
+    <Compile Include="DiadocHttpApi.ReferencesAsync.cs" />
+    <Compile Include="DiadocHttpApi.ShelfAsync.cs" />
     <Compile Include="DiadocHttpApi.UniversalTransferDocument.cs" />
+    <Compile Include="DiadocHttpApi.UniversalTransferDocumentAsync.cs" />
     <Compile Include="DiadocHttpApi.WaitTaskResult.cs" />
     <Compile Include="DiadocHttpApi.CloudCrypt.cs" />
+    <Compile Include="DiadocHttpApi.WaitTaskResultAsync.cs" />
     <Compile Include="DiadocHttpApi.Zip.cs" />
     <Compile Include="DiadocHttpApi.Forwarding.cs" />
     <Compile Include="DiadocHttpApi.Docflow.cs" />
@@ -110,6 +130,7 @@
     <Compile Include="DiadocHttpApi.cs" />
     <Compile Include="DiadocHttpApi.Shelf.cs" />
     <Compile Include="DiadocHttpApi.KeyValueStorage.cs" />
+    <Compile Include="DiadocHttpApi.ZipAsync.cs" />
     <Compile Include="DocumentsFilter.cs" />
     <Compile Include="Http\ContentRange.cs" />
     <Compile Include="Http\HttpClient.cs" />
@@ -278,29 +299,9 @@
     <None Include="Diadoc_Unreg64.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.txt">

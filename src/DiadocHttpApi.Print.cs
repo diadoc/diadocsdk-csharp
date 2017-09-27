@@ -44,7 +44,7 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
-		public IDocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId)
+		public DocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId)
 		{
 			var queryString = string.Format("/GenerateDocumentProtocol?boxId={0}&messageId={1}&documentId={2}", boxId, messageId, documentId);
 			var request = BuildHttpRequest(authToken, "GET", queryString, null);
@@ -52,7 +52,7 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
-		protected IDocumentProtocolResult GenerateDocumentProtocol([NotNull] HttpRequest request)
+		protected DocumentProtocolResult GenerateDocumentProtocol([NotNull] HttpRequest request)
 		{
 			var response = HttpClient.PerformHttpRequest(request);
 			return response.RetryAfter.HasValue

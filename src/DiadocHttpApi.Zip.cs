@@ -7,7 +7,7 @@ namespace Diadoc.Api
 	public partial class DiadocHttpApi
 	{
 		[NotNull]
-		public IDocumentZipGenerationResult GenerateDocumentZip(string authToken, string boxId, string messageId, string documentId, bool fullDocflow)
+		public DocumentZipGenerationResult GenerateDocumentZip(string authToken, string boxId, string messageId, string documentId, bool fullDocflow)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateDocumentZip");
 			queryBuilder.AddParameter("boxId", boxId);
