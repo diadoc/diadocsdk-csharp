@@ -20,7 +20,7 @@ deploy:
     description: 'diadocsdk-csharp'
     auth_token:
       secure: BSnVMByuW1RN2cKD//7Y2+RRjsmhSfgBd2QK7IpyAadKDh8dIsYe4MF9bvX0SnEz # encrypted token from GitHub
-    artifact: diadocsdk-csharp-binaries.zip;/\.nupkg$/
+    artifact: diadocsdk-csharp-net35-binaries.zip;diadocsdk-csharp-net45-binaries.zip;/\.nupkg$/
     draft: false
     prerelease: false
     on:
