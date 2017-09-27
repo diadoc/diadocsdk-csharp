@@ -338,6 +338,7 @@ namespace Diadoc.Api.Proto.Events
 		void AddServiceDetails([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddSupplementaryAgreement([MarshalAs(UnmanagedType.IDispatch)] object supplementaryAgreement);
 		void AddUniversalTransferDocumentSellerTitle([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddDocumentAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 	}
 
 	[ComVisible(true)]
@@ -437,6 +438,11 @@ namespace Diadoc.Api.Proto.Events
 		public void AddUniversalTransferDocumentSellerTitle(object attachment)
 		{
 			UniversalTransferDocumentSellerTitles.Add((XmlDocumentAttachment)attachment);
+		}
+
+		public void AddDocumentAttachment(object attachment)
+		{
+			DocumentAttachments.Add((DocumentAttachment)attachment);
 		}
 	}
 
@@ -1258,5 +1264,85 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof(IResolutionRouteRemovalInfo))]
 	public partial class ResolutionRouteRemovalInfo : SafeComObject, IResolutionRouteRemovalInfo
 	{
+	}
+
+	[ComVisible(true)]
+	[Guid("B3A43DB5-2E18-4647-AFA5-7D90E694E59F")]
+	public interface IDocumentAttachment
+	{
+		SignedContent SignedContent { get; set; }
+		string Comment { get; set; }
+		bool NeedRecipientSignature { get; set; }
+		string CustomDocumentId { get; set; }
+		bool NeedReceipt { get; set; }
+		string TypeNamedId { get; set; }
+		string Function { get; set; }
+		string Version { get; set; }
+		int WorkflowId { get; set; }
+		bool IsEncrypted { get; set; }
+
+		void SetSignedContent([MarshalAs(UnmanagedType.IDispatch)] object signedContent);
+		void AddInitialDocumentId([MarshalAs(UnmanagedType.IDispatch)] object documentId);
+		void AddSubordinateDocumentId([MarshalAs(UnmanagedType.IDispatch)] object documentId);
+		void AddCustomDataItem([MarshalAs(UnmanagedType.IDispatch)] object customDataItem);
+		void AddMetadataItem([MarshalAs(UnmanagedType.IDispatch)] object metadataItem);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.DocumentAttachment")]
+	[Guid("DA67FAFF-F129-4E88-BCCC-FD068EFEAC2C")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IDocumentAttachment))]
+	public partial class DocumentAttachment : SafeComObject, IDocumentAttachment
+	{
+		public void SetSignedContent(object signedContent)
+		{
+			SignedContent = (SignedContent) signedContent;
+		}
+
+		public void AddInitialDocumentId(object documentId)
+		{
+			InitialDocumentIds.Add((DocumentId) documentId);
+		}
+
+		public void AddSubordinateDocumentId(object documentId)
+		{
+			SubordinateDocumentIds.Add((DocumentId)documentId);
+		}
+
+		public void AddCustomDataItem(object customDataItem)
+		{
+			CustomData.Add((CustomDataItem) customDataItem);
+		}
+
+		public void AddMetadataItem(object metadataItem)
+		{
+			Metadata.Add((MetadataItem)metadataItem);
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("52727EB8-F0DD-4F50-B49F-A2825E1582A6")]
+	public interface IMetadataItem
+	{
+		string Key { get; set; }
+		string Value { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.MetadataItem")]
+	[Guid("8E27602B-0E75-4543-866A-8861B1C2D632")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IMetadataItem))]
+	public partial class MetadataItem : SafeComObject, IMetadataItem
+	{
+		public MetadataItem(string key, string value)
+		{
+			if (string.IsNullOrEmpty(key)) throw new ArgumentException("Key is empty");
+			if (string.IsNullOrEmpty(value)) throw new ArgumentException("Value is empty");
+
+			Key = key;
+			Value = value;
+		}
 	}
 }
