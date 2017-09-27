@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Diadoc.Api.Http;
@@ -70,14 +71,36 @@ namespace Diadoc.Api
 
 		public Task<GeneratedFile> GenerateTorg12XmlForSellerAsync(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
-			var queryString = string.Format("/GenerateTorg12XmlForSeller{0}", disableValidation ? "?disableValidation" : "");
-			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, sellerInfo);
+			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
+			if (disableValidation) queryBuilder.AddParameter("disableValidation");
+			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
+		}
+
+		public Task<GeneratedFile> GenerateTovTorg551XmlForSellerAsync(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation = false)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
+			if (disableValidation) queryBuilder.AddParameter("disableValidation");
+			queryBuilder.AddParameter("documentVersion", "tovtorg_05_01_02");
+			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
 		public Task<GeneratedFile> GenerateTorg12XmlForBuyerAsync(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
-			var queryString = string.Format("/GenerateTorg12XmlForBuyer?boxId={0}&sellerTitleMessageId={1}&sellerTitleAttachmentId={2}", boxId, sellerTitleMessageId, sellerTitleAttachmentId);
-			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, buyerInfo);
+			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForBuyer");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
+			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
+			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
+		}
+
+		public Task<GeneratedFile> GenerateTovTorg551XmlForBuyerAsync(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForBuyer");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
+			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
+			queryBuilder.AddParameter("documentVersion", "tovtorg_05_01_02");
+			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
 		public Task<GeneratedFile> GenerateAcceptanceCertificateXmlForSellerAsync(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false)
@@ -90,6 +113,24 @@ namespace Diadoc.Api
 		{
 			var queryString = string.Format("/GenerateAcceptanceCertificateXmlForBuyer?boxId={0}&sellerTitleMessageId={1}&sellerTitleAttachmentId={2}", boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, buyerInfo);
+		}
+
+		public Task<GeneratedFile> GenerateAcceptanceCertificate552XmlForSellerAsync(string authToken, AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation = false)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GenerateAcceptanceCertificateXmlForSeller");
+			if (disableValidation) queryBuilder.AddParameter("disableValidation");
+			queryBuilder.AddParameter("documentVersion", "rezru_05_01_01");
+			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
+		}
+
+		public Task<GeneratedFile> GenerateAcceptanceCertificate552XmlForBuyerAsync(string authToken, AcceptanceCertificate552BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GenerateAcceptanceCertificateXmlForBuyer");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
+			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
+			queryBuilder.AddParameter("documentVersion", "rezru_05_01_01");
+			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
 		public async Task<bool> CanSendInvoiceAsync(string authToken, string boxId, byte[] certificateBytes)
@@ -117,9 +158,39 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Torg12SellerTitleInfo>(null, "POST", "/ParseTorg12SellerTitleXml", xmlContent);
 		}
 
+		public Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(byte[] xmlContent)
+		{
+			return PerformHttpRequestAsync<Torg12BuyerTitleInfo>(null, "POST", "/ParseTorg12BuyerTitleXml", xmlContent);
+		}
+
+		public Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(byte[] xmlContent)
+		{
+			return PerformHttpRequestAsync<TovTorgSellerTitleInfo>(null, "POST", "/ParseTorg12SellerTitleXml?documentVersion=tovtorg_05_01_02", xmlContent);
+		}
+
+		public Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(byte[] xmlContent)
+		{
+			return PerformHttpRequestAsync<TovTorgBuyerTitleInfo>(null, "POST", "/ParseTorg12BuyerTitleXml?documentVersion=tovtorg_05_01_02", xmlContent);
+		}
+
 		public Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(byte[] xmlContent)
 		{
 			return PerformHttpRequestAsync<AcceptanceCertificateSellerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateSellerTitleXml", xmlContent);
+		}
+
+		public Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(byte[] xmlContent)
+		{
+			return PerformHttpRequestAsync<AcceptanceCertificateBuyerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateBuyerTitleXml", xmlContent);
+		}
+
+		public Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(byte[] xmlContent)
+		{
+			return PerformHttpRequestAsync<AcceptanceCertificate552SellerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateSellerTitleXml?documentVersion=rezru_05_01_01", xmlContent);
+		}
+
+		public Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(byte[] xmlContent)
+		{
+			return PerformHttpRequestAsync<AcceptanceCertificate552BuyerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateBuyerTitleXml?documentVersion=rezru_05_01_01", xmlContent);
 		}
 
 		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] xmlContent)
@@ -132,40 +203,62 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<SignatureRejectionInfo>(null, "POST", "/ParseSignatureRejectionXml", xmlContent);
 		}
 
+		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
 		{
-			var queryBuilder = new PathAndQueryBuilder("/ExtendedSignerDetails");
-			queryBuilder.AddParameter("boxId", boxId);
-			queryBuilder.AddParameter("thumbprint", thumbprint);
-			if (forBuyer)
-				queryBuilder.AddParameter("buyer");
-			if (forCorrection)
-				queryBuilder.AddParameter("correction");
-			return PerformHttpRequestAsync<ExtendedSignerDetails>(token, "GET", queryBuilder.ToString());
+			var documentTitleType = CreateUtdDocumentTitleType(forBuyer, forCorrection);
+			return GetExtendedSignerDetailsAsync(token, boxId, thumbprint, documentTitleType);
 		}
 
+		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
 			return GetExtendedSignerDetailsAsync(token, boxId, certificate.Thumbprint, forBuyer, forCorrection);
 		}
 
-		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
+		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType)
 		{
-			var queryBuilder = new PathAndQueryBuilder("/ExtendedSignerDetails");
+			var queryBuilder = new PathAndQueryBuilder("/V2/ExtendedSignerDetails");
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("thumbprint", thumbprint);
-			if (forBuyer)
-				queryBuilder.AddParameter("buyer");
-			if (forCorrection)
-				queryBuilder.AddParameter("correction");
-			return PerformHttpRequestAsync<ExtendedSignerDetails>(token, "POST", queryBuilder.ToString(), Serialize(signerDetails));
+			queryBuilder.AddParameter("documentTitleType", ((int) documentTitleType).ToString());
+			return PerformHttpRequestAsync<ExtendedSignerDetails>(token, "GET", queryBuilder.ToString());
 		}
 
+		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType)
+		{
+			var certificate = new X509Certificate2(certificateBytes);
+			return GetExtendedSignerDetailsAsync(token, boxId, certificate.Thumbprint, documentTitleType);
+		}
+
+		[Obsolete("Use overload with DocumentTitleType parameter")]
+		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
+		{
+			var documentTitleType = CreateUtdDocumentTitleType(forBuyer, forCorrection);
+			return PostExtendedSignerDetailsAsync(token, boxId, thumbprint, documentTitleType, signerDetails);
+		}
+
+		[Obsolete("Use overload with DocumentTitleType parameter")]
 		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
 			return PostExtendedSignerDetailsAsync(token, boxId, certificate.Thumbprint, forBuyer, forCorrection, signerDetails);
+		}
+
+		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/V2/ExtendedSignerDetails");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("thumbprint", thumbprint);
+			queryBuilder.AddParameter("documentTitleType", ((int) documentTitleType).ToString());
+			return PerformHttpRequestAsync<ExtendedSignerDetails>(token, "POST", queryBuilder.ToString(), Serialize(signerDetails));
+		}
+
+		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails)
+		{
+			var certificate = new X509Certificate2(certificateBytes);
+			return PostExtendedSignerDetailsAsync(token, boxId, certificate.Thumbprint, documentTitleType, signerDetails);
 		}
 	}
 }

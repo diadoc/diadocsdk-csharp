@@ -23,24 +23,26 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<BoxEvent>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false)
+		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
-			var qsb = new PathAndQueryBuilder("/V3/GetMessage");
+			var qsb = new PathAndQueryBuilder("/V4/GetMessage");
 			qsb.AddParameter("boxId", boxId);
 			qsb.AddParameter("messageId", messageId);
 			if (withOriginalSignature)
 				qsb.AddParameter("originalSignature");
+			qsb.AddParameter("injectEntityContent", injectEntityContent.ToString());
 			return PerformHttpRequestAsync<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false)
+		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
-			var qsb = new PathAndQueryBuilder("/V3/GetMessage");
+			var qsb = new PathAndQueryBuilder("/V4/GetMessage");
 			qsb.AddParameter("boxId", boxId);
 			qsb.AddParameter("messageId", messageId);
 			qsb.AddParameter("entityId", entityId);
 			if (withOriginalSignature)
 				qsb.AddParameter("originalSignature");
+			qsb.AddParameter("injectEntityContent", injectEntityContent.ToString());
 			return PerformHttpRequestAsync<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 

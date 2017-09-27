@@ -259,8 +259,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEntityContent(authToken, boxId, messageId, entityId);
 		}
 
-		public GeneratedFile GenerateDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId,
-			Signer signer)
+		public GeneratedFile GenerateDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
@@ -269,8 +268,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateDocumentReceiptXml(authToken, boxId, messageId, attachmentId, signer);
 		}
 
-		public GeneratedFile GenerateInvoiceDocumentReceiptXml(string authToken, string boxId, string messageId,
-			string attachmentId, Signer signer)
+		public GeneratedFile GenerateInvoiceDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
@@ -845,7 +843,7 @@ namespace Diadoc.Api
 			if (keys == null)
 				throw new ArgumentNullException("keys");
 			return diadocHttpApi.GetOrganizationStorageEntries(authToken, orgId, keys);
-	}
+		}
 
 		public void PutOrganizationStorageEntries(string authToken, string orgId, IEnumerable<KeyValueStorageEntry> entries)
 		{

@@ -25,10 +25,9 @@ namespace Diadoc.Api
 			var qsb = new PathAndQueryBuilder("/V4/GetMessage");
 			qsb.AddParameter("boxId", boxId);
 			qsb.AddParameter("messageId", messageId);
-
-			if (withOriginalSignature) qsb.AddParameter("originalSignature");
+			if (withOriginalSignature)
+				qsb.AddParameter("originalSignature");
 			qsb.AddParameter("injectEntityContent", injectEntityContent.ToString());
-
 			return PerformHttpRequest<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
@@ -38,10 +37,9 @@ namespace Diadoc.Api
 			qsb.AddParameter("boxId", boxId);
 			qsb.AddParameter("messageId", messageId);
 			qsb.AddParameter("entityId", entityId);
-
-			if (withOriginalSignature) qsb.AddParameter("originalSignature");
+			if (withOriginalSignature)
+				qsb.AddParameter("originalSignature");
 			qsb.AddParameter("injectEntityContent", injectEntityContent.ToString());
-			
 			return PerformHttpRequest<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
