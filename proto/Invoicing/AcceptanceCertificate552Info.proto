@@ -66,9 +66,8 @@ message AcceptanceCertificate552BuyerTitleInfo {
 	required string DocumentCreator = 2; // Составитель файла информации продавца // НаимЭконСубСост
 	optional string DocumentCreatorBase = 3; // Основание, по которому экономический субъект является составителем файла //ОснДоверОргСост
 	optional string OperationType = 4; // Вид операции // ВидОперации
-	required string DocumentName = 5; // Наименование первичного документа, определенное организацией // НаимДокОпрИсп
-	required string OperationInfo = 6; // Содержание операции // СодОпер
-	optional string AcceptDate = 7; // Дата приемки результатов работ // ДатаПрием
+	required string OperationContent = 6; // Содержание операции // СодОпер
+	optional string AcceptanceDate = 7; // Дата приемки результатов работ // ДатаПрием
 	optional string CreatedThingAcceptDate = 8; // Дата получения вещи, изготовленной  по договору подряда // СвПолВещи.ДатаПол
 	optional string CreatedThingInfo = 9; // Сведения о получении // СвПолВещи.СвПол
 	optional AdditionalInfoId AdditionalInfoId = 10; // Информационное поле документа // ИнфПолФХЖ3

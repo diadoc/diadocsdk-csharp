@@ -187,9 +187,8 @@ namespace Diadoc.Api.Proto.Invoicing
 		string DocumentCreator { get; set; }
 		string DocumentCreatorBase { get; set; }
 		string OperationType { get; set; }
-		string DocumentName { get; set; }
-		string OperationInfo { get; set; }
-		string AcceptDate { get; set; }
+		string OperationContent { get; set; }
+		string AcceptanceDate { get; set; }
 		string CreatedThingAcceptDate { get; set; }
 		string CreatedThingInfo { get; set; }
 		
