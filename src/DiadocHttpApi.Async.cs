@@ -29,7 +29,7 @@ namespace Diadoc.Api
 		protected async Task<TResponse> PerformHttpRequestAsync<TResponse>([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody, [NotNull] Func<byte[], TResponse> convertResponse)
 		{
 			var request = BuildHttpRequest(token, method, queryString, requestBody);
-			var response = await HttpClient.PerformHttpRequestAsync(request);
+			var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
 			return DeserializeResponse(request, response, convertResponse);
 		}
 
