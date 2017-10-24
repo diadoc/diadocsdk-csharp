@@ -176,25 +176,4 @@ namespace Diadoc.Api.Proto.Documents.Types
 			get { return (Com.DocumentMetadataSource)(int)Source; }
 		}
 	}
-
-	[ComVisible(true)]
-	[Guid("7263E977-1E17-4D81-BFF9-1AF09AC2D0D2")]
-	public interface IDocumentEncryptedMetadataItem
-	{
-		string Id { get; }
-		Com.DocumentMetadataItemType ItemType { get; }
-	}
-
-	[ComVisible(true)]
-	[ProgId("Diadoc.Api.DocumentEncryptedMetadataItem")]
-	[Guid("4C7760EF-9729-4EED-B480-F75C2838CC3C")]
-	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof(IDocumentEncryptedMetadataItem))]
-	public partial class DocumentEncryptedMetadataItem : SafeComObject, IDocumentEncryptedMetadataItem
-	{
-		Com.DocumentMetadataItemType IDocumentEncryptedMetadataItem.ItemType
-		{
-			get { return (Com.DocumentMetadataItemType)(int)Type; }
-		}
-	}
 }

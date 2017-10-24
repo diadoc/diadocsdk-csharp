@@ -200,9 +200,9 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _MetadataItems; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentEncryptedMetadataItem> _EncryptedMetadataItems = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentEncryptedMetadataItem>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentMetadataItem> _EncryptedMetadataItems = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentMetadataItem>();
     [global::ProtoBuf.ProtoMember(4, Name=@"EncryptedMetadataItems", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentEncryptedMetadataItem> EncryptedMetadataItems
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentMetadataItem> EncryptedMetadataItems
     {
       get { return _EncryptedMetadataItems; }
     }
@@ -244,30 +244,6 @@ namespace Diadoc.Api.Proto.Documents.Types
     {
       get { return _Source; }
       set { _Source = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentEncryptedMetadataItem")]
-  public partial class DocumentEncryptedMetadataItem : global::ProtoBuf.IExtensible
-  {
-    public DocumentEncryptedMetadataItem() {}
-    
-    private string _Id;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Id", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string Id
-    {
-      get { return _Id; }
-      set { _Id = value; }
-    }
-    private Diadoc.Api.Proto.Documents.Types.DocumentMetadataItemType _Type;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Diadoc.Api.Proto.Documents.Types.DocumentMetadataItemType Type
-    {
-      get { return _Type; }
-      set { _Type = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
