@@ -40,12 +40,15 @@ namespace Diadoc.Api
 
 		[NotNull]
 		protected TResponse PerformHttpRequest<TRequest, TResponse>([CanBeNull] string token, [NotNull] string queryString, [NotNull] TRequest request)
+			where TRequest: class
+			where TResponse: class
 		{
 			return PerformHttpRequest(token, "POST", queryString, Serialize(request), Deserialize<TResponse>);
 		}
 
 		[NotNull]
 		protected TResponse PerformHttpRequest<TResponse>([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
+			where TResponse: class
 		{
 			return PerformHttpRequest(token, method, queryString, requestBody, Deserialize<TResponse>);
 		}
@@ -73,6 +76,7 @@ namespace Diadoc.Api
 
 		[NotNull]
 		protected GeneratedFile PerformGenerateXmlHttpRequest<TRequest>([CanBeNull] string token, [NotNull] string queryString, [NotNull] TRequest requestObject)
+			where TRequest: class
 		{
 			var request = BuildHttpRequest(token, "POST", queryString, Serialize(requestObject));
 			var response = HttpClient.PerformHttpRequest(request);
@@ -114,13 +118,13 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
-		protected byte[] Serialize<T>([NotNull] T obj)
+		protected byte[] Serialize<T>([NotNull] T obj) where T: class
 		{
 			return httpSerializer.Serialize(obj);
 		}
 
 		[NotNull]
-		protected T Deserialize<T>([NotNull] byte[] bytes)
+		protected T Deserialize<T>([NotNull] byte[] bytes) where T: class
 		{
 			return httpSerializer.Deserialize<T>(bytes);
 		}

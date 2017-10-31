@@ -13,6 +13,7 @@ namespace Diadoc.Api
 			string taskId,
 			TimeSpan? timeout = null,
 			TimeSpan? delay = null)
+			where TResult: class
 		{
 			var queryString = $"{url}?taskId={taskId}";
 			var stopwatch = Stopwatch.StartNew();
