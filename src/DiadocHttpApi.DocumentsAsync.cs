@@ -126,7 +126,7 @@ namespace Diadoc.Api
 			qsb.AddParameter("orgId", orgId);
 			return PerformHttpRequestAsync<ResolutionRouteList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
-		
+
 		public Task<GetDocumentTypesResponse> GetDocumentTypesAsync(string authToken, string boxId)
 		{
 			var qsb = new PathAndQueryBuilder("/GetDocumentTypes");
@@ -143,7 +143,7 @@ namespace Diadoc.Api
 			qsb.AddParameter("titleIndex", titleIndex.ToString());
 
 			var request = BuildHttpRequest(authToken, "GET", qsb.BuildPathAndQuery(), null);
-			var response = await HttpClient.PerformHttpRequestAsync(request);
+			var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
 
 			return new FileContent(response.Content, response.ContentDispositionFileName);
 		}
