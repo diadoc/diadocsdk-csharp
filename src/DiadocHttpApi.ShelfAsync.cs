@@ -22,7 +22,7 @@ namespace Diadoc.Api
 			{
 				if (++attempts > maxAttempts)
 					throw new AggregateException("Reached the limit of attempts to send a file", httpErrors.ToArray());
-				missingParts = await PutMissingPartsAsync(authToken, nameOnShelf, parts, missingParts, httpErrors);
+				missingParts = await PutMissingPartsAsync(authToken, nameOnShelf, parts, missingParts, httpErrors).ConfigureAwait(false);
 			}
 
 			return nameOnShelf;
@@ -35,7 +35,7 @@ namespace Diadoc.Api
 			for (var i = 0; i < missingParts.Count; ++i)
 			{
 				var partIndex = missingParts[i];
-				currentMissingParts = await PutPartAsync(authToken, nameOnShelf, allParts[partIndex], partIndex, i == missingParts.Count - 1, httpErrors);
+				currentMissingParts = await PutPartAsync(authToken, nameOnShelf, allParts[partIndex], partIndex, i == missingParts.Count - 1, httpErrors).ConfigureAwait(false);
 			}
 			if (currentMissingParts == null)
 				throw new Exception("ShelfUpload did not return missing parts");
@@ -59,7 +59,7 @@ namespace Diadoc.Api
 			try
 			{
 				var request = BuildRequest(authToken, "POST", queryString, new HttpRequestBody(part));
-				var response = await HttpClient.PerformHttpRequestAsync(request);
+				var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
 				if (isLast)
 				{
 					var responseString = Encoding.UTF8.GetString(response.Content);
