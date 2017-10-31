@@ -11,7 +11,7 @@ namespace Diadoc.Api
 		public static TimeSpan WaitTaskDefaultTimeout = TimeSpan.FromMinutes(5);
 
 		public TResult WaitTaskResult<TResult>(string authToken, string url, string taskId, TimeSpan? timeout = null,
-			TimeSpan? delay = null)
+			TimeSpan? delay = null) where TResult: class
 		{
 			var queryString = string.Format("{0}?taskId={1}", url, taskId);
 			var stopwatch = Stopwatch.StartNew();
@@ -26,7 +26,7 @@ namespace Diadoc.Api
 					if (stopwatch.Elapsed > timeout)
 						throw new TimeoutException(string.Format("Can't GET '{0}'. Timeout {1}s expired.", queryString,
 							stopwatch.Elapsed.TotalSeconds));
-					
+
 					Thread.Sleep(delay ?? TimeSpan.FromSeconds(response.RetryAfter.HasValue ? Math.Min(response.RetryAfter.Value, DefaultDelayInSeconds) : DefaultDelayInSeconds));
 					continue;
 				}

@@ -15,12 +15,15 @@ namespace Diadoc.Api
 
 		[ItemNotNull]
 		protected Task<TResponse> PerformHttpRequestAsync<TRequest, TResponse>([CanBeNull] string token, [NotNull] string queryString, [NotNull] TRequest request)
+			where TRequest: class
+			where TResponse: class
 		{
 			return PerformHttpRequestAsync(token, "POST", queryString, Serialize(request), Deserialize<TResponse>);
 		}
 
 		[ItemNotNull]
 		protected Task<TResponse> PerformHttpRequestAsync<TResponse>([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
+			where TResponse: class
 		{
 			return PerformHttpRequestAsync(token, method, queryString, requestBody, Deserialize<TResponse>);
 		}
@@ -35,6 +38,7 @@ namespace Diadoc.Api
 
 		[ItemNotNull]
 		protected async Task<GeneratedFile> PerformGenerateXmlHttpRequestAsync<TRequest>([CanBeNull] string token, [NotNull] string queryString, [NotNull] TRequest requestObject)
+			where TRequest: class
 		{
 			var request = BuildHttpRequest(token, "POST", queryString, Serialize(requestObject));
 			var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
