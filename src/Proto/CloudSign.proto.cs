@@ -97,19 +97,19 @@ namespace Diadoc.Api.Proto
   {
     public AutosignReceiptsResult() {}
     
+    private long _SignedReceiptsCount;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"SignedReceiptsCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public long SignedReceiptsCount
+    {
+      get { return _SignedReceiptsCount; }
+      set { _SignedReceiptsCount = value; }
+    }
     private string _NextBatchKey;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"NextBatchKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"NextBatchKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string NextBatchKey
     {
       get { return _NextBatchKey; }
       set { _NextBatchKey = value; }
-    }
-    private int _SignedReceiptsCount;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"SignedReceiptsCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int SignedReceiptsCount
-    {
-      get { return _SignedReceiptsCount; }
-      set { _SignedReceiptsCount = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
