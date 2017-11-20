@@ -228,6 +228,15 @@ namespace Diadoc.Api.Proto
       get { return _CertificateOfRegistryInfo; }
       set { _CertificateOfRegistryInfo = value; }
     }
+
+    private bool _IsForeign = default(bool);
+    [global::ProtoBuf.ProtoMember(25, IsRequired = false, Name=@"IsForeign", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool IsForeign
+    {
+      get { return _IsForeign; }
+      set { _IsForeign = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

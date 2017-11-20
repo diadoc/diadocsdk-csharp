@@ -30,6 +30,7 @@ message Organization {
 	required Sociability Sociability = 22;
 	optional string LiquidationDate = 23;
 	optional string CertificateOfRegistryInfo = 24;
+	optional bool IsForeign = 25;
 }
 
 message Department {
