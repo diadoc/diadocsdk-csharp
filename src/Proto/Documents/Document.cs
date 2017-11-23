@@ -57,6 +57,7 @@ namespace Diadoc.Api.Proto.Documents
 
 		DateTime SendTimestamp { get; }
 		DateTime DeliveryTimestamp { get; }
+		string AttachmentVersion { get; set; }
 	}
 
 	[ComVisible(true)]
