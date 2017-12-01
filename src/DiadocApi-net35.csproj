@@ -127,6 +127,7 @@
     <Compile Include="IDiadocApi.cs" />
     <Compile Include="IHttpSerializer.cs" />
     <Compile Include="ProtobufHttpSerializer.cs" />
+    <Compile Include="ProtobufPrepareSerializerInitializer.cs" />
     <Compile Include="Proto\AsyncMethodResult.proto.cs" />
     <Compile Include="Proto\CertificateInfo.proto.cs" />
     <Compile Include="Proto\CloudSign.proto.cs" />
