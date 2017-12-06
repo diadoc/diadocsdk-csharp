@@ -156,7 +156,7 @@ namespace Diadoc.Api.Proto.Invoicing
 		string ItemAccountDebit { get; set; }
 		string ItemAccountCredit { get; set; }
 		
-		TaxRate TaxRate { get; set; }
+		Com.TaxRate TaxRateValue { get; set; }
 		
 		ReadonlyList AdditionalInfoList { get; }
 		void AddAdditionalInfo([MarshalAs(UnmanagedType.IDispatch)] object info);
@@ -169,6 +169,12 @@ namespace Diadoc.Api.Proto.Invoicing
 	[ComDefaultInterface(typeof (IAcceptanceCertificate552WorkItem))]
 	public partial class AcceptanceCertificate552WorkItem : SafeComObject, IAcceptanceCertificate552WorkItem
 	{
+		public Com.TaxRate TaxRateValue
+		{
+			get { return (Com.TaxRate) TaxRate; }
+			set { TaxRate = (TaxRate) value; }
+		}
+		
 		public ReadonlyList AdditionalInfoList
 		{
 			get { return new ReadonlyList(AdditionalInfos); }

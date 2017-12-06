@@ -74,6 +74,7 @@
     <Compile Include="Com\EntityType.cs" />
     <Compile Include="Com\FunctionType.cs" />
     <Compile Include="Com\ItemMark.cs" />
+    <Compile Include="Com\OrganizationInvoiceFormatVersion.cs" />
     <Compile Include="Com\OrgType.cs" />
     <Compile Include="Com\ReadonlyList.cs" />
     <Compile Include="Com\InvoiceStatus.cs" />

@@ -72,6 +72,7 @@
     <Compile Include="Com\DocumentMetadataSource.cs" />
     <Compile Include="Com\DocumentType.cs" />
     <Compile Include="Com\EntityType.cs" />
+    <Compile Include="Com\OrganizationInvoiceFormatVersion.cs" />
     <Compile Include="FileContent.cs" />
     <Compile Include="Com\FunctionType.cs" />
     <Compile Include="Com\ItemMark.cs" />
