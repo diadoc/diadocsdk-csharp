@@ -87,7 +87,7 @@ namespace Diadoc.Api.Proto
 		string BoxId { get; }
 		string Title { get; }
 		Organization Organization { get; }
-		OrganizationInvoiceFormatVersion InvoiceFormatVersion { get; }
+		Com.OrganizationInvoiceFormatVersion InvoiceFormatVersionValue { get; }
 		bool EncryptedDocumentsAllowed { get; }
 	}
 
@@ -97,6 +97,12 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(IBox))]
 	public partial class Box : SafeComObject, IBox
 	{
+		public Com.OrganizationInvoiceFormatVersion InvoiceFormatVersionValue
+		{
+			get { return (Com.OrganizationInvoiceFormatVersion) InvoiceFormatVersion; }
+			set { InvoiceFormatVersion = (OrganizationInvoiceFormatVersion) value; }
+		}
+		
 		public override string ToString()
 		{
 			return string.Format("BoxId: {0}, Title: {1}, Organization: {2}, " +

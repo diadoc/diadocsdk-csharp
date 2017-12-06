@@ -127,7 +127,7 @@ namespace Diadoc.Api
 		SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId);
 		Counteragent GetCounteragent(string authToken, string myOrgId, string counteragentOrgId);
 		CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId, string counteragentOrgId);
-		CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null);
+		CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int pageSize = 0);
 
 		void AcquireCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment,
 			string myDepartmentId = null);
@@ -756,9 +756,10 @@ namespace Diadoc.Api
 		}
 
 		public CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus,
-			string afterIndexKey, string query = null, int? pageSize = null)
+			string afterIndexKey, string query = null, int pageSize = 0)
 		{
-			return diadoc.GetCounteragents(authToken, myOrgId, counteragentStatus, afterIndexKey, query, pageSize);
+			var size = pageSize == 0 ? (int?)null : pageSize;
+			return diadoc.GetCounteragents(authToken, myOrgId, counteragentStatus, afterIndexKey, query, size);
 		}
 
 		public void AcquireCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment,
