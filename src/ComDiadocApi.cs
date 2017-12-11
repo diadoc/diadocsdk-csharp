@@ -230,6 +230,7 @@ namespace Diadoc.Api
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content);
 		FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex);
 		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template);
+		Message TransformTemplateToMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object templateTransformation);
 	}
 
 	[ComVisible(true)]
@@ -381,6 +382,11 @@ namespace Diadoc.Api
 		public Template PostTemplate(string authToken, object template)
 		{
 			return diadoc.PostTemplate(authToken, (TemplateToPost) template);
+		}
+
+		public Message TransformTemplateToMessage(string authToken, object templateTransformation)
+		{
+			return diadoc.TransformTemplateToMessage(authToken, (TemplateTransformationToPost) templateTransformation);
 		}
 
 		public MessagePatch PostMessagePatch(string authToken, object patch)

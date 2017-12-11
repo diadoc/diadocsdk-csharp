@@ -55,6 +55,7 @@ namespace Diadoc.Api
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
 		Message PostMessage(string authToken, MessageToPost msg, string operationId = null);
 		Template PostTemplate(string authToken, TemplateToPost template, string operationId = null);
+		Message TransformTemplateToMessage(string authToken, TemplateTransformationToPost templateTransformation, string operationId = null);
 		MessagePatch PostMessagePatch(string authToken, MessagePatchToPost patch, string operationId = null);
 		void PostRoamingNotification(string authToken, RoamingNotificationToPost notification);
 		void Delete(string authToken, string boxId, string messageId, string documentId);
@@ -191,6 +192,7 @@ namespace Diadoc.Api
 		Task<BoxEvent> GetEventAsync(string authToken, string boxId, string eventId);
 		Task<Message> PostMessageAsync(string authToken, MessageToPost msg, string operationId = null);
 		Task<Template> PostTemplateAsync(string authToken, TemplateToPost template, string operationId = null);
+		Task<Message> TransformTemplateToMessageAsync(string authToken, TemplateTransformationToPost templateTransformation, string operationId = null);
 		Task<MessagePatch> PostMessagePatchAsync(string authToken, MessagePatchToPost patch, string operationId = null);
 		Task PostRoamingNotificationAsync(string authToken, RoamingNotificationToPost notification);
 		Task DeleteAsync(string authToken, string boxId, string messageId, string documentId);

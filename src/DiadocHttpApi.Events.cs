@@ -49,9 +49,7 @@ namespace Diadoc.Api
 			var qsb = new PathAndQueryBuilder("/GetTemplate");
 			qsb.AddParameter("boxId", boxId);
 			qsb.AddParameter("templateId", templateId);
-
-			if (!string.IsNullOrEmpty(entityId))
-				qsb.AddParameter("entityId", entityId);
+			qsb.AddParameter("entityId", entityId);
 
 			return PerformHttpRequest<Template>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
@@ -72,6 +70,14 @@ namespace Diadoc.Api
 		{
 			var queryString = string.Format("/PostTemplate?operationId={0}", operationId);
 			return PerformHttpRequest<TemplateToPost, Template>(authToken, queryString, template);
+		}
+
+		public Message TransformTemplateToMessage(string authToken, TemplateTransformationToPost templateTransformation, string operationId = null)
+		{
+			var qsb = new PathAndQueryBuilder("/TransformTemplateToMessage");
+			qsb.AddParameter("operationId", operationId);
+
+			return PerformHttpRequest<TemplateTransformationToPost, Message>(authToken, qsb.BuildPathAndQuery(), templateTransformation);
 		}
 
 		public MessagePatch PostMessagePatch(string authToken, MessagePatchToPost patch, string operationId = null)
