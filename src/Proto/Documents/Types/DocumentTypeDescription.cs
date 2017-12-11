@@ -59,7 +59,6 @@ namespace Diadoc.Api.Proto.Documents.Types
 	{
 		string Name { get; }
 		ReadonlyList VersionList { get; }
-		ReadonlyList WorkflowList { get; }
 	}
 
 	[ComVisible(true)]
@@ -73,11 +72,6 @@ namespace Diadoc.Api.Proto.Documents.Types
 		{
 			get { return new ReadonlyList(Versions); }
 		}
-
-		ReadonlyList IDocumentFunction.WorkflowList
-		{
-			get { return new ReadonlyList(Workflows); }
-		}
 	}
 
 	[ComVisible(true)]
@@ -89,6 +83,7 @@ namespace Diadoc.Api.Proto.Documents.Types
 		bool SupportsEncrypting { get; }
 		ReadonlyList TitleList { get; }
 		bool IsActual { get; }
+		ReadonlyList WorkflowList { get; }
 	}
 
 	[ComVisible(true)]
@@ -101,6 +96,11 @@ namespace Diadoc.Api.Proto.Documents.Types
 		ReadonlyList IDocumentVersion.TitleList
 		{
 			get { return new ReadonlyList(Titles); }
+		}
+		
+		ReadonlyList IDocumentVersion.WorkflowList
+		{
+			get { return new ReadonlyList(Workflows); }
 		}
 	}
 
