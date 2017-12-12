@@ -250,6 +250,54 @@ namespace Diadoc.Api.Proto.Documents.Types
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DetectDocumentTypesResponse")]
+  public partial class DetectDocumentTypesResponse : global::ProtoBuf.IExtensible
+  {
+    public DetectDocumentTypesResponse() {}
+    
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DetectedDocumentType> _DocumentTypes = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DetectedDocumentType>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"DocumentTypes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DetectedDocumentType> DocumentTypes
+    {
+      get { return _DocumentTypes; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DetectedDocumentType")]
+  public partial class DetectedDocumentType : global::ProtoBuf.IExtensible
+  {
+    public DetectedDocumentType() {}
+    
+    private string _TypeNamedId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"TypeNamedId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string TypeNamedId
+    {
+      get { return _TypeNamedId; }
+      set { _TypeNamedId = value; }
+    }
+    private string _Function;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Function", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Function
+    {
+      get { return _Function; }
+      set { _Function = value; }
+    }
+    private string _Version;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"Version", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Version
+    {
+      get { return _Version; }
+      set { _Version = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"DocumentDocflow")]
     public enum DocumentDocflow
     {

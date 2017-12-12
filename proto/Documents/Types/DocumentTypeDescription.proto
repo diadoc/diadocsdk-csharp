@@ -62,3 +62,13 @@ enum DocumentMetadataSource {
 	Xml = 0;
 	User = 1;
 }
+
+message DetectedDocumentType {
+	required string TypeNamedId = 1;
+	required string Function = 2;
+	required string Version = 3;
+}
+
+message DetectDocumentTypesResponse {
+	repeated DetectedDocumentType DocumentTypes = 1;
+}

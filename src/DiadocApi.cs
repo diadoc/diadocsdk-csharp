@@ -964,6 +964,15 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocumentTypes(authToken, boxId);
 		}
 
+		public DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, byte[] content)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			return diadocHttpApi.DetectDocumentTypes(authToken, boxId, content);
+		}
+
 		public FileContent GetContent(string authToken, string typeNamedId, string function, string version, int titleIndex)
 		{
 			if (string.IsNullOrEmpty(authToken))
