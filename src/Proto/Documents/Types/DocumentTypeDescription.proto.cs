@@ -250,23 +250,6 @@ namespace Diadoc.Api.Proto.Documents.Types
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DetectDocumentTypesResponse")]
-  public partial class DetectDocumentTypesResponse : global::ProtoBuf.IExtensible
-  {
-    public DetectDocumentTypesResponse() {}
-    
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DetectedDocumentType> _DocumentTypes = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DetectedDocumentType>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"DocumentTypes", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DetectedDocumentType> DocumentTypes
-    {
-      get { return _DocumentTypes; }
-    }
-  
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DetectedDocumentType")]
   public partial class DetectedDocumentType : global::ProtoBuf.IExtensible
   {
@@ -293,6 +276,23 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _Version; }
       set { _Version = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DetectDocumentTypesResponse")]
+  public partial class DetectDocumentTypesResponse : global::ProtoBuf.IExtensible
+  {
+    public DetectDocumentTypesResponse() {}
+    
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DetectedDocumentType> _DocumentTypes = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DetectedDocumentType>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"DocumentTypes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DetectedDocumentType> DocumentTypes
+    {
+      get { return _DocumentTypes; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -132,6 +132,14 @@ namespace Diadoc.Api
 			return PerformHttpRequest<GetDocumentTypesResponse>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		public DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, string nameOnShelf)
+		{
+			var qsb = new PathAndQueryBuilder("/DetectDocumentTypes");
+			qsb.AddParameter("boxId", boxId);
+			qsb.AddParameter("nameOnShelf", nameOnShelf);
+			return PerformHttpRequest<DetectDocumentTypesResponse>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+
 		public DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, byte[] content)
 		{
 			var qsb = new PathAndQueryBuilder("/DetectDocumentTypes");

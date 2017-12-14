@@ -226,6 +226,7 @@ namespace Diadoc.Api
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType, [MarshalAs(UnmanagedType.IDispatch)] object signerDetails);
 
 		GetDocumentTypesResponse GetDocumentTypes(string token, string boxId);
+		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, string nameOnShelf);
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content);
 		FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex);
 		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template);
@@ -748,6 +749,11 @@ namespace Diadoc.Api
 		public GetDocumentTypesResponse GetDocumentTypes(string token, string boxId)
 		{
 			return diadoc.GetDocumentTypes(token, boxId);
+		}
+
+		public DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, string nameOnShelf)
+		{
+			return diadoc.DetectDocumentTypes(token, boxId, nameOnShelf);
 		}
 
 		public DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content)
