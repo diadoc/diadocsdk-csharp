@@ -215,6 +215,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostMessage(authToken, msg, operationId);
 		}
 
+		public Template PostTemplate(string authToken, TemplateToPost template, string operationId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (template == null) throw new ArgumentNullException("template");
+			return diadocHttpApi.PostTemplate(authToken, template, operationId);
+		}
+
 		public MessagePatch PostMessagePatch(string authToken, MessagePatchToPost patch, string operationId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -434,6 +441,14 @@ namespace Diadoc.Api
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (entityId == null) throw new ArgumentNullException("entityId");
 			return diadocHttpApi.GetMessage(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
+		}
+
+		public Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (templateId == null) throw new ArgumentNullException("templateId");
+			return diadocHttpApi.GetTemplate(authToken, boxId, templateId, entityId);
 		}
 
 		public void RecycleDraft(string authToken, string boxId, string draftId)

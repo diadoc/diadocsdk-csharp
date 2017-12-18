@@ -10,7 +10,8 @@ namespace Diadoc.Api
 			var qsb = new PathAndQueryBuilder("/V5/GetNewEvents");
 			qsb.AddParameter("includeDrafts");
 			qsb.AddParameter("boxId", boxId);
-			if (!string.IsNullOrEmpty(afterEventId)) qsb.AddParameter("afterEventId", afterEventId);
+			if (!string.IsNullOrEmpty(afterEventId)) 
+				qsb.AddParameter("afterEventId", afterEventId);
 			return PerformHttpRequest<BoxEventList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
@@ -43,6 +44,18 @@ namespace Diadoc.Api
 			return PerformHttpRequest<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		public Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null)
+		{
+			var qsb = new PathAndQueryBuilder("/GetTemplate");
+			qsb.AddParameter("boxId", boxId);
+			qsb.AddParameter("templateId", templateId);
+
+			if (!string.IsNullOrEmpty(entityId))
+				qsb.AddParameter("entityId", entityId);
+
+			return PerformHttpRequest<Template>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+
 		public byte[] GetEntityContent(string authToken, string boxId, string messageId, string entityId)
 		{
 			var queryString = string.Format("/V4/GetEntityContent?boxId={0}&messageId={1}&entityId={2}", boxId, messageId, entityId);
@@ -53,6 +66,12 @@ namespace Diadoc.Api
 		{
 			var queryString = string.Format("/V3/PostMessage?operationId={0}", operationId);
 			return PerformHttpRequest<MessageToPost, Message>(authToken, queryString, msg);
+		}
+
+		public Template PostTemplate(string authToken, TemplateToPost template, string operationId = null)
+		{
+			var queryString = string.Format("/PostTemplate?operationId={0}", operationId);
+			return PerformHttpRequest<TemplateToPost, Template>(authToken, queryString, template);
 		}
 
 		public MessagePatch PostMessagePatch(string authToken, MessagePatchToPost patch, string operationId = null)

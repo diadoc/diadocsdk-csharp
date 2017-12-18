@@ -475,3 +475,27 @@ message ResolutionRouteRemoval {
 	required string RouteId = 2; // Идентификатор маршрута, с которого нужно снять документ
 	optional string Comment = 3 [default = ""]; // Текстовый комментарий, ограничение - 256 символов
 }
+
+message TemplateToPost {
+  required string FromBoxId = 1;
+  required string ToBoxId = 2;
+  required string MessageFromBoxId = 3;
+  required string MessageToBoxId = 4;
+  optional string DocumentRecipientDepartmentId = 5;
+  repeated TemplateDocumentAttachment DocumentAttachments = 6;
+}
+
+message TemplateDocumentAttachment {
+    required UnsignedContent UnsignedContent = 1;
+    optional string Comment = 2;
+    required string TypeNamedId = 3;
+    optional string Function = 4;
+    optional string Version = 5;
+    repeated MetadataItem Metadata = 6;
+    optional int32 WorkflowId = 7;
+}
+
+message UnsignedContent {
+    optional bytes Content = 1;
+    optional string NameOnShelf = 2;
+}

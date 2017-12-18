@@ -160,6 +160,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostMessageAsync(authToken, msg, operationId);
 		}
 
+		public Task<Template> PostTemplateAsync(string authToken, TemplateToPost template, string operationId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (template == null) throw new ArgumentNullException("template");
+			return diadocHttpApi.PostTemplateAsync(authToken, template, operationId);
+		}
+
 		public Task<MessagePatch> PostMessagePatchAsync(string authToken, MessagePatchToPost patch, string operationId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -376,6 +383,14 @@ namespace Diadoc.Api
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (entityId == null) throw new ArgumentNullException("entityId");
 			return diadocHttpApi.GetMessageAsync(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
+		}
+
+		public Task<Template> GetTemplateAsync(string authToken, string boxId, string templateId, string entityId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (templateId == null) throw new ArgumentNullException("templateId");
+			return diadocHttpApi.GetTemplateAsync(authToken, boxId, templateId, entityId);
 		}
 
 		public Task RecycleDraftAsync(string authToken, string boxId, string draftId)
