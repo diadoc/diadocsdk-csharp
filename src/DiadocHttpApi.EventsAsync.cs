@@ -46,6 +46,20 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		public Task<Template> GetTemplateAsync(string authToken, string boxId, string templateId, string entityId = null)
+		{
+			var qsb = new PathAndQueryBuilder("/GetTemplate");
+			qsb.AddParameter("boxId", boxId);
+			qsb.AddParameter("templateId", templateId);
+
+			if (!string.IsNullOrEmpty(entityId))
+			{
+				qsb.AddParameter("entityId", entityId);
+			}
+
+			return PerformHttpRequestAsync<Template>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+
 		public Task<byte[]> GetEntityContentAsync(string authToken, string boxId, string messageId, string entityId)
 		{
 			var qsb = new PathAndQueryBuilder("/V4/GetEntityContent");
@@ -60,6 +74,13 @@ namespace Diadoc.Api
 			var qsb = new PathAndQueryBuilder("/V3/PostMessage");
 			qsb.AddParameter("operationId", operationId);
 			return PerformHttpRequestAsync<MessageToPost, Message>(authToken, qsb.BuildPathAndQuery(), msg);
+		}
+
+		public Task<Template> PostTemplateAsync(string authToken, TemplateToPost template, string operationId = null)
+		{
+			var qsb = new PathAndQueryBuilder("/PostTemplate");
+			qsb.AddParameter("operationId", operationId);
+			return PerformHttpRequestAsync<TemplateToPost, Template>(authToken, qsb.BuildPathAndQuery(), template);
 		}
 
 		public Task<MessagePatch> PostMessagePatchAsync(string authToken, MessagePatchToPost patch, string operationId = null)

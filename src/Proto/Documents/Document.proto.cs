@@ -554,6 +554,15 @@ namespace Diadoc.Api.Proto.Documents
       get { return _ProxySignatureStatus; }
       set { _ProxySignatureStatus = value; }
     }
+
+    private string _DocumentRecipientDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(63, IsRequired = false, Name=@"DocumentRecipientDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DocumentRecipientDepartmentId
+    {
+      get { return _DocumentRecipientDepartmentId; }
+      set { _DocumentRecipientDepartmentId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

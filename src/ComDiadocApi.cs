@@ -105,6 +105,7 @@ namespace Diadoc.Api
 
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
+		Template GetTemplate(string authToken, string boxId, string messageId);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object draftToSend);
 		void Delete(string authToken, string boxId, string messageId, string documentId);
@@ -226,6 +227,7 @@ namespace Diadoc.Api
 
 		GetDocumentTypesResponse GetDocumentTypes(string token, string boxId);
 		FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex);
+		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template);
 	}
 
 	[ComVisible(true)]
@@ -372,6 +374,11 @@ namespace Diadoc.Api
 		public Message PostMessage(string authToken, object message)
 		{
 			return diadoc.PostMessage(authToken, (MessageToPost) message);
+		}
+
+		public Template PostTemplate(string authToken, object template)
+		{
+			return diadoc.PostTemplate(authToken, (TemplateToPost) template);
 		}
 
 		public MessagePatch PostMessagePatch(string authToken, object patch)
@@ -547,6 +554,11 @@ namespace Diadoc.Api
 		public Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			return diadoc.GetMessage(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
+		}
+
+		public Template GetTemplate(string authToken, string boxId, string messageId)
+		{
+			return diadoc.GetTemplate(authToken, boxId, messageId);
 		}
 
 		public void RecycleDraft(string authToken, string boxId, string draftId)

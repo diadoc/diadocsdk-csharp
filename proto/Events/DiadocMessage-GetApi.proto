@@ -49,6 +49,17 @@ message Message {
 	optional bool PacketIsLocked = 20 [default = false];
 }
 
+message Template {
+    required string MessageId = 1;
+    required sfixed64 TimestampTicks = 2;
+    required string FromBoxId = 3;
+    required string ToBoxId = 4;
+    required string MessageFromBoxId = 5;
+    required string MessageToBoxId = 6;
+    repeated Entity Entities = 7;
+    optional bool IsDeleted = 8 [default = false];
+}
+
 message MessagePatch {
 	required string MessageId = 1;
 	required sfixed64 TimestampTicks = 2;	// DateTime.Ticks in UTC

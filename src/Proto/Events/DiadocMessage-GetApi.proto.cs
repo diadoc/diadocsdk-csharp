@@ -255,6 +255,74 @@ namespace Diadoc.Api.Proto.Events
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"Template")]
+  public partial class Template : global::ProtoBuf.IExtensible
+  {
+    public Template() {}
+    
+    private string _MessageId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"MessageId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string MessageId
+    {
+      get { return _MessageId; }
+      set { _MessageId = value; }
+    }
+    private long _TimestampTicks;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"TimestampTicks", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public long TimestampTicks
+    {
+      get { return _TimestampTicks; }
+      set { _TimestampTicks = value; }
+    }
+    private string _FromBoxId;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"FromBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string FromBoxId
+    {
+      get { return _FromBoxId; }
+      set { _FromBoxId = value; }
+    }
+    private string _ToBoxId;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"ToBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ToBoxId
+    {
+      get { return _ToBoxId; }
+      set { _ToBoxId = value; }
+    }
+    private string _MessageFromBoxId;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"MessageFromBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string MessageFromBoxId
+    {
+      get { return _MessageFromBoxId; }
+      set { _MessageFromBoxId = value; }
+    }
+    private string _MessageToBoxId;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"MessageToBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string MessageToBoxId
+    {
+      get { return _MessageToBoxId; }
+      set { _MessageToBoxId = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.Entity> _Entities = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.Entity>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"Entities", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.Entity> Entities
+    {
+      get { return _Entities; }
+    }
+  
+
+    private bool _IsDeleted = (bool)false;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"IsDeleted", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsDeleted
+    {
+      get { return _IsDeleted; }
+      set { _IsDeleted = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MessagePatch")]
   public partial class MessagePatch : global::ProtoBuf.IExtensible
   {

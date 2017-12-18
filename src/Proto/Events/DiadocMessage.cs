@@ -445,6 +445,123 @@ namespace Diadoc.Api.Proto.Events
 			DocumentAttachments.Add((DocumentAttachment)attachment);
 		}
 	}
+	
+	[ComVisible(true)]
+	[Guid("107A6BD4-7E69-4084-8BBA-1211771F3391")]
+	public interface ITemplateToPost
+	{
+		string FromBoxId { get; set; }
+		string ToBoxId { get; set; }
+		string MessageFromBoxId { get; set; }
+		string MessageToBoxId { get; set; }
+		
+		string DocumentRecipientDepartmentId { get; set; }
+
+		void AddDocumentAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+	}
+	
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.TemplateToPost")]
+	[Guid("F828570E-9C29-41D7-A20C-BDF2742642C5")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ITemplateToPost))]
+	public partial class TemplateToPost : SafeComObject, ITemplateToPost
+	{
+		public void AddDocumentAttachment(object attachment)
+		{
+			DocumentAttachments.Add((TemplateDocumentAttachment)attachment);
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("A7EC7941-1995-4B9B-A941-ED2344034A60")]
+	public interface ITemplateDocumentAttachment
+	{
+		UnsignedContent UnsignedContent { get; set; }
+		string Comment { get; set; }
+		string TypeNamedId { get; set; }
+		string Function { get; set; }
+		string Version { get; set; }
+		int WorkflowId { get; set; }
+
+		void SetUnsignedContent([MarshalAs(UnmanagedType.IDispatch)] object unsignedContent);
+		void AddMetadataItem([MarshalAs(UnmanagedType.IDispatch)] object metadataItem);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.TemplateDocumentAttachment")]
+	[Guid("C45108E0-D1D0-46E5-B4BD-8F2AB31449B9")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ITemplateDocumentAttachment))]
+	public partial class TemplateDocumentAttachment : SafeComObject, ITemplateDocumentAttachment
+	{
+		public void SetUnsignedContent(object unsignedContent)
+		{
+			UnsignedContent = (UnsignedContent)unsignedContent;
+		}
+
+		public void AddMetadataItem(object metadataItem)
+		{
+			Metadata.Add((MetadataItem)metadataItem);
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("E23434B2-F8F8-40DA-991E-E233B976519A")]
+	public interface IUnsignedContent
+	{
+		byte[] Content { get; set; }
+		string NameOnShelf { get; set; }
+
+		void LoadContentFromFile(string fileName);
+		void SaveContentToFile(string fileName);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.UnsignedContent")]
+	[Guid("7D31AA0E-DB66-4691-A9BF-B3AA98D10743")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IUnsignedContent))]
+	public partial class UnsignedContent : SafeComObject, IUnsignedContent
+	{
+		public void LoadContentFromFile(string fileName)
+		{
+			Content = File.ReadAllBytes(fileName);
+		}
+
+		public void SaveContentToFile(string fileName)
+		{
+			if (Content != null)
+				File.WriteAllBytes(fileName, Content);
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("0964EA37-0ACB-4BBC-9614-121303A0F373")]
+	public interface ITemplate
+	{
+		string MessageId { get; set; }
+		long TimestampTicks { get; set; }
+		string FromBoxId { get; set; }
+		string ToBoxId { get; set; }
+		string MessageFromBoxId { get; set; }
+		string MessageToBoxId { get; set; }
+		ReadonlyList EntitiesList { get; }
+		bool IsDeleted { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.Template")]
+	[Guid("A68E6735-893F-4B5B-8091-0B28236086B9")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ITemplate))]
+	public partial class Template : SafeComObject, ITemplate
+	{
+		public ReadonlyList EntitiesList
+		{
+			get { return new ReadonlyList(Entities); }
+		}
+	}
 
 	[ComVisible(true)]
 	[Guid("A0C93B1F-5FD2-4738-B8F9-994AE05B5B63")]
