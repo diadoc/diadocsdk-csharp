@@ -75,7 +75,6 @@ message Document {
 	optional string ResolutionRouteId = 60 [default = ""];
 	optional string AttachmentVersion = 61;
 	optional ProxySignatureStatus ProxySignatureStatus = 62;
-	optional string DocumentRecipientDepartmentId = 63;
 }
 
 message ResolutionStatus {
