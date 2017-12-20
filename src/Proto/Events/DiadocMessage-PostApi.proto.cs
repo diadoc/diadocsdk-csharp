@@ -2962,6 +2962,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _WorkflowId; }
       set { _WorkflowId = value; }
     }
+
+    private string _CustomDocumentId = "";
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"CustomDocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string CustomDocumentId
+    {
+      get { return _CustomDocumentId; }
+      set { _CustomDocumentId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
