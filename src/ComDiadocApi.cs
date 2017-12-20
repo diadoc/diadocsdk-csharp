@@ -219,13 +219,15 @@ namespace Diadoc.Api
 
 		User GetMyUser(string authToken);
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
-		
+
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType, [MarshalAs(UnmanagedType.IDispatch)] object signerDetails);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType, [MarshalAs(UnmanagedType.IDispatch)] object signerDetails);
 
 		GetDocumentTypesResponse GetDocumentTypes(string token, string boxId);
+		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, string nameOnShelf);
+		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content);
 		FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex);
 		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template);
 	}
@@ -747,6 +749,16 @@ namespace Diadoc.Api
 		public GetDocumentTypesResponse GetDocumentTypes(string token, string boxId)
 		{
 			return diadoc.GetDocumentTypes(token, boxId);
+		}
+
+		public DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, string nameOnShelf)
+		{
+			return diadoc.DetectDocumentTypes(token, boxId, nameOnShelf);
+		}
+
+		public DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content)
+		{
+			return diadoc.DetectDocumentTypes(token, boxId, content);
 		}
 
 		public FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex)
