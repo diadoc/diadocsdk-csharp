@@ -91,13 +91,6 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _Versions; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentWorkflow> _Workflows = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentWorkflow>();
-    [global::ProtoBuf.ProtoMember(3, Name=@"Workflows", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentWorkflow> Workflows
-    {
-      get { return _Workflows; }
-    }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -143,6 +136,13 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _IsActual; }
       set { _IsActual = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentWorkflow> _Workflows = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentWorkflow>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"Workflows", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentWorkflow> Workflows
+    {
+      get { return _Workflows; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

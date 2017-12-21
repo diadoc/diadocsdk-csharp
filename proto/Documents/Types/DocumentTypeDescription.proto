@@ -20,7 +20,6 @@ enum DocumentDocflow {
 message DocumentFunction {
 	required string Name = 1;
 	repeated DocumentVersion Versions = 2;
-	repeated DocumentWorkflow Workflows = 3;
 }
 
 message DocumentVersion {
@@ -29,6 +28,7 @@ message DocumentVersion {
 	required bool SupportsEncrypting = 3;
 	repeated DocumentTitle Titles = 4;
 	required bool IsActual = 5;
+	repeated DocumentWorkflow Workflows = 6;
 }
 
 message DocumentWorkflow {
