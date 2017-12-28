@@ -18,6 +18,7 @@ namespace Diadoc.Api
 		bool ExcludeSubdepartments { get; set; }
 		string SortDirection { get; set; }
 		string AfterIndexKey { get; set; }
+		int? Count { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -40,5 +41,6 @@ namespace Diadoc.Api
 		public bool ExcludeSubdepartments { get; set; }
 		public string SortDirection { get; set; }
 		public string AfterIndexKey { get; set; }
+		public int? Count { get; set; }
 	}
 }

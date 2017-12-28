@@ -92,7 +92,7 @@ namespace Diadoc.Api
 		PrintFormResult GetGeneratedPrintForm(string authToken, DocumentType documentType, string printFormId);
 		string Recognize(string fileName, byte[] content);
 		Recognized GetRecognized(string recognitionId);
-		DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey);
+		DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count = null);
 		DocumentList GetDocuments(string authToken, DocumentsFilter filter);
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
 		GetDocflowBatchResponse GetDocflows(string authToken, string boxId, GetDocflowBatchRequest request);
@@ -228,7 +228,7 @@ namespace Diadoc.Api
 		Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, DocumentType documentType, string printFormId);
 		Task<string> RecognizeAsync(string fileName, byte[] content);
 		Task<Recognized> GetRecognizedAsync(string recognitionId);
-		Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey);
+		Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count = null);
 		Task<DocumentList> GetDocumentsAsync(string authToken, DocumentsFilter filter);
 		Task<Document> GetDocumentAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<SignatureInfo> GetSignatureInfoAsync(string authToken, string boxId, string messageId, string entityId);
