@@ -439,10 +439,10 @@ namespace Diadoc.Api
 
 		public Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId,
 			DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId,
-			bool excludeSubdepartments, string afterIndexKey)
+			bool excludeSubdepartments, string afterIndexKey, int? count = null)
 		{
 			return diadocHttpApi.GetDocumentsAsync(authToken, boxId, filterCategory, counteragentBoxId, timestampFrom, timestampTo,
-				fromDocumentDate, toDocumentDate, departmentId, excludeSubdepartments, afterIndexKey);
+				fromDocumentDate, toDocumentDate, departmentId, excludeSubdepartments, afterIndexKey, count);
 		}
 
 		public Task<DocumentList> GetDocumentsAsync(string authToken, DocumentsFilter filter)

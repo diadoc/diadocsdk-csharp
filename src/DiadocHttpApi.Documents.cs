@@ -27,6 +27,7 @@ namespace Diadoc.Api
 			if (filter.ExcludeSubdepartments) qsb.AddParameter("excludeSubdepartments");
 			if (!string.IsNullOrEmpty(filter.AfterIndexKey)) qsb.AddParameter("afterIndexKey", filter.AfterIndexKey);
 			if (!string.IsNullOrEmpty(filter.SortDirection)) qsb.AddParameter("sortDirection", filter.SortDirection);
+			if (filter.Count.HasValue) qsb.AddParameter("count", filter.Count.ToString());
 			return PerformHttpRequest<DocumentList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
@@ -39,7 +40,8 @@ namespace Diadoc.Api
 			DateTime? timestampFrom, DateTime? timestampTo,
 			[CanBeNull] string fromDocumentDate, [CanBeNull] string toDocumentDate,
 			[CanBeNull] string departmentId, bool excludeSubdepartments,
-			[CanBeNull] string afterIndexKey
+			[CanBeNull] string afterIndexKey,
+			int? count = null
 		)
 		{
 			return GetDocuments(authToken, new DocumentsFilter
@@ -54,6 +56,7 @@ namespace Diadoc.Api
 				DepartmentId = departmentId,
 				ExcludeSubdepartments = excludeSubdepartments,
 				AfterIndexKey = afterIndexKey,
+				Count = count
 			});
 		}
 

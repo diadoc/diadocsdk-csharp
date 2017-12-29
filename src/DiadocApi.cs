@@ -497,10 +497,10 @@ namespace Diadoc.Api
 
 		public DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId,
 			DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId,
-			bool excludeSubdepartments, string afterIndexKey)
+			bool excludeSubdepartments, string afterIndexKey, int? count = null)
 		{
 			return diadocHttpApi.GetDocuments(authToken, boxId, filterCategory, counteragentBoxId, timestampFrom, timestampTo,
-				fromDocumentDate, toDocumentDate, departmentId, excludeSubdepartments, afterIndexKey);
+				fromDocumentDate, toDocumentDate, departmentId, excludeSubdepartments, afterIndexKey, count);
 		}
 
 		public DocumentList GetDocuments(string authToken, DocumentsFilter filter)
