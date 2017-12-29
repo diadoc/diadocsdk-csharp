@@ -43,6 +43,17 @@ namespace Diadoc.Api.Tests
 			Assert.True(IsComVisible(defaultInterfaceType));
 			Assert.True(type.GetInterfaces().Contains(defaultInterfaceType));
 		}
+		
+		[Test]
+		public void ComVisibleTypes_HasNoNullableProperties([ValueSource("GetComVisibleInterfaceTypes")] Type type)
+		{
+			var propertyInfos = type.GetProperties();
+			foreach (var info in propertyInfos)
+			{
+				Assert.That(info.PropertyType.Name.Contains("Nullable"), Is.False, 
+					"Type: {" + type + "} contains nullable property {" + info.Name + "}");
+			}
+		}
 
 		[Test]
 		public void SafeComObject([ValueSource("GetComVisibleClassTypes")] Type type)
