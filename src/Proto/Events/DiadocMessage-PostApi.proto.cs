@@ -1943,6 +1943,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _ResolutionRouteRemovals; }
     }
   
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> _RecipientTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment>();
+    [global::ProtoBuf.ProtoMember(22, Name=@"RecipientTitles", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> RecipientTitles
+    {
+      get { return _RecipientTitles; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
