@@ -500,3 +500,14 @@ message UnsignedContent {
     optional bytes Content = 1;
     optional string NameOnShelf = 2;
 }
+
+message TemplateTransformationToPost {
+  required string BoxId = 1;
+  required string TemplateId = 2;
+  repeated DocumentTransformation DocumentTransformations = 3;
+}
+
+message DocumentTransformation {
+  required string DocumentId = 1;
+  optional string CustomDocumentId = 2;
+}

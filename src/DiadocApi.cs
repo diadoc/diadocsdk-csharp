@@ -222,6 +222,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostTemplate(authToken, template, operationId);
 		}
 
+		public Message TransformTemplateToMessage(string authToken, TemplateTransformationToPost templateTransformation, string operationId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (templateTransformation == null) throw new ArgumentNullException("templateTransformation");
+			return diadocHttpApi.TransformTemplateToMessage(authToken, templateTransformation, operationId);
+		}
+
 		public MessagePatch PostMessagePatch(string authToken, MessagePatchToPost patch, string operationId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

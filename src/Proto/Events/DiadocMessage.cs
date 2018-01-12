@@ -564,6 +564,46 @@ namespace Diadoc.Api.Proto.Events
 	}
 
 	[ComVisible(true)]
+	[Guid("94ECB2DA-6C59-4130-85F4-1D63060D63F9")]
+	public interface ITemplateTransformationToPost
+	{
+		string BoxId { get; set; }
+		string TemplateId { get; set; }
+
+		void AddDocumentTransformation([MarshalAs(UnmanagedType.IDispatch)] object documentTransformation);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.TemplateTransformationToPost")]
+	[Guid("C8339EB5-4C65-4447-8A5F-815DAEDD7A23")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ITemplateTransformationToPost))]
+	public partial class TemplateTransformationToPost : SafeComObject, ITemplateTransformationToPost
+	{
+		public void AddDocumentTransformation(object documentTransformation)
+		{
+			DocumentTransformations.Add((DocumentTransformation) documentTransformation);
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("7AFECE94-D0CC-4C3A-8D2C-54F41A1279FE")]
+	public interface IDocumentTransformation
+	{
+		string DocumentId { get; set; }
+		string CustomDocumentId { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.DocumentTransformation")]
+	[Guid("59A35A0A-5884-407C-AF4F-F9B24FBAC460")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IDocumentTransformation))]
+	public partial class DocumentTransformation : SafeComObject, IDocumentTransformation
+	{
+	}
+
+	[ComVisible(true)]
 	[Guid("A0C93B1F-5FD2-4738-B8F9-994AE05B5B63")]
 	public interface ISupplementaryAgreementAttachment
 	{

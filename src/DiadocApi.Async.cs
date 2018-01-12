@@ -167,6 +167,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostTemplateAsync(authToken, template, operationId);
 		}
 
+		public Task<Message> TransformTemplateToMessageAsync(string authToken, TemplateTransformationToPost templateTransformation, string operationId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (templateTransformation == null) throw new ArgumentNullException("templateTransformation");
+			return diadocHttpApi.TransformTemplateToMessageAsync(authToken, templateTransformation, operationId);
+		}
+
 		public Task<MessagePatch> PostMessagePatchAsync(string authToken, MessagePatchToPost patch, string operationId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
