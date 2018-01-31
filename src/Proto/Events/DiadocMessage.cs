@@ -668,6 +668,7 @@ namespace Diadoc.Api.Proto.Events
 		void AddUniversalTransferDocumentBuyerTitleAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddResolutionRouteAssignment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddResolutoinRouteRemoval([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddRecipientTitle([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 	}
 
 	[ComVisible(true)]
@@ -760,6 +761,11 @@ namespace Diadoc.Api.Proto.Events
 		public void AddResolutoinRouteRemoval(object attachment)
 		{
 			ResolutionRouteRemovals.Add((ResolutionRouteRemoval)attachment);
+		}
+
+		public void AddRecipientTitle(object attachment)
+		{
+			RecipientTitles.Add((ReceiptAttachment)attachment);
 		}
 	}
 
