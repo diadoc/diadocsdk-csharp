@@ -318,6 +318,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _IsDeleted; }
       set { _IsDeleted = value; }
     }
+
+    private string _MessageToDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"MessageToDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string MessageToDepartmentId
+    {
+      get { return _MessageToDepartmentId; }
+      set { _MessageToDepartmentId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

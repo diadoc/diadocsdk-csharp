@@ -482,7 +482,7 @@ message TemplateToPost {
   required string ToBoxId = 2;
   required string MessageFromBoxId = 3;
   required string MessageToBoxId = 4;
-  optional string DocumentRecipientDepartmentId = 5;
+  optional string MessageToDepartmentId = 5;
   repeated TemplateDocumentAttachment DocumentAttachments = 6;
 }
 

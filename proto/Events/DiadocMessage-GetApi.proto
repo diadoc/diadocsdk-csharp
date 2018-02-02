@@ -58,6 +58,7 @@ message Template {
     required string MessageToBoxId = 6;
     repeated Entity Entities = 7;
     optional bool IsDeleted = 8 [default = false];
+    optional string MessageToDepartmentId = 9;
 }
 
 message MessagePatch {
