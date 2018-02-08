@@ -405,6 +405,7 @@ message PrepareDocumentsToSignRequest {
 	required string BoxId = 1;
 	repeated DraftDocumentToPatch DraftDocuments = 2;
 	repeated DocumentToPatch Documents = 3;
+	repeated ContentToPatch Contents = 4;
 }
 
 message DraftDocumentToPatch {
@@ -412,6 +413,16 @@ message DraftDocumentToPatch {
 	optional string ToBoxId = 2;
 	optional Invoicing.Signer Signer = 3;
 	repeated Invoicing.Signers.ExtendedSigner ExtendedSigner = 4;
+}
+
+message ContentToPatch {
+	required string TypeNamedId = 1;
+	required string Function = 2;
+	required string Version = 3;
+	required UnsignedContent Content = 4;
+	optional string ToBoxId = 5;
+	optional Invoicing.Signer Signer = 6;
+	repeated Invoicing.Signers.ExtendedSigner ExtendedSigner = 7;
 }
 
 message DocumentToPatch {
