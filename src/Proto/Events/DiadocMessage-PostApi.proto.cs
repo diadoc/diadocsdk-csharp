@@ -2500,6 +2500,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _Documents; }
     }
   
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ContentToPatch> _Contents = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ContentToPatch>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Contents", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ContentToPatch> Contents
+    {
+      get { return _Contents; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2537,6 +2544,69 @@ namespace Diadoc.Api.Proto.Events
     }
     private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> _ExtendedSigner = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner>();
     [global::ProtoBuf.ProtoMember(4, Name=@"ExtendedSigner", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> ExtendedSigner
+    {
+      get { return _ExtendedSigner; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ContentToPatch")]
+  public partial class ContentToPatch : global::ProtoBuf.IExtensible
+  {
+    public ContentToPatch() {}
+    
+    private string _TypeNamedId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"TypeNamedId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string TypeNamedId
+    {
+      get { return _TypeNamedId; }
+      set { _TypeNamedId = value; }
+    }
+    private string _Function;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Function", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Function
+    {
+      get { return _Function; }
+      set { _Function = value; }
+    }
+    private string _Version;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"Version", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Version
+    {
+      get { return _Version; }
+      set { _Version = value; }
+    }
+    private Diadoc.Api.Proto.Events.UnsignedContent _Content;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"Content", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Events.UnsignedContent Content
+    {
+      get { return _Content; }
+      set { _Content = value; }
+    }
+
+    private string _ToBoxId = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ToBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ToBoxId
+    {
+      get { return _ToBoxId; }
+      set { _ToBoxId = value; }
+    }
+
+    private Diadoc.Api.Proto.Invoicing.Signer _Signer = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Signer", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Invoicing.Signer Signer
+    {
+      get { return _Signer; }
+      set { _Signer = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> _ExtendedSigner = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"ExtendedSigner", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<Diadoc.Api.Proto.Invoicing.Signers.ExtendedSigner> ExtendedSigner
     {
       get { return _ExtendedSigner; }
