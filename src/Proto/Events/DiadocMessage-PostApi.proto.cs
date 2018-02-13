@@ -2957,13 +2957,13 @@ namespace Diadoc.Api.Proto.Events
       set { _MessageToBoxId = value; }
     }
 
-    private string _DocumentRecipientDepartmentId = "";
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"DocumentRecipientDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private string _MessageToDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"MessageToDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
-    public string DocumentRecipientDepartmentId
+    public string MessageToDepartmentId
     {
-      get { return _DocumentRecipientDepartmentId; }
-      set { _DocumentRecipientDepartmentId = value; }
+      get { return _MessageToDepartmentId; }
+      set { _MessageToDepartmentId = value; }
     }
     private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.TemplateDocumentAttachment> _DocumentAttachments = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.TemplateDocumentAttachment>();
     [global::ProtoBuf.ProtoMember(6, Name=@"DocumentAttachments", DataFormat = global::ProtoBuf.DataFormat.Default)]
