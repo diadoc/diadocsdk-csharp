@@ -21,6 +21,7 @@
 // Note: requires additional types generated from: Documents/UniversalTransferDocument.proto
 // Note: requires additional types generated from: ResolutionTarget.proto
 // Note: requires additional types generated from: ForwardDocumentEvent.proto
+// Note: requires additional types generated from: Events/DiadocMessage-PostApi.proto
 namespace Diadoc.Api.Proto.Documents
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"Document")]
@@ -554,6 +555,69 @@ namespace Diadoc.Api.Proto.Documents
       get { return _ProxySignatureStatus; }
       set { _ProxySignatureStatus = value; }
     }
+    private string _TypeNamedId;
+    [global::ProtoBuf.ProtoMember(63, IsRequired = true, Name=@"TypeNamedId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string TypeNamedId
+    {
+      get { return _TypeNamedId; }
+      set { _TypeNamedId = value; }
+    }
+    private string _Function;
+    [global::ProtoBuf.ProtoMember(64, IsRequired = true, Name=@"Function", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Function
+    {
+      get { return _Function; }
+      set { _Function = value; }
+    }
+    private int _WorkflowId;
+    [global::ProtoBuf.ProtoMember(65, IsRequired = true, Name=@"WorkflowId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int WorkflowId
+    {
+      get { return _WorkflowId; }
+      set { _WorkflowId = value; }
+    }
+    private string _Title;
+    [global::ProtoBuf.ProtoMember(66, IsRequired = true, Name=@"Title", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Title
+    {
+      get { return _Title; }
+      set { _Title = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.MetadataItem> _Metadata = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.MetadataItem>();
+    [global::ProtoBuf.ProtoMember(67, Name=@"Metadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.MetadataItem> Metadata
+    {
+      get { return _Metadata; }
+    }
+  
+    private Diadoc.Api.Proto.Documents.RecipientReceiptMetadata _RecipientReceiptMetadata;
+    [global::ProtoBuf.ProtoMember(68, IsRequired = true, Name=@"RecipientReceiptMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Documents.RecipientReceiptMetadata RecipientReceiptMetadata
+    {
+      get { return _RecipientReceiptMetadata; }
+      set { _RecipientReceiptMetadata = value; }
+    }
+    private Diadoc.Api.Proto.Documents.ConfirmationMetadata _ConfirmationMetadata;
+    [global::ProtoBuf.ProtoMember(69, IsRequired = true, Name=@"ConfirmationMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Documents.ConfirmationMetadata ConfirmationMetadata
+    {
+      get { return _ConfirmationMetadata; }
+      set { _ConfirmationMetadata = value; }
+    }
+    private Diadoc.Api.Proto.Documents.RecipientResponseStatus _RecipientResponseStatus;
+    [global::ProtoBuf.ProtoMember(70, IsRequired = true, Name=@"RecipientResponseStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.RecipientResponseStatus RecipientResponseStatus
+    {
+      get { return _RecipientResponseStatus; }
+      set { _RecipientResponseStatus = value; }
+    }
+    private Diadoc.Api.Proto.Documents.AmendmendRequestMetadata _AmendmendRequestMetadata;
+    [global::ProtoBuf.ProtoMember(71, IsRequired = true, Name=@"AmendmendRequestMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Documents.AmendmendRequestMetadata AmendmendRequestMetadata
+    {
+      get { return _AmendmendRequestMetadata; }
+      set { _AmendmendRequestMetadata = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -595,6 +659,80 @@ namespace Diadoc.Api.Proto.Documents
     {
       get { return _AuthorFIO; }
       set { _AuthorFIO = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RecipientReceiptMetadata")]
+  public partial class RecipientReceiptMetadata : global::ProtoBuf.IExtensible
+  {
+    public RecipientReceiptMetadata() {}
+    
+    private Diadoc.Api.Proto.Documents.GeneralReceiptStatus _ReceiptStatus;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ReceiptStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.GeneralReceiptStatus ReceiptStatus
+    {
+      get { return _ReceiptStatus; }
+      set { _ReceiptStatus = value; }
+    }
+
+    private Diadoc.Api.Proto.Documents.ConfirmationMetadata _ConfirmationMetadata = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ConfirmationMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.ConfirmationMetadata ConfirmationMetadata
+    {
+      get { return _ConfirmationMetadata; }
+      set { _ConfirmationMetadata = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ConfirmationMetadata")]
+  public partial class ConfirmationMetadata : global::ProtoBuf.IExtensible
+  {
+    public ConfirmationMetadata() {}
+    
+    private Diadoc.Api.Proto.Documents.GeneralReceiptStatus _ReceiptStatus;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ReceiptStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.GeneralReceiptStatus ReceiptStatus
+    {
+      get { return _ReceiptStatus; }
+      set { _ReceiptStatus = value; }
+    }
+    private long _DateTimeTicks;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"DateTimeTicks", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public long DateTimeTicks
+    {
+      get { return _DateTimeTicks; }
+      set { _DateTimeTicks = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AmendmendRequestMetadata")]
+  public partial class AmendmendRequestMetadata : global::ProtoBuf.IExtensible
+  {
+    public AmendmendRequestMetadata() {}
+    
+    private int _AmendmentFlags;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"AmendmentFlags", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int AmendmentFlags
+    {
+      get { return _AmendmentFlags; }
+      set { _AmendmentFlags = value; }
+    }
+    private Diadoc.Api.Proto.Documents.GeneralReceiptStatus _ReceiptStatus;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"ReceiptStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.GeneralReceiptStatus ReceiptStatus
+    {
+      get { return _ReceiptStatus; }
+      set { _ReceiptStatus = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -708,6 +846,49 @@ namespace Diadoc.Api.Proto.Documents
             
       [global::ProtoBuf.ProtoEnum(Name=@"InvalidProxySignature", Value=5)]
       InvalidProxySignature = 5
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"GeneralReceiptStatus")]
+    public enum GeneralReceiptStatus
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GeneralReceiptStatusUnknown", Value=0)]
+      GeneralReceiptStatusUnknown = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GeneralReceiptStatusNotAcceptable", Value=1)]
+      GeneralReceiptStatusNotAcceptable = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"HaveToCreateReceipt", Value=2)]
+      HaveToCreateReceipt = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WaitingForReceipt", Value=3)]
+      WaitingForReceipt = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Finished", Value=4)]
+      Finished = 4
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"RecipientResponseStatus")]
+    public enum RecipientResponseStatus
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RecipientResponseStatusUnknown", Value=0)]
+      RecipientResponseStatusUnknown = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RecipientResponseStatusNotAcceptable", Value=1)]
+      RecipientResponseStatusNotAcceptable = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WaitingForRecipientSignature", Value=2)]
+      WaitingForRecipientSignature = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WithRecipientSignature", Value=3)]
+      WithRecipientSignature = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RecipientSignatureRequestRejected", Value=4)]
+      RecipientSignatureRequestRejected = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InvalidRecipientSignature", Value=5)]
+      InvalidRecipientSignature = 5
     }
   
 }

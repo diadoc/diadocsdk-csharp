@@ -11,6 +11,7 @@ import "Documents/UnilateralDocument.proto";
 import "Documents/UniversalTransferDocument.proto";
 import "ResolutionTarget.proto";
 import "ForwardDocumentEvent.proto";
+import "Events/DiadocMessage-PostApi.proto";
 
 package Diadoc.Api.Proto.Documents;
 
@@ -75,6 +76,16 @@ message Document {
 	optional string ResolutionRouteId = 60 [default = ""];
 	optional string AttachmentVersion = 61;
 	optional ProxySignatureStatus ProxySignatureStatus = 62;
+
+	required string TypeNamedId = 63;
+	required string Function = 64;
+	required int32 WorkflowId = 65;
+	required string Title = 66;
+	repeated Events.MetadataItem Metadata = 67;
+	required RecipientReceiptMetadata RecipientReceiptMetadata = 68;
+	required ConfirmationMetadata ConfirmationMetadata = 69;
+	required RecipientResponseStatus RecipientResponseStatus = 70;
+	required AmendmendRequestMetadata AmendmendRequestMetadata = 71;
 }
 
 message ResolutionStatus {
@@ -125,4 +136,37 @@ enum ProxySignatureStatus {
 	WithProxySignature = 3;
 	ProxySignatureRejected = 4;
 	InvalidProxySignature = 5;
+}
+
+
+enum GeneralReceiptStatus {
+	GeneralReceiptStatusUnknown = 0;
+	GeneralReceiptStatusNotAcceptable = 1;
+	HaveToCreateReceipt = 2;
+	WaitingForReceipt = 3;
+	Finished = 4;
+}
+
+message RecipientReceiptMetadata {
+	required GeneralReceiptStatus ReceiptStatus = 1;
+	optional ConfirmationMetadata ConfirmationMetadata = 2;
+}
+
+message ConfirmationMetadata {
+	required GeneralReceiptStatus ReceiptStatus = 1;
+	required sfixed64 DateTimeTicks = 2;
+}
+
+message AmendmendRequestMetadata {
+	required int32 AmendmentFlags = 1;
+	required GeneralReceiptStatus ReceiptStatus = 2;
+}
+
+enum RecipientResponseStatus {
+	RecipientResponseStatusUnknown = 0;
+	RecipientResponseStatusNotAcceptable = 1;
+	WaitingForRecipientSignature = 2;
+	WithRecipientSignature = 3;
+	RecipientSignatureRequestRejected = 4;
+	InvalidRecipientSignature = 5;
 }
