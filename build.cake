@@ -18,20 +18,20 @@ var binariesNet45Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net45-bina
 var needSigning = false;
 
 const string protobufNetDll = "./packages/protobuf-net.1.0.0.280/lib/protobuf-net.dll";
-var packageVersion = ""; 
+var packageVersion = "";
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
 
-Setup(() =>
+Setup(context =>
 {
 	if (BuildSystem.IsRunningOnAppVeyor && AppVeyor.Environment.PullRequest.IsPullRequest)
 	{
 		needSigning = false;
 		return;
 	}
-	
+
 	if (FileExists("diadoc.snk"))
 	{
 		needSigning = true;
@@ -44,7 +44,8 @@ Setup(() =>
 			.WithArguments(x =>	x
 				.AppendSwitch("-decrypt", @"src\diadoc.snk.enc")
 				.AppendSwitch("-secret", EnvironmentVariable("diadoc_signing_secret")));
-		var exitCode = StartProcess("./tools/secure-file/secure-file/tools/secure-file.exe", secureFileArguments);
+		var secureFilePath = context.Tools.Resolve("secure-file.exe");
+		var exitCode = StartProcess(secureFilePath, secureFileArguments);
 		if (exitCode != 0)
 		{
 			Warning("secure-file exit with error {0}", exitCode);
@@ -100,7 +101,7 @@ Task("GenerateVersionInfo")
 		if (versionParts.Length > 1)
 			int.TryParse(versionParts[1], out minorVersion);
 		var assemblyVersion = string.Format("{0}.{1}.0.0", majorVersion, minorVersion);
-		
+
 		if (!string.IsNullOrEmpty(clearVersion))
 		{
 			Information("Version from tag: {0}", clearVersion);
@@ -135,7 +136,7 @@ Task("GenerateProtoFiles")
 	{
 		if (!FileExists("./packages/protobuf-net.1.0.0.280/Tools/protobuf-net.dll"))
 			CopyFileToDirectory(protobufNetDll, "./packages/protobuf-net.1.0.0.280/Tools");
-			
+
 		var files = GetFiles("./proto/**/*.proto");
 		var filesWithError = files.AsParallel()
 			.Select(x => GenerateProtoFile(x))
@@ -215,7 +216,7 @@ Task("Nuget-Pack")
 		};
 		NuGetPack("./nuspec/DiadocApi.nuspec", nuGetPackSettings);
 	});
-	
+
 Task("PublishArtifactsToAppVeyor")
 	.IsDependentOn("Nuget-Pack")
 	.WithCriteria(x => BuildSystem.IsRunningOnAppVeyor)
@@ -247,7 +248,7 @@ Task("Default")
 Task("FullBuild")
 	.IsDependentOn("GenerateVersionInfo")
 	.IsDependentOn("Build");
-	
+
 Task("Rebuild")
 	.IsDependentOn("Clean")
 	.IsDependentOn("GenerateVersionInfo")
@@ -283,7 +284,7 @@ public string GetVersionFromTag()
 			return tag.Name;
 		}
 	}
-	
+
 	if (string.IsNullOrEmpty(lastestTag))
 	{
 		try
@@ -295,7 +296,7 @@ public string GetVersionFromTag()
 			Warning(ex.Message, new object[] {});
 		}
 	}
-	
+
 	return lastestTag;
 }
 
@@ -308,11 +309,11 @@ public string GetSemanticVersionV1(string clearVersion)
 		{
 			return clearVersion;
 		}
-		
+
 		var buildNumber = BuildSystem.AppVeyor.Environment.Build.Number;
 		return string.Format("{0}-CI{1}", clearVersion, buildNumber);
 	}
-	
+
 	return string.Format("{0}-dev", clearVersion);
 }
 
@@ -326,9 +327,9 @@ public string GetSemanticVersionV2(string clearVersion)
 			return clearVersion;
 		}
 
-		return GetAppVeyorBuildVersion(clearVersion);		
+		return GetAppVeyorBuildVersion(clearVersion);
 	}
-	return string.Format("{0}-dev", clearVersion); 
+	return string.Format("{0}-dev", clearVersion);
 }
 
 public string GetAppVeyorBuildVersion(string clearVersion)
@@ -348,12 +349,12 @@ public static string ClearVersionTag(string lastestTag)
 {
 	if (string.IsNullOrEmpty(lastestTag))
 		return null;
-		
+
 	if (lastestTag.StartsWith("versions/"))
 	{
 		lastestTag = lastestTag.Substring("versions/".Length);
 	}
-	
+
 	var match = Regex.Match(lastestTag, @"^([0-9]+\.[0-9]+(\.[0-9])*)");
 	return match.Success
 		? match.Value
@@ -374,7 +375,7 @@ FilePath GenerateProtoFile(FilePath file)
 	var protogenArguments = new ProcessSettings
 	{
 		Arguments = string.Format("-i:{0} -o:{1} -q", file, destinationFile),
-		WorkingDirectory = sourceProtoDir 
+		WorkingDirectory = sourceProtoDir
 	};
 
 	var exitCode = StartProcess("./packages/protobuf-net.1.0.0.280/Tools/protogen.exe", protogenArguments);
