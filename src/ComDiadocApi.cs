@@ -111,6 +111,7 @@ namespace Diadoc.Api
 		void Delete(string authToken, string boxId, string messageId, string documentId);
 		void Restore(string authToken, string boxId, string messageId, string documentId);
 		void MoveDocuments(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object query);
+		byte[] GetEntityContent(string authToken, string boxId, string messageId, string entityId);
 		string NewGuid();
 		string Recognize(string fileName, string filePath);
 		Recognized GetRecognized(string recognitionId);
@@ -592,6 +593,11 @@ namespace Diadoc.Api
 		public void MoveDocuments(string authToken, object query)
 		{
 			diadoc.MoveDocuments(authToken, (DocumentsMoveOperation) query);
+		}
+
+		public byte[] GetEntityContent(string authToken, string boxId, string messageId, string entityId)
+		{
+			return diadoc.GetEntityContent(authToken, boxId, messageId, entityId);
 		}
 
 		public string NewGuid()
