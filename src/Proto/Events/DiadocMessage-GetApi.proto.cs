@@ -889,6 +889,9 @@ namespace Diadoc.Api.Proto.Events
       [global::ProtoBuf.ProtoEnum(Name=@"ResolutionRouteRemovalAttachment", Value=67)]
       ResolutionRouteRemovalAttachment = 67,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"Title", Value=68)]
+      Title = 68,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"Cancellation", Value=69)]
       Cancellation = 69
     }
