@@ -75,7 +75,7 @@ message Document {
 	optional UniversalTransferDocument.UniversalCorrectionDocumentRevisionMetadata UniversalCorrectionDocumentRevisionMetadata = 59;
 	optional string ResolutionRouteId = 60 [default = ""];
 	optional string AttachmentVersion = 61;
-	optional ProxySignatureStatus ProxySignatureStatus = 62;
+	optional ProxySignatureStatus ProxySignatureStatus = 62 [default = UnknownProxySignatureStatus];
 
 	required string TypeNamedId = 63;
 	required string Function = 64;
@@ -84,7 +84,7 @@ message Document {
 	repeated Events.MetadataItem Metadata = 67;
 	required RecipientReceiptMetadata RecipientReceiptMetadata = 68;
 	required ConfirmationMetadata ConfirmationMetadata = 69;
-	required RecipientResponseStatus RecipientResponseStatus = 70;
+	required RecipientResponseStatus RecipientResponseStatus = 70 [default = RecipientResponseStatusUnknown];
 	required AmendmentRequestMetadata AmendmentRequestMetadata = 71;
 }
 
@@ -148,18 +148,18 @@ enum GeneralReceiptStatus {
 }
 
 message RecipientReceiptMetadata {
-	required GeneralReceiptStatus ReceiptStatus = 1;
+	required GeneralReceiptStatus ReceiptStatus = 1 [default = GeneralReceiptStatusUnknown];
 	optional ConfirmationMetadata ConfirmationMetadata = 2;
 }
 
 message ConfirmationMetadata {
-	required GeneralReceiptStatus ReceiptStatus = 1;
+	required GeneralReceiptStatus ReceiptStatus = 1 [default = GeneralReceiptStatusUnknown];
 	required sfixed64 DateTimeTicks = 2;
 }
 
 message AmendmentRequestMetadata {
 	required int32 AmendmentFlags = 1;
-	required GeneralReceiptStatus ReceiptStatus = 2;
+	required GeneralReceiptStatus ReceiptStatus = 2 [default = GeneralReceiptStatusUnknown];
 }
 
 enum RecipientResponseStatus {
