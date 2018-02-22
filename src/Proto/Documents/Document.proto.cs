@@ -611,12 +611,12 @@ namespace Diadoc.Api.Proto.Documents
       get { return _RecipientResponseStatus; }
       set { _RecipientResponseStatus = value; }
     }
-    private Diadoc.Api.Proto.Documents.AmendmendRequestMetadata _AmendmendRequestMetadata;
-    [global::ProtoBuf.ProtoMember(71, IsRequired = true, Name=@"AmendmendRequestMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.Documents.AmendmendRequestMetadata AmendmendRequestMetadata
+    private Diadoc.Api.Proto.Documents.AmendmentRequestMetadata _AmendmentRequestMetadata;
+    [global::ProtoBuf.ProtoMember(71, IsRequired = true, Name=@"AmendmentRequestMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Documents.AmendmentRequestMetadata AmendmentRequestMetadata
     {
-      get { return _AmendmendRequestMetadata; }
-      set { _AmendmendRequestMetadata = value; }
+      get { return _AmendmentRequestMetadata; }
+      set { _AmendmentRequestMetadata = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -715,10 +715,10 @@ namespace Diadoc.Api.Proto.Documents
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AmendmendRequestMetadata")]
-  public partial class AmendmendRequestMetadata : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AmendmentRequestMetadata")]
+  public partial class AmendmentRequestMetadata : global::ProtoBuf.IExtensible
   {
-    public AmendmendRequestMetadata() {}
+    public AmendmentRequestMetadata() {}
     
     private int _AmendmentFlags;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"AmendmentFlags", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]

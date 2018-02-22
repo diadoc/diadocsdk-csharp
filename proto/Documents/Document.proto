@@ -85,7 +85,7 @@ message Document {
 	required RecipientReceiptMetadata RecipientReceiptMetadata = 68;
 	required ConfirmationMetadata ConfirmationMetadata = 69;
 	required RecipientResponseStatus RecipientResponseStatus = 70;
-	required AmendmendRequestMetadata AmendmendRequestMetadata = 71;
+	required AmendmentRequestMetadata AmendmentRequestMetadata = 71;
 }
 
 message ResolutionStatus {
@@ -157,7 +157,7 @@ message ConfirmationMetadata {
 	required sfixed64 DateTimeTicks = 2;
 }
 
-message AmendmendRequestMetadata {
+message AmendmentRequestMetadata {
 	required int32 AmendmentFlags = 1;
 	required GeneralReceiptStatus ReceiptStatus = 2;
 }
