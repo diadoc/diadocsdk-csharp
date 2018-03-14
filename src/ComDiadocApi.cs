@@ -75,7 +75,7 @@ namespace Diadoc.Api
 			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 
 		GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
-			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null);
 
 		GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object sellerInfo, bool disableValidation = false);
@@ -492,13 +492,14 @@ namespace Diadoc.Api
 				sellerTitleAttachmentId);
 		}
 
-		public GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		public GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null)
 		{
 			return diadoc.GenerateTovTorg551XmlForBuyer(authToken,
 				(TovTorgBuyerTitleInfo) buyerInfo,
 				boxId,
 				sellerTitleMessageId,
-				sellerTitleAttachmentId);
+				sellerTitleAttachmentId,
+				documentVersion);
 		}
 
 		public GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken, object sellerInfo,

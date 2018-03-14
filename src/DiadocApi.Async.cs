@@ -319,10 +319,10 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateTorg12XmlForBuyerAsync(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
-		public Task<GeneratedFile> GenerateTovTorg551XmlForBuyerAsync(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		public Task<GeneratedFile> GenerateTovTorg551XmlForBuyerAsync(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null)
 		{
 			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
-			return diadocHttpApi.GenerateTovTorg551XmlForBuyerAsync(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+			return diadocHttpApi.GenerateTovTorg551XmlForBuyerAsync(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId, documentVersion);
 		}
 
 		public Task<GeneratedFile> GenerateAcceptanceCertificateXmlForSellerAsync(string authToken,

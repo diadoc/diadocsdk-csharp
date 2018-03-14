@@ -93,13 +93,13 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
-		public Task<GeneratedFile> GenerateTovTorg551XmlForBuyerAsync(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		public Task<GeneratedFile> GenerateTovTorg551XmlForBuyerAsync(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForBuyer");
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
 			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
-			queryBuilder.AddParameter("documentVersion", "tovtorg_05_01_02");
+			queryBuilder.AddParameter("documentVersion", documentVersion ?? "tovtorg_05_01_02");
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
