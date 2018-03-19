@@ -77,7 +77,7 @@ namespace Diadoc.Api
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
 			if (disableValidation) queryBuilder.AddParameter("disableValidation");
-			queryBuilder.AddParameter("documentVersion", "tovtorg_05_01_02");
+			queryBuilder.AddParameter("documentVersion", "tovtorg_05_01_03");
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
@@ -162,7 +162,7 @@ namespace Diadoc.Api
 
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent)
 		{
-			return PerformHttpRequest<TovTorgSellerTitleInfo>(null, "POST", "/ParseTorg12SellerTitleXml?documentVersion=tovtorg_05_01_02", xmlContent);
+			return PerformHttpRequest<TovTorgSellerTitleInfo>(null, "POST", "/ParseTorg12SellerTitleXml?documentVersion=tovtorg_05_01_03", xmlContent);
 		}
 
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent)

@@ -803,7 +803,10 @@ namespace Diadoc.Api.Proto.Invoicing
       Fraction_10_110 = 5,
             
       [global::ProtoBuf.ProtoEnum(Name=@"Fraction_18_118", Value=6)]
-      Fraction_18_118 = 6
+      Fraction_18_118 = 6,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TaxedByAgent", Value=7)]
+      TaxedByAgent = 7
     }
   
 }

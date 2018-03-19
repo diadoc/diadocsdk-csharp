@@ -45,7 +45,9 @@ namespace Diadoc.Api
 
 		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent)
 		{
-			return PerformHttpRequest<UniversalTransferDocumentSellerTitleInfo>(null, "POST", "/ParseUniversalTransferDocumentSellerTitleXml", xmlContent);
+			var query = new PathAndQueryBuilder("/ParseUniversalTransferDocumentSellerTitleXml");
+			query.AddParameter("documentVersion", "utd_05_01_04");
+			return PerformHttpRequest<UniversalTransferDocumentSellerTitleInfo>(null, "POST", query.BuildPathAndQuery(), xmlContent);
 		}
 
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent)
@@ -55,7 +57,9 @@ namespace Diadoc.Api
 
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent)
 		{
-			return PerformHttpRequest<UniversalCorrectionDocumentSellerTitleInfo>(null, "POST", "/ParseUniversalCorrectionDocumentSellerTitleXml", xmlContent);
+			var query = new PathAndQueryBuilder("/ParseUniversalCorrectionDocumentSellerTitleXml");
+			query.AddParameter("documentVersion", "utd_05_01_04");
+			return PerformHttpRequest<UniversalCorrectionDocumentSellerTitleInfo>(null, "POST", query.BuildPathAndQuery(), xmlContent);
 		}
 
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent)
