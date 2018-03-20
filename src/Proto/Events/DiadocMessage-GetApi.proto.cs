@@ -657,6 +657,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _CancellationInfo; }
       set { _CancellationInfo = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(25, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -1983,6 +1983,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _ErrorMessage; }
       set { _ErrorMessage = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2034,6 +2041,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _Comment; }
       set { _Comment = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2067,6 +2081,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _Comment; }
       set { _Comment = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2093,6 +2114,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _Comment; }
       set { _Comment = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2136,6 +2164,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _Comment; }
       set { _Comment = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2169,6 +2204,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _Comment; }
       set { _Comment = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2193,6 +2235,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _SignedContent; }
       set { _SignedContent = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2217,6 +2266,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _SignedContent; }
       set { _SignedContent = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2279,6 +2335,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _PatchedContentId; }
       set { _PatchedContentId = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(8, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2347,6 +2410,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _SignedContent; }
       set { _SignedContent = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2750,6 +2820,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _SignedContent; }
       set { _SignedContent = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2774,6 +2851,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _SignedContent; }
       set { _SignedContent = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2918,6 +3002,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _Comment; }
       set { _Comment = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
