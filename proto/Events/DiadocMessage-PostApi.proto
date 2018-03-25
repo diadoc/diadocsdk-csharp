@@ -519,6 +519,7 @@ message TemplateDocumentAttachment {
     repeated MetadataItem Metadata = 6;
     optional int32 WorkflowId = 7;
     optional string CustomDocumentId = 8;
+    optional string EditingSettingId = 9;
 }
 
 message UnsignedContent {

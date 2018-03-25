@@ -496,6 +496,8 @@ namespace Diadoc.Api.Proto.Events
 		string Function { get; set; }
 		string Version { get; set; }
 		int WorkflowId { get; set; }
+		string CustomDocumentId { get; set; }
+		string EditingSettingId { get; set; }
 
 		void SetUnsignedContent([MarshalAs(UnmanagedType.IDispatch)] object unsignedContent);
 		void AddMetadataItem([MarshalAs(UnmanagedType.IDispatch)] object metadataItem);
