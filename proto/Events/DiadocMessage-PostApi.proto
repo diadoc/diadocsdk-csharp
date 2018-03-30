@@ -313,6 +313,7 @@ message SignatureVerification {
 	required string InitialDocumentId = 1;
 	required bool IsValid = 2;
 	optional string ErrorMessage = 3;
+	repeated string Labels = 4;
 }
 
 message ResolutionRequestAttachment {
@@ -321,6 +322,7 @@ message ResolutionRequestAttachment {
 	optional string TargetUserId = 3;
 	optional string TargetDepartmentId = 4;
 	optional string Comment = 5;
+	repeated string Labels = 6;
 }
 
 message ResolutionRouteAssignment
@@ -328,11 +330,13 @@ message ResolutionRouteAssignment
 	required string InitialDocumentId = 1;
 	required string RouteId = 2;
 	optional string Comment = 3;
+	repeated string Labels = 4;
 }
 
 message ResolutionRequestCancellationAttachment {
 	required string InitialResolutionRequestId = 1;
 	optional string Comment = 2;
+	repeated string Labels = 3;
 }
 
 message ResolutionRequestDenialCancellationAttachment {
@@ -342,24 +346,28 @@ message ResolutionRequestDenialCancellationAttachment {
 message ResolutionRequestDenialAttachment {
 	required string InitialResolutionRequestId = 1;
 	optional string Comment = 2;
+	repeated string Labels = 3;
 }
 
 message ResolutionAttachment {
 	required string InitialDocumentId = 1;
 	required ResolutionType ResolutionType = 2;
 	optional string Comment = 3;
+	repeated string Labels = 4;
 }
 
 message ReceiptAttachment {
 	required string ParentEntityId = 1;
 	required SignedContent SignedContent = 2;
 	// do not use field #3
+	repeated string Labels = 4;
 }
 
 message CorrectionRequestAttachment {
 	required string ParentEntityId = 1;
 	required SignedContent SignedContent = 2;
 	// do not use field #3
+	repeated string Labels = 4;
 }
 
 message DocumentSignature {
@@ -369,6 +377,7 @@ message DocumentSignature {
 	optional bool IsApprovementSignature = 5 [default = false];
 	optional string SignatureNameOnShelf = 6;
 	optional string PatchedContentId = 7;
+	repeated string Labels = 8;
 }
 
 message DocumentSenderSignature {
@@ -381,6 +390,7 @@ message DocumentSenderSignature {
 message RequestedSignatureRejection {
 	required string ParentEntityId = 1;
 	required SignedContent SignedContent = 2;
+	repeated string Labels = 3;
 }
 
 message SignedContent {
@@ -450,11 +460,13 @@ message MessageToSend {
 message RevocationRequestAttachment {
 	required string ParentEntityId = 1;
 	required SignedContent SignedContent = 2;
+	repeated string Labels = 3;
 }
 
 message XmlSignatureRejectionAttachment {
 	required string ParentEntityId = 1;
 	required SignedContent SignedContent = 2;
+	repeated string Labels = 3;
 }
 
 message RoamingNotificationToPost {
@@ -486,6 +498,7 @@ message ResolutionRouteRemoval {
 	required string ParentEntityId = 1; // EntityId документа, который нужно снять с маршрута согласования
 	required string RouteId = 2; // Идентификатор маршрута, с которого нужно снять документ
 	optional string Comment = 3 [default = ""]; // Текстовый комментарий, ограничение - 256 символов
+	repeated string Labels = 4;
 }
 
 message TemplateToPost {

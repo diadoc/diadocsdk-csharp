@@ -81,6 +81,9 @@ namespace Diadoc.Api.Proto.Events
 		ResolutionRouteAssignmentInfo ResolutionRouteAssignmentInfo { get; }
 		ResolutionRouteRemovalInfo ResolutionRouteRemovalInfo { get; }
 		CancellationInfo CancellationInfo { get; }
+
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -102,6 +105,16 @@ namespace Diadoc.Api.Proto.Events
 		public Com.AttachmentType AttachmentTypeValue
 		{
 			get { return (Com.AttachmentType) ((int) AttachmentType); }
+		}
+
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
 		}
 	}
 
@@ -1103,6 +1116,8 @@ namespace Diadoc.Api.Proto.Events
 		SignedContent SignedContent { get; set; }
 		void SetSignedContent([MarshalAs(UnmanagedType.IDispatch)] object signedContent);
 		void LoadComment(string commentFileName, string signatureFileName);
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -1122,8 +1137,18 @@ namespace Diadoc.Api.Proto.Events
 			SignedContent = new SignedContent
 			{
 				Content = File.ReadAllBytes(commentFileName),
-				Signature = File.ReadAllBytes(signatureFileName),
+				Signature = File.ReadAllBytes(signatureFileName)
 			};
+		}
+
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
 		}
 	}
 
@@ -1134,6 +1159,8 @@ namespace Diadoc.Api.Proto.Events
 		string ParentEntityId { get; set; }
 		SignedContent SignedContent { get; set; }
 		void SetSignedContent([MarshalAs(UnmanagedType.IDispatch)] object signedContent);
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -1147,6 +1174,16 @@ namespace Diadoc.Api.Proto.Events
 		{
 			SignedContent = (SignedContent) signedContent;
 		}
+
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
+		}
 	}
 
 	[ComVisible(true)]
@@ -1156,6 +1193,8 @@ namespace Diadoc.Api.Proto.Events
 		string InitialDocumentId { get; set; }
 		Com.ResolutionType ResolutionTypeValue { get; set; }
 		string Comment { get; set; }
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -1170,6 +1209,16 @@ namespace Diadoc.Api.Proto.Events
 			get { return (Com.ResolutionType) ResolutionType; }
 			set { ResolutionType = (ResolutionType) value; }
 		}
+
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
+		}
 	}
 
 	[ComVisible(true)]
@@ -1181,6 +1230,8 @@ namespace Diadoc.Api.Proto.Events
 		string TargetUserId { get; set; }
 		string TargetDepartmentId { get; set; }
 		string Comment { get; set; }
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -1195,6 +1246,16 @@ namespace Diadoc.Api.Proto.Events
 			get { return (Com.ResolutionRequestType) Type; }
 			set { Type = (ResolutionRequestType) value; }
 		}
+
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
+		}
 	}
 
 	[ComVisible(true)]
@@ -1203,6 +1264,8 @@ namespace Diadoc.Api.Proto.Events
 	{
 		string InitialResolutionRequestId { get; set; }
 		string Comment { get; set; }
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -1212,6 +1275,15 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof (IResolutionRequestCancellationAttachment))]
 	public partial class ResolutionRequestCancellationAttachment : SafeComObject, IResolutionRequestCancellationAttachment
 	{
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
+		}
 	}
 
 	[ComVisible(true)]
@@ -1220,6 +1292,8 @@ namespace Diadoc.Api.Proto.Events
 	{
 		string InitialResolutionRequestId { get; set; }
 		string Comment { get; set; }
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -1229,6 +1303,15 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof (IResolutionRequestDenialAttachment))]
 	public partial class ResolutionRequestDenialAttachment : SafeComObject, IResolutionRequestDenialAttachment
 	{
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
+		}
 	}
 
 	[ComVisible(true)]
@@ -1255,6 +1338,8 @@ namespace Diadoc.Api.Proto.Events
 		string ParentEntityId { get; set; }
 		SignedContent SignedContent { get; set; }
 		void SetSignedContent([MarshalAs(UnmanagedType.IDispatch)] object signedContent);
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -1267,6 +1352,16 @@ namespace Diadoc.Api.Proto.Events
 		public void SetSignedContent(object signedContent)
 		{
 			SignedContent = (SignedContent)signedContent;
+		}
+
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
 		}
 	}
 
@@ -1324,6 +1419,8 @@ namespace Diadoc.Api.Proto.Events
 		string ParentEntityId { get; set; }
 		SignedContent SignedContent { get; set; }
 		void SetSignedContent([MarshalAs(UnmanagedType.IDispatch)] object signedContent);
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -1337,6 +1434,16 @@ namespace Diadoc.Api.Proto.Events
 		{
 			SignedContent = (SignedContent)signedContent;
 		}
+
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
+		}
 	}
 
 	[ComVisible(true)]
@@ -1346,6 +1453,8 @@ namespace Diadoc.Api.Proto.Events
 		string ParentEntityId { get; set; }
 		SignedContent SignedContent { get; set; }
 		void SetSignedContent([MarshalAs(UnmanagedType.IDispatch)] object signedContent);
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -1359,6 +1468,16 @@ namespace Diadoc.Api.Proto.Events
 		{
 			SignedContent = (SignedContent) signedContent;
 		}
+
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
+		}
 	}
 
 	[ComVisible(true)]
@@ -1368,6 +1487,8 @@ namespace Diadoc.Api.Proto.Events
 		string InitialDocumentId { get; set; }
 		string RouteId { get; set; }
 		string Comment { get; set; }
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -1377,6 +1498,15 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof(IResolutionRouteAssignment))]
 	public partial class ResolutionRouteAssignment : SafeComObject, IResolutionRouteAssignment
 	{
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
+		}
 	}
 
 	[ComVisible(true)]
@@ -1386,6 +1516,8 @@ namespace Diadoc.Api.Proto.Events
 		string ParentEntityId { get; set; }
 		string RouteId { get; set; }
 		string Comment { get; set; }
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
 	}
 
 	[ComVisible(true)]
@@ -1395,6 +1527,15 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof(IResolutionRouteRemoval))]
 	public partial class ResolutionRouteRemoval : SafeComObject, IResolutionRouteRemoval
 	{
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
+		}
 	}
 
 	[ComVisible(true)]
