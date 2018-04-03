@@ -64,6 +64,7 @@
     <Compile Include="Com\BilateralDocumentStatus.cs" />
     <Compile Include="Com\CertificateChainStatus.cs" />
     <Compile Include="Com\CounteragentStatus.cs" />
+    <Compile Include="Com\CustomDataPatchOperation.cs" />
     <Compile Include="Com\DocflowStatusSeverity.cs" />
     <Compile Include="Com\DocumentAccessLevel.cs" />
     <Compile Include="Com\DocumentDirection.cs" />
