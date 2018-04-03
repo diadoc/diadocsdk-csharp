@@ -3148,6 +3148,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _EditingSettingId; }
       set { _EditingSettingId = value; }
     }
+
+    private bool _NeedRecipientSignature = (bool)false;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"NeedRecipientSignature", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool NeedRecipientSignature
+    {
+      get { return _NeedRecipientSignature; }
+      set { _NeedRecipientSignature = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
