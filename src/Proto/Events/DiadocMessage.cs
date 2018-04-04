@@ -498,6 +498,7 @@ namespace Diadoc.Api.Proto.Events
 		int WorkflowId { get; set; }
 		string CustomDocumentId { get; set; }
 		string EditingSettingId { get; set; }
+		bool NeedRecipientSignature { get; set; }
 
 		void SetUnsignedContent([MarshalAs(UnmanagedType.IDispatch)] object unsignedContent);
 		void AddMetadataItem([MarshalAs(UnmanagedType.IDispatch)] object metadataItem);
