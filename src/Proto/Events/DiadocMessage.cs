@@ -685,6 +685,8 @@ namespace Diadoc.Api.Proto.Events
 		void AddResolutionRouteAssignment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddResolutoinRouteRemoval([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddRecipientTitle([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddCustomDataPatch([MarshalAs(UnmanagedType.IDispatch)] object editingPatch);
+		void AddEditingPatch([MarshalAs(UnmanagedType.IDispatch)] object editingPatch);
 	}
 
 	[ComVisible(true)]
@@ -782,6 +784,16 @@ namespace Diadoc.Api.Proto.Events
 		public void AddRecipientTitle(object attachment)
 		{
 			RecipientTitles.Add((ReceiptAttachment)attachment);
+		}
+
+		public void AddCustomDataPatch(object editingPatch)
+		{
+			CustomDataPatches.Add((CustomDataPatch)editingPatch);
+		}
+
+		public void AddEditingPatch(object editingPatch)
+		{
+			EditingPatches.Add((CustomDataPatch)editingPatch);
 		}
 	}
 
@@ -1480,6 +1492,30 @@ namespace Diadoc.Api.Proto.Events
 		public void AddLabel(string label)
 		{
 			Labels.Add(label);
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("B0D2DEF2-E5B3-41FA-9D2C-10E464000141")]
+	public interface ICustomDataPatch
+	{
+		string ParentEntityId { get; set; }
+		Com.CustomDataPatchOperation OperationValue { get; set; }
+		string Key { get; set; }
+		string Value { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.CustomDataPatch")]
+	[Guid("784FE09D-CD92-433D-A15C-9E2F4D5E16D5")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ICustomDataPatch))]
+	public partial class CustomDataPatch : SafeComObject, ICustomDataPatch
+	{
+		public Com.CustomDataPatchOperation OperationValue
+		{
+			get { return (Com.CustomDataPatchOperation)((int)Operation); }
+			set { Operation = (CustomDataPatchOperation)((int)value); }
 		}
 	}
 

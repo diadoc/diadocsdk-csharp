@@ -213,13 +213,21 @@ namespace Diadoc.Api.Tests
 				typeof(Com.DocumentMetadataSource),
 				typeof(DocumentMetadataSource));
 		}
-		
+
 		[Test]
 		public void Test_OrganizationInvoiceFormatVersion()
 		{
 			AssertEnumsAreCompatible(
 				typeof(Com.OrganizationInvoiceFormatVersion),
 				typeof(OrganizationInvoiceFormatVersion));
+		}
+
+		[Test]
+		public void Test_CustomDataPatchOperation()
+		{
+			AssertEnumsAreCompatible(
+				typeof(Com.CustomDataPatchOperation),
+				typeof(CustomDataPatchOperation));
 		}
 
 		private static void AssertEnumsAreCompatible(Type comEnumType, Type protoEnumType)

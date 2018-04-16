@@ -307,6 +307,7 @@ message MessagePatchToPost {
 	repeated ReceiptAttachment UniversalTransferDocumentBuyerTitles = 20;
 	repeated ResolutionRouteRemoval ResolutionRouteRemovals = 21;
 	repeated ReceiptAttachment RecipientTitles = 22;
+	repeated CustomDataPatch EditingPatches = 23;
 }
 
 message SignatureVerification {
@@ -502,39 +503,39 @@ message ResolutionRouteRemoval {
 }
 
 message TemplateToPost {
-  required string FromBoxId = 1;
-  required string ToBoxId = 2;
-  required string MessageFromBoxId = 3;
-  required string MessageToBoxId = 4;
-  optional string MessageToDepartmentId = 5;
-  repeated TemplateDocumentAttachment DocumentAttachments = 6;
+	required string FromBoxId = 1;
+	required string ToBoxId = 2;
+	required string MessageFromBoxId = 3;
+	required string MessageToBoxId = 4;
+	optional string MessageToDepartmentId = 5;
+	repeated TemplateDocumentAttachment DocumentAttachments = 6;
 }
 
 message TemplateDocumentAttachment {
-    required UnsignedContent UnsignedContent = 1;
-    optional string Comment = 2;
-    required string TypeNamedId = 3;
-    optional string Function = 4;
-    optional string Version = 5;
-    repeated MetadataItem Metadata = 6;
-    optional int32 WorkflowId = 7;
-    optional string CustomDocumentId = 8;
-    optional string EditingSettingId = 9;
-    optional bool NeedRecipientSignature = 10 [default = false];
+	required UnsignedContent UnsignedContent = 1;
+	optional string Comment = 2;
+	required string TypeNamedId = 3;
+	optional string Function = 4;
+	optional string Version = 5;
+	repeated MetadataItem Metadata = 6;
+	optional int32 WorkflowId = 7;
+	optional string CustomDocumentId = 8;
+	optional string EditingSettingId = 9;
+	optional bool NeedRecipientSignature = 10 [default = false];
 }
 
 message UnsignedContent {
-    optional bytes Content = 1;
-    optional string NameOnShelf = 2;
+	optional bytes Content = 1;
+	optional string NameOnShelf = 2;
 }
 
 message TemplateTransformationToPost {
-  required string BoxId = 1;
-  required string TemplateId = 2;
-  repeated DocumentTransformation DocumentTransformations = 3;
+	required string BoxId = 1;
+	required string TemplateId = 2;
+	repeated DocumentTransformation DocumentTransformations = 3;
 }
 
 message DocumentTransformation {
-  required string DocumentId = 1;
-  optional string CustomDocumentId = 2;
+	required string DocumentId = 1;
+	optional string CustomDocumentId = 2;
 }

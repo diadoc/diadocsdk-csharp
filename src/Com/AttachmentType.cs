@@ -59,6 +59,7 @@ namespace Diadoc.Api.Com
 		ResolutionRouteAssignmentAttachment = 66,
 		ResolutionRouteRemovalAttachment = 67,
 		Title = 68,
-		Cancellation = 69
+		Cancellation = 69,
+		Edition = 71
 	}
 }

@@ -900,7 +900,10 @@ namespace Diadoc.Api.Proto.Events
       Title = 68,
             
       [global::ProtoBuf.ProtoEnum(Name=@"Cancellation", Value=69)]
-      Cancellation = 69
+      Cancellation = 69,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Edition", Value=71)]
+      Edition = 71
     }
   
 }

@@ -1950,6 +1950,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _RecipientTitles; }
     }
   
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDataPatch> _EditingPatches = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDataPatch>();
+    [global::ProtoBuf.ProtoMember(23, Name=@"EditingPatches", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDataPatch> EditingPatches
+    {
+      get { return _EditingPatches; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
