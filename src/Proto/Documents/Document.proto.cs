@@ -618,6 +618,15 @@ namespace Diadoc.Api.Proto.Documents
       get { return _AmendmentRequestMetadata; }
       set { _AmendmentRequestMetadata = value; }
     }
+
+    private Diadoc.Api.Proto.Documents.Origin _Origin = null;
+    [global::ProtoBuf.ProtoMember(72, IsRequired = false, Name=@"Origin", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.Origin Origin
+    {
+      get { return _Origin; }
+      set { _Origin = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -733,6 +742,30 @@ namespace Diadoc.Api.Proto.Documents
     {
       get { return _ReceiptStatus; }
       set { _ReceiptStatus = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"Origin")]
+  public partial class Origin : global::ProtoBuf.IExtensible
+  {
+    public Origin() {}
+    
+    private Diadoc.Api.Proto.Documents.LetterType _LetterType;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"LetterType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.LetterType LetterType
+    {
+      get { return _LetterType; }
+      set { _LetterType = value; }
+    }
+    private string _LetterId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"LetterId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string LetterId
+    {
+      get { return _LetterId; }
+      set { _LetterId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -889,6 +922,23 @@ namespace Diadoc.Api.Proto.Documents
             
       [global::ProtoBuf.ProtoEnum(Name=@"InvalidRecipientSignature", Value=5)]
       InvalidRecipientSignature = 5
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"LetterType")]
+    public enum LetterType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Unknown", Value=0)]
+      Unknown = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Letter", Value=1)]
+      Letter = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Draft", Value=2)]
+      Draft = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Template", Value=3)]
+      Template = 3
     }
   
 }

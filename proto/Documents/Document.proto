@@ -86,6 +86,7 @@ message Document {
 	required ConfirmationMetadata ConfirmationMetadata = 69;
 	required RecipientResponseStatus RecipientResponseStatus = 70 [default = RecipientResponseStatusUnknown];
 	required AmendmentRequestMetadata AmendmentRequestMetadata = 71;
+	optional Origin Origin = 72;
 }
 
 message ResolutionStatus {
@@ -169,4 +170,16 @@ enum RecipientResponseStatus {
 	WithRecipientSignature = 3;
 	RecipientSignatureRequestRejected = 4;
 	InvalidRecipientSignature = 5;
+}
+
+message Origin {
+	required LetterType LetterType = 1;
+	required string LetterId = 2;
+}
+
+enum LetterType {
+	Unknown = 0;
+	Letter = 1;
+	Draft = 2;
+	Template = 3;
 }
