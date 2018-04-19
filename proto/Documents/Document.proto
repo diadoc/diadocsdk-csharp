@@ -173,13 +173,13 @@ enum RecipientResponseStatus {
 }
 
 message Origin {
-	required LetterType LetterType = 1;
-	required string LetterId = 2;
+	required MessageType MessageType = 1;
+	required string MessageId = 2;
 }
 
-enum LetterType {
+enum MessageType {
 	Unknown = 0;
-	Letter = 1;
+	Message = 1;
 	Draft = 2;
 	Template = 3;
 }
