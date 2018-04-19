@@ -753,19 +753,19 @@ namespace Diadoc.Api.Proto.Documents
   {
     public Origin() {}
     
-    private Diadoc.Api.Proto.Documents.LetterType _LetterType;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"LetterType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Diadoc.Api.Proto.Documents.LetterType LetterType
+    private Diadoc.Api.Proto.Documents.MessageType _MessageType;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"MessageType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.MessageType MessageType
     {
-      get { return _LetterType; }
-      set { _LetterType = value; }
+      get { return _MessageType; }
+      set { _MessageType = value; }
     }
-    private string _LetterId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"LetterId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string LetterId
+    private string _MessageId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"MessageId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string MessageId
     {
-      get { return _LetterId; }
-      set { _LetterId = value; }
+      get { return _MessageId; }
+      set { _MessageId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -924,15 +924,15 @@ namespace Diadoc.Api.Proto.Documents
       InvalidRecipientSignature = 5
     }
   
-    [global::ProtoBuf.ProtoContract(Name=@"LetterType")]
-    public enum LetterType
+    [global::ProtoBuf.ProtoContract(Name=@"MessageType")]
+    public enum MessageType
     {
             
       [global::ProtoBuf.ProtoEnum(Name=@"Unknown", Value=0)]
       Unknown = 0,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"Letter", Value=1)]
-      Letter = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"Message", Value=1)]
+      Message = 1,
             
       [global::ProtoBuf.ProtoEnum(Name=@"Draft", Value=2)]
       Draft = 2,
