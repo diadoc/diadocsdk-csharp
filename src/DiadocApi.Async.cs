@@ -13,6 +13,7 @@ using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
+using DocumentType = Diadoc.Api.Proto.DocumentType;
 
 namespace Diadoc.Api
 {
@@ -373,6 +374,14 @@ namespace Diadoc.Api
 		{
 			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
 			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForBuyerAsync(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+		}
+
+		public Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
+		{
+			if (userContractData == null) throw new ArgumentNullException("userContractData");
+			if (senderTitleMessageId == null) throw new ArgumentNullException("senderTitleMessageId");
+			if (senderTitleAttachmentId == null) throw new ArgumentNullException("senderTitleAttachmentId");
+			return diadocHttpApi.GenerateRecipientTitleXmlAsync(authToken, boxId, senderTitleMessageId, senderTitleAttachmentId, userContractData);
 		}
 
 		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)

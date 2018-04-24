@@ -13,6 +13,7 @@ using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 using Diadoc.Api.Proto.KeyValueStorage;
+using DocumentType = Diadoc.Api.Proto.DocumentType;
 
 #if !NET35
 using System.Threading.Tasks;
@@ -83,6 +84,7 @@ namespace Diadoc.Api
 		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken, UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(string authToken, UniversalCorrectionDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+		GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null);
@@ -220,6 +222,7 @@ namespace Diadoc.Api
 		Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForSellerAsync(string authToken, UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
 		Task<GeneratedFile> GenerateUniversalCorrectionDocumentXmlForSellerAsync(string authToken, UniversalCorrectionDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
 		Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForBuyerAsync(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+		Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Task<Template> GetTemplateAsync(string authToken, string boxId, string templateId, string entityId = null);
@@ -299,6 +302,7 @@ namespace Diadoc.Api
 		Task<GetDocumentTypesResponse> GetDocumentTypesAsync(string authToken, string boxId);
 		Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, string nameOnShelf);
 		Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, byte[] content);
+		[Obsolete("In order to download XSD schema use the link provided in DocumentTitle.XsdUrl")]
 		Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex);
 #endif
 	}

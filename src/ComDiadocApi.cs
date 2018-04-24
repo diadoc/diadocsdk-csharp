@@ -100,6 +100,9 @@ namespace Diadoc.Api
 		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 
+		GeneratedFile GenerateRecipientTitleXml(string authToken,
+			string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
+
 		InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId,
 			string entityId);
 
@@ -229,6 +232,7 @@ namespace Diadoc.Api
 		GetDocumentTypesResponse GetDocumentTypes(string token, string boxId);
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, string nameOnShelf);
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content);
+		[Obsolete("In order to download XSD schema use the link provided in DocumentTitle.XsdUrl")]
 		FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex);
 		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template);
 		Message TransformTemplateToMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object templateTransformation);
@@ -548,6 +552,11 @@ namespace Diadoc.Api
 			string authToken, object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			return diadoc.GenerateUniversalTransferDocumentXmlForBuyer(authToken, (UniversalTransferDocumentBuyerTitleInfo)buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+		}
+
+		public GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
+		{
+			return diadoc.GenerateRecipientTitleXml(authToken, boxId, senderTitleMessageId, senderTitleAttachmentId, userContractData, documentVersion);
 		}
 
 		public InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId,

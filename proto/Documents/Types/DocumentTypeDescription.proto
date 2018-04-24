@@ -39,6 +39,7 @@ message DocumentWorkflow {
 message DocumentTitle {
 	required bool IsFormal = 1;
 	optional string XsdUrl = 2;
+	optional string UserDataXsdUrl = 5;
 	repeated DocumentMetadataItem MetadataItems = 3;
 	repeated DocumentMetadataItem EncryptedMetadataItems = 4;
 }

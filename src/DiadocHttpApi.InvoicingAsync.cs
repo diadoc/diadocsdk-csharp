@@ -133,6 +133,19 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
+		public async Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GenerateRecipientTitleXml");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("senderTitleMessageId", senderTitleMessageId);
+			queryBuilder.AddParameter("senderTitleAttachmentId", senderTitleAttachmentId);
+			queryBuilder.AddParameter("documentVersion", documentVersion);
+
+			var request = BuildHttpRequest(authToken, "POST", queryBuilder.BuildPathAndQuery(), userContractData);
+			var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
+			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
+		}
+
 		public async Task<bool> CanSendInvoiceAsync(string authToken, string boxId, byte[] certificateBytes)
 		{
 			var queryString = string.Format("/CanSendInvoice?boxId={0}", boxId);
