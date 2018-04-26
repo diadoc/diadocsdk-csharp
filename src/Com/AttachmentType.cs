@@ -51,6 +51,8 @@ namespace Diadoc.Api.Com
 		UniversalTransferDocument = 41,
 		UniversalTransferDocumentBuyerTitle = 42,
 		UniversalTransferDocumentRevision = 45,
+		MesNotification = 46,
+		MesNotificationRecipientTitle = 47,
 		UniversalCorrectionDocument = 49,
 		UniversalCorrectionDocumentRevision = 50,
 		UniversalCorrectionDocumentBuyerTitle = 51,
