@@ -193,6 +193,15 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _XsdUrl; }
       set { _XsdUrl = value; }
     }
+
+    private string _UserDataXsdUrl = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"UserDataXsdUrl", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string UserDataXsdUrl
+    {
+      get { return _UserDataXsdUrl; }
+      set { _UserDataXsdUrl = value; }
+    }
     private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentMetadataItem> _MetadataItems = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentMetadataItem>();
     [global::ProtoBuf.ProtoMember(3, Name=@"MetadataItems", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentMetadataItem> MetadataItems

@@ -433,6 +433,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
+		public GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
+		{
+			if (userContractData == null) throw new ArgumentNullException("userContractData");
+			if (senderTitleMessageId == null) throw new ArgumentNullException("senderTitleMessageId");
+			if (senderTitleAttachmentId == null) throw new ArgumentNullException("senderTitleAttachmentId");
+			return diadocHttpApi.GenerateRecipientTitleXml(authToken, boxId, senderTitleMessageId, senderTitleAttachmentId, userContractData);
+		}
+
 		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

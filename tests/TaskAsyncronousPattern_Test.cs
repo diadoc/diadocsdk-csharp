@@ -16,7 +16,7 @@ namespace Diadoc.Api.Tests
 		{
 			Assert.That(method.Name, Is.StringEnding("Async"), method.ToString());
 		}
-		
+
 		[TestCaseSource("GetAllTapMethods")]
 		public void AllTapMethodsMustReturnTask(MethodInfo method)
 		{
@@ -75,8 +75,8 @@ namespace Diadoc.Api.Tests
 			var result = diadocApiTypes
 				.SelectMany(x => x.GetMethods()
 					.Where(y => y.ReturnType.IsSubclassOf(typeof(Task))
-						|| y.ReturnType == typeof(Task)
-						|| y.Name.EndsWith("Async", true, CultureInfo.InvariantCulture)));
+								|| y.ReturnType == typeof(Task)
+								|| y.Name.EndsWith("Async", true, CultureInfo.InvariantCulture)));
 			return result;
 		}
 
