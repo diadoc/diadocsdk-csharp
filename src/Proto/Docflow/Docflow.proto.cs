@@ -194,6 +194,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _OutboundUniversalTransferDocumentDocflow; }
       set { _OutboundUniversalTransferDocumentDocflow = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
+    {
+      get { return _RoamingNotification; }
+      set { _RoamingNotification = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -258,6 +267,30 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _StatusHint; }
       set { _StatusHint = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RoamingNotification")]
+  public partial class RoamingNotification : global::ProtoBuf.IExtensible
+  {
+    public RoamingNotification() {}
+    
+    private Diadoc.Api.Proto.Docflow.Entity _Notification;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Notification", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Docflow.Entity Notification
+    {
+      get { return _Notification; }
+      set { _Notification = value; }
+    }
+    private bool _IsSuccess;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"IsSuccess", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool IsSuccess
+    {
+      get { return _IsSuccess; }
+      set { _IsSuccess = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
