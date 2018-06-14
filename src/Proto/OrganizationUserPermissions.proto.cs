@@ -75,6 +75,13 @@ namespace Diadoc.Api.Proto
       get { return _JobTitle; }
       set { _JobTitle = value; }
     }
+    private bool _CanCreateDocuments;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"CanCreateDocuments", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool CanCreateDocuments
+    {
+      get { return _CanCreateDocuments; }
+      set { _CanCreateDocuments = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
