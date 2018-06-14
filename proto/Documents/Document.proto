@@ -87,6 +87,7 @@ message Document {
 	required RecipientResponseStatus RecipientResponseStatus = 70 [default = RecipientResponseStatusUnknown];
 	required AmendmentRequestMetadata AmendmentRequestMetadata = 71;
 	optional Origin Origin = 72;
+	optional string EditingSettingId = 73 [default = ""];
 }
 
 message ResolutionStatus {

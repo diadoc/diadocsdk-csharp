@@ -17,4 +17,5 @@ message OrganizationUserPermissions {
 	required bool CanRequestResolutions = 8;
 	repeated string SelectedDepartmentIds = 9;
 	optional string JobTitle = 10;
+	required bool CanCreateDocuments = 11;
 }

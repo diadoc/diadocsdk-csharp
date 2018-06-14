@@ -627,6 +627,15 @@ namespace Diadoc.Api.Proto.Documents
       get { return _Origin; }
       set { _Origin = value; }
     }
+
+    private string _EditingSettingId = "";
+    [global::ProtoBuf.ProtoMember(73, IsRequired = false, Name=@"EditingSettingId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string EditingSettingId
+    {
+      get { return _EditingSettingId; }
+      set { _EditingSettingId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
