@@ -237,6 +237,15 @@ namespace Diadoc.Api.Proto
       get { return _IsForeign; }
       set { _IsForeign = value; }
     }
+
+    private bool _HasCertificateToSign = default(bool);
+    [global::ProtoBuf.ProtoMember(26, IsRequired = false, Name=@"HasCertificateToSign", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool HasCertificateToSign
+    {
+      get { return _HasCertificateToSign; }
+      set { _HasCertificateToSign = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
