@@ -9,6 +9,7 @@
 
 // Generated from: Events/DiadocMessage-PostApi.proto
 // Note: requires additional types generated from: DocumentId.proto
+// Note: requires additional types generated from: LockMode.proto
 // Note: requires additional types generated from: CustomDataItem.proto
 // Note: requires additional types generated from: Invoicing/Signer.proto
 // Note: requires additional types generated from: Invoicing/ExtendedSigner.proto
@@ -276,6 +277,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _DocumentAttachments; }
     }
   
+
+    private Diadoc.Api.Proto.LockMode _LockMode = Diadoc.Api.Proto.LockMode.None;
+    [global::ProtoBuf.ProtoMember(35, IsRequired = false, Name=@"LockMode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.LockMode.None)]
+    public Diadoc.Api.Proto.LockMode LockMode
+    {
+      get { return _LockMode; }
+      set { _LockMode = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -13,6 +13,7 @@
 // Note: requires additional types generated from: CustomDataItem.proto
 // Note: requires additional types generated from: DocumentType.proto
 // Note: requires additional types generated from: DocumentDirection.proto
+// Note: requires additional types generated from: LockMode.proto
 // Note: requires additional types generated from: Documents/AcceptanceCertificateDocument.proto
 // Note: requires additional types generated from: Documents/BilateralDocument.proto
 // Note: requires additional types generated from: Documents/InvoiceDocument.proto
@@ -635,6 +636,13 @@ namespace Diadoc.Api.Proto.Documents
     {
       get { return _EditingSettingId; }
       set { _EditingSettingId = value; }
+    }
+    private Diadoc.Api.Proto.LockMode _LockMode;
+    [global::ProtoBuf.ProtoMember(74, IsRequired = true, Name=@"LockMode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.LockMode LockMode
+    {
+      get { return _LockMode; }
+      set { _LockMode = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

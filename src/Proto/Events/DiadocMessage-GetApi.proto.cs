@@ -10,6 +10,7 @@
 // Generated from: Events/DiadocMessage-GetApi.proto
 // Note: requires additional types generated from: Content.proto
 // Note: requires additional types generated from: DocumentId.proto
+// Note: requires additional types generated from: LockMode.proto
 // Note: requires additional types generated from: Documents/Document.proto
 // Note: requires additional types generated from: Events/CancellationInfo.proto
 // Note: requires additional types generated from: Events/ResolutionInfo.proto
@@ -249,6 +250,13 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _PacketIsLocked; }
       set { _PacketIsLocked = value; }
+    }
+    private Diadoc.Api.Proto.LockMode _LockMode;
+    [global::ProtoBuf.ProtoMember(21, IsRequired = true, Name=@"LockMode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.LockMode LockMode
+    {
+      get { return _LockMode; }
+      set { _LockMode = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
