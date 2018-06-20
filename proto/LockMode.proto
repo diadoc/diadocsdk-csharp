@@ -1,0 +1,9 @@
+package Diadoc.Api.Proto;
+
+enum LockMode
+{
+    Unknown = 0;
+    None = 1;
+    Send = 2;
+    Full = 3;
+}

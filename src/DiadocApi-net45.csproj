@@ -296,6 +296,7 @@
     <Compile Include="Proto\TimeBasedFilter.proto.cs" />
     <Compile Include="Proto\Timestamp.proto.cs" />
     <Compile Include="Proto\User.proto.cs" />
+    <Compile Include="Proto\LockMode.proto.cs" />
     <Compile Include="SafeComObject.cs" />
   </ItemGroup>
   <ItemGroup>

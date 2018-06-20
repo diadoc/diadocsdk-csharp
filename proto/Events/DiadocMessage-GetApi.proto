@@ -6,6 +6,7 @@
 
 import "Content.proto";
 import "DocumentId.proto";
+import "LockMode.proto";
 import "Documents/Document.proto";
 import "Events/CancellationInfo.proto";
 import "Events/ResolutionInfo.proto";
@@ -47,6 +48,7 @@ message Message {
 	optional string ProxyBoxId = 18;
 	optional string ProxyTitle = 19;
 	optional bool PacketIsLocked = 20 [default = false];
+	required LockMode LockMode = 21 [default = None];
 }
 
 message Template {

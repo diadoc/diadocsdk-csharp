@@ -3,6 +3,7 @@ import "DocumentId.proto";
 import "CustomDataItem.proto";
 import "DocumentType.proto";
 import "DocumentDirection.proto";
+import "LockMode.proto";
 import "Documents/AcceptanceCertificateDocument.proto";
 import "Documents/BilateralDocument.proto";
 import "Documents/InvoiceDocument.proto";
@@ -88,6 +89,7 @@ message Document {
 	required AmendmentRequestMetadata AmendmentRequestMetadata = 71;
 	optional Origin Origin = 72;
 	optional string EditingSettingId = 73 [default = ""];
+	required LockMode LockMode = 74 [default = None];
 }
 
 message ResolutionStatus {
