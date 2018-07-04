@@ -38,6 +38,8 @@ message Docflow
 
 	optional InboundUniversalTransferDocumentDocflow InboundUniversalTransferDocumentDocflow = 18; // for UniversalTransferDocument, UniversalTransferDocumentRevision, UniversalCorrectionDocument
 	optional OutboundUniversalTransferDocumentDocflow OutboundUniversalTransferDocumentDocflow = 19; // for UniversalTransferDocument, UniversalTransferDocumentRevision, UniversalCorrectionDocument
+    
+	optional RoamingNotification RoamingNotification = 20;
 }
 
 message DocflowStatus
@@ -60,4 +62,10 @@ enum DocflowStatusSeverity
 	Success = 2;
 	Warning = 3;
 	Error = 4;
+}
+
+message RoamingNotification
+{
+	required Entity Notification = 1;
+	required bool IsSuccess = 2;
 }

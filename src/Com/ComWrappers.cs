@@ -407,6 +407,7 @@ namespace Diadoc.Api.Proto.Docflow
 		ReadonlyList CustomDataList { get; }
 		InboundUniversalTransferDocumentDocflow InboundUniversalTransferDocumentDocflow { get; }
 		OutboundUniversalTransferDocumentDocflow OutboundUniversalTransferDocumentDocflow { get; }
+		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]
@@ -1636,6 +1637,26 @@ namespace Diadoc.Api.Proto
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IAcquireCounteragentResult))]
 	public partial class AcquireCounteragentResult : SafeComObject, IAcquireCounteragentResult
+	{
+	}
+}
+
+namespace Diadoc.Api.Proto.Docflow
+{
+	[ComVisible(true)]
+	[Guid("D5D0DC8C-9687-4621-A33B-AD7D16F48147")]
+	public interface IRoamingNotification
+	{
+		Entity Notification { get; }
+		bool IsSuccess { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.RoamingNotification")]
+	[Guid("286E2BEF-DE64-422D-885F-27299FFD713C")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IRoamingNotification))]
+	public partial class RoamingNotification : SafeComObject, IRoamingNotification
 	{
 	}
 }
