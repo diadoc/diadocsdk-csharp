@@ -948,8 +948,8 @@ namespace Diadoc.Api.Proto.Documents
       [global::ProtoBuf.ProtoEnum(Name=@"Unknown", Value=0)]
       Unknown = 0,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"Message", Value=1)]
-      Message = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"Letter", Value=1)]
+      Letter = 1,
             
       [global::ProtoBuf.ProtoEnum(Name=@"Draft", Value=2)]
       Draft = 2,

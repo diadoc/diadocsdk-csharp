@@ -1676,24 +1676,22 @@ namespace Diadoc.Api.Proto
 	public partial class AcquireCounteragentResult : SafeComObject, IAcquireCounteragentResult
 	{
 	}
-}
 
-namespace Diadoc.Api.Proto.Docflow
-{
 	[ComVisible(true)]
-	[Guid("D5D0DC8C-9687-4621-A33B-AD7D16F48147")]
-	public interface IRoamingNotification
+	[Guid("2AEC9CF5-1D41-4127-8252-C2DA82085BC1")]
+	public interface IFullVersion
 	{
-		Entity Notification { get; }
-		bool IsSuccess { get; }
+		string TypeNamedId { get; }
+		string Function { get; }
+		string Version { get; }
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.RoamingNotification")]
-	[Guid("286E2BEF-DE64-422D-885F-27299FFD713C")]
+	[ProgId("Diadoc.Api.FullVersion")]
+	[Guid("701A11AC-8919-4000-A591-542A680C3EEE")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof(IRoamingNotification))]
-	public partial class RoamingNotification : SafeComObject, IRoamingNotification
+	[ComDefaultInterface(typeof(IFullVersion))]
+	public partial class FullVersion : SafeComObject, IFullVersion
 	{
 	}
 }

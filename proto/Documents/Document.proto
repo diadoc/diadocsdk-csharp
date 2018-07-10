@@ -182,7 +182,7 @@ message Origin {
 
 enum MessageType {
 	Unknown = 0;
-	Message = 1;
+	Letter = 1;
 	Draft = 2;
 	Template = 3;
 }

@@ -1,0 +1,104 @@
+import "Timestamp.proto";
+import "Documents/Document.proto";
+import "Docflow/AttachmentV3.proto";
+import "Docflow/RoamingNotification.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message DocflowV3
+{
+	required SenderTitleDocflow SenderTitle = 1;
+	optional ConfirmationDocflow Confirmation = 2;
+	optional ProxyResponseDocflow ProxyResponse = 3;
+	optional ReceiptDocflowV3 RecipientReceipt = 4;
+	optional RecipientResponseDocflow RecipientResponse = 5;
+	optional AmendmentRequestDocflow AmendmentRequest = 6;
+	optional RevocationDocflowV3 Revocation = 7;
+}
+
+message SenderTitleDocflow
+{
+	required bool IsFinished = 1;
+	required SignedAttachmentV3 Attachment = 2;
+	optional Timestamp SentAt = 3;
+	optional Timestamp DeliveredAt = 4;
+	optional RoamingNotification RoamingNotification = 5;
+	required Documents.SenderSignatureStatus SenderSignatureStatus = 6;
+}
+
+message ConfirmationDocflow
+{
+	required bool IsFinished = 1;
+	optional SignedAttachmentV3 ConfirmationAttachment = 2;
+	optional Timestamp ConfirmedAt = 3;
+	optional ReceiptDocflowV3 Receipt = 4;
+}
+
+message ProxyResponseDocflow
+{
+	required bool IsFinished = 1;
+	optional SignatureV3 Signature = 2;
+	optional SignatureRejectionDocflow Rejection = 3;
+	required Documents.ProxySignatureStatus ProxySignatureStatus = 4;
+}
+
+message SignatureRejectionDocflow
+{
+	required SignedAttachmentV3 SignatureRejection = 1;
+	required bool IsFormal = 2;
+	optional Timestamp DeliveredAt = 3;
+}
+
+message RecipientResponseDocflow
+{
+	required bool IsFinished = 1;
+	optional SignatureV3 Signature = 2;
+	optional SignedAttachmentV3 RecipientTitle = 3;
+	optional SignatureRejectionDocflow Rejection = 4;
+	optional Timestamp SentAt = 5;
+	optional Timestamp DeliveredAt = 6;
+	required Documents.RecipientResponseStatus RecipientResponseStatus = 7;
+}
+
+message AmendmentRequestDocflow
+{
+	required bool IsFinished = 1;
+	required SignedAttachmentV3 AmendmentRequest = 2;
+	optional Timestamp SentAt = 3;
+	optional Timestamp DeliveredAt = 4;
+	optional ReceiptDocflowV3 Receipt = 5;
+	required int32 AmendmentFlags = 6;
+}
+
+message RevocationDocflowV3
+{
+	required bool IsFinished = 1;
+	required RevocationRequestDocflow RevocationRequest = 2;
+	optional RevocationResponseDocflow RevocationResponse = 3;
+	required string InitiatorBoxId = 4;
+	required Documents.RevocationStatus RevocationStatus = 5;
+}
+
+message RevocationRequestDocflow
+{
+	required SignedAttachmentV3 RevocationRequest = 1;
+	optional Timestamp SentAt = 2;
+	optional Timestamp DeliveredAt = 3;
+	optional RoamingNotification RoamingNotification = 4;
+}
+
+message RevocationResponseDocflow
+{
+	optional SignatureV3 RecipientSignature = 1;
+	optional SignatureRejectionDocflow SignatureRejection = 2;
+}
+
+message ReceiptDocflowV3
+{
+	required bool IsFinished = 1;
+	optional SignedAttachmentV3 ReceiptAttachment = 2;
+	optional Timestamp SentAt = 3;
+	optional Timestamp DeliveredAt = 4;
+	optional ConfirmationDocflow Confirmation = 5;
+	required Documents.GeneralReceiptStatus Status = 6;
+}

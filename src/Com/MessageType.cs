@@ -10,7 +10,7 @@ namespace Diadoc.Api.Com
 	public enum MessageType
 	{
 		Unknown = Diadoc.Api.Proto.Documents.MessageType.Unknown,
-		Message = Diadoc.Api.Proto.Documents.MessageType.Message,
+		Letter = Diadoc.Api.Proto.Documents.MessageType.Letter,
 		Draft = Diadoc.Api.Proto.Documents.MessageType.Draft,
 		Template = Diadoc.Api.Proto.Documents.MessageType.Template,
 	}

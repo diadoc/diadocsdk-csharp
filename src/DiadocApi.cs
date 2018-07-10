@@ -34,6 +34,7 @@ namespace Diadoc.Api
 		{
 			if (diadocHttpApi == null) throw new ArgumentNullException("diadocHttpApi");
 			this.diadocHttpApi = diadocHttpApi;
+			Docflow = new DocflowApi(diadocHttpApi.Docflow);
 		}
 
 		/// <summary>
@@ -43,6 +44,8 @@ namespace Diadoc.Api
 		{
 			get { return diadocHttpApi.HttpClient.UseSystemProxy; }
 		}
+
+		public IDocflowApi Docflow { get; }
 
 		public void SetProxyUri([CanBeNull] string uri)
 		{
