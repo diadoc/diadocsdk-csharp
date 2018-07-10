@@ -27,10 +27,14 @@ namespace Diadoc.Api
 			HttpClient = httpClient;
 			this.crypt = crypt;
 			this.httpSerializer = httpSerializer;
+			Docflow = new DocflowHttpApi(this);
 		}
 
 		[NotNull]
 		public IHttpClient HttpClient { get; private set; }
+
+		[NotNull]
+		public DocflowHttpApi Docflow { get; private set; }
 
 		[NotNull]
 		protected byte[] PerformHttpRequest([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
