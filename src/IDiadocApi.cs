@@ -28,6 +28,8 @@ namespace Diadoc.Api
 		/// </summary>
 		bool UsingSystemProxy { get; }
 
+		IDocflowApi Docflow { get; }
+
 		void SetProxyUri([CanBeNull] string uri);
 		void EnableSystemProxyUsage();
 		void DisableSystemProxyUsage();
