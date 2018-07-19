@@ -37,7 +37,7 @@ namespace Diadoc.Api
 			return Encoding.UTF8.GetString(httpResponse);
 		}
 
-	public string Authenticate(byte[] certificateBytes, bool useLocalSystemStorage = false)
+		public string Authenticate(byte[] certificateBytes, bool useLocalSystemStorage = false)
 		{
 			return PerformHttpRequest(null, "POST", "/Authenticate", certificateBytes,
 				responseContent => Convert.ToBase64String(crypt.Decrypt(responseContent, useLocalSystemStorage)));
