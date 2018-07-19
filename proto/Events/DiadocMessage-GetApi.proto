@@ -61,6 +61,7 @@ message Template {
     repeated Entity Entities = 7;
     optional bool IsDeleted = 8 [default = false];
     optional string MessageToDepartmentId = 9;
+    required LockMode LockMode = 10;
 }
 
 message MessagePatch {

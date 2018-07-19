@@ -511,6 +511,7 @@ message TemplateToPost {
 	required string MessageToBoxId = 4;
 	optional string MessageToDepartmentId = 5;
 	repeated TemplateDocumentAttachment DocumentAttachments = 6;
+	optional LockMode LockMode = 7 [default = None];
 }
 
 message TemplateDocumentAttachment {
