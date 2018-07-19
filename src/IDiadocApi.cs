@@ -174,6 +174,7 @@ namespace Diadoc.Api
 
 		Task<string> AuthenticateAsync(string login, string password, string key = null, string id = null);
 		Task<string> AuthenticateByKeyAsync([NotNull] string key, [NotNull] string id);
+		Task<string> AuthenticateBySidAsync([NotNull] string sid);
 		Task<string> AuthenticateAsync(byte[] certificateBytes, bool useLocalSystemStorage = false);
 		Task<string> AuthenticateAsync(string thumbprint, bool useLocalSystemStorage = false);
 		Task<string> AuthenticateWithKeyAsync(string thumbprint, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true);

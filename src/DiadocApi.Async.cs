@@ -31,6 +31,12 @@ namespace Diadoc.Api
 			return diadocHttpApi.AuthenticateByKeyAsync(key, id);
 		}
 
+		public Task<string> AuthenticateBySidAsync([NotNull] string sid)
+		{
+			if (sid == null) throw new ArgumentNullException("sid");
+			return diadocHttpApi.AuthenticateBySidAsync(sid);
+		}
+
 		public Task<string> AuthenticateAsync(byte[] certificateBytes, bool useLocalSystemStorage = false)
 		{
 			if (certificateBytes == null) throw new ArgumentNullException("certificateBytes");
