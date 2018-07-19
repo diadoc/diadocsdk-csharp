@@ -36,6 +36,7 @@ namespace Diadoc.Api
 		void SetProxyCredentials([NotNull] string user, [NotNull] SecureString password);
 		string Authenticate(string login, string password, string key = null, string id = null);
 		string AuthenticateByKey([NotNull] string key, [NotNull] string id);
+		string AuthenticateBySid([NotNull] string sid);
 		string Authenticate(byte[] certificateBytes, bool useLocalSystemStorage = false);
 		string Authenticate(string thumbprint, bool useLocalSystemStorage = false);
 		string AuthenticateWithKey(string thumbprint, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true);
