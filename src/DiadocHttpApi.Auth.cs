@@ -29,7 +29,15 @@ namespace Diadoc.Api
 			return Encoding.UTF8.GetString(httpResponse);
 		}
 
-		public string Authenticate(byte[] certificateBytes, bool useLocalSystemStorage = false)
+		public string AuthenticateBySid(string sid)
+		{
+			var qsb = new PathAndQueryBuilder("/V2/Authenticate");
+			qsb.AddParameter("sid", sid);
+			var httpResponse = PerformHttpRequest(null, "POST", qsb.BuildPathAndQuery());
+			return Encoding.UTF8.GetString(httpResponse);
+		}
+
+	public string Authenticate(byte[] certificateBytes, bool useLocalSystemStorage = false)
 		{
 			return PerformHttpRequest(null, "POST", "/Authenticate", certificateBytes,
 				responseContent => Convert.ToBase64String(crypt.Decrypt(responseContent, useLocalSystemStorage)));
