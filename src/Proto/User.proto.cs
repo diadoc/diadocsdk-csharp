@@ -64,4 +64,79 @@ namespace Diadoc.Api.Proto
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UserV2")]
+  public partial class UserV2 : global::ProtoBuf.IExtensible
+  {
+    public UserV2() {}
+    
+    private string _UserId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"UserId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string UserId
+    {
+      get { return _UserId; }
+      set { _UserId = value; }
+    }
+
+    private string _Login = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Login", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Login
+    {
+      get { return _Login; }
+      set { _Login = value; }
+    }
+
+    private Diadoc.Api.Proto.FullName _FullName = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"FullName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.FullName FullName
+    {
+      get { return _FullName; }
+      set { _FullName = value; }
+    }
+    private bool _IsRegistered;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"IsRegistered", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool IsRegistered
+    {
+      get { return _IsRegistered; }
+      set { _IsRegistered = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FullName")]
+  public partial class FullName : global::ProtoBuf.IExtensible
+  {
+    public FullName() {}
+    
+    private string _LastName;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"LastName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string LastName
+    {
+      get { return _LastName; }
+      set { _LastName = value; }
+    }
+    private string _FirstName;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"FirstName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string FirstName
+    {
+      get { return _FirstName; }
+      set { _FirstName = value; }
+    }
+
+    private string _MiddleName = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"MiddleName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string MiddleName
+    {
+      get { return _MiddleName; }
+      set { _MiddleName = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

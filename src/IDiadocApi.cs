@@ -14,6 +14,7 @@ using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 using Diadoc.Api.Proto.KeyValueStorage;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
+using Employee = Diadoc.Api.Proto.Employees.Employee;
 
 #if !NET35
 using System.Threading.Tasks;
@@ -139,7 +140,9 @@ namespace Diadoc.Api
 		DocumentZipGenerationResult GenerateDocumentZip(string authToken, string boxId, string messageId, string documentId, bool fullDocflow);
 		DocumentList GetDocumentsByCustomId(string authToken, string boxId, string customDocumentId);
 		PrepareDocumentsToSignResponse PrepareDocumentsToSign(string authToken, PrepareDocumentsToSignRequest request, bool excludeContent = false);
+		[Obsolete("Use GetMyUserV2")]
 		User GetMyUser(string authToken);
+		UserV2 GetMyUserV2(string authToken);
 		AsyncMethodResult CloudSign(string authToken, CloudSignRequest request, string certificateThumbprint);
 		CloudSignResult WaitCloudSignResult(string authToken, string taskId, TimeSpan? timeout = null);
 		AsyncMethodResult CloudSignConfirm(string authToken, string cloudSignToken, string confirmationCode, ContentLocationPreference? locationPreference = null);
@@ -168,6 +171,7 @@ namespace Diadoc.Api
 		DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, string nameOnShelf);
 		DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, byte[] content);
 		FileContent GetContent(string authToken, string typeNamedId, string function, string version, int titleIndex);
+		Employee GetEmployee(string authToken, string boxId, string userId);
 
 #if !NET35
 
@@ -181,7 +185,9 @@ namespace Diadoc.Api
 		Task<string> AuthenticateWithKeyConfirmAsync(string thumbprint, string token, bool saveBinding = false);
 		Task<OrganizationUserPermissions> GetMyPermissionsAsync(string authToken, string orgId);
 		Task<OrganizationList> GetMyOrganizationsAsync(string authToken, bool autoRegister = true);
+		[Obsolete("Use GetMyUserV2Async")]
 		Task<User> GetMyUserAsync(string authToken);
+		Task<UserV2> GetMyUserV2Async(string authToken);
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false);
 		Task<Organization> GetOrganizationByIdAsync(string orgId);
 		Task<Organization> GetOrganizationByBoxIdAsync(string boxId);
@@ -304,6 +310,7 @@ namespace Diadoc.Api
 		Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, byte[] content);
 		[Obsolete("In order to download XSD schema use the link provided in DocumentTitle.XsdUrl")]
 		Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex);
+		Task<Employee> GetEmployeeAsync(string authToken, string boxId, string userId);
 #endif
 	}
 }

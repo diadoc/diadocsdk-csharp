@@ -111,7 +111,7 @@ namespace Diadoc.Api.Tests
 			"SetProxyUri",
 			"EnableSystemProxyUsage",
 			"DisableSystemProxyUsage",
-			"SetProxyCredentials",
+			"SetProxyCredentials"
 		};
 
 		private static readonly string[] ObjectMethods = typeof(object).GetMethods().Select(x => x.Name).ToArray();

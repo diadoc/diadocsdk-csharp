@@ -72,6 +72,7 @@
     <Compile Include="Com\DocumentMetadataItemType.cs" />
     <Compile Include="Com\DocumentMetadataSource.cs" />
     <Compile Include="Com\DocumentType.cs" />
+    <Compile Include="Com\Employees.cs" />
     <Compile Include="Com\EntityType.cs" />
     <Compile Include="Com\GeneralReceiptStatus.cs" />
     <Compile Include="Com\MessageType.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Com\RecipientResponseStatus.cs" />
     <Compile Include="Com\RoamingNotificationStatus.cs" />
     <Compile Include="Com\SenderSignatureStatus.cs" />
+    <Compile Include="DiadocHttpApi.Employees.cs" />
     <Compile Include="FileContent.cs" />
     <Compile Include="Com\FunctionType.cs" />
     <Compile Include="Com\ItemMark.cs" />
@@ -152,6 +154,7 @@
     <Compile Include="Proto\Documents\Types\DocumentTypeDescription.proto.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.proto.cs" />
+    <Compile Include="Proto\Employees\Employee.proto.cs" />
     <Compile Include="Proto\Events\CancellationInfo.cs" />
     <Compile Include="Proto\Events\CancellationInfo.proto.cs" />
     <Compile Include="Proto\Events\ResolutionRouteInfo.proto.cs" />
