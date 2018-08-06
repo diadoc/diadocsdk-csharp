@@ -31,6 +31,7 @@ message Organization {
 	optional string LiquidationDate = 23;
 	optional string CertificateOfRegistryInfo = 24;
 	optional bool IsForeign = 25;
+	optional bool HasCertificateToSign = 26;
 }
 
 message Department {
