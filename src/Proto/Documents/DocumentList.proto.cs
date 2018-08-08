@@ -30,6 +30,15 @@ namespace Diadoc.Api.Proto.Documents
       get { return _Documents; }
     }
   
+
+    private bool _HasMoreResults = default(bool);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"HasMoreResults", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool HasMoreResults
+    {
+      get { return _HasMoreResults; }
+      set { _HasMoreResults = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
