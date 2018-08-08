@@ -66,6 +66,7 @@
     <Compile Include="Com\CounteragentStatus.cs" />
     <Compile Include="Com\CustomDataPatchOperation.cs" />
     <Compile Include="Com\DocflowStatusSeverity.cs" />
+    <Compile Include="Com\DocflowsV3.cs" />
     <Compile Include="Com\DocumentAccessLevel.cs" />
     <Compile Include="Com\DocumentDirection.cs" />
     <Compile Include="Com\DocumentDocflow.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Com\RoamingNotificationStatus.cs" />
     <Compile Include="Com\SenderSignatureStatus.cs" />
     <Compile Include="DiadocHttpApi.Employees.cs" />
+    <Compile Include="DocflowApi.cs" />
     <Compile Include="FileContent.cs" />
     <Compile Include="Com\FunctionType.cs" />
     <Compile Include="Com\ItemMark.cs" />
@@ -135,6 +137,7 @@
     <Compile Include="Http\Range.cs" />
     <Compile Include="Http\UserDomain.cs" />
     <Compile Include="IDiadocApi.cs" />
+    <Compile Include="IDocflowApi.cs" />
     <Compile Include="IHttpSerializer.cs" />
     <Compile Include="ProtobufHttpSerializer.cs" />
     <Compile Include="ProtobufPrepareSerializerInitializer.cs" />
@@ -143,6 +146,12 @@
     <Compile Include="Proto\CloudSign.proto.cs" />
     <Compile Include="Proto\Content_v2.proto.cs" />
     <Compile Include="Proto\CustomDataItem.proto.cs" />
+    <Compile Include="Proto\Docflow\AttachmentV3.proto.cs" />
+    <Compile Include="Proto\Docflow\DocflowApiV3.proto.cs" />
+    <Compile Include="Proto\Docflow\DocflowV3.proto.cs" />
+    <Compile Include="Proto\Docflow\DocumentInfoV3.proto.cs" />
+    <Compile Include="Proto\Docflow\DocumentWithDocflowV3.proto.cs" />
+    <Compile Include="Proto\Docflow\RoamingNotification.proto.cs" />
     <Compile Include="Proto\Docflow\UniversalTransferDocumentDocflow.proto.cs" />
     <Compile Include="Proto\DocumentDirection.proto.cs" />
     <Compile Include="Proto\Documents\DocumentZip.cs" />
@@ -160,6 +169,7 @@
     <Compile Include="Proto\Events\ResolutionRouteInfo.proto.cs" />
     <Compile Include="Proto\ExternalServiceAuthInfo.proto.cs" />
     <Compile Include="Com\ComWrappers.cs" />
+    <Compile Include="Proto\FullVersion.proto.cs" />
     <Compile Include="Proto\Invoicing\AcceptanceCertificate552Info.cs" />
     <Compile Include="Proto\Invoicing\AcceptanceCertificate552Info.proto.cs" />
     <Compile Include="Proto\Invoicing\ExtendedOrganizationInfo.cs" />

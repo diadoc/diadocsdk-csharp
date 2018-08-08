@@ -1,0 +1,9 @@
+import "Docflow/Attachment.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message RoamingNotification
+{
+	required Entity Notification = 1;
+	required bool IsSuccess = 2;
+}

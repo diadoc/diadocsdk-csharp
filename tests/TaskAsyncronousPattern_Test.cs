@@ -96,7 +96,10 @@ namespace Diadoc.Api.Tests
 			{
 				typeof(IDiadocApi),
 				typeof(DiadocApi),
-				typeof(DiadocHttpApi)
+				typeof(DiadocHttpApi),
+				typeof(IDocflowApi),
+				typeof(DocflowApi),
+				typeof(DiadocHttpApi.DocflowHttpApi)
 			};
 			return apiTypes.SelectMany(GetAllApiMethodsForType);
 		}

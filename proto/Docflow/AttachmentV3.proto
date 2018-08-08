@@ -1,0 +1,24 @@
+import "Docflow/Attachment.proto";
+import "Content.proto";
+import "Timestamp.proto";
+import "SignatureVerificationResult.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message SignatureV3
+{
+	required Entity Cms = 1;
+	optional Entity CadesT = 2;
+	required string SignerBoxId = 3;
+	required string SignerDepartmentId = 4;
+	required bool IsValid = 5;
+	optional SignatureVerificationResult VerificationResult = 6;
+	optional Timestamp DeliveredAt = 7;
+}
+
+message SignedAttachmentV3
+{
+	required Attachment Attachment = 1;
+	optional SignatureV3 Signature = 2;
+	optional Entity Comment = 3;
+}

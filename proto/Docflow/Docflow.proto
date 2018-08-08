@@ -8,6 +8,7 @@ import "Docflow/XmlBilateralDocflow.proto";
 import "Docflow/RevocationDocflow.proto";
 import "Docflow/ResolutionDocflow.proto";
 import "Docflow/UniversalTransferDocumentDocflow.proto";
+import "Docflow/RoamingNotification.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
@@ -62,10 +63,4 @@ enum DocflowStatusSeverity
 	Success = 2;
 	Warning = 3;
 	Error = 4;
-}
-
-message RoamingNotification
-{
-	required Entity Notification = 1;
-	required bool IsSuccess = 2;
 }

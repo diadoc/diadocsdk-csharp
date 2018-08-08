@@ -1,0 +1,49 @@
+// docflow api
+// GetDocflows(boxId, GetDocflowBatchRequest) : GetDocflowBatchResponseV3
+// GetDocflowEvents(boxId, GetDocflowEventsRequest) : GetDocflowEventsResponseV3
+
+import "Timestamp.proto";
+import "DocumentId.proto";
+import "Docflow/DocumentWithDocflowV3.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message GetDocflowBatchResponseV3
+{
+	repeated DocumentWithDocflowV3 Documents = 1;
+}
+
+message SearchDocflowsResponseV3
+{
+	repeated DocumentWithDocflowV3 Documents = 1;
+	required bool HaveMoreDocuments = 2;
+}
+
+message FetchedDocumentV3
+{
+	required DocumentWithDocflowV3 Document = 1;
+	required bytes IndexKey = 2;
+}
+
+message GetDocflowsByPacketIdResponseV3
+{
+	repeated FetchedDocumentV3 Documents = 1;
+	optional bytes NextPageIndexKey = 2;
+}
+
+message GetDocflowEventsResponseV3
+{
+	required int32 TotalCount = 1;
+	repeated DocflowEventV3 Events = 2;
+}
+
+message DocflowEventV3
+{
+	required string EventId = 1;
+	required Timestamp Timestamp = 2;
+	required DocumentId DocumentId = 3;
+	required bytes IndexKey = 4;
+	optional DocumentWithDocflowV3 Document = 5;
+	optional string PreviousEventId = 6;
+	optional DocumentWithDocflowV3 PreviousDocumentState = 7;
+}
