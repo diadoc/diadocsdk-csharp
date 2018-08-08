@@ -14,6 +14,7 @@ using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
+using Employee = Diadoc.Api.Proto.Employees.Employee;
 
 namespace Diadoc.Api
 {
@@ -86,6 +87,12 @@ namespace Diadoc.Api
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			return diadocHttpApi.GetMyUserAsync(authToken);
+		}
+
+		public Task<UserV2> GetMyUserV2Async(string authToken)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			return diadocHttpApi.GetMyUserV2Async(authToken);
 		}
 
 		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false)
@@ -954,6 +961,14 @@ namespace Diadoc.Api
 			if (titleIndex < 0)
 				throw new ArgumentOutOfRangeException("titleIndex", titleIndex, "Title index should be non-negative");
 			return diadocHttpApi.GetContentAsync(authToken, typeNamedId, function, version, titleIndex);
+		}
+
+		public Task<Employee> GetEmployeeAsync(string authToken, string boxId, string userId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (userId == null) throw new ArgumentNullException("userId");
+			return diadocHttpApi.GetEmployeeAsync(authToken, boxId, userId);
 		}
 	}
 }

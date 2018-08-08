@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AggregateException.cs" />
+    <Compile Include="DiadocHttpApi.Employees.Async.cs" />
+    <Compile Include="DiadocHttpApi.Employees.cs" />
     <Compile Include="Com\AcceptanceCertificateDocumentStatus.cs" />
     <Compile Include="Com\AttachmentType.cs" />
     <Compile Include="Com\BilateralDocumentStatus.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Com\DocumentMetadataItemType.cs" />
     <Compile Include="Com\DocumentMetadataSource.cs" />
     <Compile Include="Com\DocumentType.cs" />
+    <Compile Include="Com\Employees.cs" />
     <Compile Include="Com\EntityType.cs" />
     <Compile Include="Com\FunctionType.cs" />
     <Compile Include="Com\GeneralReceiptStatus.cs" />
@@ -173,6 +176,7 @@
     <Compile Include="Proto\Documents\Types\DocumentTypeDescription.proto.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.proto.cs" />
+    <Compile Include="Proto\Employees\Employee.proto.cs" />
     <Compile Include="Proto\Events\CancellationInfo.cs" />
     <Compile Include="Proto\Events\CancellationInfo.proto.cs" />
     <Compile Include="Proto\Events\ResolutionRouteInfo.proto.cs" />

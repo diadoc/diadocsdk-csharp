@@ -27,6 +27,11 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<User>(authToken, "GET", "/GetMyUser");
 		}
 
+		public Task<UserV2> GetMyUserV2Async(string authToken)
+		{
+			return PerformHttpRequestAsync<UserV2>(authToken, "GET", "/V2/GetMyUser");
+		}
+
 		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false)
 		{
 			var qsb = new PathAndQueryBuilder("/GetOrganizationsByInnKpp");

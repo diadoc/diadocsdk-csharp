@@ -26,6 +26,11 @@ namespace Diadoc.Api
 			return PerformHttpRequest<User>(authToken, "GET", "/GetMyUser");
 		}
 
+		public UserV2 GetMyUserV2(string authToken)
+		{
+			return PerformHttpRequest<UserV2>(authToken, "GET", "/V2/GetMyUser");
+		}
+
 		public OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false)
 		{
 			var qsb = new PathAndQueryBuilder("/GetOrganizationsByInnKpp");

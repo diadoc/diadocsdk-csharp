@@ -17,6 +17,7 @@ using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
+using Employee = Diadoc.Api.Proto.Employees.Employee;
 
 namespace Diadoc.Api
 {
@@ -140,6 +141,12 @@ namespace Diadoc.Api
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			return diadocHttpApi.GetMyUser(authToken);
+		}
+
+		public UserV2 GetMyUserV2(string authToken)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			return diadocHttpApi.GetMyUserV2(authToken);
 		}
 
 		public OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false)
@@ -1012,6 +1019,14 @@ namespace Diadoc.Api
 			if (titleIndex < 0)
 				throw new ArgumentOutOfRangeException("titleIndex", titleIndex, "Title index should be non-negative");
 			return diadocHttpApi.GetContent(authToken, typeNamedId, function, version, titleIndex);
+		}
+
+		public Employee GetEmployee(string authToken, string boxId, string userId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (userId == null) throw new ArgumentNullException("userId");
+			return diadocHttpApi.GetEmployee(authToken, boxId, userId);
 		}
 	}
 }

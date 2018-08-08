@@ -1537,6 +1537,43 @@ namespace Diadoc.Api.Proto
 			get { return new ReadonlyList(CloudCertificates); }
 		}
 	}
+
+	[ComVisible(true)]
+	[Guid("13652788-44BC-43F0-939A-35A4B598D68E")]
+	public interface IUserV2
+	{
+		string UserId { get; }
+		string Login { get; }
+		FullName FullName { get; }
+		bool IsRegistered { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.UserV2")]
+	[Guid("E46BDA02-92A9-459F-866F-E38D488F3933")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IUserV2))]
+	public partial class UserV2 : SafeComObject, IUserV2
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("B4B591A6-3B03-4B3A-83D0-F57734F4EE9B")]
+	public interface IFullName
+	{
+		string LastName { get; }
+		string FirstName { get; }
+		string MiddleName { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.FullName")]
+	[Guid("54793D4C-02D2-4F8D-B13B-0BB8A88A0907")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IFullName))]
+	public partial class FullName : SafeComObject, IFullName
+	{
+	}
 }
 
 namespace Diadoc.Api.Proto
