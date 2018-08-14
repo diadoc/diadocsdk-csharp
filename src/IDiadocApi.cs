@@ -7,6 +7,7 @@ using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
 using Diadoc.Api.Proto.Employees.Subscriptions;
+using Diadoc.Api.Proto.Employees;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
@@ -178,6 +179,7 @@ namespace Diadoc.Api
 		DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, byte[] content);
 		FileContent GetContent(string authToken, string typeNamedId, string function, string version, int titleIndex);
 		Employee GetEmployee(string authToken, string boxId, string userId);
+		Employee CreateEmployee(string authToken, string boxId, EmployeeToCreate employeeToCreate);
 		EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId);
 		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);
 
@@ -322,6 +324,7 @@ namespace Diadoc.Api
 		[Obsolete("In order to download XSD schema use the link provided in DocumentTitle.XsdUrl")]
 		Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex);
 		Task<Employee> GetEmployeeAsync(string authToken, string boxId, string userId);
+		Task<Employee> CreateEmployeeAsync(string authToken, string boxId, EmployeeToCreate employeeToCreate);
 		Task<EmployeeSubscriptions> GetSubscriptionsAsync(string authToken, string boxId, string userId);
 		Task<EmployeeSubscriptions> UpdateSubscriptionsAsync(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);
 #endif

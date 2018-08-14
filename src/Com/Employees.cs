@@ -28,7 +28,7 @@ namespace Diadoc.Api.Proto.Employees
 	{
 		string UserDepartmentId { get; }
 		bool IsAdministrator { get; }
-		Diadoc.Api.Proto.DocumentAccessLevel DocumentAccessLevel { get; }
+		DocumentAccessLevel DocumentAccessLevel { get; }
 		ReadonlyList SelectedDepartmentIdsList { get; }
 		ReadonlyList ActionsList { get; }
 	}
@@ -60,11 +60,82 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
+	[Guid("89C89C89-FDD7-4035-AAD8-F36A518AFC28")]
+	public interface IEmployeeToCreate
+	{
+		EmployeeToCreateCredentials Credentials { get; }
+		string Position { get; }
+		bool CanBeInvitedForChat { get; }
+		EmployeePermissions Permissions { get; }
+	}
+
+	[ComVisible(true)]
 	[ProgId("Diadoc.Api.EmployeeAction")]
 	[Guid("991DC3B3-0488-499F-893A-AC14417077EF")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeAction))]
 	public partial class EmployeeAction : SafeComObject, IEmployeeAction
+	{
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeeToCreate")]
+	[Guid("41867515-8F9E-4367-A6D3-D8C345F5D36C")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeeToCreate))]
+	public partial class EmployeeToCreate : SafeComObject, IEmployeeToCreate
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("7A3AB4C0-8005-4A28-9186-73CFC9387CE3")]
+	public interface IEmployeeToCreateCredentials
+	{
+		EmployeeToCreateByLogin Login { get; }
+		EmployeeToCreateByCertificate Certificate { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeeToCreateCredentials")]
+	[Guid("5650F7FB-4581-4EF1-91F4-7D5BB7698DD7")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeeToCreateCredentials))]
+	public partial class EmployeeToCreateCredentials : SafeComObject, IEmployeeToCreateCredentials
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("36988BEA-F0EA-492D-9BAF-E418513EF77E")]
+	public interface IEmployeeToCreateByLogin
+	{
+		string Login { get; }
+		FullName FullName { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeeToCreateByLogin")]
+	[Guid("46ED009A-A232-4133-B99A-2B6454221385")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeeToCreateByLogin))]
+	public partial class EmployeeToCreateByLogin : SafeComObject, IEmployeeToCreateByLogin
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("CCC77101-B480-4E8A-8E23-2A5262DB1186")]
+	public interface IEmployeeToCreateByCertificate
+	{
+		byte[] Content { get; }
+		string AccessBasis { get; }
+		string Email { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeeToCreateByCertificate")]
+	[Guid("58901395-AFF3-47FC-B800-01C138C0B982")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeeToCreateByCertificate))]
+	public partial class EmployeeToCreateByCertificate : SafeComObject, IEmployeeToCreateByCertificate
 	{
 	}
 }

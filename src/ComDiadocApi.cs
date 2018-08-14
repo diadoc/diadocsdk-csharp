@@ -8,6 +8,7 @@ using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
+using Diadoc.Api.Proto.Employees;
 using Diadoc.Api.Proto.Employees.Subscriptions;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
@@ -354,6 +355,7 @@ namespace Diadoc.Api
 		FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex);
 
 		Employee GetEmployee(string authToken, string boxId, string userId);
+		Employee CreateEmployee(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object employeeToCreate);
 		EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId);
 		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, [MarshalAs(UnmanagedType.IDispatch)] object subscriptionsToUpdate);
 
@@ -513,6 +515,11 @@ namespace Diadoc.Api
 		public Employee GetEmployee(string authToken, string boxId, string userId)
 		{
 			return diadoc.GetEmployee(authToken, boxId, userId);
+		}
+
+		public Employee CreateEmployee(string authToken, string boxId, object employeeToCreate)
+		{
+			return diadoc.CreateEmployee(authToken, boxId, (EmployeeToCreate) employeeToCreate);
 		}
 
 		public EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId)
