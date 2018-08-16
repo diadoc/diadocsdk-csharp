@@ -187,6 +187,7 @@
     <Compile Include="Proto\Documents\UniversalTransferDocument.cs" />
     <Compile Include="Proto\Documents\UniversalTransferDocument.proto.cs" />
     <Compile Include="Proto\Employees\Employee.proto.cs" />
+    <Compile Include="Proto\Employees\Subscriptions\Subscription.proto.cs" />
     <Compile Include="Proto\Events\CancellationInfo.cs" />
     <Compile Include="Proto\Events\CancellationInfo.proto.cs" />
     <Compile Include="Proto\Events\ResolutionRouteInfo.proto.cs" />
