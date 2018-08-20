@@ -443,11 +443,24 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
+		public GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (documentTypeNamedId == null) throw new ArgumentNullException("documentTypeNamedId");
+			if (documentFunction == null) throw new ArgumentNullException("documentFunction");
+			if (documentVersion == null) throw new ArgumentNullException("documentVersion");
+			if (userContractData == null) throw new ArgumentNullException("userContractData");
+			return diadocHttpApi.GenerateSenderTitleXml(authToken, boxId, documentTypeNamedId, documentFunction, documentVersion, userContractData, disableValidation, editingSettingId);
+		}
+
 		public GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
 		{
-			if (userContractData == null) throw new ArgumentNullException("userContractData");
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (senderTitleMessageId == null) throw new ArgumentNullException("senderTitleMessageId");
 			if (senderTitleAttachmentId == null) throw new ArgumentNullException("senderTitleAttachmentId");
+			if (userContractData == null) throw new ArgumentNullException("userContractData");
 			return diadocHttpApi.GenerateRecipientTitleXml(authToken, boxId, senderTitleMessageId, senderTitleAttachmentId, userContractData);
 		}
 
