@@ -45,6 +45,13 @@ namespace Diadoc.Api.Proto
       get { return _CanSignDocuments; }
       set { _CanSignDocuments = value; }
     }
+    private bool _CanManageCounteragents;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"CanManageCounteragents", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool CanManageCounteragents
+    {
+      get { return _CanManageCounteragents; }
+      set { _CanManageCounteragents = value; }
+    }
     private bool _CanAddResolutions;
     [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"CanAddResolutions", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public bool CanAddResolutions
