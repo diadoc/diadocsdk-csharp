@@ -22,6 +22,14 @@ namespace Diadoc.Api
 		}
 
 		[ItemNotNull]
+		protected Task<TResponse> PerformHttpRequestAsync<TRequest, TResponse>([CanBeNull] string token, [NotNull] string queryString, [NotNull] TRequest request, [NotNull] Func<byte[], TResponse> convertResponse)
+			where TRequest: class
+			where TResponse: class
+		{
+			return PerformHttpRequestAsync(token, "POST", queryString, Serialize(request), convertResponse);
+		}
+
+		[ItemNotNull]
 		protected Task<TResponse> PerformHttpRequestAsync<TResponse>([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
 			where TResponse: class
 		{
