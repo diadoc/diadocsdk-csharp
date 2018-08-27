@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Documents;
 using JetBrains.Annotations;
@@ -27,9 +28,17 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
+		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
 		public PrintFormResult GetGeneratedPrintForm(string authToken, DocumentType documentType, string printFormId)
 		{
 			var queryString = string.Format("/GetGeneratedPrintForm?documentType={0}&printFormId={1}", documentType, printFormId);
+			return GetPrintFormResult(authToken, queryString);
+		}
+
+		[NotNull]
+		public PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId)
+		{
+			var queryString = string.Format("/GetGeneratedPrintForm?printFormId={0}", printFormId);
 			return GetPrintFormResult(authToken, queryString);
 		}
 

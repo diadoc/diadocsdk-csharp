@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Documents;
@@ -31,10 +32,19 @@ namespace Diadoc.Api
 		}
 
 		[ItemNotNull]
+		[Obsolete("Use GetGeneratedPrintFormAsync without `documentType` parameter")]
 		public Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, DocumentType documentType, string printFormId)
 		{
 			var qsb = new PathAndQueryBuilder("/GetGeneratedPrintForm")
 				.With("documentType", documentType.ToString())
+				.With("printFormId", printFormId);
+			return GetPrintFormResultAsync(authToken, qsb.BuildPathAndQuery());
+		}
+
+		[ItemNotNull]
+		public Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, string printFormId)
+		{
+			var qsb = new PathAndQueryBuilder("/GetGeneratedPrintForm")
 				.With("printFormId", printFormId);
 			return GetPrintFormResultAsync(authToken, qsb.BuildPathAndQuery());
 		}
