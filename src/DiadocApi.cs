@@ -515,10 +515,17 @@ namespace Diadoc.Api
 			return diadocHttpApi.GeneratePrintFormFromAttachment(authToken, documentType, content, fromBoxId);
 		}
 
+		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
 		public PrintFormResult GetGeneratedPrintForm(string authToken, DocumentType documentType, string printFormId)
 		{
 			if (string.IsNullOrEmpty(printFormId)) throw new ArgumentNullException("printFormId");
 			return diadocHttpApi.GetGeneratedPrintForm(authToken, documentType, printFormId);
+		}
+
+		public PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId)
+		{
+			if (string.IsNullOrEmpty(printFormId)) throw new ArgumentNullException("printFormId");
+			return diadocHttpApi.GetGeneratedPrintForm(authToken, printFormId);
 		}
 
 		public string Recognize(string fileName, byte[] content)

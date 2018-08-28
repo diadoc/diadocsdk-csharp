@@ -453,10 +453,17 @@ namespace Diadoc.Api
 			return diadocHttpApi.GeneratePrintFormFromAttachmentAsync(authToken, documentType, content, fromBoxId);
 		}
 
+		[Obsolete("Use GetGeneratedPrintFormAsync without `documentType` parameter")]
 		public Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, DocumentType documentType, string printFormId)
 		{
 			if (string.IsNullOrEmpty(printFormId)) throw new ArgumentNullException("printFormId");
 			return diadocHttpApi.GetGeneratedPrintFormAsync(authToken, documentType, printFormId);
+		}
+
+		public Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, string printFormId)
+		{
+			if (string.IsNullOrEmpty(printFormId)) throw new ArgumentNullException("printFormId");
+			return diadocHttpApi.GetGeneratedPrintFormAsync(authToken, printFormId);
 		}
 
 		public Task<string> RecognizeAsync(string fileName, byte[] content)
