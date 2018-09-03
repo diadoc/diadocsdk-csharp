@@ -96,14 +96,14 @@ namespace Diadoc.Api.Cryptography
 		protected static byte[] Sign(byte[] content, IntPtr certificate, GCHandle certificatesHandle)
 		{
 			var contentHandle = GCHandle.Alloc(content, GCHandleType.Pinned);
-
+			var hashAlgorithmOidValue = new X509Certificate2(certificate).SignatureAlgorithm.Value;
 			try
 			{
 				var signParameters = new Api.CRYPT_SIGN_MESSAGE_PARA();
 				signParameters.size = Marshal.SizeOf(signParameters);
 				signParameters.encoding = Api.ENCODING;
 				signParameters.signerCertificate = certificate;
-				signParameters.hashAlgorithm.objectIdAnsiString = Api.OID_GOST_34_11_94;
+				signParameters.hashAlgorithm.objectIdAnsiString = hashAlgorithmOidValue;
 				signParameters.certificatesCount = 1;
 				signParameters.certificates = certificatesHandle.AddrOfPinnedObject();
 
