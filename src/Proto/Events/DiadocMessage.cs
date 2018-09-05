@@ -793,7 +793,7 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddEditingPatch(object editingPatch)
 		{
-			EditingPatches.Add((CustomDataPatch)editingPatch);
+			EditingPatches.Add((EditingPatch)editingPatch);
 		}
 	}
 

@@ -1960,11 +1960,42 @@ namespace Diadoc.Api.Proto.Events
       get { return _RecipientTitles; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDataPatch> _EditingPatches = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDataPatch>();
-    [global::ProtoBuf.ProtoMember(23, Name=@"EditingPatches", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDataPatch> EditingPatches
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.EditingPatch> _EditingPatches = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.EditingPatch>();
+    [global::ProtoBuf.ProtoMember(24, Name=@"EditingPatches", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.EditingPatch> EditingPatches
     {
       get { return _EditingPatches; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"EditingPatch")]
+  public partial class EditingPatch : global::ProtoBuf.IExtensible
+  {
+    public EditingPatch() {}
+    
+    private string _ParentEntityId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ParentEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ParentEntityId
+    {
+      get { return _ParentEntityId; }
+      set { _ParentEntityId = value; }
+    }
+    private Diadoc.Api.Proto.Events.UnsignedContent _Content;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Content", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Events.UnsignedContent Content
+    {
+      get { return _Content; }
+      set { _Content = value; }
+    }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;

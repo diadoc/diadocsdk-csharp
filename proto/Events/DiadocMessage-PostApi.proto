@@ -309,7 +309,13 @@ message MessagePatchToPost {
 	repeated ReceiptAttachment UniversalTransferDocumentBuyerTitles = 20;
 	repeated ResolutionRouteRemoval ResolutionRouteRemovals = 21;
 	repeated ReceiptAttachment RecipientTitles = 22;
-	repeated CustomDataPatch EditingPatches = 23;
+	repeated EditingPatch EditingPatches = 24;
+}
+
+message EditingPatch {
+	required string ParentEntityId = 1;
+	required UnsignedContent Content = 2;
+	repeated string Labels = 3;
 }
 
 message SignatureVerification {
