@@ -141,6 +141,11 @@ namespace Diadoc.Api.Cryptography
 		public const int PKCS_7_ASN_ENCODING = 0x00010000;
 		public const int X509_ASN_ENCODING = 0x00000001;
 		public const int NTE_BAD_SIGNATURE = unchecked((int)0x80090006);
-		public const string OID_GOST_34_11_94 = "1.2.643.2.2.9";
+		public const string OID_GOST_34_11_94 = "1.2.643.2.2.9"; // Функция хэширования ГОСТ Р 34.11-94
+		public const string OID_GOST_34_11_12_256 = "1.2.643.7.1.1.2.2"; // Функция хэширования ГОСТ Р 34.11-2012, длина выхода 256 бит
+		public const string OID_GOST_34_11_12_512 = "1.2.643.7.1.1.2.3"; // Функция хэширования ГОСТ Р 34.11-2012, длина выхода 512 бит
+		public const string OID_GOST_34_11_94_R3410EL = "1.2.643.2.2.3"; // Алгоритм цифровой подписи ГОСТ Р 34.10-2001
+		public const string OID_GOST_34_11_12_256_R3410 = "1.2.643.7.1.1.3.2"; // Алгоритм цифровой подписи ГОСТ Р 34.10-2012 для ключей длины 256 бит
+		public const string OID_GOST_34_11_12_512_R3410 = "1.2.643.7.1.1.3.3"; // Алгоритм цифровой подписи ГОСТ Р 34.10-2012 для ключей длины 512 бит
 	}
 }
