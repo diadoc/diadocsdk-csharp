@@ -12,6 +12,13 @@ namespace Diadoc.Api.Cryptography
 	{
 		private static readonly bool isWin2000 = Environment.OSVersion.Version.Major == 5 && Environment.OSVersion.Version.Minor == 0;
 
+		private static readonly IDictionary<string, string> hashAlgorithmsMap = new Dictionary<string, string>
+		{
+			{ Api.OID_GOST_34_11_94_R3410EL, Api.OID_GOST_34_11_94 },
+			{ Api.OID_GOST_34_11_12_256_R3410, Api.OID_GOST_34_11_12_256 },
+			{ Api.OID_GOST_34_11_12_512_R3410, Api.OID_GOST_34_11_12_512 }
+		};
+
 		public List<X509Certificate2> GetPersonalCertificates(bool onlyWithPrivateKey, bool useLocalSystemStorage = false)
 		{
 			var s = new X509Store("MY", useLocalSystemStorage ? StoreLocation.LocalMachine : StoreLocation.CurrentUser);
@@ -53,7 +60,7 @@ namespace Diadoc.Api.Cryptography
 				for (Int32 signerIndex = 0;; ++signerIndex)
 				{
 					IntPtr certificate;
-					if (!Api.CryptVerifyDetachedMessageSignature(ref verifyParameters, signerIndex, signatures, signatures.Length, 1, new[] {contentHandle.AddrOfPinnedObject()}, new[] {content.Length}, out certificate))
+					if (!Api.CryptVerifyDetachedMessageSignature(ref verifyParameters, signerIndex, signatures, signatures.Length, 1, new[] { contentHandle.AddrOfPinnedObject() }, new[] { content.Length }, out certificate))
 					{
 						Int32 errorCode = Marshal.GetLastWin32Error();
 						if (errorCode == Api.CRYPT_E_NO_SIGNER) break;
@@ -103,7 +110,7 @@ namespace Diadoc.Api.Cryptography
 				signParameters.size = Marshal.SizeOf(signParameters);
 				signParameters.encoding = Api.ENCODING;
 				signParameters.signerCertificate = certificate;
-				signParameters.hashAlgorithm.objectIdAnsiString = Api.OID_GOST_34_11_94;
+				signParameters.hashAlgorithm.objectIdAnsiString = GetHashAlgorithm(certificate);
 				signParameters.certificatesCount = 1;
 				signParameters.certificates = certificatesHandle.AddrOfPinnedObject();
 
@@ -149,21 +156,31 @@ namespace Diadoc.Api.Cryptography
 			}
 		}
 
+		private static string GetHashAlgorithm(IntPtr certificatePtr)
+		{
+			var certificate2 = new X509Certificate2(certificatePtr);
+			var signatureAlgorithm = certificate2.SignatureAlgorithm.Value;
+
+			return hashAlgorithmsMap.TryGetValue(signatureAlgorithm, out var hashAlgorithm)
+				? hashAlgorithm
+				: Api.OID_GOST_34_11_94;
+		}
+
 		public byte[] Decrypt(byte[] encryptedContent, bool useLocalSystemStorage = false)
 		{
 			if (encryptedContent == null) throw new ArgumentNullException("encryptedContent");
-			IntPtr storeHandle = OpenStore("my", Api.CERT_STORE_READONLY_FLAG | (useLocalSystemStorage ? Api.CERT_SYSTEM_STORE_LOCAL_MACHINE :  Api.CERT_SYSTEM_STORE_CURRENT_USER));
+			IntPtr storeHandle = OpenStore("my", Api.CERT_STORE_READONLY_FLAG | (useLocalSystemStorage ? Api.CERT_SYSTEM_STORE_LOCAL_MACHINE : Api.CERT_SYSTEM_STORE_CURRENT_USER));
 			GCHandle pinnedStoreHandle = GCHandle.Alloc(storeHandle, GCHandleType.Pinned);
 			try
 			{
 				var decryptParameters =
 					new Api.CRYPT_DECRYPT_MESSAGE_PARA
-						{
-							size = Marshal.SizeOf(typeof (Api.CRYPT_DECRYPT_MESSAGE_PARA)),
-							encoding = Api.ENCODING,
-							storesCount = 1,
-							stores = pinnedStoreHandle.AddrOfPinnedObject()
-						};
+					{
+						size = Marshal.SizeOf(typeof(Api.CRYPT_DECRYPT_MESSAGE_PARA)),
+						encoding = Api.ENCODING,
+						storesCount = 1,
+						stores = pinnedStoreHandle.AddrOfPinnedObject()
+					};
 				if (isWin2000)
 					decryptParameters.size -= Marshal.SizeOf(decryptParameters.flags.GetType());
 				int bufferLength = 0;
@@ -201,7 +218,7 @@ namespace Diadoc.Api.Cryptography
 
 		private byte[] SerializeCertificateToBinaryData(IntPtr certificate)
 		{
-			var certificateContext = (Api.CERT_CONTEXT) Marshal.PtrToStructure(certificate, typeof (Api.CERT_CONTEXT));
+			var certificateContext = (Api.CERT_CONTEXT) Marshal.PtrToStructure(certificate, typeof(Api.CERT_CONTEXT));
 			var encodedCertificate = new Byte[certificateContext.encodedCertificateSize];
 			Marshal.Copy(certificateContext.encodedCertificate, encodedCertificate, 0, certificateContext.encodedCertificateSize);
 			return encodedCertificate;
