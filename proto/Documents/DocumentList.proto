@@ -5,4 +5,5 @@ package Diadoc.Api.Proto.Documents;
 message DocumentList {
 	required int32 TotalCount = 1;
 	repeated Document Documents = 2;
+	optional bool HasMoreResults = 3;
 }
