@@ -1694,4 +1694,40 @@ namespace Diadoc.Api.Proto
 	public partial class FullVersion : SafeComObject, IFullVersion
 	{
 	}
+
+	[ComVisible(true)]
+	[Guid("6B62071D-3BE0-46C3-BA4F-62F35FB85719")]
+	public interface ICloudSignResult
+	{
+		string Token { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.CloudSignResult")]
+	[Guid("6509E8BC-385F-4036-9D8B-FCAE73D28727")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ICloudSignResult))]
+	public partial class CloudSignResult : SafeComObject, ICloudSignResult
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("C846A910-0A92-41A8-82C9-8C4A7A39C80D")]
+	public interface ICloudSignConfirmResult
+	{
+		ReadonlyList SignaturesList { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.CloudSignConfirmResult")]
+	[Guid("64C2C140-895B-4C21-8D08-6154998F6890")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ICloudSignConfirmResult))]
+	public partial class CloudSignConfirmResult : SafeComObject, ICloudSignConfirmResult
+	{
+		public ReadonlyList SignaturesList
+		{
+			get { return new ReadonlyList(Signatures); }
+		}
+	}
 }

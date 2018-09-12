@@ -8,12 +8,14 @@ using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
+using Diadoc.Api.Proto.Employees.Subscriptions;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Recognition;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
+using Employee = Diadoc.Api.Proto.Employees.Employee;
 
 namespace Diadoc.Api
 {
@@ -37,7 +39,9 @@ namespace Diadoc.Api
 		Organization GetOrganizationByInn(string inn);
 		ReadonlyList GetOrganizationsByInnList([MarshalAs(UnmanagedType.IDispatch)] object innList);
 
-		ReadonlyList GetOrganizationsByInnList(string authToken, string myOrgId,
+		ReadonlyList GetOrganizationsByInnList(
+			string authToken,
+			string myOrgId,
 			[MarshalAs(UnmanagedType.IDispatch)] object innList);
 
 		Organization GetOrganizationByFnsParticipantId(string fnsParticipantId);
@@ -49,61 +53,112 @@ namespace Diadoc.Api
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message);
 		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch);
 
-		GeneratedFile GenerateInvoiceDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId,
+		GeneratedFile GenerateInvoiceDocumentReceiptXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
 			[MarshalAs(UnmanagedType.IDispatch)] object signer);
 
-		GeneratedFile GenerateInvoiceCorrectionRequestXml(string authToken, string boxId, string messageId,
-			string attachmentId, [MarshalAs(UnmanagedType.IDispatch)] object correctionInfo);
+		GeneratedFile GenerateInvoiceCorrectionRequestXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			[MarshalAs(UnmanagedType.IDispatch)] object correctionInfo);
 
-		GeneratedFile GenerateInvoiceXml(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object invoiceInfo,
+		GeneratedFile GenerateInvoiceXml(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object invoiceInfo,
 			bool disableValidation = false);
 
-		GeneratedFile GenerateInvoiceRevisionXml(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object invoiceRevisionInfo, bool disableValidation = false);
+		GeneratedFile GenerateInvoiceRevisionXml(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object invoiceRevisionInfo,
+			bool disableValidation = false);
 
-		GeneratedFile GenerateInvoiceCorrectionXml(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object invoiceCorrectionInfo, bool disableValidation = false);
+		GeneratedFile GenerateInvoiceCorrectionXml(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object invoiceCorrectionInfo,
+			bool disableValidation = false);
 
-		GeneratedFile GenerateInvoiceCorrectionRevisionXml(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object invoiceCorrectionRevisionInfo, bool disableValidation = false);
+		GeneratedFile GenerateInvoiceCorrectionRevisionXml(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object invoiceCorrectionRevisionInfo,
+			bool disableValidation = false);
 
 		GeneratedFile GenerateTorg12XmlForSeller(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object sellerInfo, bool disableValidation = false);
 
 		GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object sellerInfo, bool disableValidation = false);
 
-		GeneratedFile GenerateTorg12XmlForBuyer(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
-			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
-
-		GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
-			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null);
-
-		GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object sellerInfo, bool disableValidation = false);
-
-		GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo, string boxId, string sellerTitleMessageId,
+		GeneratedFile GenerateTorg12XmlForBuyer(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
+			string boxId,
+			string sellerTitleMessageId,
 			string sellerTitleAttachmentId);
 
-		GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object sellerInfo, bool disableValidation = false);
+		GeneratedFile GenerateTovTorg551XmlForBuyer(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
+			string boxId,
+			string sellerTitleMessageId,
+			string sellerTitleAttachmentId,
+			string documentVersion = null);
 
-		GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo, string boxId, string sellerTitleMessageId,
+		GeneratedFile GenerateAcceptanceCertificateXmlForSeller(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object sellerInfo,
+			bool disableValidation = false);
+
+		GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
+			string boxId,
+			string sellerTitleMessageId,
 			string sellerTitleAttachmentId);
 
-		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object info, bool disableValidation = false);
+		GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object sellerInfo,
+			bool disableValidation = false);
 
-		GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object correctionInfo, bool disableValidation = false);
+		GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
+			string boxId,
+			string sellerTitleMessageId,
+			string sellerTitleAttachmentId);
 
-		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken,
-			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object info,
+			bool disableValidation = false);
 
-		GeneratedFile GenerateRecipientTitleXml(string authToken,
-			string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
+		GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object correctionInfo,
+			bool disableValidation = false);
 
-		InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId,
+		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(
+			string authToken,
+			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
+			string boxId,
+			string sellerTitleMessageId,
+			string sellerTitleAttachmentId);
+
+		GeneratedFile GenerateRecipientTitleXml(
+			string authToken,
+			string boxId,
+			string senderTitleMessageId,
+			string senderTitleAttachmentId,
+			byte[] userContractData,
+			string documentVersion = null);
+
+		InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(
+			string authToken,
+			string boxId,
+			string messageId,
 			string entityId);
 
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
@@ -119,16 +174,27 @@ namespace Diadoc.Api
 		string Recognize(string fileName, string filePath);
 		Recognized GetRecognized(string recognitionId);
 		PrintFormResult GeneratePrintForm(string authToken, string boxId, string messageId, string documentId);
+
 		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
 		PrintFormResult GetGeneratedPrintForm(string authToken, int documentType, string printFormId);
+
 		PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId);
 		string GeneratePrintFormFromAttachment(string authToken, int documentType, byte[] content);
 		DateTime NullDateTime();
 		DocumentList GetDocuments(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object filter);
 
-		DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId,
-			DateTime timestampFrom, DateTime timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId,
-			bool excludeSubdepartments, string afterIndexKey);
+		DocumentList GetDocuments(
+			string authToken,
+			string boxId,
+			string filterCategory,
+			string counteragentBoxId,
+			DateTime timestampFrom,
+			DateTime timestampTo,
+			string fromDocumentDate,
+			string toDocumentDate,
+			string departmentId,
+			bool excludeSubdepartments,
+			string afterIndexKey);
 
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
 		SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId);
@@ -136,11 +202,18 @@ namespace Diadoc.Api
 		CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId, string counteragentOrgId);
 		CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int pageSize = 0);
 
-		void AcquireCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment,
+		void AcquireCounteragent(
+			string authToken,
+			string myOrgId,
+			string counteragentOrgId,
+			string comment,
 			string myDepartmentId = null);
 
-		AsyncMethodResult AcquireCounteragent2(string authToken, string myOrgId,
-			[MarshalAs(UnmanagedType.IDispatch)] object acquireCounteragentRequest, string myDepartmentId = null);
+		AsyncMethodResult AcquireCounteragent2(
+			string authToken,
+			string myOrgId,
+			[MarshalAs(UnmanagedType.IDispatch)] object acquireCounteragentRequest,
+			string myDepartmentId = null);
 
 		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId);
 		void BreakWithCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment);
@@ -150,7 +223,11 @@ namespace Diadoc.Api
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
 		InvoiceInfo ParseInvoiceXmlFromFile(string fileName);
 
-		GeneratedFile GenerateDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId,
+		GeneratedFile GenerateDocumentReceiptXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
 			[MarshalAs(UnmanagedType.IDispatch)] object signer);
 
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] torg12SellerTitleXmlContent);
@@ -174,10 +251,18 @@ namespace Diadoc.Api
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string fileName);
 
-		GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId, string attachmentId,
+		GeneratedFile GenerateRevocationRequestXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
 			[MarshalAs(UnmanagedType.IDispatch)] object revocationRequestInfo);
 
-		GeneratedFile GenerateSignatureRejectionXml(string authToken, string boxId, string messageId, string attachmentId,
+		GeneratedFile GenerateSignatureRejectionXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
 			[MarshalAs(UnmanagedType.IDispatch)] object signatureRejectionInfo);
 
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
@@ -188,42 +273,72 @@ namespace Diadoc.Api
 		Organization GetOrganizationByInnKpp(string inn, string kpp);
 		IDocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId);
 
-		GetForwardedDocumentsResponse GetForwardedDocuments(string authToken, string boxId,
+		GetForwardedDocumentsResponse GetForwardedDocuments(
+			string authToken,
+			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
-		ForwardDocumentResponse ForwardDocument(string authToken, string boxId,
+		ForwardDocumentResponse ForwardDocument(
+			string authToken,
+			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
-		GetForwardedDocumentEventsResponse GetForwardedDocumentEvents(string authToken, string boxId,
+		GetForwardedDocumentEventsResponse GetForwardedDocumentEvents(
+			string authToken,
+			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
-		byte[] GetForwardedEntityContent(string authToken, string boxId,
-			[MarshalAs(UnmanagedType.IDispatch)] object forwardedDocumentId, string entityId);
+		byte[] GetForwardedEntityContent(
+			string authToken,
+			string boxId,
+			[MarshalAs(UnmanagedType.IDispatch)] object forwardedDocumentId,
+			string entityId);
 
-		IDocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken, string boxId,
+		IDocumentProtocolResult GenerateForwardedDocumentProtocol(
+			string authToken,
+			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object forwardedDocumentId);
 
-		GetDocflowBatchResponse GetDocflows(string authToken, string boxId,
+		GetDocflowBatchResponse GetDocflows(
+			string authToken,
+			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
-		GetDocflowEventsResponse GetDocflowEvents(string authToken, string boxId,
+		GetDocflowEventsResponse GetDocflowEvents(
+			string authToken,
+			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
-		SearchDocflowsResponse SearchDocflows(string authToken, string boxId,
+		SearchDocflowsResponse SearchDocflows(
+			string authToken,
+			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
-		GetDocflowsByPacketIdResponse GetDocflowsByPacketId(string authToken, string boxId,
+		GetDocflowsByPacketIdResponse GetDocflowsByPacketId(
+			string authToken,
+			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
 		bool CanSendInvoice(string authToken, string boxId, byte[] certificateBytes);
 
-		IDocumentZipGenerationResult GenerateDocumentZip(string authToken, string boxId, string messageId, string documentId,
+		IDocumentZipGenerationResult GenerateDocumentZip(
+			string authToken,
+			string boxId,
+			string messageId,
+			string documentId,
 			bool fullDocflow);
 
-		PrepareDocumentsToSignResponse PrepareDocumentsToSign(string authToken,
+		PrepareDocumentsToSignResponse PrepareDocumentsToSign(
+			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
 		User GetMyUser(string authToken);
+		UserV2 GetMyUserV2(string authToken);
+		AsyncMethodResult CloudSign(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object request, string certificateThumbprint);
+		CloudSignResult WaitCloudSignResult(string authToken, string taskId);
+		AsyncMethodResult CloudSignConfirm(string authToken, string cloudSignToken, string confirmationCode);
+		CloudSignConfirmResult WaitCloudSignConfirmResult(string authToken, string taskId);
+
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
 
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType);
@@ -234,8 +349,14 @@ namespace Diadoc.Api
 		GetDocumentTypesResponse GetDocumentTypes(string token, string boxId);
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, string nameOnShelf);
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content);
+
 		[Obsolete("In order to download XSD schema use the link provided in DocumentTitle.XsdUrl")]
 		FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex);
+
+		Employee GetEmployee(string authToken, string boxId, string userId);
+		EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId);
+		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, [MarshalAs(UnmanagedType.IDispatch)] object subscriptionsToUpdate);
+
 		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template);
 		Message TransformTemplateToMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object templateTransformation);
 	}
@@ -244,7 +365,7 @@ namespace Diadoc.Api
 	[ProgId("Diadoc.Api.ComDiadocApi2")]
 	[Guid("78FC377A-09AE-4053-AA41-4A943CEAEDEE")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IComDiadocApi))]
+	[ComDefaultInterface(typeof(IComDiadocApi))]
 	public class ComDiadocApi : SafeComObject, IComDiadocApi
 	{
 		private DiadocApi diadoc;
@@ -339,7 +460,10 @@ namespace Diadoc.Api
 			return diadoc.GetOrganizationByInnKpp(inn, kpp);
 		}
 
-		public IDocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId,
+		public IDocumentProtocolResult GenerateDocumentProtocol(
+			string authToken,
+			string boxId,
+			string messageId,
 			string documentId)
 		{
 			return diadoc.GenerateDocumentProtocol(authToken, boxId, messageId, documentId);
@@ -386,6 +510,21 @@ namespace Diadoc.Api
 			return diadoc.PostMessage(authToken, (MessageToPost) message);
 		}
 
+		public Employee GetEmployee(string authToken, string boxId, string userId)
+		{
+			return diadoc.GetEmployee(authToken, boxId, userId);
+		}
+
+		public EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId)
+		{
+			return diadoc.GetSubscriptions(authToken, boxId, userId);
+		}
+
+		public EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, object subscriptionsToUpdate)
+		{
+			return diadoc.UpdateSubscriptions(authToken, boxId, userId, (SubscriptionsToUpdate) subscriptionsToUpdate);
+		}
+
 		public Template PostTemplate(string authToken, object template)
 		{
 			return diadoc.PostTemplate(authToken, (TemplateToPost) template);
@@ -401,36 +540,65 @@ namespace Diadoc.Api
 			return diadoc.PostMessagePatch(authToken, (MessagePatchToPost) patch);
 		}
 
-		public GeneratedFile GenerateDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId,
+		public GeneratedFile GenerateDocumentReceiptXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
 			object signer)
 		{
 			return diadoc.GenerateDocumentReceiptXml(authToken, boxId, messageId, attachmentId, (Signer) signer);
 		}
 
-		public GeneratedFile GenerateInvoiceDocumentReceiptXml(string authToken, string boxId, string messageId,
-			string attachmentId, object signer)
+		public GeneratedFile GenerateInvoiceDocumentReceiptXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			object signer)
 		{
 			return diadoc.GenerateInvoiceDocumentReceiptXml(authToken, boxId, messageId, attachmentId, (Signer) signer);
 		}
 
-		public GeneratedFile GenerateInvoiceCorrectionRequestXml(string authToken, string boxId, string messageId,
-			string attachmentId, object correctionInfo)
+		public GeneratedFile GenerateInvoiceCorrectionRequestXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			object correctionInfo)
 		{
-			return diadoc.GenerateInvoiceCorrectionRequestXml(authToken, boxId, messageId, attachmentId,
+			return diadoc.GenerateInvoiceCorrectionRequestXml(authToken,
+				boxId,
+				messageId,
+				attachmentId,
 				(InvoiceCorrectionRequestInfo) correctionInfo);
 		}
 
-		public GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId,
-			string attachmentId, object revocationRequestInfo)
+		public GeneratedFile GenerateRevocationRequestXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			object revocationRequestInfo)
 		{
-			return diadoc.GenerateRevocationRequestXml(authToken, boxId, messageId, attachmentId,
+			return diadoc.GenerateRevocationRequestXml(authToken,
+				boxId,
+				messageId,
+				attachmentId,
 				(RevocationRequestInfo) revocationRequestInfo);
 		}
 
-		public GeneratedFile GenerateSignatureRejectionXml(string authToken, string boxId, string messageId,
-			string attachmentId, object signatureRejectionInfo)
+		public GeneratedFile GenerateSignatureRejectionXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			object signatureRejectionInfo)
 		{
-			return diadoc.GenerateSignatureRejectionXml(authToken, boxId, messageId, attachmentId,
+			return diadoc.GenerateSignatureRejectionXml(authToken,
+				boxId,
+				messageId,
+				attachmentId,
 				(SignatureRejectionInfo) signatureRejectionInfo);
 		}
 
@@ -459,23 +627,31 @@ namespace Diadoc.Api
 			return diadoc.GenerateInvoiceXml(authToken, (InvoiceInfo) invoiceInfo, disableValidation);
 		}
 
-		public GeneratedFile GenerateInvoiceRevisionXml(string authToken, object invoiceRevisionInfo,
+		public GeneratedFile GenerateInvoiceRevisionXml(
+			string authToken,
+			object invoiceRevisionInfo,
 			bool disableValidation = false)
 		{
 			return diadoc.GenerateInvoiceRevisionXml(authToken, (InvoiceInfo) invoiceRevisionInfo, disableValidation);
 		}
 
-		public GeneratedFile GenerateInvoiceCorrectionXml(string authToken, object invoiceCorrectionInfo,
+		public GeneratedFile GenerateInvoiceCorrectionXml(
+			string authToken,
+			object invoiceCorrectionInfo,
 			bool disableValidation = false)
 		{
-			return diadoc.GenerateInvoiceCorrectionXml(authToken, (InvoiceCorrectionInfo) invoiceCorrectionInfo,
+			return diadoc.GenerateInvoiceCorrectionXml(authToken,
+				(InvoiceCorrectionInfo) invoiceCorrectionInfo,
 				disableValidation);
 		}
 
-		public GeneratedFile GenerateInvoiceCorrectionRevisionXml(string authToken, object invoiceCorrectionRevisionInfo,
+		public GeneratedFile GenerateInvoiceCorrectionRevisionXml(
+			string authToken,
+			object invoiceCorrectionRevisionInfo,
 			bool disableValidation = false)
 		{
-			return diadoc.GenerateInvoiceCorrectionRevisionXml(authToken, (InvoiceCorrectionInfo) invoiceCorrectionRevisionInfo,
+			return diadoc.GenerateInvoiceCorrectionRevisionXml(authToken,
+				(InvoiceCorrectionInfo) invoiceCorrectionRevisionInfo,
 				disableValidation);
 		}
 
@@ -486,7 +662,7 @@ namespace Diadoc.Api
 
 		public GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, object sellerInfo, bool disableValidation = false)
 		{
-			return diadoc.GenerateTovTorg551XmlForSeller(authToken, (TovTorgSellerTitleInfo)sellerInfo, disableValidation);
+			return diadoc.GenerateTovTorg551XmlForSeller(authToken, (TovTorgSellerTitleInfo) sellerInfo, disableValidation);
 		}
 
 		public GeneratedFile GenerateTorg12XmlForBuyer(string authToken, object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
@@ -508,52 +684,84 @@ namespace Diadoc.Api
 				documentVersion);
 		}
 
-		public GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken, object sellerInfo,
+		public GeneratedFile GenerateAcceptanceCertificateXmlForSeller(
+			string authToken,
+			object sellerInfo,
 			bool disableValidation = false)
 		{
-			return diadoc.GenerateAcceptanceCertificateXmlForSeller(authToken, (AcceptanceCertificateSellerTitleInfo) sellerInfo,
+			return diadoc.GenerateAcceptanceCertificateXmlForSeller(authToken,
+				(AcceptanceCertificateSellerTitleInfo) sellerInfo,
 				disableValidation);
 		}
 
-		public GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken, object buyerInfo, string boxId,
-			string sellerTitleMessageId, string sellerTitleAttachmentId)
+		public GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(
+			string authToken,
+			object buyerInfo,
+			string boxId,
+			string sellerTitleMessageId,
+			string sellerTitleAttachmentId)
 		{
-			return diadoc.GenerateAcceptanceCertificateXmlForBuyer(authToken, (AcceptanceCertificateBuyerTitleInfo)buyerInfo,
-				boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+			return diadoc.GenerateAcceptanceCertificateXmlForBuyer(authToken,
+				(AcceptanceCertificateBuyerTitleInfo) buyerInfo,
+				boxId,
+				sellerTitleMessageId,
+				sellerTitleAttachmentId);
 		}
 
-		public GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(string authToken, object sellerInfo,
+		public GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(
+			string authToken,
+			object sellerInfo,
 			bool disableValidation = false)
 		{
-			return diadoc.GenerateAcceptanceCertificate552XmlForSeller(authToken, (AcceptanceCertificate552SellerTitleInfo)sellerInfo,
+			return diadoc.GenerateAcceptanceCertificate552XmlForSeller(authToken,
+				(AcceptanceCertificate552SellerTitleInfo) sellerInfo,
 				disableValidation);
 		}
 
-		public GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(string authToken, object buyerInfo, string boxId,
-			string sellerTitleMessageId, string sellerTitleAttachmentId)
+		public GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(
+			string authToken,
+			object buyerInfo,
+			string boxId,
+			string sellerTitleMessageId,
+			string sellerTitleAttachmentId)
 		{
-			return diadoc.GenerateAcceptanceCertificate552XmlForBuyer(authToken, (AcceptanceCertificate552BuyerTitleInfo)buyerInfo,
-				boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+			return diadoc.GenerateAcceptanceCertificate552XmlForBuyer(authToken,
+				(AcceptanceCertificate552BuyerTitleInfo) buyerInfo,
+				boxId,
+				sellerTitleMessageId,
+				sellerTitleAttachmentId);
 		}
 
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
-			string authToken, object info, bool disableValidation = false)
+			string authToken,
+			object info,
+			bool disableValidation = false)
 		{
 			return diadoc.GenerateUniversalTransferDocumentXmlForSeller(
-				authToken, (UniversalTransferDocumentSellerTitleInfo)info, disableValidation);
+				authToken,
+				(UniversalTransferDocumentSellerTitleInfo) info,
+				disableValidation);
 		}
 
 		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
-			string authToken, object correctionInfo, bool disableValidation = false)
+			string authToken,
+			object correctionInfo,
+			bool disableValidation = false)
 		{
 			return diadoc.GenerateUniversalCorrectionDocumentXmlForSeller(
-				authToken, (UniversalCorrectionDocumentSellerTitleInfo)correctionInfo, disableValidation);
+				authToken,
+				(UniversalCorrectionDocumentSellerTitleInfo) correctionInfo,
+				disableValidation);
 		}
 
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(
-			string authToken, object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+			string authToken,
+			object buyerInfo,
+			string boxId,
+			string sellerTitleMessageId,
+			string sellerTitleAttachmentId)
 		{
-			return diadoc.GenerateUniversalTransferDocumentXmlForBuyer(authToken, (UniversalTransferDocumentBuyerTitleInfo)buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+			return diadoc.GenerateUniversalTransferDocumentXmlForBuyer(authToken, (UniversalTransferDocumentBuyerTitleInfo) buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
 		public GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
@@ -561,7 +769,10 @@ namespace Diadoc.Api
 			return diadoc.GenerateRecipientTitleXml(authToken, boxId, senderTitleMessageId, senderTitleAttachmentId, userContractData, documentVersion);
 		}
 
-		public InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId,
+		public InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(
+			string authToken,
+			string boxId,
+			string messageId,
 			string entityId)
 		{
 			return diadoc.GetInvoiceCorrectionRequestInfo(authToken, boxId, messageId, entityId);
@@ -663,12 +874,30 @@ namespace Diadoc.Api
 			return diadoc.GetDocuments(authToken, (DocumentsFilter) filter);
 		}
 
-		public DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId,
-			DateTime timestampFrom, DateTime timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId,
-			bool excludeSubdepartments, string afterIndexKey)
+		public DocumentList GetDocuments(
+			string authToken,
+			string boxId,
+			string filterCategory,
+			string counteragentBoxId,
+			DateTime timestampFrom,
+			DateTime timestampTo,
+			string fromDocumentDate,
+			string toDocumentDate,
+			string departmentId,
+			bool excludeSubdepartments,
+			string afterIndexKey)
 		{
-			return diadoc.GetDocuments(authToken, boxId, filterCategory, counteragentBoxId, GetNullable(timestampFrom),
-				GetNullable(timestampTo), fromDocumentDate, toDocumentDate, departmentId, excludeSubdepartments, afterIndexKey);
+			return diadoc.GetDocuments(authToken,
+				boxId,
+				filterCategory,
+				counteragentBoxId,
+				GetNullable(timestampFrom),
+				GetNullable(timestampTo),
+				fromDocumentDate,
+				toDocumentDate,
+				departmentId,
+				excludeSubdepartments,
+				afterIndexKey);
 		}
 
 		public Document GetDocument(string authToken, string boxId, string messageId, string entityId)
@@ -711,19 +940,26 @@ namespace Diadoc.Api
 			return diadoc.GetForwardedDocuments(authToken, boxId, (GetForwardedDocumentsRequest) request);
 		}
 
-		public GetForwardedDocumentEventsResponse GetForwardedDocumentEvents(string authToken, string boxId,
+		public GetForwardedDocumentEventsResponse GetForwardedDocumentEvents(
+			string authToken,
+			string boxId,
 			object request)
 		{
 			return diadoc.GetForwardedDocumentEvents(authToken, boxId, (GetForwardedDocumentEventsRequest) request);
 		}
 
-		public byte[] GetForwardedEntityContent(string authToken, string boxId, object forwardedDocumentId,
+		public byte[] GetForwardedEntityContent(
+			string authToken,
+			string boxId,
+			object forwardedDocumentId,
 			string entityId)
 		{
 			return diadoc.GetForwardedEntityContent(authToken, boxId, (ForwardedDocumentId) forwardedDocumentId, entityId);
 		}
 
-		public IDocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken, string boxId,
+		public IDocumentProtocolResult GenerateForwardedDocumentProtocol(
+			string authToken,
+			string boxId,
 			object forwardedDocumentId)
 		{
 			return diadoc.GenerateForwardedDocumentProtocol(authToken, boxId, (ForwardedDocumentId) forwardedDocumentId);
@@ -734,7 +970,10 @@ namespace Diadoc.Api
 			return diadoc.CanSendInvoice(authToken, boxId, certificateBytes);
 		}
 
-		public IDocumentZipGenerationResult GenerateDocumentZip(string authToken, string boxId, string messageId,
+		public IDocumentZipGenerationResult GenerateDocumentZip(
+			string authToken,
+			string boxId,
+			string messageId,
 			string documentId,
 			bool fullDocflow)
 		{
@@ -749,6 +988,31 @@ namespace Diadoc.Api
 		public User GetMyUser(string authToken)
 		{
 			return diadoc.GetMyUser(authToken);
+		}
+
+		public UserV2 GetMyUserV2(string authToken)
+		{
+			return diadoc.GetMyUserV2(authToken);
+		}
+
+		public AsyncMethodResult CloudSign(string authToken, object request, string certificateThumbprint)
+		{
+			return diadoc.CloudSign(authToken, (CloudSignRequest) request, certificateThumbprint);
+		}
+
+		public CloudSignResult WaitCloudSignResult(string authToken, string taskId)
+		{
+			return diadoc.WaitCloudSignResult(authToken, taskId);
+		}
+
+		public AsyncMethodResult CloudSignConfirm(string authToken, string cloudSignToken, string confirmationCode)
+		{
+			return diadoc.CloudSignConfirm(authToken, cloudSignToken, confirmationCode);
+		}
+
+		public CloudSignConfirmResult WaitCloudSignConfirmResult(string authToken, string taskId)
+		{
+			return diadoc.WaitCloudSignConfirmResult(authToken, taskId);
 		}
 
 		public DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId)
@@ -803,34 +1067,53 @@ namespace Diadoc.Api
 			return diadoc.GetCounteragent(authToken, myOrgId, counteragentOrgId);
 		}
 
-		public CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId,
+		public CounteragentCertificateList GetCounteragentCertificates(
+			string authToken,
+			string myOrgId,
 			string counteragentOrgId)
 		{
 			return diadoc.GetCounteragentCertificates(authToken, myOrgId, counteragentOrgId);
 		}
 
-		public CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus,
-			string afterIndexKey, string query = null, int pageSize = 0)
+		public CounteragentList GetCounteragents(
+			string authToken,
+			string myOrgId,
+			string counteragentStatus,
+			string afterIndexKey,
+			string query = null,
+			int pageSize = 0)
 		{
-			var size = pageSize == 0 ? (int?)null : pageSize;
+			var size = pageSize == 0 ? (int?) null : pageSize;
 			return diadoc.GetCounteragents(authToken, myOrgId, counteragentStatus, afterIndexKey, query, size);
 		}
 
-		public void AcquireCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment,
+		public void AcquireCounteragent(
+			string authToken,
+			string myOrgId,
+			string counteragentOrgId,
+			string comment,
 			string myDepartmentId = null)
 		{
-			diadoc.AcquireCounteragent(authToken, myOrgId, new AcquireCounteragentRequest
-			{
-				OrgId = counteragentOrgId,
-				MessageToCounteragent = comment
-			}, myDepartmentId);
+			diadoc.AcquireCounteragent(authToken,
+				myOrgId,
+				new AcquireCounteragentRequest
+				{
+					OrgId = counteragentOrgId,
+					MessageToCounteragent = comment
+				},
+				myDepartmentId);
 		}
 
-		public AsyncMethodResult AcquireCounteragent2(string authToken, string myOrgId,
-			[MarshalAs(UnmanagedType.IDispatch)] object acquireCounteragentRequeststring, string myDepartmentId = null)
+		public AsyncMethodResult AcquireCounteragent2(
+			string authToken,
+			string myOrgId,
+			[MarshalAs(UnmanagedType.IDispatch)] object acquireCounteragentRequeststring,
+			string myDepartmentId = null)
 		{
-			return diadoc.AcquireCounteragent(authToken, myOrgId,
-				(AcquireCounteragentRequest) acquireCounteragentRequeststring, myDepartmentId);
+			return diadoc.AcquireCounteragent(authToken,
+				myOrgId,
+				(AcquireCounteragentRequest) acquireCounteragentRequeststring,
+				myDepartmentId);
 		}
 
 		public AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId)
