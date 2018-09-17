@@ -91,6 +91,12 @@ namespace Diadoc.Api
 			return diadocHttpApi.AuthenticateByKey(key, id);
 		}
 
+		public string AuthenticateBySid([NotNull] string sid)
+		{
+			if (sid == null) throw new ArgumentNullException("sid");
+			return diadocHttpApi.AuthenticateBySid(sid);
+		}
+
 		public string Authenticate(byte[] certificateBytes, bool useLocalSystemStorage = false)
 		{
 			if (certificateBytes == null) throw new ArgumentNullException("certificateBytes");

@@ -30,6 +30,14 @@ namespace Diadoc.Api
 			return Encoding.UTF8.GetString(httpResponse);
 		}
 
+		public async Task<string> AuthenticateBySidAsync(string sid)
+		{
+			var qsb = new PathAndQueryBuilder("/V2/Authenticate");
+			qsb.AddParameter("sid", sid);
+			var httpResponse = await PerformHttpRequestAsync(null, "POST", qsb.BuildPathAndQuery()).ConfigureAwait(false);
+			return Encoding.UTF8.GetString(httpResponse);
+		}
+
 		public Task<string> AuthenticateAsync(byte[] certificateBytes, bool useLocalSystemStorage = false)
 		{
 			return PerformHttpRequestAsync(null, "POST", "/Authenticate", certificateBytes,

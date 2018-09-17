@@ -33,6 +33,7 @@ namespace Diadoc.Api
 		string CreateNewId();
 		string AuthenticateWithPassword(string login, string password);
 		string AuthenticateWithCertificate(string thumbprint, bool useLocalSystemStorage = false);
+		string AuthenticateWithSid(string sid);
 		OrganizationUserPermissions GetMyPermissions(string authToken, string orgId);
 		ReadonlyList GetMyOrganizations(string authToken, bool autoRegister = true);
 		ReadonlyList GetOrganizationsByInnKpp(string inn, string kpp);
@@ -415,6 +416,11 @@ namespace Diadoc.Api
 		public string AuthenticateWithCertificate(string thumbprint, bool useLocalSystemStorage = false)
 		{
 			return diadoc.Authenticate(thumbprint, useLocalSystemStorage);
+		}
+
+		public string AuthenticateWithSid(string sid)
+		{
+			return diadoc.AuthenticateBySid(sid);
 		}
 
 		public OrganizationUserPermissions GetMyPermissions(string authToken, string orgId)
