@@ -51,6 +51,14 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
+		protected TResponse PerformHttpRequest<TRequest, TResponse>([CanBeNull] string token, [NotNull] string queryString, [NotNull] TRequest request, [NotNull] Func<byte[], TResponse> convertResponse)
+			where TRequest: class
+			where TResponse: class
+		{
+			return PerformHttpRequest(token, "POST", queryString, Serialize(request), convertResponse);
+		}
+
+		[NotNull]
 		protected TResponse PerformHttpRequest<TResponse>([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
 			where TResponse: class
 		{

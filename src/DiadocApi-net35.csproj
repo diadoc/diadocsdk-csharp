@@ -142,6 +142,9 @@
     <Compile Include="ProtobufHttpSerializer.cs" />
     <Compile Include="ProtobufPrepareSerializerInitializer.cs" />
     <Compile Include="Proto\AsyncMethodResult.proto.cs" />
+    <Compile Include="Proto\Auth\AuthenticateByCertificateInfo.proto.cs" />
+    <Compile Include="Proto\Auth\AuthenticateByLoginInfo.proto.cs" />
+    <Compile Include="Proto\Auth\AuthenticateByTrustedServiceKeyInfo.proto.cs" />
     <Compile Include="Proto\CertificateInfo.proto.cs" />
     <Compile Include="Proto\CloudSign.proto.cs" />
     <Compile Include="Proto\Content_v2.proto.cs" />

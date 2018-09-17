@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using Diadoc.Api.Http;
+using Diadoc.Api.Proto.Auth;
 
 namespace Diadoc.Api
 {
@@ -8,63 +9,102 @@ namespace Diadoc.Api
 	{
 		public string Authenticate(string login, string password, string key = null, string id = null)
 		{
-			var qsb = new PathAndQueryBuilder("/Authenticate");
-			qsb.AddParameter("login", login);
-			qsb.AddParameter("password", password);
+			var authenticateByLoginInfo = new AuthenticateByLoginInfo
+			{
+				Login = login,
+				Password = password
+			};
+
 			if (!string.IsNullOrEmpty(key))
 			{
-				qsb.AddParameter("key", key);
-				qsb.AddParameter("id", id);
+				authenticateByLoginInfo.TrustedServiceKeyInfo = new AuthenticateByTrustedServiceKeyInfo
+				{
+					Id = id,
+					Key = key
+				};
 			}
-			var httpResponse = PerformHttpRequest(null, "POST", qsb.BuildPathAndQuery());
-			return Encoding.UTF8.GetString(httpResponse);
+
+			return PerformHttpRequest(
+				null,
+				"/AuthenticateByLogin",
+				authenticateByLoginInfo,
+				response => Encoding.UTF8.GetString(response));
 		}
 
 		public string AuthenticateByKey(string key, string id)
 		{
-			var qsb = new PathAndQueryBuilder("/Authenticate");
-			qsb.AddParameter("key", key);
-			qsb.AddParameter("id", id);
-			var httpResponse = PerformHttpRequest(null, "POST", qsb.BuildPathAndQuery());
-			return Encoding.UTF8.GetString(httpResponse);
+			var authenticateByTrustedServiceKeyInfo = new AuthenticateByTrustedServiceKeyInfo
+			{
+				Id = id,
+				Key = key
+			};
+
+			return PerformHttpRequest(
+				null,
+				"/AuthenticateByTrustedServiceKey",
+				authenticateByTrustedServiceKeyInfo,
+				response => Encoding.UTF8.GetString(response));
 		}
 
+		[Obsolete("Use /AuthenticateByCertificate")]
 		public string Authenticate(byte[] certificateBytes, bool useLocalSystemStorage = false)
 		{
-			return PerformHttpRequest(null, "POST", "/Authenticate", certificateBytes,
-				responseContent => Convert.ToBase64String(crypt.Decrypt(responseContent, useLocalSystemStorage)));
+			return PerformHttpRequest(
+				null,
+				"POST",
+				"/Authenticate",
+				certificateBytes,
+				response => Convert.ToBase64String(crypt.Decrypt(response, useLocalSystemStorage)));
 		}
 
+		[Obsolete("Use /AuthenticateByCertificate")]
 		public string Authenticate(string thumbprint, bool useLocalSystemStorage = false)
 		{
 			var userCert = crypt.GetCertificateWithPrivateKey(thumbprint, useLocalSystemStorage);
+
 			return Authenticate(userCert.RawData, useLocalSystemStorage);
 		}
 
 		public string AuthenticateWithKey(byte[] certificateBytes, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true)
 		{
-			var qsb = new PathAndQueryBuilder("/V2/Authenticate");
-			var authenticationWithKey = !string.IsNullOrEmpty(key);
-			if (authenticationWithKey)
+			var authenticateByCertificateInfo = new AuthenticateByCertificateInfo
 			{
-				qsb.AddParameter("key", key);
-				qsb.AddParameter("id", id);
+				Certificate = certificateBytes
+			};
+
+			if (!string.IsNullOrEmpty(key))
+			{
+				authenticateByCertificateInfo.TrustedServiceKeyInfo = new AuthenticateByTrustedServiceKeyInfo
+				{
+					Id = id,
+					Key = key
+				};
 			}
-			var token = PerformHttpRequest(null, "POST", qsb.BuildPathAndQuery(), certificateBytes,
-				responseContent => Convert.ToBase64String(crypt.Decrypt(responseContent, useLocalSystemStorage)));
+
+			var token = PerformHttpRequest(
+				null,
+				"/AuthenticateByCertificate",
+				authenticateByCertificateInfo,
+				response => Convert.ToBase64String(crypt.Decrypt(response, useLocalSystemStorage)));
 
 			return autoConfirm
-				? AuthenticateWithKeyConfirm(certificateBytes, token, saveBinding: authenticationWithKey)
+				? AuthenticateWithKeyConfirm(
+					certificateBytes,
+					token,
+					!string.IsNullOrEmpty(key))
 				: token;
 		}
 
 		public string AuthenticateWithKey(string thumbprint, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true)
 		{
-			var authenticationWithKey = !string.IsNullOrEmpty(key);
 			var userCert = crypt.GetCertificateWithPrivateKey(thumbprint, useLocalSystemStorage);
 			var token = AuthenticateWithKey(userCert.RawData, useLocalSystemStorage, key, id, false);
+
 			return autoConfirm
-				? AuthenticateWithKeyConfirm(userCert.Thumbprint, token, saveBinding: authenticationWithKey)
+				? AuthenticateWithKeyConfirm(
+					userCert.Thumbprint,
+					token,
+					!string.IsNullOrEmpty(key))
 				: token;
 		}
 
@@ -73,8 +113,13 @@ namespace Diadoc.Api
 			var confirmQsb = new PathAndQueryBuilder("/V2/AuthenticateConfirm");
 			confirmQsb.AddParameter("token", token);
 			confirmQsb.AddParameter("saveBinding", saveBinding.ToString());
-			return PerformHttpRequest(null, "POST", confirmQsb.BuildPathAndQuery(), certificateBytes,
-				responseContent => Encoding.UTF8.GetString(responseContent));
+
+			return PerformHttpRequest(
+				null,
+				"POST",
+				confirmQsb.BuildPathAndQuery(),
+				certificateBytes,
+				response => Encoding.UTF8.GetString(response));
 		}
 
 		public string AuthenticateWithKeyConfirm(string thumbprint, string token, bool saveBinding = false)
@@ -83,8 +128,13 @@ namespace Diadoc.Api
 			confirmQsb.AddParameter("thumbprint", thumbprint);
 			confirmQsb.AddParameter("token", token);
 			confirmQsb.AddParameter("saveBinding", saveBinding.ToString());
-			return PerformHttpRequest(null, "POST", confirmQsb.BuildPathAndQuery(), null,
-				responseContent => Encoding.UTF8.GetString(responseContent));
+
+			return PerformHttpRequest(
+				null,
+				"POST",
+				confirmQsb.BuildPathAndQuery(),
+				null,
+				response => Encoding.UTF8.GetString(response));
 		}
 	}
 }

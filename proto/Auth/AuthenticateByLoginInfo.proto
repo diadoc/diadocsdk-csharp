@@ -1,0 +1,9 @@
+import "Auth/AuthenticateByTrustedServiceKeyInfo.proto";
+
+package Diadoc.Api.Proto.Auth;
+
+message AuthenticateByLoginInfo {
+    required string Login = 1;
+    required string Password = 2;
+    optional AuthenticateByTrustedServiceKeyInfo TrustedServiceKeyInfo = 3;
+}
