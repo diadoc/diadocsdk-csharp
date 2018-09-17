@@ -7,6 +7,7 @@ using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
 using Diadoc.Api.Proto.Employees.Subscriptions;
+using Diadoc.Api.Proto.Employees;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
@@ -1004,6 +1005,14 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (userId == null) throw new ArgumentNullException("userId");
 			return diadocHttpApi.UpdateSubscriptionsAsync(authToken, boxId, userId, subscriptionsToUpdate);
+		}
+
+		public Task<Employee> CreateEmployeeAsync(string authToken, string boxId, EmployeeToCreate employeeToCreate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (employeeToCreate == null) throw new ArgumentNullException("employeeToCreate");
+			return diadocHttpApi.CreateEmployeeAsync(authToken, boxId, employeeToCreate);
 		}
 	}
 }
