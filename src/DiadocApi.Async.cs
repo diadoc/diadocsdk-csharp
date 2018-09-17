@@ -14,6 +14,7 @@ using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Recognition;
+using Diadoc.Api.Proto.Users;
 using JetBrains.Annotations;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
@@ -101,6 +102,13 @@ namespace Diadoc.Api
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			return diadocHttpApi.GetMyUserV2Async(authToken);
+		}
+
+		public Task<UserV2> UpdateMyUserAsync(string authToken, UserToUpdate userToUpdate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (userToUpdate == null) throw new ArgumentNullException("userToUpdate");
+			return diadocHttpApi.UpdateMyUserAsync(authToken, userToUpdate);
 		}
 
 		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false)

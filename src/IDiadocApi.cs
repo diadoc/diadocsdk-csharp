@@ -15,6 +15,7 @@ using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 using Diadoc.Api.Proto.KeyValueStorage;
+using Diadoc.Api.Proto.Users;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 
@@ -151,6 +152,7 @@ namespace Diadoc.Api
 		[Obsolete("Use GetMyUserV2")]
 		User GetMyUser(string authToken);
 		UserV2 GetMyUserV2(string authToken);
+		UserV2 UpdateMyUser(string authToken, UserToUpdate userToUpdate);
 		AsyncMethodResult CloudSign(string authToken, CloudSignRequest request, string certificateThumbprint);
 		CloudSignResult WaitCloudSignResult(string authToken, string taskId, TimeSpan? timeout = null);
 		AsyncMethodResult CloudSignConfirm(string authToken, string cloudSignToken, string confirmationCode, ContentLocationPreference? locationPreference = null);
@@ -200,6 +202,7 @@ namespace Diadoc.Api
 		[Obsolete("Use GetMyUserV2Async")]
 		Task<User> GetMyUserAsync(string authToken);
 		Task<UserV2> GetMyUserV2Async(string authToken);
+		Task<UserV2> UpdateMyUserAsync(string authToken, UserToUpdate userToUpdate);
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false);
 		Task<Organization> GetOrganizationByIdAsync(string orgId);
 		Task<Organization> GetOrganizationByBoxIdAsync(string boxId);
