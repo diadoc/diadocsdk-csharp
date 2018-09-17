@@ -533,6 +533,11 @@ message TemplateDocumentAttachment {
 	optional string CustomDocumentId = 8;
 	optional string EditingSettingId = 9;
 	optional bool NeedRecipientSignature = 10 [default = false];
+  optional PredefinedRecipientTitle PredefinedRecipientTitle = 11;
+}
+
+message PredefinedRecipientTitle {
+    required UnsignedContent UnsignedContent = 1;
 }
 
 message UnsignedContent {

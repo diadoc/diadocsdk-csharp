@@ -3230,6 +3230,32 @@ namespace Diadoc.Api.Proto.Events
       get { return _NeedRecipientSignature; }
       set { _NeedRecipientSignature = value; }
     }
+
+    private Diadoc.Api.Proto.Events.PredefinedRecipientTitle _PredefinedRecipientTitle = null;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"PredefinedRecipientTitle", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.PredefinedRecipientTitle PredefinedRecipientTitle
+    {
+      get { return _PredefinedRecipientTitle; }
+      set { _PredefinedRecipientTitle = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PredefinedRecipientTitle")]
+  public partial class PredefinedRecipientTitle : global::ProtoBuf.IExtensible
+  {
+    public PredefinedRecipientTitle() {}
+    
+    private Diadoc.Api.Proto.Events.UnsignedContent _UnsignedContent;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"UnsignedContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Events.UnsignedContent UnsignedContent
+    {
+      get { return _UnsignedContent; }
+      set { _UnsignedContent = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
