@@ -6,13 +6,15 @@ platform: Any CPU
 configuration:
   - Debug
   - Release
-  
+
 environment:
   diadoc_signing_secret:
     secure: prJOj46LFF9HWKRH4PZ8vSS7wgSkkAFIkSCkfqWfAoPNGhUcYqplF4h4PyxEmMjb
 
 build_script:
 - ps: .\build.ps1 -Target "AppVeyor" -Configuration $env:configuration -Verbosity Diagnostic
+
+test: off
 
 deploy:
   - provider: GitHub

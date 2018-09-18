@@ -43,7 +43,7 @@ Setup(context =>
 		var secureFileArguments = new ProcessSettings()
 			.WithArguments(x =>	x
 				.AppendSwitch("-decrypt", @"src\diadoc.snk.enc")
-				.AppendSwitch("-secret", EnvironmentVariable("diadoc_signing_secret")));
+				.AppendSwitchSecret("-secret", EnvironmentVariable("diadoc_signing_secret")));
 		var secureFilePath = context.Tools.Resolve("secure-file.exe");
 		var exitCode = StartProcess(secureFilePath, secureFileArguments);
 		if (exitCode != 0)
@@ -232,7 +232,6 @@ Task("PublishArtifactsToAppVeyor")
 
 Task("Test")
 	.IsDependentOn("Build")
-	.WithCriteria(x => !BuildSystem.IsRunningOnAppVeyor)
 	.Does(() =>
 	{
 		NUnit(buildDir + "/**/*Tests.dll");
