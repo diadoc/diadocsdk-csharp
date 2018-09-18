@@ -26,11 +26,13 @@ namespace Diadoc.Api.Proto.Employees
 	[Guid("C6F9CC84-5CE1-4B32-A1C2-1E40C52B2925")]
 	public interface IEmployeePermissions
 	{
-		string UserDepartmentId { get; }
-		bool IsAdministrator { get; }
-		DocumentAccessLevel DocumentAccessLevel { get; }
+		string UserDepartmentId { get; set; }
+		bool IsAdministrator { get; set; }
+		Com.DocumentAccessLevel DocumentAccessLevel { get; set; }
 		ReadonlyList SelectedDepartmentIdsList { get; }
 		ReadonlyList ActionsList { get; }
+		void AddSelectedDepartmentIdItem(string departmentId);
+		void AddActionItem([MarshalAs(UnmanagedType.IDispatch)] object item);
 	}
 
 	[ComVisible(true)]
@@ -40,6 +42,12 @@ namespace Diadoc.Api.Proto.Employees
 	[ComDefaultInterface(typeof(IEmployeePermissions))]
 	public partial class EmployeePermissions : SafeComObject, IEmployeePermissions
 	{
+		Com.DocumentAccessLevel IEmployeePermissions.DocumentAccessLevel
+		{
+			get { return (Com.DocumentAccessLevel) DocumentAccessLevel; }
+			set { DocumentAccessLevel = (DocumentAccessLevel) value; }
+		}
+
 		public ReadonlyList SelectedDepartmentIdsList
 		{
 			get { return new ReadonlyList(SelectedDepartmentIds); }
@@ -49,24 +57,34 @@ namespace Diadoc.Api.Proto.Employees
 		{
 			get { return new ReadonlyList(Actions); }
 		}
+
+		public void AddSelectedDepartmentIdItem(string departmentId)
+		{
+			SelectedDepartmentIds.Add(departmentId);
+		}
+
+		public void AddActionItem(object item)
+		{
+			Actions.Add((EmployeeAction) item);
+		}
 	}
 
 	[ComVisible(true)]
 	[Guid("267DE3D2-8E5D-423D-AF2C-6252293570D5")]
 	public interface IEmployeeAction
 	{
-		string Name { get; }
-		bool IsAllowed { get; }
+		string Name { get; set; }
+		bool IsAllowed { get; set; }
 	}
 
 	[ComVisible(true)]
 	[Guid("89C89C89-FDD7-4035-AAD8-F36A518AFC28")]
 	public interface IEmployeeToCreate
 	{
-		EmployeeToCreateCredentials Credentials { get; }
-		string Position { get; }
-		bool CanBeInvitedForChat { get; }
-		EmployeePermissions Permissions { get; }
+		EmployeeToCreateCredentials Credentials { get; set; }
+		string Position { get; set; }
+		bool CanBeInvitedForChat { get; set; }
+		EmployeePermissions Permissions { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -91,8 +109,8 @@ namespace Diadoc.Api.Proto.Employees
 	[Guid("7A3AB4C0-8005-4A28-9186-73CFC9387CE3")]
 	public interface IEmployeeToCreateCredentials
 	{
-		EmployeeToCreateByLogin Login { get; }
-		EmployeeToCreateByCertificate Certificate { get; }
+		EmployeeToCreateByLogin Login { get; set; }
+		EmployeeToCreateByCertificate Certificate { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -108,8 +126,8 @@ namespace Diadoc.Api.Proto.Employees
 	[Guid("36988BEA-F0EA-492D-9BAF-E418513EF77E")]
 	public interface IEmployeeToCreateByLogin
 	{
-		string Login { get; }
-		FullName FullName { get; }
+		string Login { get; set; }
+		FullName FullName { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -125,9 +143,9 @@ namespace Diadoc.Api.Proto.Employees
 	[Guid("CCC77101-B480-4E8A-8E23-2A5262DB1186")]
 	public interface IEmployeeToCreateByCertificate
 	{
-		byte[] Content { get; }
-		string AccessBasis { get; }
-		string Email { get; }
+		byte[] Content { get; set; }
+		string AccessBasis { get; set; }
+		string Email { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -184,6 +202,7 @@ namespace Diadoc.Api.Proto.Employees.Subscriptions
 	public interface ISubscriptionsToUpdate
 	{
 		ReadonlyList SubscriptionsList { get; }
+		void AddSubscriptionItem([MarshalAs(UnmanagedType.IDispatch)] object item);
 	}
 
 	[ComVisible(true)]
@@ -196,6 +215,11 @@ namespace Diadoc.Api.Proto.Employees.Subscriptions
 		public ReadonlyList SubscriptionsList
 		{
 			get { return new ReadonlyList(Subscriptions); }
+		}
+
+		public void AddSubscriptionItem(object item)
+		{
+			Subscriptions.Add((Subscription) item);
 		}
 	}
 }
