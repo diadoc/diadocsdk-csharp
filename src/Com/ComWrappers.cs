@@ -1561,9 +1561,9 @@ namespace Diadoc.Api.Proto
 	[Guid("B4B591A6-3B03-4B3A-83D0-F57734F4EE9B")]
 	public interface IFullName
 	{
-		string LastName { get; }
-		string FirstName { get; }
-		string MiddleName { get; }
+		string LastName { get; set; }
+		string FirstName { get; set; }
+		string MiddleName { get; set; }
 	}
 
 	[ComVisible(true)]
