@@ -141,9 +141,12 @@
     <Compile Include="IHttpSerializer.cs" />
     <Compile Include="ProtobufHttpSerializer.cs" />
     <Compile Include="ProtobufPrepareSerializerInitializer.cs" />
+    <Compile Include="Proto\AsyncMethodResult.cs" />
     <Compile Include="Proto\AsyncMethodResult.proto.cs" />
     <Compile Include="Proto\CertificateInfo.proto.cs" />
+    <Compile Include="Proto\CloudSign.cs" />
     <Compile Include="Proto\CloudSign.proto.cs" />
+    <Compile Include="Proto\Content_v2.cs" />
     <Compile Include="Proto\Content_v2.proto.cs" />
     <Compile Include="Proto\CustomDataItem.proto.cs" />
     <Compile Include="Proto\Docflow\AttachmentV3.proto.cs" />
