@@ -1646,22 +1646,6 @@ namespace Diadoc.Api.Proto
 	}
 
 	[ComVisible(true)]
-	[Guid("6ACE70FA-930A-429F-B3A3-EAE6A4926E91")]
-	public interface IAsyncMethodResult
-	{
-		string TaskId { get; set; }
-	}
-
-	[ComVisible(true)]
-	[ProgId("Diadoc.Api.AsyncMethodResult")]
-	[Guid("82F05289-47D4-4A45-9AAC-E19A935479EA")]
-	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof(IAsyncMethodResult))]
-	public partial class AsyncMethodResult : SafeComObject, IAsyncMethodResult
-	{
-	}
-
-	[ComVisible(true)]
 	[Guid("6CEE1BC1-9BD0-4F05-9AB2-9E5093903430")]
 	public interface IAcquireCounteragentResult
 	{
@@ -1693,41 +1677,5 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(IFullVersion))]
 	public partial class FullVersion : SafeComObject, IFullVersion
 	{
-	}
-
-	[ComVisible(true)]
-	[Guid("6B62071D-3BE0-46C3-BA4F-62F35FB85719")]
-	public interface ICloudSignResult
-	{
-		string Token { get; }
-	}
-
-	[ComVisible(true)]
-	[ProgId("Diadoc.Api.CloudSignResult")]
-	[Guid("6509E8BC-385F-4036-9D8B-FCAE73D28727")]
-	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof(ICloudSignResult))]
-	public partial class CloudSignResult : SafeComObject, ICloudSignResult
-	{
-	}
-
-	[ComVisible(true)]
-	[Guid("C846A910-0A92-41A8-82C9-8C4A7A39C80D")]
-	public interface ICloudSignConfirmResult
-	{
-		ReadonlyList SignaturesList { get; }
-	}
-
-	[ComVisible(true)]
-	[ProgId("Diadoc.Api.CloudSignConfirmResult")]
-	[Guid("64C2C140-895B-4C21-8D08-6154998F6890")]
-	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof(ICloudSignConfirmResult))]
-	public partial class CloudSignConfirmResult : SafeComObject, ICloudSignConfirmResult
-	{
-		public ReadonlyList SignaturesList
-		{
-			get { return new ReadonlyList(Signatures); }
-		}
 	}
 }
