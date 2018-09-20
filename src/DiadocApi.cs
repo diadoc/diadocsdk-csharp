@@ -1068,6 +1068,23 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEmployee(authToken, boxId, userId);
 		}
 
+		public Employee CreateEmployee(string authToken, string boxId, EmployeeToCreate employeeToCreate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (employeeToCreate == null) throw new ArgumentNullException("employeeToCreate");
+			return diadocHttpApi.CreateEmployee(authToken, boxId, employeeToCreate);
+		}
+
+		public Employee UpdateEmployee(string authToken, string boxId, string userId, EmployeeToUpdate employeeToUpdate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (userId == null) throw new ArgumentNullException("userId");
+			if (employeeToUpdate == null) throw new ArgumentNullException("employeeToUpdate");
+			return diadocHttpApi.UpdateEmployee(authToken, boxId, userId, employeeToUpdate);
+		}
+
 		public EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1082,14 +1099,6 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (userId == null) throw new ArgumentNullException("userId");
 			return diadocHttpApi.UpdateSubscriptions(authToken, boxId, userId, subscriptionsToUpdate);
-		}
-
-		public Employee CreateEmployee(string authToken, string boxId, EmployeeToCreate employeeToCreate)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (employeeToCreate == null) throw new ArgumentNullException("employeeToCreate");
-			return diadocHttpApi.CreateEmployee(authToken, boxId, employeeToCreate);
 		}
 	}
 }

@@ -156,6 +156,166 @@ namespace Diadoc.Api.Proto.Employees
 	public partial class EmployeeToCreateByCertificate : SafeComObject, IEmployeeToCreateByCertificate
 	{
 	}
+
+	[ComVisible(true)]
+	[Guid("86729B4A-37DD-4CEF-841F-F099304B4AEF")]
+	public interface IEmployeeToUpdate
+	{
+		EmployeePermissionsPatch Permissions { get; set; }
+		EmployeePositionPatch Position { get; set; }
+		EmployeeCanBeInvitedForChatPatch CanBeInvitedForChat { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeeToUpdate")]
+	[Guid("43916C31-477C-428C-B87A-60D0D5C9E5DA")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeeToUpdate))]
+	public partial class EmployeeToUpdate : SafeComObject, IEmployeeToUpdate
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("2212A693-A3F2-410F-B5DB-728F26EC3DC3")]
+	public interface IEmployeePermissionsPatch
+	{
+		EmployeeDepartmentPatch Department { get; set; }
+		EmployeeIsAdministratorPatch IsAdministrator { get; set; }
+		EmployeeDocumentAccessLevelPatch DocumentAccessLevel { get; set; }
+		EmployeeSelectedDepartmentsPatch SelectedDepartments { get; set; }
+
+		ReadonlyList ActionsList { get; }
+		void AddActionItem([MarshalAs(UnmanagedType.IDispatch)] object item);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeePermissionsPatch")]
+	[Guid("00C8C4CA-160D-41FF-8C6A-5D9B04080935")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeePermissionsPatch))]
+	public partial class EmployeePermissionsPatch : SafeComObject, IEmployeePermissionsPatch
+	{
+		public ReadonlyList ActionsList
+		{
+			get { return new ReadonlyList(Actions); }
+		}
+
+		public void AddActionItem(object item)
+		{
+			Actions.Add((EmployeeAction) item);
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("6BDB877B-4819-4C21-9096-2AF09ADC9D84")]
+	public interface IEmployeeDepartmentPatch
+	{
+		string DepartmentId { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeeDepartmentPatch")]
+	[Guid("0B07EE01-E785-498E-95BA-A9B302EA72FD")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeeDepartmentPatch))]
+	public partial class EmployeeDepartmentPatch : SafeComObject, IEmployeeDepartmentPatch
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("D497C78D-E53B-4283-AEFE-A8E30BA9A41C")]
+	public interface IEmployeeIsAdministratorPatch
+	{
+		bool IsAdministrator { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeeIsAdministratorPatch")]
+	[Guid("24CA4053-4E61-43CE-932E-0F4F68884A74")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeeIsAdministratorPatch))]
+	public partial class EmployeeIsAdministratorPatch : SafeComObject, IEmployeeIsAdministratorPatch
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("3A407382-DEF7-4EED-8591-6F726FAAB6D0")]
+	public interface IEmployeeDocumentAccessLevelPatch
+	{
+		Com.DocumentAccessLevel DocumentAccessLevel { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeeDocumentAccessLevelPatch")]
+	[Guid("5C9B6064-813A-409E-9F30-A41F607B96D7")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeeDocumentAccessLevelPatch))]
+	public partial class EmployeeDocumentAccessLevelPatch : SafeComObject, IEmployeeDocumentAccessLevelPatch
+	{
+		Com.DocumentAccessLevel IEmployeeDocumentAccessLevelPatch.DocumentAccessLevel
+		{
+			get { return (Com.DocumentAccessLevel) DocumentAccessLevel; }
+			set { DocumentAccessLevel = (DocumentAccessLevel) value; }
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("4F36EF7E-D14B-4548-BEB2-2A5869A695BE")]
+	public interface IEmployeeSelectedDepartmentsPatch
+	{
+		ReadonlyList SelectedDepartmentIdsList { get; }
+		void AddSelectedDepartmentIdItem(string departmentId);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeeSelectedDepartmentsPatch")]
+	[Guid("6DFBF545-C56A-4A25-88AF-A52BF32B4861")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeeSelectedDepartmentsPatch))]
+	public partial class EmployeeSelectedDepartmentsPatch : SafeComObject, IEmployeeSelectedDepartmentsPatch
+	{
+		public ReadonlyList SelectedDepartmentIdsList
+		{
+			get { return new ReadonlyList(SelectedDepartmentIds); }
+		}
+
+		public void AddSelectedDepartmentIdItem(string departmentId)
+		{
+			SelectedDepartmentIds.Add(departmentId);
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("85844EC2-100B-46C5-94A7-3B75EE0DC862")]
+	public interface IEmployeePositionPatch
+	{
+		string Position { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeePositionPatch")]
+	[Guid("D9DC18F8-BD00-4255-B1A9-FC70C6F619B5")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeePositionPatch))]
+	public partial class EmployeePositionPatch : SafeComObject, IEmployeePositionPatch
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("446D3936-7251-4C9F-9E87-91F4B9CC82F9")]
+	public interface IEmployeeCanBeInvitedForChatPatch
+	{
+		bool CanBeInvitedForChat { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeeCanBeInvitedForChatPatch")]
+	[Guid("528CD906-0122-4343-AC8E-4FB7E0722F7A")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeeCanBeInvitedForChatPatch))]
+	public partial class EmployeeCanBeInvitedForChatPatch : SafeComObject, IEmployeeCanBeInvitedForChatPatch
+	{
+	}
 }
 
 namespace Diadoc.Api.Proto.Employees.Subscriptions

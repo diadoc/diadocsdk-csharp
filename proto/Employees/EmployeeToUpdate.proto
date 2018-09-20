@@ -1,0 +1,50 @@
+import "Employees/Employee.proto";
+import "OrganizationUserPermissions.proto";
+
+package Diadoc.Api.Proto.Employees;
+
+message EmployeeToUpdate
+{
+	optional EmployeePermissionsPatch Permissions = 1;
+	optional EmployeePositionPatch Position = 2;
+	optional EmployeeCanBeInvitedForChatPatch CanBeInvitedForChat = 3;
+}
+
+message EmployeePermissionsPatch
+{
+	optional EmployeeDepartmentPatch Department = 1;
+	optional EmployeeIsAdministratorPatch IsAdministrator = 2;
+	optional EmployeeDocumentAccessLevelPatch DocumentAccessLevel = 3;
+	optional EmployeeSelectedDepartmentsPatch SelectedDepartments = 4;
+	repeated EmployeeAction Actions = 5;
+}
+
+message EmployeeDepartmentPatch
+{
+	required string DepartmentId = 1;
+}
+
+message EmployeeIsAdministratorPatch
+{
+	required bool IsAdministrator = 1;
+}
+
+message EmployeeDocumentAccessLevelPatch
+{
+	required DocumentAccessLevel DocumentAccessLevel = 1;
+}
+
+message EmployeeSelectedDepartmentsPatch
+{
+	repeated string SelectedDepartmentIds = 1;
+}
+
+message EmployeePositionPatch
+{
+	optional string Position = 1;
+}
+
+message EmployeeCanBeInvitedForChatPatch
+{
+	required bool CanBeInvitedForChat = 1;
+}
