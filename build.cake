@@ -92,7 +92,6 @@ Task("GenerateVersionInfo")
 		var clearVersion = ClearVersionTag(tagVersion) ?? "1.0.0";
 		var semanticVersionForNuget = GetSemanticVersionV1(clearVersion);
 		var semanticVersion = GetSemanticVersionV2(clearVersion) + dbgSuffix;
-		var appveyorVersion = GetAppVeyorBuildVersion(clearVersion);
 
 		var versionParts = clearVersion.Split('.');
 		var majorVersion = 1;
@@ -108,7 +107,6 @@ Task("GenerateVersionInfo")
 			Information("Assembly version: {0}", assemblyVersion);
 			Information("Nuget version: {0}", semanticVersionForNuget);
 			Information("Semantic version: {0}", semanticVersion);
-			Information("AppVeyor version: {0}", appveyorVersion);
 		}
 
 		var datetimeNow = DateTime.Now;
@@ -123,11 +121,6 @@ Task("GenerateVersionInfo")
 		CreateAssemblyInfo("./src/Properties/AssemblyVersion.cs", assemblyInfo);
 		CreateAssemblyInfo("./Samples/Diadoc.Console/Properties/AssemblyVersion.cs", assemblyInfo);
 		CreateAssemblyInfo("./Samples/Diadoc.Samples/Properties/AssemblyVersion.cs", assemblyInfo);
-
-		if (BuildSystem.IsRunningOnAppVeyor)
-		{
-			AppVeyor.UpdateBuildVersion(appveyorVersion);
-		}
 	});
 
 Task("GenerateProtoFiles")
