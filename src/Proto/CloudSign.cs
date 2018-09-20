@@ -9,9 +9,11 @@ namespace Diadoc.Api.Proto
 	public interface ICloudSignRequest
 	{
 		ReadonlyList FilesList { get; }
+		void AddFile([MarshalAs(UnmanagedType.IDispatch)] object file);
 	}
 
 	[ComVisible(true)]
+	[ProgId("Diadoc.Api.CloudSignRequest")]
 	[Guid("3B7D49D7-22CE-4E7E-B138-7F12575F8118")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(ICloudSignRequest))]
@@ -20,6 +22,11 @@ namespace Diadoc.Api.Proto
 		public ReadonlyList FilesList
 		{
 			get { return new ReadonlyList(Files); }
+		}
+
+		public void AddFile([MarshalAs(UnmanagedType.IDispatch)] object file)
+		{
+			Files.Add((CloudSignFile)file);
 		}
 	}
 
