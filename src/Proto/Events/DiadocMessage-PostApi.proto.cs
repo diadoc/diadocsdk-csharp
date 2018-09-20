@@ -2946,6 +2946,22 @@ namespace Diadoc.Api.Proto.Events
       get { return _Description; }
       set { _Description = value; }
     }
+
+    private string _MessageId = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"MessageId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string MessageId
+    {
+      get { return _MessageId; }
+      set { _MessageId = value; }
+    }
+    private readonly global::System.Collections.Generic.List<string> _NotifiableEntityIds = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"NotifiableEntityIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> NotifiableEntityIds
+    {
+      get { return _NotifiableEntityIds; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
