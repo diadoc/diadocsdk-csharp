@@ -143,6 +143,13 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _Workflows; }
     }
   
+    private bool _SupportsPredefinedRecipientTitle;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"SupportsPredefinedRecipientTitle", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool SupportsPredefinedRecipientTitle
+    {
+      get { return _SupportsPredefinedRecipientTitle; }
+      set { _SupportsPredefinedRecipientTitle = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
