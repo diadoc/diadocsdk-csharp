@@ -35,6 +35,7 @@ namespace Diadoc.Api
 		string AuthenticateWithCertificate(string thumbprint, bool useLocalSystemStorage = false);
 		string AuthenticateWithSid(string sid);
 		OrganizationUserPermissions GetMyPermissions(string authToken, string orgId);
+		ReadonlyList GetOrganizationUsers(string authToken, string orgId);
 		ReadonlyList GetMyOrganizations(string authToken, bool autoRegister = true);
 		ReadonlyList GetOrganizationsByInnKpp(string inn, string kpp);
 		Organization GetOrganizationById(string orgId);
