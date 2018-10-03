@@ -1848,16 +1848,16 @@ namespace Diadoc.Api.Proto.Events
       get { return _RequestedSignatureRejections; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> _XmlTorg12BuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> _XmlTorg12BuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment>();
     [global::ProtoBuf.ProtoMember(7, Name=@"XmlTorg12BuyerTitles", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> XmlTorg12BuyerTitles
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> XmlTorg12BuyerTitles
     {
       get { return _XmlTorg12BuyerTitles; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> _XmlAcceptanceCertificateBuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> _XmlAcceptanceCertificateBuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment>();
     [global::ProtoBuf.ProtoMember(8, Name=@"XmlAcceptanceCertificateBuyerTitles", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> XmlAcceptanceCertificateBuyerTitles
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> XmlAcceptanceCertificateBuyerTitles
     {
       get { return _XmlAcceptanceCertificateBuyerTitles; }
     }
@@ -1939,9 +1939,9 @@ namespace Diadoc.Api.Proto.Events
       get { return _EditDocumentPacketCommands; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> _UniversalTransferDocumentBuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> _UniversalTransferDocumentBuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment>();
     [global::ProtoBuf.ProtoMember(20, Name=@"UniversalTransferDocumentBuyerTitles", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> UniversalTransferDocumentBuyerTitles
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> UniversalTransferDocumentBuyerTitles
     {
       get { return _UniversalTransferDocumentBuyerTitles; }
     }
@@ -1953,9 +1953,9 @@ namespace Diadoc.Api.Proto.Events
       get { return _ResolutionRouteRemovals; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> _RecipientTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> _RecipientTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment>();
     [global::ProtoBuf.ProtoMember(22, Name=@"RecipientTitles", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> RecipientTitles
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> RecipientTitles
     {
       get { return _RecipientTitles; }
     }

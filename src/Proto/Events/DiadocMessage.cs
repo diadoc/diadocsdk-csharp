@@ -33,7 +33,7 @@ namespace Diadoc.Api.Proto.Events
 	[ComVisible(true)]
 	[Guid("26C32890-61DE-4FB9-9EED-B815E41050B7")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IMessage))]
+	[ComDefaultInterface(typeof(IMessage))]
 	public partial class Message : SafeComObject, IMessage
 	{
 		public string DraftIsTransformedToMessageId
@@ -89,7 +89,7 @@ namespace Diadoc.Api.Proto.Events
 	[ComVisible(true)]
 	[Guid("E7D82A2C-A0BF-4D0B-9466-9E8DA15B99B7")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IEntity))]
+	[ComDefaultInterface(typeof(IEntity))]
 	public partial class Entity : SafeComObject, IEntity
 	{
 		public DateTime CreationTime
@@ -132,7 +132,7 @@ namespace Diadoc.Api.Proto.Events
 	[ComVisible(true)]
 	[Guid("4C05AB1C-5385-41A2-8C04-8855FC7E8341")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IEntityPatch))]
+	[ComDefaultInterface(typeof(IEntityPatch))]
 	public partial class EntityPatch : SafeComObject, IEntityPatch
 	{
 	}
@@ -154,7 +154,7 @@ namespace Diadoc.Api.Proto.Events
 	[ComVisible(true)]
 	[Guid("C59A22CF-9744-457A-8359-3569B19A31C8")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IBoxEvent))]
+	[ComDefaultInterface(typeof(IBoxEvent))]
 	public partial class BoxEvent : SafeComObject, IBoxEvent
 	{
 		public string MessageId
@@ -224,7 +224,7 @@ namespace Diadoc.Api.Proto.Events
 	[ComVisible(true)]
 	[Guid("793E451E-3F4A-4A3E-BDBB-F47ED13305F5")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IBoxEventList))]
+	[ComDefaultInterface(typeof(IBoxEventList))]
 	public partial class BoxEventList : SafeComObject, IBoxEventList
 	{
 		public ReadonlyList EventsList
@@ -255,7 +255,7 @@ namespace Diadoc.Api.Proto.Events
 	[ComVisible(true)]
 	[Guid("949C9C09-DD1A-4787-A5AD-94D8677A5439")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IMessagePatch))]
+	[ComDefaultInterface(typeof(IMessagePatch))]
 	public partial class MessagePatch : SafeComObject, IMessagePatch
 	{
 		public DateTime Timestamp
@@ -291,7 +291,7 @@ namespace Diadoc.Api.Proto.Events
 	[ComVisible(true)]
 	[Guid("D4E7012E-1A64-42EC-AD5E-B27754AC24FE")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGeneratedFile))]
+	[ComDefaultInterface(typeof(IGeneratedFile))]
 	public class GeneratedFile : SafeComObject, IGeneratedFile
 	{
 		private readonly string fileName;
@@ -358,7 +358,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.MessageToPost")]
 	[Guid("6EABD544-6DDC-49b4-95A1-0D7936C08C31")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IMessageToPost))]
+	[ComDefaultInterface(typeof(IMessageToPost))]
 	public partial class MessageToPost : SafeComObject, IMessageToPost
 	{
 		//That property was deletes from proto description, but we can't delete this property here because COM need continuous sequence of methods
@@ -370,27 +370,27 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddInvoice(object attachment)
 		{
-			Invoices.Add((XmlDocumentAttachment)attachment);
+			Invoices.Add((XmlDocumentAttachment) attachment);
 		}
 
 		public void AddXmlTorg12SellerTitle(object attachment)
 		{
-			XmlTorg12SellerTitles.Add((XmlDocumentAttachment)attachment);
+			XmlTorg12SellerTitles.Add((XmlDocumentAttachment) attachment);
 		}
 
 		public void AddXmlAcceptanceCertificateSellerTitle(object attachment)
 		{
-			XmlAcceptanceCertificateSellerTitles.Add((XmlDocumentAttachment)attachment);
+			XmlAcceptanceCertificateSellerTitles.Add((XmlDocumentAttachment) attachment);
 		}
 
 		public void AddAttachment(object attachment)
 		{
-			NonformalizedDocuments.Add((NonformalizedAttachment)attachment);
+			NonformalizedDocuments.Add((NonformalizedAttachment) attachment);
 		}
 
 		public void AddTorg12(object attachment)
 		{
-			Torg12Documents.Add((BasicDocumentAttachment)attachment);
+			Torg12Documents.Add((BasicDocumentAttachment) attachment);
 		}
 
 		public void AddAcceptanceCertificate(object attachment)
@@ -445,20 +445,20 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddSupplementaryAgreement(object supplementaryAgreement)
 		{
-			SupplementaryAgreements.Add((SupplementaryAgreementAttachment)supplementaryAgreement);
+			SupplementaryAgreements.Add((SupplementaryAgreementAttachment) supplementaryAgreement);
 		}
 
 		public void AddUniversalTransferDocumentSellerTitle(object attachment)
 		{
-			UniversalTransferDocumentSellerTitles.Add((XmlDocumentAttachment)attachment);
+			UniversalTransferDocumentSellerTitles.Add((XmlDocumentAttachment) attachment);
 		}
 
 		public void AddDocumentAttachment(object attachment)
 		{
-			DocumentAttachments.Add((DocumentAttachment)attachment);
+			DocumentAttachments.Add((DocumentAttachment) attachment);
 		}
 	}
-	
+
 	[ComVisible(true)]
 	[Guid("107A6BD4-7E69-4084-8BBA-1211771F3391")]
 	public interface ITemplateToPost
@@ -467,12 +467,12 @@ namespace Diadoc.Api.Proto.Events
 		string ToBoxId { get; set; }
 		string MessageFromBoxId { get; set; }
 		string MessageToBoxId { get; set; }
-		
+
 		string MessageToDepartmentId { get; set; }
 
 		void AddDocumentAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 	}
-	
+
 	[ComVisible(true)]
 	[ProgId("Diadoc.Api.TemplateToPost")]
 	[Guid("F828570E-9C29-41D7-A20C-BDF2742642C5")]
@@ -482,7 +482,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void AddDocumentAttachment(object attachment)
 		{
-			DocumentAttachments.Add((TemplateDocumentAttachment)attachment);
+			DocumentAttachments.Add((TemplateDocumentAttachment) attachment);
 		}
 	}
 
@@ -513,12 +513,12 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetUnsignedContent(object unsignedContent)
 		{
-			UnsignedContent = (UnsignedContent)unsignedContent;
+			UnsignedContent = (UnsignedContent) unsignedContent;
 		}
 
 		public void AddMetadataItem(object metadataItem)
 		{
-			Metadata.Add((MetadataItem)metadataItem);
+			Metadata.Add((MetadataItem) metadataItem);
 		}
 	}
 
@@ -648,17 +648,17 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void AddInitialDocumentId(object documentId)
 		{
-			InitialDocumentIds.Add((DocumentId)documentId);
+			InitialDocumentIds.Add((DocumentId) documentId);
 		}
 
 		public void AddSubordinateDocumentId(object documentId)
 		{
-			SubordinateDocumentIds.Add((DocumentId)documentId);
+			SubordinateDocumentIds.Add((DocumentId) documentId);
 		}
 
 		public void AddCustomDataItem(object customDataItem)
 		{
-			CustomData.Add((CustomDataItem)customDataItem);
+			CustomData.Add((CustomDataItem) customDataItem);
 		}
 	}
 
@@ -693,107 +693,107 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.MessagePatchToPost")]
 	[Guid("F917FD6D-AEE9-4b21-A79F-11981E805F5D")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IMessagePatchToPost))]
+	[ComDefaultInterface(typeof(IMessagePatchToPost))]
 	public partial class MessagePatchToPost : SafeComObject, IMessagePatchToPost
 	{
 		public void AddReceipt(object receipt)
 		{
-			Receipts.Add((ReceiptAttachment)receipt);
+			Receipts.Add((ReceiptAttachment) receipt);
 		}
 
 		public void AddCorrectionRequest(object correctionRequest)
 		{
-			CorrectionRequests.Add((CorrectionRequestAttachment)correctionRequest);
+			CorrectionRequests.Add((CorrectionRequestAttachment) correctionRequest);
 		}
 
 		public void AddSignature(object signature)
 		{
-			Signatures.Add((DocumentSignature)signature);
+			Signatures.Add((DocumentSignature) signature);
 		}
 
 		public void AddRequestedSignatureRejection(object signatureRejection)
 		{
-			RequestedSignatureRejections.Add((RequestedSignatureRejection)signatureRejection);
+			RequestedSignatureRejections.Add((RequestedSignatureRejection) signatureRejection);
 		}
 
 		public void AddXmlTorg12BuyerTitle(object attachment)
 		{
-			XmlTorg12BuyerTitles.Add((ReceiptAttachment)attachment);
+			XmlTorg12BuyerTitles.Add((RecipientTitleAttachment) attachment);
 		}
 
 		public void AddXmlAcceptanceCertificateBuyerTitle(object attachment)
 		{
-			XmlAcceptanceCertificateBuyerTitles.Add((ReceiptAttachment)attachment);
+			XmlAcceptanceCertificateBuyerTitles.Add((RecipientTitleAttachment) attachment);
 		}
 
 		public void AddUniversalTransferDocumentBuyerTitle(object attachment)
 		{
-			UniversalTransferDocumentBuyerTitles.Add((ReceiptAttachment)attachment);
+			UniversalTransferDocumentBuyerTitles.Add((RecipientTitleAttachment) attachment);
 		}
 
 		public void AddResolution(object attachment)
 		{
-			Resolutions.Add((ResolutionAttachment)attachment);
+			Resolutions.Add((ResolutionAttachment) attachment);
 		}
 
 		public void AddResolutionRequestAttachment(object attachment)
 		{
-			ResolutionRequests.Add((ResolutionRequestAttachment)attachment);
+			ResolutionRequests.Add((ResolutionRequestAttachment) attachment);
 		}
 
 		public void AddResolutionRequestCancellationAttachment(object attachment)
 		{
-			ResolutionRequestCancellations.Add((ResolutionRequestCancellationAttachment)attachment);
+			ResolutionRequestCancellations.Add((ResolutionRequestCancellationAttachment) attachment);
 		}
 
 		public void AddResolutionRequestDenialAttachment(object attachment)
 		{
-			ResolutionRequestDenials.Add((ResolutionRequestDenialAttachment)attachment);
+			ResolutionRequestDenials.Add((ResolutionRequestDenialAttachment) attachment);
 		}
 
 		public void AddResolutionRequestDenialCancellationAttachment(object attachment)
 		{
-			ResolutionRequestDenialCancellations.Add((ResolutionRequestDenialCancellationAttachment)attachment);
+			ResolutionRequestDenialCancellations.Add((ResolutionRequestDenialCancellationAttachment) attachment);
 		}
 
 		public void AddRevocationRequestAttachment(object attachment)
 		{
-			RevocationRequests.Add((RevocationRequestAttachment)attachment);
+			RevocationRequests.Add((RevocationRequestAttachment) attachment);
 		}
 
 		public void AddXmlSignatureRejectionAttachment(object attachment)
 		{
-			XmlSignatureRejections.Add((XmlSignatureRejectionAttachment)attachment);
+			XmlSignatureRejections.Add((XmlSignatureRejectionAttachment) attachment);
 		}
 
 		public void AddUniversalTransferDocumentBuyerTitleAttachment(object attachment)
 		{
-			UniversalTransferDocumentBuyerTitles.Add((ReceiptAttachment)attachment);
+			UniversalTransferDocumentBuyerTitles.Add((RecipientTitleAttachment) attachment);
 		}
 
 		public void AddResolutionRouteAssignment(object attachment)
 		{
-			ResolutionRouteAssignments.Add((ResolutionRouteAssignment)attachment);
+			ResolutionRouteAssignments.Add((ResolutionRouteAssignment) attachment);
 		}
 
 		public void AddResolutoinRouteRemoval(object attachment)
 		{
-			ResolutionRouteRemovals.Add((ResolutionRouteRemoval)attachment);
+			ResolutionRouteRemovals.Add((ResolutionRouteRemoval) attachment);
 		}
 
 		public void AddRecipientTitle(object attachment)
 		{
-			RecipientTitles.Add((ReceiptAttachment)attachment);
+			RecipientTitles.Add((RecipientTitleAttachment) attachment);
 		}
 
 		public void AddCustomDataPatch(object editingPatch)
 		{
-			CustomDataPatches.Add((CustomDataPatch)editingPatch);
+			CustomDataPatches.Add((CustomDataPatch) editingPatch);
 		}
 
 		public void AddEditingPatch(object editingPatch)
 		{
-			EditingPatches.Add((EditingPatch)editingPatch);
+			EditingPatches.Add((EditingPatch) editingPatch);
 		}
 	}
 
@@ -813,7 +813,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.XmlDocumentAttachment")]
 	[Guid("E6B32174-37DE-467d-A947-B88AEDC2ECEC")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IXmlDocumentAttachment))]
+	[ComDefaultInterface(typeof(IXmlDocumentAttachment))]
 	public partial class XmlDocumentAttachment : SafeComObject, IXmlDocumentAttachment
 	{
 		public void SetSignedContent(object signedContent)
@@ -828,7 +828,7 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddSubordinateDocumentId(object documentId)
 		{
-			SubordinateDocumentIds.Add((DocumentId)documentId);
+			SubordinateDocumentIds.Add((DocumentId) documentId);
 		}
 	}
 
@@ -852,7 +852,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.NonformalizedAttachment")]
 	[Guid("9904995A-1EF3-4182-8C3E-61DBEADC159C")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (INonformalizedAttachment))]
+	[ComDefaultInterface(typeof(INonformalizedAttachment))]
 	public partial class NonformalizedAttachment : SafeComObject, INonformalizedAttachment
 	{
 		public void SetSignedContent(object signedContent)
@@ -912,22 +912,22 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.BasicDocumentAttachment")]
 	[Guid("776261C4-361D-42BF-929C-8B368DEE917D")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IBasicDocumentAttachment))]
+	[ComDefaultInterface(typeof(IBasicDocumentAttachment))]
 	public partial class BasicDocumentAttachment : SafeComObject, IBasicDocumentAttachment
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent)signedContent;
+			SignedContent = (SignedContent) signedContent;
 		}
 
 		public void AddInitialDocumentId(object documentId)
 		{
-			InitialDocumentIds.Add((DocumentId)documentId);
+			InitialDocumentIds.Add((DocumentId) documentId);
 		}
 
 		public void AddSubordinateDocumentId(object documentId)
 		{
-			SubordinateDocumentIds.Add((DocumentId)documentId);
+			SubordinateDocumentIds.Add((DocumentId) documentId);
 		}
 	}
 
@@ -935,7 +935,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.AcceptanceCertificateAttachment")]
 	[Guid("9BCBE1E4-11C5-45BF-887A-FE63D074D71A")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IAcceptanceCertificateAttachment))]
+	[ComDefaultInterface(typeof(IAcceptanceCertificateAttachment))]
 	public partial class AcceptanceCertificateAttachment : SafeComObject, IAcceptanceCertificateAttachment
 	{
 		public void SetSignedContent(object signedContent)
@@ -968,7 +968,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.TrustConnectionRequestAttachment")]
 	[Guid("139BB7DA-D92A-49F0-840A-3FB541323632")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (ITrustConnectionRequestAttachment))]
+	[ComDefaultInterface(typeof(ITrustConnectionRequestAttachment))]
 	public partial class TrustConnectionRequestAttachment : SafeComObject, ITrustConnectionRequestAttachment
 	{
 		public void SetSignedContent(object signedContent)
@@ -990,7 +990,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.StructuredDataAttachment")]
 	[Guid("E35327B6-F774-476A-93B4-CC68DE7432D1")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IStructuredDataAttachment))]
+	[ComDefaultInterface(typeof(IStructuredDataAttachment))]
 	public partial class StructuredDataAttachment : SafeComObject, IStructuredDataAttachment
 	{
 	}
@@ -1036,7 +1036,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.PriceListAttachment")]
 	[Guid("2D0A054F-E3FA-4FBD-A64F-9C4EB73901BB")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IPriceListAttachment))]
+	[ComDefaultInterface(typeof(IPriceListAttachment))]
 	public partial class PriceListAttachment : SafeComObject, IPriceListAttachment
 	{
 		public void SetSignedContent(object signedContent)
@@ -1059,7 +1059,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.SignedContent")]
 	[Guid("0EC71E3F-F203-4c49-B1D6-4DA6BFDD279B")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (ISignedContent))]
+	[ComDefaultInterface(typeof(ISignedContent))]
 	public partial class SignedContent : SafeComObject, ISignedContent
 	{
 		public bool SignByAttorney
@@ -1108,7 +1108,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.DocumentSignature")]
 	[Guid("28373DE6-3147-4d8b-B166-6D653F50EED3")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDocumentSignature))]
+	[ComDefaultInterface(typeof(IDocumentSignature))]
 	public partial class DocumentSignature : SafeComObject, IDocumentSignature
 	{
 		public bool SignByAttorney
@@ -1139,7 +1139,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.RequestedSignatureRejection")]
 	[Guid("C0106095-AF9F-462A-AEC0-A3E0B1ACAC6B")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IRequestedSignatureRejection))]
+	[ComDefaultInterface(typeof(IRequestedSignatureRejection))]
 	public partial class RequestedSignatureRejection : SafeComObject, IRequestedSignatureRejection
 	{
 		public void SetSignedContent(object signedContent)
@@ -1182,7 +1182,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.ReceiptAttachment")]
 	[Guid("45053335-83C3-4e62-9973-D6CC1872A60A")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IReceiptAttachment))]
+	[ComDefaultInterface(typeof(IReceiptAttachment))]
 	public partial class ReceiptAttachment : SafeComObject, IReceiptAttachment
 	{
 		public void SetSignedContent(object signedContent)
@@ -1202,6 +1202,42 @@ namespace Diadoc.Api.Proto.Events
 	}
 
 	[ComVisible(true)]
+	[Guid("2936A483-53E0-4031-9061-D4ECD6EA6C20")]
+	public interface IRecipientTitleAttachment
+	{
+		string ParentEntityId { get; set; }
+		SignedContent SignedContent { get; set; }
+		void SetSignedContent([MarshalAs(UnmanagedType.IDispatch)] object signedContent);
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
+		bool NeedReceipt { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.RecipientTitleAttachment")]
+	[Guid("8FDF37AE-862D-4EDB-BCBF-31834D910080")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IRecipientTitleAttachment))]
+	public partial class RecipientTitleAttachment : SafeComObject, IRecipientTitleAttachment
+	{
+		public void SetSignedContent(object signedContent)
+		{
+			SignedContent = (SignedContent) signedContent;
+		}
+
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
+		}
+	}
+
+
+	[ComVisible(true)]
 	[Guid("5902A325-F31B-4B9B-978E-99C1CC7C9209")]
 	public interface IResolutionAttachment
 	{
@@ -1216,7 +1252,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.ResolutionAttachment")]
 	[Guid("89D739B0-03F1-4E6C-8301-E3FEA9FD2AD6")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IResolutionAttachment))]
+	[ComDefaultInterface(typeof(IResolutionAttachment))]
 	public partial class ResolutionAttachment : SafeComObject, IResolutionAttachment
 	{
 		public Com.ResolutionType ResolutionTypeValue
@@ -1253,7 +1289,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.ResolutionRequest")]
 	[Guid("6043455B-3087-4A63-9870-66D54E8E34FB")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IResolutionRequestAttachment))]
+	[ComDefaultInterface(typeof(IResolutionRequestAttachment))]
 	public partial class ResolutionRequestAttachment : SafeComObject, IResolutionRequestAttachment
 	{
 		public Com.ResolutionRequestType RequestType
@@ -1287,7 +1323,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.ResolutionRequestCancellation")]
 	[Guid("E80B8699-9883-4259-AA67-B84B03DD5F09")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IResolutionRequestCancellationAttachment))]
+	[ComDefaultInterface(typeof(IResolutionRequestCancellationAttachment))]
 	public partial class ResolutionRequestCancellationAttachment : SafeComObject, IResolutionRequestCancellationAttachment
 	{
 		public ReadonlyList LabelsList
@@ -1315,7 +1351,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.ResolutionRequestDenial")]
 	[Guid("BD79962A-D6AC-4831-9498-162C36AFD6E1")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IResolutionRequestDenialAttachment))]
+	[ComDefaultInterface(typeof(IResolutionRequestDenialAttachment))]
 	public partial class ResolutionRequestDenialAttachment : SafeComObject, IResolutionRequestDenialAttachment
 	{
 		public ReadonlyList LabelsList
@@ -1340,7 +1376,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.ResolutionRequestDenialCancellation")]
 	[Guid("4E8A0DEF-B6F7-4820-9CBE-D94A38E34DFC")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IResolutionRequestDenialCancellationAttachment))]
+	[ComDefaultInterface(typeof(IResolutionRequestDenialCancellationAttachment))]
 	public partial class ResolutionRequestDenialCancellationAttachment : SafeComObject,
 		IResolutionRequestDenialCancellationAttachment
 	{
@@ -1361,12 +1397,12 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.CorrectionRequestAttachment")]
 	[Guid("D78FC023-2BEF-49a4-BDBE-3B791168CE98")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (ICorrectionRequestAttachment))]
+	[ComDefaultInterface(typeof(ICorrectionRequestAttachment))]
 	public partial class CorrectionRequestAttachment : SafeComObject, ICorrectionRequestAttachment
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent)signedContent;
+			SignedContent = (SignedContent) signedContent;
 		}
 
 		public ReadonlyList LabelsList
@@ -1418,7 +1454,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.DraftToSend")]
 	[Guid("37127975-95FC-4247-8393-052EF27D1575")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDraftToSend))]
+	[ComDefaultInterface(typeof(IDraftToSend))]
 	public partial class DraftToSend : SafeComObject, IDraftToSend
 	{
 		public void AddDocumentSignature(object signature)
@@ -1442,12 +1478,12 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.RevocationRequestAttachment")]
 	[Guid("D2616BCD-A691-42B5-9707-6CE12742C5D3")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IRevocationRequestAttachment))]
+	[ComDefaultInterface(typeof(IRevocationRequestAttachment))]
 	public partial class RevocationRequestAttachment : SafeComObject, IRevocationRequestAttachment
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent)signedContent;
+			SignedContent = (SignedContent) signedContent;
 		}
 
 		public ReadonlyList LabelsList
@@ -1476,7 +1512,7 @@ namespace Diadoc.Api.Proto.Events
 	[ProgId("Diadoc.Api.XmlSignatureRejectionAttachment")]
 	[Guid("553DC13F-81B4-4010-886C-260DBD60D486")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IXmlSignatureRejectionAttachment))]
+	[ComDefaultInterface(typeof(IXmlSignatureRejectionAttachment))]
 	public partial class XmlSignatureRejectionAttachment : SafeComObject, IXmlSignatureRejectionAttachment
 	{
 		public void SetSignedContent(object signedContent)
@@ -1514,8 +1550,8 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public Com.CustomDataPatchOperation OperationValue
 		{
-			get { return (Com.CustomDataPatchOperation)((int)Operation); }
-			set { Operation = (CustomDataPatchOperation)((int)value); }
+			get { return (Com.CustomDataPatchOperation) ((int) Operation); }
+			set { Operation = (CustomDataPatchOperation) ((int) value); }
 		}
 	}
 
@@ -1650,7 +1686,7 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddSubordinateDocumentId(object documentId)
 		{
-			SubordinateDocumentIds.Add((DocumentId)documentId);
+			SubordinateDocumentIds.Add((DocumentId) documentId);
 		}
 
 		public void AddCustomDataItem(object customDataItem)
@@ -1660,7 +1696,7 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddMetadataItem(object metadataItem)
 		{
-			Metadata.Add((MetadataItem)metadataItem);
+			Metadata.Add((MetadataItem) metadataItem);
 		}
 	}
 
