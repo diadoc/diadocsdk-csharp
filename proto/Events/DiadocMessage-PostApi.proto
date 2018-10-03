@@ -372,6 +372,13 @@ message ReceiptAttachment {
 	repeated string Labels = 4;
 }
 
+message RecipientTitleAttachment {
+	required string ParentEntityId = 1;
+	required SignedContent SignedContent = 2;
+	repeated string Labels = 4;
+	required bool NeedReceipt = 5 [default = false];
+}
+
 message CorrectionRequestAttachment {
 	required string ParentEntityId = 1;
 	required SignedContent SignedContent = 2;

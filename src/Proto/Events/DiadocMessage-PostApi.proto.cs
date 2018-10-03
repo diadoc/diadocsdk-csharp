@@ -2295,6 +2295,44 @@ namespace Diadoc.Api.Proto.Events
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RecipientTitleAttachment")]
+  public partial class RecipientTitleAttachment : global::ProtoBuf.IExtensible
+  {
+    public RecipientTitleAttachment() {}
+    
+    private string _ParentEntityId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ParentEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ParentEntityId
+    {
+      get { return _ParentEntityId; }
+      set { _ParentEntityId = value; }
+    }
+    private Diadoc.Api.Proto.Events.SignedContent _SignedContent;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"SignedContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Events.SignedContent SignedContent
+    {
+      get { return _SignedContent; }
+      set { _SignedContent = value; }
+    }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
+    private bool _NeedReceipt;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"NeedReceipt", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool NeedReceipt
+    {
+      get { return _NeedReceipt; }
+      set { _NeedReceipt = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CorrectionRequestAttachment")]
   public partial class CorrectionRequestAttachment : global::ProtoBuf.IExtensible
   {
