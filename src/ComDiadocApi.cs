@@ -362,6 +362,7 @@ namespace Diadoc.Api
 		Employee GetEmployee(string authToken, string boxId, string userId);
 		Employee CreateEmployee(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object employeeToCreate);
 		Employee UpdateEmployee(string authToken, string boxId, string userId, [MarshalAs(UnmanagedType.IDispatch)] object employeeToUpdate);
+		void DeleteEmployee(string authToken, string boxId, string userId);
 		EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId);
 		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, [MarshalAs(UnmanagedType.IDispatch)] object subscriptionsToUpdate);
 
@@ -536,6 +537,11 @@ namespace Diadoc.Api
 		public Employee UpdateEmployee(string authToken, string boxId, string userId, object employeeToUpdate)
 		{
 			return diadoc.UpdateEmployee(authToken, boxId, userId, (EmployeeToUpdate) employeeToUpdate);
+		}
+
+		public void DeleteEmployee(string authToken, string boxId, string userId)
+		{
+			diadoc.DeleteEmployee(authToken, boxId, userId);
 		}
 
 		public EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId)

@@ -1022,6 +1022,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.UpdateEmployeeAsync(authToken, boxId, userId, employeeToUpdate);
 		}
 
+		public Task DeleteEmployeeAsync(string authToken, string boxId, string userId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (userId == null) throw new ArgumentNullException("userId");
+			return diadocHttpApi.DeleteEmployeeAsync(authToken, boxId, userId);
+		}
+
 		public Task<EmployeeSubscriptions> GetSubscriptionsAsync(string authToken, string boxId, string userId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

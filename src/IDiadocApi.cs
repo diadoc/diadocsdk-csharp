@@ -184,6 +184,7 @@ namespace Diadoc.Api
 		Employee GetEmployee(string authToken, string boxId, string userId);
 		Employee CreateEmployee(string authToken, string boxId, EmployeeToCreate employeeToCreate);
 		Employee UpdateEmployee(string authToken, string boxId, string userId, EmployeeToUpdate employeeToUpdate);
+		void DeleteEmployee(string authToken, string boxId, string userId);
 		EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId);
 		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);
 
@@ -332,6 +333,7 @@ namespace Diadoc.Api
 		Task<Employee> GetEmployeeAsync(string authToken, string boxId, string userId);
 		Task<Employee> CreateEmployeeAsync(string authToken, string boxId, EmployeeToCreate employeeToCreate);
 		Task<Employee> UpdateEmployeeAsync(string authToken, string boxId, string userId, EmployeeToUpdate employeeToUpdate);
+		Task DeleteEmployeeAsync(string authToken, string boxId, string userId);
 		Task<EmployeeSubscriptions> GetSubscriptionsAsync(string authToken, string boxId, string userId);
 		Task<EmployeeSubscriptions> UpdateSubscriptionsAsync(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);
 #endif

@@ -30,6 +30,14 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<EmployeeToUpdate, Employee>(authToken, queryString.BuildPathAndQuery(), employeeToUpdate);
 		}
 
+		public Task DeleteEmployeeAsync(string authToken, string boxId, string userId)
+		{
+			var queryString = new PathAndQueryBuilder("/DeleteEmployee");
+			queryString.AddParameter("boxId", boxId);
+			queryString.AddParameter("userId", userId);
+			return PerformHttpRequestAsync(authToken, "POST", queryString.BuildPathAndQuery());
+		}
+
 		public Task<EmployeeSubscriptions> GetSubscriptionsAsync(string authToken, string boxId, string userId)
 		{
 			var queryString = new PathAndQueryBuilder("/GetSubscriptions");
