@@ -82,6 +82,7 @@
     <Compile Include="Com\RecipientResponseStatus.cs" />
     <Compile Include="Com\RoamingNotificationStatus.cs" />
     <Compile Include="Com\SenderSignatureStatus.cs" />
+    <Compile Include="Com\Users.cs" />
     <Compile Include="DiadocHttpApi.Employees.cs" />
     <Compile Include="DocflowApi.cs" />
     <Compile Include="FileContent.cs" />
@@ -294,6 +295,7 @@
     <Compile Include="Proto\Timestamp.proto.cs" />
     <Compile Include="Proto\User.proto.cs" />
     <Compile Include="Proto\LockMode.proto.cs" />
+    <Compile Include="Proto\Users\UserToUpdate.proto.cs" />
     <Compile Include="SafeComObject.cs" />
   </ItemGroup>
   <ItemGroup>

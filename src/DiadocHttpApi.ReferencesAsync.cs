@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
+using Diadoc.Api.Proto.Users;
 
 namespace Diadoc.Api
 {
@@ -30,6 +31,11 @@ namespace Diadoc.Api
 		public Task<UserV2> GetMyUserV2Async(string authToken)
 		{
 			return PerformHttpRequestAsync<UserV2>(authToken, "GET", "/V2/GetMyUser");
+		}
+
+		public Task<UserV2> UpdateMyUserAsync(string authToken, UserToUpdate userToUpdate)
+		{
+			return PerformHttpRequestAsync<UserToUpdate, UserV2>(authToken, "/UpdateMyUser", userToUpdate);
 		}
 
 		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false)

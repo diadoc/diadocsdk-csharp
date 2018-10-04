@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AggregateException.cs" />
+    <Compile Include="Com\Users.cs" />
     <Compile Include="DiadocHttpApi.Employees.Async.cs" />
     <Compile Include="DiadocHttpApi.Employees.cs" />
     <Compile Include="Com\AcceptanceCertificateDocumentStatus.cs" />
@@ -317,6 +318,7 @@
     <Compile Include="Proto\Timestamp.proto.cs" />
     <Compile Include="Proto\User.proto.cs" />
     <Compile Include="Proto\LockMode.proto.cs" />
+    <Compile Include="Proto\Users\UserToUpdate.proto.cs" />
     <Compile Include="SafeComObject.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,19 @@
+import "User.proto";
+
+package Diadoc.Api.Proto.Users;
+
+message UserToUpdate
+{
+	optional UserLoginPatch Login = 1;
+	optional UserFullNamePatch FullName = 2;
+}
+
+message UserLoginPatch
+{
+	optional string Login = 1;
+}
+
+message UserFullNamePatch
+{
+	optional FullName FullName = 1;
+}
