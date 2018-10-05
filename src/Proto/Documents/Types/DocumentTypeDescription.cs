@@ -24,7 +24,7 @@ namespace Diadoc.Api.Proto.Documents.Types
 	{
 		ReadonlyList IDocumentTypeDescription.SupportedDocflowList
 		{
-			get { return new ReadonlyList(SupportedDocflows.Select(x => (Com.DocumentDocflow)(int)x).ToArray()); }
+			get { return new ReadonlyList(SupportedDocflows.Select(x => (Com.DocumentDocflow) (int) x).ToArray()); }
 		}
 
 		ReadonlyList IDocumentTypeDescription.FunctionList
@@ -97,7 +97,7 @@ namespace Diadoc.Api.Proto.Documents.Types
 		{
 			get { return new ReadonlyList(Titles); }
 		}
-		
+
 		ReadonlyList IDocumentVersion.WorkflowList
 		{
 			get { return new ReadonlyList(Workflows); }
@@ -149,6 +149,25 @@ namespace Diadoc.Api.Proto.Documents.Types
 		}
 	}
 
+	public interface ISignerInfo
+	{
+		DocumentTitleSignerType SignerTypeValue { get; }
+		DocumentTitleType ExtendedDocumentTitleTypeValue { get; }
+	}
+
+	public partial class SignerInfo : SafeComObject, ISignerInfo
+	{
+		public DocumentTitleSignerType SignerTypeValue
+		{
+			get { return (DocumentTitleSignerType) SignerType; }
+		}
+
+		public DocumentTitleType ExtendedDocumentTitleTypeValue
+		{
+			get { return (DocumentTitleType) ExtendedDocumentTitleType; }
+		}
+	}
+
 	[ComVisible(true)]
 	[Guid("760F4134-378A-444C-96D3-233D43222A43")]
 	public interface IDocumentMetadataItem
@@ -173,7 +192,7 @@ namespace Diadoc.Api.Proto.Documents.Types
 
 		Com.DocumentMetadataSource IDocumentMetadataItem.MetadataSource
 		{
-			get { return (Com.DocumentMetadataSource)(int)Source; }
+			get { return (Com.DocumentMetadataSource) (int) Source; }
 		}
 	}
 }

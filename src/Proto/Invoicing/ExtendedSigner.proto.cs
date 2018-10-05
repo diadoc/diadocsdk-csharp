@@ -310,6 +310,9 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
     public enum DocumentTitleType
     {
             
+      [global::ProtoBuf.ProtoEnum(Name=@"Absent", Value=-1)]
+      Absent = -1,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"UtdSeller", Value=0)]
       UtdSeller = 0,
             

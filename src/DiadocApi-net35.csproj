@@ -72,6 +72,8 @@
     <Compile Include="Com\DocumentDocflow.cs" />
     <Compile Include="Com\DocumentMetadataItemType.cs" />
     <Compile Include="Com\DocumentMetadataSource.cs" />
+    <Compile Include="Com\DocumentTitleSignerType.cs" />
+    <Compile Include="Com\DocumentTitleType.cs" />
     <Compile Include="Com\DocumentType.cs" />
     <Compile Include="Com\Employees.cs" />
     <Compile Include="Com\EntityType.cs" />

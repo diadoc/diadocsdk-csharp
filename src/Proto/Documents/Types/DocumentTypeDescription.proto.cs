@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Documents/Types/DocumentTypeDescription.proto
+// Note: requires additional types generated from: Invoicing/ExtendedSigner.proto
 namespace Diadoc.Api.Proto.Documents.Types
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentTypeDescription")]
@@ -209,6 +210,13 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _UserDataXsdUrl; }
       set { _UserDataXsdUrl = value; }
     }
+    private Diadoc.Api.Proto.Documents.Types.SignerInfo _SignerInfo;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"SignerInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Documents.Types.SignerInfo SignerInfo
+    {
+      get { return _SignerInfo; }
+      set { _SignerInfo = value; }
+    }
     private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentMetadataItem> _MetadataItems = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentMetadataItem>();
     [global::ProtoBuf.ProtoMember(3, Name=@"MetadataItems", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentMetadataItem> MetadataItems
@@ -223,6 +231,30 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _EncryptedMetadataItems; }
     }
   
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SignerInfo")]
+  public partial class SignerInfo : global::ProtoBuf.IExtensible
+  {
+    public SignerInfo() {}
+    
+    private Diadoc.Api.Proto.Documents.Types.SignerType _SignerType;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"SignerType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.Types.SignerType SignerType
+    {
+      get { return _SignerType; }
+      set { _SignerType = value; }
+    }
+    private Diadoc.Api.Proto.Invoicing.Signers.DocumentTitleType _ExtendedDocumentTitleType;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"ExtendedDocumentTitleType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Invoicing.Signers.DocumentTitleType ExtendedDocumentTitleType
+    {
+      get { return _ExtendedDocumentTitleType; }
+      set { _ExtendedDocumentTitleType = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -323,6 +355,20 @@ namespace Diadoc.Api.Proto.Documents.Types
             
       [global::ProtoBuf.ProtoEnum(Name=@"Internal", Value=1)]
       Internal = 1
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"SignerType")]
+    public enum SignerType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"None", Value=0)]
+      None = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Signer", Value=1)]
+      Signer = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ExtendedSigner", Value=2)]
+      ExtendedSigner = 2
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"DocumentMetadataItemType")]

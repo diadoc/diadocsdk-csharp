@@ -16,6 +16,7 @@ using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Users;
+using DocumentTitleType = Diadoc.Api.Proto.Invoicing.Signers.DocumentTitleType;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 
