@@ -129,4 +129,28 @@ namespace Diadoc.Api.Proto.Employees
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"EmployeeList")]
+  public partial class EmployeeList : global::ProtoBuf.IExtensible
+  {
+    public EmployeeList() {}
+    
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Employees.Employee> _Employees = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Employees.Employee>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"Employees", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Employees.Employee> Employees
+    {
+      get { return _Employees; }
+    }
+  
+    private int _TotalCount;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"TotalCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int TotalCount
+    {
+      get { return _TotalCount; }
+      set { _TotalCount = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

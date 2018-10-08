@@ -1068,6 +1068,17 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEmployee(authToken, boxId, userId);
 		}
 
+		public EmployeeList GetEmployees(string authToken, string boxId, int? page, int? count)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (page < 1)
+				throw new ArgumentOutOfRangeException("page", page, "page must be 1 or greater");
+			if (count < 1)
+				throw new ArgumentOutOfRangeException("count", count, "count must be 1 or greater");
+			return diadocHttpApi.GetEmployees(authToken, boxId, page, count);
+		}
+
 		public Employee CreateEmployee(string authToken, string boxId, EmployeeToCreate employeeToCreate)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

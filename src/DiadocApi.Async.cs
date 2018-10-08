@@ -1005,6 +1005,17 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEmployeeAsync(authToken, boxId, userId);
 		}
 
+		public Task<EmployeeList> GetEmployeesAsync(string authToken, string boxId, int? page, int? count)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (page < 1)
+				throw new ArgumentOutOfRangeException("page", page, "page must be 1 or greater");
+			if (count < 1)
+				throw new ArgumentOutOfRangeException("count", count, "count must be 1 or greater");
+			return diadocHttpApi.GetEmployeesAsync(authToken, boxId, page, count);
+		}
+
 		public Task<Employee> CreateEmployeeAsync(string authToken, string boxId, EmployeeToCreate employeeToCreate)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
