@@ -798,7 +798,8 @@ namespace Diadoc.Api.Proto.Events
 
 		private RecipientTitleAttachment Convert(object attachment)
 		{
-			if (attachment is ReceiptAttachment receiptAttachment)
+			var receiptAttachment = attachment as ReceiptAttachment;
+			if (receiptAttachment != null)
 			{
 				var recipientTitleAttachment = new RecipientTitleAttachment
 				{
