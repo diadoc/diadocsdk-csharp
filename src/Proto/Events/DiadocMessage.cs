@@ -718,17 +718,17 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddXmlTorg12BuyerTitle(object attachment)
 		{
-			XmlTorg12BuyerTitles.Add((RecipientTitleAttachment) attachment);
+			XmlTorg12BuyerTitles.Add(Convert(attachment));
 		}
 
 		public void AddXmlAcceptanceCertificateBuyerTitle(object attachment)
 		{
-			XmlAcceptanceCertificateBuyerTitles.Add((RecipientTitleAttachment) attachment);
+			XmlAcceptanceCertificateBuyerTitles.Add(Convert(attachment));
 		}
 
 		public void AddUniversalTransferDocumentBuyerTitle(object attachment)
 		{
-			UniversalTransferDocumentBuyerTitles.Add((RecipientTitleAttachment) attachment);
+			UniversalTransferDocumentBuyerTitles.Add(Convert(attachment));
 		}
 
 		public void AddResolution(object attachment)
@@ -768,7 +768,7 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddUniversalTransferDocumentBuyerTitleAttachment(object attachment)
 		{
-			UniversalTransferDocumentBuyerTitles.Add((RecipientTitleAttachment) attachment);
+			UniversalTransferDocumentBuyerTitles.Add(Convert(attachment));
 		}
 
 		public void AddResolutionRouteAssignment(object attachment)
@@ -783,7 +783,7 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddRecipientTitle(object attachment)
 		{
-			RecipientTitles.Add((RecipientTitleAttachment) attachment);
+			RecipientTitles.Add(Convert(attachment));
 		}
 
 		public void AddCustomDataPatch(object editingPatch)
@@ -795,7 +795,30 @@ namespace Diadoc.Api.Proto.Events
 		{
 			EditingPatches.Add((EditingPatch) editingPatch);
 		}
+
+		private RecipientTitleAttachment Convert(object attachment)
+		{
+			if (attachment is ReceiptAttachment receiptAttachment)
+			{
+				var recipientTitleAttachment = new RecipientTitleAttachment
+				{
+					ParentEntityId = receiptAttachment.ParentEntityId,
+					SignedContent = receiptAttachment.SignedContent,
+					NeedReceipt = false
+				};
+
+				foreach (var label in receiptAttachment.Labels)
+				{
+					recipientTitleAttachment.AddLabel(label);
+				}
+
+				return recipientTitleAttachment;
+			}
+
+			return (RecipientTitleAttachment) attachment;
+		}
 	}
+
 
 	[ComVisible(true)]
 	[Guid("10AC1159-A121-4F3E-9437-7CF22A1B60A1")]
