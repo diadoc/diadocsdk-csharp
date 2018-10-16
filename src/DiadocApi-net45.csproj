@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AggregateException.cs" />
+    <Compile Include="Com\DocumentTitleSignerType.cs" />
+    <Compile Include="Com\DocumentTitleType.cs" />
     <Compile Include="Com\Users.cs" />
     <Compile Include="DiadocHttpApi.Employees.Async.cs" />
     <Compile Include="DiadocHttpApi.Employees.cs" />

@@ -1,3 +1,5 @@
+import "Invoicing/ExtendedSigner.proto";
+
 package Diadoc.Api.Proto.Documents.Types;
 
 message DocumentTypeDescription {
@@ -41,8 +43,20 @@ message DocumentTitle {
 	required bool IsFormal = 1;
 	optional string XsdUrl = 2;
 	optional string UserDataXsdUrl = 5;
+	required SignerInfo SignerInfo  = 6;
 	repeated DocumentMetadataItem MetadataItems = 3;
 	repeated DocumentMetadataItem EncryptedMetadataItems = 4;
+}
+
+message SignerInfo {
+	required SignerType SignerType = 1;
+	required Invoicing.Signers.DocumentTitleType ExtendedDocumentTitleType = 2 [default = Absent];
+}
+
+enum SignerType {
+	None = 0;
+	Signer = 1;
+	ExtendedSigner = 2;
 }
 
 message DocumentMetadataItem {

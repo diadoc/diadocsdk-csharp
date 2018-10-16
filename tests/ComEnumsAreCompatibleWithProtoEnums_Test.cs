@@ -16,6 +16,7 @@ using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Organizations;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using NUnit.Framework;
+using SignerType = Diadoc.Api.Proto.Invoicing.Signers.SignerType;
 
 namespace Diadoc.Api.Tests
 {
@@ -188,6 +189,22 @@ namespace Diadoc.Api.Tests
 			AssertEnumsAreCompatible(
 				typeof(Com.SignerType),
 				typeof(SignerType));
+		}
+
+		[Test]
+		public void Test_DocumentTitleSignerType()
+		{
+			AssertEnumsAreCompatible(
+				typeof(Com.DocumentTitleSignerType),
+				typeof(Diadoc.Api.Proto.Documents.Types.SignerType));
+		}
+
+		[Test]
+		public void Test_DocumentTitleType()
+		{
+			AssertEnumsAreCompatible(
+				typeof(Com.DocumentTitleType),
+				typeof(DocumentTitleType));
 		}
 
 		[Test]
