@@ -80,6 +80,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _Revocation; }
       set { _Revocation = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.ReceiptDocflowV3 _SenderReceipt = null;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"SenderReceipt", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.ReceiptDocflowV3 SenderReceipt
+    {
+      get { return _SenderReceipt; }
+      set { _SenderReceipt = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

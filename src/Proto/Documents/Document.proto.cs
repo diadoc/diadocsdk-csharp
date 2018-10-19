@@ -644,6 +644,13 @@ namespace Diadoc.Api.Proto.Documents
       get { return _LockMode; }
       set { _LockMode = value; }
     }
+    private Diadoc.Api.Proto.Documents.SenderReceiptMetadata _SenderReceiptMetadata;
+    [global::ProtoBuf.ProtoMember(75, IsRequired = true, Name=@"SenderReceiptMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Documents.SenderReceiptMetadata SenderReceiptMetadata
+    {
+      get { return _SenderReceiptMetadata; }
+      set { _SenderReceiptMetadata = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -711,6 +718,23 @@ namespace Diadoc.Api.Proto.Documents
     {
       get { return _ConfirmationMetadata; }
       set { _ConfirmationMetadata = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SenderReceiptMetadata")]
+  public partial class SenderReceiptMetadata : global::ProtoBuf.IExtensible
+  {
+    public SenderReceiptMetadata() {}
+    
+    private Diadoc.Api.Proto.Documents.GeneralReceiptStatus _ReceiptStatus;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ReceiptStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.GeneralReceiptStatus ReceiptStatus
+    {
+      get { return _ReceiptStatus; }
+      set { _ReceiptStatus = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

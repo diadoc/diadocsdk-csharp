@@ -14,6 +14,7 @@ message DocflowV3
 	optional RecipientResponseDocflow RecipientResponse = 5;
 	optional AmendmentRequestDocflow AmendmentRequest = 6;
 	optional RevocationDocflowV3 Revocation = 7;
+	optional ReceiptDocflowV3 SenderReceipt = 8;
 }
 
 message SenderTitleDocflow
