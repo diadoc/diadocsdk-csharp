@@ -1005,6 +1005,23 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEmployeeAsync(authToken, boxId, userId);
 		}
 
+		public Task<Employee> CreateEmployeeAsync(string authToken, string boxId, EmployeeToCreate employeeToCreate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (employeeToCreate == null) throw new ArgumentNullException("employeeToCreate");
+			return diadocHttpApi.CreateEmployeeAsync(authToken, boxId, employeeToCreate);
+		}
+
+		public Task<Employee> UpdateEmployeeAsync(string authToken, string boxId, string userId, EmployeeToUpdate employeeToUpdate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (userId == null) throw new ArgumentNullException("userId");
+			if (employeeToUpdate == null) throw new ArgumentNullException("employeeToUpdate");
+			return diadocHttpApi.UpdateEmployeeAsync(authToken, boxId, userId, employeeToUpdate);
+		}
+
 		public Task<EmployeeSubscriptions> GetSubscriptionsAsync(string authToken, string boxId, string userId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1019,14 +1036,6 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (userId == null) throw new ArgumentNullException("userId");
 			return diadocHttpApi.UpdateSubscriptionsAsync(authToken, boxId, userId, subscriptionsToUpdate);
-		}
-
-		public Task<Employee> CreateEmployeeAsync(string authToken, string boxId, EmployeeToCreate employeeToCreate)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (employeeToCreate == null) throw new ArgumentNullException("employeeToCreate");
-			return diadocHttpApi.CreateEmployeeAsync(authToken, boxId, employeeToCreate);
 		}
 	}
 }

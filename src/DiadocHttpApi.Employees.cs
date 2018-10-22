@@ -21,6 +21,14 @@ namespace Diadoc.Api
 			return PerformHttpRequest<EmployeeToCreate, Employee>(authToken, queryString.BuildPathAndQuery(), employeeToCreate);
 		}
 
+		public Employee UpdateEmployee(string authToken, string boxId, string userId, EmployeeToUpdate employeeToUpdate)
+		{
+			var queryString = new PathAndQueryBuilder("/UpdateEmployee");
+			queryString.AddParameter("boxId", boxId);
+			queryString.AddParameter("userId", userId);
+			return PerformHttpRequest<EmployeeToUpdate, Employee>(authToken, queryString.BuildPathAndQuery(), employeeToUpdate);
+		}
+
 		public EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId)
 		{
 			var queryString = new PathAndQueryBuilder("/GetSubscriptions");
