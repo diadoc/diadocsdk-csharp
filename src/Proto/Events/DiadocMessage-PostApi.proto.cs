@@ -11,6 +11,8 @@
 // Note: requires additional types generated from: DocumentId.proto
 // Note: requires additional types generated from: LockMode.proto
 // Note: requires additional types generated from: CustomDataItem.proto
+// Note: requires additional types generated from: ResolutionRequestType.proto
+// Note: requires additional types generated from: ResolutionType.proto
 // Note: requires additional types generated from: Invoicing/Signer.proto
 // Note: requires additional types generated from: Invoicing/ExtendedSigner.proto
 // Note: requires additional types generated from: Events/ResolutionInfo.proto
@@ -2055,9 +2057,9 @@ namespace Diadoc.Api.Proto.Events
       get { return _InitialDocumentId; }
       set { _InitialDocumentId = value; }
     }
-    private Diadoc.Api.Proto.Events.ResolutionRequestType _Type;
+    private Diadoc.Api.Proto.ResolutionRequestType _Type;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Diadoc.Api.Proto.Events.ResolutionRequestType Type
+    public Diadoc.Api.Proto.ResolutionRequestType Type
     {
       get { return _Type; }
       set { _Type = value; }
@@ -2236,9 +2238,9 @@ namespace Diadoc.Api.Proto.Events
       get { return _InitialDocumentId; }
       set { _InitialDocumentId = value; }
     }
-    private Diadoc.Api.Proto.Events.ResolutionType _ResolutionType;
+    private Diadoc.Api.Proto.ResolutionType _ResolutionType;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"ResolutionType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Diadoc.Api.Proto.Events.ResolutionType ResolutionType
+    public Diadoc.Api.Proto.ResolutionType ResolutionType
     {
       get { return _ResolutionType; }
       set { _ResolutionType = value; }

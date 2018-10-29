@@ -6,6 +6,8 @@
 import "DocumentId.proto";
 import "LockMode.proto";
 import "CustomDataItem.proto";
+import "ResolutionRequestType.proto";
+import "ResolutionType.proto";
 import "Invoicing/Signer.proto";
 import "Invoicing/ExtendedSigner.proto";
 import "Events/ResolutionInfo.proto";

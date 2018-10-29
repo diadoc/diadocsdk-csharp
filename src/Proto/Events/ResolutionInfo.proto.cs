@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Events/ResolutionInfo.proto
+// Note: requires additional types generated from: ResolutionType.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResolutionInfo")]
@@ -16,10 +17,10 @@ namespace Diadoc.Api.Proto.Events
     public ResolutionInfo() {}
     
 
-    private Diadoc.Api.Proto.Events.ResolutionType _ResolutionType = Diadoc.Api.Proto.Events.ResolutionType.UnknownResolutionType;
+    private Diadoc.Api.Proto.ResolutionType _ResolutionType = Diadoc.Api.Proto.ResolutionType.UnknownResolutionType;
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ResolutionType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Events.ResolutionType.UnknownResolutionType)]
-    public Diadoc.Api.Proto.Events.ResolutionType ResolutionType
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.ResolutionType.UnknownResolutionType)]
+    public Diadoc.Api.Proto.ResolutionType ResolutionType
     {
       get { return _ResolutionType; }
       set { _ResolutionType = value; }
@@ -44,22 +45,5 @@ namespace Diadoc.Api.Proto.Events
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
-  
-    [global::ProtoBuf.ProtoContract(Name=@"ResolutionType")]
-    public enum ResolutionType
-    {
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"UnknownResolutionType", Value=-1)]
-      UnknownResolutionType = -1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"UndefinedResolutionType", Value=0)]
-      UndefinedResolutionType = 0,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"Approve", Value=1)]
-      Approve = 1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"Disapprove", Value=2)]
-      Disapprove = 2
-    }
   
 }

@@ -1,4 +1,4 @@
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 
 namespace Diadoc.Api.Com
@@ -9,9 +9,9 @@ namespace Diadoc.Api.Com
 	[XmlType(TypeName = "ResolutionType", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum ResolutionType
 	{
-		UndefinedResolutionType = Proto.Events.ResolutionType.UndefinedResolutionType,
-		Approve = Proto.Events.ResolutionType.Approve,
-		Disapprove = Proto.Events.ResolutionType.Disapprove,
-		UnknownResolutionType = Proto.Events.ResolutionType.UnknownResolutionType
+		UndefinedResolutionType = Proto.ResolutionType.UndefinedResolutionType,
+		Approve = Proto.ResolutionType.Approve,
+		Disapprove = Proto.ResolutionType.Disapprove,
+		UnknownResolutionType = Proto.ResolutionType.UnknownResolutionType
 	}
 }

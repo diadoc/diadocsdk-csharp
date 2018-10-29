@@ -82,6 +82,7 @@
     <Compile Include="Com\OrganizationInvoiceFormatVersion.cs" />
     <Compile Include="Com\ProxySignatureStatus.cs" />
     <Compile Include="Com\RecipientResponseStatus.cs" />
+    <Compile Include="Com\ResolutionStatus.cs" />
     <Compile Include="Com\RoamingNotificationStatus.cs" />
     <Compile Include="Com\SenderSignatureStatus.cs" />
     <Compile Include="Com\Users.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Proto\Docflow\DocflowV3.proto.cs" />
     <Compile Include="Proto\Docflow\DocumentInfoV3.proto.cs" />
     <Compile Include="Proto\Docflow\DocumentWithDocflowV3.proto.cs" />
+    <Compile Include="Proto\Docflow\ResolutionDocflowV3.proto.cs" />
     <Compile Include="Proto\Docflow\RoamingNotification.proto.cs" />
     <Compile Include="Proto\Docflow\UniversalTransferDocumentDocflow.proto.cs" />
     <Compile Include="Proto\DocumentDirection.proto.cs" />
@@ -189,7 +191,9 @@
     <Compile Include="Proto\Invoicing\TovTorgInfo.proto.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.proto.cs" />
+    <Compile Include="Proto\ResolutionRequestType.proto.cs" />
     <Compile Include="Proto\ResolutionRouteList.proto.cs" />
+    <Compile Include="Proto\ResolutionType.proto.cs" />
     <Compile Include="Proto\RoamingNotification.proto.cs" />
     <Compile Include="Proto\Serializer.cs" />
     <Compile Include="Proto\SignatureInfo.cs" />

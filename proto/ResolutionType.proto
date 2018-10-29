@@ -1,0 +1,9 @@
+package Diadoc.Api.Proto;
+
+enum ResolutionType
+{
+	UnknownResolutionType = -1; // Reserved type to report to legacy clients for newly introduced types
+	UndefinedResolutionType = 0;
+	Approve = 1;
+	Disapprove = 2;
+}

@@ -1,5 +1,12 @@
 ﻿using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
+using Diadoc.Api.Proto.Documents;
+using GeneralReceiptStatus = Diadoc.Api.Proto.Documents.GeneralReceiptStatus;
+using MessageType = Diadoc.Api.Proto.Documents.MessageType;
+using ProxySignatureStatus = Diadoc.Api.Proto.Documents.ProxySignatureStatus;
+using RecipientResponseStatus = Diadoc.Api.Proto.Documents.RecipientResponseStatus;
+using RevocationStatus = Diadoc.Api.Proto.Documents.RevocationStatus;
+using SenderSignatureStatus = Diadoc.Api.Proto.Documents.SenderSignatureStatus;
 
 namespace Diadoc.Api.Proto.Docflow
 {
@@ -223,7 +230,7 @@ namespace Diadoc.Api.Proto.Docflow
 	public interface IDocumentInfoV3
 	{
 		FullVersion FullVersion { get; }
-		Documents.MessageType MessageType { get; }
+		MessageType MessageType { get; }
 		int WorkflowId { get; }
 		DocumentParticipants Participants { get; }
 		DocumentDirection DocumentDirection { get; }
@@ -239,7 +246,7 @@ namespace Diadoc.Api.Proto.Docflow
 		DocumentLetterInfo LetterInfo { get; }
 		DocumentDraftInfo DraftInfo { get; }
 		DocumentTemplateInfo TemplateInfo { get; }
-		Documents.Origin Origin { get; }
+		Origin Origin { get; }
 	}
 
 	[ComVisible(true)]
@@ -416,6 +423,8 @@ namespace Diadoc.Api.Proto.Docflow
 		RecipientResponseDocflow RecipientResponse { get; }
 		AmendmentRequestDocflow AmendmentRequest { get; }
 		RevocationDocflowV3 Revocation { get; }
+		ResolutionDocflowV3 Resolution { get; }
+		ResolutionEntitiesV3 ResolutionEntities { get; }
 	}
 
 	[ComVisible(true)]
@@ -436,7 +445,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
 		RoamingNotification RoamingNotification { get; }
-		Documents.SenderSignatureStatus SenderSignatureStatus { get; }
+		SenderSignatureStatus SenderSignatureStatus { get; }
 	}
 
 	[ComVisible(true)]
@@ -474,7 +483,7 @@ namespace Diadoc.Api.Proto.Docflow
 		bool IsFinished { get; }
 		SignatureV3 Signature { get; }
 		SignatureRejectionDocflow Rejection { get; }
-		Documents.ProxySignatureStatus ProxySignatureStatus { get; }
+		ProxySignatureStatus ProxySignatureStatus { get; }
 	}
 
 	[ComVisible(true)]
@@ -514,7 +523,7 @@ namespace Diadoc.Api.Proto.Docflow
 		SignatureRejectionDocflow Rejection { get; }
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
-		Documents.RecipientResponseStatus RecipientResponseStatus { get; }
+		RecipientResponseStatus RecipientResponseStatus { get; }
 	}
 
 	[ComVisible(true)]
@@ -555,7 +564,7 @@ namespace Diadoc.Api.Proto.Docflow
 		RevocationRequestDocflow RevocationRequest { get; }
 		RevocationResponseDocflow RevocationResponse { get; }
 		string InitiatorBoxId { get; }
-		Documents.RevocationStatus RevocationStatus { get; }
+		RevocationStatus RevocationStatus { get; }
 	}
 
 	[ComVisible(true)]
@@ -604,6 +613,133 @@ namespace Diadoc.Api.Proto.Docflow
 	}
 
 	[ComVisible(true)]
+	[Guid("72366918-BD56-4282-977C-8B2CCBB73C9C")]
+	public interface IResolutionDocflowV3
+	{
+		bool IsFinished { get; }
+		string ParentEntityId { get; }
+		ResolutionStatus ResolutionStatus { get; }
+		string ResolutionEntityId { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.ResolutionDocflowV3")]
+	[Guid("FC3D06EB-F9BB-48B0-9EA1-F1FEA27A68A7")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IResolutionDocflowV3))]
+	public partial class ResolutionDocflowV3 : SafeComObject, IResolutionDocflowV3
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("6B8D957E-8FEB-44DE-A7DF-50DC6C837CD4")]
+	public interface IResolutionEntitiesV3
+	{
+		ReadonlyList RequestsList { get; }
+		ReadonlyList ResolutionsList { get; }
+		ReadonlyList ApprovementSignaturesList { get; }
+		ReadonlyList SignatureDenialsList { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.ResolutionDocflowV3")]
+	[Guid("3C078361-CB3B-4917-81BF-7C6C458F353B")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IResolutionEntitiesV3))]
+	public partial class ResolutionEntitiesV3 : SafeComObject, IResolutionEntitiesV3
+	{
+		public ReadonlyList RequestsList => new ReadonlyList(Requests);
+		public ReadonlyList ResolutionsList => new ReadonlyList(Resolutions);
+		public ReadonlyList ApprovementSignaturesList => new ReadonlyList(ApprovementSignatures);
+		public ReadonlyList SignatureDenialsList => new ReadonlyList(SignatureDenials);
+	}
+
+	[ComVisible(true)]
+	[Guid("BB0659E8-A7E3-4019-ABFD-D2244F65BD70")]
+	public interface IRequestV3
+	{
+		Entity Entity { get; }
+		ResolutionTarget Target { get; }
+		string AuthorUserId { get; }
+		Com.ResolutionRequestType RequestTypeValue { get; }
+		string ResolvedWith { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.RequestV3")]
+	[Guid("2602A5F4-BF88-4DCF-BDEF-B8E800271723")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IRequestV3))]
+	public partial class RequestV3 : SafeComObject, IRequestV3
+	{
+		public Com.ResolutionRequestType RequestTypeValue
+		{
+			get => (Com.ResolutionRequestType) RequestType;
+			set => RequestType = (ResolutionRequestType) value;
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("683E5A37-DE47-457D-BFDC-631AC1A84197")]
+	public interface IResolutionV3
+	{
+		Entity Entity { get; }
+		string ResolutionRequestId { get; }
+		string AuthorUserId { get; }
+		Com.ResolutionType ResolutionTypeValue { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.RequestV3")]
+	[Guid("4FD4620F-E530-47EB-87EF-4ECB5633A2B9")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IResolutionV3))]
+	public partial class ResolutionV3 : SafeComObject, IResolutionV3
+	{
+		public Com.ResolutionType ResolutionTypeValue
+		{
+			get => (Com.ResolutionType) ResolutionType;
+			set => ResolutionType = (ResolutionType) value;
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("0C60026F-353E-4583-A581-0FD009934251")]
+	public interface IApprovementSignatureV3
+	{
+		SignatureV3 Signature { get; }
+		string ResolutionRequestId { get; }
+		string AuthorUserId { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.RequestV3")]
+	[Guid("77A8EF89-7EA0-4B36-AA04-8841FAEFD7A4")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IApprovementSignatureV3))]
+	public partial class ApprovementSignatureV3 : SafeComObject, IApprovementSignatureV3
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("72468076-18BD-435A-A5F8-9545F53190AC")]
+	public interface ISignatureDenialV3
+	{
+		Entity Entity { get; }
+		string ResolutionRequestId { get; }
+		string AuthorUserId { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.RequestV3")]
+	[Guid("64B45792-82CD-470E-8B54-285E831F35CE")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ISignatureDenialV3))]
+	public partial class SignatureDenialV3 : SafeComObject, ISignatureDenialV3
+	{
+	}
+
+	[ComVisible(true)]
 	[Guid("376FF342-2F60-4999-8B98-874F291DDD95")]
 	public interface IReceiptDocflowV3
 	{
@@ -612,7 +748,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
 		ConfirmationDocflow Confirmation { get; }
-		Documents.GeneralReceiptStatus Status { get; }
+		GeneralReceiptStatus Status { get; }
 	}
 
 	[ComVisible(true)]

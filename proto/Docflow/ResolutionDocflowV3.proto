@@ -1,0 +1,73 @@
+import "Timestamp.proto";
+import "ResolutionRequestType.proto";
+import "ResolutionTarget.proto";
+import "ResolutionType.proto";
+import "Docflow/Attachment.proto";
+import "Docflow/AttachmentV3.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message ResolutionDocflowV3
+{
+	required bool IsFinished = 1;
+
+	required string ParentEntityId = 2;
+
+	required ResolutionStatus ResolutionStatus = 3;
+
+	optional string ResolutionEntityId = 4;
+}
+
+enum ResolutionStatus
+{
+	UnknownStatus = 0;
+	None = 1;
+	Approved = 2;
+	Disapproved = 3;
+	ApprovementRequested = 4;
+	ApprovementSignatureRequested = 5;
+	PrimarySignatureRequested = 6;
+	SignatureRequestRejected = 7;
+	SignedWithApprovingSignature = 8;
+	SignedWithPrimarySignature = 9;
+	PrimarySignatureRejected = 10;
+}
+
+message ResolutionEntitiesV3
+{
+	repeated RequestV3 Requests = 1;
+	repeated ResolutionV3 Resolutions = 2;
+	repeated ApprovementSignatureV3 ApprovementSignatures = 3;
+	repeated SignatureDenialV3 SignatureDenials = 4;        
+}
+
+message RequestV3
+{
+	required Entity Entity = 1;
+	required ResolutionTarget Target = 2;
+	optional string AuthorUserId = 3;
+	required ResolutionRequestType RequestType = 4;
+	optional string ResolvedWith = 5;
+}
+
+message ResolutionV3
+{
+	required Entity Entity = 1;
+	optional string ResolutionRequestId = 2;
+	optional string AuthorUserId = 3;
+	required ResolutionType ResolutionType = 4;
+}
+
+message ApprovementSignatureV3
+{
+	required SignatureV3 Signature = 1;
+	optional string ResolutionRequestId = 2;
+	optional string AuthorUserId = 3;
+}
+
+message SignatureDenialV3
+{
+	required Entity Entity = 1;
+	required string ResolutionRequestId = 2;
+	optional string AuthorUserId = 3;
+}

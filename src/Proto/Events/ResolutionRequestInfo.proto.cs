@@ -9,6 +9,7 @@
 
 // Generated from: Events/ResolutionRequestInfo.proto
 // Note: requires additional types generated from: ResolutionTarget.proto
+// Note: requires additional types generated from: ResolutionRequestType.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResolutionRequestInfo")]
@@ -17,10 +18,10 @@ namespace Diadoc.Api.Proto.Events
     public ResolutionRequestInfo() {}
     
 
-    private Diadoc.Api.Proto.Events.ResolutionRequestType _RequestType = Diadoc.Api.Proto.Events.ResolutionRequestType.UnknownResolutionRequestType;
+    private Diadoc.Api.Proto.ResolutionRequestType _RequestType = Diadoc.Api.Proto.ResolutionRequestType.UnknownResolutionRequestType;
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"RequestType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Events.ResolutionRequestType.UnknownResolutionRequestType)]
-    public Diadoc.Api.Proto.Events.ResolutionRequestType RequestType
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.ResolutionRequestType.UnknownResolutionRequestType)]
+    public Diadoc.Api.Proto.ResolutionRequestType RequestType
     {
       get { return _RequestType; }
       set { _RequestType = value; }
@@ -54,22 +55,5 @@ namespace Diadoc.Api.Proto.Events
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
-  
-    [global::ProtoBuf.ProtoContract(Name=@"ResolutionRequestType")]
-    public enum ResolutionRequestType
-    {
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"UnknownResolutionRequestType", Value=-1)]
-      UnknownResolutionRequestType = -1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ApprovementRequest", Value=0)]
-      ApprovementRequest = 0,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"SignatureRequest", Value=1)]
-      SignatureRequest = 1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ApprovementSignatureRequest", Value=2)]
-      ApprovementSignatureRequest = 2
-    }
   
 }
