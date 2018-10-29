@@ -1,0 +1,9 @@
+package Diadoc.Api.Proto;
+
+enum ResolutionRequestType
+{
+	UnknownResolutionRequestType = -1;
+	ApprovementRequest = 0;
+	SignatureRequest = 1;
+	ApprovementSignatureRequest = 2;
+}

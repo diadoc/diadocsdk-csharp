@@ -1,14 +1,9 @@
+import "ResolutionType.proto";
+
 package Diadoc.Api.Proto.Events;
 
 message ResolutionInfo {
 	optional ResolutionType ResolutionType = 1 [default = UnknownResolutionType];
 	required string Author = 2;	// ФИО согласователя
 	optional string InitialRequestId = 3;
-}
-
-enum ResolutionType {
-	UnknownResolutionType = -1; // Reserved type to report to legacy clients for newly introduced types
-	UndefinedResolutionType = 0;
-	Approve = 1;
-	Disapprove = 2;
 }

@@ -12,6 +12,7 @@
 // Note: requires additional types generated from: Documents/Document.proto
 // Note: requires additional types generated from: Docflow/AttachmentV3.proto
 // Note: requires additional types generated from: Docflow/RoamingNotification.proto
+// Note: requires additional types generated from: Docflow/ResolutionDocflowV3.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocflowV3")]
@@ -88,6 +89,24 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _SenderReceipt; }
       set { _SenderReceipt = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.ResolutionDocflowV3 _Resolution = null;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"Resolution", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.ResolutionDocflowV3 Resolution
+    {
+      get { return _Resolution; }
+      set { _Resolution = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.ResolutionEntitiesV3 _ResolutionEntities = null;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"ResolutionEntities", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.ResolutionEntitiesV3 ResolutionEntities
+    {
+      get { return _ResolutionEntities; }
+      set { _ResolutionEntities = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -439,6 +458,15 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _RevocationStatus; }
       set { _RevocationStatus = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.ResolutionEntitiesV3 _ResolutionEntities = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"ResolutionEntities", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.ResolutionEntitiesV3 ResolutionEntities
+    {
+      get { return _ResolutionEntities; }
+      set { _ResolutionEntities = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

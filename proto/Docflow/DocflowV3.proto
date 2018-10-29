@@ -2,6 +2,7 @@ import "Timestamp.proto";
 import "Documents/Document.proto";
 import "Docflow/AttachmentV3.proto";
 import "Docflow/RoamingNotification.proto";
+import "Docflow/ResolutionDocflowV3.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
@@ -15,6 +16,8 @@ message DocflowV3
 	optional AmendmentRequestDocflow AmendmentRequest = 6;
 	optional RevocationDocflowV3 Revocation = 7;
 	optional ReceiptDocflowV3 SenderReceipt = 8;
+	optional ResolutionDocflowV3 Resolution = 9;
+	optional ResolutionEntitiesV3 ResolutionEntities = 10;
 }
 
 message SenderTitleDocflow
@@ -78,6 +81,7 @@ message RevocationDocflowV3
 	optional RevocationResponseDocflow RevocationResponse = 3;
 	required string InitiatorBoxId = 4;
 	required Documents.RevocationStatus RevocationStatus = 5;
+	optional ResolutionEntitiesV3 ResolutionEntities = 6;
 }
 
 message RevocationRequestDocflow
