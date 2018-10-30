@@ -293,8 +293,8 @@ message MessagePatchToPost {
 	repeated CorrectionRequestAttachment CorrectionRequests = 4;
 	repeated DocumentSignature Signatures = 5;
 	repeated RequestedSignatureRejection RequestedSignatureRejections = 6;
-	repeated ReceiptAttachment XmlTorg12BuyerTitles = 7;
-	repeated ReceiptAttachment XmlAcceptanceCertificateBuyerTitles = 8;
+	repeated RecipientTitleAttachment XmlTorg12BuyerTitles = 7;
+	repeated RecipientTitleAttachment XmlAcceptanceCertificateBuyerTitles = 8;
 	repeated ResolutionAttachment Resolutions = 9;
 	repeated ResolutionRequestAttachment ResolutionRequests = 10;
 	repeated ResolutionRequestCancellationAttachment ResolutionRequestCancellations = 11;
@@ -306,9 +306,9 @@ message MessagePatchToPost {
 	repeated ResolutionRouteAssignment ResolutionRouteAssignments = 17;
 	repeated SignatureVerification SignatureVerifications = 18;
 	repeated EditDocumentPacketCommand EditDocumentPacketCommands = 19;
-	repeated ReceiptAttachment UniversalTransferDocumentBuyerTitles = 20;
+	repeated RecipientTitleAttachment UniversalTransferDocumentBuyerTitles = 20;
 	repeated ResolutionRouteRemoval ResolutionRouteRemovals = 21;
-	repeated ReceiptAttachment RecipientTitles = 22;
+	repeated RecipientTitleAttachment RecipientTitles = 22;
 	repeated EditingPatch EditingPatches = 24;
 }
 
@@ -370,6 +370,13 @@ message ReceiptAttachment {
 	required SignedContent SignedContent = 2;
 	// do not use field #3
 	repeated string Labels = 4;
+}
+
+message RecipientTitleAttachment {
+	required string ParentEntityId = 1;
+	required SignedContent SignedContent = 2;
+	repeated string Labels = 4;
+	required bool NeedReceipt = 5 [default = false];
 }
 
 message CorrectionRequestAttachment {

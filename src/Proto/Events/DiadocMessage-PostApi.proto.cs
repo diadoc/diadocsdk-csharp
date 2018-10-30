@@ -1848,16 +1848,16 @@ namespace Diadoc.Api.Proto.Events
       get { return _RequestedSignatureRejections; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> _XmlTorg12BuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> _XmlTorg12BuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment>();
     [global::ProtoBuf.ProtoMember(7, Name=@"XmlTorg12BuyerTitles", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> XmlTorg12BuyerTitles
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> XmlTorg12BuyerTitles
     {
       get { return _XmlTorg12BuyerTitles; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> _XmlAcceptanceCertificateBuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> _XmlAcceptanceCertificateBuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment>();
     [global::ProtoBuf.ProtoMember(8, Name=@"XmlAcceptanceCertificateBuyerTitles", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> XmlAcceptanceCertificateBuyerTitles
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> XmlAcceptanceCertificateBuyerTitles
     {
       get { return _XmlAcceptanceCertificateBuyerTitles; }
     }
@@ -1939,9 +1939,9 @@ namespace Diadoc.Api.Proto.Events
       get { return _EditDocumentPacketCommands; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> _UniversalTransferDocumentBuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> _UniversalTransferDocumentBuyerTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment>();
     [global::ProtoBuf.ProtoMember(20, Name=@"UniversalTransferDocumentBuyerTitles", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> UniversalTransferDocumentBuyerTitles
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> UniversalTransferDocumentBuyerTitles
     {
       get { return _UniversalTransferDocumentBuyerTitles; }
     }
@@ -1953,9 +1953,9 @@ namespace Diadoc.Api.Proto.Events
       get { return _ResolutionRouteRemovals; }
     }
   
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> _RecipientTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> _RecipientTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment>();
     [global::ProtoBuf.ProtoMember(22, Name=@"RecipientTitles", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> RecipientTitles
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> RecipientTitles
     {
       get { return _RecipientTitles; }
     }
@@ -2290,6 +2290,44 @@ namespace Diadoc.Api.Proto.Events
       get { return _Labels; }
     }
   
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RecipientTitleAttachment")]
+  public partial class RecipientTitleAttachment : global::ProtoBuf.IExtensible
+  {
+    public RecipientTitleAttachment() {}
+    
+    private string _ParentEntityId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ParentEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ParentEntityId
+    {
+      get { return _ParentEntityId; }
+      set { _ParentEntityId = value; }
+    }
+    private Diadoc.Api.Proto.Events.SignedContent _SignedContent;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"SignedContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Events.SignedContent SignedContent
+    {
+      get { return _SignedContent; }
+      set { _SignedContent = value; }
+    }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
+    private bool _NeedReceipt;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"NeedReceipt", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool NeedReceipt
+    {
+      get { return _NeedReceipt; }
+      set { _NeedReceipt = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
