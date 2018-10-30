@@ -158,7 +158,7 @@ message RecipientReceiptMetadata {
 }
 
 message SenderReceiptMetadata {
-	required GeneralReceiptStatus ReceiptStatus = 1;
+	required GeneralReceiptStatus ReceiptStatus = 1 [default = GeneralReceiptStatusUnknown];
 }
 
 message ConfirmationMetadata {
