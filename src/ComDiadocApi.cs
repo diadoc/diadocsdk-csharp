@@ -368,6 +368,9 @@ namespace Diadoc.Api
 
 		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template);
 		Message TransformTemplateToMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object templateTransformation);
+		
+		AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey);
+		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId);
 	}
 
 	[ComVisible(true)]
@@ -562,6 +565,16 @@ namespace Diadoc.Api
 		public Message TransformTemplateToMessage(string authToken, object templateTransformation)
 		{
 			return diadoc.TransformTemplateToMessage(authToken, (TemplateTransformationToPost) templateTransformation);
+		}
+
+		public AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey)
+		{
+			return diadoc.AutoSignReceipts(authToken, boxId, certificateThumbprint, batchKey);
+		}
+
+		public AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId)
+		{
+			return diadoc.WaitAutosignReceiptsResult(authToken, taskId);
 		}
 
 		public MessagePatch PostMessagePatch(string authToken, object patch)
