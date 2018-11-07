@@ -14,7 +14,7 @@ var buildDir = new DirectoryPath("./bin").Combine(configuration);
 var buildDirNuget = buildDir.Combine("DiadocApi.Nuget");
 var DiadocApiSolutionPath = "./DiadocApi.sln";
 var binariesNet35Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net35-binaries.zip");
-var binariesNet45Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net45-binaries.zip");
+var binariesNet461Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net461-binaries.zip");
 var needSigning = false;
 
 const string protobufNetDll = "./packages/protobuf-net.1.0.0.280/lib/protobuf-net.dll";
@@ -165,10 +165,10 @@ Task("ILMerge")
 			ilMergeSettings);
 
 		ilMergeSettings.TargetPlatform = new TargetPlatform(TargetPlatformVersion.v4);
-		CreateDirectory(outputDir.Combine("net45"));
+		CreateDirectory(outputDir.Combine("net461"));
 		ILMerge(
-			outputDir.CombineWithFilePath("net45/DiadocApi.dll"),
-			sourceDir.CombineWithFilePath("net45/DiadocApi.dll"),
+			outputDir.CombineWithFilePath("net461/DiadocApi.dll"),
+			sourceDir.CombineWithFilePath("net461/DiadocApi.dll"),
 			new FilePath[] { protobufNetDll },
 			ilMergeSettings);
 	});
@@ -186,15 +186,15 @@ Task("PrepareBinaries")
 				!x.FullPath.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase));
 		CopyFiles(net35Files, buildDirNuget.Combine("net35"));
 
-		var net45Files = GetFiles(buildDir.FullPath + "/DiadocApi/net45/*.*")
+		var net461Files = GetFiles(buildDir.FullPath + "/DiadocApi/net461/*.*")
 			.Where(x =>
 				!x.FullPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) &&
 				!x.FullPath.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase));
-		CopyFiles(net45Files, buildDirNuget.Combine("net45"));
+		CopyFiles(net461Files, buildDirNuget.Combine("net461"));
 
 		CopyFileToDirectory("./LICENSE.md", buildDirNuget);
 		Zip(buildDirNuget, binariesNet35Zip, GetFiles(buildDirNuget + "/net35/*.*"));
-		Zip(buildDirNuget, binariesNet45Zip, GetFiles(buildDirNuget + "/net45/*.*"));
+		Zip(buildDirNuget, binariesNet461Zip, GetFiles(buildDirNuget + "/net461/*.*"));
 	});
 
 Task("Nuget-Pack")
@@ -216,7 +216,7 @@ Task("PublishArtifactsToAppVeyor")
 	.Does(() =>
 	{
 		AppVeyor.UploadArtifact(binariesNet35Zip);
-		AppVeyor.UploadArtifact(binariesNet45Zip);
+		AppVeyor.UploadArtifact(binariesNet461Zip);
 		foreach (var upload in GetFiles(buildDir + "/*.nupkg"))
 		{
 			AppVeyor.UploadArtifact(upload​);

@@ -13,8 +13,8 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <BaseIntermediateOutputPath>$(SolutionDir)\obj\$(AssemblyName)\net45\</BaseIntermediateOutputPath>
-    <OutputPath>$(SolutionDir)\bin\$(Configuration)\$(AssemblyName)\net45\</OutputPath>
+    <BaseIntermediateOutputPath>$(SolutionDir)\obj\$(AssemblyName)\net461\</BaseIntermediateOutputPath>
+    <OutputPath>$(SolutionDir)\bin\$(Configuration)\$(AssemblyName)\net461\</OutputPath>
     <DocumentationFile>$(OutputPath)DiadocApiTests.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
