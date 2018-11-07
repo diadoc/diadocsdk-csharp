@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Diadoc.Api.Tests</RootNamespace>
     <AssemblyName>DiadocApi-net45.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <BaseIntermediateOutputPath>$(SolutionDir)\obj\$(AssemblyName)\net45\</BaseIntermediateOutputPath>
