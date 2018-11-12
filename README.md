@@ -10,6 +10,11 @@ diadocsdk-csharp является официальной C#-реализацие
 
 Для подключения diadocsdk-csharp к вашему проекту рекомендуется использовать [nuget-пакет diadocsdk](https://www.nuget.org/packages/DiadocSDK/). Также можно скачать готовую сборку diadocsdk [со страницы релизов](https://github.com/diadoc/diadocsdk-csharp/releases).
 
+## Документация
+
+Документация последней версии SDK доступна по ссылке: http://api-docs.diadoc.ru/.
+
+
 ## Сборка проекта
 
 Для окончательной сборки проекта используется утилита [Cake](http://cakebuild.net/).
