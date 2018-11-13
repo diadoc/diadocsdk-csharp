@@ -13,7 +13,7 @@ message ResolutionDocflowV3
 
 	required string ParentEntityId = 2;
 
-	required ResolutionStatus ResolutionStatus = 3;
+	required ResolutionStatus ResolutionStatus = 3 [default = UnknownStatus];
 
 	optional string ResolutionEntityId = 4;
 }
@@ -46,7 +46,7 @@ message RequestV3
 	required Entity Entity = 1;
 	required ResolutionTarget Target = 2;
 	optional string AuthorUserId = 3;
-	required ResolutionRequestType RequestType = 4;
+	required ResolutionRequestType RequestType = 4 [default = UnknownResolutionRequestType];
 	optional string ResolvedWith = 5;
 }
 
@@ -55,7 +55,7 @@ message ResolutionV3
 	required Entity Entity = 1;
 	optional string ResolutionRequestId = 2;
 	optional string AuthorUserId = 3;
-	required ResolutionType ResolutionType = 4;
+	required ResolutionType ResolutionType = 4 [default = UnknownResolutionType];
 }
 
 message ApprovementSignatureV3
