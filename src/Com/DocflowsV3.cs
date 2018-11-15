@@ -648,10 +648,25 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IResolutionEntitiesV3))]
 	public partial class ResolutionEntitiesV3 : SafeComObject, IResolutionEntitiesV3
 	{
-		public ReadonlyList RequestsList => new ReadonlyList(Requests);
-		public ReadonlyList ResolutionsList => new ReadonlyList(Resolutions);
-		public ReadonlyList ApprovementSignaturesList => new ReadonlyList(ApprovementSignatures);
-		public ReadonlyList SignatureDenialsList => new ReadonlyList(SignatureDenials);
+		public ReadonlyList RequestsList
+		{
+			get { return new ReadonlyList(Requests); }
+		}
+
+		public ReadonlyList ResolutionsList
+		{
+			get { return new ReadonlyList(Resolutions); }
+		}
+
+		public ReadonlyList ApprovementSignaturesList
+		{
+			get { return new ReadonlyList(ApprovementSignatures); }
+		}
+
+		public ReadonlyList SignatureDenialsList
+		{
+			get { return new ReadonlyList(SignatureDenials); }
+		}
 	}
 
 	[ComVisible(true)]
@@ -674,8 +689,8 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.ResolutionRequestType RequestTypeValue
 		{
-			get => (Com.ResolutionRequestType) RequestType;
-			set => RequestType = (ResolutionRequestType) value;
+			get { return (Com.ResolutionRequestType) RequestType; }
+			set { RequestType = (ResolutionRequestType) value; }
 		}
 	}
 
@@ -698,8 +713,8 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.ResolutionType ResolutionTypeValue
 		{
-			get => (Com.ResolutionType) ResolutionType;
-			set => ResolutionType = (ResolutionType) value;
+			get { return (Com.ResolutionType) ResolutionType; }
+			set { ResolutionType = (ResolutionType) value; }
 		}
 	}
 
