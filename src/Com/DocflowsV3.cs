@@ -671,7 +671,7 @@ namespace Diadoc.Api.Proto.Docflow
 
 	[ComVisible(true)]
 	[Guid("BB0659E8-A7E3-4019-ABFD-D2244F65BD70")]
-	public interface IRequestV3
+	public interface IResolutionRequestV3
 	{
 		Entity Entity { get; }
 		ResolutionTarget Target { get; }
@@ -684,8 +684,8 @@ namespace Diadoc.Api.Proto.Docflow
 	[ProgId("Diadoc.Api.RequestV3")]
 	[Guid("2602A5F4-BF88-4DCF-BDEF-B8E800271723")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof(IRequestV3))]
-	public partial class RequestV3 : SafeComObject, IRequestV3
+	[ComDefaultInterface(typeof(IResolutionRequestV3))]
+	public partial class ResolutionRequestV3 : SafeComObject, IResolutionRequestV3
 	{
 		public Com.ResolutionRequestType RequestTypeValue
 		{

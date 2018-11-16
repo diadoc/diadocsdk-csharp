@@ -61,9 +61,9 @@ namespace Diadoc.Api.Proto.Docflow
   {
     public ResolutionEntitiesV3() {}
     
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.RequestV3> _Requests = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.RequestV3>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.ResolutionRequestV3> _Requests = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.ResolutionRequestV3>();
     [global::ProtoBuf.ProtoMember(1, Name=@"Requests", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.RequestV3> Requests
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.ResolutionRequestV3> Requests
     {
       get { return _Requests; }
     }
@@ -94,10 +94,10 @@ namespace Diadoc.Api.Proto.Docflow
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RequestV3")]
-  public partial class RequestV3 : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ResolutionRequestV3")]
+  public partial class ResolutionRequestV3 : global::ProtoBuf.IExtensible
   {
-    public RequestV3() {}
+    public ResolutionRequestV3() {}
     
     private Diadoc.Api.Proto.Docflow.Entity _Entity;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Entity", DataFormat = global::ProtoBuf.DataFormat.Default)]
