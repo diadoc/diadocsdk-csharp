@@ -76,6 +76,7 @@ enum TaxRate {
 	Fraction_10_110 = 5;
 	Fraction_18_118 = 6;
 	TaxedByAgent = 7;
+	Fraction_20_120 = 8;
 }
 
 message InvoiceCorrectionInfo {
