@@ -35,13 +35,13 @@ enum ResolutionStatus
 
 message ResolutionEntitiesV3
 {
-	repeated RequestV3 Requests = 1;
+	repeated ResolutionRequestV3 Requests = 1;
 	repeated ResolutionV3 Resolutions = 2;
 	repeated ApprovementSignatureV3 ApprovementSignatures = 3;
 	repeated SignatureDenialV3 SignatureDenials = 4;        
 }
 
-message RequestV3
+message ResolutionRequestV3
 {
 	required Entity Entity = 1;
 	required ResolutionTarget Target = 2;
