@@ -16,6 +16,7 @@ namespace Diadoc.Api.Com
 		Percent_20 = Proto.Invoicing.TaxRate.Percent_20,
 		Fraction_10_110 = Proto.Invoicing.TaxRate.Fraction_10_110,
 		Fraction_18_118 = Proto.Invoicing.TaxRate.Fraction_18_118,
-		TaxedByAgent = Proto.Invoicing.TaxRate.TaxedByAgent
+		TaxedByAgent = Proto.Invoicing.TaxRate.TaxedByAgent,
+		Fraction_20_120 = Proto.Invoicing.TaxRate.Fraction_20_120
 	}
 }
