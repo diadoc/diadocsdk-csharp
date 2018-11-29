@@ -155,6 +155,8 @@ namespace Diadoc.Api.Proto.Docflow
 		ContractDocumentInfo ContractInfo { get; }
 		SupplementaryAgreementDocumentInfo SupplementaryAgreementInfo { get; }
 		UniversalTransferDocumentInfo UniversalTransferDocumentInfo { get; }
+		string AttachmentVersion { get; }
+		string Version { get; }
 	}
 
 	[ComVisible(true)]

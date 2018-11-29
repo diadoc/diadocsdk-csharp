@@ -23,6 +23,7 @@ message DocumentInfo
 	optional UniversalTransferDocumentInfo UniversalTransferDocumentInfo = 15; // for UniversalTransferDocument, UniversalTransferDocumentRevision
 	optional UniversalCorrectionDocumentInfo UniversalCorrectionDocumentInfo = 16; // for UniversalCorrectionDocument, UniversalCorrectionDocumentRevision
 	optional string AttachmentVersion = 17;
+	required string Version = 18;
 }
 
 message DocumentDateAndNumber
