@@ -316,6 +316,27 @@ namespace Diadoc.Api.Proto.Employees
 	public partial class EmployeeCanBeInvitedForChatPatch : SafeComObject, IEmployeeCanBeInvitedForChatPatch
 	{
 	}
+
+	[ComVisible(true)]
+	[Guid("CA3546C4-6FAB-460E-BB3D-30B50E63DD78")]
+	public interface IEmployeeList
+	{
+		ReadonlyList EmployeesList { get; }
+		int TotalCount { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeeList")]
+	[Guid("964AA245-2D14-453B-8DED-B9A0F7C81DD6")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeeList))]
+	public partial class EmployeeList : SafeComObject, IEmployeeList
+	{
+		public ReadonlyList EmployeesList
+		{
+			get { return new ReadonlyList(Employees); }
+		}
+	}
 }
 
 namespace Diadoc.Api.Proto.Employees.Subscriptions

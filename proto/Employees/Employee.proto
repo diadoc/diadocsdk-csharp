@@ -25,3 +25,8 @@ message EmployeeAction {
 	required string Name = 1;
 	required bool IsAllowed = 2;
 }
+
+message EmployeeList {
+	repeated Employee Employees = 1;
+	required int32 TotalCount = 2;
+}
