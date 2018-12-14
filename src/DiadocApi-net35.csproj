@@ -86,6 +86,7 @@
     <Compile Include="Com\RoamingNotificationStatus.cs" />
     <Compile Include="Com\SenderSignatureStatus.cs" />
     <Compile Include="Com\Users.cs" />
+    <Compile Include="DefaultDocumentVersions.cs" />
     <Compile Include="DiadocHttpApi.Employees.cs" />
     <Compile Include="DocflowApi.cs" />
     <Compile Include="FileContent.cs" />
