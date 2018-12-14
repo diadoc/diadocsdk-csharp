@@ -651,6 +651,13 @@ namespace Diadoc.Api.Proto.Documents
       get { return _SenderReceiptMetadata; }
       set { _SenderReceiptMetadata = value; }
     }
+    private string _Version;
+    [global::ProtoBuf.ProtoMember(76, IsRequired = true, Name=@"Version", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Version
+    {
+      get { return _Version; }
+      set { _Version = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

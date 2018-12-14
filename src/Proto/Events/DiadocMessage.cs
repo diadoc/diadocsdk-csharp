@@ -83,6 +83,8 @@ namespace Diadoc.Api.Proto.Events
 		CancellationInfo CancellationInfo { get; }
 
 		ReadonlyList LabelsList { get; }
+		string AttachmentVersion { get; }
+		string Version { get; }
 		void AddLabel(string label);
 	}
 

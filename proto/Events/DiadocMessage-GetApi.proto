@@ -105,6 +105,7 @@ message Entity {
 	optional ResolutionRouteRemovalInfo ResolutionRouteRemovalInfo = 23;	// only for AttachmentType.ResolutionRouteRemovalAttachment
 	optional CancellationInfo CancellationInfo = 24;						// only for AttachmentType.Cancellation
 	repeated string Labels = 25;
+	optional string Version = 26;
 }
 
 message EntityPatch {

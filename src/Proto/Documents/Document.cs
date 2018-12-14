@@ -75,6 +75,7 @@ namespace Diadoc.Api.Proto.Documents
 		string Function { get; }
 		string Title { get; }
 		string AttachmentVersion { get; set; }
+		string Version { get; }
 		Origin Origin { get; }
 
 		Com.DocumentDirection DocumentDirectionValue { get; }

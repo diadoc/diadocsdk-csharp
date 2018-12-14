@@ -679,6 +679,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _Labels; }
     }
   
+
+    private string _Version = "";
+    [global::ProtoBuf.ProtoMember(26, IsRequired = false, Name=@"Version", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Version
+    {
+      get { return _Version; }
+      set { _Version = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
