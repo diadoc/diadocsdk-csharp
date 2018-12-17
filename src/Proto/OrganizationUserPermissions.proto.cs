@@ -89,6 +89,39 @@ namespace Diadoc.Api.Proto
       get { return _CanCreateDocuments; }
       set { _CanCreateDocuments = value; }
     }
+    private Diadoc.Api.Proto.AuthorizationPermission _AuthorizationPermission;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"AuthorizationPermission", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.AuthorizationPermission AuthorizationPermission
+    {
+      get { return _AuthorizationPermission; }
+      set { _AuthorizationPermission = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AuthorizationPermission")]
+  public partial class AuthorizationPermission : global::ProtoBuf.IExtensible
+  {
+    public AuthorizationPermission() {}
+    
+    private bool _IsBlocked;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"IsBlocked", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool IsBlocked
+    {
+      get { return _IsBlocked; }
+      set { _IsBlocked = value; }
+    }
+
+    private string _Comment = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Comment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Comment
+    {
+      get { return _Comment; }
+      set { _Comment = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

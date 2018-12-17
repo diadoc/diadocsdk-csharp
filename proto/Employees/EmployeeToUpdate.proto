@@ -17,6 +17,7 @@ message EmployeePermissionsPatch
 	optional EmployeeDocumentAccessLevelPatch DocumentAccessLevel = 3;
 	optional EmployeeSelectedDepartmentsPatch SelectedDepartments = 4;
 	repeated EmployeeAction Actions = 5;
+	optional AuthorizationPermissionPatch AuthorizationPermission = 6;
 }
 
 message EmployeeDepartmentPatch
@@ -47,4 +48,9 @@ message EmployeePositionPatch
 message EmployeeCanBeInvitedForChatPatch
 {
 	required bool CanBeInvitedForChat = 1;
+}
+
+message AuthorizationPermissionPatch {
+	required bool IsBlocked = 1;
+	optional string Comment = 2;
 }

@@ -19,4 +19,10 @@ message OrganizationUserPermissions {
 	repeated string SelectedDepartmentIds = 9;
 	optional string JobTitle = 10;
 	required bool CanCreateDocuments = 11;
+	required AuthorizationPermission AuthorizationPermission = 12;
+}
+
+message AuthorizationPermission {
+	required bool IsBlocked = 1;
+	optional string Comment = 2;
 }

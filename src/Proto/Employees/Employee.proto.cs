@@ -100,6 +100,15 @@ namespace Diadoc.Api.Proto.Employees
       get { return _Actions; }
     }
   
+
+    private Diadoc.Api.Proto.AuthorizationPermission _AuthorizationPermission = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"AuthorizationPermission", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.AuthorizationPermission AuthorizationPermission
+    {
+      get { return _AuthorizationPermission; }
+      set { _AuthorizationPermission = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
