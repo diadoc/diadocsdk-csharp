@@ -1,0 +1,9 @@
+import "Departments/Department.proto";
+
+package Diadoc.Api.Proto.Departments;
+
+message DepartmentList
+{
+	repeated Department Departments = 1;
+	required int32 TotalCount = 2;
+}

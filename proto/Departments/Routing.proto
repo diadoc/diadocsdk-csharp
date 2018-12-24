@@ -1,0 +1,7 @@
+package Diadoc.Api.Proto.Departments;
+
+message Routing
+{
+	required bool Kpp = 1;
+	required bool Address = 2;
+}

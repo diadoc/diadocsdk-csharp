@@ -19,8 +19,10 @@ using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Users;
 using JetBrains.Annotations;
+using Department = Diadoc.Api.Proto.Department;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
+using Departments = Diadoc.Api.Proto.Departments;
 
 namespace Diadoc.Api
 {
@@ -1118,6 +1120,44 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (userId == null) throw new ArgumentNullException("userId");
 			return diadocHttpApi.UpdateSubscriptions(authToken, boxId, userId, subscriptionsToUpdate);
+		}
+
+		public Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (departmentId == null) throw new ArgumentNullException("departmentId");
+			return diadocHttpApi.GetDepartmentByFullId(authToken, boxId, departmentId);
+		}
+
+		public Departments.DepartmentList GetDepartments(string authToken, string boxId, int? page = null, int? count = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetDepartments(authToken, boxId, page, count);
+		}
+
+		public Departments.Department CreateDepartment(string authToken, string boxId, Departments.DepartmentToCreate departmentToCreate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.CreateDepartment(authToken, boxId, departmentToCreate);
+		}
+
+		public Departments.Department UpdateDepartment(string authToken, string boxId, string departmentId, Departments.DepartmentToUpdate departmentToUpdate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (departmentId == null) throw new ArgumentNullException("departmentId");
+			return diadocHttpApi.UpdateDepartment(authToken, boxId, departmentId, departmentToUpdate);
+		}
+
+		public void DeleteDepartment(string authToken, string boxId, string departmentId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (departmentId == null) throw new ArgumentNullException("departmentId");
+			diadocHttpApi.DeleteDepartment(authToken, boxId, departmentId);
 		}
 	}
 }

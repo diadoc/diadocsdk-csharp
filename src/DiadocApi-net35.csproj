@@ -65,6 +65,7 @@
     <Compile Include="Com\CertificateChainStatus.cs" />
     <Compile Include="Com\CounteragentStatus.cs" />
     <Compile Include="Com\CustomDataPatchOperation.cs" />
+    <Compile Include="Com\Departments.cs" />
     <Compile Include="Com\DocflowStatusSeverity.cs" />
     <Compile Include="Com\DocflowsV3.cs" />
     <Compile Include="Com\DocumentAccessLevel.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Com\RoamingNotificationStatus.cs" />
     <Compile Include="Com\SenderSignatureStatus.cs" />
     <Compile Include="Com\Users.cs" />
+    <Compile Include="DiadocHttpApi.Departments.cs" />
     <Compile Include="DefaultDocumentVersions.cs" />
     <Compile Include="DiadocHttpApi.Employees.cs" />
     <Compile Include="DocflowApi.cs" />
@@ -154,6 +156,11 @@
     <Compile Include="Proto\Content_v2.cs" />
     <Compile Include="Proto\Content_v2.proto.cs" />
     <Compile Include="Proto\CustomDataItem.proto.cs" />
+    <Compile Include="Proto\Departments\Department.proto.cs" />
+    <Compile Include="Proto\Departments\DepartmentList.proto.cs" />
+    <Compile Include="Proto\Departments\DepartmentToCreate.proto.cs" />
+    <Compile Include="Proto\Departments\DepartmentToUpdate.proto.cs" />
+    <Compile Include="Proto\Departments\Routing.proto.cs" />
     <Compile Include="Proto\Docflow\AttachmentV3.proto.cs" />
     <Compile Include="Proto\Docflow\DocflowApiV3.proto.cs" />
     <Compile Include="Proto\Docflow\DocflowV3.proto.cs" />

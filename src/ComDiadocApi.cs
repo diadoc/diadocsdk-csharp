@@ -19,6 +19,7 @@ using Diadoc.Api.Proto.Users;
 using DocumentTitleType = Diadoc.Api.Proto.Invoicing.Signers.DocumentTitleType;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
+using Departments = Diadoc.Api.Proto.Departments;
 
 namespace Diadoc.Api
 {
@@ -367,9 +368,15 @@ namespace Diadoc.Api
 		EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId);
 		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, [MarshalAs(UnmanagedType.IDispatch)] object subscriptionsToUpdate);
 
+		Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId);
+		Departments.DepartmentList GetDepartments(string authToken, string boxId, int? page = null, int? count = null);
+		Departments.Department CreateDepartment(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object departmentToCreate);
+		Departments.Department UpdateDepartment(string authToken, string boxId, string departmentId, [MarshalAs(UnmanagedType.IDispatch)] object departmentToUpdate);
+		void DeleteDepartment(string authToken, string boxId, string departmentId);
+
 		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template);
 		Message TransformTemplateToMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object templateTransformation);
-		
+
 		AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey);
 		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId);
 	}
@@ -565,6 +572,31 @@ namespace Diadoc.Api
 		public EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, object subscriptionsToUpdate)
 		{
 			return diadoc.UpdateSubscriptions(authToken, boxId, userId, (SubscriptionsToUpdate) subscriptionsToUpdate);
+		}
+
+		public Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId)
+		{
+			return diadoc.GetDepartmentByFullId(authToken, boxId, departmentId);
+		}
+
+		public Departments.DepartmentList GetDepartments(string authToken, string boxId, int? page = null, int? count = null)
+		{
+			return diadoc.GetDepartments(authToken, boxId, page, count);
+		}
+
+		public Departments.Department CreateDepartment(string authToken, string boxId, object departmentToCreate)
+		{
+			return diadoc.CreateDepartment(authToken, boxId, (Departments.DepartmentToCreate) departmentToCreate);
+		}
+
+		public Departments.Department UpdateDepartment(string authToken, string boxId, string departmentId, object departmentToUpdate)
+		{
+			return diadoc.UpdateDepartment(authToken, boxId, departmentId, (Departments.DepartmentToUpdate) departmentToUpdate);
+		}
+
+		public void DeleteDepartment(string authToken, string boxId, string departmentId)
+		{
+			diadoc.DeleteDepartment(authToken, boxId, departmentId);
 		}
 
 		public Template PostTemplate(string authToken, object template)
