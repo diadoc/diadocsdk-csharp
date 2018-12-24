@@ -77,7 +77,7 @@ namespace Diadoc.Api
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
 			if (disableValidation) queryBuilder.AddParameter("disableValidation");
-			queryBuilder.AddParameter("documentVersion", "tovtorg_05_01_03");
+			queryBuilder.AddParameter("documentVersion", DefaultDocumentVersions.TovTorg551);
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
@@ -96,7 +96,7 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
 			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
-			queryBuilder.AddParameter("documentVersion", documentVersion ?? "tovtorg_05_01_02");
+			queryBuilder.AddParameter("documentVersion", documentVersion ?? DefaultDocumentVersions.TovTorg551);
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
@@ -116,7 +116,7 @@ namespace Diadoc.Api
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateAcceptanceCertificateXmlForSeller");
 			if (disableValidation) queryBuilder.AddParameter("disableValidation");
-			queryBuilder.AddParameter("documentVersion", "rezru_05_01_01");
+			queryBuilder.AddParameter("documentVersion", DefaultDocumentVersions.AcceptanceCerttificate552);
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
@@ -126,7 +126,7 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
 			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
-			queryBuilder.AddParameter("documentVersion", "rezru_05_01_01");
+			queryBuilder.AddParameter("documentVersion", DefaultDocumentVersions.AcceptanceCerttificate552);
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
@@ -190,12 +190,12 @@ namespace Diadoc.Api
 
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent)
 		{
-			return PerformHttpRequest<TovTorgSellerTitleInfo>(null, "POST", "/ParseTorg12SellerTitleXml?documentVersion=tovtorg_05_01_03", xmlContent);
+			return PerformHttpRequest<TovTorgSellerTitleInfo>(null, "POST", $"/ParseTorg12SellerTitleXml?documentVersion={DefaultDocumentVersions.TovTorg551}", xmlContent);
 		}
 
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent)
 		{
-			return PerformHttpRequest<TovTorgBuyerTitleInfo>(null, "POST", "/ParseTorg12BuyerTitleXml?documentVersion=tovtorg_05_01_02", xmlContent);
+			return PerformHttpRequest<TovTorgBuyerTitleInfo>(null, "POST", $"/ParseTorg12BuyerTitleXml?documentVersion={DefaultDocumentVersions.TovTorg551}", xmlContent);
 		}
 
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)
@@ -210,12 +210,12 @@ namespace Diadoc.Api
 
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent)
 		{
-			return PerformHttpRequest<AcceptanceCertificate552SellerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateSellerTitleXml?documentVersion=rezru_05_01_01", xmlContent);
+			return PerformHttpRequest<AcceptanceCertificate552SellerTitleInfo>(null, "POST", $"/ParseAcceptanceCertificateSellerTitleXml?documentVersion={DefaultDocumentVersions.AcceptanceCerttificate552}", xmlContent);
 		}
 
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent)
 		{
-			return PerformHttpRequest<AcceptanceCertificate552BuyerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateBuyerTitleXml?documentVersion=rezru_05_01_01", xmlContent);
+			return PerformHttpRequest<AcceptanceCertificate552BuyerTitleInfo>(null, "POST", $"/ParseAcceptanceCertificateBuyerTitleXml?documentVersion={DefaultDocumentVersions.AcceptanceCerttificate552}", xmlContent);
 		}
 
 		public RevocationRequestInfo ParseRevocationRequestXml(byte[] xmlContent)

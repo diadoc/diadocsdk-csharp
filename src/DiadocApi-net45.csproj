@@ -63,6 +63,7 @@
     <Compile Include="Com\DocumentTitleType.cs" />
     <Compile Include="Com\ResolutionStatus.cs" />
     <Compile Include="Com\Users.cs" />
+    <Compile Include="DefaultDocumentVersions.cs" />
     <Compile Include="DiadocHttpApi.Employees.Async.cs" />
     <Compile Include="DiadocHttpApi.Employees.cs" />
     <Compile Include="Com\AcceptanceCertificateDocumentStatus.cs" />
