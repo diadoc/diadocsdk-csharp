@@ -29,6 +29,7 @@ namespace Diadoc.Api.Proto.Employees
 		string UserDepartmentId { get; set; }
 		bool IsAdministrator { get; set; }
 		Com.DocumentAccessLevel DocumentAccessLevel { get; set; }
+		AuthorizationPermission AuthorizationPermission { get; set; }
 		ReadonlyList SelectedDepartmentIdsList { get; }
 		ReadonlyList ActionsList { get; }
 		void AddSelectedDepartmentIdItem(string departmentId);
@@ -183,6 +184,7 @@ namespace Diadoc.Api.Proto.Employees
 		EmployeeIsAdministratorPatch IsAdministrator { get; set; }
 		EmployeeDocumentAccessLevelPatch DocumentAccessLevel { get; set; }
 		EmployeeSelectedDepartmentsPatch SelectedDepartments { get; set; }
+		AuthorizationPermissionPatch AuthorizationPermission { get; set; }
 
 		ReadonlyList ActionsList { get; }
 		void AddActionItem([MarshalAs(UnmanagedType.IDispatch)] object item);
@@ -283,6 +285,23 @@ namespace Diadoc.Api.Proto.Employees
 		{
 			SelectedDepartmentIds.Add(departmentId);
 		}
+	}
+
+	[ComVisible(true)]
+	[Guid("02AD2402-4DDD-4AA5-9538-C0AEAE699C87")]
+	public interface IAuthorizationPermissionPatch
+	{
+		bool IsBlocked { get; set; }
+		string Comment { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.AuthorizationPermissionPatch")]
+	[Guid("A8AD9D4F-1755-4576-B139-C758DEDB10AB")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IAuthorizationPermissionPatch))]
+	public partial class AuthorizationPermissionPatch : SafeComObject, IAuthorizationPermissionPatch
+	{
 	}
 
 	[ComVisible(true)]

@@ -12,6 +12,7 @@ namespace Diadoc.Api.Proto
 		bool CanSignDocuments { get; }
 		bool CanAddResolutions { get; }
 		bool CanRequestResolutions { get; }
+		AuthorizationPermission AuthorizationPermission { get; }
 	}
 
 	[ComVisible(true)]
@@ -30,5 +31,21 @@ namespace Diadoc.Api.Proto
 		{
 			get { return (Com.DocumentAccessLevel)((int)DocumentAccessLevel); }
 		}
+	}
+
+	[ComVisible(true)]
+	[Guid("AC192476-3B2A-4466-93EA-F34893492B78")]
+	public interface IAuthorizationPermission
+	{
+		bool IsBlocked { get; set; }
+		string Comment { get; set; }
+	}
+
+	[ComVisible(true)]
+	[Guid("A66D77DE-2B5C-45FE-BD57-A755D8F803CA")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof (IAuthorizationPermission))]
+	public partial class AuthorizationPermission : SafeComObject, IAuthorizationPermission
+	{
 	}
 }

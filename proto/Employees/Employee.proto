@@ -19,6 +19,7 @@ message EmployeePermissions {
 	required DocumentAccessLevel DocumentAccessLevel = 3 [default = UnknownDocumentAccessLevel];
 	repeated string SelectedDepartmentIds = 4;
 	repeated EmployeeAction Actions = 5;
+	optional AuthorizationPermission AuthorizationPermission = 6;
 }
 
 message EmployeeAction {

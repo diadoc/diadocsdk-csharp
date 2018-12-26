@@ -97,6 +97,15 @@ namespace Diadoc.Api.Proto.Employees
       get { return _Actions; }
     }
   
+
+    private Diadoc.Api.Proto.Employees.AuthorizationPermissionPatch _AuthorizationPermission = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"AuthorizationPermission", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Employees.AuthorizationPermissionPatch AuthorizationPermission
+    {
+      get { return _AuthorizationPermission; }
+      set { _AuthorizationPermission = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -200,6 +209,32 @@ namespace Diadoc.Api.Proto.Employees
     {
       get { return _CanBeInvitedForChat; }
       set { _CanBeInvitedForChat = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AuthorizationPermissionPatch")]
+  public partial class AuthorizationPermissionPatch : global::ProtoBuf.IExtensible
+  {
+    public AuthorizationPermissionPatch() {}
+    
+    private bool _IsBlocked;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"IsBlocked", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool IsBlocked
+    {
+      get { return _IsBlocked; }
+      set { _IsBlocked = value; }
+    }
+
+    private string _Comment = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Comment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Comment
+    {
+      get { return _Comment; }
+      set { _Comment = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
