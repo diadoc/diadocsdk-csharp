@@ -1,0 +1,14 @@
+import "Address.proto";
+import "Departments/Routing.proto";
+
+package Diadoc.Api.Proto.Departments;
+
+message DepartmentToCreate
+{
+	optional string ParentDepartmentId = 1;
+	required string Name = 2;
+	required string Abbreviation = 3;
+	optional string Kpp = 4;
+	optional Address Address = 5;
+	required Routing Routing = 6;
+}

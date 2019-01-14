@@ -16,6 +16,7 @@ using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Users;
+using Departments = Diadoc.Api.Proto.Departments;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 
@@ -189,6 +190,12 @@ namespace Diadoc.Api
 		EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId);
 		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);
 
+		Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId);
+		Departments.DepartmentList GetDepartments(string authToken, string boxId, int? page = null, int? count = null);
+		Departments.Department CreateDepartment(string authToken, string boxId, Departments.DepartmentToCreate departmentToCreate);
+		Departments.Department UpdateDepartment(string authToken, string boxId, string departmentId, Departments.DepartmentToUpdate departmentToUpdate);
+		void DeleteDepartment(string authToken, string boxId, string departmentId);
+
 #if !NET35
 
 		Task<string> AuthenticateAsync(string login, string password, string key = null, string id = null);
@@ -338,6 +345,11 @@ namespace Diadoc.Api
 		Task DeleteEmployeeAsync(string authToken, string boxId, string userId);
 		Task<EmployeeSubscriptions> GetSubscriptionsAsync(string authToken, string boxId, string userId);
 		Task<EmployeeSubscriptions> UpdateSubscriptionsAsync(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);
+		Task<Departments.Department> GetDepartmentByFullIdAsync(string authToken, string boxId, string departmentId);
+		Task<Departments.DepartmentList> GetDepartmentsAsync(string authToken, string boxId, int? page = null, int? count = null);
+		Task<Departments.Department> CreateDepartmentAsync(string authToken, string boxId, Departments.DepartmentToCreate departmentToCreate);
+		Task<Departments.Department> UpdateDepartmentAsync(string authToken, string boxId, string departmentId, Departments.DepartmentToUpdate departmentToUpdate);
+		Task DeleteDepartmentAsync(string authToken, string boxId, string departmentId);
 #endif
 	}
 }

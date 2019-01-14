@@ -1,0 +1,39 @@
+import "Address.proto";
+
+package Diadoc.Api.Proto.Departments;
+
+message DepartmentToUpdate 
+{
+	optional ParentDepartmentPatch ParentDepartment=1;
+	optional DepartmentNamingPatch DepartmentNaming=2;
+	optional DepartmentKppPatch Kpp=3;
+	optional DepartmentAddressPatch Address = 4;
+	optional DepartmentRoutingPatch Routing = 5;
+}
+
+message ParentDepartmentPatch
+{
+	required string  ParentDepartmentId=1;
+}
+
+message DepartmentNamingPatch
+{
+	required string Name=1;
+	required string Abbreviation=2;
+}
+
+message DepartmentKppPatch
+{
+	optional string  Kpp=1;
+}
+
+message DepartmentAddressPatch
+{
+	optional Address Address =1;
+}
+
+message DepartmentRoutingPatch
+{
+	required bool Kpp = 1;
+	required bool Address = 2;
+}
