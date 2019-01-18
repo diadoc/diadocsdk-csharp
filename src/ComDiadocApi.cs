@@ -256,6 +256,10 @@ namespace Diadoc.Api
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string fileName);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string fileName);
+		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent);
+		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string fileName);
+		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent);
+		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string fileName);
 
 		GeneratedFile GenerateRevocationRequestXml(
 			string authToken,
@@ -1346,6 +1350,26 @@ namespace Diadoc.Api
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string fileName)
 		{
 			return ParseUniversalTransferDocumentBuyerTitleXml(File.ReadAllBytes(fileName));
+		}
+
+		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent)
+		{
+			return diadoc.ParseUniversalCorrectionDocumentSellerTitleXml(xmlContent);
+		}
+
+		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string fileName)
+		{
+			return ParseUniversalCorrectionDocumentSellerTitleXml(File.ReadAllBytes(fileName));
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent)
+		{
+			return diadoc.ParseUniversalCorrectionDocumentBuyerTitleXml(xmlContent);
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string fileName)
+		{
+			return ParseUniversalCorrectionDocumentBuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
 		#endregion
