@@ -469,6 +469,7 @@ namespace Diadoc.Api.Proto.Events
 		string ToBoxId { get; set; }
 		string MessageFromBoxId { get; set; }
 		string MessageToBoxId { get; set; }
+		LockMode LockMode { get; set; } 
 
 		string MessageToDepartmentId { get; set; }
 
