@@ -57,6 +57,7 @@ namespace Diadoc.Api.Proto.Documents
 		bool IsRead { get; }
 		bool PacketIsLocked { get; }
 		bool HasCustomPrintForm { get; }
+		string PacketId { get; }
 		bool IsEncryptedContent { get; }
 		string DepartmentId { get; }
 		string CustomDocumentId { get; }
