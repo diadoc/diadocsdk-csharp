@@ -1655,7 +1655,7 @@ namespace Diadoc.Api.Proto
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.AsyncMethodResult")]
+	[ProgId("Diadoc.Api.AcquireCounteragentResult")]
 	[Guid("545F328C-8CB7-41A6-8B85-E2FAF271F995")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IAcquireCounteragentResult))]

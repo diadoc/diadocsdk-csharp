@@ -642,7 +642,7 @@ namespace Diadoc.Api.Proto.Docflow
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.ResolutionDocflowV3")]
+	[ProgId("Diadoc.Api.ResolutionEntitiesV3")]
 	[Guid("3C078361-CB3B-4917-81BF-7C6C458F353B")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IResolutionEntitiesV3))]
@@ -681,7 +681,7 @@ namespace Diadoc.Api.Proto.Docflow
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.RequestV3")]
+	[ProgId("Diadoc.Api.ResolutionRequestV3")]
 	[Guid("2602A5F4-BF88-4DCF-BDEF-B8E800271723")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IResolutionRequestV3))]
@@ -705,7 +705,7 @@ namespace Diadoc.Api.Proto.Docflow
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.RequestV3")]
+	[ProgId("Diadoc.Api.ResolutionV3")]
 	[Guid("4FD4620F-E530-47EB-87EF-4ECB5633A2B9")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IResolutionV3))]
@@ -728,7 +728,7 @@ namespace Diadoc.Api.Proto.Docflow
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.RequestV3")]
+	[ProgId("Diadoc.Api.ApprovementSignatureV3")]
 	[Guid("77A8EF89-7EA0-4B36-AA04-8841FAEFD7A4")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IApprovementSignatureV3))]
@@ -746,7 +746,7 @@ namespace Diadoc.Api.Proto.Docflow
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.RequestV3")]
+	[ProgId("Diadoc.Api.SignatureDenialV3")]
 	[Guid("64B45792-82CD-470E-8B54-285E831F35CE")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(ISignatureDenialV3))]

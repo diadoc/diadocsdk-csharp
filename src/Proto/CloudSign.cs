@@ -1,4 +1,4 @@
-using System.Net;
+﻿using System.Net;
 using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
 
@@ -91,7 +91,7 @@ namespace Diadoc.Api.Proto
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.CloudSignConfirmResult")]
+	[ProgId("Diadoc.Api.AutosignReceiptsResult")]
 	[Guid("2467CFAD-BA7F-44D0-A6CB-0D38664BBB0F")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IAutosignReceiptsResult))]
