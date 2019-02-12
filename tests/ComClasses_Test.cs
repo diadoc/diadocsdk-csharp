@@ -70,6 +70,23 @@ namespace Diadoc.Api.Tests
 		}
 
 		[Test]
+		public void ProgIdAttributes_MustBeAllDistinct()
+		{
+			var typeProgIds = diadocApiAssembly.GetTypes()
+				.Select(x => new {ProgId = FindProgId(x), Type = x})
+				.Where(g => g.ProgId != null)
+				.ToList();
+			var guidTypeStrings = string.Join("\n", typeProgIds
+				.GroupBy(x => x.ProgId)
+				.Where(x => x.Count() > 1)
+				.SelectMany(x => x)
+				.Select(x => string.Format("{0} for {1}", x.ProgId, x.Type.Name))
+				.ToArray());
+			Console.WriteLine(guidTypeStrings);
+			Assert.That(typeProgIds.Select(x => x.ProgId).Distinct().Count(), Is.EqualTo(typeProgIds.Count));
+		}
+
+		[Test]
 		public void ComVisibleInterfaces_DoNotReturnArrayList()
 		{
 			var comInterfaces = diadocApiAssembly.GetTypes()
@@ -87,6 +104,7 @@ namespace Diadoc.Api.Tests
 				if (wrongMembers.Any())
 					hasErrors = true;
 			}
+
 			Assert.IsFalse(hasErrors);
 		}
 
@@ -117,6 +135,14 @@ namespace Diadoc.Api.Tests
 		private static bool IsComVisible(Type type)
 		{
 			return FindAttributes<ComVisibleAttribute>(type).Any(x => x.Value);
+		}
+
+		private static string FindProgId(Type type)
+		{
+			var progIdAttribute = FindAttributes<ProgIdAttribute>(type).FirstOrDefault();
+			return progIdAttribute != null
+				? progIdAttribute.Value
+				: null;
 		}
 
 		private static Type TryGetComDefaultInterface(Type type)

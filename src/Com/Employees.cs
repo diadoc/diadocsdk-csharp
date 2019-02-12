@@ -14,7 +14,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.Employee")]
+	[ProgId("Diadoc.Api.Admin.Employee")]
 	[Guid("CA8D3613-5441-4269-BF99-77B7D2BAA206")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployee))]
@@ -37,7 +37,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeePermissions")]
+	[ProgId("Diadoc.Api.Admin.EmployeePermissions")]
 	[Guid("C03B7727-D19D-4038-A5F0-FB42D346837D")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeePermissions))]
@@ -89,7 +89,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeAction")]
+	[ProgId("Diadoc.Api.Admin.EmployeeAction")]
 	[Guid("991DC3B3-0488-499F-893A-AC14417077EF")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeAction))]
@@ -98,7 +98,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeToCreate")]
+	[ProgId("Diadoc.Api.Admin.EmployeeToCreate")]
 	[Guid("41867515-8F9E-4367-A6D3-D8C345F5D36C")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeToCreate))]
@@ -115,7 +115,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeToCreateCredentials")]
+	[ProgId("Diadoc.Api.Admin.EmployeeToCreateCredentials")]
 	[Guid("5650F7FB-4581-4EF1-91F4-7D5BB7698DD7")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeToCreateCredentials))]
@@ -132,7 +132,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeToCreateByLogin")]
+	[ProgId("Diadoc.Api.Admin.EmployeeToCreateByLogin")]
 	[Guid("46ED009A-A232-4133-B99A-2B6454221385")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeToCreateByLogin))]
@@ -150,7 +150,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeToCreateByCertificate")]
+	[ProgId("Diadoc.Api.Admin.EmployeeToCreateByCertificate")]
 	[Guid("58901395-AFF3-47FC-B800-01C138C0B982")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeToCreateByCertificate))]
@@ -168,7 +168,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeToUpdate")]
+	[ProgId("Diadoc.Api.Admin.EmployeeToUpdate")]
 	[Guid("43916C31-477C-428C-B87A-60D0D5C9E5DA")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeToUpdate))]
@@ -191,7 +191,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeePermissionsPatch")]
+	[ProgId("Diadoc.Api.Admin.EmployeePermissionsPatch")]
 	[Guid("00C8C4CA-160D-41FF-8C6A-5D9B04080935")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeePermissionsPatch))]
@@ -216,7 +216,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeDepartmentPatch")]
+	[ProgId("Diadoc.Api.Admin.EmployeeDepartmentPatch")]
 	[Guid("0B07EE01-E785-498E-95BA-A9B302EA72FD")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeDepartmentPatch))]
@@ -232,7 +232,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeIsAdministratorPatch")]
+	[ProgId("Diadoc.Api.Admin.EmployeeIsAdministratorPatch")]
 	[Guid("24CA4053-4E61-43CE-932E-0F4F68884A74")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeIsAdministratorPatch))]
@@ -248,7 +248,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeDocumentAccessLevelPatch")]
+	[ProgId("Diadoc.Api.Admin.EmployeeDocumentAccessLevelPatch")]
 	[Guid("5C9B6064-813A-409E-9F30-A41F607B96D7")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeDocumentAccessLevelPatch))]
@@ -270,7 +270,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeSelectedDepartmentsPatch")]
+	[ProgId("Diadoc.Api.Admin.EmployeeSelectedDepartmentsPatch")]
 	[Guid("6DFBF545-C56A-4A25-88AF-A52BF32B4861")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeSelectedDepartmentsPatch))]
@@ -296,7 +296,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.AuthorizationPermissionPatch")]
+	[ProgId("Diadoc.Api.Admin.AuthorizationPermissionPatch")]
 	[Guid("A8AD9D4F-1755-4576-B139-C758DEDB10AB")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IAuthorizationPermissionPatch))]
@@ -312,7 +312,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeePositionPatch")]
+	[ProgId("Diadoc.Api.Admin.EmployeePositionPatch")]
 	[Guid("D9DC18F8-BD00-4255-B1A9-FC70C6F619B5")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeePositionPatch))]
@@ -328,7 +328,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeCanBeInvitedForChatPatch")]
+	[ProgId("Diadoc.Api.Admin.EmployeeCanBeInvitedForChatPatch")]
 	[Guid("528CD906-0122-4343-AC8E-4FB7E0722F7A")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeCanBeInvitedForChatPatch))]
@@ -345,7 +345,7 @@ namespace Diadoc.Api.Proto.Employees
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeList")]
+	[ProgId("Diadoc.Api.Admin.EmployeeList")]
 	[Guid("964AA245-2D14-453B-8DED-B9A0F7C81DD6")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeList))]
@@ -369,7 +369,7 @@ namespace Diadoc.Api.Proto.Employees.Subscriptions
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.Subscription")]
+	[ProgId("Diadoc.Api.Admin.Subscription")]
 	[Guid("EFC2B45C-801A-418B-ABE3-01455368B992")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(ISubscription))]
@@ -385,7 +385,7 @@ namespace Diadoc.Api.Proto.Employees.Subscriptions
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.EmployeeSubscriptions")]
+	[ProgId("Diadoc.Api.Admin.EmployeeSubscriptions")]
 	[Guid("DFB50BF0-A22D-4960-941A-D8325D727B8D")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IEmployeeSubscriptions))]
@@ -406,7 +406,7 @@ namespace Diadoc.Api.Proto.Employees.Subscriptions
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.SubscriptionsToUpdate")]
+	[ProgId("Diadoc.Api.Admin.SubscriptionsToUpdate")]
 	[Guid("D4190F23-C51C-4981-A607-E5571776B8E9")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(ISubscriptionsToUpdate))]
