@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -68,6 +68,7 @@ namespace Diadoc.Api.Proto.Events
 		string FileName { get; }
 		bool NeedRecipientSignature { get; }
 		bool NeedReceipt { get; }
+		string PacketId { get; }
 		Content Content { get; }
 
 		Document DocumentInfo { get; }
