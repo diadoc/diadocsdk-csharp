@@ -1,4 +1,5 @@
 import "Timestamp.proto";
+import "ResolutionAction.proto";
 import "ResolutionRequestType.proto";
 import "ResolutionTarget.proto";
 import "ResolutionType.proto";
@@ -38,7 +39,7 @@ message ResolutionEntitiesV3
 	repeated ResolutionRequestV3 Requests = 1;
 	repeated ResolutionV3 Resolutions = 2;
 	repeated ApprovementSignatureV3 ApprovementSignatures = 3;
-	repeated SignatureDenialV3 SignatureDenials = 4;        
+	repeated SignatureDenialV3 SignatureDenials = 4;
 }
 
 message ResolutionRequestV3
@@ -48,6 +49,7 @@ message ResolutionRequestV3
 	optional string AuthorUserId = 3;
 	required ResolutionRequestType RequestType = 4 [default = UnknownResolutionRequestType];
 	optional string ResolvedWith = 5;
+	repeated ResolutionAction Actions = 6;
 }
 
 message ResolutionV3

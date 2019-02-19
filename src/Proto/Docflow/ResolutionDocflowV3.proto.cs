@@ -9,6 +9,7 @@
 
 // Generated from: Docflow/ResolutionDocflowV3.proto
 // Note: requires additional types generated from: Timestamp.proto
+// Note: requires additional types generated from: ResolutionAction.proto
 // Note: requires additional types generated from: ResolutionRequestType.proto
 // Note: requires additional types generated from: ResolutionTarget.proto
 // Note: requires additional types generated from: ResolutionType.proto
@@ -138,6 +139,13 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _ResolvedWith; }
       set { _ResolvedWith = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.ResolutionAction> _Actions = new global::System.Collections.Generic.List<Diadoc.Api.Proto.ResolutionAction>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"Actions", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.ResolutionAction> Actions
+    {
+      get { return _Actions; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

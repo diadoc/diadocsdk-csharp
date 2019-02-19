@@ -6,4 +6,5 @@ enum ResolutionRequestType
 	ApprovementRequest = 0;
 	SignatureRequest = 1;
 	ApprovementSignatureRequest = 2;
+	Custom = 3;
 }

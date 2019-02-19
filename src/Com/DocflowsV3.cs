@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Linq;
+using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
 using Diadoc.Api.Proto.Documents;
 using GeneralReceiptStatus = Diadoc.Api.Proto.Documents.GeneralReceiptStatus;
@@ -678,6 +679,7 @@ namespace Diadoc.Api.Proto.Docflow
 		string AuthorUserId { get; }
 		Com.ResolutionRequestType RequestTypeValue { get; }
 		string ResolvedWith { get; }
+		ReadonlyList ActionsList { get; }
 	}
 
 	[ComVisible(true)]
@@ -691,6 +693,11 @@ namespace Diadoc.Api.Proto.Docflow
 		{
 			get { return (Com.ResolutionRequestType) RequestType; }
 			set { RequestType = (ResolutionRequestType) value; }
+		}
+
+		public ReadonlyList ActionsList
+		{
+			get { return new ReadonlyList(Actions.Select(a => (Com.ResolutionAction) a).ToArray()); }
 		}
 	}
 

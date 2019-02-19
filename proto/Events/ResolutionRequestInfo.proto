@@ -1,3 +1,4 @@
+import "ResolutionAction.proto";
 import "ResolutionTarget.proto";
 import "ResolutionRequestType.proto";
 
@@ -8,4 +9,5 @@ message ResolutionRequestInfo {
 	required string Author = 2;
 	optional ResolutionTarget Target = 3;
 	optional string ResolvedWith = 4;
+	repeated ResolutionAction Actions = 5;
 }

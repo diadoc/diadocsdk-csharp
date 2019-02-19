@@ -62,6 +62,7 @@
     <Compile Include="Com\Departments.cs" />
     <Compile Include="Com\DocumentTitleSignerType.cs" />
     <Compile Include="Com\DocumentTitleType.cs" />
+    <Compile Include="Com\ResolutionAction.cs" />
     <Compile Include="Com\ResolutionStatus.cs" />
     <Compile Include="Com\Users.cs" />
     <Compile Include="DefaultDocumentVersions.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="Proto\Invoicing\TovTorgInfo.proto.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.proto.cs" />
+    <Compile Include="Proto\ResolutionAction.proto.cs" />
     <Compile Include="Proto\ResolutionRequestType.proto.cs" />
     <Compile Include="Proto\ResolutionRouteList.proto.cs" />
     <Compile Include="Proto\ResolutionType.proto.cs" />

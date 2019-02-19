@@ -83,6 +83,7 @@
     <Compile Include="Com\OrganizationInvoiceFormatVersion.cs" />
     <Compile Include="Com\ProxySignatureStatus.cs" />
     <Compile Include="Com\RecipientResponseStatus.cs" />
+    <Compile Include="Com\ResolutionAction.cs" />
     <Compile Include="Com\ResolutionStatus.cs" />
     <Compile Include="Com\RoamingNotificationStatus.cs" />
     <Compile Include="Com\SenderSignatureStatus.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Proto\Invoicing\TovTorgInfo.proto.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.proto.cs" />
+    <Compile Include="Proto\ResolutionAction.proto.cs" />
     <Compile Include="Proto\ResolutionRequestType.proto.cs" />
     <Compile Include="Proto\ResolutionRouteList.proto.cs" />
     <Compile Include="Proto\ResolutionType.proto.cs" />
