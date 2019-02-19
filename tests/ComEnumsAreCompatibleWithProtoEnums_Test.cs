@@ -56,6 +56,14 @@ namespace Diadoc.Api.Tests
 		}
 
 		[Test]
+		public void Test_ResolutionAction()
+		{
+			AssertEnumsAreCompatible(
+				typeof(Com.ResolutionAction),
+				typeof(ResolutionAction));
+		}
+
+		[Test]
 		public void Test_UnilateralDocumentStatus()
 		{
 			AssertEnumsAreCompatible(

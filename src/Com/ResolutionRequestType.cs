@@ -12,6 +12,7 @@ namespace Diadoc.Api.Com
 		UnknownResolutionRequestType = Proto.ResolutionRequestType.UnknownResolutionRequestType,
 		ApprovementRequest = Proto.ResolutionRequestType.ApprovementRequest,
 		SignatureRequest = Proto.ResolutionRequestType.SignatureRequest,
-		ApprovementSignatureRequest = Proto.ResolutionRequestType.ApprovementSignatureRequest
+		ApprovementSignatureRequest = Proto.ResolutionRequestType.ApprovementSignatureRequest,
+		Custom = Proto.ResolutionRequestType.Custom
 	}
 }

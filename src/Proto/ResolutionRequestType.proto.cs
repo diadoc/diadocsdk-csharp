@@ -24,7 +24,10 @@ namespace Diadoc.Api.Proto
       SignatureRequest = 1,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ApprovementSignatureRequest", Value=2)]
-      ApprovementSignatureRequest = 2
+      ApprovementSignatureRequest = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Custom", Value=3)]
+      Custom = 3
     }
   
 }
