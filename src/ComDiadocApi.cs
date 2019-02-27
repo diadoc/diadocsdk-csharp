@@ -383,6 +383,8 @@ namespace Diadoc.Api
 
 		AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey);
 		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId);
+
+		void SendFnsRegistrationMessage(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object fnsRegistrationMessageInfo);
 	}
 
 	[ComVisible(true)]
@@ -621,6 +623,11 @@ namespace Diadoc.Api
 		public AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId)
 		{
 			return diadoc.WaitAutosignReceiptsResult(authToken, taskId);
+		}
+
+		public void SendFnsRegistrationMessage(string authToken, string boxId, object fnsRegistrationMessageInfo)
+		{
+			diadoc.SendFnsRegistrationMessage(authToken, boxId, (FnsRegistrationMessageInfo) fnsRegistrationMessageInfo);
 		}
 
 		public MessagePatch PostMessagePatch(string authToken, object patch)

@@ -195,6 +195,7 @@
     <Compile Include="Proto\Invoicing\ExtendedOrganizationInfo.proto.cs" />
     <Compile Include="Proto\Invoicing\ExtendedSigner.cs" />
     <Compile Include="Proto\Invoicing\ExtendedSigner.proto.cs" />
+    <Compile Include="Proto\Invoicing\FnsRegistrationMessageInfo.cs" />
     <Compile Include="Proto\Invoicing\TovTorgInfo.cs" />
     <Compile Include="Proto\Invoicing\TovTorgInfo.proto.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.cs" />
