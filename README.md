@@ -1,7 +1,7 @@
 |              | Build Status
 |--------------|:--------------:
-| master       | [![Build status (master)](https://ci.appveyor.com/api/projects/status/7mgixoupt0oagwse/branch/master?svg=true)](https://ci.appveyor.com/project/diadoc-admin/diadocsdk-csharp/branch/master)
-| latest       | [![Build status (lastest)](https://ci.appveyor.com/api/projects/status/7mgixoupt0oagwse?svg=true)](https://ci.appveyor.com/project/diadoc-admin/diadocsdk-csharp)
+| master       | [![Build status (master)](https://ci.appveyor.com/api/projects/status/ta9ljn6yl2hnwcik/branch/master?svg=true)](https://ci.appveyor.com/project/diadoc-admin/diadocsdk-csharp/branch/master)
+| latest       | [![Build status (lastest)](https://ci.appveyor.com/api/projects/status/ta9ljn6yl2hnwcik?svg=true)](https://ci.appveyor.com/project/diadoc-admin/diadocsdk-csharp)
 | nuget        | [![diadocsdk](https://buildstats.info/nuget/diadocsdk)](https://www.nuget.org/packages/diadocsdk/)
 
 # diadocsdk-csharp
