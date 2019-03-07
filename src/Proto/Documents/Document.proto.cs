@@ -843,7 +843,10 @@ namespace Diadoc.Api.Proto.Documents
       SignatureRequested = 4,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SignatureDenied", Value=5)]
-      SignatureDenied = 5
+      SignatureDenied = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ActionsRequested", Value=6)]
+      ActionsRequested = 6
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"RevocationStatus")]

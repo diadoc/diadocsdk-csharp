@@ -296,7 +296,10 @@ namespace Diadoc.Api.Proto.Docflow
       SignedWithPrimarySignature = 9,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PrimarySignatureRejected", Value=10)]
-      PrimarySignatureRejected = 10
+      PrimarySignatureRejected = 10,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ActionsRequested", Value=11)]
+      ActionsRequested = 11
     }
   
 }

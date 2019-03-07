@@ -31,7 +31,8 @@ enum ResolutionStatus
 	SignatureRequestRejected = 7;
 	SignedWithApprovingSignature = 8;
 	SignedWithPrimarySignature = 9;
-	PrimarySignatureRejected = 10;
+	PrimarySignatureRejected = 10; 
+	ActionsRequested = 11;
 }
 
 message ResolutionEntitiesV3
