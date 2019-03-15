@@ -182,9 +182,10 @@ namespace Diadoc.Api
 		PrintFormResult GeneratePrintForm(string authToken, string boxId, string messageId, string documentId);
 
 		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
-		PrintFormResult GetGeneratedPrintForm(string authToken, int documentType, string printFormId);
+		PrintFormResult GetGeneratedPrintFormOld(string authToken, int documentType, string printFormId);
 
 		PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId);
+
 		string GeneratePrintFormFromAttachment(string authToken, int documentType, byte[] content);
 		DateTime NullDateTime();
 		DocumentList GetDocuments(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object filter);
@@ -939,7 +940,7 @@ namespace Diadoc.Api
 		}
 
 		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
-		public PrintFormResult GetGeneratedPrintForm(string authToken, int documentType, string printFormId)
+		public PrintFormResult GetGeneratedPrintFormOld(string authToken, int documentType, string printFormId)
 		{
 			return diadoc.GetGeneratedPrintForm(authToken, (DocumentType) documentType, printFormId);
 		}
