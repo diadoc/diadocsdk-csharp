@@ -168,7 +168,7 @@ namespace Diadoc.Api
 			string entityId);
 
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
-		Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
+		Message GetMessageForDocument(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Template GetTemplate(string authToken, string boxId, string messageId);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object draftToSend);
@@ -182,9 +182,10 @@ namespace Diadoc.Api
 		PrintFormResult GeneratePrintForm(string authToken, string boxId, string messageId, string documentId);
 
 		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
-		PrintFormResult GetGeneratedPrintForm(string authToken, int documentType, string printFormId);
+		PrintFormResult GetGeneratedPrintFormOld(string authToken, int documentType, string printFormId);
 
 		PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId);
+
 		string GeneratePrintFormFromAttachment(string authToken, int documentType, byte[] content);
 		DateTime NullDateTime();
 		DocumentList GetDocuments(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object filter);
@@ -878,9 +879,9 @@ namespace Diadoc.Api
 			return diadoc.GetMessage(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
 		}
 
-		public Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
+		public Message GetMessageForDocument(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
-			return diadoc.GetMessage(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
+			return diadoc.GetMessage(authToken, boxId, messageId, documentId, withOriginalSignature, injectEntityContent);
 		}
 
 		public Template GetTemplate(string authToken, string boxId, string messageId)
@@ -939,7 +940,7 @@ namespace Diadoc.Api
 		}
 
 		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
-		public PrintFormResult GetGeneratedPrintForm(string authToken, int documentType, string printFormId)
+		public PrintFormResult GetGeneratedPrintFormOld(string authToken, int documentType, string printFormId)
 		{
 			return diadoc.GetGeneratedPrintForm(authToken, (DocumentType) documentType, printFormId);
 		}
