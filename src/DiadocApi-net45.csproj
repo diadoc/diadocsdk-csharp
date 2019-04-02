@@ -129,6 +129,8 @@
     <Compile Include="DiadocHttpApi.ForwardingAsync.cs" />
     <Compile Include="DiadocHttpApi.InvoicingAsync.cs" />
     <Compile Include="DiadocHttpApi.KeyValueStorageAsync.cs" />
+    <Compile Include="DiadocHttpApi.Parse.cs" />
+    <Compile Include="DiadocHttpApi.ParseAsync.cs" />
     <Compile Include="DiadocHttpApi.PrintAsync.cs" />
     <Compile Include="DiadocHttpApi.ReceiptsAsync.cs" />
     <Compile Include="DiadocHttpApi.RecognizeAsync.cs" />

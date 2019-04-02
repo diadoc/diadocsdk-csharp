@@ -734,6 +734,32 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(xmlContent);
 		}
 
+		public Task<byte[]> ParseTitleXmlAsync(
+			string authToken,
+			string boxId,
+			string documentTypeNamedId,
+			string documentFunction,
+			string documentVersion,
+			int titleIndex,
+			byte[] content)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException(nameof(authToken));
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException(nameof(boxId));
+			if (string.IsNullOrEmpty(documentTypeNamedId)) throw new ArgumentNullException(nameof(documentTypeNamedId));
+			if (string.IsNullOrEmpty(documentFunction)) throw new ArgumentNullException(nameof(documentFunction));
+			if (string.IsNullOrEmpty(documentVersion)) throw new ArgumentNullException(nameof(documentVersion));
+			if (content == null) throw new ArgumentNullException(nameof(content));
+
+			return diadocHttpApi.ParseTitleXmlAsync(
+				authToken,
+				boxId,
+				documentTypeNamedId,
+				documentFunction,
+				documentFunction,
+				titleIndex,
+				content);
+		}
+
 		public Task<OrganizationUsersList> GetOrganizationUsersAsync(string authToken, string orgId)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
