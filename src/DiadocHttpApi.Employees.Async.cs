@@ -17,7 +17,7 @@ namespace Diadoc.Api
 
 		public Task<EmployeeList> GetEmployeesAsync(string authToken, string boxId, int? page, int? count)
 		{
-			var queryString = new PathAndQueryBuilder("/GetEmployeesAsync");
+			var queryString = new PathAndQueryBuilder("/GetEmployees");
 			queryString.AddParameter("boxId", boxId);
 			queryString.AddParameter("page", page.ToString());
 			queryString.AddParameter("count", count.ToString());
