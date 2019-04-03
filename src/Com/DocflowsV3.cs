@@ -503,6 +503,7 @@ namespace Diadoc.Api.Proto.Docflow
 		SignedAttachmentV3 SignatureRejection { get; }
 		bool IsFormal { get; }
 		Timestamp DeliveredAt { get; }
+		string PlainText { get; }
 	}
 
 	[ComVisible(true)]
@@ -546,6 +547,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp DeliveredAt { get; }
 		ReceiptDocflowV3 Receipt { get; }
 		int AmendmentFlags { get; }
+		string PlainText { get; }
 	}
 
 	[ComVisible(true)]
@@ -585,6 +587,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
 		RoamingNotification RoamingNotification { get; }
+		string PlainText { get; }
 	}
 
 	[ComVisible(true)]
