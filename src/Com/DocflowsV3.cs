@@ -4,7 +4,6 @@ using Diadoc.Api.Com;
 using Diadoc.Api.Proto.Documents;
 using GeneralReceiptStatus = Diadoc.Api.Proto.Documents.GeneralReceiptStatus;
 using MessageType = Diadoc.Api.Proto.Documents.MessageType;
-using ProxySignatureStatus = Diadoc.Api.Proto.Documents.ProxySignatureStatus;
 using RecipientResponseStatus = Diadoc.Api.Proto.Documents.RecipientResponseStatus;
 using RevocationStatus = Diadoc.Api.Proto.Documents.RevocationStatus;
 using SenderSignatureStatus = Diadoc.Api.Proto.Documents.SenderSignatureStatus;
@@ -419,9 +418,9 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		SenderTitleDocflow SenderTitle { get; }
 		ConfirmationDocflow Confirmation { get; }
-		ProxyResponseDocflow ProxyResponse { get; }
+		ParticipantResponseDocflow ProxyResponse { get; }
 		ReceiptDocflowV3 RecipientReceipt { get; }
-		RecipientResponseDocflow RecipientResponse { get; }
+		ParticipantResponseDocflow RecipientResponse { get; }
 		AmendmentRequestDocflow AmendmentRequest { get; }
 		RevocationDocflowV3 Revocation { get; }
 		ResolutionDocflowV3 Resolution { get; }
@@ -478,25 +477,6 @@ namespace Diadoc.Api.Proto.Docflow
 	}
 
 	[ComVisible(true)]
-	[Guid("059D44EA-5671-49A2-9392-150526E268D7")]
-	public interface IProxyResponseDocflow
-	{
-		bool IsFinished { get; }
-		SignatureV3 Signature { get; }
-		SignatureRejectionDocflow Rejection { get; }
-		ProxySignatureStatus ProxySignatureStatus { get; }
-	}
-
-	[ComVisible(true)]
-	[ProgId("Diadoc.Api.ProxyResponseDocflow")]
-	[Guid("A0668D9F-5F8A-49F4-B100-010759B256BA")]
-	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof(IProxyResponseDocflow))]
-	public partial class ProxyResponseDocflow : SafeComObject, IProxyResponseDocflow
-	{
-	}
-
-	[ComVisible(true)]
 	[Guid("089ADC9F-1FD9-4414-B18E-BBDC0DAF7578")]
 	public interface ISignatureRejectionDocflow
 	{
@@ -517,23 +497,23 @@ namespace Diadoc.Api.Proto.Docflow
 
 	[ComVisible(true)]
 	[Guid("B26897EA-BC79-4B32-B9AB-EBAEB1794581")]
-	public interface IRecipientResponseDocflow
+	public interface IParticipantResponseDocflow
 	{
 		bool IsFinished { get; }
 		SignatureV3 Signature { get; }
-		SignedAttachmentV3 RecipientTitle { get; }
+		SignedAttachmentV3 Title { get; }
 		SignatureRejectionDocflow Rejection { get; }
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
-		RecipientResponseStatus RecipientResponseStatus { get; }
+		RecipientResponseStatus ResponseStatus { get; }
 	}
 
 	[ComVisible(true)]
 	[ProgId("Diadoc.Api.RecipientResponseDocflow")]
 	[Guid("BA4DE041-1B8D-4079-B910-A746A97B28AF")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof(IRecipientResponseDocflow))]
-	public partial class RecipientResponseDocflow : SafeComObject, IRecipientResponseDocflow
+	[ComDefaultInterface(typeof(IParticipantResponseDocflow))]
+	public partial class ParticipantResponseDocflow : SafeComObject, IParticipantResponseDocflow
 	{
 	}
 

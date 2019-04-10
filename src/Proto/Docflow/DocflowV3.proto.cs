@@ -37,10 +37,10 @@ namespace Diadoc.Api.Proto.Docflow
       set { _Confirmation = value; }
     }
 
-    private Diadoc.Api.Proto.Docflow.ProxyResponseDocflow _ProxyResponse = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"ProxyResponse", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private Diadoc.Api.Proto.Docflow.ParticipantResponseDocflow _ProxyResponse = null;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"ProxyResponse", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.ProxyResponseDocflow ProxyResponse
+    public Diadoc.Api.Proto.Docflow.ParticipantResponseDocflow ProxyResponse
     {
       get { return _ProxyResponse; }
       set { _ProxyResponse = value; }
@@ -55,10 +55,10 @@ namespace Diadoc.Api.Proto.Docflow
       set { _RecipientReceipt = value; }
     }
 
-    private Diadoc.Api.Proto.Docflow.RecipientResponseDocflow _RecipientResponse = null;
+    private Diadoc.Api.Proto.Docflow.ParticipantResponseDocflow _RecipientResponse = null;
     [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"RecipientResponse", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.RecipientResponseDocflow RecipientResponse
+    public Diadoc.Api.Proto.Docflow.ParticipantResponseDocflow RecipientResponse
     {
       get { return _RecipientResponse; }
       set { _RecipientResponse = value; }
@@ -215,48 +215,6 @@ namespace Diadoc.Api.Proto.Docflow
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ProxyResponseDocflow")]
-  public partial class ProxyResponseDocflow : global::ProtoBuf.IExtensible
-  {
-    public ProxyResponseDocflow() {}
-    
-    private bool _IsFinished;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"IsFinished", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public bool IsFinished
-    {
-      get { return _IsFinished; }
-      set { _IsFinished = value; }
-    }
-
-    private Diadoc.Api.Proto.Docflow.SignatureV3 _Signature = null;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Signature", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.SignatureV3 Signature
-    {
-      get { return _Signature; }
-      set { _Signature = value; }
-    }
-
-    private Diadoc.Api.Proto.Docflow.SignatureRejectionDocflow _Rejection = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Rejection", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.SignatureRejectionDocflow Rejection
-    {
-      get { return _Rejection; }
-      set { _Rejection = value; }
-    }
-    private Diadoc.Api.Proto.Documents.ProxySignatureStatus _ProxySignatureStatus;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"ProxySignatureStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Diadoc.Api.Proto.Documents.ProxySignatureStatus ProxySignatureStatus
-    {
-      get { return _ProxySignatureStatus; }
-      set { _ProxySignatureStatus = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SignatureRejectionDocflow")]
   public partial class SignatureRejectionDocflow : global::ProtoBuf.IExtensible
   {
@@ -299,10 +257,10 @@ namespace Diadoc.Api.Proto.Docflow
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RecipientResponseDocflow")]
-  public partial class RecipientResponseDocflow : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ParticipantResponseDocflow")]
+  public partial class ParticipantResponseDocflow : global::ProtoBuf.IExtensible
   {
-    public RecipientResponseDocflow() {}
+    public ParticipantResponseDocflow() {}
     
     private bool _IsFinished;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"IsFinished", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -321,13 +279,13 @@ namespace Diadoc.Api.Proto.Docflow
       set { _Signature = value; }
     }
 
-    private Diadoc.Api.Proto.Docflow.SignedAttachmentV3 _RecipientTitle = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"RecipientTitle", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private Diadoc.Api.Proto.Docflow.SignedAttachmentV3 _Title = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Title", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.SignedAttachmentV3 RecipientTitle
+    public Diadoc.Api.Proto.Docflow.SignedAttachmentV3 Title
     {
-      get { return _RecipientTitle; }
-      set { _RecipientTitle = value; }
+      get { return _Title; }
+      set { _Title = value; }
     }
 
     private Diadoc.Api.Proto.Docflow.SignatureRejectionDocflow _Rejection = null;
@@ -356,12 +314,12 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _DeliveredAt; }
       set { _DeliveredAt = value; }
     }
-    private Diadoc.Api.Proto.Documents.RecipientResponseStatus _RecipientResponseStatus;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"RecipientResponseStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Diadoc.Api.Proto.Documents.RecipientResponseStatus RecipientResponseStatus
+    private Diadoc.Api.Proto.Documents.RecipientResponseStatus _ResponseStatus;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"ResponseStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.RecipientResponseStatus ResponseStatus
     {
-      get { return _RecipientResponseStatus; }
-      set { _RecipientResponseStatus = value; }
+      get { return _ResponseStatus; }
+      set { _ResponseStatus = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
