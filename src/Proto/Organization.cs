@@ -47,7 +47,8 @@ namespace Diadoc.Api.Proto
 		bool IsActive { get; }
 		bool IsTest { get; }
 		bool IsRoaming { get; }
-	}
+        string LiquidationDate { get; }
+    }
 
 	[ComVisible(true)]
 	[Guid("CD9F454E-4A6A-4DE3-8B99-F9E89AE36F0F")]
