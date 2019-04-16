@@ -47,7 +47,7 @@ namespace Diadoc.Api.Proto
 		bool IsActive { get; }
 		bool IsTest { get; }
 		bool IsRoaming { get; }
-        string LiquidationDate { get; }
+		string LiquidationDate { get; }
     }
 
 	[ComVisible(true)]
