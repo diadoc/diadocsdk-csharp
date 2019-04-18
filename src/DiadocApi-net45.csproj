@@ -62,6 +62,7 @@
     <Compile Include="Com\Departments.cs" />
     <Compile Include="Com\DocumentTitleSignerType.cs" />
     <Compile Include="Com\DocumentTitleType.cs" />
+    <Compile Include="Com\Registration.cs" />
     <Compile Include="Com\ResolutionAction.cs" />
     <Compile Include="Com\ResolutionStatus.cs" />
     <Compile Include="Com\Users.cs" />
@@ -132,6 +133,8 @@
     <Compile Include="DiadocHttpApi.ReceiptsAsync.cs" />
     <Compile Include="DiadocHttpApi.RecognizeAsync.cs" />
     <Compile Include="DiadocHttpApi.ReferencesAsync.cs" />
+    <Compile Include="DiadocHttpApi.Registration.cs" />
+    <Compile Include="DiadocHttpApi.RegistrationAsync.cs" />
     <Compile Include="DiadocHttpApi.ShelfAsync.cs" />
     <Compile Include="DiadocHttpApi.UniversalTransferDocument.cs" />
     <Compile Include="DiadocHttpApi.UniversalTransferDocumentAsync.cs" />
@@ -224,6 +227,7 @@
     <Compile Include="Proto\Invoicing\TovTorgInfo.proto.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.proto.cs" />
+    <Compile Include="Proto\Registration\RegistrationRequest.proto.cs" />
     <Compile Include="Proto\ResolutionAction.proto.cs" />
     <Compile Include="Proto\ResolutionRequestType.proto.cs" />
     <Compile Include="Proto\ResolutionRouteList.proto.cs" />

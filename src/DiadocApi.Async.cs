@@ -14,6 +14,7 @@ using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Recognition;
+using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
 using JetBrains.Annotations;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
@@ -1094,6 +1095,20 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (departmentId == null) throw new ArgumentNullException("departmentId");
 			return diadocHttpApi.DeleteDepartmentAsync(authToken, boxId, departmentId);
+		}
+
+		public Task<RegistrationResponse> RegisterAsync(string authToken, RegistrationRequest registrationRequest)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (registrationRequest == null) throw new ArgumentNullException("registrationRequest");
+			return diadocHttpApi.RegisterAsync(authToken, registrationRequest);
+		}
+
+		public Task RegisterConfirmAsync(string authToken, RegistrationConfirmRequest registrationConfirmRequest)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (registrationConfirmRequest == null) throw new ArgumentNullException("registrationConfirmRequest");
+			return diadocHttpApi.RegisterConfirmAsync(authToken, registrationConfirmRequest);
 		}
 	}
 }
