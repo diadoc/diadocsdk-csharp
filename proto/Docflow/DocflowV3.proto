@@ -51,6 +51,7 @@ message SignatureRejectionDocflow
 	required SignedAttachmentV3 SignatureRejection = 1;
 	required bool IsFormal = 2;
 	optional Timestamp DeliveredAt = 3;
+	optional string PlainText = 4;
 }
 
 message RecipientResponseDocflow
@@ -72,6 +73,7 @@ message AmendmentRequestDocflow
 	optional Timestamp DeliveredAt = 4;
 	optional ReceiptDocflowV3 Receipt = 5;
 	required int32 AmendmentFlags = 6;
+	optional string PlainText = 7;
 }
 
 message RevocationDocflowV3
@@ -90,6 +92,7 @@ message RevocationRequestDocflow
 	optional Timestamp SentAt = 2;
 	optional Timestamp DeliveredAt = 3;
 	optional RoamingNotification RoamingNotification = 4;
+	optional string PlainText = 5;
 }
 
 message RevocationResponseDocflow

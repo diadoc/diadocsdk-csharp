@@ -285,6 +285,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _DeliveredAt; }
       set { _DeliveredAt = value; }
     }
+
+    private string _PlainText = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"PlainText", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string PlainText
+    {
+      get { return _PlainText; }
+      set { _PlainText = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -412,6 +421,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _AmendmentFlags; }
       set { _AmendmentFlags = value; }
     }
+
+    private string _PlainText = "";
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"PlainText", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string PlainText
+    {
+      get { return _PlainText; }
+      set { _PlainText = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -511,6 +529,15 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _RoamingNotification; }
       set { _RoamingNotification = value; }
+    }
+
+    private string _PlainText = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"PlainText", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string PlainText
+    {
+      get { return _PlainText; }
+      set { _PlainText = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
