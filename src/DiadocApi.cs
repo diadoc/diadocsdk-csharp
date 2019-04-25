@@ -16,6 +16,7 @@ using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.KeyValueStorage;
+using Diadoc.Api.Proto.Organizations;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
@@ -220,6 +221,13 @@ namespace Diadoc.Api
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (orgProps == null) throw new ArgumentNullException("orgProps");
 			diadocHttpApi.UpdateOrganizationProperties(authToken, orgProps);
+		}
+
+		public OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetOrganizationFeatures(authToken, boxId);
 		}
 
 		public BoxEventList GetNewEvents(string authToken, string boxId, string afterEventId = null)

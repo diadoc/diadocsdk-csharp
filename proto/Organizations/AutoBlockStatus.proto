@@ -1,0 +1,6 @@
+package Diadoc.Api.Proto.Organizations;
+
+message AutoBlockStatus
+{
+    required bool IsBlocked = 1;
+}

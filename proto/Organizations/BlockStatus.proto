@@ -1,0 +1,10 @@
+import "Organizations/ManualBlockStatus.proto";
+import "Organizations/AutoBlockStatus.proto";
+
+package Diadoc.Api.Proto.Organizations;
+
+message BlockStatus
+{
+    required ManualBlockStatus ManualBlockStatus = 1;
+    required AutoBlockStatus AutoBlockStatus = 2;
+}
