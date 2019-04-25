@@ -10,9 +10,9 @@ message DocflowV3
 {
 	required SenderTitleDocflow SenderTitle = 1;
 	optional ConfirmationDocflow Confirmation = 2;
-	optional ProxyResponseDocflow ProxyResponse = 3;
+	optional ParticipantResponseDocflow ProxyResponse = 11;
 	optional ReceiptDocflowV3 RecipientReceipt = 4;
-	optional RecipientResponseDocflow RecipientResponse = 5;
+	optional ParticipantResponseDocflow RecipientResponse = 5;
 	optional AmendmentRequestDocflow AmendmentRequest = 6;
 	optional RevocationDocflowV3 Revocation = 7;
 	optional ReceiptDocflowV3 SenderReceipt = 8;
@@ -38,14 +38,6 @@ message ConfirmationDocflow
 	optional ReceiptDocflowV3 Receipt = 4;
 }
 
-message ProxyResponseDocflow
-{
-	required bool IsFinished = 1;
-	optional SignatureV3 Signature = 2;
-	optional SignatureRejectionDocflow Rejection = 3;
-	required Documents.ProxySignatureStatus ProxySignatureStatus = 4;
-}
-
 message SignatureRejectionDocflow
 {
 	required SignedAttachmentV3 SignatureRejection = 1;
@@ -54,15 +46,15 @@ message SignatureRejectionDocflow
 	optional string PlainText = 4;
 }
 
-message RecipientResponseDocflow
+message ParticipantResponseDocflow
 {
 	required bool IsFinished = 1;
 	optional SignatureV3 Signature = 2;
-	optional SignedAttachmentV3 RecipientTitle = 3;
+	optional SignedAttachmentV3 Title = 3;
 	optional SignatureRejectionDocflow Rejection = 4;
 	optional Timestamp SentAt = 5;
 	optional Timestamp DeliveredAt = 6;
-	required Documents.RecipientResponseStatus RecipientResponseStatus = 7;
+	required Documents.RecipientResponseStatus ResponseStatus = 7;
 }
 
 message AmendmentRequestDocflow
