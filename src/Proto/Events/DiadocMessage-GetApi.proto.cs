@@ -258,6 +258,22 @@ namespace Diadoc.Api.Proto.Events
       get { return _LockMode; }
       set { _LockMode = value; }
     }
+    private Diadoc.Api.Proto.Documents.MessageType _MessageType;
+    [global::ProtoBuf.ProtoMember(22, IsRequired = true, Name=@"MessageType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.MessageType MessageType
+    {
+      get { return _MessageType; }
+      set { _MessageType = value; }
+    }
+
+    private Diadoc.Api.Proto.Events.TemplateToLetterTransformationInfo _TemplateToLetterTransformationInfo = null;
+    [global::ProtoBuf.ProtoMember(23, IsRequired = false, Name=@"TemplateToLetterTransformationInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.TemplateToLetterTransformationInfo TemplateToLetterTransformationInfo
+    {
+      get { return _TemplateToLetterTransformationInfo; }
+      set { _TemplateToLetterTransformationInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -456,6 +472,13 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _PatchId; }
       set { _PatchId = value; }
+    }
+    private Diadoc.Api.Proto.Documents.MessageType _MessageType;
+    [global::ProtoBuf.ProtoMember(15, IsRequired = true, Name=@"MessageType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.MessageType MessageType
+    {
+      get { return _MessageType; }
+      set { _MessageType = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -688,6 +711,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _Version; }
       set { _Version = value; }
     }
+
+    private Diadoc.Api.Proto.Events.TemplateTransformationInfo _TemplateTransformationInfo = null;
+    [global::ProtoBuf.ProtoMember(27, IsRequired = false, Name=@"TemplateTransformationInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.TemplateTransformationInfo TemplateTransformationInfo
+    {
+      get { return _TemplateTransformationInfo; }
+      set { _TemplateTransformationInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -749,6 +781,76 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _ForwardedToBoxId; }
       set { _ForwardedToBoxId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TemplateToLetterTransformationInfo")]
+  public partial class TemplateToLetterTransformationInfo : global::ProtoBuf.IExtensible
+  {
+    public TemplateToLetterTransformationInfo() {}
+    
+    private string _LetterFromBoxId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"LetterFromBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string LetterFromBoxId
+    {
+      get { return _LetterFromBoxId; }
+      set { _LetterFromBoxId = value; }
+    }
+    private string _LetterToBoxId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"LetterToBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string LetterToBoxId
+    {
+      get { return _LetterToBoxId; }
+      set { _LetterToBoxId = value; }
+    }
+
+    private string _LetterFromDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"LetterFromDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string LetterFromDepartmentId
+    {
+      get { return _LetterFromDepartmentId; }
+      set { _LetterFromDepartmentId = value; }
+    }
+
+    private string _LetterToDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"LetterToDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string LetterToDepartmentId
+    {
+      get { return _LetterToDepartmentId; }
+      set { _LetterToDepartmentId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TemplateTransformationInfo")]
+  public partial class TemplateTransformationInfo : global::ProtoBuf.IExtensible
+  {
+    public TemplateTransformationInfo() {}
+    
+
+    private Diadoc.Api.Proto.DocumentId _TransformedToDocumentId = null;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TransformedToDocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.DocumentId TransformedToDocumentId
+    {
+      get { return _TransformedToDocumentId; }
+      set { _TransformedToDocumentId = value; }
+    }
+
+    private string _Author = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Author", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Author
+    {
+      get { return _Author; }
+      set { _Author = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -927,7 +1029,13 @@ namespace Diadoc.Api.Proto.Events
       Cancellation = 69,
             
       [global::ProtoBuf.ProtoEnum(Name=@"Edition", Value=71)]
-      Edition = 71
+      Edition = 71,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"DeletionRestoration", Value=72)]
+      DeletionRestoration = 72,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TemplateTransformation", Value=73)]
+      TemplateTransformation = 73
     }
   
 }

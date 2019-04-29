@@ -77,4 +77,12 @@ message DocumentTemplateInfo
 {
 	required DocumentParticipants LetterParticipants = 1;
 	repeated string TransformedToLetterIds = 2;
+	repeated TemplateTransformationInfo TemplateTransformationInfos = 3;
+}
+
+message TemplateTransformationInfo
+{
+	required string TransformationId = 1;
+	optional DocumentId TransformedToDocumentId = 2;
+	optional string AuthorUserId = 3;
 }

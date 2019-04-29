@@ -7,14 +7,13 @@ namespace Diadoc.Api
 	{
 		public BoxEventList GetNewEvents(string authToken, string boxId, string afterEventId = null)
 		{
-			var qsb = new PathAndQueryBuilder("/V5/GetNewEvents");
+			var qsb = new PathAndQueryBuilder("/V6/GetNewEvents");
 			qsb.AddParameter("includeDrafts");
 			qsb.AddParameter("boxId", boxId);
 			if (!string.IsNullOrEmpty(afterEventId)) 
 				qsb.AddParameter("afterEventId", afterEventId);
 			return PerformHttpRequest<BoxEventList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
-
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)
 		{
 			var queryString = string.Format("/V2/GetEvent?eventId={0}&boxId={1}", eventId, boxId);
@@ -23,7 +22,7 @@ namespace Diadoc.Api
 
 		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
-			var qsb = new PathAndQueryBuilder("/V4/GetMessage");
+			var qsb = new PathAndQueryBuilder("/V5/GetMessage");
 			qsb.AddParameter("boxId", boxId);
 			qsb.AddParameter("messageId", messageId);
 			if (withOriginalSignature)
@@ -34,7 +33,7 @@ namespace Diadoc.Api
 
 		public Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
-			var qsb = new PathAndQueryBuilder("/V4/GetMessage");
+			var qsb = new PathAndQueryBuilder("/V5/GetMessage");
 			qsb.AddParameter("boxId", boxId);
 			qsb.AddParameter("messageId", messageId);
 			qsb.AddParameter("entityId", entityId);
