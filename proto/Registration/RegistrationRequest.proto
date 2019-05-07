@@ -1,0 +1,32 @@
+package Diadoc.Api.Proto.Registration;
+
+message RegistrationRequest {
+    optional bytes CertificateContent = 1;
+    optional string Thumbprint = 2;
+}
+
+message RegistrationResponse {
+    required RegistrationStatus RegistrationStatus = 1;
+    optional string BoxId = 2;
+    optional bytes DataToSign = 3;
+}
+
+enum RegistrationStatus {
+    Unknown = 0;
+    AccessIsDenied = 1;
+    AccessRequestIsRejected = 2;
+    CertificateOwnershipProofIsRequired = 3;
+    CertificateIsNotQualified = 4;
+    RegistrationIsCompleted = 5;
+    RegistrationIsInProgress = 6;
+    RegistrationInBranchIsForbidden = 7;
+    AccessRequestIsPending = 8;
+    OrganizationNotFound = 9;
+}
+
+message RegistrationConfirmRequest {
+    optional bytes CertificateContent = 1;
+    optional string Thumbprint = 2;
+    required bytes DataToSign  = 3;
+    required bytes Signature = 4;
+}

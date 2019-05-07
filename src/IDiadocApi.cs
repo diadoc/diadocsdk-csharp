@@ -15,6 +15,7 @@ using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 using Diadoc.Api.Proto.KeyValueStorage;
+using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
 using Departments = Diadoc.Api.Proto.Departments;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
@@ -196,6 +197,9 @@ namespace Diadoc.Api
 		Departments.Department UpdateDepartment(string authToken, string boxId, string departmentId, Departments.DepartmentToUpdate departmentToUpdate);
 		void DeleteDepartment(string authToken, string boxId, string departmentId);
 
+		RegistrationResponse Register(string authToken, RegistrationRequest registrationRequest);
+		void RegisterConfirm(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
+		
 #if !NET35
 
 		Task<string> AuthenticateAsync(string login, string password, string key = null, string id = null);
@@ -350,6 +354,8 @@ namespace Diadoc.Api
 		Task<Departments.Department> CreateDepartmentAsync(string authToken, string boxId, Departments.DepartmentToCreate departmentToCreate);
 		Task<Departments.Department> UpdateDepartmentAsync(string authToken, string boxId, string departmentId, Departments.DepartmentToUpdate departmentToUpdate);
 		Task DeleteDepartmentAsync(string authToken, string boxId, string departmentId);
+		Task<RegistrationResponse> RegisterAsync(string authToken, RegistrationRequest registrationRequest);
+		Task RegisterConfirmAsync(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
 #endif
 	}
 }

@@ -15,6 +15,7 @@ using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Recognition;
+using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
 using DocumentTitleType = Diadoc.Api.Proto.Invoicing.Signers.DocumentTitleType;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
@@ -386,6 +387,9 @@ namespace Diadoc.Api
 		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId);
 
 		void SendFnsRegistrationMessage(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object fnsRegistrationMessageInfo);
+
+		RegistrationResponse Register(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object registrationRequest);
+		void RegisterConfirm(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object registrationConfirmRequest);
 	}
 
 	[ComVisible(true)]
@@ -629,6 +633,16 @@ namespace Diadoc.Api
 		public void SendFnsRegistrationMessage(string authToken, string boxId, object fnsRegistrationMessageInfo)
 		{
 			diadoc.SendFnsRegistrationMessage(authToken, boxId, (FnsRegistrationMessageInfo) fnsRegistrationMessageInfo);
+		}
+
+		public RegistrationResponse Register(string authToken, object registrationRequest)
+		{
+			return diadoc.Register(authToken, (RegistrationRequest) registrationRequest);
+		}
+
+		public void RegisterConfirm(string authToken, object registrationConfirmRequest)
+		{
+			diadoc.RegisterConfirm(authToken, (RegistrationConfirmRequest) registrationConfirmRequest);
 		}
 
 		public MessagePatch PostMessagePatch(string authToken, object patch)
