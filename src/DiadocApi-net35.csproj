@@ -93,6 +93,7 @@
     <Compile Include="DefaultDocumentVersions.cs" />
     <Compile Include="DiadocHttpApi.Employees.cs" />
     <Compile Include="DiadocHttpApi.Registration.cs" />
+    <Compile Include="DiadocHttpApi.Parse.cs" />
     <Compile Include="DocflowApi.cs" />
     <Compile Include="FileContent.cs" />
     <Compile Include="Com\FunctionType.cs" />

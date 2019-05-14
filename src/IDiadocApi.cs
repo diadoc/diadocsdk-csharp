@@ -129,6 +129,7 @@ namespace Diadoc.Api
 		string UploadFileToShelf(string authToken, byte[] data);
 		byte[] GetFileFromShelf(string authToken, string nameOnShelf);
 		RussianAddress ParseRussianAddress(string address);
+
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent);
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] xmlContent);
@@ -142,6 +143,16 @@ namespace Diadoc.Api
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent);
+
+		byte[] ParseTitleXml(
+			string authToken,
+			string boxId,
+			string documentTypeNamedId,
+			string documentFunction,
+			string documentVersion,
+			int titleIndex,
+			byte[] content);
+
 		OrganizationUsersList GetOrganizationUsers(string authToken, string orgId);
 		List<Organization> GetOrganizationsByInnList(GetOrganizationsByInnListRequest innList);
 		List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList);
@@ -298,6 +309,7 @@ namespace Diadoc.Api
 		Task<string> UploadFileToShelfAsync(string authToken, byte[] data);
 		Task<byte[]> GetFileFromShelfAsync(string authToken, string nameOnShelf);
 		Task<RussianAddress> ParseRussianAddressAsync(string address);
+
 		Task<InvoiceInfo> ParseInvoiceXmlAsync(byte[] invoiceXmlContent);
 		Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(byte[] xmlContent);
 		Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(byte[] xmlContent);
@@ -311,6 +323,16 @@ namespace Diadoc.Api
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalTransferDocumentBuyerTitleXmlAsync(byte[] xmlContent);
 		Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent);
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(byte[] xmlContent);
+
+		Task<byte[]> ParseTitleXmlAsync(
+			string authToken,
+			string boxId,
+			string documentTypeNamedId,
+			string documentFunction,
+			string documentVersion,
+			int titleIndex,
+			byte[] content);
+
 		Task<OrganizationUsersList> GetOrganizationUsersAsync(string authToken, string orgId);
 		Task<List<Organization>> GetOrganizationsByInnListAsync(GetOrganizationsByInnListRequest innList);
 		Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListAsync(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList);

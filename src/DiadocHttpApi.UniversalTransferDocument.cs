@@ -42,29 +42,5 @@ namespace Diadoc.Api
 			query.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
 			return PerformGenerateXmlHttpRequest(authToken, query.BuildPathAndQuery(), info);
 		}
-
-		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent)
-		{
-			var query = new PathAndQueryBuilder("/ParseUniversalTransferDocumentSellerTitleXml");
-			query.AddParameter("documentVersion", DefaultDocumentVersions.Utd);
-			return PerformHttpRequest<UniversalTransferDocumentSellerTitleInfo>(null, "POST", query.BuildPathAndQuery(), xmlContent);
-		}
-
-		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent)
-		{
-			return PerformHttpRequest<UniversalTransferDocumentBuyerTitleInfo>(null, "POST", "/ParseUniversalTransferDocumentBuyerTitleXml", xmlContent);
-		}
-
-		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent)
-		{
-			var query = new PathAndQueryBuilder("/ParseUniversalCorrectionDocumentSellerTitleXml");
-			query.AddParameter("documentVersion", DefaultDocumentVersions.Ucd);
-			return PerformHttpRequest<UniversalCorrectionDocumentSellerTitleInfo>(null, "POST", query.BuildPathAndQuery(), xmlContent);
-		}
-
-		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent)
-		{
-			return PerformHttpRequest<UniversalTransferDocumentBuyerTitleInfo>(null, "POST", "/ParseUniversalCorrectionDocumentBuyerTitleXml", xmlContent);
-		}
 	}
 }

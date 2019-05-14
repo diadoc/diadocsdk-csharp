@@ -176,51 +176,6 @@ namespace Diadoc.Api
 			return HttpClient.PerformHttpRequestAsync(request);
 		}
 
-		public Task<InvoiceInfo> ParseInvoiceXmlAsync(byte[] invoiceXmlContent)
-		{
-			return PerformHttpRequestAsync<InvoiceInfo>(null, "POST", "/ParseInvoiceXml", invoiceXmlContent);
-		}
-
-		public Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(byte[] xmlContent)
-		{
-			return PerformHttpRequestAsync<Torg12SellerTitleInfo>(null, "POST", "/ParseTorg12SellerTitleXml", xmlContent);
-		}
-
-		public Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(byte[] xmlContent)
-		{
-			return PerformHttpRequestAsync<Torg12BuyerTitleInfo>(null, "POST", "/ParseTorg12BuyerTitleXml", xmlContent);
-		}
-
-		public Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(byte[] xmlContent)
-		{
-			return PerformHttpRequestAsync<TovTorgSellerTitleInfo>(null, "POST", $"/ParseTorg12SellerTitleXml?documentVersion={DefaultDocumentVersions.TovTorg551}", xmlContent);
-		}
-
-		public Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(byte[] xmlContent)
-		{
-			return PerformHttpRequestAsync<TovTorgBuyerTitleInfo>(null, "POST", $"/ParseTorg12BuyerTitleXml?documentVersion={DefaultDocumentVersions.TovTorg551}", xmlContent);
-		}
-
-		public Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(byte[] xmlContent)
-		{
-			return PerformHttpRequestAsync<AcceptanceCertificateSellerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateSellerTitleXml", xmlContent);
-		}
-
-		public Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(byte[] xmlContent)
-		{
-			return PerformHttpRequestAsync<AcceptanceCertificateBuyerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateBuyerTitleXml", xmlContent);
-		}
-
-		public Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(byte[] xmlContent)
-		{
-			return PerformHttpRequestAsync<AcceptanceCertificate552SellerTitleInfo>(null, "POST", $"/ParseAcceptanceCertificateSellerTitleXml?documentVersion={DefaultDocumentVersions.AcceptanceCerttificate552}", xmlContent);
-		}
-
-		public Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(byte[] xmlContent)
-		{
-			return PerformHttpRequestAsync<AcceptanceCertificate552BuyerTitleInfo>(null, "POST", $"/ParseAcceptanceCertificateBuyerTitleXml?documentVersion={DefaultDocumentVersions.AcceptanceCerttificate552}", xmlContent);
-		}
-
 		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] xmlContent)
 		{
 			return PerformHttpRequestAsync<RevocationRequestInfo>(null, "POST", "/ParseRevocationRequestXml", xmlContent);

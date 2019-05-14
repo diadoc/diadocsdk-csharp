@@ -173,51 +173,6 @@ namespace Diadoc.Api
 			HttpClient.PerformHttpRequest(request);
 		}
 
-		public InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent)
-		{
-			return PerformHttpRequest<InvoiceInfo>(null, "POST", "/ParseInvoiceXml", invoiceXmlContent);
-		}
-
-		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent)
-		{
-			return PerformHttpRequest<Torg12SellerTitleInfo>(null, "POST", "/ParseTorg12SellerTitleXml", xmlContent);
-		}
-
-		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] xmlContent)
-		{
-			return PerformHttpRequest<Torg12BuyerTitleInfo>(null, "POST", "/ParseTorg12BuyerTitleXml", xmlContent);
-		}
-
-		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent)
-		{
-			return PerformHttpRequest<TovTorgSellerTitleInfo>(null, "POST", $"/ParseTorg12SellerTitleXml?documentVersion={DefaultDocumentVersions.TovTorg551}", xmlContent);
-		}
-
-		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent)
-		{
-			return PerformHttpRequest<TovTorgBuyerTitleInfo>(null, "POST", $"/ParseTorg12BuyerTitleXml?documentVersion={DefaultDocumentVersions.TovTorg551}", xmlContent);
-		}
-
-		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)
-		{
-			return PerformHttpRequest<AcceptanceCertificateSellerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateSellerTitleXml", xmlContent);
-		}
-
-		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent)
-		{
-			return PerformHttpRequest<AcceptanceCertificateBuyerTitleInfo>(null, "POST", "/ParseAcceptanceCertificateBuyerTitleXml", xmlContent);
-		}
-
-		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent)
-		{
-			return PerformHttpRequest<AcceptanceCertificate552SellerTitleInfo>(null, "POST", $"/ParseAcceptanceCertificateSellerTitleXml?documentVersion={DefaultDocumentVersions.AcceptanceCerttificate552}", xmlContent);
-		}
-
-		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent)
-		{
-			return PerformHttpRequest<AcceptanceCertificate552BuyerTitleInfo>(null, "POST", $"/ParseAcceptanceCertificateBuyerTitleXml?documentVersion={DefaultDocumentVersions.AcceptanceCerttificate552}", xmlContent);
-		}
-
 		public RevocationRequestInfo ParseRevocationRequestXml(byte[] xmlContent)
 		{
 			return PerformHttpRequest<RevocationRequestInfo>(null, "POST", "/ParseRevocationRequestXml", xmlContent);
