@@ -12,6 +12,8 @@ namespace Diadoc.Api.Com
 		SellerEmployee = 1,
 		InformationCreatorEmployee = 2,
 		OtherOrganizationEmployee = 3,
-		AuthorizedPerson = 4
+		AuthorizedPerson = 4,
+		BuyerEmployee = 5,
+		InformationCreatorBuyerEmployee = 6
 	}
 }
