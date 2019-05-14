@@ -471,8 +471,9 @@ namespace Diadoc.Api.Proto.Events
 		string MessageFromBoxId { get; set; }
 		string MessageToBoxId { get; set; }
 		LockMode LockMode { get; set; } 
-
 		string MessageToDepartmentId { get; set; }
+		string FromDepartmentId { get; set; }
+		string ToDepartmentId { get; set; }
 
 		void AddDocumentAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 	}
