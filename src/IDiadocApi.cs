@@ -15,6 +15,7 @@ using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 using Diadoc.Api.Proto.KeyValueStorage;
+using Diadoc.Api.Proto.Organizations;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
 using Departments = Diadoc.Api.Proto.Departments;
@@ -61,6 +62,7 @@ namespace Diadoc.Api
 		Box GetBox(string boxId);
 		Department GetDepartment(string authToken, string orgId, string departmentId);
 		void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps);
+		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
 		BoxEventList GetNewEvents(string authToken, string boxId, string afterEventId = null);
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
 		Message PostMessage(string authToken, MessageToPost msg, string operationId = null);
@@ -210,7 +212,7 @@ namespace Diadoc.Api
 
 		RegistrationResponse Register(string authToken, RegistrationRequest registrationRequest);
 		void RegisterConfirm(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
-		
+
 #if !NET35
 
 		Task<string> AuthenticateAsync(string login, string password, string key = null, string id = null);
@@ -236,6 +238,7 @@ namespace Diadoc.Api
 		Task<Box> GetBoxAsync(string boxId);
 		Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId);
 		Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps);
+		Task<OrganizationFeatures> GetOrganizationFeaturesAsync(string authToken, string boxId);
 		Task<BoxEventList> GetNewEventsAsync(string authToken, string boxId, string afterEventId = null);
 		Task<BoxEvent> GetEventAsync(string authToken, string boxId, string eventId);
 		Task<Message> PostMessageAsync(string authToken, MessageToPost msg, string operationId = null);

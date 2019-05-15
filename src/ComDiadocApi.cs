@@ -14,6 +14,7 @@ using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
+using Diadoc.Api.Proto.Organizations;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
@@ -39,6 +40,7 @@ namespace Diadoc.Api
 		string AuthenticateWithCertificate(string thumbprint, bool useLocalSystemStorage = false);
 		string AuthenticateWithSid(string sid);
 		OrganizationUserPermissions GetMyPermissions(string authToken, string orgId);
+		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
 		ReadonlyList GetOrganizationUsers(string authToken, string orgId);
 		ReadonlyList GetMyOrganizations(string authToken, bool autoRegister = true);
 		ReadonlyList GetOrganizationsByInnKpp(string inn, string kpp);
@@ -528,6 +530,11 @@ namespace Diadoc.Api
 		public Box GetBox(string boxId)
 		{
 			return diadoc.GetBox(boxId);
+		}
+		
+		public OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId)
+		{
+			return diadoc.GetOrganizationFeatures(authToken, boxId);
 		}
 
 		public Department GetDepartment(string authToken, string orgId, string departmentId)

@@ -1,0 +1,7 @@
+package Diadoc.Api.Proto.Organizations;
+
+message ManualBlockStatus
+{
+    required bool IsBlocked = 1;
+    optional sfixed64 RequestedTicks = 2;
+}

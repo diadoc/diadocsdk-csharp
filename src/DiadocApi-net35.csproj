@@ -92,6 +92,7 @@
     <Compile Include="DiadocHttpApi.Departments.cs" />
     <Compile Include="DefaultDocumentVersions.cs" />
     <Compile Include="DiadocHttpApi.Employees.cs" />
+    <Compile Include="DiadocHttpApi.Organizations.cs" />
     <Compile Include="DiadocHttpApi.Registration.cs" />
     <Compile Include="DiadocHttpApi.Parse.cs" />
     <Compile Include="DocflowApi.cs" />
@@ -205,6 +206,10 @@
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.proto.cs" />
     <Compile Include="Proto\Registration\RegistrationRequest.proto.cs" />
+    <Compile Include="Proto\Organizations\AutoBlockStatus.proto.cs" />
+    <Compile Include="Proto\Organizations\BlockStatus.proto.cs" />
+    <Compile Include="Proto\Organizations\ManualBlockStatus.proto.cs" />
+    <Compile Include="Proto\Organizations\OrganizationFeatures.proto.cs" />
     <Compile Include="Proto\ResolutionAction.proto.cs" />
     <Compile Include="Proto\ResolutionRequestType.proto.cs" />
     <Compile Include="Proto\ResolutionRouteList.proto.cs" />
@@ -366,7 +371,7 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

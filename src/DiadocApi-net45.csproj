@@ -62,11 +62,14 @@
     <Compile Include="Com\Departments.cs" />
     <Compile Include="Com\DocumentTitleSignerType.cs" />
     <Compile Include="Com\DocumentTitleType.cs" />
+    <Compile Include="Com\Organizations.cs" />
     <Compile Include="Com\Registration.cs" />
     <Compile Include="Com\ResolutionAction.cs" />
     <Compile Include="Com\ResolutionStatus.cs" />
     <Compile Include="Com\Users.cs" />
     <Compile Include="DefaultDocumentVersions.cs" />
+    <Compile Include="DiadocHttpApi.Organizations.Async.cs" />
+    <Compile Include="DiadocHttpApi.Organizations.cs" />
     <Compile Include="DiadocHttpApi.Departments.Async.cs" />
     <Compile Include="DiadocHttpApi.Departments.cs" />
     <Compile Include="DiadocHttpApi.Employees.Async.cs" />
@@ -230,6 +233,10 @@
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.cs" />
     <Compile Include="Proto\Invoicing\UniversalTransferDocumentInfo.proto.cs" />
     <Compile Include="Proto\Registration\RegistrationRequest.proto.cs" />
+    <Compile Include="Proto\Organizations\AutoBlockStatus.proto.cs" />
+    <Compile Include="Proto\Organizations\BlockStatus.proto.cs" />
+    <Compile Include="Proto\Organizations\ManualBlockStatus.proto.cs" />
+    <Compile Include="Proto\Organizations\OrganizationFeatures.proto.cs" />
     <Compile Include="Proto\ResolutionAction.proto.cs" />
     <Compile Include="Proto\ResolutionRequestType.proto.cs" />
     <Compile Include="Proto\ResolutionRouteList.proto.cs" />
@@ -371,7 +378,7 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
