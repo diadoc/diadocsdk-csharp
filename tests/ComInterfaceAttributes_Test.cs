@@ -18,7 +18,8 @@ namespace Diadoc.Api.Tests
 		}
 
 		[Test]
-		public void InterfaceType([ValueSource("GetComVisibleInterfaceTypes")] Type type)
+		public void InterfaceType([ValueSource("GetComVisibleInterfaceTypes")]
+			Type type)
 		{
 			var interfaceTypeAttribute = type.GetCustomAttribute<InterfaceTypeAttribute>();
 			if (interfaceTypeAttribute != null)
@@ -26,7 +27,8 @@ namespace Diadoc.Api.Tests
 		}
 
 		[Test]
-		public void ClassInterface([ValueSource("GetComVisibleClassTypes")] Type type)
+		public void ClassInterface([ValueSource("GetComVisibleClassTypes")]
+			Type type)
 		{
 			var classInterfaceAttribute = type.GetCustomAttribute<ClassInterfaceAttribute>();
 			Assert.IsNotNull(classInterfaceAttribute);
@@ -34,7 +36,8 @@ namespace Diadoc.Api.Tests
 		}
 
 		[Test]
-		public void ComDefaultInterface([ValueSource("GetComVisibleClassTypes")] Type type)
+		public void ComDefaultInterface([ValueSource("GetComVisibleClassTypes")]
+			Type type)
 		{
 			var comDefaultInterfaceAttribute = type.GetCustomAttribute<ComDefaultInterfaceAttribute>();
 			Assert.IsNotNull(comDefaultInterfaceAttribute);
@@ -43,28 +46,31 @@ namespace Diadoc.Api.Tests
 			Assert.True(IsComVisible(defaultInterfaceType));
 			Assert.True(type.GetInterfaces().Contains(defaultInterfaceType));
 		}
-		
+
 		[Test]
-		public void ComVisibleTypes_HasNoNullableProperties([ValueSource("GetComVisibleInterfaceTypes")] Type type)
+		public void ComVisibleTypes_HasNoNullableProperties([ValueSource("GetComVisibleInterfaceTypes")]
+			Type type)
 		{
 			var propertyInfos = type.GetProperties();
 			foreach (var info in propertyInfos)
 			{
-				Assert.That(info.PropertyType.Name.Contains("Nullable"), Is.False, 
+				Assert.That(info.PropertyType.Name.Contains("Nullable"), Is.False,
 					"Type: {" + type + "} contains nullable property {" + info.Name + "}");
 			}
 		}
 
 		[Test]
-		public void SafeComObject([ValueSource("GetComVisibleClassTypes")] Type type)
+		public void SafeComObject([ValueSource("GetComVisibleClassTypes")]
+			Type type)
 		{
 			Assert.True(type.IsSubclassOf(typeof(SafeComObject)));
 		}
 
 		[Test]
-		public void MarshalAs([ValueSource("GetComVisibleClassTypes")] Type type)
+		public void MarshalAs([ValueSource("GetComVisibleClassTypes")]
+			Type type)
 		{
-			var excludedTypes = new[] { typeof(string) };
+			var excludedTypes = new[] {typeof(string)};
 
 			var comDefaultInterfaceAttribute = type.GetCustomAttribute<ComDefaultInterfaceAttribute>();
 			Assert.IsNotNull(comDefaultInterfaceAttribute);

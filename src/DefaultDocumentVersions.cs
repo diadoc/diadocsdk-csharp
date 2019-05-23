@@ -1,5 +1,3 @@
-using System.ComponentModel.Design.Serialization;
-
 namespace Diadoc.Api
 {
     public static class DefaultDocumentVersions
