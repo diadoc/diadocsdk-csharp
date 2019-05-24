@@ -1048,7 +1048,7 @@ namespace Diadoc.Api.DataXml.Utd820 {
         
         private InvoiceTableItemItemTracingInfo[] itemTracingInfosField;
         
-        private InvoiceTableItemItemIndentMeanstNumber[] itemIndentMeanstNumbersField;
+        private InvoiceTableItemItemIdentificationNumber[] itemIdentificationNumbersField;
         
         private string productField;
         
@@ -1148,13 +1148,13 @@ namespace Diadoc.Api.DataXml.Utd820 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("ItemIndentMeanstNumber", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public InvoiceTableItemItemIndentMeanstNumber[] ItemIndentMeanstNumbers {
+        [System.Xml.Serialization.XmlArrayItemAttribute("ItemIdentificationNumber", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        public InvoiceTableItemItemIdentificationNumber[] ItemIdentificationNumbers {
             get {
-                return this.itemIndentMeanstNumbersField;
+                return this.itemIdentificationNumbersField;
             }
             set {
-                this.itemIndentMeanstNumbersField = value;
+                this.itemIdentificationNumbersField = value;
             }
         }
         
@@ -1535,13 +1535,13 @@ namespace Diadoc.Api.DataXml.Utd820 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    public partial class InvoiceTableItemItemIndentMeanstNumber {
+    public partial class InvoiceTableItemItemIdentificationNumber {
         
         private string[] unitField;
         
-        private string[] packageIndentField;
+        private string[] packageIdField;
         
-        private string transPackageIndentField;
+        private string transPackageIdField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Unit", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -1555,24 +1555,24 @@ namespace Diadoc.Api.DataXml.Utd820 {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("PackageIndent", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string[] PackageIndent {
+        [System.Xml.Serialization.XmlElementAttribute("PackageId", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string[] PackageId {
             get {
-                return this.packageIndentField;
+                return this.packageIdField;
             }
             set {
-                this.packageIndentField = value;
+                this.packageIdField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string TransPackageIndent {
+        public string TransPackageId {
             get {
-                return this.transPackageIndentField;
+                return this.transPackageIdField;
             }
             set {
-                this.transPackageIndentField = value;
+                this.transPackageIdField = value;
             }
         }
     }

@@ -330,11 +330,8 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateInvoiceDocumentReceiptXml(authToken, boxId, messageId, attachmentId, signer);
 		}
 
-		public GeneratedFile GenerateInvoiceCorrectionRequestXml(string authToken,
-			string boxId,
-			string messageId,
-			string attachmentId,
-			InvoiceCorrectionRequestInfo correctionInfo)
+		public GeneratedFile GenerateInvoiceCorrectionRequestXml(string authToken, string boxId, string messageId,
+			string attachmentId, InvoiceCorrectionRequestInfo correctionInfo)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
@@ -342,11 +339,8 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateInvoiceCorrectionRequestXml(authToken, boxId, messageId, attachmentId, correctionInfo);
 		}
 
-		public GeneratedFile GenerateRevocationRequestXml(string authToken,
-			string boxId,
-			string messageId,
-			string attachmentId,
-			RevocationRequestInfo revocationRequestInfo)
+		public GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId,
+			string attachmentId, RevocationRequestInfo revocationRequestInfo)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
@@ -354,11 +348,8 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateRevocationRequestXml(authToken, boxId, messageId, attachmentId, revocationRequestInfo);
 		}
 
-		public GeneratedFile GenerateSignatureRejectionXml(string authToken,
-			string boxId,
-			string messageId,
-			string attachmentId,
-			SignatureRejectionInfo signatureRejectionInfo)
+		public GeneratedFile GenerateSignatureRejectionXml(string authToken, string boxId, string messageId,
+			string attachmentId, SignatureRejectionInfo signatureRejectionInfo)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
@@ -366,9 +357,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateSignatureRejectionXml(authToken, boxId, messageId, attachmentId, signatureRejectionInfo);
 		}
 
-		public InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken,
-			string boxId,
-			string messageId,
+		public InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId,
 			string entityId)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
@@ -383,16 +372,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateInvoiceXml(authToken, invoiceInfo, disableValidation);
 		}
 
-		public GeneratedFile GenerateInvoiceRevisionXml(string authToken,
-			InvoiceInfo invoiceRevisionInfo,
+		public GeneratedFile GenerateInvoiceRevisionXml(string authToken, InvoiceInfo invoiceRevisionInfo,
 			bool disableValidation = false)
 		{
 			if (invoiceRevisionInfo == null) throw new ArgumentNullException("invoiceRevisionInfo");
 			return diadocHttpApi.GenerateInvoiceRevisionXml(authToken, invoiceRevisionInfo, disableValidation);
 		}
 
-		public GeneratedFile GenerateInvoiceCorrectionXml(string authToken,
-			InvoiceCorrectionInfo invoiceCorrectionInfo,
+		public GeneratedFile GenerateInvoiceCorrectionXml(string authToken, InvoiceCorrectionInfo invoiceCorrectionInfo,
 			bool disableValidation = false)
 		{
 			if (invoiceCorrectionInfo == null) throw new ArgumentNullException("invoiceCorrectionInfo");
@@ -400,8 +387,7 @@ namespace Diadoc.Api
 		}
 
 		public GeneratedFile GenerateInvoiceCorrectionRevisionXml(string authToken,
-			InvoiceCorrectionInfo invoiceCorrectionRevision,
-			bool disableValidation = false)
+			InvoiceCorrectionInfo invoiceCorrectionRevision, bool disableValidation = false)
 		{
 			if (invoiceCorrectionRevision == null) throw new ArgumentNullException("invoiceCorrectionRevision");
 			return diadocHttpApi.GenerateInvoiceCorrectionRevisionXml(authToken, invoiceCorrectionRevision, disableValidation);
@@ -432,17 +418,14 @@ namespace Diadoc.Api
 		}
 
 		public GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken,
-			AcceptanceCertificateSellerTitleInfo sellerInfo,
-			bool disableValidation = false)
+			AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
 			return diadocHttpApi.GenerateAcceptanceCertificateXmlForSeller(authToken, sellerInfo, disableValidation);
 		}
 
 		public GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken,
-			AcceptanceCertificateBuyerTitleInfo buyerInfo,
-			string boxId,
-			string sellerTitleMessageId,
+			AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId,
 			string sellerTitleAttachmentId)
 		{
 			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
@@ -451,17 +434,14 @@ namespace Diadoc.Api
 		}
 
 		public GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(string authToken,
-			AcceptanceCertificate552SellerTitleInfo sellerInfo,
-			bool disableValidation = false)
+			AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
 			return diadocHttpApi.GenerateAcceptanceCertificate552XmlForSeller(authToken, sellerInfo, disableValidation);
 		}
 
 		public GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(string authToken,
-			AcceptanceCertificate552BuyerTitleInfo buyerInfo,
-			string boxId,
-			string sellerTitleMessageId,
+			AcceptanceCertificate552BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId,
 			string sellerTitleAttachmentId)
 		{
 			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
@@ -470,26 +450,21 @@ namespace Diadoc.Api
 		}
 
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken,
-			UniversalTransferDocumentSellerTitleInfo sellerInfo,
-			bool disableValidation = false)
+			UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
 			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForSeller(authToken, sellerInfo, disableValidation);
 		}
 
 		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(string authToken,
-			UniversalCorrectionDocumentSellerTitleInfo sellerInfo,
-			bool disableValidation = false)
+			UniversalCorrectionDocumentSellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
 			return diadocHttpApi.GenerateUniversalCorrectionDocumentXmlForSeller(authToken, sellerInfo, disableValidation);
 		}
 
-		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken,
-			UniversalTransferDocumentBuyerTitleInfo buyerInfo,
-			string boxId,
-			string sellerTitleMessageId,
-			string sellerTitleAttachmentId)
+		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo,
+			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
 			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
@@ -561,9 +536,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GeneratePrintForm(authToken, boxId, messageId, documentId);
 		}
 
-		public string GeneratePrintFormFromAttachment(string authToken,
-			DocumentType documentType,
-			byte[] content,
+		public string GeneratePrintFormFromAttachment(string authToken, DocumentType documentType, byte[] content,
 			string fromBoxId = null)
 		{
 			return diadocHttpApi.GeneratePrintFormFromAttachment(authToken, documentType, content, fromBoxId);
@@ -594,18 +567,9 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetRecognized(recognitionId);
 		}
 
-		public DocumentList GetDocuments(string authToken,
-			string boxId,
-			string filterCategory,
-			string counteragentBoxId,
-			DateTime? timestampFrom,
-			DateTime? timestampTo,
-			string fromDocumentDate,
-			string toDocumentDate,
-			string departmentId,
-			bool excludeSubdepartments,
-			string afterIndexKey,
-			int? count = null)
+		public DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId,
+			DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId,
+			bool excludeSubdepartments, string afterIndexKey, int? count = null)
 		{
 			return diadocHttpApi.GetDocuments(authToken, boxId, filterCategory, counteragentBoxId, timestampFrom, timestampTo,
 				fromDocumentDate, toDocumentDate, departmentId, excludeSubdepartments, afterIndexKey, count);
@@ -664,8 +628,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.SearchDocflows(authToken, boxId, request);
 		}
 
-		public GetDocflowsByPacketIdResponse GetDocflowsByPacketId(string authToken,
-			string boxId,
+		public GetDocflowsByPacketIdResponse GetDocflowsByPacketId(string authToken, string boxId,
 			GetDocflowsByPacketIdRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
@@ -678,33 +641,28 @@ namespace Diadoc.Api
 			return diadocHttpApi.ForwardDocument(authToken, boxId, request);
 		}
 
-		public GetForwardedDocumentsResponse GetForwardedDocuments(string authToken,
-			string boxId,
+		public GetForwardedDocumentsResponse GetForwardedDocuments(string authToken, string boxId,
 			GetForwardedDocumentsRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetForwardedDocuments(authToken, boxId, request);
 		}
 
-		public GetForwardedDocumentEventsResponse GetForwardedDocumentEvents(string authToken,
-			string boxId,
+		public GetForwardedDocumentEventsResponse GetForwardedDocumentEvents(string authToken, string boxId,
 			GetForwardedDocumentEventsRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetForwardedDocumentEvents(authToken, boxId, request);
 		}
 
-		public byte[] GetForwardedEntityContent(string authToken,
-			string boxId,
-			ForwardedDocumentId forwardedDocumentId,
+		public byte[] GetForwardedEntityContent(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId,
 			string entityId)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetForwardedEntityContent(authToken, boxId, forwardedDocumentId, entityId);
 		}
 
-		public DocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken,
-			string boxId,
+		public DocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken, string boxId,
 			ForwardedDocumentId forwardedDocumentId)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
@@ -724,8 +682,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.CanSendInvoice(authToken, boxId, certificateBytes);
 		}
 
-		public void SendFnsRegistrationMessage(string authToken,
-			string boxId,
+		public void SendFnsRegistrationMessage(string authToken, string boxId,
 			FnsRegistrationMessageInfo fnsRegistrationMessageInfo)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
@@ -748,8 +705,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetCounteragents(authToken, myOrgId, counteragentStatus, afterIndexKey, query, pageSize);
 		}
 
-		public CounteragentCertificateList GetCounteragentCertificates(string authToken,
-			string myOrgId,
+		public CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId,
 			string counteragentOrgId)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
@@ -890,8 +846,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnList(innList);
 		}
 
-		public List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken,
-			string myOrgId,
+		public List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken, string myOrgId,
 			GetOrganizationsByInnListRequest innList)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -913,19 +868,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseSignatureRejectionXml(signatureRejectionXmlContent);
 		}
 
-		public DocumentProtocolResult GenerateDocumentProtocol(string authToken,
-			string boxId,
-			string messageId,
+		public DocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId,
 			string documentId)
 		{
 			return diadocHttpApi.GenerateDocumentProtocol(authToken, boxId, messageId, documentId);
 		}
 
-		public DocumentZipGenerationResult GenerateDocumentZip(string authToken,
-			string boxId,
-			string messageId,
-			string documentId,
-			bool fullDocflow)
+		public DocumentZipGenerationResult GenerateDocumentZip(string authToken, string boxId, string messageId,
+			string documentId, bool fullDocflow)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
@@ -942,8 +892,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocumentsByCustomId(authToken, boxId, customDocumentId);
 		}
 
-		public PrepareDocumentsToSignResponse PrepareDocumentsToSign(string authToken,
-			PrepareDocumentsToSignRequest request,
+		public PrepareDocumentsToSignResponse PrepareDocumentsToSign(string authToken, PrepareDocumentsToSignRequest request,
 			bool excludeContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -962,9 +911,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.WaitCloudSignResult(authToken, taskId, timeout);
 		}
 
-		public AsyncMethodResult CloudSignConfirm(string authToken,
-			string cloudSignToken,
-			string confirmationCode,
+		public AsyncMethodResult CloudSignConfirm(string authToken, string cloudSignToken, string confirmationCode,
 			ContentLocationPreference? locationPreference = null)
 		{
 			if (string.IsNullOrEmpty(cloudSignToken)) throw new ArgumentNullException("cloudSignToken");
@@ -978,9 +925,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.WaitCloudSignConfirmResult(authToken, taskId, timeout);
 		}
 
-		public AsyncMethodResult AcquireCounteragent(string authToken,
-			string myOrgId,
-			AcquireCounteragentRequest request,
+		public AsyncMethodResult AcquireCounteragent(string authToken, string myOrgId, AcquireCounteragentRequest request,
 			string myDepartmentId = null)
 		{
 			if (request == null) throw new ArgumentNullException("request");
