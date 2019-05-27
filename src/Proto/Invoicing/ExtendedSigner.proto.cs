@@ -303,7 +303,13 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       OtherOrganizationEmployee = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"AuthorizedPerson", Value=4)]
-      AuthorizedPerson = 4
+      AuthorizedPerson = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"BuyerEmployee", Value=5)]
+      BuyerEmployee = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InformationCreatorBuyerEmployee", Value=6)]
+      InformationCreatorBuyerEmployee = 6
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"DocumentTitleType")]
@@ -335,7 +341,10 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       AccCert552Seller = 6,
             
       [global::ProtoBuf.ProtoEnum(Name=@"AccCert552Buyer", Value=7)]
-      AccCert552Buyer = 7
+      AccCert552Buyer = 7,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Utd820Buyer", Value=8)]
+      Utd820Buyer = 8
     }
   
 }

@@ -13,12 +13,13 @@ namespace Diadoc.Api.Tests
 	{
 		private readonly Assembly diadocApiAssembly = typeof(ComDiadocApi).Assembly;
 
+
 		[Test]
 		public void EachClassInheritedFromComVisibleInterface_MustBeComVisible()
 		{
 			var comInvisibleClassesWithComVisibleInterface = diadocApiAssembly.GetTypes()
-					.Where(x => x.IsClass && !IsComVisible(x) && FindComVisibleInterfaces(x).Any())
-					.ToArray();
+				.Where(x => x.IsClass && !IsComVisible(x) && FindComVisibleInterfaces(x).Any())
+				.ToArray();
 
 			foreach (var type in comInvisibleClassesWithComVisibleInterface)
 				Console.WriteLine(type.Name);
@@ -56,7 +57,7 @@ namespace Diadoc.Api.Tests
 		public void GuidAttributes_MustBeAllDistinct()
 		{
 			var typeGuids = diadocApiAssembly.GetTypes()
-				.Select(x => new { Guid = TryGetGuid(x), Type = x })
+				.Select(x => new {Guid = TryGetGuid(x), Type = x})
 				.Where(g => g.Guid.HasValue)
 				.ToList();
 			var guidTypeStrings = string.Join("\n", typeGuids
@@ -111,9 +112,9 @@ namespace Diadoc.Api.Tests
 		private bool IsMethodReturnsType(MemberInfo member, Type returnType)
 		{
 			if (member is MethodInfo)
-				return ((MethodInfo)member).ReturnType == returnType;
+				return ((MethodInfo) member).ReturnType == returnType;
 			if (member is PropertyInfo)
-				return ((PropertyInfo)member).PropertyType == returnType;
+				return ((PropertyInfo) member).PropertyType == returnType;
 			throw new InvalidOperationException();
 		}
 
@@ -154,7 +155,7 @@ namespace Diadoc.Api.Tests
 		private static Guid? TryGetGuid(Type type)
 		{
 			var attribute = FindAttributes<GuidAttribute>(type).FirstOrDefault();
-			return attribute == null ? (Guid?)null : new Guid(attribute.Value);
+			return attribute == null ? (Guid?) null : new Guid(attribute.Value);
 		}
 
 		private static T[] FindAttributes<T>(Type type)

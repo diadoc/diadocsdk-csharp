@@ -17,6 +17,7 @@ namespace Diadoc.Api.Com
 		TovTorg551Seller = 4,
 		TovTorg551Buyer = 5,
 		AccCert552Seller = 6,
-		AccCert552Buyer = 7
+		AccCert552Buyer = 7,
+		Utd820Buyer = 8
 	}
 }
