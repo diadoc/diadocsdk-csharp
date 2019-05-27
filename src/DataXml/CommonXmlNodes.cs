@@ -1,4 +1,4 @@
-namespace Diadoc.Api.DataXml.Utd820
+namespace Diadoc.Api.DataXml
 {
 	/// <remarks/>
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
@@ -345,15 +345,15 @@ namespace Diadoc.Api.DataXml.Utd820
 	{
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("1")]
-		Item1,
+		LegalEntity,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("2")]
-		Item2,
+		IndividualEntity,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("3")]
-		Item3,
+		PhysicalPerson,
 	}
 
 	/// <remarks/>
@@ -392,15 +392,15 @@ namespace Diadoc.Api.DataXml.Utd820
 	{
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("1")]
-		Item1,
+		PersonMadeOperation,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("2")]
-		Item2,
+		MadeAndSignOperation,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("3")]
-		Item3,
+		PersonDocumentedOperation,
 	}
 
 	/// <remarks/>
@@ -411,19 +411,19 @@ namespace Diadoc.Api.DataXml.Utd820
 	{
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("3")]
-		Item3,
+		OtherOrganizationEmployee,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("4")]
-		Item4,
+		AuthorizedPerson,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("5")]
-		Item5,
+		BuyerEmployee,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("6")]
-		Item6,
+		InformationCreatorBuyerEmployee,
 	}
 
 	/// <remarks/>
@@ -457,19 +457,19 @@ namespace Diadoc.Api.DataXml.Utd820
 	{
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("1")]
-		Item1,
+		SellerEmployee,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("2")]
-		Item2,
+		InformationCreatorEmployee,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("3")]
-		Item3,
+		OtherOrganizationEmployee,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("4")]
-		Item4,
+		AuthorizedPerson,
 	}
 
 	/// <remarks/>
@@ -498,15 +498,15 @@ namespace Diadoc.Api.DataXml.Utd820
 	{
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("1")]
-		Item1,
+		PersonMadeOperation,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("2")]
-		Item2,
+		MadeAndSignOperation,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("3")]
-		Item3,
+		PersonDocumentedOperation,
 	}
 
 	/// <remarks/>
@@ -535,7 +535,7 @@ namespace Diadoc.Api.DataXml.Utd820
 	{
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("3")]
-		Item3,
+		PersonDocumentedOperation,
 	}
 
 	/// <remarks/>
@@ -564,15 +564,15 @@ namespace Diadoc.Api.DataXml.Utd820
 	{
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("0")]
-		Item0,
+		InvoiceSigner,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("3")]
-		Item3,
+		PersonDocumentedOperation,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("6")]
-		Item6,
+		ResponsibleForOperationAndSignerForInvoice,
 	}
 
 	/// <remarks/>
@@ -601,15 +601,15 @@ namespace Diadoc.Api.DataXml.Utd820
 	{
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("1")]
-		Item1,
+		PersonMadeOperation,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("2")]
-		Item2,
+		MadeAndSignOperation,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("3")]
-		Item3,
+		PersonDocumentedOperation,
 	}
 
 	/// <remarks/>
@@ -638,31 +638,31 @@ namespace Diadoc.Api.DataXml.Utd820
 	{
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("0")]
-		Item0,
+		InvoiceSigner,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("1")]
-		Item1,
+		PersonMadeOperation,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("2")]
-		Item2,
+		MadeAndSignOperation,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("3")]
-		Item3,
+		PersonDocumentedOperation,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("4")]
-		Item4,
+		MadeOperationAndSignedInvoice,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("5")]
-		Item5,
+		MadeAndResponsibleForOperationAndSignedInvoice,
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("6")]
-		Item6,
+		ResponsibleForOperationAndSignerForInvoice,
 	}
 
 	/// <remarks/>

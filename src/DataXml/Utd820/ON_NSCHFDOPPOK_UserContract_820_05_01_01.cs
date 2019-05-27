@@ -92,10 +92,16 @@ namespace Diadoc.Api.DataXml.Utd820 {
             }
         }
 
-        public static UniversalTransferDocumentBuyerTitle UseSignerReferences(UniversalTransferDocumentBuyerTitle title, SignerReference[] signerReferences)
+        public UniversalTransferDocumentBuyerTitle UseSignerReferences(SignerReference[] signerReferences)
         {
-            title.Signers = signerReferences;
-            return title;
+            this.Signers = signerReferences;
+            return this;
+        }
+        
+        public UniversalTransferDocumentBuyerTitle UseSignerDetails(ExtendedSignerDetails_BuyerTitle820[] signerDetails)
+        {
+            this.Signers = signerDetails;
+            return this;
         }
         
         /// <remarks/>
@@ -284,15 +290,15 @@ namespace Diadoc.Api.DataXml.Utd820 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("1")]
-        Item1,
+        Accepted,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("2")]
-        Item2,
+        AcceptedWithDiscrepancies,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("3")]
-        Item3,
+        NotAccepted,
     }
     
     /// <remarks/>
@@ -303,11 +309,11 @@ namespace Diadoc.Api.DataXml.Utd820 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("2")]
-        Item2,
+        DiscrepanciesAcceptance,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("3")]
-        Item3,
+        Discrepancies,
     }
     
     /// <remarks/>
@@ -609,27 +615,27 @@ namespace Diadoc.Api.DataXml.Utd820 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("1")]
-        Item1,
+        Budjet,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("2")]
-        Item2,
+        UntitledSourceType,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("3")]
-        Item3,
+        AdditionalFunding,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("4")]
-        Item4,
+        InvestigatingActivitiesFunding,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("5")]
-        Item5,
+        TemporaryGovernmentSources,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("6")]
-        Item6,
+        LegalEntitiesSources,
     }
     
     /// <remarks/>
@@ -640,10 +646,10 @@ namespace Diadoc.Api.DataXml.Utd820 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("0")]
-        Item0,
+        Empty,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("4")]
-        Item4,
+        Urgent,
     }
 }

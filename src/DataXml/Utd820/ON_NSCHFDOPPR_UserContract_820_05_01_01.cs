@@ -139,7 +139,19 @@ namespace Diadoc.Api.DataXml.Utd820 {
                 this.signersField = value;
             }
         }
+
+        public UniversalTransferDocument UseSignerReferences(SignerReference[] signerReferences)
+        {
+            this.Signers = signerReferences;
+            return this;
+        }
         
+        public UniversalTransferDocument UseSignerDetails(ExtendedSignerDetails_SellerTitle[] signerDetails)
+        {
+            this.Signers = signerDetails;
+            return this;
+        }
+
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         [System.Xml.Serialization.XmlArrayItemAttribute("Document", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
@@ -919,7 +931,7 @@ namespace Diadoc.Api.DataXml.Utd820 {
         private bool totalNetFieldSpecified;
         
         public InvoiceTable() {
-            this.withoutVatField = InvoiceTableWithoutVat.@false;
+            this.withoutVatField = InvoiceTableWithoutVat.False;
         }
         
         /// <remarks/>
@@ -979,7 +991,7 @@ namespace Diadoc.Api.DataXml.Utd820 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        [System.ComponentModel.DefaultValueAttribute(InvoiceTableWithoutVat.@false)]
+        [System.ComponentModel.DefaultValueAttribute(InvoiceTableWithoutVat.False)]
         public InvoiceTableWithoutVat WithoutVat {
             get {
                 return this.withoutVatField;
@@ -1107,7 +1119,7 @@ namespace Diadoc.Api.DataXml.Utd820 {
         private string itemTypeCodeField;
         
         public InvoiceTableItem() {
-            this.withoutVatField = InvoiceTableItemWithoutVat.@false;
+            this.withoutVatField = InvoiceTableItemWithoutVat.False;
         }
         
         /// <remarks/>
@@ -1314,7 +1326,7 @@ namespace Diadoc.Api.DataXml.Utd820 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        [System.ComponentModel.DefaultValueAttribute(InvoiceTableItemWithoutVat.@false)]
+        [System.ComponentModel.DefaultValueAttribute(InvoiceTableItemWithoutVat.False)]
         public InvoiceTableItemWithoutVat WithoutVat {
             get {
                 return this.withoutVatField;
@@ -1584,39 +1596,39 @@ namespace Diadoc.Api.DataXml.Utd820 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("без НДС")]
-        безНДС,
+        WithoutVat,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("0%")]
-        Item0,
+        Zero,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("10%")]
-        Item10,
+        TenPercent,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("18%")]
-        Item18,
+        EighteenPercent,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("20%")]
-        Item20,
+        TwentyPercent,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("10/110")]
-        Item10110,
+        TenFraction,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("18/118")]
-        Item18118,
+        EighteenFraction,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("20/120")]
-        Item20120,
+        TwentyFraction,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("НДС исчисляется налоговым агентом")]
-        НДСисчисляетсяналоговымагентом,
+        TaxedByAgent,
     }
     
     /// <remarks/>
@@ -1626,10 +1638,12 @@ namespace Diadoc.Api.DataXml.Utd820 {
     public enum InvoiceTableItemWithoutVat {
         
         /// <remarks/>
-        @true,
+        [System.Xml.Serialization.XmlEnumAttribute("true")]
+        True,
         
         /// <remarks/>
-        @false,
+        [System.Xml.Serialization.XmlEnumAttribute("false")]
+        False,
     }
     
     /// <remarks/>
@@ -1637,26 +1651,26 @@ namespace Diadoc.Api.DataXml.Utd820 {
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
     public enum InvoiceTableItemItemMark {
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("1")]
-        Item1,
+        Property,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("2")]
-        Item2,
+        Job,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("3")]
-        Item3,
+        Service,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("4")]
-        Item4,
+        PropertyRights,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("5")]
-        Item5,
+        Other,
     }
     
     /// <remarks/>
@@ -1666,10 +1680,12 @@ namespace Diadoc.Api.DataXml.Utd820 {
     public enum InvoiceTableWithoutVat {
         
         /// <remarks/>
-        @true,
+        [System.Xml.Serialization.XmlEnumAttribute("true")]
+        True,
         
         /// <remarks/>
-        @false,
+        [System.Xml.Serialization.XmlEnumAttribute("false")]
+        False,
     }
     
     /// <remarks/>
@@ -2095,19 +2111,19 @@ namespace Diadoc.Api.DataXml.Utd820 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("1")]
-        Item1,
+        LegalEntity,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("2")]
-        Item2,
+        IndividualEntity,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("3")]
-        Item3,
+        ForeignEntity,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("4")]
-        Item4,
+        PhysicalEntity,
     }
     
     /// <remarks/>
@@ -2144,7 +2160,7 @@ namespace Diadoc.Api.DataXml.Utd820 {
         private UniversalTransferDocumentShipperSameAsSeller sameAsSellerField;
         
         public UniversalTransferDocumentShipper() {
-            this.sameAsSellerField = UniversalTransferDocumentShipperSameAsSeller.@false;
+            this.sameAsSellerField = UniversalTransferDocumentShipperSameAsSeller.False;
         }
         
         /// <remarks/>
@@ -2161,7 +2177,7 @@ namespace Diadoc.Api.DataXml.Utd820 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        [System.ComponentModel.DefaultValueAttribute(UniversalTransferDocumentShipperSameAsSeller.@false)]
+        [System.ComponentModel.DefaultValueAttribute(UniversalTransferDocumentShipperSameAsSeller.False)]
         public UniversalTransferDocumentShipperSameAsSeller SameAsSeller {
             get {
                 return this.sameAsSellerField;
@@ -2179,10 +2195,13 @@ namespace Diadoc.Api.DataXml.Utd820 {
     public enum UniversalTransferDocumentShipperSameAsSeller {
         
         /// <remarks/>
-        @true,
+        [System.Xml.Serialization.XmlEnumAttribute("true")]
+        True,
         
         /// <remarks/>
-        @false,
+        [System.Xml.Serialization.XmlEnumAttribute("false")]
+        False,
+    }
     }
     
     /// <remarks/>
@@ -2349,22 +2368,33 @@ namespace Diadoc.Api.DataXml.Utd820 {
         СЧФДОП,
     }
     
-    /// <remarks/>
+    /// <remarks>
+    /// Обстоятельства формирования счета-фактуры, применяемого при расчетах по налогу на добавленную стоимость
+    /// </remarks>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
     public enum UniversalTransferDocumentCircumFormatInvoice {
         
-        /// <remarks/>
+        /// <remarks>
+        /// Cчет-фактура, выставляемый при реализации товаров (работ, услуг), передаче имущественных прав 
+        /// </remarks>
         [System.Xml.Serialization.XmlEnumAttribute("1")]
-        Item1,
+        ItemsRealization,
         
-        /// <remarks/>
+        /// <remarks>
+        /// Счет-фактура, выставляемый при получении оплаты, частичной оплаты в счет предстоящих
+        /// поставок товаров (выполнения работ, оказания услуг), передачи имущественных прав 
+        /// </remarks>
         [System.Xml.Serialization.XmlEnumAttribute("2")]
-        Item2,
+        PaymentsRecieve,
         
-        /// <remarks/>
+        /// <remarks>
+        /// Счет-фактура, применяемый в случае реализации комиссионером (агентом, экспедитором, застройщиком или заказчиком, выполняющим функции застройщика)
+        /// двум и более покупателям (приобретения у двух и более продавцов) товаров (работ, услуг), имущественных прав от своего имени
+        /// </remarks>
         [System.Xml.Serialization.XmlEnumAttribute("3")]
-        Item3,
+        AgentSchema,
     }
-}
+
+
