@@ -156,6 +156,16 @@ namespace Diadoc.Api
 			string sellerTitleMessageId,
 			string sellerTitleAttachmentId);
 
+		GeneratedFile GenerateSenderTitleXml(
+			string authToken,
+			string boxId,
+			string documentTypeNamedId,
+			string documentFunction,
+			string documentVersion,
+			byte[] userContractData,
+			bool disableValidation = false,
+			string editingSettingId = null);
+
 		GeneratedFile GenerateRecipientTitleXml(
 			string authToken,
 			string boxId,
@@ -888,6 +898,27 @@ namespace Diadoc.Api
 			string sellerTitleAttachmentId)
 		{
 			return diadoc.GenerateUniversalTransferDocumentXmlForBuyer(authToken, (UniversalTransferDocumentBuyerTitleInfo) buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+		}
+
+		public GeneratedFile GenerateSenderTitleXml(
+			string authToken, 
+			string boxId, 
+			string documentTypeNamedId, 
+			string documentFunction, 
+			string documentVersion, 
+			byte[] userContractData, 
+			bool disableValidation = false, 
+			string editingSettingId = null)
+		{
+			return diadoc.GenerateSenderTitleXml(
+				authToken, 
+				boxId, 
+				documentTypeNamedId, 
+				documentFunction, 
+				documentVersion, 
+				userContractData, 
+				disableValidation, 
+				editingSettingId);
 		}
 
 		public GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
