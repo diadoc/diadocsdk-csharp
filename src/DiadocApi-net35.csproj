@@ -66,6 +66,7 @@
     <Compile Include="Com\CounteragentStatus.cs" />
     <Compile Include="Com\CustomDataPatchOperation.cs" />
     <Compile Include="Com\Departments.cs" />
+    <Compile Include="Com\DetectCustomPrintForms.cs" />
     <Compile Include="Com\DocflowStatusSeverity.cs" />
     <Compile Include="Com\DocflowsV3.cs" />
     <Compile Include="Com\DocumentAccessLevel.cs" />
@@ -89,6 +90,8 @@
     <Compile Include="Com\RoamingNotificationStatus.cs" />
     <Compile Include="Com\SenderSignatureStatus.cs" />
     <Compile Include="Com\Users.cs" />
+    <Compile Include="DiadocHttpApi.DetectCustomPrintForms.cs" />
+    <Compile Include="Proto\CustomPrintFormDetectionResult.proto.cs" />
     <Compile Include="XmlSerializerExtensions.cs" />
     <Compile Include="DataXml\CommonXmlNodes.cs" />
     <Compile Include="DataXml\Utd820\ON_NSCHFDOPPOK_UserContract_820_05_01_01.cs" />

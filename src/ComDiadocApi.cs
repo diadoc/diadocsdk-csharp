@@ -1466,5 +1466,13 @@ namespace Diadoc.Api
 		}
 
 		#endregion
+
+		public CustomPrintFormDetectionResult DetectCustomPrintForms(
+			string authToken,
+			string boxId,
+			CustomPrintFormDetectionRequest request)
+		{
+			return diadoc.DetectCustomPrintForms(authToken, boxId, request);
+		}
 	}
 }
