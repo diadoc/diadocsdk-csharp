@@ -1144,5 +1144,15 @@ namespace Diadoc.Api
 			if (registrationConfirmRequest == null) throw new ArgumentNullException("registrationConfirmRequest");
 			return diadocHttpApi.RegisterConfirmAsync(authToken, registrationConfirmRequest);
 		}
+
+		public Task<CustomPrintFormDetectionResult> DetectCustomPrintFormsAsync(string authToken,
+			string boxId,
+			CustomPrintFormDetectionRequest request)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (request == null) throw new ArgumentNullException("request");
+			return diadocHttpApi.DetectCustomPrintFormsAsync(authToken, boxId, request);
+		}
 	}
 }
