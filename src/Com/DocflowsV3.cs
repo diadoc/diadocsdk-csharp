@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
 using Diadoc.Api.Proto.Documents;
@@ -385,6 +386,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IDocumentDraftInfo))]
 	public partial class DocumentDraftInfo : SafeComObject, IDocumentDraftInfo
 	{
+		[Obsolete]
 		public ReadonlyList TransformedToLetterIdsList
 		{
 			get { return new ReadonlyList(TransformedToLetterIds); }
@@ -406,6 +408,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IDocumentTemplateInfo))]
 	public partial class DocumentTemplateInfo : SafeComObject, IDocumentTemplateInfo
 	{
+		[Obsolete]
 		public ReadonlyList TransformedToLetterIdsList
 		{
 			get { return new ReadonlyList(TransformedToLetterIds); }

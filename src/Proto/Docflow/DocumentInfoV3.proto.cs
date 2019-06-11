@@ -17,6 +17,9 @@
 // Note: requires additional types generated from: DocumentDirection.proto
 // Note: requires additional types generated from: Events/DiadocMessage-PostApi.proto
 // Note: requires additional types generated from: CustomDataItem.proto
+
+using System;
+
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentInfoV3")]
@@ -368,11 +371,54 @@ namespace Diadoc.Api.Proto.Docflow
     }
     private readonly global::System.Collections.Generic.List<string> _TransformedToLetterIds = new global::System.Collections.Generic.List<string>();
     [global::ProtoBuf.ProtoMember(2, Name=@"TransformedToLetterIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [Obsolete]
     public global::System.Collections.Generic.List<string> TransformedToLetterIds
     {
       get { return _TransformedToLetterIds; }
     }
   
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.TemplateTransformationInfo> _TemplateTransformationInfos = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.TemplateTransformationInfo>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"TemplateTransformationInfos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.TemplateTransformationInfo> TemplateTransformationInfos
+    {
+      get { return _TemplateTransformationInfos; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TemplateTransformationInfo")]
+  public partial class TemplateTransformationInfo : global::ProtoBuf.IExtensible
+  {
+    public TemplateTransformationInfo() {}
+    
+    private string _TransformationId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"TransformationId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string TransformationId
+    {
+      get { return _TransformationId; }
+      set { _TransformationId = value; }
+    }
+
+    private Diadoc.Api.Proto.DocumentId _TransformedToDocumentId = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TransformedToDocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.DocumentId TransformedToDocumentId
+    {
+      get { return _TransformedToDocumentId; }
+      set { _TransformedToDocumentId = value; }
+    }
+
+    private string _AuthorUserId = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"AuthorUserId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AuthorUserId
+    {
+      get { return _AuthorUserId; }
+      set { _AuthorUserId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

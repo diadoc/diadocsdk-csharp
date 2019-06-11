@@ -60,6 +60,8 @@ namespace Diadoc.Api.Com
 		ResolutionRouteRemovalAttachment = 67,
 		Title = 68,
 		Cancellation = 69,
-		Edition = 71
+		Edition = 71,
+		DeletionRestoration = 72,
+		TemplateTransformation = 73
 	}
 }
