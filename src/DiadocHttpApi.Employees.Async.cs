@@ -62,5 +62,12 @@ namespace Diadoc.Api
 			queryString.AddParameter("userId", userId);
 			return PerformHttpRequestAsync<SubscriptionsToUpdate, EmployeeSubscriptions>(authToken, queryString.BuildPathAndQuery(), subscriptionsToUpdate);
 		}
+
+		public Task<Employee> GetMyEmployeeAsync(string authToken, string boxId)
+		{
+			var queryString = new PathAndQueryBuilder("/GetMyEmployee");
+			queryString.AddParameter("boxId", boxId);
+			return PerformHttpRequestAsync<Employee>(authToken, "GET", queryString.BuildPathAndQuery());
+		}
 	}
 }
