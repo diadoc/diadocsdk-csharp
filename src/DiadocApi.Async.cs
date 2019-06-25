@@ -763,7 +763,7 @@ namespace Diadoc.Api
 				boxId,
 				documentTypeNamedId,
 				documentFunction,
-				documentFunction,
+				documentVersion,
 				titleIndex,
 				content);
 		}
