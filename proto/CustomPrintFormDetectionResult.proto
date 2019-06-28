@@ -2,6 +2,11 @@ import "DocumentId.proto";
 
 package Diadoc.Api.Proto;
 
+message CustomPrintFormDetectionRequest
+{
+    repeated DocumentId DocumentIds = 1;
+}
+
 message CustomPrintFormDetectionResult
 {
     repeated CustomPrintFormDetectionItemResult Items = 1;
@@ -13,7 +18,3 @@ message CustomPrintFormDetectionItemResult
     required bool HasCustomPrintForm = 2;
 }
 
-message CustomPrintFormDetectionRequest
-{
-    repeated DocumentId DocumentIds = 1;
-}

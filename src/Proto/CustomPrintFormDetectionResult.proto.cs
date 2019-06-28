@@ -11,6 +11,23 @@
 // Note: requires additional types generated from: DocumentId.proto
 namespace Diadoc.Api.Proto
 {
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CustomPrintFormDetectionRequest")]
+  public partial class CustomPrintFormDetectionRequest : global::ProtoBuf.IExtensible
+  {
+    public CustomPrintFormDetectionRequest() {}
+    
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId> _DocumentIds = new global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"DocumentIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId> DocumentIds
+    {
+      get { return _DocumentIds; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CustomPrintFormDetectionResult")]
   public partial class CustomPrintFormDetectionResult : global::ProtoBuf.IExtensible
   {
@@ -47,23 +64,6 @@ namespace Diadoc.Api.Proto
       get { return _HasCustomPrintForm; }
       set { _HasCustomPrintForm = value; }
     }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CustomPrintFormDetectionRequest")]
-  public partial class CustomPrintFormDetectionRequest : global::ProtoBuf.IExtensible
-  {
-    public CustomPrintFormDetectionRequest() {}
-    
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId> _DocumentIds = new global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"DocumentIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.DocumentId> DocumentIds
-    {
-      get { return _DocumentIds; }
-    }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

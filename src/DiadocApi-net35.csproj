@@ -66,6 +66,7 @@
     <Compile Include="Com\CounteragentStatus.cs" />
     <Compile Include="Com\CustomDataPatchOperation.cs" />
     <Compile Include="Com\Departments.cs" />
+    <Compile Include="Com\DetectCustomPrintForms.cs" />
     <Compile Include="Com\DocflowStatusSeverity.cs" />
     <Compile Include="Com\DocflowsV3.cs" />
     <Compile Include="Com\DocumentAccessLevel.cs" />

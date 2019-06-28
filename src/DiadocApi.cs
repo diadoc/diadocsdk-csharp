@@ -1209,7 +1209,8 @@ namespace Diadoc.Api
 			diadocHttpApi.RegisterConfirm(authToken, registrationConfirmRequest);
 		}
 
-		public CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken,
+		public CustomPrintFormDetectionResult DetectCustomPrintForms(
+			string authToken,
 			string boxId,
 			CustomPrintFormDetectionRequest request)
 		{
