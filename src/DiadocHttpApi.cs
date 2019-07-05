@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Text;
 using Diadoc.Api.Cryptography;
 using Diadoc.Api.Http;
@@ -52,20 +53,28 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
-		protected TResponse PerformHttpRequest<TResponse>([CanBeNull] string token, [NotNull] string method,
-			[NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
-			where TResponse : class
+		protected TResponse PerformHttpRequest<TResponse>(
+			[CanBeNull] string token, 
+			[NotNull] string method, 
+			[NotNull] string queryString, 
+			[CanBeNull] byte[] requestBody = null,
+			params HttpStatusCode[] allowedStatusCodes)
+			where TResponse: class
 		{
-			return PerformHttpRequest(token, method, queryString, requestBody, Deserialize<TResponse>);
+			return PerformHttpRequest(token, method, queryString, requestBody, Deserialize<TResponse>, allowedStatusCodes);
 		}
 
 		[NotNull]
-		protected TResponse PerformHttpRequest<TResponse>([CanBeNull] string token, [NotNull] string method,
-			[NotNull] string queryString, [CanBeNull] byte[] requestBody,
-			[NotNull] Func<byte[], TResponse> convertResponse)
+		protected TResponse PerformHttpRequest<TResponse>(
+			[CanBeNull] string token, 
+			[NotNull] string method, 
+			[NotNull] string queryString, 
+			[CanBeNull] byte[] requestBody, 
+			[NotNull] Func<byte[], TResponse> convertResponse,
+			params HttpStatusCode[] allowedStatusCodes)
 		{
 			var request = BuildHttpRequest(token, method, queryString, requestBody);
-			var response = HttpClient.PerformHttpRequest(request);
+			var response = HttpClient.PerformHttpRequest(request, allowedStatusCodes);
 			return DeserializeResponse(request, response, convertResponse);
 		}
 

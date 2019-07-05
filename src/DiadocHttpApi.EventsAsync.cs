@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net;
+using System.Threading.Tasks;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api
 {
@@ -107,6 +109,13 @@ namespace Diadoc.Api
 		{
 			var queryString = "/PrepareDocumentsToSign" + (excludeContent ? "?excludeContent" : "");
 			return PerformHttpRequestAsync<PrepareDocumentsToSignRequest, PrepareDocumentsToSignResponse>(authToken, queryString, request);
+		}
+		
+		[NotNull]
+		public Task<BoxEvent> GetLastEventAsync([NotNull] string authToken, [NotNull] string boxId)
+		{
+			var queryString = BuildQueryStringWithBoxId("GetLastEvent", boxId);
+			return PerformHttpRequestAsync<BoxEvent>(authToken,"GET", queryString, allowStatusCodes: HttpStatusCode.NoContent);
 		}
 	}
 }

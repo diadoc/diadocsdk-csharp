@@ -223,6 +223,8 @@ namespace Diadoc.Api
 		RegistrationResponse Register(string authToken, RegistrationRequest registrationRequest);
 		void RegisterConfirm(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
 		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, CustomPrintFormDetectionRequest request);
+		BoxEvent GetLastEvent(string authToken, string boxId);
+
 #if !NET35
 
 		Task<string> AuthenticateAsync(string login, string password, string key = null, string id = null);
@@ -428,6 +430,7 @@ namespace Diadoc.Api
 		Task<RegistrationResponse> RegisterAsync(string authToken, RegistrationRequest registrationRequest);
 		Task RegisterConfirmAsync(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
 		Task<CustomPrintFormDetectionResult> DetectCustomPrintFormsAsync(string authToken, string boxId, CustomPrintFormDetectionRequest request);
+		Task<BoxEvent> GetLastEventAsync(string authToken, string boxId);
 #endif
 	}
 }
