@@ -1070,8 +1070,10 @@ namespace Diadoc.Api.Proto.Invoicing
       get { return _CostChangeInfo; }
       set { _CostChangeInfo = value; }
     }
-    private string _TransferDocDetails;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"TransferDocDetails", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _TransferDocDetails = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TransferDocDetails", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string TransferDocDetails
     {
       get { return _TransferDocDetails; }
