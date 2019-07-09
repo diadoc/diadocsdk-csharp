@@ -96,6 +96,13 @@ namespace Diadoc.Api.Proto
       get { return _AuthorizationPermission; }
       set { _AuthorizationPermission = value; }
     }
+    private bool _CanDeleteRestoreDocuments;
+    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"CanDeleteRestoreDocuments", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool CanDeleteRestoreDocuments
+    {
+      get { return _CanDeleteRestoreDocuments; }
+      set { _CanDeleteRestoreDocuments = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

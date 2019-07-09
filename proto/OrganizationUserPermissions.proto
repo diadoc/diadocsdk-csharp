@@ -20,6 +20,7 @@ message OrganizationUserPermissions {
 	optional string JobTitle = 10;
 	required bool CanCreateDocuments = 11;
 	required AuthorizationPermission AuthorizationPermission = 12;
+	required bool CanDeleteRestoreDocuments = 13;
 }
 
 message AuthorizationPermission {

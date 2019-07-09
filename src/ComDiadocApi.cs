@@ -601,6 +601,11 @@ namespace Diadoc.Api
 			diadoc.DeleteEmployee(authToken, boxId, userId);
 		}
 
+		public Employee GetMyEmployee(string authToken, string boxId)
+		{
+			return diadoc.GetMyEmployee(authToken, boxId);
+		}
+
 		public EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId)
 		{
 			return diadoc.GetSubscriptions(authToken, boxId, userId);

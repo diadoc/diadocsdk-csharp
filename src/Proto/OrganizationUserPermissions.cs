@@ -13,23 +13,24 @@ namespace Diadoc.Api.Proto
 		bool CanAddResolutions { get; }
 		bool CanRequestResolutions { get; }
 		AuthorizationPermission AuthorizationPermission { get; }
+		bool CanDeleteRestoreDocuments { get; }
 	}
 
 	[ComVisible(true)]
 	[Guid("783B622C-88B1-4B88-A855-370EB9848DB0")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IOrganizationUserPermissions))]
-	public partial class OrganizationUserPermissions: SafeComObject, IOrganizationUserPermissions
+	[ComDefaultInterface(typeof(IOrganizationUserPermissions))]
+	public partial class OrganizationUserPermissions : SafeComObject, IOrganizationUserPermissions
 	{
 		public override string ToString()
 		{
-			return string.Format("UserDepartmentId: {0}, IsAdministrator: {1}, DocumentAccessLevel: {2}, CanSignDocuments: {3}, CanAddResolutions: {4}, CanRequestResolutions: {5}",
-				UserDepartmentId, IsAdministrator, DocumentAccessLevel, CanSignDocuments, CanAddResolutions, CanRequestResolutions);
+			return string.Format("UserDepartmentId: {0}, IsAdministrator: {1}, DocumentAccessLevel: {2}, CanSignDocuments: {3}, CanAddResolutions: {4}, CanRequestResolutions: {5}, CanDeleteRestoreDocuments: {6}",
+				UserDepartmentId, IsAdministrator, DocumentAccessLevel, CanSignDocuments, CanAddResolutions, CanRequestResolutions, CanDeleteRestoreDocuments);
 		}
 
 		public Com.DocumentAccessLevel DocumentAccessLevelValue
 		{
-			get { return (Com.DocumentAccessLevel)((int)DocumentAccessLevel); }
+			get { return (Com.DocumentAccessLevel) ((int) DocumentAccessLevel); }
 		}
 	}
 
@@ -44,7 +45,7 @@ namespace Diadoc.Api.Proto
 	[ComVisible(true)]
 	[Guid("A66D77DE-2B5C-45FE-BD57-A755D8F803CA")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IAuthorizationPermission))]
+	[ComDefaultInterface(typeof(IAuthorizationPermission))]
 	public partial class AuthorizationPermission : SafeComObject, IAuthorizationPermission
 	{
 	}

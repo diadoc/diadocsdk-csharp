@@ -1141,6 +1141,13 @@ namespace Diadoc.Api
 			diadocHttpApi.DeleteEmployee(authToken, boxId, userId);
 		}
 
+		public Employee GetMyEmployee(string authToken, string boxId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetMyEmployee(authToken, boxId);
+		}
+
 		public EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
