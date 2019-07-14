@@ -18,7 +18,8 @@ namespace Diadoc.Api
 		{
 		}
 
-		public DiadocHttpApi([NotNull] string apiClientId, [NotNull] IHttpClient httpClient, [NotNull] ICrypt crypt, [NotNull] IHttpSerializer httpSerializer)
+		public DiadocHttpApi([NotNull] string apiClientId, [NotNull] IHttpClient httpClient, [NotNull] ICrypt crypt,
+			[NotNull] IHttpSerializer httpSerializer)
 		{
 			if (apiClientId == null) throw new ArgumentNullException("apiClientId");
 			if (httpClient == null) throw new ArgumentNullException("httpClient");
@@ -30,35 +31,38 @@ namespace Diadoc.Api
 			Docflow = new DocflowHttpApi(this);
 		}
 
-		[NotNull]
-		public IHttpClient HttpClient { get; private set; }
+		[NotNull] public IHttpClient HttpClient { get; private set; }
+
+		[NotNull] public DocflowHttpApi Docflow { get; private set; }
 
 		[NotNull]
-		public DocflowHttpApi Docflow { get; private set; }
-
-		[NotNull]
-		protected byte[] PerformHttpRequest([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
+		protected byte[] PerformHttpRequest([CanBeNull] string token, [NotNull] string method,
+			[NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
 		{
 			return PerformHttpRequest(token, method, queryString, requestBody, responseContent => responseContent);
 		}
 
 		[NotNull]
-		protected TResponse PerformHttpRequest<TRequest, TResponse>([CanBeNull] string token, [NotNull] string queryString, [NotNull] TRequest request)
-			where TRequest: class
-			where TResponse: class
+		protected TResponse PerformHttpRequest<TRequest, TResponse>([CanBeNull] string token,
+			[NotNull] string queryString, [NotNull] TRequest request)
+			where TRequest : class
+			where TResponse : class
 		{
 			return PerformHttpRequest(token, "POST", queryString, Serialize(request), Deserialize<TResponse>);
 		}
 
 		[NotNull]
-		protected TResponse PerformHttpRequest<TResponse>([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
-			where TResponse: class
+		protected TResponse PerformHttpRequest<TResponse>([CanBeNull] string token, [NotNull] string method,
+			[NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
+			where TResponse : class
 		{
 			return PerformHttpRequest(token, method, queryString, requestBody, Deserialize<TResponse>);
 		}
 
 		[NotNull]
-		protected TResponse PerformHttpRequest<TResponse>([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody, [NotNull] Func<byte[], TResponse> convertResponse)
+		protected TResponse PerformHttpRequest<TResponse>([CanBeNull] string token, [NotNull] string method,
+			[NotNull] string queryString, [CanBeNull] byte[] requestBody,
+			[NotNull] Func<byte[], TResponse> convertResponse)
 		{
 			var request = BuildHttpRequest(token, method, queryString, requestBody);
 			var response = HttpClient.PerformHttpRequest(request);
@@ -74,13 +78,15 @@ namespace Diadoc.Api
 			}
 			catch (Exception e)
 			{
-				throw new Exception(FormatErrorMessage(errorMessage ?? "Could not deserialize http response", request, response), e);
+				throw new Exception(
+					FormatErrorMessage(errorMessage ?? "Could not deserialize http response", request, response), e);
 			}
 		}
 
 		[NotNull]
-		protected GeneratedFile PerformGenerateXmlHttpRequest<TRequest>([CanBeNull] string token, [NotNull] string queryString, [NotNull] TRequest requestObject)
-			where TRequest: class
+		protected GeneratedFile PerformGenerateXmlHttpRequest<TRequest>([CanBeNull] string token,
+			[NotNull] string queryString, [NotNull] TRequest requestObject)
+			where TRequest : class
 		{
 			var request = BuildHttpRequest(token, "POST", queryString, Serialize(requestObject));
 			var response = HttpClient.PerformHttpRequest(request);
@@ -88,14 +94,16 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
-		protected HttpRequest BuildHttpRequest([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody)
+		protected HttpRequest BuildHttpRequest([CanBeNull] string token, [NotNull] string method,
+			[NotNull] string queryString, [CanBeNull] byte[] requestBody)
 		{
 			var body = requestBody != null ? new HttpRequestBody(requestBody, httpSerializer.RequestContentType) : null;
 			return BuildRequest(token, method, queryString, body);
 		}
 
 		[NotNull]
-		protected virtual HttpRequest BuildRequest([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] HttpRequestBody body)
+		protected virtual HttpRequest BuildRequest([CanBeNull] string token, [NotNull] string method,
+			[NotNull] string queryString, [CanBeNull] HttpRequestBody body)
 		{
 			var request = new HttpRequest(method, queryString, body, accept: httpSerializer.ResponseContentType);
 			var sb = new StringBuilder("DiadocAuth ");
@@ -112,7 +120,8 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
-		private static string FormatErrorMessage([NotNull] string message, [NotNull] HttpRequest request, [NotNull] HttpResponse response)
+		private static string FormatErrorMessage([NotNull] string message, [NotNull] HttpRequest request,
+			[NotNull] HttpResponse response)
 		{
 			var sb = new StringBuilder();
 			sb.AppendLine(message);
@@ -122,13 +131,13 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
-		protected byte[] Serialize<T>([NotNull] T obj) where T: class
+		protected byte[] Serialize<T>([NotNull] T obj) where T : class
 		{
 			return httpSerializer.Serialize(obj);
 		}
 
 		[NotNull]
-		protected T Deserialize<T>([NotNull] byte[] bytes) where T: class
+		protected T Deserialize<T>([NotNull] byte[] bytes) where T : class
 		{
 			return httpSerializer.Deserialize<T>(bytes);
 		}

@@ -213,7 +213,7 @@ namespace Diadoc.Api
 
 		RegistrationResponse Register(string authToken, RegistrationRequest registrationRequest);
 		void RegisterConfirm(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
-
+		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, CustomPrintFormDetectionRequest request);
 #if !NET35
 
 		Task<string> AuthenticateAsync(string login, string password, string key = null, string id = null);
@@ -221,8 +221,10 @@ namespace Diadoc.Api
 		Task<string> AuthenticateBySidAsync([NotNull] string sid);
 		Task<string> AuthenticateAsync(byte[] certificateBytes, bool useLocalSystemStorage = false);
 		Task<string> AuthenticateAsync(string thumbprint, bool useLocalSystemStorage = false);
-		Task<string> AuthenticateWithKeyAsync(string thumbprint, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true);
-		Task<string> AuthenticateWithKeyAsync(byte[] certificateBytes, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true);
+		Task<string> AuthenticateWithKeyAsync(string thumbprint, bool useLocalSystemStorage = false, string key =
+ null, string id = null, bool autoConfirm = true);
+		Task<string> AuthenticateWithKeyAsync(byte[] certificateBytes, bool useLocalSystemStorage = false, string key =
+ null, string id = null, bool autoConfirm = true);
 		Task<string> AuthenticateWithKeyConfirmAsync(byte[] certificateBytes, string token, bool saveBinding = false);
 		Task<string> AuthenticateWithKeyConfirmAsync(string thumbprint, string token, bool saveBinding = false);
 		Task<OrganizationUserPermissions> GetMyPermissionsAsync(string authToken, string orgId);
@@ -244,7 +246,8 @@ namespace Diadoc.Api
 		Task<BoxEvent> GetEventAsync(string authToken, string boxId, string eventId);
 		Task<Message> PostMessageAsync(string authToken, MessageToPost msg, string operationId = null);
 		Task<Template> PostTemplateAsync(string authToken, TemplateToPost template, string operationId = null);
-		Task<Message> TransformTemplateToMessageAsync(string authToken, TemplateTransformationToPost templateTransformation, string operationId = null);
+		Task<Message> TransformTemplateToMessageAsync(string authToken, TemplateTransformationToPost templateTransformation, string operationId
+ = null);
 		Task<MessagePatch> PostMessagePatchAsync(string authToken, MessagePatchToPost patch, string operationId = null);
 		Task PostRoamingNotificationAsync(string authToken, RoamingNotificationToPost notification);
 		Task DeleteAsync(string authToken, string boxId, string messageId, string documentId);
@@ -257,36 +260,53 @@ namespace Diadoc.Api
 		Task<GeneratedFile> GenerateRevocationRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo);
 		Task<GeneratedFile> GenerateSignatureRejectionXmlAsync(string authToken, string boxId, string messageId, string attachmentId, SignatureRejectionInfo signatureRejectionInfo);
 		Task<InvoiceCorrectionRequestInfo> GetInvoiceCorrectionRequestInfoAsync(string authToken, string boxId, string messageId, string entityId);
-		Task<GeneratedFile> GenerateInvoiceXmlAsync(string authToken, InvoiceInfo invoiceInfo, bool disableValidation = false);
-		Task<GeneratedFile> GenerateInvoiceRevisionXmlAsync(string authToken, InvoiceInfo invoiceRevisionInfo, bool disableValidation = false);
-		Task<GeneratedFile> GenerateInvoiceCorrectionXmlAsync(string authToken, InvoiceCorrectionInfo invoiceCorrectionInfo, bool disableValidation = false);
-		Task<GeneratedFile> GenerateInvoiceCorrectionRevisionXmlAsync(string authToken, InvoiceCorrectionInfo invoiceCorrectionRevision, bool disableValidation = false);
-		Task<GeneratedFile> GenerateTorg12XmlForSellerAsync(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation = false);
-		Task<GeneratedFile> GenerateTovTorg551XmlForSellerAsync(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation = false);
+		Task<GeneratedFile> GenerateInvoiceXmlAsync(string authToken, InvoiceInfo invoiceInfo, bool disableValidation =
+ false);
+		Task<GeneratedFile> GenerateInvoiceRevisionXmlAsync(string authToken, InvoiceInfo invoiceRevisionInfo, bool disableValidation
+ = false);
+		Task<GeneratedFile> GenerateInvoiceCorrectionXmlAsync(string authToken, InvoiceCorrectionInfo invoiceCorrectionInfo, bool disableValidation
+ = false);
+		Task<GeneratedFile> GenerateInvoiceCorrectionRevisionXmlAsync(string authToken, InvoiceCorrectionInfo invoiceCorrectionRevision, bool disableValidation
+ = false);
+		Task<GeneratedFile> GenerateTorg12XmlForSellerAsync(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation
+ = false);
+		Task<GeneratedFile> GenerateTovTorg551XmlForSellerAsync(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation
+ = false);
 		Task<GeneratedFile> GenerateTorg12XmlForBuyerAsync(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
-		Task<GeneratedFile> GenerateTovTorg551XmlForBuyerAsync(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null);
-		Task<GeneratedFile> GenerateAcceptanceCertificateXmlForSellerAsync(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false);
+		Task<GeneratedFile> GenerateTovTorg551XmlForBuyerAsync(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion
+ = null);
+		Task<GeneratedFile> GenerateAcceptanceCertificateXmlForSellerAsync(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation
+ = false);
 		Task<GeneratedFile> GenerateAcceptanceCertificateXmlForBuyerAsync(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
-		Task<GeneratedFile> GenerateAcceptanceCertificate552XmlForSellerAsync(string authToken, AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation = false);
+		Task<GeneratedFile> GenerateAcceptanceCertificate552XmlForSellerAsync(string authToken, AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation
+ = false);
 		Task<GeneratedFile> GenerateAcceptanceCertificate552XmlForBuyerAsync(string authToken, AcceptanceCertificate552BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
-		Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForSellerAsync(string authToken, UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
-		Task<GeneratedFile> GenerateUniversalCorrectionDocumentXmlForSellerAsync(string authToken, UniversalCorrectionDocumentSellerTitleInfo sellerInfo, bool disableValidation = false);
+		Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForSellerAsync(string authToken, UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation
+ = false);
+		Task<GeneratedFile> GenerateUniversalCorrectionDocumentXmlForSellerAsync(string authToken, UniversalCorrectionDocumentSellerTitleInfo sellerInfo, bool disableValidation
+ = false);
 		Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForBuyerAsync(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
-		Task<GeneratedFile> GenerateSenderTitleXmlAsync(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null);
-		Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
-		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
-		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
+		Task<GeneratedFile> GenerateSenderTitleXmlAsync(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation
+ = false, string editingSettingId = null);
+		Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion
+ = null);
+		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature =
+ false, bool injectEntityContent = false);
+		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature
+ = false, bool injectEntityContent = false);
 		Task<Template> GetTemplateAsync(string authToken, string boxId, string templateId, string entityId = null);
 		Task RecycleDraftAsync(string authToken, string boxId, string draftId);
 		Task<Message> SendDraftAsync(string authToken, DraftToSend draftToSend, string operationId = null);
 		Task<PrintFormResult> GeneratePrintFormAsync(string authToken, string boxId, string messageId, string documentId);
-		Task<string> GeneratePrintFormFromAttachmentAsync(string authToken, DocumentType documentType, byte[] content, string fromBoxId = null);
+		Task<string> GeneratePrintFormFromAttachmentAsync(string authToken, DocumentType documentType, byte[] content, string fromBoxId
+ = null);
 		[Obsolete("Use GetGeneratedPrintFormAsync without `documentType` parameter")]
 		Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, DocumentType documentType, string printFormId);
 		Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, string printFormId);
 		Task<string> RecognizeAsync(string fileName, byte[] content);
 		Task<Recognized> GetRecognizedAsync(string recognitionId);
-		Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count = null);
+		Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count
+ = null);
 		Task<DocumentList> GetDocumentsAsync(string authToken, DocumentsFilter filter);
 		Task<Document> GetDocumentAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<SignatureInfo> GetSignatureInfoAsync(string authToken, string boxId, string messageId, string entityId);
@@ -308,7 +328,8 @@ namespace Diadoc.Api
 		Task SendFnsRegistrationMessageAsync(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);
 		Task<Counteragent> GetCounteragentAsync(string authToken, string myOrgId, string counteragentOrgId);
 		Task<CounteragentCertificateList> GetCounteragentCertificatesAsync(string authToken, string myOrgId, string counteragentOrgId);
-		Task<CounteragentList> GetCounteragentsAsync(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null);
+		Task<CounteragentList> GetCounteragentsAsync(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query
+ = null, int? pageSize = null);
 		Task BreakWithCounteragentAsync(string authToken, string myOrgId, string counteragentOrgId, string comment);
 		Task<string> UploadFileToShelfAsync(string authToken, byte[] data);
 		Task<byte[]> GetFileFromShelfAsync(string authToken, string nameOnShelf);
@@ -345,18 +366,24 @@ namespace Diadoc.Api
 		Task<DocumentProtocolResult> GenerateDocumentProtocolAsync(string authToken, string boxId, string messageId, string documentId);
 		Task<DocumentZipGenerationResult> GenerateDocumentZipAsync(string authToken, string boxId, string messageId, string documentId, bool fullDocflow);
 		Task<DocumentList> GetDocumentsByCustomIdAsync(string authToken, string boxId, string customDocumentId);
-		Task<PrepareDocumentsToSignResponse> PrepareDocumentsToSignAsync(string authToken, PrepareDocumentsToSignRequest request, bool excludeContent = false);
+		Task<PrepareDocumentsToSignResponse> PrepareDocumentsToSignAsync(string authToken, PrepareDocumentsToSignRequest request, bool excludeContent
+ = false);
 		Task<AsyncMethodResult> CloudSignAsync(string authToken, CloudSignRequest request, string certificateThumbprint);
 		Task<CloudSignResult> WaitCloudSignResultAsync(string authToken, string taskId, TimeSpan? timeout = null);
-		Task<AsyncMethodResult> CloudSignConfirmAsync(string authToken, string cloudSignToken, string confirmationCode, ContentLocationPreference? locationPreference = null);
-		Task<CloudSignConfirmResult> WaitCloudSignConfirmResultAsync(string authToken, string taskId, TimeSpan? timeout = null);
-		Task<AsyncMethodResult> AcquireCounteragentAsync(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
-		Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
+		Task<AsyncMethodResult> CloudSignConfirmAsync(string authToken, string cloudSignToken, string confirmationCode, ContentLocationPreference? locationPreference
+ = null);
+		Task<CloudSignConfirmResult> WaitCloudSignConfirmResultAsync(string authToken, string taskId, TimeSpan? timeout
+ = null);
+		Task<AsyncMethodResult> AcquireCounteragentAsync(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId
+ = null);
+		Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout
+ = null, TimeSpan? delay = null);
 		Task<DocumentList> GetDocumentsByMessageIdAsync(string authToken, string boxId, string messageId);
 		Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string orgId, IEnumerable<string> keys);
 		Task PutOrganizationStorageEntriesAsync(string authToken, string orgId, IEnumerable<KeyValueStorageEntry> entries);
 		Task<AsyncMethodResult> AutoSignReceiptsAsync(string authToken, string boxId, string certificateThumbprint, string batchKey);
-		Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout = null);
+		Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout
+ = null);
 		Task<ExternalServiceAuthInfo> GetExternalServiceAuthInfoAsync(string key);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
@@ -377,12 +404,14 @@ namespace Diadoc.Api
 		Task<EmployeeSubscriptions> GetSubscriptionsAsync(string authToken, string boxId, string userId);
 		Task<EmployeeSubscriptions> UpdateSubscriptionsAsync(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);
 		Task<Departments.Department> GetDepartmentByFullIdAsync(string authToken, string boxId, string departmentId);
-		Task<Departments.DepartmentList> GetDepartmentsAsync(string authToken, string boxId, int? page = null, int? count = null);
+		Task<Departments.DepartmentList> GetDepartmentsAsync(string authToken, string boxId, int? page =
+ null, int? count = null);
 		Task<Departments.Department> CreateDepartmentAsync(string authToken, string boxId, Departments.DepartmentToCreate departmentToCreate);
 		Task<Departments.Department> UpdateDepartmentAsync(string authToken, string boxId, string departmentId, Departments.DepartmentToUpdate departmentToUpdate);
 		Task DeleteDepartmentAsync(string authToken, string boxId, string departmentId);
 		Task<RegistrationResponse> RegisterAsync(string authToken, RegistrationRequest registrationRequest);
 		Task RegisterConfirmAsync(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
+		Task<CustomPrintFormDetectionResult> DetectCustomPrintFormsAsync(string authToken, string boxId, CustomPrintFormDetectionRequest request);
 #endif
 	}
 }
