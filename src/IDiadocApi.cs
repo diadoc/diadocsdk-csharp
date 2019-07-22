@@ -185,8 +185,8 @@ namespace Diadoc.Api
 		AsyncMethodResult AcquireCounteragent(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
 		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
-		List<KeyValueStorageEntry> GetOrganizationStorageEntries(string authToken, string orgId, IEnumerable<string> keys);
-		void PutOrganizationStorageEntries(string authToken, string orgId, IEnumerable<KeyValueStorageEntry> entries);
+		List<KeyValueStorageEntry> GetOrganizationStorageEntries(string authToken, string boxId, IEnumerable<string> keys);
+		void PutOrganizationStorageEntries(string authToken, string boxId, IEnumerable<KeyValueStorageEntry> entries);
 		AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey);
 		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId, TimeSpan? timeout = null);
 		ExternalServiceAuthInfo GetExternalServiceAuthInfo(string key);
@@ -397,8 +397,8 @@ namespace Diadoc.Api
 		Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout
  = null, TimeSpan? delay = null);
 		Task<DocumentList> GetDocumentsByMessageIdAsync(string authToken, string boxId, string messageId);
-		Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string orgId, IEnumerable<string> keys);
-		Task PutOrganizationStorageEntriesAsync(string authToken, string orgId, IEnumerable<KeyValueStorageEntry> entries);
+		Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<string> keys);
+		Task PutOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<KeyValueStorageEntry> entries);
 		Task<AsyncMethodResult> AutoSignReceiptsAsync(string authToken, string boxId, string certificateThumbprint, string batchKey);
 		Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout
  = null);

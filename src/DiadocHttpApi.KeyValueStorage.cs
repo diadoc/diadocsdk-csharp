@@ -8,23 +8,33 @@ namespace Diadoc.Api
 	public partial class DiadocHttpApi
 	{
 		[NotNull]
-		public List<KeyValueStorageEntry> GetOrganizationStorageEntries([NotNull] string authToken, [NotNull] string orgId, [NotNull] IEnumerable<string> keys)
+		public List<KeyValueStorageEntry> GetOrganizationStorageEntries(
+			[NotNull] string authToken,
+			[NotNull] string boxId,
+			[NotNull] IEnumerable<string> keys)
 		{
-			var qsb = new PathAndQueryBuilder("/KeyValueStorageGet");
-			qsb.AddParameter("orgId", orgId);
+			var qsb = new PathAndQueryBuilder("/V2/KeyValueStorageGet");
+			qsb.AddParameter("boxId", boxId);
 			var queryString = qsb.BuildPathAndQuery();
 
 			var request = new KeyValueStorageApiGetRequest();
 			request.Keys.AddRange(keys);
 
-			var response = PerformHttpRequest<KeyValueStorageApiGetRequest, KeyValueStorageApiGetResponse>(authToken, queryString, request);
+			var response =
+				PerformHttpRequest<KeyValueStorageApiGetRequest, KeyValueStorageApiGetResponse>(
+					authToken,
+					queryString,
+					request);
 			return response.Entries;
 		}
 
-		public void PutOrganizationStorageEntries([NotNull] string authToken, [NotNull] string orgId, [NotNull] IEnumerable<KeyValueStorageEntry> entries)
+		public void PutOrganizationStorageEntries(
+			[NotNull] string authToken,
+			[NotNull] string boxId,
+			[NotNull] IEnumerable<KeyValueStorageEntry> entries)
 		{
-			var qsb = new PathAndQueryBuilder("/KeyValueStoragePut");
-			qsb.AddParameter("orgId", orgId);
+			var qsb = new PathAndQueryBuilder("/V2/KeyValueStoragePut");
+			qsb.AddParameter("boxId", boxId);
 			var queryString = qsb.BuildPathAndQuery();
 
 			var request = new KeyValueStorageApiPutRequest();
