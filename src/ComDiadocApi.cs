@@ -158,6 +158,19 @@ namespace Diadoc.Api
 			string sellerTitleMessageId,
 			string sellerTitleAttachmentId);
 
+		GeneratedFile GenerateTitleXml(
+			string authToken,
+			string boxId,
+			string documentTypeNamedId,
+			string documentFunction,
+			string documentVersion,
+			int titleIndex,
+			byte[] userContractData,
+			bool disableValidation = false,
+			string editingSettingId = null,
+			string letterId = null,
+			string documentId = null);
+
 		GeneratedFile GenerateSenderTitleXml(
 			string authToken,
 			string boxId,
@@ -911,24 +924,58 @@ namespace Diadoc.Api
 			return diadoc.GenerateUniversalTransferDocumentXmlForBuyer(authToken, (UniversalTransferDocumentBuyerTitleInfo) buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
+		public GeneratedFile GenerateTitleXml(
+			string authToken,
+			string boxId,
+			string documentTypeNamedId,
+			string documentFunction,
+			string documentVersion,
+			int titleIndex,
+			byte[] userContractData,
+			bool disableValidation = false,
+			string editingSettingId = null,
+			string letterId = null,
+			string documentId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (documentTypeNamedId == null) throw new ArgumentNullException("documentTypeNamedId");
+			if (documentFunction == null) throw new ArgumentNullException("documentFunction");
+			if (documentVersion == null) throw new ArgumentNullException("documentVersion");
+			if (userContractData == null) throw new ArgumentNullException("userContractData");
+
+			return diadoc.GenerateTitleXml(
+				authToken,
+				boxId,
+				documentTypeNamedId,
+				documentFunction,
+				documentVersion,
+				titleIndex,
+				userContractData,
+				disableValidation,
+				editingSettingId,
+				letterId,
+				documentId);
+		}
+
 		public GeneratedFile GenerateSenderTitleXml(
-			string authToken, 
-			string boxId, 
-			string documentTypeNamedId, 
-			string documentFunction, 
-			string documentVersion, 
-			byte[] userContractData, 
-			bool disableValidation = false, 
+			string authToken,
+			string boxId,
+			string documentTypeNamedId,
+			string documentFunction,
+			string documentVersion,
+			byte[] userContractData,
+			bool disableValidation = false,
 			string editingSettingId = null)
 		{
 			return diadoc.GenerateSenderTitleXml(
-				authToken, 
-				boxId, 
-				documentTypeNamedId, 
-				documentFunction, 
-				documentVersion, 
-				userContractData, 
-				disableValidation, 
+				authToken,
+				boxId,
+				documentTypeNamedId,
+				documentFunction,
+				documentVersion,
+				userContractData,
+				disableValidation,
 				editingSettingId);
 		}
 

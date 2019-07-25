@@ -40,6 +40,7 @@ message DocumentWorkflow {
 }
 
 message DocumentTitle {
+	required int32 Index = 7;
 	required bool IsFormal = 1;
 	optional string XsdUrl = 2;
 	optional string UserDataXsdUrl = 5;
