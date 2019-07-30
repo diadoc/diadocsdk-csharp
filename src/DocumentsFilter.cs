@@ -10,6 +10,8 @@ namespace Diadoc.Api
 		string BoxId { get; set; }
 		string FilterCategory { get; set; }
 		string CounteragentBoxId { get; set; }
+		object TimestampFromValue { get; set; }
+		object TimestampToValue { get; set; }
 		string FromDocumentDate { get; set; }
 		string ToDocumentDate { get; set; }
 		string DepartmentId { get; set; }
@@ -18,6 +20,7 @@ namespace Diadoc.Api
 		bool ExcludeSubdepartments { get; set; }
 		string SortDirection { get; set; }
 		string AfterIndexKey { get; set; }
+		object CountValue { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -41,5 +44,23 @@ namespace Diadoc.Api
 		public string SortDirection { get; set; }
 		public string AfterIndexKey { get; set; }
 		public int? Count { get; set; }
+
+		public object TimestampFromValue
+		{
+			get => TimestampFrom;
+			set => TimestampFrom = (DateTime?) value;
+		}
+
+		public object TimestampToValue
+		{
+			get => TimestampTo;
+			set => TimestampTo = (DateTime?) value;
+		}
+
+		public object CountValue
+		{
+			get => Count;
+			set => Count = (int?) value;
+		}
 	}
 }
