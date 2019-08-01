@@ -9,23 +9,31 @@ namespace Diadoc.Api
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
 			string authToken,
 			UniversalTransferDocumentSellerTitleInfo info,
-			bool disableValidation = false)
+			bool disableValidation = false,
+			string documentVersion = null)
 		{
-
-			return GenerateUniversalTransferDocumentXml(authToken, info, false, disableValidation);
+			return GenerateUniversalTransferDocumentXml(authToken, info, false, disableValidation, documentVersion);
 		}
 
 		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
 			string authToken,
 			UniversalCorrectionDocumentSellerTitleInfo correctionInfo,
-			bool disableValidation = false)
+			bool disableValidation = false,
+			string documentVersion = null)
 		{
-			return GenerateUniversalTransferDocumentXml(authToken, correctionInfo, true, disableValidation);
+			return GenerateUniversalTransferDocumentXml(authToken, correctionInfo, true, disableValidation, documentVersion);
 		}
 
-		private GeneratedFile GenerateUniversalTransferDocumentXml<T>(string authToken, T protoInfo, bool isCorrection, bool disableValidation = false) where T : class
+		private GeneratedFile GenerateUniversalTransferDocumentXml<T>(
+			string authToken,
+			T protoInfo, 
+			bool isCorrection,
+			bool disableValidation = false,
+			string documentVersion = null) 
+			where T : class
 		{
 			var query = new PathAndQueryBuilder("/GenerateUniversalTransferDocumentXmlForSeller");
+			query.AddParameter("documentVersion", documentVersion);
 			if (isCorrection)
 				query.AddParameter("correction", "");
 			if (disableValidation)
@@ -33,8 +41,12 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, query.BuildPathAndQuery(), protoInfo);
 		}
 
-		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo info,
-			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
+		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(
+			string authToken, 
+			UniversalTransferDocumentBuyerTitleInfo info,
+			string boxId, 
+			string sellerTitleMessageId, 
+			string sellerTitleAttachmentId)
 		{
 			var query = new PathAndQueryBuilder("/GenerateUniversalTransferDocumentXmlForBuyer");
 			query.AddParameter("boxId", boxId);
