@@ -449,18 +449,24 @@ namespace Diadoc.Api
 				sellerTitleAttachmentId);
 		}
 
-		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(string authToken,
-			UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false)
+		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
+			string authToken,
+			UniversalTransferDocumentSellerTitleInfo sellerInfo,
+			bool disableValidation = false,
+			string documentVersion = null)
 		{
 			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
-			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForSeller(authToken, sellerInfo, disableValidation);
+			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForSeller(authToken, sellerInfo, disableValidation, documentVersion);
 		}
 
-		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(string authToken,
-			UniversalCorrectionDocumentSellerTitleInfo sellerInfo, bool disableValidation = false)
+		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
+			string authToken,
+			UniversalCorrectionDocumentSellerTitleInfo sellerInfo,
+			bool disableValidation = false,
+			string documentVersion = null)
 		{
 			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
-			return diadocHttpApi.GenerateUniversalCorrectionDocumentXmlForSeller(authToken, sellerInfo, disableValidation);
+			return diadocHttpApi.GenerateUniversalCorrectionDocumentXmlForSeller(authToken, sellerInfo, disableValidation, documentVersion);
 		}
 
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo,
@@ -488,7 +494,7 @@ namespace Diadoc.Api
 			if (senderTitleMessageId == null) throw new ArgumentNullException("senderTitleMessageId");
 			if (senderTitleAttachmentId == null) throw new ArgumentNullException("senderTitleAttachmentId");
 			if (userContractData == null) throw new ArgumentNullException("userContractData");
-			return diadocHttpApi.GenerateRecipientTitleXml(authToken, boxId, senderTitleMessageId, senderTitleAttachmentId, userContractData);
+			return diadocHttpApi.GenerateRecipientTitleXml(authToken, boxId, senderTitleMessageId, senderTitleAttachmentId, userContractData, documentVersion);
 		}
 
 		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
@@ -786,9 +792,9 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXml(xmlContent);
 		}
 
-		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent)
+		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = null)
 		{
-			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXml(xmlContent);
+			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXml(xmlContent, documentVersion);
 		}
 
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent)
@@ -796,9 +802,9 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXml(xmlContent);
 		}
 
-		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent)
+		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = null)
 		{
-			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(xmlContent);
+			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(xmlContent, documentVersion);
 		}
 
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent)

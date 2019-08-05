@@ -388,18 +388,24 @@ namespace Diadoc.Api
 				sellerTitleAttachmentId);
 		}
 
-		public Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForSellerAsync(string authToken,
-			UniversalTransferDocumentSellerTitleInfo sellerInfo, bool disableValidation = false)
+		public Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForSellerAsync(
+			string authToken,
+			UniversalTransferDocumentSellerTitleInfo sellerInfo, 
+			bool disableValidation = false,
+			string documentVersion = null)
 		{
 			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
-			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForSellerAsync(authToken, sellerInfo, disableValidation);
+			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForSellerAsync(authToken, sellerInfo, disableValidation, documentVersion);
 		}
 
-		public Task<GeneratedFile> GenerateUniversalCorrectionDocumentXmlForSellerAsync(string authToken,
-			UniversalCorrectionDocumentSellerTitleInfo sellerInfo, bool disableValidation = false)
+		public Task<GeneratedFile> GenerateUniversalCorrectionDocumentXmlForSellerAsync(
+			string authToken,
+			UniversalCorrectionDocumentSellerTitleInfo sellerInfo,
+			bool disableValidation = false,
+			string documentVersion = null)
 		{
 			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
-			return diadocHttpApi.GenerateUniversalCorrectionDocumentXmlForSellerAsync(authToken, sellerInfo, disableValidation);
+			return diadocHttpApi.GenerateUniversalCorrectionDocumentXmlForSellerAsync(authToken, sellerInfo, disableValidation, documentVersion);
 		}
 
 		public Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForBuyerAsync(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo,
@@ -722,9 +728,9 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXmlAsync(xmlContent);
 		}
 
-		public Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(byte[] xmlContent)
+		public Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = null)
 		{
-			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXmlAsync(xmlContent, documentVersion);
 		}
 
 		public Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalTransferDocumentBuyerTitleXmlAsync(byte[] xmlContent)
@@ -732,9 +738,9 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXmlAsync(xmlContent);
 		}
 
-		public Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent)
+		public Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = null)
 		{
-			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXmlAsync(xmlContent, documentVersion);
 		}
 
 		public Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(byte[] xmlContent)

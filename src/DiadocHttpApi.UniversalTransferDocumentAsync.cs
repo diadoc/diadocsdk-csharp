@@ -10,23 +10,32 @@ namespace Diadoc.Api
 		public Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForSellerAsync(
 			string authToken,
 			UniversalTransferDocumentSellerTitleInfo info,
-			bool disableValidation = false)
+			bool disableValidation = false,
+			string documentVersion = null)
 		{
 
-			return GenerateUniversalTransferDocumentXmlAsync(authToken, info, false, disableValidation);
+			return GenerateUniversalTransferDocumentXmlAsync(authToken, info, false, disableValidation, documentVersion);
 		}
 
 		public Task<GeneratedFile> GenerateUniversalCorrectionDocumentXmlForSellerAsync(
 			string authToken,
 			UniversalCorrectionDocumentSellerTitleInfo correctionInfo,
-			bool disableValidation = false)
+			bool disableValidation = false,
+			string documentVersion = null)
 		{
-			return GenerateUniversalTransferDocumentXmlAsync(authToken, correctionInfo, true, disableValidation);
+			return GenerateUniversalTransferDocumentXmlAsync(authToken, correctionInfo, true, disableValidation, documentVersion);
 		}
 
-		private Task<GeneratedFile> GenerateUniversalTransferDocumentXmlAsync<T>(string authToken, T protoInfo, bool isCorrection, bool disableValidation = false) where T : class
+		private Task<GeneratedFile> GenerateUniversalTransferDocumentXmlAsync<T>(
+			string authToken, 
+			T protoInfo, 
+			bool isCorrection, 
+			bool disableValidation = false,
+			string documentVersion = null) 
+			where T : class
 		{
 			var query = new PathAndQueryBuilder("/GenerateUniversalTransferDocumentXmlForSeller");
+			query.AddParameter("documentVersion", documentVersion);
 			if (isCorrection)
 				query.AddParameter("correction", "");
 			if (disableValidation)
