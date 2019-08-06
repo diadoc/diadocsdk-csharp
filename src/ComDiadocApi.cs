@@ -268,12 +268,12 @@ namespace Diadoc.Api
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string fileName);
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent);
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string fileName);
-		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = null);
-		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = null);
+		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
+		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Utd);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string fileName);
-		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = null);
-		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = null);
+		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
+		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Ucd);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string fileName);
 
@@ -1412,12 +1412,12 @@ namespace Diadoc.Api
 			return ParseAcceptanceCertificate552BuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
-		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = null)
+		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
 		{
 			return diadoc.ParseUniversalTransferDocumentSellerTitleXml(xmlContent, documentVersion);
 		}
 
-		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = null)
+		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Utd)
 		{
 			return ParseUniversalTransferDocumentSellerTitleXml(File.ReadAllBytes(fileName), documentVersion);
 		}
@@ -1432,12 +1432,12 @@ namespace Diadoc.Api
 			return ParseUniversalTransferDocumentBuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
-		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = null)
+		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			return diadoc.ParseUniversalCorrectionDocumentSellerTitleXml(xmlContent, documentVersion);
 		}
 
-		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = null)
+		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			return ParseUniversalCorrectionDocumentSellerTitleXml(File.ReadAllBytes(fileName), documentVersion);
 		}

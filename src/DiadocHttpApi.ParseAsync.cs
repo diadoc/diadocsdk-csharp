@@ -51,10 +51,10 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<AcceptanceCertificate552BuyerTitleInfo>(null, "POST", $"/ParseAcceptanceCertificateBuyerTitleXml?documentVersion={DefaultDocumentVersions.AcceptanceCerttificate552}", xmlContent);
 		}
 
-		public Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = null)
+		public Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
 		{
 			var query = new PathAndQueryBuilder("/ParseUniversalTransferDocumentSellerTitleXml");
-			query.AddParameter("documentVersion", documentVersion ?? DefaultDocumentVersions.Utd);
+			query.AddParameter("documentVersion", documentVersion);
 			return PerformHttpRequestAsync<UniversalTransferDocumentSellerTitleInfo>(null, "POST", query.BuildPathAndQuery(), xmlContent);
 		}
 
@@ -63,10 +63,10 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<UniversalTransferDocumentBuyerTitleInfo>(null, "POST", "/ParseUniversalTransferDocumentBuyerTitleXml", xmlContent);
 		}
 
-		public Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = null)
+		public Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			var query = new PathAndQueryBuilder("/ParseUniversalCorrectionDocumentSellerTitleXml");
-			query.AddParameter("documentVersion", documentVersion ?? DefaultDocumentVersions.Ucd);
+			query.AddParameter("documentVersion", documentVersion);
 			return PerformHttpRequestAsync<UniversalCorrectionDocumentSellerTitleInfo>(null, "POST", query.BuildPathAndQuery(), xmlContent);
 		}
 

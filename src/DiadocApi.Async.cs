@@ -728,7 +728,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXmlAsync(xmlContent);
 		}
 
-		public Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = null)
+		public Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
 		{
 			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXmlAsync(xmlContent, documentVersion);
 		}
@@ -738,7 +738,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXmlAsync(xmlContent);
 		}
 
-		public Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = null)
+		public Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXmlAsync(xmlContent, documentVersion);
 		}
