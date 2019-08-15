@@ -130,6 +130,35 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
+		public GeneratedFile GenerateTitleXml(
+			string authToken,
+			string boxId,
+			string documentTypeNamedId,
+			string documentFunction,
+			string documentVersion,
+			int titleIndex,
+			byte[] userContractData,
+			bool disableValidation = false,
+			string editingSettingId = null,
+			string letterId = null,
+			string documentId = null)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GenerateTitleXml");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("documentTypeNamedId", documentTypeNamedId);
+			queryBuilder.AddParameter("documentFunction", documentFunction);
+			queryBuilder.AddParameter("documentVersion", documentVersion);
+			queryBuilder.AddParameter("titleIndex", titleIndex.ToString());
+			queryBuilder.AddParameter("editingSettingId", editingSettingId);
+			if (disableValidation) queryBuilder.AddParameter("disableValidation");
+			queryBuilder.AddParameter("letterId", letterId);
+			queryBuilder.AddParameter("documentId", documentId);
+
+			var request = BuildHttpRequest(authToken, "POST", queryBuilder.BuildPathAndQuery(), userContractData);
+			var response = HttpClient.PerformHttpRequest(request);
+			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
+		}
+
 		public GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateSenderTitleXml");

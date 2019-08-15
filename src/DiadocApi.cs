@@ -476,6 +476,40 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
+		public GeneratedFile GenerateTitleXml(
+			string authToken,
+			string boxId,
+			string documentTypeNamedId,
+			string documentFunction,
+			string documentVersion,
+			int titleIndex,
+			byte[] userContractData,
+			bool disableValidation = false,
+			string editingSettingId = null,
+			string letterId = null,
+			string documentId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (documentTypeNamedId == null) throw new ArgumentNullException("documentTypeNamedId");
+			if (documentFunction == null) throw new ArgumentNullException("documentFunction");
+			if (documentVersion == null) throw new ArgumentNullException("documentVersion");
+			if (userContractData == null) throw new ArgumentNullException("userContractData");
+
+			return diadocHttpApi.GenerateTitleXml(
+				authToken,
+				boxId,
+				documentTypeNamedId,
+				documentFunction,
+				documentVersion,
+				titleIndex,
+				userContractData,
+				disableValidation,
+				editingSettingId,
+				letterId,
+				documentId);
+		}
+
 		public GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

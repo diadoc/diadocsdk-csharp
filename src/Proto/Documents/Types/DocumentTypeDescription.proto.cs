@@ -185,6 +185,13 @@ namespace Diadoc.Api.Proto.Documents.Types
   {
     public DocumentTitle() {}
     
+    private int _Index;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"Index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int Index
+    {
+      get { return _Index; }
+      set { _Index = value; }
+    }
     private bool _IsFormal;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"IsFormal", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public bool IsFormal
