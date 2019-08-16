@@ -39,6 +39,7 @@ namespace Diadoc.Api.Proto
 		string MessageFromCounteragent { get; }
 		string MessageToCounteragent { get; }
 		Com.CounteragentStatus CurrentCounteragentStatus { get; }
+		DocumentId InvitationDocumentId { get; }
 	}
 
 	[ComVisible(true)]

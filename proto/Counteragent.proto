@@ -1,4 +1,5 @@
 import "Organization.proto";
+import "DocumentId.proto";
 
 package Diadoc.Api.Proto;
 
@@ -14,6 +15,7 @@ message Counteragent {
 	required sfixed64 LastEventTimestampTicks = 4;
 	optional string MessageFromCounteragent = 6;
 	optional string MessageToCounteragent = 7;
+	optional DocumentId InvitationDocumentId = 8;
 }
 
 enum CounteragentStatus {
