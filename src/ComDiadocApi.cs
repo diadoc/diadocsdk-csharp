@@ -1520,6 +1520,11 @@ namespace Diadoc.Api
 
 		#endregion
 
+		public BoxEvent GetLastEvent(string token, string boxId)
+		{
+			return diadoc.GetLastEvent(token, boxId);
+		}
+
 		public CustomPrintFormDetectionResult DetectCustomPrintForms(
 			string authToken,
 			string boxId,

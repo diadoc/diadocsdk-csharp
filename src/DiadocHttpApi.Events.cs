@@ -1,4 +1,5 @@
-﻿using Diadoc.Api.Http;
+﻿using System.Net;
+using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
 
 namespace Diadoc.Api
@@ -94,6 +95,12 @@ namespace Diadoc.Api
 		{
 			var queryString = "/PrepareDocumentsToSign" + (excludeContent ? "?excludeContent" : "");
 			return PerformHttpRequest<PrepareDocumentsToSignRequest, PrepareDocumentsToSignResponse>(authToken, queryString, request);
+		}
+		
+		public BoxEvent GetLastEvent(string authToken, string boxId)
+		{
+			var queryString = BuildQueryStringWithBoxId("GetLastEvent", boxId);
+			return PerformHttpRequest<BoxEvent>(authToken,"GET", queryString, allowedStatusCodes: HttpStatusCode.NoContent);
 		}
 	}
 }

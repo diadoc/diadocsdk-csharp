@@ -1190,5 +1190,12 @@ namespace Diadoc.Api
 			if (request == null) throw new ArgumentNullException("request");
 			return diadocHttpApi.DetectCustomPrintFormsAsync(authToken, boxId, request);
 		}
+
+		public Task<BoxEvent> GetLastEventAsync(string authToken, string boxId)
+		{
+			if(authToken == null) throw new ArgumentNullException("authToken");
+			if(boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetLastEventAsync(authToken, boxId);
+		}
 	}
 }

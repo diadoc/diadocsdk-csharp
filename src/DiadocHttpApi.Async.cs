@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using Diadoc.Api.Proto.Events;
 using JetBrains.Annotations;
@@ -22,17 +23,28 @@ namespace Diadoc.Api
 		}
 
 		[ItemNotNull]
-		protected Task<TResponse> PerformHttpRequestAsync<TResponse>([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody = null)
+		protected Task<TResponse> PerformHttpRequestAsync<TResponse>(
+			[CanBeNull] string token, 
+			[NotNull] string method, 
+			[NotNull] string queryString, 
+			[CanBeNull] byte[] requestBody = null,
+			params HttpStatusCode[] allowStatusCodes)
 			where TResponse: class
 		{
-			return PerformHttpRequestAsync(token, method, queryString, requestBody, Deserialize<TResponse>);
+			return PerformHttpRequestAsync(token, method, queryString, requestBody, Deserialize<TResponse>, allowStatusCodes);
 		}
 
 		[ItemNotNull]
-		protected async Task<TResponse> PerformHttpRequestAsync<TResponse>([CanBeNull] string token, [NotNull] string method, [NotNull] string queryString, [CanBeNull] byte[] requestBody, [NotNull] Func<byte[], TResponse> convertResponse)
+		protected async Task<TResponse> PerformHttpRequestAsync<TResponse>(
+			[CanBeNull] string token, 
+			[NotNull] string method, 
+			[NotNull] string queryString, 
+			[CanBeNull] byte[] requestBody, 
+			[NotNull] Func<byte[], TResponse> convertResponse, 
+			params HttpStatusCode[] allowStatusCodes)
 		{
 			var request = BuildHttpRequest(token, method, queryString, requestBody);
-			var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
+			var response = await HttpClient.PerformHttpRequestAsync(request, allowStatusCodes).ConfigureAwait(false);
 			return DeserializeResponse(request, response, convertResponse);
 		}
 
