@@ -152,13 +152,14 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<DetectDocumentTypesResponse>(authToken, "POST", qsb.BuildPathAndQuery(), content);
 		}
 
-		public async Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex)
+		public async Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex, XsdContentType contentType = default(XsdContentType))
 		{
 			var qsb = new PathAndQueryBuilder("/GetContent");
 			qsb.AddParameter("typeNamedId", typeNamedId);
 			qsb.AddParameter("function", function);
 			qsb.AddParameter("version", version);
 			qsb.AddParameter("titleIndex", titleIndex.ToString());
+			qsb.AddParameter("contentType", contentType.ToString());
 
 			var request = BuildHttpRequest(authToken, "GET", qsb.BuildPathAndQuery(), null);
 			var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);

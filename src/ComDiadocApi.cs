@@ -400,7 +400,7 @@ namespace Diadoc.Api
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content);
 
 		[Obsolete("In order to download XSD schema use the link provided in DocumentTitle.XsdUrl")]
-		FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex);
+		FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex, int contentType = 0);
 
 		Employee GetEmployee(string authToken, string boxId, string userId);
 		EmployeeList GetEmployees(string authToken, string boxId, int page = 0, int count = 0);
@@ -556,7 +556,7 @@ namespace Diadoc.Api
 		{
 			return diadoc.GetBox(boxId);
 		}
-		
+
 		public OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId)
 		{
 			return diadoc.GetOrganizationFeatures(authToken, boxId);
@@ -1275,9 +1275,9 @@ namespace Diadoc.Api
 			return diadoc.DetectDocumentTypes(token, boxId, content);
 		}
 
-		public FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex)
+		public FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex, int contentType = 0)
 		{
-			return diadoc.GetContent(token, typeNamedId, function, version, titleIndex);
+			return diadoc.GetContent(token, typeNamedId, function, version, titleIndex, (XsdContentType)contentType);
 		}
 
 		#region Counteragents
