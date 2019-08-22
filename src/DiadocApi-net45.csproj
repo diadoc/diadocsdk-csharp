@@ -358,6 +358,7 @@
     <Compile Include="Proto\LockMode.proto.cs" />
     <Compile Include="Proto\Users\UserToUpdate.proto.cs" />
     <Compile Include="SafeComObject.cs" />
+    <Compile Include="XsdContentType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diadoc_Reg.bat">

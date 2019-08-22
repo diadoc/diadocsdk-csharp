@@ -1122,7 +1122,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.DetectDocumentTypes(authToken, boxId, content);
 		}
 
-		public FileContent GetContent(string authToken, string typeNamedId, string function, string version, int titleIndex)
+		public FileContent GetContent(string authToken, string typeNamedId, string function, string version, int titleIndex, XsdContentType contentType = default(XsdContentType))
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException("authToken");
@@ -1134,7 +1134,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("version");
 			if (titleIndex < 0)
 				throw new ArgumentOutOfRangeException("titleIndex", titleIndex, "Title index should be non-negative");
-			return diadocHttpApi.GetContent(authToken, typeNamedId, function, version, titleIndex);
+			return diadocHttpApi.GetContent(authToken, typeNamedId, function, version, titleIndex, contentType);
 		}
 
 		public Employee GetEmployee(string authToken, string boxId, string userId)

@@ -204,7 +204,7 @@ namespace Diadoc.Api
 		GetDocumentTypesResponse GetDocumentTypes(string authToken, string boxId);
 		DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, string nameOnShelf);
 		DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, byte[] content);
-		FileContent GetContent(string authToken, string typeNamedId, string function, string version, int titleIndex);
+		FileContent GetContent(string authToken, string typeNamedId, string function, string version, int titleIndex, XsdContentType contentType = default(XsdContentType));
 		Employee GetEmployee(string authToken, string boxId, string userId);
 		EmployeeList GetEmployees(string authToken, string boxId, int? page, int? count);
 		Employee CreateEmployee(string authToken, string boxId, EmployeeToCreate employeeToCreate);
@@ -412,7 +412,7 @@ namespace Diadoc.Api
 		Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, string nameOnShelf);
 		Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, byte[] content);
 		[Obsolete("In order to download XSD schema use the link provided in DocumentTitle.XsdUrl")]
-		Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex);
+		Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex, XsdContentType contentType = default(XsdContentType));
 		Task<Employee> GetEmployeeAsync(string authToken, string boxId, string userId);
 		Task<EmployeeList> GetEmployeesAsync(string authToken, string boxId, int? page, int? count);
 		Task<Employee> CreateEmployeeAsync(string authToken, string boxId, EmployeeToCreate employeeToCreate);

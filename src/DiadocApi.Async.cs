@@ -390,7 +390,7 @@ namespace Diadoc.Api
 
 		public Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForSellerAsync(
 			string authToken,
-			UniversalTransferDocumentSellerTitleInfo sellerInfo, 
+			UniversalTransferDocumentSellerTitleInfo sellerInfo,
 			bool disableValidation = false,
 			string documentVersion = null)
 		{
@@ -1047,7 +1047,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.DetectDocumentTypesAsync(authToken, boxId, content);
 		}
 
-		public Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex)
+		public Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex, XsdContentType contentType = default(XsdContentType))
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException("authToken");
@@ -1059,7 +1059,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("version");
 			if (titleIndex < 0)
 				throw new ArgumentOutOfRangeException("titleIndex", titleIndex, "Title index should be non-negative");
-			return diadocHttpApi.GetContentAsync(authToken, typeNamedId, function, version, titleIndex);
+			return diadocHttpApi.GetContentAsync(authToken, typeNamedId, function, version, titleIndex, contentType);
 		}
 
 		public Task<Employee> GetEmployeeAsync(string authToken, string boxId, string userId)
