@@ -989,26 +989,32 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocumentsByMessageId(authToken, boxId, messageId);
 		}
 
-		public List<KeyValueStorageEntry> GetOrganizationStorageEntries(string authToken, string orgId, IEnumerable<string> keys)
+		public List<KeyValueStorageEntry> GetOrganizationStorageEntries(
+			string authToken,
+			string boxId,
+			IEnumerable<string> keys)
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException("authToken");
-			if (string.IsNullOrEmpty(orgId))
-				throw new ArgumentNullException("orgId");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
 			if (keys == null)
 				throw new ArgumentNullException("keys");
-			return diadocHttpApi.GetOrganizationStorageEntries(authToken, orgId, keys);
+			return diadocHttpApi.GetOrganizationStorageEntries(authToken, boxId, keys);
 		}
 
-		public void PutOrganizationStorageEntries(string authToken, string orgId, IEnumerable<KeyValueStorageEntry> entries)
+		public void PutOrganizationStorageEntries(
+			string authToken,
+			string boxId,
+			IEnumerable<KeyValueStorageEntry> entries)
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException("authToken");
-			if (string.IsNullOrEmpty(orgId))
-				throw new ArgumentNullException("orgId");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
 			if (entries == null)
 				throw new ArgumentNullException("entries");
-			diadocHttpApi.PutOrganizationStorageEntries(authToken, orgId, entries);
+			diadocHttpApi.PutOrganizationStorageEntries(authToken, boxId, entries);
 		}
 
 		public AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey)
