@@ -6,6 +6,7 @@ using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
+using Diadoc.Api.Proto.Dss;
 using Diadoc.Api.Proto.Employees.Subscriptions;
 using Diadoc.Api.Proto.Employees;
 using Diadoc.Api.Proto.Events;
@@ -181,7 +182,8 @@ namespace Diadoc.Api
 		CloudSignResult WaitCloudSignResult(string authToken, string taskId, TimeSpan? timeout = null);
 		AsyncMethodResult CloudSignConfirm(string authToken, string cloudSignToken, string confirmationCode, ContentLocationPreference? locationPreference = null);
 		CloudSignConfirmResult WaitCloudSignConfirmResult(string authToken, string taskId, TimeSpan? timeout = null);
-
+		AsyncMethodResult DssSign(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null);
+		DssSignResult DssSignResult(string authToken, string boxId, string taskId);
 		AsyncMethodResult AcquireCounteragent(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
 		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
@@ -392,6 +394,8 @@ namespace Diadoc.Api
  = null);
 		Task<CloudSignConfirmResult> WaitCloudSignConfirmResultAsync(string authToken, string taskId, TimeSpan? timeout
  = null);
+		Task<AsyncMethodResult> DssSignAsync(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null);
+		Task<DssSignResult> DssSignResultAsync(string authToken, string boxId, string taskId);
 		Task<AsyncMethodResult> AcquireCounteragentAsync(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId
  = null);
 		Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout

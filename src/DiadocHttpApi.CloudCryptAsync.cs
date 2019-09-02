@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
+using Diadoc.Api.Proto.Dss;
 
 namespace Diadoc.Api
 {
@@ -50,6 +51,26 @@ namespace Diadoc.Api
 		public Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout = null)
 		{
 			return WaitTaskResultAsync<AutosignReceiptsResult>(authToken, "/AutosignReceiptsResult", taskId, timeout);
+		}
+
+		public Task<AsyncMethodResult> DssSignAsync(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null)
+		{
+			var queryString = new PathAndQueryBuilder("/DssSign");
+			queryString.AddParameter("boxId", boxId);
+			if (!string.IsNullOrEmpty(certificateThumbprint))
+			{
+				queryString.AddParameter("certificateThumbprint", certificateThumbprint);
+			}
+
+			return PerformHttpRequestAsync<AsyncMethodResult>(authToken, "POST", queryString.BuildPathAndQuery(), Serialize(request));
+		}
+
+		public Task<DssSignResult> DssSignResultAsync(string authToken, string boxId, string taskId)
+		{
+			var queryString = new PathAndQueryBuilder("/DssSignResult");
+			queryString.AddParameter("boxId", boxId);
+			queryString.AddParameter("taskId", taskId);
+			return PerformHttpRequestAsync<DssSignResult>(authToken, "GET", queryString.BuildPathAndQuery());
 		}
 	}
 }

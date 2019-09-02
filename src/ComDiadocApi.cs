@@ -8,6 +8,7 @@ using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
+using Diadoc.Api.Proto.Dss;
 using Diadoc.Api.Proto.Employees;
 using Diadoc.Api.Proto.Employees.Subscriptions;
 using Diadoc.Api.Proto.Events;
@@ -196,7 +197,15 @@ namespace Diadoc.Api
 			string entityId);
 
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
-		Message GetMessageForDocument(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
+		Message GetMessageForDocument(
+			string authToken,
+			string boxId,
+			string messageId,
+			string entityId,
+			bool withOriginalSignature = false,
+			bool injectEntityContent = false);
+
 		Template GetTemplate(string authToken, string boxId, string messageId);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object draftToSend);
@@ -235,7 +244,14 @@ namespace Diadoc.Api
 		SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId);
 		Counteragent GetCounteragent(string authToken, string myOrgId, string counteragentOrgId);
 		CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId, string counteragentOrgId);
-		CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int pageSize = 0);
+
+		CounteragentList GetCounteragents(
+			string authToken,
+			string myOrgId,
+			string counteragentStatus,
+			string afterIndexKey,
+			string query = null,
+			int pageSize = 0);
 
 		void AcquireCounteragent(
 			string authToken,
@@ -383,10 +399,14 @@ namespace Diadoc.Api
 		User GetMyUser(string authToken);
 		UserV2 GetMyUserV2(string authToken);
 		UserV2 UpdateMyUser(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object userToUpdate);
+
 		AsyncMethodResult CloudSign(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object request, string certificateThumbprint);
 		CloudSignResult WaitCloudSignResult(string authToken, string taskId);
 		AsyncMethodResult CloudSignConfirm(string authToken, string cloudSignToken, string confirmationCode);
 		CloudSignConfirmResult WaitCloudSignConfirmResult(string authToken, string taskId);
+
+		AsyncMethodResult DssSign(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request, string certificateThumbprint);
+		DssSignResult DssSignResult(string authToken, string boxId, string taskId);
 
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
 
@@ -400,7 +420,13 @@ namespace Diadoc.Api
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content);
 
 		[Obsolete("In order to download XSD schema use the link provided in DocumentTitle.XsdUrl")]
-		FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex, int contentType = 0);
+		FileContent GetContent(
+			string token,
+			string typeNamedId,
+			string function,
+			string version,
+			int titleIndex,
+			int contentType = 0);
 
 		Employee GetEmployee(string authToken, string boxId, string userId);
 		EmployeeList GetEmployees(string authToken, string boxId, int page = 0, int count = 0);
@@ -830,7 +856,13 @@ namespace Diadoc.Api
 				sellerTitleAttachmentId);
 		}
 
-		public GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null)
+		public GeneratedFile GenerateTovTorg551XmlForBuyer(
+			string authToken,
+			object buyerInfo,
+			string boxId,
+			string sellerTitleMessageId,
+			string sellerTitleAttachmentId,
+			string documentVersion = null)
 		{
 			return diadoc.GenerateTovTorg551XmlForBuyer(authToken,
 				(TovTorgBuyerTitleInfo) buyerInfo,
@@ -979,7 +1011,13 @@ namespace Diadoc.Api
 				editingSettingId);
 		}
 
-		public GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
+		public GeneratedFile GenerateRecipientTitleXml(
+			string authToken,
+			string boxId,
+			string senderTitleMessageId,
+			string senderTitleAttachmentId,
+			byte[] userContractData,
+			string documentVersion = null)
 		{
 			return diadoc.GenerateRecipientTitleXml(authToken, boxId, senderTitleMessageId, senderTitleAttachmentId, userContractData, documentVersion);
 		}
@@ -998,7 +1036,13 @@ namespace Diadoc.Api
 			return diadoc.GetMessage(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
 		}
 
-		public Message GetMessageForDocument(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false)
+		public Message GetMessageForDocument(
+			string authToken,
+			string boxId,
+			string messageId,
+			string documentId,
+			bool withOriginalSignature = false,
+			bool injectEntityContent = false)
 		{
 			return diadoc.GetMessage(authToken, boxId, messageId, documentId, withOriginalSignature, injectEntityContent);
 		}
@@ -1235,6 +1279,16 @@ namespace Diadoc.Api
 			return diadoc.WaitCloudSignConfirmResult(authToken, taskId);
 		}
 
+		public AsyncMethodResult DssSign(string authToken, string boxId, object request, string certificateThumbprint)
+		{
+			return diadoc.DssSign(authToken, boxId, (DssSignRequest) request, certificateThumbprint);
+		}
+
+		public DssSignResult DssSignResult(string authToken, string boxId, string taskId)
+		{
+			return diadoc.DssSignResult(authToken, boxId, taskId);
+		}
+
 		public DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId)
 		{
 			return diadoc.GetDocumentsByMessageId(authToken, boxId, messageId);
@@ -1275,9 +1329,15 @@ namespace Diadoc.Api
 			return diadoc.DetectDocumentTypes(token, boxId, content);
 		}
 
-		public FileContent GetContent(string token, string typeNamedId, string function, string version, int titleIndex, int contentType = 0)
+		public FileContent GetContent(
+			string token,
+			string typeNamedId,
+			string function,
+			string version,
+			int titleIndex,
+			int contentType = 0)
 		{
-			return diadoc.GetContent(token, typeNamedId, function, version, titleIndex, (XsdContentType)contentType);
+			return diadoc.GetContent(token, typeNamedId, function, version, titleIndex, (XsdContentType) contentType);
 		}
 
 		#region Counteragents

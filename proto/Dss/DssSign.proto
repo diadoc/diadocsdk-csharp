@@ -1,0 +1,44 @@
+import "Content_v3.proto";
+
+package Diadoc.Api.Proto.Dss;
+
+message DssSignRequest
+{
+	repeated DssSignFile Files = 1;
+}
+
+message DssSignFile
+{
+	required Content_v3 Content = 1;
+	optional string FileName = 2;
+}
+
+message DssSignResult
+{
+	optional DssOperationStatus OperationStatus = 1 [default = Unknown];
+	repeated DssFileSigningResult FileSigningResults = 2;
+}
+ 
+message DssFileSigningResult
+{
+	optional DssFileSigningStatus FileSigningStatus = 1 [default = UnknownSigningStatus];
+	optional bytes Signature = 2;
+}
+ 
+enum DssFileSigningStatus
+{
+	UnknownSigningStatus = 0;
+	SigningCompleted = 1;
+	SigningError = 2;
+}
+ 
+enum DssOperationStatus
+{
+	Unknown = 0;
+	InProgress = 1;
+	Completed = 2;
+	CanceledByUser = 3;
+	Timeout = 4;
+	Crashed = 5;
+	UserHasUnconfirmedOperation = 6;
+}

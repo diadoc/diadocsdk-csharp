@@ -6,6 +6,7 @@ using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
+using Diadoc.Api.Proto.Dss;
 using Diadoc.Api.Proto.Employees.Subscriptions;
 using Diadoc.Api.Proto.Employees;
 using Diadoc.Api.Proto.Events;
@@ -888,6 +889,20 @@ namespace Diadoc.Api
 		{
 			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
 			return diadocHttpApi.WaitCloudSignConfirmResultAsync(authToken, taskId, timeout);
+		}
+
+		public Task<AsyncMethodResult> DssSignAsync(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			if (request == null) throw new ArgumentNullException("request");
+			return diadocHttpApi.DssSignAsync(authToken, boxId, request, certificateThumbprint);
+		}
+
+		public Task<DssSignResult> DssSignResultAsync(string authToken, string boxId, string taskId)
+		{
+			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.DssSignResultAsync(authToken, boxId, taskId);
 		}
 
 		public Task<AsyncMethodResult> AcquireCounteragentAsync(string authToken, string myOrgId, AcquireCounteragentRequest request,
