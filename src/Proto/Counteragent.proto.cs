@@ -9,6 +9,7 @@
 
 // Generated from: Counteragent.proto
 // Note: requires additional types generated from: Organization.proto
+// Note: requires additional types generated from: DocumentId.proto
 namespace Diadoc.Api.Proto
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CounteragentList")]
@@ -89,6 +90,15 @@ namespace Diadoc.Api.Proto
     {
       get { return _MessageToCounteragent; }
       set { _MessageToCounteragent = value; }
+    }
+
+    private Diadoc.Api.Proto.DocumentId _InvitationDocumentId = null;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"InvitationDocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.DocumentId InvitationDocumentId
+    {
+      get { return _InvitationDocumentId; }
+      set { _InvitationDocumentId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

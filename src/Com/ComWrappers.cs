@@ -1652,6 +1652,7 @@ namespace Diadoc.Api.Proto
 	public interface IAcquireCounteragentResult
 	{
 		string OrgId { get; set; }
+		DocumentId InvitationDocumentId { get; set; }
 	}
 
 	[ComVisible(true)]
