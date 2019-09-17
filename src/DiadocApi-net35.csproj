@@ -92,6 +92,7 @@
     <Compile Include="Com\Users.cs" />
     <Compile Include="DiadocHttpApi.DetectCustomPrintForms.cs" />
     <Compile Include="Proto\CustomPrintFormDetectionResult.proto.cs" />
+    <Compile Include="Proto\LoginPassword.proto.cs" />
     <Compile Include="XmlSerializerExtensions.cs" />
     <Compile Include="DataXml\CommonXmlNodes.cs" />
     <Compile Include="DataXml\Utd820\ON_NSCHFDOPPOK_UserContract_820_05_01_01.cs" />
