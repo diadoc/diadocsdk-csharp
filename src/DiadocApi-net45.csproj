@@ -74,6 +74,7 @@
     <Compile Include="XmlSerializerExtensions.cs" />
     <Compile Include="DataXml\Utd820\ON_NSCHFDOPPOK_UserContract_820_05_01_01.cs" />
     <Compile Include="DataXml\Utd820\ON_NSCHFDOPPR_UserContract_820_05_01_01.cs" />
+    <Compile Include="DataXml\Utd820\Hyphens\ON_NSCHFDOPPR_UserContract_820_05_01_01_Hyphen.cs" />
     <Compile Include="DefaultDocumentVersions.cs" />
     <Compile Include="DiadocHttpApi.Organizations.Async.cs" />
     <Compile Include="DiadocHttpApi.Organizations.cs" />
