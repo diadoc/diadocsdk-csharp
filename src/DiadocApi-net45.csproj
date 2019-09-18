@@ -59,9 +59,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AggregateException.cs" />
+    <Compile Include="Com\Dss.cs" />
     <Compile Include="Com\Departments.cs" />
     <Compile Include="Com\DocumentTitleSignerType.cs" />
     <Compile Include="Com\DocumentTitleType.cs" />
+    <Compile Include="Com\DssFileSigningStatus.cs" />
+    <Compile Include="Com\DssOperationStatus.cs" />
     <Compile Include="Com\Organizations.cs" />
     <Compile Include="Com\Registration.cs" />
     <Compile Include="Com\ResolutionAction.cs" />
@@ -70,8 +73,10 @@
     <Compile Include="DataXml\CommonXmlNodes.cs" />
     <Compile Include="DiadocHttpApi.DetectCustomPrintForms.Async.cs" />
     <Compile Include="DiadocHttpApi.DetectCustomPrintForms.cs" />
+    <Compile Include="Proto\Content_v3.proto.cs" />
     <Compile Include="Proto\CustomPrintFormDetectionResult.proto.cs" />
     <Compile Include="Proto\LoginPassword.proto.cs" />
+    <Compile Include="Proto\Dss\DssSign.proto.cs" />
     <Compile Include="XmlSerializerExtensions.cs" />
     <Compile Include="DataXml\Utd820\ON_NSCHFDOPPOK_UserContract_820_05_01_01.cs" />
     <Compile Include="DataXml\Utd820\ON_NSCHFDOPPR_UserContract_820_05_01_01.cs" />

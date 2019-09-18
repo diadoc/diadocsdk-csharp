@@ -1,6 +1,7 @@
 ﻿using System;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
+using Diadoc.Api.Proto.Dss;
 
 namespace Diadoc.Api
 {
@@ -50,6 +51,26 @@ namespace Diadoc.Api
 		public AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId, TimeSpan? timeout = null)
 		{
 			return WaitTaskResult<AutosignReceiptsResult>(authToken, "/AutosignReceiptsResult", taskId, timeout);
+		}
+
+		public AsyncMethodResult DssSign(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null)
+		{
+			var queryString = new PathAndQueryBuilder("/DssSign");
+			queryString.AddParameter("boxId", boxId);
+			if (!string.IsNullOrEmpty(certificateThumbprint))
+			{
+				queryString.AddParameter("certificateThumbprint", certificateThumbprint);
+			}
+
+			return PerformHttpRequest<AsyncMethodResult>(authToken, "POST", queryString.BuildPathAndQuery(), Serialize(request));
+		}
+
+		public DssSignResult DssSignResult(string authToken, string boxId, string taskId)
+		{
+			var queryString = new PathAndQueryBuilder("/DssSignResult");
+			queryString.AddParameter("boxId", boxId);
+			queryString.AddParameter("taskId", taskId);
+			return PerformHttpRequest<DssSignResult>(authToken, "GET", queryString.BuildPathAndQuery());
 		}
 	}
 }

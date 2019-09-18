@@ -9,6 +9,7 @@ using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
+using Diadoc.Api.Proto.Dss;
 using Diadoc.Api.Proto.Employees.Subscriptions;
 using Diadoc.Api.Proto.Employees;
 using Diadoc.Api.Proto.Events;
@@ -963,6 +964,20 @@ namespace Diadoc.Api
 		{
 			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
 			return diadocHttpApi.WaitCloudSignConfirmResult(authToken, taskId, timeout);
+		}
+
+		public AsyncMethodResult DssSign(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			if (request == null) throw new ArgumentNullException("request");
+			return diadocHttpApi.DssSign(authToken, boxId, request, certificateThumbprint);
+		}
+
+		public DssSignResult DssSignResult(string authToken, string boxId, string taskId)
+		{
+			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.DssSignResult(authToken, boxId, taskId);
 		}
 
 		public AsyncMethodResult AcquireCounteragent(string authToken, string myOrgId, AcquireCounteragentRequest request,

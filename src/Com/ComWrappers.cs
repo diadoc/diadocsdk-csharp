@@ -1682,3 +1682,25 @@ namespace Diadoc.Api.Proto
 	{
 	}
 }
+
+namespace Diadoc.Api.Proto
+{
+	[ComVisible(true)]
+	[Guid("9A66D693-F5C4-4E18-BE4F-79B073C443FF")]
+	public interface IContent_v3
+	{
+		byte[] Content { get; set; }
+		string NameOnShelf { get; set; }
+		DocumentId EntityId { get; set; }
+		string PatchedContentId { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.Content_v3")]
+	[Guid("8D0C8B26-1FD6-4F7D-BE2B-0AB79AF93F1F")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IContent_v3))]
+	public partial class Content_v3 : SafeComObject, IContent_v3
+	{
+	}
+}
