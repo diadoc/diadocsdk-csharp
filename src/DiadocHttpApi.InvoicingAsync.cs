@@ -11,6 +11,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
+		[Obsolete("Use GenerateReceiptXmlAsync()")]
 		public Task<GeneratedFile> GenerateInvoiceDocumentReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
 			var queryString = $"/GenerateInvoiceDocumentReceiptXml?boxId={boxId}&messageId={messageId}&attachmentId={attachmentId}";

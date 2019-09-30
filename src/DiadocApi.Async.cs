@@ -255,22 +255,33 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEntityContentAsync(authToken, boxId, messageId, entityId);
 		}
 
+		[Obsolete("Use GenerateReceiptXmlAsync()")]
 		public Task<GeneratedFile> GenerateDocumentReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (attachmentId == null) throw new ArgumentNullException("attachmentId");
 			if (signer == null) throw new ArgumentNullException("signer");
-			return diadocHttpApi.GenerateDocumentReceiptXmlAsync(authToken, boxId, messageId, attachmentId, signer);
+			return diadocHttpApi.GenerateReceiptXmlAsync(authToken, boxId, messageId, attachmentId, signer);
 		}
 
+		[Obsolete("Use GenerateReceiptXmlAsync()")]
 		public Task<GeneratedFile> GenerateInvoiceDocumentReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (attachmentId == null) throw new ArgumentNullException("attachmentId");
 			if (signer == null) throw new ArgumentNullException("signer");
-			return diadocHttpApi.GenerateInvoiceDocumentReceiptXmlAsync(authToken, boxId, messageId, attachmentId, signer);
+			return diadocHttpApi.GenerateReceiptXmlAsync(authToken, boxId, messageId, attachmentId, signer);
+		}
+
+		public Task<GeneratedFile> GenerateReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
+		{
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (messageId == null) throw new ArgumentNullException("messageId");
+			if (attachmentId == null) throw new ArgumentNullException("attachmentId");
+			if (signer == null) throw new ArgumentNullException("signer");
+			return diadocHttpApi.GenerateReceiptXmlAsync(authToken, boxId, messageId, attachmentId, signer);
 		}
 
 		public Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlAsync(string authToken, string boxId, string messageId,

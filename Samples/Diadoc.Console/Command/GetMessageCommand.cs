@@ -161,7 +161,7 @@ namespace Diadoc.Console.Command
 		{
 			var currentCertificateContent = ConsoleContext.CurrentCert.RawData;
 			var signer = new Signer { SignerCertificate = currentCertificateContent };
-			var receipt = ConsoleContext.DiadocApi.GenerateInvoiceDocumentReceiptXml(ConsoleContext.CurrentToken, ConsoleContext.CurrentBoxId, messageId, entity.EntityId, signer);
+			var receipt = ConsoleContext.DiadocApi.GenerateReceiptXml(ConsoleContext.CurrentToken, ConsoleContext.CurrentBoxId, messageId, entity.EntityId, signer);
 			return new ReceiptAttachment
 			{
 				ParentEntityId = entity.EntityId,
