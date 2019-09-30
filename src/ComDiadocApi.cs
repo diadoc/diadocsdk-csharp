@@ -63,6 +63,7 @@ namespace Diadoc.Api
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message);
 		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch);
 
+		[Obsolete("Use GenerateReceiptXml()")]
 		GeneratedFile GenerateInvoiceDocumentReceiptXml(
 			string authToken,
 			string boxId,
@@ -274,7 +275,15 @@ namespace Diadoc.Api
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
 		InvoiceInfo ParseInvoiceXmlFromFile(string fileName);
 
+		[Obsolete("Use GenerateReceiptXml()")]
 		GeneratedFile GenerateDocumentReceiptXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			[MarshalAs(UnmanagedType.IDispatch)] object signer);
+
+		GeneratedFile GenerateReceiptXml(
 			string authToken,
 			string boxId,
 			string messageId,
@@ -722,7 +731,19 @@ namespace Diadoc.Api
 			return diadoc.PostMessagePatch(authToken, (MessagePatchToPost) patch);
 		}
 
+		[Obsolete("Use GenerateReceiptXml()")]
 		public GeneratedFile GenerateDocumentReceiptXml(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			object signer)
+		{
+			return diadoc.GenerateReceiptXml(authToken, boxId, messageId, attachmentId, (Signer) signer);
+		}
+
+		[Obsolete("Use GenerateReceiptXml()")]
+		public GeneratedFile GenerateInvoiceDocumentReceiptXml(
 			string authToken,
 			string boxId,
 			string messageId,
@@ -732,14 +753,14 @@ namespace Diadoc.Api
 			return diadoc.GenerateDocumentReceiptXml(authToken, boxId, messageId, attachmentId, (Signer) signer);
 		}
 
-		public GeneratedFile GenerateInvoiceDocumentReceiptXml(
+		public GeneratedFile GenerateReceiptXml(
 			string authToken,
 			string boxId,
 			string messageId,
 			string attachmentId,
 			object signer)
 		{
-			return diadoc.GenerateInvoiceDocumentReceiptXml(authToken, boxId, messageId, attachmentId, (Signer) signer);
+			return diadoc.GenerateReceiptXml(authToken, boxId, messageId, attachmentId, (Signer) signer);
 		}
 
 		public GeneratedFile GenerateInvoiceCorrectionRequestXml(
