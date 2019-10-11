@@ -16,6 +16,7 @@ namespace Diadoc.Api
 		string ToDocumentDate { get; set; }
 		string DepartmentId { get; set; }
 		string DocumentNumber { get; set; }
+		string FromDepartmentId { get; set; }
 		string ToDepartmentId { get; set; }
 		bool ExcludeSubdepartments { get; set; }
 		string SortDirection { get; set; }
@@ -39,6 +40,7 @@ namespace Diadoc.Api
 		public string ToDocumentDate { get; set; }
 		public string DepartmentId { get; set; }
 		public string DocumentNumber { get; set; }
+		public string FromDepartmentId { get; set; }
 		public string ToDepartmentId { get; set; }
 		public bool ExcludeSubdepartments { get; set; }
 		public string SortDirection { get; set; }
