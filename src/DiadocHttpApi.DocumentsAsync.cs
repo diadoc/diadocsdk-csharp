@@ -24,6 +24,7 @@ namespace Diadoc.Api
 			if (!string.IsNullOrEmpty(filter.ToDocumentDate)) qsb.AddParameter("toDocumentDate", filter.ToDocumentDate);
 			if (!string.IsNullOrEmpty(filter.DocumentNumber)) qsb.AddParameter("documentNumber", filter.DocumentNumber);
 			if (!string.IsNullOrEmpty(filter.DepartmentId)) qsb.AddParameter("departmentId", filter.DepartmentId);
+			if (!string.IsNullOrEmpty(filter.FromDepartmentId)) qsb.AddParameter("fromDepartmentId", filter.FromDepartmentId);
 			if (!string.IsNullOrEmpty(filter.ToDepartmentId)) qsb.AddParameter("toDepartmentId", filter.ToDepartmentId);
 			if (filter.ExcludeSubdepartments) qsb.AddParameter("excludeSubdepartments");
 			if (!string.IsNullOrEmpty(filter.AfterIndexKey)) qsb.AddParameter("afterIndexKey", filter.AfterIndexKey);
