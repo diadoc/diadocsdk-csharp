@@ -14,7 +14,7 @@ namespace Diadoc.Api.Tests
 		[TestCaseSource("GetAllTapMethods")]
 		public void AllTapMethodsMustHaveAsyncInName(MethodInfo method)
 		{
-			Assert.That(method.Name, Is.StringEnding("Async"), method.ToString());
+			Assert.That(method.Name, Does.EndWith("Async"), method.ToString());
 		}
 
 		[TestCaseSource("GetAllTapMethods")]
