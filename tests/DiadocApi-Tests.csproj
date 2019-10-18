@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Diadoc.Api.Tests</RootNamespace>
+    <AssemblyName>DiadocApi.Tests</AssemblyName>
+    <TargetFrameworks>net35;net461</TargetFrameworks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <OutputPath>$(SolutionDir)\bin\$(Configuration)\$(AssemblyName)\</OutputPath>
+  </PropertyGroup>
+  
+  <ItemGroup Condition="$(TargetFramework) == 'net35'">
+    <Compile Remove="TaskAsyncronousPattern_Test.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
+    <PackageReference Include="protobuf-net" Version="1.0.0.280" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\src\DiadocApi.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,6 +1,7 @@
 #addin "Cake.Git"
 #tool "nuget:?package=ILMerge&version=2.12.803"
 #tool "nuget:?package=NUnit.ConsoleRunner&version=3.10.0"
+#tool "nuget:?package=protobuf-net&version=1.0.0.280"
 #tool "secure-file"
 using Cake.Common.Diagnostics;
 using Cake.Git;
@@ -17,7 +18,6 @@ var binariesNet35Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net35-bina
 var binariesNet461Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net461-binaries.zip");
 var needSigning = false;
 
-const string protobufNetDll = "./packages/protobuf-net.1.0.0.280/lib/protobuf-net.dll";
 var packageVersion = "";
 
 //////////////////////////////////////////////////////////////////////
@@ -124,11 +124,10 @@ Task("GenerateVersionInfo")
 	});
 
 Task("GenerateProtoFiles")
-	.IsDependentOn("Restore-NuGet-Packages")
 	.Does(() =>
 	{
-		if (!FileExists("./packages/protobuf-net.1.0.0.280/Tools/protobuf-net.dll"))
-			CopyFileToDirectory(protobufNetDll, "./packages/protobuf-net.1.0.0.280/Tools");
+		if (!FileExists("./tools/protobuf-net.1.0.0.280/Tools/protobuf-net.dll"))
+			CopyFileToDirectory("./tools/protobuf-net.1.0.0.280/lib/protobuf-net.dll", "./tools/protobuf-net.1.0.0.280/Tools");
 
 		var files = GetFiles("./proto/**/*.proto");
 		var filesWithError = files.AsParallel()
@@ -161,7 +160,7 @@ Task("ILMerge")
 		ILMerge(
 			outputDir.CombineWithFilePath("net35/DiadocApi.dll"),
 			sourceDir.CombineWithFilePath("net35/DiadocApi.dll"),
-			new FilePath[] { protobufNetDll },
+			new FilePath[] { sourceDir.CombineWithFilePath("net35/protobuf-net.dll") },
 			ilMergeSettings);
 
 		ilMergeSettings.TargetPlatform = new TargetPlatform(TargetPlatformVersion.v4);
@@ -169,7 +168,7 @@ Task("ILMerge")
 		ILMerge(
 			outputDir.CombineWithFilePath("net461/DiadocApi.dll"),
 			sourceDir.CombineWithFilePath("net461/DiadocApi.dll"),
-			new FilePath[] { protobufNetDll },
+			new FilePath[] { sourceDir.CombineWithFilePath("net461/protobuf-net.dll") },
 			ilMergeSettings);
 	});
 
@@ -370,7 +369,7 @@ FilePath GenerateProtoFile(FilePath file)
 		WorkingDirectory = sourceProtoDir
 	};
 
-	var exitCode = StartProcess("./packages/protobuf-net.1.0.0.280/Tools/protogen.exe", protogenArguments);
+	var exitCode = StartProcess("./tools/protobuf-net.1.0.0.280/Tools/protogen.exe", protogenArguments);
 	if (exitCode != 0)
 	{
 		Error("Error processing file {0} to {1}, protogen exit code: {2}",
