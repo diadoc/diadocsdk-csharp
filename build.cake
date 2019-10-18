@@ -1,6 +1,6 @@
 #addin "Cake.Git"
 #tool "nuget:?package=ILMerge&version=2.12.803"
-#tool "nuget:?package=NUnit.Runners&version=2.6.4"
+#tool "nuget:?package=NUnit.ConsoleRunner&version=3.10.0"
 #tool "secure-file"
 using Cake.Common.Diagnostics;
 using Cake.Git;
@@ -227,7 +227,7 @@ Task("Test")
 	.IsDependentOn("Build")
 	.Does(() =>
 	{
-		NUnit(buildDir + "/**/*Tests.dll");
+		NUnit3(buildDir + "/**/*Tests.dll");
 	});
 
 //////////////////////////////////////////////////////////////////////
