@@ -13,14 +13,13 @@ namespace Diadoc.Api.Tests
 		[Test]
 		public void HasGuids([ValueSource("GetAllComVisibleTypes")] Type type)
 		{
-			Guid guid;
-			Assert.True(Guid.TryParse(type.GetCustomAttribute<GuidAttribute>().Value, out guid));
+			Assert.That(() => new Guid(GetCustomAttribute<GuidAttribute>(type).Value), Throws.Nothing);
 		}
 
 		[Test]
 		public void InterfaceType([ValueSource("GetComVisibleInterfaceTypes")] Type type)
 		{
-			var interfaceTypeAttribute = type.GetCustomAttribute<InterfaceTypeAttribute>();
+			var interfaceTypeAttribute = GetCustomAttribute<InterfaceTypeAttribute>(type);
 			if (interfaceTypeAttribute != null)
 				Assert.That(interfaceTypeAttribute.Value, Is.EqualTo(ComInterfaceType.InterfaceIsDual));
 		}
@@ -28,7 +27,7 @@ namespace Diadoc.Api.Tests
 		[Test]
 		public void ClassInterface([ValueSource("GetComVisibleClassTypes")] Type type)
 		{
-			var classInterfaceAttribute = type.GetCustomAttribute<ClassInterfaceAttribute>();
+			var classInterfaceAttribute = GetCustomAttribute<ClassInterfaceAttribute>(type);
 			Assert.IsNotNull(classInterfaceAttribute);
 			Assert.That(classInterfaceAttribute.Value, Is.EqualTo(ClassInterfaceType.None));
 		}
@@ -36,7 +35,7 @@ namespace Diadoc.Api.Tests
 		[Test]
 		public void ComDefaultInterface([ValueSource("GetComVisibleClassTypes")] Type type)
 		{
-			var comDefaultInterfaceAttribute = type.GetCustomAttribute<ComDefaultInterfaceAttribute>();
+			var comDefaultInterfaceAttribute = GetCustomAttribute<ComDefaultInterfaceAttribute>(type);
 			Assert.IsNotNull(comDefaultInterfaceAttribute);
 
 			var defaultInterfaceType = comDefaultInterfaceAttribute.Value;
@@ -66,7 +65,7 @@ namespace Diadoc.Api.Tests
 		{
 			var excludedTypes = new[] { typeof(string) };
 
-			var comDefaultInterfaceAttribute = type.GetCustomAttribute<ComDefaultInterfaceAttribute>();
+			var comDefaultInterfaceAttribute = GetCustomAttribute<ComDefaultInterfaceAttribute>(type);
 			Assert.IsNotNull(comDefaultInterfaceAttribute);
 			var comDefaultInterfaceType = comDefaultInterfaceAttribute.Value;
 
@@ -76,7 +75,7 @@ namespace Diadoc.Api.Tests
 					.Where(p => p.ParameterType.IsClass && IsComVisible(p.ParameterType) && !excludedTypes.Contains(p.ParameterType)))
 				{
 					var message = string.Format("{0}.{1}(..., {2} {3}, ...)", type.FullName, methodInfo.Name, parameterInfo.ParameterType.Name, parameterInfo.Name);
-					var marshalAsAttribute = parameterInfo.GetCustomAttribute<MarshalAsAttribute>();
+					var marshalAsAttribute = (MarshalAsAttribute)Attribute.GetCustomAttribute(parameterInfo, typeof(MarshalAsAttribute));
 					Assert.IsNotNull(marshalAsAttribute, message);
 					Assert.That(marshalAsAttribute.Value, Is.EqualTo(UnmanagedType.IDispatch), message);
 					Assert.That(parameterInfo.ParameterType, Is.EqualTo(typeof(object)), message);
@@ -101,8 +100,13 @@ namespace Diadoc.Api.Tests
 
 		private static bool IsComVisible(Type type)
 		{
-			var comVisibleAttribute = type.GetCustomAttribute<ComVisibleAttribute>();
+			var comVisibleAttribute = GetCustomAttribute<ComVisibleAttribute>(type);
 			return comVisibleAttribute != null && comVisibleAttribute.Value;
+		}
+
+		private static T GetCustomAttribute<T>(MemberInfo element) where T : Attribute
+		{
+			return (T)Attribute.GetCustomAttribute(element, typeof(T));
 		}
 	}
 }
