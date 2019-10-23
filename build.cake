@@ -226,7 +226,10 @@ Task("Test")
 	.IsDependentOn("Build")
 	.Does(() =>
 	{
-		NUnit3(buildDir + "/**/*Tests.dll");
+		NUnit3(buildDir + "/DiadocApi.Tests/net[34]*/DiadocApi.Tests.dll");
+		var exitCode = StartProcess("dotnet", "test --no-build --framework netcoreapp2.2 --configuration " + configuration + " ./DiadocApi.sln");
+		if (exitCode != 0)
+			Error("Error while running tests with dotnet test");
 	});
 
 //////////////////////////////////////////////////////////////////////
