@@ -16,6 +16,7 @@ var buildDirNuget = buildDir.Combine("DiadocApi.Nuget");
 var DiadocApiSolutionPath = "./DiadocApi.sln";
 var binariesNet35Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net35-binaries.zip");
 var binariesNet461Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net461-binaries.zip");
+var binariesNetstandardZip = buildDir.CombineWithFilePath("diadocsdk-csharp-netstandard2.0-binaries.zip");
 var needSigning = false;
 
 var packageVersion = "";
@@ -170,6 +171,9 @@ Task("ILMerge")
 			sourceDir.CombineWithFilePath("net461/DiadocApi.dll"),
 			new FilePath[] { sourceDir.CombineWithFilePath("net461/protobuf-net.dll") },
 			ilMergeSettings);
+
+		CreateDirectory(outputDir.Combine("netstandard2.0"));
+		CopyFiles(GetFiles(buildDir.FullPath + "/DiadocApi/netstandard2.0/*.*"), outputDir.Combine("netstandard2.0"));
 	});
 
 Task("PrepareBinaries")
@@ -178,22 +182,10 @@ Task("PrepareBinaries")
 	.Does(() =>
 	{
 		DeleteFiles(GetFiles(buildDir.FullPath + "/**/JetBrains.Annotations*"));
-
-		var net35Files = GetFiles(buildDir.FullPath + "/DiadocApi/net35/*.*")
-			.Where(x =>
-				!x.FullPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) &&
-				!x.FullPath.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase));
-		CopyFiles(net35Files, buildDirNuget.Combine("net35"));
-
-		var net461Files = GetFiles(buildDir.FullPath + "/DiadocApi/net461/*.*")
-			.Where(x =>
-				!x.FullPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) &&
-				!x.FullPath.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase));
-		CopyFiles(net461Files, buildDirNuget.Combine("net461"));
-
 		CopyFileToDirectory("./LICENSE.md", buildDirNuget);
-		Zip(buildDirNuget, binariesNet35Zip, GetFiles(buildDirNuget + "/net35/*.*"));
-		Zip(buildDirNuget, binariesNet461Zip, GetFiles(buildDirNuget + "/net461/*.*"));
+		PrepareBinaries("net35", binariesNet35Zip);
+		PrepareBinaries("net461", binariesNet461Zip);
+		PrepareBinaries("netstandard2.0", binariesNetstandardZip);
 	});
 
 Task("Nuget-Pack")
@@ -216,6 +208,7 @@ Task("PublishArtifactsToAppVeyor")
 	{
 		AppVeyor.UploadArtifact(binariesNet35Zip);
 		AppVeyor.UploadArtifact(binariesNet461Zip);
+		AppVeyor.UploadArtifact(binariesNetstandardZip);
 		foreach (var upload in GetFiles(buildDir + "/*.nupkg"))
 		{
 			AppVeyor.UploadArtifact(upload​);
@@ -353,6 +346,16 @@ public static string ClearVersionTag(string lastestTag)
 	return match.Success
 		? match.Value
 		: lastestTag;
+}
+
+void PrepareBinaries(string targetFramework, FilePath binariesZip)
+{
+	var files = GetFiles(buildDir.FullPath + "/DiadocApi/" + targetFramework + "/*.*")
+		.Where(x =>
+			!x.FullPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) &&
+			!x.FullPath.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase));
+	CopyFiles(files, buildDirNuget.Combine(targetFramework));
+	Zip(buildDirNuget, binariesZip, GetFiles(buildDirNuget + "/" + targetFramework + "/*.*"));
 }
 
 FilePath GenerateProtoFile(FilePath file)
