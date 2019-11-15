@@ -11,13 +11,13 @@ namespace Diadoc.Api.Tests
 	public class ComInterfaceAttributes_Test
 	{
 		[Test]
-		public void HasGuids([ValueSource("GetAllComVisibleTypes")] Type type)
+		public void HasGuids([ValueSource(nameof(GetAllComVisibleTypes))] Type type)
 		{
 			Assert.That(() => new Guid(GetCustomAttribute<GuidAttribute>(type).Value), Throws.Nothing);
 		}
 
 		[Test]
-		public void InterfaceType([ValueSource("GetComVisibleInterfaceTypes")] Type type)
+		public void InterfaceType([ValueSource(nameof(GetComVisibleInterfaceTypes))] Type type)
 		{
 			var interfaceTypeAttribute = GetCustomAttribute<InterfaceTypeAttribute>(type);
 			if (interfaceTypeAttribute != null)
@@ -25,7 +25,7 @@ namespace Diadoc.Api.Tests
 		}
 
 		[Test]
-		public void ClassInterface([ValueSource("GetComVisibleClassTypes")] Type type)
+		public void ClassInterface([ValueSource(nameof(GetComVisibleClassTypes))] Type type)
 		{
 			var classInterfaceAttribute = GetCustomAttribute<ClassInterfaceAttribute>(type);
 			Assert.IsNotNull(classInterfaceAttribute);
@@ -33,7 +33,7 @@ namespace Diadoc.Api.Tests
 		}
 
 		[Test]
-		public void ComDefaultInterface([ValueSource("GetComVisibleClassTypes")] Type type)
+		public void ComDefaultInterface([ValueSource(nameof(GetComVisibleClassTypes))] Type type)
 		{
 			var comDefaultInterfaceAttribute = GetCustomAttribute<ComDefaultInterfaceAttribute>(type);
 			Assert.IsNotNull(comDefaultInterfaceAttribute);
@@ -44,24 +44,24 @@ namespace Diadoc.Api.Tests
 		}
 
 		[Test]
-		public void ComVisibleTypes_HasNoNullableProperties([ValueSource("GetComVisibleInterfaceTypes")] Type type)
+		public void ComVisibleTypes_HasNoNullableProperties([ValueSource(nameof(GetComVisibleInterfaceTypes))] Type type)
 		{
 			var propertyInfos = type.GetProperties();
 			foreach (var info in propertyInfos)
 			{
 				Assert.That(info.PropertyType.Name.Contains("Nullable"), Is.False,
-					"Type: {" + type + "} contains nullable property {" + info.Name + "}");
+					$"Type: {type} contains nullable property {info.Name}");
 			}
 		}
 
 		[Test]
-		public void SafeComObject([ValueSource("GetComVisibleClassTypes")] Type type)
+		public void SafeComObject([ValueSource(nameof(GetComVisibleClassTypes))] Type type)
 		{
 			Assert.True(type.IsSubclassOf(typeof(SafeComObject)));
 		}
 
 		[Test]
-		public void MarshalAs([ValueSource("GetComVisibleClassTypes")] Type type)
+		public void MarshalAs([ValueSource(nameof(GetComVisibleClassTypes))] Type type)
 		{
 			var excludedTypes = new[] { typeof(string) };
 
@@ -74,7 +74,7 @@ namespace Diadoc.Api.Tests
 				foreach (var parameterInfo in methodInfo.GetParameters()
 					.Where(p => p.ParameterType.IsClass && IsComVisible(p.ParameterType) && !excludedTypes.Contains(p.ParameterType)))
 				{
-					var message = string.Format("{0}.{1}(..., {2} {3}, ...)", type.FullName, methodInfo.Name, parameterInfo.ParameterType.Name, parameterInfo.Name);
+					var message = $"{type.FullName}.{methodInfo.Name}(..., {parameterInfo.ParameterType.Name} {parameterInfo.Name}, ...)";
 					var marshalAsAttribute = (MarshalAsAttribute)Attribute.GetCustomAttribute(parameterInfo, typeof(MarshalAsAttribute));
 					Assert.IsNotNull(marshalAsAttribute, message);
 					Assert.That(marshalAsAttribute.Value, Is.EqualTo(UnmanagedType.IDispatch), message);

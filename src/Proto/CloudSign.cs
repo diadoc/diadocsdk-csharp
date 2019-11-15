@@ -1,5 +1,4 @@
-﻿using System.Net;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
 
 namespace Diadoc.Api.Proto
