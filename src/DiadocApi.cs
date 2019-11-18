@@ -173,6 +173,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.UpdateMyUser(authToken, userToUpdate);
 		}
 
+		public CertificateList GetMyCertificates(string authToken, string boxId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetMyCertificates(authToken, boxId);
+		}
+
 		public OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false)
 		{
 			if (inn == null) throw new ArgumentNullException("inn");

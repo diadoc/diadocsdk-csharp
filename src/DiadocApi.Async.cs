@@ -114,6 +114,13 @@ namespace Diadoc.Api
 			if (userToUpdate == null) throw new ArgumentNullException("userToUpdate");
 			return diadocHttpApi.UpdateMyUserAsync(authToken, userToUpdate);
 		}
+		
+		public Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetMyCertificatesAsync(authToken, boxId);
+		}
 
 		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false)
 		{
