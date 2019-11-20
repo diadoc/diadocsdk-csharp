@@ -61,7 +61,9 @@ namespace Diadoc.Api
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
 		void SaveEntityContent(string authToken, string boxId, string messageId, string entityId, string filePath);
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message);
+		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message, string operationId);
 		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch);
+		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch, string operationId);
 
 		[Obsolete("Use GenerateReceiptXml()")]
 		GeneratedFile GenerateInvoiceDocumentReceiptXml(
@@ -210,6 +212,7 @@ namespace Diadoc.Api
 		Template GetTemplate(string authToken, string boxId, string messageId);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object draftToSend);
+		Message SendDraft(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object draftToSend, string operationId);
 		void Delete(string authToken, string boxId, string messageId, string documentId);
 		void Restore(string authToken, string boxId, string messageId, string documentId);
 		void MoveDocuments(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object query);
@@ -452,7 +455,9 @@ namespace Diadoc.Api
 		void DeleteDepartment(string authToken, string boxId, string departmentId);
 
 		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template);
+		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template, string operationId);
 		Message TransformTemplateToMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object templateTransformation);
+		Message TransformTemplateToMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object templateTransformation, string operationId);
 
 		AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey);
 		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId);
@@ -622,6 +627,11 @@ namespace Diadoc.Api
 			return diadoc.PostMessage(authToken, (MessageToPost) message);
 		}
 
+		public Message PostMessage(string authToken, object message, string operationId)
+		{
+			return diadoc.PostMessage(authToken, (MessageToPost) message, operationId);
+		}
+
 		public Employee GetEmployee(string authToken, string boxId, string userId)
 		{
 			return diadoc.GetEmployee(authToken, boxId, userId);
@@ -696,9 +706,19 @@ namespace Diadoc.Api
 			return diadoc.PostTemplate(authToken, (TemplateToPost) template);
 		}
 
+		public Template PostTemplate(string authToken, object template, string operationId)
+		{
+			return diadoc.PostTemplate(authToken, (TemplateToPost) template, operationId);
+		}
+
 		public Message TransformTemplateToMessage(string authToken, object templateTransformation)
 		{
 			return diadoc.TransformTemplateToMessage(authToken, (TemplateTransformationToPost) templateTransformation);
+		}
+
+		public Message TransformTemplateToMessage(string authToken, object templateTransformation, string operationId)
+		{
+			return diadoc.TransformTemplateToMessage(authToken, (TemplateTransformationToPost) templateTransformation, operationId);
 		}
 
 		public AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey)
@@ -729,6 +749,11 @@ namespace Diadoc.Api
 		public MessagePatch PostMessagePatch(string authToken, object patch)
 		{
 			return diadoc.PostMessagePatch(authToken, (MessagePatchToPost) patch);
+		}
+
+		public MessagePatch PostMessagePatch(string authToken, object patch, string operationId)
+		{
+			return diadoc.PostMessagePatch(authToken, (MessagePatchToPost) patch, operationId);
 		}
 
 		[Obsolete("Use GenerateReceiptXml()")]
@@ -1081,6 +1106,11 @@ namespace Diadoc.Api
 		public Message SendDraft(string authToken, object draftToSend)
 		{
 			return diadoc.SendDraft(authToken, (DraftToSend) draftToSend);
+		}
+
+		public Message SendDraft(string authToken, object draftToSend, string operationId)
+		{
+			return diadoc.SendDraft(authToken, (DraftToSend) draftToSend, operationId);
 		}
 
 		public void Delete(string authToken, string boxId, string messageId, string documentId)
