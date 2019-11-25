@@ -248,6 +248,7 @@ namespace Diadoc.Api.Proto.Docflow
 		DocumentDraftInfo DraftInfo { get; }
 		DocumentTemplateInfo TemplateInfo { get; }
 		Origin Origin { get; }
+		Com.MessageType MessageTypeValue { get; }
 	}
 
 	[ComVisible(true)]
@@ -265,6 +266,11 @@ namespace Diadoc.Api.Proto.Docflow
 		public ReadonlyList CustomDataList
 		{
 			get { return new ReadonlyList(CustomData); }
+		}
+
+		public Com.MessageType MessageTypeValue
+		{
+			get { return (Com.MessageType) MessageType; }
 		}
 	}
 

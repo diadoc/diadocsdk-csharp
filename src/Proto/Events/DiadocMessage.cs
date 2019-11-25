@@ -28,6 +28,7 @@ namespace Diadoc.Api.Proto.Events
 		string DraftIsTransformedToMessageId { get; }
 		DateTime Timestamp { get; }
 		DateTime LastPatchTimestamp { get; }
+		Com.MessageType MessageTypeValue { get; }
 	}
 
 	[ComVisible(true)]
@@ -54,6 +55,11 @@ namespace Diadoc.Api.Proto.Events
 		public ReadonlyList EntitiesList
 		{
 			get { return new ReadonlyList(Entities); }
+		}
+
+		public Com.MessageType MessageTypeValue
+		{
+			get { return (Com.MessageType) MessageType; }
 		}
 	}
 
@@ -253,6 +259,7 @@ namespace Diadoc.Api.Proto.Events
 		bool MessageIsDelivered { get; }
 		string DeliveredPatchId { get; }
 		string PatchId { get; }
+		Com.MessageType MessageTypeValue { get; }
 	}
 
 	[ComVisible(true)]
@@ -279,6 +286,11 @@ namespace Diadoc.Api.Proto.Events
 		public ReadonlyList EntityPatchesList
 		{
 			get { return new ReadonlyList(EntityPatches); }
+		}
+
+		public Com.MessageType MessageTypeValue
+		{
+			get { return (Com.MessageType) MessageType; }
 		}
 	}
 
