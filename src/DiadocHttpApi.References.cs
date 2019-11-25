@@ -37,6 +37,14 @@ namespace Diadoc.Api
 			return PerformHttpRequest<UserToUpdate, UserV2>(authToken, "/UpdateMyUser", userToUpdate);
 		}
 
+		public CertificateList GetMyCertificates(string authToken, string boxId)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GetMyCertificates");
+			queryBuilder.AddParameter("boxId", boxId);
+
+			return PerformHttpRequest<CertificateList>(authToken, "GET", queryBuilder.BuildPathAndQuery());
+		}
+
 		public OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false)
 		{
 			var qsb = new PathAndQueryBuilder("/GetOrganizationsByInnKpp");

@@ -17,9 +17,6 @@
 // Note: requires additional types generated from: DocumentDirection.proto
 // Note: requires additional types generated from: Events/DiadocMessage-PostApi.proto
 // Note: requires additional types generated from: CustomDataItem.proto
-
-using System;
-
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentInfoV3")]
@@ -371,7 +368,6 @@ namespace Diadoc.Api.Proto.Docflow
     }
     private readonly global::System.Collections.Generic.List<string> _TransformedToLetterIds = new global::System.Collections.Generic.List<string>();
     [global::ProtoBuf.ProtoMember(2, Name=@"TransformedToLetterIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [Obsolete]
     public global::System.Collections.Generic.List<string> TransformedToLetterIds
     {
       get { return _TransformedToLetterIds; }

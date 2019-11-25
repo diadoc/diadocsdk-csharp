@@ -37,6 +37,14 @@ namespace Diadoc.Api
 		{
 			return PerformHttpRequestAsync<UserToUpdate, UserV2>(authToken, "/UpdateMyUser", userToUpdate);
 		}
+		
+		public Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/GetMyCertificates");
+			queryBuilder.AddParameter("boxId", boxId);
+
+			return PerformHttpRequestAsync<CertificateList>(authToken, "GET", queryBuilder.BuildPathAndQuery());
+		}
 
 		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false)
 		{

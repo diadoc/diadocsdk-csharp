@@ -1,0 +1,6 @@
+import "CertificateInfoV2.proto";
+package Diadoc.Api.Proto;
+
+message CertificateList {
+	repeated CertificateInfoV2 Certificates = 1;
+}

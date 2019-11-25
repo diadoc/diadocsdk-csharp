@@ -411,6 +411,7 @@ namespace Diadoc.Api
 		User GetMyUser(string authToken);
 		UserV2 GetMyUserV2(string authToken);
 		UserV2 UpdateMyUser(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object userToUpdate);
+		CertificateList GetMyCertificates(string authToken, string boxId);
 
 		AsyncMethodResult CloudSign(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object request, string certificateThumbprint);
 		CloudSignResult WaitCloudSignResult(string authToken, string taskId);
@@ -1308,6 +1309,11 @@ namespace Diadoc.Api
 		public UserV2 UpdateMyUser(string authToken, object userToUpdate)
 		{
 			return diadoc.UpdateMyUser(authToken, (UserToUpdate) userToUpdate);
+		}
+
+		public CertificateList GetMyCertificates(string authToken, string boxId)
+		{
+			return diadoc.GetMyCertificates(authToken, boxId);
 		}
 
 		public AsyncMethodResult CloudSign(string authToken, object request, string certificateThumbprint)

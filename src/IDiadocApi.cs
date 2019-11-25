@@ -179,6 +179,7 @@ namespace Diadoc.Api
 		User GetMyUser(string authToken);
 		UserV2 GetMyUserV2(string authToken);
 		UserV2 UpdateMyUser(string authToken, UserToUpdate userToUpdate);
+		CertificateList GetMyCertificates(string authToken, string boxId);
 		AsyncMethodResult CloudSign(string authToken, CloudSignRequest request, string certificateThumbprint);
 		CloudSignResult WaitCloudSignResult(string authToken, string taskId, TimeSpan? timeout = null);
 		AsyncMethodResult CloudSignConfirm(string authToken, string cloudSignToken, string confirmationCode, ContentLocationPreference? locationPreference = null);
@@ -247,6 +248,7 @@ namespace Diadoc.Api
 		Task<User> GetMyUserAsync(string authToken);
 		Task<UserV2> GetMyUserV2Async(string authToken);
 		Task<UserV2> UpdateMyUserAsync(string authToken, UserToUpdate userToUpdate);
+		Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId);
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false);
 		Task<Organization> GetOrganizationByIdAsync(string orgId);
 		Task<Organization> GetOrganizationByBoxIdAsync(string boxId);

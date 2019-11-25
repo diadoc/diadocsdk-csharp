@@ -1,0 +1,24 @@
+package Diadoc.Api.Proto;
+
+message CertificateInfoV2 {
+	required string Thumbprint = 1;
+	required CertificateType Type = 2;
+	optional sfixed64 ValidFrom = 3;
+	optional sfixed64 ValidTo = 4;
+	optional sfixed64 PrivateKeyValidFrom = 5;
+	optional sfixed64 PrivateKeyValidTo = 6;
+	optional string OrganizationName = 7;
+	optional string Inn = 8;
+	optional string UserFirstName = 9;
+	optional string UserMiddleName = 10;
+	optional string UserLastName = 11;
+	optional string UserShortName = 12;
+	optional bool IsDefault = 13;
+}
+
+enum CertificateType {
+	Unknown = 0;
+	Token = 1;
+	Dss = 2;
+	KonturCertificate = 3;
+}
