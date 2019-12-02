@@ -431,6 +431,8 @@ namespace Diadoc.Api
 		GetDocumentTypesResponse GetDocumentTypes(string token, string boxId);
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, string nameOnShelf);
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content);
+		DetectTitleResponse DetectDocumentTitles(string token, string boxId, string nameOnShelf);
+		DetectTitleResponse DetectDocumentTitles(string token, string boxId, byte[] content);
 
 		[Obsolete("In order to download XSD schema use the link provided in DocumentTitle.XsdUrl")]
 		FileContent GetContent(
@@ -1376,14 +1378,26 @@ namespace Diadoc.Api
 			return diadoc.GetDocumentTypes(token, boxId);
 		}
 
+		[Obsolete("Use DetectDocumentTitles")]
 		public DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, string nameOnShelf)
 		{
 			return diadoc.DetectDocumentTypes(token, boxId, nameOnShelf);
 		}
 
+		[Obsolete("Use DetectDocumentTitles")]
 		public DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content)
 		{
 			return diadoc.DetectDocumentTypes(token, boxId, content);
+		}
+
+		public DetectTitleResponse DetectDocumentTitles(string token, string boxId, string nameOnShelf)
+		{
+			return diadoc.DetectDocumentTitles(token, boxId, nameOnShelf);
+		}
+
+		public DetectTitleResponse DetectDocumentTitles(string token, string boxId, byte[] content)
+		{
+			return diadoc.DetectDocumentTitles(token, boxId, content);
 		}
 
 		public FileContent GetContent(
