@@ -7,6 +7,7 @@
 import "Content.proto";
 import "DocumentId.proto";
 import "LockMode.proto";
+import "TotalCountType.proto";
 import "Documents/Document.proto";
 import "Events/CancellationInfo.proto";
 import "Events/ResolutionInfo.proto";
@@ -19,6 +20,7 @@ package Diadoc.Api.Proto.Events;
 message BoxEventList {
 	repeated BoxEvent Events = 1;
 	optional int32 TotalCount = 2;
+	required TotalCountType TotalCountType = 3;
 }
 
 message BoxEvent {

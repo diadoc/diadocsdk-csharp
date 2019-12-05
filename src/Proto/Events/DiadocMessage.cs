@@ -228,6 +228,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		int TotalCount { get; }
 		ReadonlyList EventsList { get; }
+		Com.TotalCountType TotalCountTypeValue { get; }
 	}
 
 	[ComVisible(true)]
@@ -239,6 +240,11 @@ namespace Diadoc.Api.Proto.Events
 		public ReadonlyList EventsList
 		{
 			get { return new ReadonlyList(Events); }
+		}
+
+		public Com.TotalCountType TotalCountTypeValue
+		{
+			get { return (Com.TotalCountType) TotalCountType; }
 		}
 	}
 

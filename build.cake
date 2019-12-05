@@ -124,6 +124,7 @@ Task("GenerateVersionInfo")
 	});
 
 Task("GenerateProtoFiles")
+	.IsDependentOn("Restore-NuGet-Packages")
 	.Does(() =>
 	{
 		if (!FileExists("./tools/protobuf-net.1.0.0.280/Tools/protobuf-net.dll"))

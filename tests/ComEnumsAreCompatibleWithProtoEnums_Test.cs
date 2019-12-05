@@ -255,6 +255,14 @@ namespace Diadoc.Api.Tests
 				typeof(CustomDataPatchOperation));
 		}
 
+		[Test]
+		public void Test_TotalCountType()
+		{
+			AssertEnumsAreCompatible(
+				typeof(Com.TotalCountType),
+				typeof(TotalCountType));
+		}
+
 		private static void AssertEnumsAreCompatible(Type comEnumType, Type protoEnumType)
 		{
 			var comEnumValues = GetEnumValues(comEnumType);

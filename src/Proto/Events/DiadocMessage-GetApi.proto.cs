@@ -11,6 +11,7 @@
 // Note: requires additional types generated from: Content.proto
 // Note: requires additional types generated from: DocumentId.proto
 // Note: requires additional types generated from: LockMode.proto
+// Note: requires additional types generated from: TotalCountType.proto
 // Note: requires additional types generated from: Documents/Document.proto
 // Note: requires additional types generated from: Events/CancellationInfo.proto
 // Note: requires additional types generated from: Events/ResolutionInfo.proto
@@ -39,6 +40,13 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _TotalCount; }
       set { _TotalCount = value; }
+    }
+    private Diadoc.Api.Proto.TotalCountType _TotalCountType;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"TotalCountType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.TotalCountType TotalCountType
+    {
+      get { return _TotalCountType; }
+      set { _TotalCountType = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

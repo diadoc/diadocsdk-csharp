@@ -4,6 +4,7 @@
 
 import "Timestamp.proto";
 import "DocumentId.proto";
+import "TotalCountType.proto";
 import "Docflow/DocumentWithDocflowV3.proto";
 
 package Diadoc.Api.Proto.Docflow;
@@ -35,6 +36,7 @@ message GetDocflowEventsResponseV3
 {
 	required int32 TotalCount = 1;
 	repeated DocflowEventV3 Events = 2;
+	required TotalCountType TotalCountType = 3;
 }
 
 message DocflowEventV3

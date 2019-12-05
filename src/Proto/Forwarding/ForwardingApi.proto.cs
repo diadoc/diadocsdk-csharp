@@ -10,6 +10,7 @@
 // Generated from: Forwarding/ForwardingApi.proto
 // Note: requires additional types generated from: Timestamp.proto
 // Note: requires additional types generated from: DocumentId.proto
+// Note: requires additional types generated from: TotalCountType.proto
 // Note: requires additional types generated from: TimeBasedFilter.proto
 // Note: requires additional types generated from: Forwarding/ForwardedDocument.proto
 namespace Diadoc.Api.Proto.Forwarding
@@ -174,6 +175,13 @@ namespace Diadoc.Api.Proto.Forwarding
       get { return _Events; }
     }
   
+    private Diadoc.Api.Proto.TotalCountType _TotalCountType;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"TotalCountType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.TotalCountType TotalCountType
+    {
+      get { return _TotalCountType; }
+      set { _TotalCountType = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
