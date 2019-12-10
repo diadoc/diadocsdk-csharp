@@ -113,6 +113,7 @@ message Entity {
 	repeated string Labels = 25;
 	optional string Version = 26;
 	optional TemplateTransformationInfo TemplateTransformationInfo = 27;
+	optional TemplateRefusalInfo TemplateRefusalInfo = 28;
 }
 
 message EntityPatch {
@@ -137,6 +138,21 @@ message TemplateTransformationInfo
 	optional DocumentId TransformedToDocumentId = 1;
 	optional string Author = 2;
 }
+
+message TemplateRefusalInfo
+{
+	required TemplateRefusalType Type = 1 [default = UnknownTemplateRefusalType];
+	required string BoxId = 2;
+	optional string Author = 3;
+	optional string Comment = 4;
+}
+
+enum TemplateRefusalType {
+	UnknownTemplateRefusalType = 0;
+	Refusal = 1;
+	Withdrawal = 2;
+}
+
 
 enum EntityType {
 	UnknownEntityType = 0;	// Reserved type to report to legacy clients for newly introduced entity types
@@ -200,5 +216,6 @@ enum AttachmentType {
 	Edition = 71;
 	DeletionRestoration = 72;
 	TemplateTransformation = 73;
+	TemplateRefusal = 74;
 	//Неизвестные типы должны обрабатываться как Title
 }

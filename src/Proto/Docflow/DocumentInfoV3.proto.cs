@@ -380,6 +380,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _TemplateTransformationInfos; }
     }
   
+
+    private Diadoc.Api.Proto.Docflow.TemplateRefusalInfo _TemplateRefusalInfo = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"TemplateRefusalInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.TemplateRefusalInfo TemplateRefusalInfo
+    {
+      get { return _TemplateRefusalInfo; }
+      set { _TemplateRefusalInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -414,6 +423,41 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _AuthorUserId; }
       set { _AuthorUserId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TemplateRefusalInfo")]
+  public partial class TemplateRefusalInfo : global::ProtoBuf.IExtensible
+  {
+    public TemplateRefusalInfo() {}
+    
+    private string _BoxId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"BoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string BoxId
+    {
+      get { return _BoxId; }
+      set { _BoxId = value; }
+    }
+
+    private string _AuthorUserId = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"AuthorUserId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AuthorUserId
+    {
+      get { return _AuthorUserId; }
+      set { _AuthorUserId = value; }
+    }
+
+    private string _Comment = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Comment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Comment
+    {
+      get { return _Comment; }
+      set { _Comment = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

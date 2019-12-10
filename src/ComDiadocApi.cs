@@ -459,6 +459,7 @@ namespace Diadoc.Api
 
 		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template);
 		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template, string operationId);
+		MessagePatch PostTemplatePatch(string authToken, string boxId, string templateId, [MarshalAs(UnmanagedType.IDispatch)] object patch, string operationId);
 		Message TransformTemplateToMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object templateTransformation);
 		Message TransformTemplateToMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object templateTransformation, string operationId);
 
@@ -712,6 +713,11 @@ namespace Diadoc.Api
 		public Template PostTemplate(string authToken, object template, string operationId)
 		{
 			return diadoc.PostTemplate(authToken, (TemplateToPost) template, operationId);
+		}
+
+		public MessagePatch PostTemplatePatch(string authToken, string boxId, string templateId, object patch, string operationId)
+		{
+			return diadoc.PostTemplatePatch(authToken, boxId, templateId, (TemplatePatchToPost) patch, operationId);
 		}
 
 		public Message TransformTemplateToMessage(string authToken, object templateTransformation)

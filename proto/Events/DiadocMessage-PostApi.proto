@@ -545,6 +545,17 @@ message TemplateDocumentAttachment {
 	optional string EditingSettingId = 9;
 	optional bool NeedRecipientSignature = 10 [default = false];
 	optional PredefinedRecipientTitle PredefinedRecipientTitle = 11;
+	optional bool RefusalDisabled = 12 [default = false];
+}
+
+message TemplatePatchToPost {
+	repeated TemplateRefusalAttachment Refusals = 1;
+}
+
+message TemplateRefusalAttachment {
+	required string DocumentId = 1;
+	optional string Comment = 2;
+	repeated string Labels = 3;
 }
 
 message PredefinedRecipientTitle {

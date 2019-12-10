@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: CustomPrintFormDetectionResult.proto
+// Generated from: CustomPrintFormDetection.proto
 // Note: requires additional types generated from: DocumentId.proto
 namespace Diadoc.Api.Proto
 {

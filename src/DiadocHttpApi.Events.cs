@@ -11,10 +11,11 @@ namespace Diadoc.Api
 			var qsb = new PathAndQueryBuilder("/V6/GetNewEvents");
 			qsb.AddParameter("includeDrafts");
 			qsb.AddParameter("boxId", boxId);
-			if (!string.IsNullOrEmpty(afterEventId)) 
+			if (!string.IsNullOrEmpty(afterEventId))
 				qsb.AddParameter("afterEventId", afterEventId);
 			return PerformHttpRequest<BoxEventList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
+
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)
 		{
 			var queryString = string.Format("/V2/GetEvent?eventId={0}&boxId={1}", eventId, boxId);
@@ -32,7 +33,13 @@ namespace Diadoc.Api
 			return PerformHttpRequest<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		public Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
+		public Message GetMessage(
+			string authToken,
+			string boxId,
+			string messageId,
+			string entityId,
+			bool withOriginalSignature = false,
+			bool injectEntityContent = false)
 		{
 			var qsb = new PathAndQueryBuilder("/V5/GetMessage");
 			qsb.AddParameter("boxId", boxId);
@@ -82,8 +89,23 @@ namespace Diadoc.Api
 
 		public MessagePatch PostMessagePatch(string authToken, MessagePatchToPost patch, string operationId = null)
 		{
-			var queryString = string.Format("/V3/PostMessagePatch?operationId={0}", operationId);
-			return PerformHttpRequest<MessagePatchToPost, MessagePatch>(authToken, queryString, patch);
+			var qsb = new PathAndQueryBuilder("/V3/PostMessagePatch");
+			qsb.AddParameter("operationId", operationId);
+			return PerformHttpRequest<MessagePatchToPost, MessagePatch>(authToken, qsb.BuildPathAndQuery(), patch);
+		}
+
+		public MessagePatch PostTemplatePatch(
+			string authToken,
+			string boxId,
+			string templateId,
+			TemplatePatchToPost patch,
+			string operationId = null)
+		{
+			var qsb = new PathAndQueryBuilder("/PostTemplatePatch");
+			qsb.AddParameter("boxId", boxId);
+			qsb.AddParameter("templateId", templateId);
+			qsb.AddParameter("operationId", operationId);
+			return PerformHttpRequest<TemplatePatchToPost, MessagePatch>(authToken, qsb.BuildPathAndQuery(), patch);
 		}
 
 		public void PostRoamingNotification(string authToken, RoamingNotificationToPost notification)
@@ -96,11 +118,11 @@ namespace Diadoc.Api
 			var queryString = "/PrepareDocumentsToSign" + (excludeContent ? "?excludeContent" : "");
 			return PerformHttpRequest<PrepareDocumentsToSignRequest, PrepareDocumentsToSignResponse>(authToken, queryString, request);
 		}
-		
+
 		public BoxEvent GetLastEvent(string authToken, string boxId)
 		{
 			var queryString = BuildQueryStringWithBoxId("GetLastEvent", boxId);
-			return PerformHttpRequest<BoxEvent>(authToken,"GET", queryString, allowedStatusCodes: HttpStatusCode.NoContent);
+			return PerformHttpRequest<BoxEvent>(authToken, "GET", queryString, allowedStatusCodes: HttpStatusCode.NoContent);
 		}
 	}
 }

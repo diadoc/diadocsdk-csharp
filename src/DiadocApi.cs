@@ -281,6 +281,15 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostMessagePatch(authToken, patch, operationId);
 		}
 
+		public MessagePatch PostTemplatePatch(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (templateId == null) throw new ArgumentNullException("templateId");
+			if (patch == null) throw new ArgumentNullException("patch");
+			return diadocHttpApi.PostTemplatePatch(authToken, boxId, templateId, patch, operationId);
+		}
+
 		public void PostRoamingNotification(string authToken, RoamingNotificationToPost notification)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
