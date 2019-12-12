@@ -4,6 +4,7 @@
 
 import "Timestamp.proto";
 import "DocumentId.proto";
+import "TotalCountType.proto";
 import "TimeBasedFilter.proto";
 import "Docflow/DocumentWithDocflow.proto";
 
@@ -83,6 +84,7 @@ message GetDocflowEventsResponse
 {
 	optional int32 TotalCount = 1;
 	repeated DocflowEvent Events = 2;
+	required TotalCountType TotalCountType = 3;
 }
 
 message DocflowEvent

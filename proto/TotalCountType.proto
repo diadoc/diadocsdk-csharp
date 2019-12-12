@@ -1,0 +1,8 @@
+package Diadoc.Api.Proto;
+
+enum TotalCountType
+{
+	UnknownCountType = 0;
+	Equal = 1;
+	GreaterThanOrEqual = 2;
+}
