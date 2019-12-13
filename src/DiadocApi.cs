@@ -1194,6 +1194,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocumentTypes(authToken, boxId);
 		}
 
+		[Obsolete("Use DetectDocumentTitles")]
 		public DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, string nameOnShelf)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1205,6 +1206,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.DetectDocumentTypes(authToken, boxId, nameOnShelf);
 		}
 
+		[Obsolete("Use DetectDocumentTitles")]
 		public DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, byte[] content)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1212,6 +1214,26 @@ namespace Diadoc.Api
 			if (string.IsNullOrEmpty(boxId))
 				throw new ArgumentNullException("boxId");
 			return diadocHttpApi.DetectDocumentTypes(authToken, boxId, content);
+		}
+
+		public DetectTitleResponse DetectDocumentTitles(string authToken, string boxId, string nameOnShelf)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			if (string.IsNullOrEmpty(nameOnShelf))
+				throw new ArgumentNullException("nameOnShelf");
+			return diadocHttpApi.DetectDocumentTitles(authToken, boxId, nameOnShelf);
+		}
+
+		public DetectTitleResponse DetectDocumentTitles(string authToken, string boxId, byte[] content)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			return diadocHttpApi.DetectDocumentTitles(authToken, boxId, content);
 		}
 
 		public FileContent GetContent(string authToken, string typeNamedId, string function, string version, int titleIndex, XsdContentType contentType = default(XsdContentType))

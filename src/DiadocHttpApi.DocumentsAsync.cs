@@ -152,6 +152,21 @@ namespace Diadoc.Api
 			qsb.AddParameter("boxId", boxId);
 			return PerformHttpRequestAsync<DetectDocumentTypesResponse>(authToken, "POST", qsb.BuildPathAndQuery(), content);
 		}
+		
+		public Task<DetectTitleResponse> DetectDocumentTitlesAsync(string authToken, string boxId, string nameOnShelf)
+		{
+			var qsb = new PathAndQueryBuilder("/DetectDocumentTitles");
+			qsb.AddParameter("boxId", boxId);
+			qsb.AddParameter("nameOnShelf", nameOnShelf);
+			return PerformHttpRequestAsync<DetectTitleResponse>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+
+		public Task<DetectTitleResponse> DetectDocumentTitlesAsync(string authToken, string boxId, byte[] content)
+		{
+			var qsb = new PathAndQueryBuilder("/DetectDocumentTitles");
+			qsb.AddParameter("boxId", boxId);
+			return PerformHttpRequestAsync<DetectTitleResponse>(authToken, "POST", qsb.BuildPathAndQuery(), content);
+		}
 
 		public async Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex, XsdContentType contentType = default(XsdContentType))
 		{

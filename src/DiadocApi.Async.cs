@@ -1060,6 +1060,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocumentTypesAsync(authToken, boxId);
 		}
 
+		[Obsolete("Use DetectDocumentTitlesAsync")]
 		public Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, string nameOnShelf)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1071,6 +1072,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.DetectDocumentTypesAsync(authToken, boxId, nameOnShelf);
 		}
 
+		[Obsolete("Use DetectDocumentTitlesAsync")]
 		public Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, byte[] content)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1078,6 +1080,26 @@ namespace Diadoc.Api
 			if (string.IsNullOrEmpty(boxId))
 				throw new ArgumentNullException("boxId");
 			return diadocHttpApi.DetectDocumentTypesAsync(authToken, boxId, content);
+		}
+		
+		public Task<DetectTitleResponse> DetectDocumentTitlesAsync(string authToken, string boxId, string nameOnShelf)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			if (string.IsNullOrEmpty(nameOnShelf))
+				throw new ArgumentNullException("nameOnShelf");
+			return diadocHttpApi.DetectDocumentTitlesAsync(authToken, boxId, nameOnShelf);
+		}
+
+		public Task<DetectTitleResponse> DetectDocumentTitlesAsync(string authToken, string boxId, byte[] content)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			return diadocHttpApi.DetectDocumentTitlesAsync(authToken, boxId, content);
 		}
 
 		public Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex, XsdContentType contentType = default(XsdContentType))

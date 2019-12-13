@@ -1,0 +1,15 @@
+import "Events/DiadocMessage-PostApi.proto";
+
+package Diadoc.Api.Proto.Documents;
+
+message DetectTitleResponse {
+	repeated DetectedDocumentTitle DocumentTitles = 1;
+}
+
+message DetectedDocumentTitle {
+	required string TypeNamedId = 1;
+	required string Function = 2;
+	required string Version = 3;
+	required int32 TitleIndex = 4;
+	repeated Events.MetadataItem Metadata = 5;
+}
