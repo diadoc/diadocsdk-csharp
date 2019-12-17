@@ -12,6 +12,17 @@ namespace Diadoc.Api
 		public static byte[] SerializeToXml<T>(this T @object)
 		{
 			var serializer = new XmlSerializer(typeof(T));
+			return SerializeToXml(@object, serializer);
+		}
+
+		public static byte[] SerializeToXml(object @object)
+		{
+			var serializer = new XmlSerializer(@object.GetType());
+			return SerializeToXml(@object, serializer);
+		}
+
+		private static byte[] SerializeToXml<T>(T @object, XmlSerializer serializer)
+		{
 			using (var ms = new MemoryStream())
 			{
 				using (var sw = new StreamWriter(ms, Encoding.UTF8))
@@ -24,7 +35,8 @@ namespace Diadoc.Api
 						namespaces.Add("", ns);
 					}
 
-					serializer.Serialize(sw, @object, namespaces ?? new XmlSerializerNamespaces(new[] {new XmlQualifiedName(string.Empty)}));
+					serializer.Serialize(sw, @object,
+						namespaces ?? new XmlSerializerNamespaces(new[] {new XmlQualifiedName(string.Empty)}));
 				}
 
 				return ms.ToArray();
