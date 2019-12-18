@@ -1,5 +1,6 @@
-﻿using System.IO;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Diadoc.Api.Com
 {
@@ -11,6 +12,7 @@ namespace Diadoc.Api.Com
 
 		void ReadFromFile(string path);
 		void SaveToFile(string path);
+    void ReadFromText(string text);
 	}
 
 	[ComVisible(true)]
@@ -25,6 +27,11 @@ namespace Diadoc.Api.Com
 		public void ReadFromFile(string path)
 		{
 			Bytes = File.ReadAllBytes(path);
+		}
+
+    public void ReadFromText(string text)
+		{
+			Bytes = Encoding.UTF8.GetBytes(text);
 		}
 
 		public void SaveToFile(string path)
