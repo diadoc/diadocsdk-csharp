@@ -346,6 +346,8 @@ namespace Diadoc.Api.Proto.Events
 	{
 		string FromBoxId { get; set; }
 		string FromDepartmentId { get; set; }
+		string ProxyBoxId { get; set; }
+		string ProxyDepartmentId { get; set; }
 		string ToBoxId { get; set; }
 		string ToDepartmentId { get; set; }
 		bool IsInternal { get; set; }
@@ -488,7 +490,7 @@ namespace Diadoc.Api.Proto.Events
 		string ToBoxId { get; set; }
 		string MessageFromBoxId { get; set; }
 		string MessageToBoxId { get; set; }
-		LockMode LockMode { get; set; } 
+		LockMode LockMode { get; set; }
 		string MessageToDepartmentId { get; set; }
 		string FromDepartmentId { get; set; }
 		string ToDepartmentId { get; set; }
