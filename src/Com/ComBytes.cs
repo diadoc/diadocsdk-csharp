@@ -1,3 +1,4 @@
+
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Diadoc.Api.Com
 
 		void ReadFromFile(string path);
 		void SaveToFile(string path);
-    void ReadFromText(string text);
+		void ReadFromText(string text, string codePage);
 	}
 
 	[ComVisible(true)]
@@ -28,10 +29,14 @@ namespace Diadoc.Api.Com
 		{
 			Bytes = File.ReadAllBytes(path);
 		}
-
-    public void ReadFromText(string text)
+		
+		public void ReadFromText(string text, string codePage)
 		{
-			Bytes = Encoding.UTF8.GetBytes(text);
+			if (System.String.IsNullOrEmpty(codePage)) codePage="utf-8";
+			
+			Encoding encoding = Encoding.GetEncoding(codePage);
+			
+			Bytes = encoding.GetBytes(text);
 		}
 
 		public void SaveToFile(string path)
