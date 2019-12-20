@@ -1,4 +1,3 @@
-
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -32,10 +31,8 @@ namespace Diadoc.Api.Com
 		
 		public void ReadFromText(string text, string codePage)
 		{
-			if (System.String.IsNullOrEmpty(codePage)) codePage="utf-8";
-			
-			Encoding encoding = Encoding.GetEncoding(codePage);
-			
+			if (string.IsNullOrEmpty(codePage)) codePage = "utf-8";
+			var encoding = Encoding.GetEncoding(codePage);
 			Bytes = encoding.GetBytes(text);
 		}
 
