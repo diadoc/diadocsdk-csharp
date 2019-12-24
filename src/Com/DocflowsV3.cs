@@ -411,6 +411,7 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		DocumentParticipants LetterParticipants { get; }
 		ReadonlyList TransformedToLetterIdsList { get; }
+		TemplateRefusalInfo TemplateRefusalInfo { get; }
 	}
 
 	[ComVisible(true)]
@@ -425,6 +426,24 @@ namespace Diadoc.Api.Proto.Docflow
 		{
 			get { return new ReadonlyList(TransformedToLetterIds); }
 		}
+	}
+
+	[ComVisible(true)]
+	[Guid("75C71C29-AC5C-43A4-A820-5841C71F3532")]
+	public interface ITemplateRefusalInfo
+	{
+		string BoxId { get; }
+		string AuthorUserId { get; }
+		string Comment { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.Docflow.TemplateRefusalInfo")]
+	[Guid("D1763A94-4981-4AFE-9AC1-845D11196169")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ITemplateRefusalInfo))]
+	public partial class TemplateRefusalInfo : SafeComObject, ITemplateRefusalInfo
+	{
 	}
 
 	[ComVisible(true)]

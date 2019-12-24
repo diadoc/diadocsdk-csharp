@@ -62,6 +62,7 @@ namespace Diadoc.Api.Com
 		Cancellation = 69,
 		Edition = 71,
 		DeletionRestoration = 72,
-		TemplateTransformation = 73
+		TemplateTransformation = 73,
+		TemplateRefusal = 74
 	}
 }

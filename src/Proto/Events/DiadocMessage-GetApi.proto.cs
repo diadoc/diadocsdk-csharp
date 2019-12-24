@@ -728,6 +728,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _TemplateTransformationInfo; }
       set { _TemplateTransformationInfo = value; }
     }
+
+    private Diadoc.Api.Proto.Events.TemplateRefusalInfo _TemplateRefusalInfo = null;
+    [global::ProtoBuf.ProtoMember(28, IsRequired = false, Name=@"TemplateRefusalInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.TemplateRefusalInfo TemplateRefusalInfo
+    {
+      get { return _TemplateRefusalInfo; }
+      set { _TemplateRefusalInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -864,6 +873,62 @@ namespace Diadoc.Api.Proto.Events
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TemplateRefusalInfo")]
+  public partial class TemplateRefusalInfo : global::ProtoBuf.IExtensible
+  {
+    public TemplateRefusalInfo() {}
+    
+    private Diadoc.Api.Proto.Events.TemplateRefusalType _Type;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Events.TemplateRefusalType Type
+    {
+      get { return _Type; }
+      set { _Type = value; }
+    }
+    private string _BoxId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"BoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string BoxId
+    {
+      get { return _BoxId; }
+      set { _BoxId = value; }
+    }
+
+    private string _Author = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Author", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Author
+    {
+      get { return _Author; }
+      set { _Author = value; }
+    }
+
+    private string _Comment = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Comment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Comment
+    {
+      get { return _Comment; }
+      set { _Comment = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"TemplateRefusalType")]
+    public enum TemplateRefusalType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownTemplateRefusalType", Value=0)]
+      UnknownTemplateRefusalType = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Refusal", Value=1)]
+      Refusal = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Withdrawal", Value=2)]
+      Withdrawal = 2
+    }
   
     [global::ProtoBuf.ProtoContract(Name=@"EntityType")]
     public enum EntityType
@@ -1043,7 +1108,10 @@ namespace Diadoc.Api.Proto.Events
       DeletionRestoration = 72,
             
       [global::ProtoBuf.ProtoEnum(Name=@"TemplateTransformation", Value=73)]
-      TemplateTransformation = 73
+      TemplateTransformation = 73,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TemplateRefusal", Value=74)]
+      TemplateRefusal = 74
     }
   
 }

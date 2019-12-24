@@ -3297,6 +3297,65 @@ namespace Diadoc.Api.Proto.Events
       get { return _PredefinedRecipientTitle; }
       set { _PredefinedRecipientTitle = value; }
     }
+
+    private bool _RefusalDisabled = (bool)false;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"RefusalDisabled", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool RefusalDisabled
+    {
+      get { return _RefusalDisabled; }
+      set { _RefusalDisabled = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TemplatePatchToPost")]
+  public partial class TemplatePatchToPost : global::ProtoBuf.IExtensible
+  {
+    public TemplatePatchToPost() {}
+    
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.TemplateRefusalAttachment> _Refusals = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.TemplateRefusalAttachment>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"Refusals", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.TemplateRefusalAttachment> Refusals
+    {
+      get { return _Refusals; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TemplateRefusalAttachment")]
+  public partial class TemplateRefusalAttachment : global::ProtoBuf.IExtensible
+  {
+    public TemplateRefusalAttachment() {}
+    
+    private string _DocumentId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"DocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocumentId
+    {
+      get { return _DocumentId; }
+      set { _DocumentId = value; }
+    }
+
+    private string _Comment = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Comment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Comment
+    {
+      get { return _Comment; }
+      set { _Comment = value; }
+    }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

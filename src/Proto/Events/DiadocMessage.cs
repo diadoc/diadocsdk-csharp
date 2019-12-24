@@ -93,6 +93,9 @@ namespace Diadoc.Api.Proto.Events
 		string AttachmentVersion { get; }
 		string Version { get; }
 		void AddLabel(string label);
+
+		TemplateTransformationInfo TemplateTransformationInfo { get; }
+		TemplateRefusalInfo TemplateRefusalInfo { get; }
 	}
 
 	[ComVisible(true)]
@@ -124,6 +127,47 @@ namespace Diadoc.Api.Proto.Events
 		public void AddLabel(string label)
 		{
 			Labels.Add(label);
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("73FC26F8-AD84-4A40-B7FE-D49CFED58F88")]
+	public interface ITemplateTransformationInfo
+	{
+		DocumentId TransformedToDocumentId { get; }
+		string Author { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.TemplateTransformationInfo")]
+	[Guid("0ED31956-D09A-4676-9CA5-33DF660FED87")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ITemplateTransformationInfo))]
+	public partial class TemplateTransformationInfo : SafeComObject, ITemplateTransformationInfo
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("34C626B4-D4C4-47C7-8011-ACE469BFB8B7")]
+	public interface ITemplateRefusalInfo
+	{
+		Com.TemplateRefusalType TypeValue { get; }
+		string BoxId { get; }
+		string Author { get; }
+		string Comment { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.TemplateRefusalInfo")]
+	[Guid("181ED48D-40D1-4974-9FC8-790118BE616A")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ITemplateRefusalInfo))]
+	public partial class TemplateRefusalInfo : SafeComObject, ITemplateRefusalInfo
+	{
+		public Com.TemplateRefusalType TypeValue
+		{
+			get { return (Com.TemplateRefusalType) Type; }
+			set { Type = (TemplateRefusalType) value; }
 		}
 	}
 
@@ -524,6 +568,7 @@ namespace Diadoc.Api.Proto.Events
 		string CustomDocumentId { get; set; }
 		string EditingSettingId { get; set; }
 		bool NeedRecipientSignature { get; set; }
+		bool RefusalDisabled { get; set; }
 
 		void SetUnsignedContent([MarshalAs(UnmanagedType.IDispatch)] object unsignedContent);
 		void AddMetadataItem([MarshalAs(UnmanagedType.IDispatch)] object metadataItem);
@@ -545,6 +590,43 @@ namespace Diadoc.Api.Proto.Events
 		{
 			Metadata.Add((MetadataItem) metadataItem);
 		}
+	}
+
+	[ComVisible(true)]
+	[Guid("43AC127F-9F6A-402F-A75F-0C76D260E4AF")]
+	public interface ITemplatePatchToPost
+	{
+		void AddRefusal([MarshalAs(UnmanagedType.IDispatch)] object refusal);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.TemplatePatchToPost")]
+	[Guid("72BF0A5D-E8E9-455F-B00F-0505877EFF2B")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ITemplatePatchToPost))]
+	public partial class TemplatePatchToPost : SafeComObject, ITemplatePatchToPost
+	{
+		public void AddRefusal(object refusal)
+		{
+			Refusals.Add((TemplateRefusalAttachment) refusal);
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("0C069765-AC7D-42E4-8307-9C5BDACB15F7")]
+	public interface ITemplateRefusalAttachment
+	{
+		string DocumentId { get; set; }
+		string Comment { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.TemplateRefusalAttachment")]
+	[Guid("B9A66086-1772-446E-A22D-A988062B341C")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ITemplateRefusalAttachment))]
+	public partial class TemplateRefusalAttachment : SafeComObject, ITemplateRefusalAttachment
+	{
 	}
 
 	[ComVisible(true)]

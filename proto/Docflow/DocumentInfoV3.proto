@@ -78,6 +78,7 @@ message DocumentTemplateInfo
 	required DocumentParticipants LetterParticipants = 1;
 	repeated string TransformedToLetterIds = 2;
 	repeated TemplateTransformationInfo TemplateTransformationInfos = 3;
+	optional TemplateRefusalInfo TemplateRefusalInfo = 4;
 }
 
 message TemplateTransformationInfo
@@ -85,4 +86,11 @@ message TemplateTransformationInfo
 	required string TransformationId = 1;
 	optional DocumentId TransformedToDocumentId = 2;
 	optional string AuthorUserId = 3;
+}
+
+message TemplateRefusalInfo
+{
+	required string BoxId = 1;
+	optional string AuthorUserId = 2;
+	optional string Comment = 3;
 }
