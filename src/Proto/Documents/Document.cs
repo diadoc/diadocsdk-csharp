@@ -52,6 +52,7 @@ namespace Diadoc.Api.Proto.Documents
 		RecipientReceiptMetadata RecipientReceiptMetadata { get; }
 		ConfirmationMetadata ConfirmationMetadata { get; }
 		AmendmentRequestMetadata AmendmentRequestMetadata { get; }
+		ReadonlyList MetadataList { get; }
 		bool IsDeleted { get; }
 		bool IsTest { get; }
 		bool IsRead { get; }
@@ -223,6 +224,11 @@ namespace Diadoc.Api.Proto.Documents
 		{
 			get { return (Com.RevocationStatus)((int)RevocationStatus); }
 			set { RevocationStatus = (RevocationStatus)((int)value); }
+		}
+
+		public ReadonlyList MetadataList
+		{
+			get { return new ReadonlyList(Metadata); }
 		}
 	}
 
