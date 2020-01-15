@@ -785,6 +785,7 @@ namespace Diadoc.Api.Proto.Events
 		void AddXmlTorg12BuyerTitle([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddXmlAcceptanceCertificateBuyerTitle([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddResolution([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddResolutionRequestAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 		void AddRevocationRequestAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 
 		void AddXmlSignatureRejectionAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
