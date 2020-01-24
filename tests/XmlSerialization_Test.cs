@@ -16,21 +16,21 @@ namespace Diadoc.Api.Tests
 	[TestFixture]
 	public class XmlSerialization_Test
 	{
-		[TestCaseSource("GetAllProtoClasses")]
+		[TestCaseSource(nameof(GetAllProtoClasses))]
 		public void CheckClassesCanBeSerializedToXml(Type protoClass)
 		{
 			var info = CreateType(protoClass);
 			AssertClassCanBeSerializedToXml(info);
 		}
 
-		[TestCaseSource("GetAllProtoClasses")]
+		[TestCaseSource(nameof(GetAllProtoClasses))]
 		public void CheckClassesCanBeSerializedToJson(Type protoClass)
 		{
 			var info = CreateType(protoClass);
 			AssertClassCanBeSerializedToJson(info);
 		}
 
-		[TestCaseSource("GetAllProtoClasses")]
+		[TestCaseSource(nameof(GetAllProtoClasses))]
 		public void CheckClassesCanBeSerializedToProtobuf(Type protoClass)
 		{
 			var info = CreateType(protoClass);

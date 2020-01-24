@@ -13,7 +13,6 @@ namespace Diadoc.Api.Tests
 	{
 		private readonly Assembly diadocApiAssembly = typeof(ComDiadocApi).Assembly;
 
-
 		[Test]
 		public void EachClassInheritedFromComVisibleInterface_MustBeComVisible()
 		{
@@ -64,7 +63,7 @@ namespace Diadoc.Api.Tests
 				.GroupBy(x => x.Guid)
 				.Where(x => x.Count() > 1)
 				.SelectMany(x => x)
-				.Select(x => string.Format("{0} for {1}", x.Guid, x.Type.Name))
+				.Select(x => $"{x.Guid} for {x.Type.Name}")
 				.ToArray());
 			Console.WriteLine(guidTypeStrings);
 			Assert.That(typeGuids.Select(x => x.Guid).Distinct().Count(), Is.EqualTo(typeGuids.Count));
@@ -81,7 +80,7 @@ namespace Diadoc.Api.Tests
 				.GroupBy(x => x.ProgId)
 				.Where(x => x.Count() > 1)
 				.SelectMany(x => x)
-				.Select(x => string.Format("{0} for {1}", x.ProgId, x.Type.Name))
+				.Select(x => $"{x.ProgId} for {x.Type.Name}")
 				.ToArray());
 			Console.WriteLine(guidTypeStrings);
 			Assert.That(typeProgIds.Select(x => x.ProgId).Distinct().Count(), Is.EqualTo(typeProgIds.Count));
@@ -94,7 +93,7 @@ namespace Diadoc.Api.Tests
 				.Where(x => x.IsInterface && IsComVisible(x))
 				.ToArray();
 
-			bool hasErrors = false;
+			var hasErrors = false;
 			foreach (var comInterface in comInterfaces)
 			{
 				var wrongMembers = comInterface.GetMembers()
@@ -141,15 +140,13 @@ namespace Diadoc.Api.Tests
 		private static string FindProgId(Type type)
 		{
 			var progIdAttribute = FindAttributes<ProgIdAttribute>(type).FirstOrDefault();
-			return progIdAttribute != null
-				? progIdAttribute.Value
-				: null;
+			return progIdAttribute?.Value;
 		}
 
 		private static Type TryGetComDefaultInterface(Type type)
 		{
 			var attribute = FindAttributes<ComDefaultInterfaceAttribute>(type).FirstOrDefault();
-			return attribute == null ? null : attribute.Value;
+			return attribute?.Value;
 		}
 
 		private static Guid? TryGetGuid(Type type)

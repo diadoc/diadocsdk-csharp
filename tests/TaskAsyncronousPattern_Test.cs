@@ -11,19 +11,19 @@ namespace Diadoc.Api.Tests
 	[TestFixture]
 	public class TaskAsyncronousPattern_Test
 	{
-		[TestCaseSource("GetAllTapMethods")]
+		[TestCaseSource(nameof(GetAllTapMethods))]
 		public void AllTapMethodsMustHaveAsyncInName(MethodInfo method)
 		{
 			Assert.That(method.Name, Does.EndWith("Async"), method.ToString());
 		}
 
-		[TestCaseSource("GetAllTapMethods")]
+		[TestCaseSource(nameof(GetAllTapMethods))]
 		public void AllTapMethodsMustReturnTask(MethodInfo method)
 		{
 			Assert.IsTrue((method.ReturnType == typeof(Task)) || method.ReturnType.IsSubclassOf(typeof(Task)), method.ToString());
 		}
 
-		[TestCaseSource("GetAllSynchronousApiMethods")]
+		[TestCaseSource(nameof(GetAllSynchronousApiMethods))]
 		public void AllSynchronousApiMethodsShouldHaveAsyncCounterpartWithSameSignature(MethodInfo method)
 		{
 			var methodParameters = method.GetParameters().Select(x => x.ParameterType).ToArray();
@@ -38,7 +38,7 @@ namespace Diadoc.Api.Tests
 				Assert.That(asyncMethodCounterpart.ReturnType, Is.EqualTo(typeof(Task<>).MakeGenericType(method.ReturnType)), $"Type: {method.ReflectedType}, Method: {method} async counterpart has wrong return type");
 		}
 
-		[TestCaseSource("GetAllAsynchronousApiMethods")]
+		[TestCaseSource(nameof(GetAllAsynchronousApiMethods))]
 		public void AllAsynchronousApiMethodsShouldHaveSyncCounterpartWithSameSignature(MethodInfo method)
 		{
 			var methodParameters = method.GetParameters().Select(x => x.ParameterType).ToArray();
@@ -53,7 +53,7 @@ namespace Diadoc.Api.Tests
 				Assert.That(syncMethodCounterpart.ReturnType, Is.EqualTo(method.ReturnType.GenericTypeArguments.First()), $"Type: {method.ReflectedType}, Method: {method} async counterpart has wrong return type");
 		}
 
-		[TestCaseSource("GetAllDiadocHttpApiMethods")]
+		[TestCaseSource(nameof(GetAllDiadocHttpApiMethods))]
 		public void AllDiadocHttpApiMethodsShouldHaveCounterpartsInDiadocApi(MethodInfo method)
 		{
 			var counterpart = typeof(DiadocApi).GetMethod(method.Name, method.GetParameters().Select(x => x.ParameterType).ToArray());
@@ -61,7 +61,7 @@ namespace Diadoc.Api.Tests
 			Assert.That(counterpart.ReturnType, Is.EqualTo(method.ReturnType));
 		}
 
-		[TestCaseSource("GetAllDiadocHttpApiMethods")]
+		[TestCaseSource(nameof(GetAllDiadocHttpApiMethods))]
 		public void AllDiadocHttpApiMethodsShouldHaveCounterpartsInIDiadocApi(MethodInfo method)
 		{
 			var counterpart = typeof(IDiadocApi).GetMethod(method.Name, method.GetParameters().Select(x => x.ParameterType).ToArray());

@@ -1,8 +1,7 @@
-#addin "Cake.Git"
-#tool "nuget:?package=ILMerge&version=2.12.803"
-#tool "nuget:?package=NUnit.ConsoleRunner&version=3.10.0"
+#addin "nuget:?package=Cake.Git&version=0.21.0"
+#tool "nuget:?package=ILRepack.MSBuild.Task&version=2.0.13"
 #tool "nuget:?package=protobuf-net&version=1.0.0.280"
-#tool "secure-file"
+#tool "nuget:?package=secure-file&version=1.0.31"
 using Cake.Common.Diagnostics;
 using Cake.Git;
 using System.Text.RegularExpressions;
@@ -15,7 +14,9 @@ var buildDir = new DirectoryPath("./bin").Combine(configuration);
 var buildDirNuget = buildDir.Combine("DiadocApi.Nuget");
 var DiadocApiSolutionPath = "./DiadocApi.sln";
 var binariesNet35Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net35-binaries.zip");
+var binariesNet45Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net45-binaries.zip");
 var binariesNet461Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net461-binaries.zip");
+var binariesNetStandard2Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-netstabdard2.0-binaries.zip");
 var needSigning = false;
 
 var packageVersion = "";
@@ -32,7 +33,7 @@ Setup(context =>
 		return;
 	}
 
-	if (FileExists("diadoc.snk"))
+	if (FileExists("./src/diadoc.snk"))
 	{
 		needSigning = true;
 		return;
@@ -48,7 +49,7 @@ Setup(context =>
 		var exitCode = StartProcess(secureFilePath, secureFileArguments);
 		if (exitCode != 0)
 		{
-			Warning("secure-file exit with error {0}", exitCode);
+			Warning($"secure-file exit with error {exitCode}");
 			return;
 		}
 		needSigning = true;
@@ -60,29 +61,6 @@ Task("Clean")
 	.Does(() =>
 	{
 		CleanDirectory(buildDir);
-	});
-
-Task("Restore-NuGet-Packages")
-	.Does(() =>
-	{
-		NuGetRestore(DiadocApiSolutionPath);
-	});
-
-Task("Build")
-	.IsDependentOn("Restore-NuGet-Packages")
-	.IsDependentOn("GenerateProtoFiles")
-	.Does(() =>
-	{
-		if(IsRunningOnWindows())
-		{
-			// Use MSBuild
-			MSBuild(DiadocApiSolutionPath, settings => settings.SetConfiguration(configuration));
-		}
-		else
-		{
-			// Use XBuild
-			XBuild(DiadocApiSolutionPath, settings => settings.SetConfiguration(configuration));
-		}
 	});
 
 Task("GenerateVersionInfo")
@@ -99,14 +77,14 @@ Task("GenerateVersionInfo")
 		int.TryParse(versionParts[0], out majorVersion);
 		if (versionParts.Length > 1)
 			int.TryParse(versionParts[1], out minorVersion);
-		var assemblyVersion = string.Format("{0}.{1}.0.0", majorVersion, minorVersion);
+		var assemblyVersion = $"{majorVersion}.{minorVersion}.0.0";
 
 		if (!string.IsNullOrEmpty(clearVersion))
 		{
-			Information("Version from tag: {0}", clearVersion);
-			Information("Assembly version: {0}", assemblyVersion);
-			Information("Nuget version: {0}", semanticVersionForNuget);
-			Information("Semantic version: {0}", semanticVersion);
+			Information($"Version from tag: {clearVersion}");
+			Information($"Assembly version: {assemblyVersion}");
+			Information($"Nuget version: {semanticVersionForNuget}");
+			Information($"Semantic version: {semanticVersion}");
 		}
 
 		var datetimeNow = DateTime.Now;
@@ -124,7 +102,6 @@ Task("GenerateVersionInfo")
 	});
 
 Task("GenerateProtoFiles")
-	.IsDependentOn("Restore-NuGet-Packages")
 	.Does(() =>
 	{
 		if (!FileExists("./tools/protobuf-net.1.0.0.280/Tools/protobuf-net.dll"))
@@ -138,63 +115,109 @@ Task("GenerateProtoFiles")
 
 		if (filesWithError.Count > 0)
 			throw new Exception("There was several errors when generating proto classes");
+
+		FilePath GenerateProtoFile(FilePath file)
+		{
+			var sourceProtoDir = new DirectoryPath("./proto/").MakeAbsolute(Context.Environment);
+			var destinationProtoDir = new DirectoryPath("./src/Proto/").MakeAbsolute(Context.Environment);
+
+			var outputFile = file.AppendExtension("cs");
+			var relativeFile = sourceProtoDir.GetRelativePath(file);
+			var destinationFile = destinationProtoDir.CombineWithFilePath(relativeFile).AppendExtension("cs");
+
+			EnsureDirectoryExists(destinationFile.GetDirectory());
+
+			var protogenArguments = new ProcessSettings
+			{
+				Arguments = $"-i:{file} -o:{destinationFile} -q",
+				WorkingDirectory = sourceProtoDir
+			};
+
+			var exitCode = StartProcess("./tools/protobuf-net.1.0.0.280/Tools/protogen.exe", protogenArguments);
+			if (exitCode != 0)
+			{
+				Error($"Error processing file {file} to {outputFile}, protogen exit code: {exitCode}");
+				return file;
+			}
+			return null;
+		}
 	});
 
-Task("ILMerge")
+Task("Build")
+	.IsDependentOn("GenerateProtoFiles")
+	.Does(() =>
+	{
+		if(IsRunningOnWindows())
+		{
+			// Use MSBuild
+			MSBuild(DiadocApiSolutionPath, settings => settings.SetConfiguration(configuration).WithTarget("Restore").WithTarget("Build"));
+		}
+		else
+		{
+			// Use XBuild
+			XBuild(DiadocApiSolutionPath, settings => settings.SetConfiguration(configuration).WithTarget("Restore").WithTarget("Build"));
+		}
+	});
+
+Task("ILRepack")
 	.IsDependentOn("Build")
 	.Does(() =>
 	{
 		var sourceDir = buildDir.Combine("DiadocApi");
 		var outputDir = buildDir.Combine("DiadocApi.Nuget");
+		var keyFile = needSigning
+			? new FilePath("./src/diadoc.snk")
+			: null;
 
-		var ilMergeSettings = new ILMergeSettings
+		Repack("net35", TargetPlatformVersion.v2, keyFile);
+		Repack("net45", TargetPlatformVersion.v4, keyFile);
+		Repack("net461", TargetPlatformVersion.v4, keyFile);
+		Repack("netstandard2.0", TargetPlatformVersion.v4, keyFile);
+
+		void Repack(string targetFramework, TargetPlatformVersion targetPlatformVersion, FilePath signWithKeyFile)
 		{
-			Internalize = true,
-		};
-		if (needSigning)
-		{
-			var keyFile = new FilePath("./src/diadoc.snk").MakeAbsolute(Context.Environment).FullPath;
-			ilMergeSettings.ArgumentCustomization = args => args.Append("/keyfile:" + keyFile);
+				var ilRepackSettings = new ILRepackSettings
+				{
+					Internalize = true,
+					TargetPlatform = targetPlatformVersion,
+					WorkingDirectory = outputDir.Combine(targetFramework),
+					Libs = new [] { sourceDir.Combine(targetFramework) }.ToList(),
+					Keyfile = signWithKeyFile,
+				};
+
+				CreateDirectory(outputDir.Combine(targetFramework));
+				ILRepack(
+					outputDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
+					sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
+					new FilePath[] { sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll") },
+					ilRepackSettings);
 		}
-
-		CreateDirectory(outputDir.Combine("net35"));
-		ILMerge(
-			outputDir.CombineWithFilePath("net35/DiadocApi.dll"),
-			sourceDir.CombineWithFilePath("net35/DiadocApi.dll"),
-			new FilePath[] { sourceDir.CombineWithFilePath("net35/protobuf-net.dll") },
-			ilMergeSettings);
-
-		ilMergeSettings.TargetPlatform = new TargetPlatform(TargetPlatformVersion.v4);
-		CreateDirectory(outputDir.Combine("net461"));
-		ILMerge(
-			outputDir.CombineWithFilePath("net461/DiadocApi.dll"),
-			sourceDir.CombineWithFilePath("net461/DiadocApi.dll"),
-			new FilePath[] { sourceDir.CombineWithFilePath("net461/protobuf-net.dll") },
-			ilMergeSettings);
 	});
 
 Task("PrepareBinaries")
 	.IsDependentOn("GenerateVersionInfo")
-	.IsDependentOn("ILMerge")
+	.IsDependentOn("ILRepack")
 	.Does(() =>
 	{
 		DeleteFiles(GetFiles(buildDir.FullPath + "/**/JetBrains.Annotations*"));
 
-		var net35Files = GetFiles(buildDir.FullPath + "/DiadocApi/net35/*.*")
-			.Where(x =>
-				!x.FullPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) &&
-				!x.FullPath.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase));
-		CopyFiles(net35Files, buildDirNuget.Combine("net35"));
-
-		var net461Files = GetFiles(buildDir.FullPath + "/DiadocApi/net461/*.*")
-			.Where(x =>
-				!x.FullPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) &&
-				!x.FullPath.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase));
-		CopyFiles(net461Files, buildDirNuget.Combine("net461"));
-
 		CopyFileToDirectory("./LICENSE.md", buildDirNuget);
-		Zip(buildDirNuget, binariesNet35Zip, GetFiles(buildDirNuget + "/net35/*.*"));
-		Zip(buildDirNuget, binariesNet461Zip, GetFiles(buildDirNuget + "/net461/*.*"));
+
+		PrepareBinaries("net35", binariesNet35Zip);
+		PrepareBinaries("net45", binariesNet45Zip);
+		PrepareBinaries("net461", binariesNet461Zip);
+		PrepareBinaries("netstandard2.0", binariesNetStandard2Zip);
+
+		void PrepareBinaries(string targetFramework, FilePath outputZip)
+		{
+			var files = GetFiles(buildDir.FullPath + $"/DiadocApi/{targetFramework}/*.*")
+				.Where(x =>
+					!x.FullPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) &&
+					!x.FullPath.EndsWith(".pdb", StringComparison.OrdinalIgnoreCase) &&
+					!x.FullPath.EndsWith(".deps.json", StringComparison.OrdinalIgnoreCase));
+			CopyFiles(files, buildDirNuget.Combine(targetFramework));
+			Zip(buildDirNuget, outputZip, GetFiles(buildDirNuget + $"/{targetFramework}/*.*"));
+		}
 	});
 
 Task("Nuget-Pack")
@@ -216,7 +239,9 @@ Task("PublishArtifactsToAppVeyor")
 	.Does(() =>
 	{
 		AppVeyor.UploadArtifact(binariesNet35Zip);
+		AppVeyor.UploadArtifact(binariesNet45Zip);
 		AppVeyor.UploadArtifact(binariesNet461Zip);
+		AppVeyor.UploadArtifact(binariesNetStandard2Zip);
 		foreach (var upload in GetFiles(buildDir + "/*.nupkg"))
 		{
 			AppVeyor.UploadArtifact(upload​);
@@ -227,7 +252,11 @@ Task("Test")
 	.IsDependentOn("Build")
 	.Does(() =>
 	{
-		NUnit3(buildDir + "/**/*Tests.dll");
+		DotNetCoreTest(DiadocApiSolutionPath, new DotNetCoreTestSettings {
+			NoRestore = true,
+			NoBuild = true,
+			Configuration = configuration
+		});
 	});
 
 //////////////////////////////////////////////////////////////////////
@@ -250,7 +279,7 @@ Task("Appveyor")
 	.IsDependentOn("PrepareBinaries")
 	.IsDependentOn("Build")
 	.IsDependentOn("Test")
-	.IsDependentOn("ILMerge")
+	.IsDependentOn("ILRepack")
 	.IsDependentOn("Nuget-Pack")
 	.IsDependentOn("PublishArtifactsToAppVeyor");
 
@@ -303,10 +332,10 @@ public string GetSemanticVersionV1(string clearVersion)
 		}
 
 		var buildNumber = BuildSystem.AppVeyor.Environment.Build.Number;
-		return string.Format("{0}-CI{1}", clearVersion, buildNumber);
+		return $"{clearVersion}-CI{buildNumber}";
 	}
 
-	return string.Format("{0}-dev", clearVersion);
+	return $"{clearVersion}-dev";
 }
 
 public string GetSemanticVersionV2(string clearVersion)
@@ -321,7 +350,7 @@ public string GetSemanticVersionV2(string clearVersion)
 
 		return GetAppVeyorBuildVersion(clearVersion);
 	}
-	return string.Format("{0}-dev", clearVersion);
+	return $"{clearVersion}-dev";
 }
 
 public string GetAppVeyorBuildVersion(string clearVersion)
@@ -329,9 +358,9 @@ public string GetAppVeyorBuildVersion(string clearVersion)
 	if (BuildSystem.IsRunningOnAppVeyor)
 	{
 		var buildNumber = BuildSystem.AppVeyor.Environment.Build.Number;
-		clearVersion += string.Format("-CI.{0}", buildNumber);
+		clearVersion += $"-CI.{buildNumber}";
 		return (AppVeyor.Environment.PullRequest.IsPullRequest
-			? clearVersion += string.Format("-PR.{0}", AppVeyor.Environment.PullRequest.Number)
+			? clearVersion += $"-PR.{AppVeyor.Environment.PullRequest.Number}"
 			: clearVersion += "-" + AppVeyor.Environment.Repository.Branch);
 	}
 	return clearVersion;
@@ -351,33 +380,4 @@ public static string ClearVersionTag(string lastestTag)
 	return match.Success
 		? match.Value
 		: lastestTag;
-}
-
-FilePath GenerateProtoFile(FilePath file)
-{
-	var sourceProtoDir = new DirectoryPath("./proto/").MakeAbsolute(Context.Environment);
-	var destinationProtoDir = new DirectoryPath("./src/Proto/").MakeAbsolute(Context.Environment);
-
-	var outputFile = file.AppendExtension("cs");
-	var relativeFile = sourceProtoDir.GetRelativePath(file);
-	var destinationFile = destinationProtoDir.CombineWithFilePath(relativeFile).AppendExtension("cs");
-
-	EnsureDirectoryExists(destinationFile.GetDirectory());
-
-	var protogenArguments = new ProcessSettings
-	{
-		Arguments = string.Format("-i:{0} -o:{1} -q", file, destinationFile),
-		WorkingDirectory = sourceProtoDir
-	};
-
-	var exitCode = StartProcess("./tools/protobuf-net.1.0.0.280/Tools/protogen.exe", protogenArguments);
-	if (exitCode != 0)
-	{
-		Error("Error processing file {0} to {1}, protogen exit code: {2}",
-			file,
-			outputFile,
-			exitCode);
-		return file;
-	}
-	return null;
 }
