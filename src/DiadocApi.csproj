@@ -10,6 +10,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
   <PropertyGroup Condition="Exists('diadoc.snk')">
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>diadoc.snk</AssemblyOriginatorKeyFile>
