@@ -1,3 +1,4 @@
+#tool "nuget:?package=ILMerge&version=2.12.803"
 #addin "nuget:?package=Cake.Git&version=0.21.0"
 #tool "nuget:?package=ILRepack.MSBuild.Task&version=2.0.13"
 #tool "nuget:?package=protobuf-net&version=1.0.0.280"
@@ -16,7 +17,7 @@ var DiadocApiSolutionPath = "./DiadocApi.sln";
 var binariesNet35Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net35-binaries.zip");
 var binariesNet45Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net45-binaries.zip");
 var binariesNet461Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net461-binaries.zip");
-var binariesNetStandard2Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-netstabdard2.0-binaries.zip");
+var binariesNetStandard2Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-netstandard2.0-binaries.zip");
 var needSigning = false;
 
 var packageVersion = "";
@@ -159,7 +160,7 @@ Task("Build")
 		}
 	});
 
-Task("ILRepack")
+Task("Repack")
 	.IsDependentOn("Build")
 	.Does(() =>
 	{
@@ -169,12 +170,35 @@ Task("ILRepack")
 			? new FilePath("./src/diadoc.snk")
 			: null;
 
-		Repack("net35", TargetPlatformVersion.v2, keyFile);
-		Repack("net45", TargetPlatformVersion.v4, keyFile);
-		Repack("net461", TargetPlatformVersion.v4, keyFile);
-		Repack("netstandard2.0", TargetPlatformVersion.v4, keyFile);
+		RepackWithILMerge("net35", TargetPlatformVersion.v2, keyFile);
+		RepackWithILMerge("net45", TargetPlatformVersion.v4, keyFile);
+		RepackWithILMerge("net461", TargetPlatformVersion.v4, keyFile);
+		RepackWithILRepack("netstandard2.0", TargetPlatformVersion.v4, keyFile);
 
-		void Repack(string targetFramework, TargetPlatformVersion targetPlatformVersion, FilePath signWithKeyFile)
+		void RepackWithILMerge(string targetFramework, TargetPlatformVersion targetPlatformVersion, FilePath signWithKeyFile)
+		{
+			var ilMergeSettings = new ILMergeSettings
+			{
+				Internalize = true
+			};
+
+			if (needSigning)
+			{
+				var keyFile = signWithKeyFile.MakeAbsolute(Context.Environment).FullPath;
+				ilMergeSettings.ArgumentCustomization = args => args.Append("/keyfile:" + keyFile);
+			}
+
+			ilMergeSettings.TargetPlatform = new TargetPlatform(targetPlatformVersion);
+
+			CreateDirectory(outputDir.Combine(targetFramework));
+			ILMerge(
+					outputDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
+					sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
+					new FilePath[] { sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll") },
+					ilMergeSettings);
+		}
+
+		void RepackWithILRepack(string targetFramework, TargetPlatformVersion targetPlatformVersion, FilePath signWithKeyFile)
 		{
 				var ilRepackSettings = new ILRepackSettings
 				{
@@ -196,7 +220,7 @@ Task("ILRepack")
 
 Task("PrepareBinaries")
 	.IsDependentOn("GenerateVersionInfo")
-	.IsDependentOn("ILRepack")
+	.IsDependentOn("Repack")
 	.Does(() =>
 	{
 		DeleteFiles(GetFiles(buildDir.FullPath + "/**/JetBrains.Annotations*"));
@@ -279,7 +303,7 @@ Task("Appveyor")
 	.IsDependentOn("PrepareBinaries")
 	.IsDependentOn("Build")
 	.IsDependentOn("Test")
-	.IsDependentOn("ILRepack")
+	.IsDependentOn("Repack")
 	.IsDependentOn("Nuget-Pack")
 	.IsDependentOn("PublishArtifactsToAppVeyor");
 
