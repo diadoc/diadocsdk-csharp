@@ -30,6 +30,7 @@ message DocumentInfoV3
 	optional DocumentDraftInfo DraftInfo = 16;
 	optional DocumentTemplateInfo TemplateInfo = 17;
 	optional Documents.Origin Origin = 18;
+	optional string EditingSettingId = 19 [default = ""];
 }
 
 message DocumentParticipants

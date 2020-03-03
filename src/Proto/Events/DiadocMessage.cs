@@ -1791,6 +1791,7 @@ namespace Diadoc.Api.Proto.Events
 		string Version { get; set; }
 		int WorkflowId { get; set; }
 		bool IsEncrypted { get; set; }
+		string EditingSettingId { get; set; }
 
 		void SetSignedContent([MarshalAs(UnmanagedType.IDispatch)] object signedContent);
 		void AddInitialDocumentId([MarshalAs(UnmanagedType.IDispatch)] object documentId);

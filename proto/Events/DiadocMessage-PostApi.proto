@@ -281,6 +281,7 @@ message DocumentAttachment {
 	repeated MetadataItem Metadata = 15;
 	optional int32 WorkflowId = 16;
 	optional bool IsEncrypted = 17 [default = false];
+	optional string EditingSettingId = 18;
 }
 
 message MetadataItem {
