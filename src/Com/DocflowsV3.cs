@@ -255,6 +255,7 @@ namespace Diadoc.Api.Proto.Docflow
 		DocumentTemplateInfo TemplateInfo { get; }
 		Origin Origin { get; }
 		Com.MessageType MessageTypeValue { get; }
+		string EditingSettingId { get; set; }
 	}
 
 	[ComVisible(true)]
