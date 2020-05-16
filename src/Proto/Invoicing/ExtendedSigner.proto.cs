@@ -286,7 +286,25 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       MadeAndResponsibleForOperationAndSignedInvoice = 5,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ResponsibleForOperationAndSignerForInvoice", Value=6)]
-      ResponsibleForOperationAndSignerForInvoice = 6
+      ResponsibleForOperationAndSignerForInvoice = 6,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ChairmanCommission", Value=7)]
+      ChairmanCommission = 7,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MemberCommission", Value=8)]
+      MemberCommission = 8,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PersonApprovedDocument", Value=21)]
+      PersonApprovedDocument = 21,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PersonConfirmedDocument", Value=22)]
+      PersonConfirmedDocument = 22,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PersonAgreedOnDocument", Value=23)]
+      PersonAgreedOnDocument = 23,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PersonOtherPower", Value=29)]
+      PersonOtherPower = 29
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"SignerStatus")]
@@ -344,7 +362,13 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       AccCert552Buyer = 7,
             
       [global::ProtoBuf.ProtoEnum(Name=@"Utd820Buyer", Value=8)]
-      Utd820Buyer = 8
+      Utd820Buyer = 8,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PriRasxBuyer", Value=9)]
+      PriRasxBuyer = 9,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PriRasxAddInformation", Value=10)]
+      PriRasxAddInformation = 10
     }
   
 }

@@ -15,6 +15,12 @@ namespace Diadoc.Api.Com
 		PersonDocumentedOperation = 3,
 		MadeOperationAndSignedInvoice = 4,
 		MadeAndResponsibleForOperationAndSignedInvoice = 5,
-		ResponsibleForOperationAndSignerForInvoice = 6
-	}
+		ResponsibleForOperationAndSignerForInvoice = 6,
+		ChairmanCommission = 7,
+		MemberCommission = 8,
+		PersonApprovedDocument = 21,
+		PersonConfirmedDocument = 22,
+		PersonAgreedOnDocument = 23,
+		PersonOtherPower = 29
+    }
 }

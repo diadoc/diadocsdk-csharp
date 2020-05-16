@@ -18,6 +18,8 @@ namespace Diadoc.Api.Com
 		TovTorg551Buyer = 5,
 		AccCert552Seller = 6,
 		AccCert552Buyer = 7,
-		Utd820Buyer = 8
+		Utd820Buyer = 8,
+		PriRasxBuyer = 9,
+		PriRasxAddInformation = 10
 	}
 }
