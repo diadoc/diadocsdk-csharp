@@ -364,11 +364,11 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       [global::ProtoBuf.ProtoEnum(Name=@"Utd820Buyer", Value=8)]
       Utd820Buyer = 8,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PriRasxBuyer", Value=9)]
-      PriRasxBuyer = 9,
+      [global::ProtoBuf.ProtoEnum(Name=@"Torg2Buyer", Value=9)]
+      Torg2Buyer = 9,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PriRasxAddInformation", Value=10)]
-      PriRasxAddInformation = 10
+      [global::ProtoBuf.ProtoEnum(Name=@"Torg2AdditionalInfo", Value=10)]
+      Torg2AdditionalInfo = 10
     }
   
 }
