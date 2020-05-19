@@ -51,7 +51,7 @@ namespace Diadoc.Api.Cryptography
 			if (HasPrivateKey(initialCertificate)) return initialCertificate;
 			IntPtr certificateWithPrivateKey = FindCertificateWithPrivateKey(initialCertificate);
 			if (certificateWithPrivateKey == IntPtr.Zero)
-				throw new Exception("Сертификат с закрытым ключом не найдет");
+				throw new Exception("Сертификат с закрытым ключом не найден");
 			return certificateWithPrivateKey;
 		}
 
