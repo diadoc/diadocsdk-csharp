@@ -24,14 +24,15 @@ message DocumentFunction {
 	repeated DocumentVersion Versions = 2;
 }
 
-message DocumentVersion {
+message DocumentVersion {                                  	
 	required string Version = 1;
 	required bool SupportsContentPatching = 2;
 	required bool SupportsEncrypting = 3;
+	required bool SupportsPredefinedRecipientTitle = 7;
+	required bool SupportsAmendmentRequest = 8;
 	repeated DocumentTitle Titles = 4;
 	required bool IsActual = 5;
 	repeated DocumentWorkflow Workflows = 6;
-	required bool SupportsPredefinedRecipientTitle = 7;
 }
 
 message DocumentWorkflow {
