@@ -123,6 +123,20 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _SupportsEncrypting; }
       set { _SupportsEncrypting = value; }
     }
+    private bool _SupportsPredefinedRecipientTitle;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"SupportsPredefinedRecipientTitle", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool SupportsPredefinedRecipientTitle
+    {
+      get { return _SupportsPredefinedRecipientTitle; }
+      set { _SupportsPredefinedRecipientTitle = value; }
+    }
+    private bool _SupportsAmendmentRequest;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"SupportsAmendmentRequest", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool SupportsAmendmentRequest
+    {
+      get { return _SupportsAmendmentRequest; }
+      set { _SupportsAmendmentRequest = value; }
+    }
     private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentTitle> _Titles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentTitle>();
     [global::ProtoBuf.ProtoMember(4, Name=@"Titles", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.Types.DocumentTitle> Titles
@@ -144,13 +158,6 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _Workflows; }
     }
   
-    private bool _SupportsPredefinedRecipientTitle;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"SupportsPredefinedRecipientTitle", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public bool SupportsPredefinedRecipientTitle
-    {
-      get { return _SupportsPredefinedRecipientTitle; }
-      set { _SupportsPredefinedRecipientTitle = value; }
-    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
