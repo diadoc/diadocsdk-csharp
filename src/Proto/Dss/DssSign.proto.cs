@@ -75,6 +75,33 @@ namespace Diadoc.Api.Proto.Dss
       get { return _FileSigningResults; }
     }
   
+
+    private Diadoc.Api.Proto.Dss.DssConfirmType _ConfirmType = Diadoc.Api.Proto.Dss.DssConfirmType.ConfirmTypeUnknown;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"ConfirmType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Dss.DssConfirmType.ConfirmTypeUnknown)]
+    public Diadoc.Api.Proto.Dss.DssConfirmType ConfirmType
+    {
+      get { return _ConfirmType; }
+      set { _ConfirmType = value; }
+    }
+
+    private Diadoc.Api.Proto.Dss.DssOperator _Operator = Diadoc.Api.Proto.Dss.DssOperator.OperatorUnknown;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Operator", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Dss.DssOperator.OperatorUnknown)]
+    public Diadoc.Api.Proto.Dss.DssOperator Operator
+    {
+      get { return _Operator; }
+      set { _Operator = value; }
+    }
+
+    private string _PhoneLastNumbers = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"PhoneLastNumbers", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string PhoneLastNumbers
+    {
+      get { return _PhoneLastNumbers; }
+      set { _PhoneLastNumbers = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -107,6 +134,40 @@ namespace Diadoc.Api.Proto.Dss
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"DssConfirmType")]
+    public enum DssConfirmType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ConfirmTypeUnknown", Value=-1)]
+      ConfirmTypeUnknown = -1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"None", Value=0)]
+      None = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Sms", Value=1)]
+      Sms = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MyDss", Value=2)]
+      MyDss = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Applet", Value=3)]
+      Applet = 3
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"DssOperator")]
+    public enum DssOperator
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"OperatorUnknown", Value=0)]
+      OperatorUnknown = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Megafon", Value=1)]
+      Megafon = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Kontur", Value=2)]
+      Kontur = 2
+    }
   
     [global::ProtoBuf.ProtoContract(Name=@"DssFileSigningStatus")]
     public enum DssFileSigningStatus
@@ -145,7 +206,10 @@ namespace Diadoc.Api.Proto.Dss
       Crashed = 5,
             
       [global::ProtoBuf.ProtoEnum(Name=@"UserHasUnconfirmedOperation", Value=6)]
-      UserHasUnconfirmedOperation = 6
+      UserHasUnconfirmedOperation = 6,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"OperationRetryRequired", Value=7)]
+      OperationRetryRequired = 7
     }
   
 }
