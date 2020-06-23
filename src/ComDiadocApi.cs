@@ -470,6 +470,10 @@ namespace Diadoc.Api
 
 		RegistrationResponse Register(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object registrationRequest);
 		void RegisterConfirm(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object registrationConfirmRequest);
+
+		BoxEvent GetLastEvent(string token, string boxId);
+
+		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, CustomPrintFormDetectionRequest request);
 	}
 
 	[ComVisible(true)]
