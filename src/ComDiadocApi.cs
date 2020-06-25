@@ -473,7 +473,7 @@ namespace Diadoc.Api
 
 		BoxEvent GetLastEvent(string token, string boxId);
 
-		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, CustomPrintFormDetectionRequest request);
+		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
 	}
 
 	[ComVisible(true)]
@@ -1669,9 +1669,9 @@ namespace Diadoc.Api
 		public CustomPrintFormDetectionResult DetectCustomPrintForms(
 			string authToken,
 			string boxId,
-			CustomPrintFormDetectionRequest request)
+			[MarshalAs(UnmanagedType.IDispatch)] object request)
 		{
-			return diadoc.DetectCustomPrintForms(authToken, boxId, request);
+			return diadoc.DetectCustomPrintForms(authToken, boxId, (CustomPrintFormDetectionRequest)request);
 		}
 	}
 }
