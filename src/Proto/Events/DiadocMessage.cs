@@ -59,7 +59,7 @@ namespace Diadoc.Api.Proto.Events
 
 		public Com.MessageType MessageTypeValue
 		{
-			get { return (Com.MessageType) MessageType; }
+			get { return (Com.MessageType)MessageType; }
 		}
 	}
 
@@ -111,12 +111,12 @@ namespace Diadoc.Api.Proto.Events
 
 		public Com.EntityType EntityTypeValue
 		{
-			get { return (Com.EntityType) ((int) EntityType); }
+			get { return (Com.EntityType)((int)EntityType); }
 		}
 
 		public Com.AttachmentType AttachmentTypeValue
 		{
-			get { return (Com.AttachmentType) ((int) AttachmentType); }
+			get { return (Com.AttachmentType)((int)AttachmentType); }
 		}
 
 		public ReadonlyList LabelsList
@@ -166,8 +166,8 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public Com.TemplateRefusalType TypeValue
 		{
-			get { return (Com.TemplateRefusalType) Type; }
-			set { Type = (TemplateRefusalType) value; }
+			get { return (Com.TemplateRefusalType)Type; }
+			set { Type = (TemplateRefusalType)value; }
 		}
 	}
 
@@ -288,7 +288,7 @@ namespace Diadoc.Api.Proto.Events
 
 		public Com.TotalCountType TotalCountTypeValue
 		{
-			get { return (Com.TotalCountType) TotalCountType; }
+			get { return (Com.TotalCountType)TotalCountType; }
 		}
 	}
 
@@ -340,7 +340,7 @@ namespace Diadoc.Api.Proto.Events
 
 		public Com.MessageType MessageTypeValue
 		{
-			get { return (Com.MessageType) MessageType; }
+			get { return (Com.MessageType)MessageType; }
 		}
 	}
 
@@ -437,92 +437,92 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddInvoice(object attachment)
 		{
-			Invoices.Add((XmlDocumentAttachment) attachment);
+			Invoices.Add((XmlDocumentAttachment)attachment);
 		}
 
 		public void AddXmlTorg12SellerTitle(object attachment)
 		{
-			XmlTorg12SellerTitles.Add((XmlDocumentAttachment) attachment);
+			XmlTorg12SellerTitles.Add((XmlDocumentAttachment)attachment);
 		}
 
 		public void AddXmlAcceptanceCertificateSellerTitle(object attachment)
 		{
-			XmlAcceptanceCertificateSellerTitles.Add((XmlDocumentAttachment) attachment);
+			XmlAcceptanceCertificateSellerTitles.Add((XmlDocumentAttachment)attachment);
 		}
 
 		public void AddAttachment(object attachment)
 		{
-			NonformalizedDocuments.Add((NonformalizedAttachment) attachment);
+			NonformalizedDocuments.Add((NonformalizedAttachment)attachment);
 		}
 
 		public void AddTorg12(object attachment)
 		{
-			Torg12Documents.Add((BasicDocumentAttachment) attachment);
+			Torg12Documents.Add((BasicDocumentAttachment)attachment);
 		}
 
 		public void AddAcceptanceCertificate(object attachment)
 		{
-			AcceptanceCertificates.Add((AcceptanceCertificateAttachment) attachment);
+			AcceptanceCertificates.Add((AcceptanceCertificateAttachment)attachment);
 		}
 
 		public void AddProformaInvoice(object attachment)
 		{
-			ProformaInvoices.Add((BasicDocumentAttachment) attachment);
+			ProformaInvoices.Add((BasicDocumentAttachment)attachment);
 		}
 
 		public void AddStructuredData(object attachment)
 		{
-			StructuredDataAttachments.Add((StructuredDataAttachment) attachment);
+			StructuredDataAttachments.Add((StructuredDataAttachment)attachment);
 		}
 
 		public void AddPriceList(object attachment)
 		{
-			PriceLists.Add((PriceListAttachment) attachment);
+			PriceLists.Add((PriceListAttachment)attachment);
 		}
 
 		public void AddPriceListAgreement(object attachment)
 		{
-			PriceListAgreements.Add((NonformalizedAttachment) attachment);
+			PriceListAgreements.Add((NonformalizedAttachment)attachment);
 		}
 
 		public void AddCertificateRegistry(object attachment)
 		{
-			CertificateRegistries.Add((NonformalizedAttachment) attachment);
+			CertificateRegistries.Add((NonformalizedAttachment)attachment);
 		}
 
 		public void AddReconciliationAct(object attachment)
 		{
-			ReconciliationActs.Add((ReconciliationActAttachment) attachment);
+			ReconciliationActs.Add((ReconciliationActAttachment)attachment);
 		}
 
 		public void AddContract(object attachment)
 		{
-			Contracts.Add((ContractAttachment) attachment);
+			Contracts.Add((ContractAttachment)attachment);
 		}
 
 		public void AddTorg13(object attachment)
 		{
-			Torg13Documents.Add((Torg13Attachment) attachment);
+			Torg13Documents.Add((Torg13Attachment)attachment);
 		}
 
 		public void AddServiceDetails(object attachment)
 		{
-			ServiceDetailsDocuments.Add((ServiceDetailsAttachment) attachment);
+			ServiceDetailsDocuments.Add((ServiceDetailsAttachment)attachment);
 		}
 
 		public void AddSupplementaryAgreement(object supplementaryAgreement)
 		{
-			SupplementaryAgreements.Add((SupplementaryAgreementAttachment) supplementaryAgreement);
+			SupplementaryAgreements.Add((SupplementaryAgreementAttachment)supplementaryAgreement);
 		}
 
 		public void AddUniversalTransferDocumentSellerTitle(object attachment)
 		{
-			UniversalTransferDocumentSellerTitles.Add((XmlDocumentAttachment) attachment);
+			UniversalTransferDocumentSellerTitles.Add((XmlDocumentAttachment)attachment);
 		}
 
 		public void AddDocumentAttachment(object attachment)
 		{
-			DocumentAttachments.Add((DocumentAttachment) attachment);
+			DocumentAttachments.Add((DocumentAttachment)attachment);
 		}
 	}
 
@@ -551,7 +551,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void AddDocumentAttachment(object attachment)
 		{
-			DocumentAttachments.Add((TemplateDocumentAttachment) attachment);
+			DocumentAttachments.Add((TemplateDocumentAttachment)attachment);
 		}
 	}
 
@@ -583,12 +583,12 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetUnsignedContent(object unsignedContent)
 		{
-			UnsignedContent = (UnsignedContent) unsignedContent;
+			UnsignedContent = (UnsignedContent)unsignedContent;
 		}
 
 		public void AddMetadataItem(object metadataItem)
 		{
-			Metadata.Add((MetadataItem) metadataItem);
+			Metadata.Add((MetadataItem)metadataItem);
 		}
 	}
 
@@ -608,7 +608,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void AddRefusal(object refusal)
 		{
-			Refusals.Add((TemplateRefusalAttachment) refusal);
+			Refusals.Add((TemplateRefusalAttachment)refusal);
 		}
 	}
 
@@ -705,7 +705,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void AddDocumentTransformation(object documentTransformation)
 		{
-			DocumentTransformations.Add((DocumentTransformation) documentTransformation);
+			DocumentTransformations.Add((DocumentTransformation)documentTransformation);
 		}
 	}
 
@@ -755,17 +755,17 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void AddInitialDocumentId(object documentId)
 		{
-			InitialDocumentIds.Add((DocumentId) documentId);
+			InitialDocumentIds.Add((DocumentId)documentId);
 		}
 
 		public void AddSubordinateDocumentId(object documentId)
 		{
-			SubordinateDocumentIds.Add((DocumentId) documentId);
+			SubordinateDocumentIds.Add((DocumentId)documentId);
 		}
 
 		public void AddCustomDataItem(object customDataItem)
 		{
-			CustomData.Add((CustomDataItem) customDataItem);
+			CustomData.Add((CustomDataItem)customDataItem);
 		}
 	}
 
@@ -806,22 +806,22 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void AddReceipt(object receipt)
 		{
-			Receipts.Add((ReceiptAttachment) receipt);
+			Receipts.Add((ReceiptAttachment)receipt);
 		}
 
 		public void AddCorrectionRequest(object correctionRequest)
 		{
-			CorrectionRequests.Add((CorrectionRequestAttachment) correctionRequest);
+			CorrectionRequests.Add((CorrectionRequestAttachment)correctionRequest);
 		}
 
 		public void AddSignature(object signature)
 		{
-			Signatures.Add((DocumentSignature) signature);
+			Signatures.Add((DocumentSignature)signature);
 		}
 
 		public void AddRequestedSignatureRejection(object signatureRejection)
 		{
-			RequestedSignatureRejections.Add((RequestedSignatureRejection) signatureRejection);
+			RequestedSignatureRejections.Add((RequestedSignatureRejection)signatureRejection);
 		}
 
 		public void AddXmlTorg12BuyerTitle(object attachment)
@@ -841,37 +841,37 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddResolution(object attachment)
 		{
-			Resolutions.Add((ResolutionAttachment) attachment);
+			Resolutions.Add((ResolutionAttachment)attachment);
 		}
 
 		public void AddResolutionRequestAttachment(object attachment)
 		{
-			ResolutionRequests.Add((ResolutionRequestAttachment) attachment);
+			ResolutionRequests.Add((ResolutionRequestAttachment)attachment);
 		}
 
 		public void AddResolutionRequestCancellationAttachment(object attachment)
 		{
-			ResolutionRequestCancellations.Add((ResolutionRequestCancellationAttachment) attachment);
+			ResolutionRequestCancellations.Add((ResolutionRequestCancellationAttachment)attachment);
 		}
 
 		public void AddResolutionRequestDenialAttachment(object attachment)
 		{
-			ResolutionRequestDenials.Add((ResolutionRequestDenialAttachment) attachment);
+			ResolutionRequestDenials.Add((ResolutionRequestDenialAttachment)attachment);
 		}
 
 		public void AddResolutionRequestDenialCancellationAttachment(object attachment)
 		{
-			ResolutionRequestDenialCancellations.Add((ResolutionRequestDenialCancellationAttachment) attachment);
+			ResolutionRequestDenialCancellations.Add((ResolutionRequestDenialCancellationAttachment)attachment);
 		}
 
 		public void AddRevocationRequestAttachment(object attachment)
 		{
-			RevocationRequests.Add((RevocationRequestAttachment) attachment);
+			RevocationRequests.Add((RevocationRequestAttachment)attachment);
 		}
 
 		public void AddXmlSignatureRejectionAttachment(object attachment)
 		{
-			XmlSignatureRejections.Add((XmlSignatureRejectionAttachment) attachment);
+			XmlSignatureRejections.Add((XmlSignatureRejectionAttachment)attachment);
 		}
 
 		public void AddUniversalTransferDocumentBuyerTitleAttachment(object attachment)
@@ -881,12 +881,12 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddResolutionRouteAssignment(object attachment)
 		{
-			ResolutionRouteAssignments.Add((ResolutionRouteAssignment) attachment);
+			ResolutionRouteAssignments.Add((ResolutionRouteAssignment)attachment);
 		}
 
 		public void AddResolutoinRouteRemoval(object attachment)
 		{
-			ResolutionRouteRemovals.Add((ResolutionRouteRemoval) attachment);
+			ResolutionRouteRemovals.Add((ResolutionRouteRemoval)attachment);
 		}
 
 		public void AddRecipientTitle(object attachment)
@@ -896,12 +896,12 @@ namespace Diadoc.Api.Proto.Events
 
 		public void AddCustomDataPatch(object editingPatch)
 		{
-			CustomDataPatches.Add((CustomDataPatch) editingPatch);
+			CustomDataPatches.Add((CustomDataPatch)editingPatch);
 		}
 
 		public void AddEditingPatch(object editingPatch)
 		{
-			EditingPatches.Add((EditingPatch) editingPatch);
+			EditingPatches.Add((EditingPatch)editingPatch);
 		}
 
 		private RecipientTitleAttachment Convert(object attachment)
@@ -924,7 +924,7 @@ namespace Diadoc.Api.Proto.Events
 				return recipientTitleAttachment;
 			}
 
-			return (RecipientTitleAttachment) attachment;
+			return (RecipientTitleAttachment)attachment;
 		}
 	}
 
@@ -936,9 +936,11 @@ namespace Diadoc.Api.Proto.Events
 		string CustomDocumentId { get; set; }
 		SignedContent SignedContent { get; set; }
 		string Comment { get; set; }
+		bool NeedReceipt { get; set; }
 		void SetSignedContent([MarshalAs(UnmanagedType.IDispatch)] object signedContent);
 		void AddInitialDocumentId([MarshalAs(UnmanagedType.IDispatch)] object documentId);
 		void AddSubordinateDocumentId([MarshalAs(UnmanagedType.IDispatch)] object documentId);
+		void AddCustomData([MarshalAs(UnmanagedType.IDispatch)] object customDataItem);
 	}
 
 	[ComVisible(true)]
@@ -950,17 +952,22 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public void AddInitialDocumentId(object documentId)
 		{
-			InitialDocumentIds.Add((DocumentId) documentId);
+			InitialDocumentIds.Add((DocumentId)documentId);
 		}
 
 		public void AddSubordinateDocumentId(object documentId)
 		{
-			SubordinateDocumentIds.Add((DocumentId) documentId);
+			SubordinateDocumentIds.Add((DocumentId)documentId);
+		}
+
+		public void AddCustomData(object customDataItem)
+		{
+			CustomData.Add((CustomDataItem)customDataItem);
 		}
 	}
 
@@ -975,9 +982,11 @@ namespace Diadoc.Api.Proto.Events
 		bool NeedRecipientSignature { get; set; }
 		string Comment { get; set; }
 		SignedContent SignedContent { get; set; }
+		bool NeedReceipt { get; set; }
 		void SetSignedContent([MarshalAs(UnmanagedType.IDispatch)] object signedContent);
 		void AddInitialDocumentId([MarshalAs(UnmanagedType.IDispatch)] object documentId);
 		void AddSubordinateDocumentId([MarshalAs(UnmanagedType.IDispatch)] object documentId);
+		void AddCustomData([MarshalAs(UnmanagedType.IDispatch)] object customDataItem);
 	}
 
 	[ComVisible(true)]
@@ -989,17 +998,22 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public void AddInitialDocumentId(object documentId)
 		{
-			InitialDocumentIds.Add((DocumentId) documentId);
+			InitialDocumentIds.Add((DocumentId)documentId);
 		}
 
 		public void AddSubordinateDocumentId(object documentId)
 		{
-			SubordinateDocumentIds.Add((DocumentId) documentId);
+			SubordinateDocumentIds.Add((DocumentId)documentId);
+		}
+
+		public void AddCustomData(object customDataItem)
+		{
+			CustomData.Add((CustomDataItem)customDataItem);
 		}
 	}
 
@@ -1049,17 +1063,17 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public void AddInitialDocumentId(object documentId)
 		{
-			InitialDocumentIds.Add((DocumentId) documentId);
+			InitialDocumentIds.Add((DocumentId)documentId);
 		}
 
 		public void AddSubordinateDocumentId(object documentId)
 		{
-			SubordinateDocumentIds.Add((DocumentId) documentId);
+			SubordinateDocumentIds.Add((DocumentId)documentId);
 		}
 	}
 
@@ -1072,17 +1086,17 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public void AddInitialDocumentId(object documentId)
 		{
-			InitialDocumentIds.Add((DocumentId) documentId);
+			InitialDocumentIds.Add((DocumentId)documentId);
 		}
 
 		public void AddSubordinateDocumentId(object documentId)
 		{
-			SubordinateDocumentIds.Add((DocumentId) documentId);
+			SubordinateDocumentIds.Add((DocumentId)documentId);
 		}
 	}
 
@@ -1105,7 +1119,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 	}
 
@@ -1173,17 +1187,17 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public void AddInitialDocumentId(object documentId)
 		{
-			InitialDocumentIds.Add((DocumentId) documentId);
+			InitialDocumentIds.Add((DocumentId)documentId);
 		}
 
 		public void AddSubordinateDocumentId(object documentId)
 		{
-			SubordinateDocumentIds.Add((DocumentId) documentId);
+			SubordinateDocumentIds.Add((DocumentId)documentId);
 		}
 	}
 
@@ -1276,7 +1290,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public void LoadComment(string commentFileName, string signatureFileName)
@@ -1319,7 +1333,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public ReadonlyList LabelsList
@@ -1354,7 +1368,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public ReadonlyList LabelsList
@@ -1389,8 +1403,8 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public Com.ResolutionType ResolutionTypeValue
 		{
-			get { return (Com.ResolutionType) ResolutionType; }
-			set { ResolutionType = (ResolutionType) value; }
+			get { return (Com.ResolutionType)ResolutionType; }
+			set { ResolutionType = (ResolutionType)value; }
 		}
 
 		public ReadonlyList LabelsList
@@ -1426,8 +1440,8 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public Com.ResolutionRequestType RequestType
 		{
-			get { return (Com.ResolutionRequestType) Type; }
-			set { Type = (ResolutionRequestType) value; }
+			get { return (Com.ResolutionRequestType)Type; }
+			set { Type = (ResolutionRequestType)value; }
 		}
 
 		public ReadonlyList LabelsList
@@ -1534,7 +1548,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public ReadonlyList LabelsList
@@ -1591,7 +1605,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void AddDocumentSignature(object signature)
 		{
-			DocumentSignatures.Add((DocumentSenderSignature) signature);
+			DocumentSignatures.Add((DocumentSenderSignature)signature);
 		}
 	}
 
@@ -1615,7 +1629,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public ReadonlyList LabelsList
@@ -1649,7 +1663,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public ReadonlyList LabelsList
@@ -1682,8 +1696,8 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public Com.CustomDataPatchOperation OperationValue
 		{
-			get { return (Com.CustomDataPatchOperation) ((int) Operation); }
-			set { Operation = (CustomDataPatchOperation) ((int) value); }
+			get { return (Com.CustomDataPatchOperation)((int)Operation); }
+			set { Operation = (CustomDataPatchOperation)((int)value); }
 		}
 	}
 
@@ -1809,27 +1823,27 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public void SetSignedContent(object signedContent)
 		{
-			SignedContent = (SignedContent) signedContent;
+			SignedContent = (SignedContent)signedContent;
 		}
 
 		public void AddInitialDocumentId(object documentId)
 		{
-			InitialDocumentIds.Add((DocumentId) documentId);
+			InitialDocumentIds.Add((DocumentId)documentId);
 		}
 
 		public void AddSubordinateDocumentId(object documentId)
 		{
-			SubordinateDocumentIds.Add((DocumentId) documentId);
+			SubordinateDocumentIds.Add((DocumentId)documentId);
 		}
 
 		public void AddCustomDataItem(object customDataItem)
 		{
-			CustomData.Add((CustomDataItem) customDataItem);
+			CustomData.Add((CustomDataItem)customDataItem);
 		}
 
 		public void AddMetadataItem(object metadataItem)
 		{
-			Metadata.Add((MetadataItem) metadataItem);
+			Metadata.Add((MetadataItem)metadataItem);
 		}
 	}
 
