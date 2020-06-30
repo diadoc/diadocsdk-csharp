@@ -30,6 +30,7 @@ namespace Diadoc.Api
 	[Guid("EE244CBB-1EEB-42EA-978C-EB6B195C3BC8")]
 	public interface IComDiadocApi
 	{
+		IComDocflowApi DocflowApi { get; }
 		void Initialize(string apiClientId, string serverUrl);
 		void SetProxyUri(string uri);
 		void SetProxyCredentials(string proxyUser, string proxyPassword);
@@ -484,10 +485,12 @@ namespace Diadoc.Api
 	public class ComDiadocApi : SafeComObject, IComDiadocApi
 	{
 		private DiadocApi diadoc;
+		public IComDocflowApi DocflowApi { get; private set; }
 
 		public void Initialize(string apiClientId, string serverUrl)
 		{
 			diadoc = new DiadocApi(apiClientId, serverUrl, new WinApiCrypt());
+			DocflowApi = new ComDocflowApi(diadoc.Docflow);
 		}
 
 		public void SetProxyUri(string uri)
