@@ -2,11 +2,11 @@
   <PropertyGroup>
     <RootNamespace>Diadoc.Api.Tests</RootNamespace>
     <AssemblyName>DiadocApi.Tests</AssemblyName>
-    <TargetFrameworks>net35;net40;net45;net461;net472;netcoreapp2.2</TargetFrameworks>
+    <TargetFrameworks>net35;net40;net45;net461;net472;netstandard2.0</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(SolutionDir)\bin\$(Configuration)\$(AssemblyName)\</OutputPath>
   </PropertyGroup>
-  
+
   <ItemGroup Condition="$(TargetFramework) == 'net35' or $(TargetFramework) == 'net40'">
     <Compile Remove="TaskAsyncronousPattern_Test.cs" />
   </ItemGroup>
@@ -16,11 +16,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
-    <PackageReference Include="protobuf-net" Version="1.0.0.280" Condition="'$(TargetFramework)' != 'netcoreapp2.2'" />
-    <Reference Include="protobuf-net" Condition="'$(TargetFramework)' == 'netcoreapp2.2'">
-      <HintPath>../external/netcore/protobuf-net/protobuf-net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <PackageReference Include="protobuf-net-diadoc" Version="1.0.0.285" />
   </ItemGroup>
 
   <ItemGroup>
