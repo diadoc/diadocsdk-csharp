@@ -2,7 +2,7 @@
   <PropertyGroup>
     <RootNamespace>Diadoc.Api.Tests</RootNamespace>
     <AssemblyName>DiadocApi.Tests</AssemblyName>
-    <TargetFrameworks>net35;net40;net45;net461;net472;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net35;net45;net461;netstandard2.0</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(SolutionDir)\bin\$(Configuration)\$(AssemblyName)\</OutputPath>
   </PropertyGroup>
