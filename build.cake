@@ -277,7 +277,7 @@ Task("Test")
 	.Does(() =>
 	{
 		DotNetCoreTest(DiadocApiSolutionPath, new DotNetCoreTestSettings {
-			NoRestore = true,
+			NoRestore = false,
 			NoBuild = true,
 			Configuration = configuration
 		});
