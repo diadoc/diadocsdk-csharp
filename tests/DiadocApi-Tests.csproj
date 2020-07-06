@@ -2,7 +2,7 @@
   <PropertyGroup>
     <RootNamespace>Diadoc.Api.Tests</RootNamespace>
     <AssemblyName>DiadocApi.Tests</AssemblyName>
-    <TargetFrameworks>net35;net45;net461;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net35;net40;net45;net461;net472;netcoreapp2.2</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(SolutionDir)\bin\$(Configuration)\$(AssemblyName)\</OutputPath>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
-    <PackageReference Include="protobuf-net-diadoc" Version="1.0.0.285" />
+    <PackageReference Include="protobuf-net-diadoc" Version="1.0.0.286" />
   </ItemGroup>
 
   <ItemGroup>
