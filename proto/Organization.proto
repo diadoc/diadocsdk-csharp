@@ -51,6 +51,7 @@ enum OrganizationInvoiceFormatVersion {
 
 message Box {
 	required string BoxId = 1;
+	required string BoxIdGuid = 6;
 	required string Title = 2;
 	optional Organization Organization = 3;
 	optional OrganizationInvoiceFormatVersion InvoiceFormatVersion = 4 [default = v5_02];
