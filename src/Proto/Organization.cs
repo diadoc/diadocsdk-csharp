@@ -48,7 +48,7 @@ namespace Diadoc.Api.Proto
 		bool IsTest { get; }
 		bool IsRoaming { get; }
 		string LiquidationDate { get; }
-    }
+	}
 
 	[ComVisible(true)]
 	[Guid("CD9F454E-4A6A-4DE3-8B99-F9E89AE36F0F")]
@@ -71,13 +71,13 @@ namespace Diadoc.Api.Proto
 		{
 			var boxes = string.Join("\r\n", Boxes.Select(b => b.ToString()).ToArray());
 			return string.Format("OrgId: {0}, Inn: {1}, Kpp: {2}, FullName: {3}, ShortName: {4}, Boxes:\r\n {5}, " +
-								"Ogrn: {6}, FnsParticipantId: {7}, Address: {8}, FnsRegistrationDate: {9}, " +
-								"Departments: {10}, IfnsCode: {11}, IsPilot: {12}, IsActive: {13}, IsTest: {14}, " +
-								"IsBranch: {15}, IsRoaming: {16}, IsEmployee: {17}, InvitationCount: {18}, " +
-								"SearchCount: {19}, Sociability: {20}, LiquidationDate: {21}, CertificateOfRegistryInfo: {22}",
-								OrgId, Inn, Kpp, FullName, ShortName, boxes, Ogrn, FnsParticipantId, Address, FnsRegistrationDate,
-								Departments, IfnsCode, IsPilot, IsActive, IsTest, IsBranch, IsRoaming, IsEmployee, InvitationCount,
-								SearchCount, Sociability, LiquidationDate, CertificateOfRegistryInfo);
+				"Ogrn: {6}, FnsParticipantId: {7}, Address: {8}, FnsRegistrationDate: {9}, " +
+				"Departments: {10}, IfnsCode: {11}, IsPilot: {12}, IsActive: {13}, IsTest: {14}, " +
+				"IsBranch: {15}, IsRoaming: {16}, IsEmployee: {17}, InvitationCount: {18}, " +
+				"SearchCount: {19}, Sociability: {20}, LiquidationDate: {21}, CertificateOfRegistryInfo: {22}",
+				OrgId, Inn, Kpp, FullName, ShortName, boxes, Ogrn, FnsParticipantId, Address, FnsRegistrationDate,
+				Departments, IfnsCode, IsPilot, IsActive, IsTest, IsBranch, IsRoaming, IsEmployee, InvitationCount,
+				SearchCount, Sociability, LiquidationDate, CertificateOfRegistryInfo);
 		}
 	}
 
@@ -86,6 +86,7 @@ namespace Diadoc.Api.Proto
 	public interface IBox
 	{
 		string BoxId { get; }
+		string BoxIdGuid { get; }
 		string Title { get; }
 		Organization Organization { get; }
 		Com.OrganizationInvoiceFormatVersion InvoiceFormatVersionValue { get; }
@@ -103,12 +104,12 @@ namespace Diadoc.Api.Proto
 			get { return (Com.OrganizationInvoiceFormatVersion) InvoiceFormatVersion; }
 			set { InvoiceFormatVersion = (OrganizationInvoiceFormatVersion) value; }
 		}
-		
+
 		public override string ToString()
 		{
 			return string.Format("BoxId: {0}, Title: {1}, Organization: {2}, " +
-								 "InvoiceFormatVersion: {3}, EncryptedDocumentsAllowed: {4}", 
-								 BoxId, Title, Organization, InvoiceFormatVersion, EncryptedDocumentsAllowed);
+				"InvoiceFormatVersion: {3}, EncryptedDocumentsAllowed: {4}",
+				BoxId, Title, Organization, InvoiceFormatVersion, EncryptedDocumentsAllowed);
 		}
 	}
 
@@ -133,8 +134,8 @@ namespace Diadoc.Api.Proto
 		public override string ToString()
 		{
 			return string.Format("DepartmentId: {0}, Name: {1}, ParentDepartmentId: {2}, " +
-			                     "Abbreviation: {3}, Kpp: {4}, Address: {5}, IsDisabled: {6}", 
-								 DepartmentId, Name, ParentDepartmentId, Abbreviation, Kpp, Address, IsDisabled);
+				"Abbreviation: {3}, Kpp: {4}, Address: {5}, IsDisabled: {6}",
+				DepartmentId, Name, ParentDepartmentId, Abbreviation, Kpp, Address, IsDisabled);
 		}
 	}
 }

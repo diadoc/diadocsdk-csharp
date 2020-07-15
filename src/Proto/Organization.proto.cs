@@ -330,6 +330,13 @@ namespace Diadoc.Api.Proto
       get { return _BoxId; }
       set { _BoxId = value; }
     }
+    private string _BoxIdGuid;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"BoxIdGuid", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string BoxIdGuid
+    {
+      get { return _BoxIdGuid; }
+      set { _BoxIdGuid = value; }
+    }
     private string _Title;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Title", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string Title
