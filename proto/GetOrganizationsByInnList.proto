@@ -1,5 +1,7 @@
 import "Organization.proto";
 import "Counteragent.proto";
+import "DocumentId.proto";
+
 
 package Diadoc.Api.Proto;
 
@@ -11,6 +13,9 @@ message OrganizationWithCounteragentStatus {
 	required Organization Organization = 1;
 	optional CounteragentStatus CounteragentStatus = 2 [default = UnknownCounteragentStatus];
 	optional sfixed64 LastEventTimestampTicks = 3;
+	optional string MessageFromCounteragent = 4;
+	optional string MessageToCounteragent = 5;
+	optional DocumentId InvitationDocumentId = 6;
 }
 
 message GetOrganizationsByInnListResponse {
