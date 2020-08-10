@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Diadoc.Api.Proto.Events;
 
 namespace Diadoc.Console.Command
@@ -19,33 +20,35 @@ namespace Diadoc.Console.Command
 				FromBoxId = ConsoleContext.CurrentBoxId,
 				ToBoxId = InputHelpers.AutocompleteBoxId(ConsoleContext, newMsg.ToBoxId),
 			};
-			msg.NonformalizedDocuments.AddRange(newMsg.Attachments
-				.Where(e => e.AttachmentType == AttachmentType.Nonformalized)
-				.Select(e => new NonformalizedAttachment
+			msg.DocumentAttachments.AddRange(newMsg.DocumentsToPost
+				.Select(e =>
 				{
-					FileName = e.FileName,
-					SignedContent = new SignedContent
+					var document = new DocumentAttachment
 					{
-						Content = e.Content,
-						Signature = ConsoleContext.SignByAttorney ? null : ConsoleContext.Crypt.Sign(e.Content, ConsoleContext.CurrentCert.RawData),
-						SignByAttorney = ConsoleContext.SignByAttorney
-					},
-					Comment = e.Comment,
-					NeedRecipientSignature = e.NeedRecipientSignature,
-				}));
-			msg.Invoices.AddRange(newMsg.Attachments
-				.Where(e => e.AttachmentType == AttachmentType.Invoice)
-				.Select(e => new XmlDocumentAttachment
-				{
-					SignedContent = new SignedContent
+						TypeNamedId = e.TypeNamedId,
+						Function = e.Function,
+						Version = e.Version,
+						SignedContent = new SignedContent
+						{
+							Content = e.Content,
+							Signature = ConsoleContext.Crypt.Sign(e.Content, ConsoleContext.CurrentCert.RawData)
+						},
+						Comment = e.Comment,
+						NeedRecipientSignature = e.NeedRecipientSignature,
+					};
+
+					foreach (var m in e.Metadata)
 					{
-						Content = e.Content,
-						Signature = ConsoleContext.SignByAttorney ? null : ConsoleContext.Crypt.Sign(e.Content, ConsoleContext.CurrentCert.RawData),
-						SignByAttorney = ConsoleContext.SignByAttorney,
-					},
-					Comment = e.Comment,
+						document.AddMetadataItem(new MetadataItem
+						{
+							Key = m.Key,
+							Value = m.Value
+						});
+					}
+
+					return document;
 				}));
-			var messagePosted = ConsoleContext.DiadocApi.PostMessage(ConsoleContext.CurrentToken, msg);
+			var messagePosted = ConsoleContext.DiadocApi.PostMessage(ConsoleContext.CurrentToken, msg, Guid.NewGuid().ToString("N"));
 			System.Console.WriteLine("Было отправлено следующее письмо:");
 			messagePosted.WriteToConsole();
 		}

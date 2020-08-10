@@ -16,9 +16,8 @@ namespace Diadoc.Console
 		public IList<Box> Boxes { get; set; }
 		public BoxEventList Events { get; set; }
 		public IList<Organization> Orgs { get; set; }
-		public string CurrentBoxId { get; set; }
-		public string CurrentOrgId { get; set; }
-		public bool SignByAttorney { get; set; }
+		public string CurrentBoxId { get; private set; }
+		public string CurrentOrgId { get; private set; }
 
 		public bool IsAuthenticated()
 		{
@@ -30,6 +29,20 @@ namespace Diadoc.Console
 			Events = null;
 			Boxes = null;
 			Orgs = null;
+		}
+
+		public void SetCurrentBoxWithBoxId(string boxId)
+		{
+			CurrentBoxId = boxId;
+			var organization = DiadocApi.GetOrganizationByBoxId(boxId);
+			CurrentOrgId = organization.OrgId;
+		}
+
+		public void SetCurrentBoxWithOrgId(string orgId)
+		{
+			CurrentOrgId = orgId;
+			var organization = DiadocApi.GetOrganizationById(orgId);
+			CurrentBoxId = organization.Boxes[0].BoxIdGuid;
 		}
 	}
 }

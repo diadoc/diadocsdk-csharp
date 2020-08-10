@@ -29,19 +29,14 @@ namespace Diadoc.Console.Command
 			PrintCounteragentList(myInvitingCounteragents, "Inviting");
 			PrintCounteragentList(myIsInvitedCounteragents, "IsInvited");
 			PrintCounteragentList(myDeniedCounteragents, "Denied");
-
-			ConsoleContext.CurrentOrgId = orgId;
-			ConsoleContext.CurrentBoxId = null;
-			ConsoleContext.Events = null;
-			ConsoleContext.Boxes = null;
 		}
 
 		private static void PrintCounteragentList(CounteragentList counteragentList, string title)
 		{
 			System.Console.WriteLine();
-			System.Console.WriteLine(string.Format("{0} ({1}/{2}): ", title, counteragentList.Counteragents.Count, counteragentList.TotalCount));
+			System.Console.WriteLine($"{title} ({counteragentList.Counteragents.Count}/{counteragentList.TotalCount}): ");
 			foreach (var counteragent in counteragentList.Counteragents)
-				System.Console.WriteLine(string.Format("  {0}", OutputHelpers.FormatOrganization(counteragent.Organization)));
+				OutputHelpers.PrintOrganization(counteragent.Organization);
 			System.Console.WriteLine();
 		}
 
@@ -54,8 +49,8 @@ namespace Diadoc.Console.Command
 					.FirstOrDefault(id => id.StartsWith(orgId, StringComparison.InvariantCultureIgnoreCase));
 				if (foundId != null) return foundId;
 			}
+
 			return orgId;
 		}
-
 	}
 }

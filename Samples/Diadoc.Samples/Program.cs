@@ -4,21 +4,25 @@ namespace Diadoc.Samples
 {
 	internal static class Program
 	{
-		private static void Main(string[] args)
+		private static void Main()
 		{
 			try
 			{
-				SendNonformalizedSample.PostNonformalized();
-				SendLargeNonformalizedSample.PostLargeNonformalized();
+				Authenticate.RunSample();
+				PostNonformalizedDocument.RunSample();
+				PostLargeDocumentWithShelf.RunSample();
+				PostUniversalTransferDocument820.RunSample();
+				PatchDocumentWithReceipt.RunSample();
 			}
 			catch (Exception ex)
 			{
-				Console.Out.WriteLine("An error has occurred during Diadoc sample application execution");
-				Console.Out.WriteLine(ex.Message);
-				Console.Out.WriteLine(ex.StackTrace);
+				Console.WriteLine("Произошла ошибка при использовании API Диадока:");
+				Console.WriteLine(ex.Message);
+				Console.WriteLine(ex.StackTrace);
 			}
-			Console.Out.WriteLine("Press Enter to exit the application...");
-			Console.In.ReadLine();
+
+			Console.WriteLine("Нажмите любую клавишу, чтобы выйти из приложения");
+			Console.ReadKey();
 		}
 	}
 }

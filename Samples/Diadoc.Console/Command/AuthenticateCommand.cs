@@ -15,7 +15,7 @@ namespace Diadoc.Console.Command
 
 		protected override void PerformRunCommand(string[] args)
 		{
-			var thumbprint = args.Count() > 0 ? args[0] : null;
+			var thumbprint = args.Length > 0 ? args[0] : null;
 
 			if (thumbprint == null)
 			{
