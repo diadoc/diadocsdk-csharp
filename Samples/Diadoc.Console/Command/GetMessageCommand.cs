@@ -62,7 +62,7 @@ namespace Diadoc.Console.Command
 				.Select(e => GenerateNewReceipt(msg.MessageId, e));
 			patch.Receipts.AddRange(receipts);
 			var correctionRequests = attachments
-				.Where(e => IsNeedSendCorrectionrequest(msg, e) && AskAboutCorrectionRequestSending(e))
+				.Where(e => IsNeedSendCorrectionRequest(msg, e) && AskAboutCorrectionRequestSending(e))
 				.Select(e => GenerateNewCorrectionRequest(msg.MessageId, e));
 			patch.CorrectionRequests.AddRange(correctionRequests);
 			if (patch.CorrectionRequests.Count > 0 || patch.Receipts.Count > 0 || patch.Signatures.Count > 0)
@@ -118,7 +118,7 @@ namespace Diadoc.Console.Command
 				e.ParentEntityId == entity.EntityId);
 		}
 
-		private bool IsNeedSendCorrectionrequest(Message msg, Entity entity)
+		private bool IsNeedSendCorrectionRequest(Message msg, Entity entity)
 		{
 			return entity.AttachmentType == AttachmentType.Invoice && msg.ToBoxId == ConsoleContext.CurrentBoxId;
 		}
@@ -128,8 +128,7 @@ namespace Diadoc.Console.Command
 			return new DocumentSignature
 			{
 				ParentEntityId = entity.EntityId,
-				Signature = ConsoleContext.SignByAttorney ? null : ConsoleContext.Crypt.Sign(GetEntityContent(messageId, entity), ConsoleContext.CurrentCert.RawData),
-				SignByAttorney = ConsoleContext.SignByAttorney,
+				Signature = ConsoleContext.Crypt.Sign(GetEntityContent(messageId, entity), ConsoleContext.CurrentCert.RawData),
 			};
 		}
 
@@ -151,8 +150,7 @@ namespace Diadoc.Console.Command
 				SignedContent = new SignedContent
 				{
 					Content = correctionReq.Content,
-					Signature = ConsoleContext.SignByAttorney ? null : ConsoleContext.Crypt.Sign(correctionReq.Content, currentCertificateContent),
-					SignByAttorney = ConsoleContext.SignByAttorney,
+					Signature = ConsoleContext.Crypt.Sign(correctionReq.Content, currentCertificateContent),
 				},
 			};
 		}

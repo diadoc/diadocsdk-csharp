@@ -16,6 +16,12 @@ diadocsdk-csharp является официальной C#-реализацие
 
 Мы планируем освежить документацию. Если у вас после её прочтения остаются вопросы, пожалуйста, выскажитесь в соответствующей [issue](https://github.com/diadoc/diadocsdk-csharp/issues/454).
 
+## Примеры использования
+
+[Diadoc.Samples](https://github.com/diadoc/diadocsdk-csharp/tree/master/Samples/Diadoc.Samples) — примеры кода работы API с пояснениями.
+
+[Diadoc.Console](https://github.com/diadoc/diadocsdk-csharp/tree/master/Samples/Diadoc.Console) — пример консольного приложения, с помощью которого можно получать и отправлять документы, читать события, устанавливать связи с контрагентами.
+
 
 ## Сборка проекта
 

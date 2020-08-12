@@ -29,6 +29,7 @@ namespace Diadoc.Console
 				new ListCounteragentsCommand(consoleContext),
 				new ActOnCounteragentCommand(consoleContext),
 				new SelectBoxCommand(consoleContext),
+				new ShowBoxesCommand(consoleContext),
 				new ListEventsCommand(consoleContext),
 				new GetEventCommand(consoleContext),
 				new GetMessageCommand(consoleContext),
@@ -37,8 +38,7 @@ namespace Diadoc.Console
 				new ConfigureProxyCommand(consoleContext),
 				new GetProxyStatusCommand(consoleContext),
 				new SearchCommand(consoleContext),
-				new GetInvoicesCommand(consoleContext),
-				new AttorneyCommand(consoleContext),
+				new GetDocumentsCommand(consoleContext),
 				new StatusCommand(consoleContext),
 				new ExitCommand(consoleContext)
 			};

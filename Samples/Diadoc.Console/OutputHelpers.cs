@@ -72,7 +72,8 @@ namespace Diadoc.Console
 				if (documentInfo.XmlAcceptanceCertificateMetadata != null)
 					System.Console.WriteLine("DocumentInfo.XmlAcceptanceCertificateMetadata.DocumentStatus: {0}", documentInfo.XmlAcceptanceCertificateMetadata.DocumentStatus);
 			}
-			if (comment != null && comment.Content != null && comment.Content.Data != null)
+
+			if (comment?.Content?.Data != null)
 			{
 				System.Console.WriteLine("Комментарий:");
 				System.Console.WriteLine(Encoding.UTF8.GetString(comment.Content.Data));
@@ -93,25 +94,21 @@ namespace Diadoc.Console
 		{
 			foreach (var org in orgs)
 			{
-				System.Console.WriteLine("  {0}", FormatOrganization(org));
-				foreach (var box in org.Boxes)
-					System.Console.WriteLine("    {0}", FormatBox(box));
+				PrintOrganization(org);
 			}
 		}
 
-		public static string FormatOrganization(Organization org)
+		public static void PrintOrganization(Organization org)
 		{
-			return string.Format("{0} ({1}-{2} {3})", org.OrgId, org.Inn, org.Kpp, org.FullName);
-		}
-
-		public static string FormatBox(Box box)
-		{
-			return string.Format("{0} {1}", box.BoxId, box.Title);
+			System.Console.WriteLine();
+			System.Console.WriteLine($"  BoxId: {org.Boxes[0].BoxId}, OrgId: {org.OrgId}");
+			System.Console.WriteLine($"    ({org.Inn}-{org.Kpp} {org.FullName})");
+			System.Console.WriteLine();
 		}
 
 		public static string FormatCommandSyntax(IConsoleCommand command)
 		{
-			return string.Format("   {0,-35}    //{1}", string.Format("{0} {1}", command.Command, command.Usage), command.Description);
+			return $"   {$"{command.Command} {command.Usage}",-35}    //{command.Description}";
 		}
 
 		public static void WriteToConsole(this MessagePatch patch)

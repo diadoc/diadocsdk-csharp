@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Diadoc.Api.Proto.Events;
 
 namespace Diadoc.Console
 {
 	internal class NewMessage
 	{
 		public string ToBoxId { get; set; }
-		private readonly List<Attachment> attachments = new List<Attachment>();
-		public List<Attachment> Attachments { get { return attachments; } }
+		private readonly List<DocumentToPost> documentsToPost = new List<DocumentToPost>();
+
+		public List<DocumentToPost> DocumentsToPost => documentsToPost;
 
 		public static NewMessage ReadFromConsole()
 		{
@@ -25,60 +25,87 @@ namespace Diadoc.Console
 				{
 					break;
 				}
-				msg.Attachments.Add(Attachment.ReadFromConsole());
+
+				msg.DocumentsToPost.Add(DocumentToPost.ReadFromConsole());
 			}
+
 			return msg;
 		}
 	}
 
-	internal class Attachment
+	internal class DocumentToPost
 	{
-		public AttachmentType AttachmentType { get; set; }
-		public string FileName { get; set; }
+		public string TypeNamedId { get; set; }
+		public string Function { get; set; }
+		public string Version { get; set; }
+		public Dictionary<string, string> Metadata { get; set; }
 		public byte[] Content { get; set; }
 		public string Comment { get; set; }
 		public bool NeedRecipientSignature { get; set; }
 
-		public static Attachment ReadFromConsole()
+		public static DocumentToPost ReadFromConsole()
 		{
-			var attachment = new Attachment();
-			System.Console.Write("Тип вложения [text/invoice]: ");
-			var attachmentType = System.Console.ReadLine();
-			attachment.AttachmentType = ParseAttachmentType(attachmentType);
-			ReadFileWithComment(ref attachment);
-			if (attachment.AttachmentType == AttachmentType.Nonformalized)
+			var documentToPost = new DocumentToPost();
+			System.Console.Write("Тип вложения (typeNamedId). Например, Nonformalized или UniversalTransferDocument: ");
+			var typeNamedId = System.Console.ReadLine();
+			documentToPost.TypeNamedId = typeNamedId ?? "Nonformalized";
+
+			System.Console.Write("Функция вложения (enter чтобы пропустить):");
+			documentToPost.Function = System.Console.ReadLine();
+
+			System.Console.Write("Версия вложения (enter чтобы пропустить):");
+			documentToPost.Version = System.Console.ReadLine();
+
+			ReadFileWithComment(ref documentToPost);
+			if (documentToPost.TypeNamedId == "Nonformalized")
 			{
 				if (InputHelpers.YesNoChoice(false, "Запросить ответную подпись?"))
-					attachment.NeedRecipientSignature = true;
+					documentToPost.NeedRecipientSignature = true;
 			}
-			return attachment;
+
+			documentToPost.Metadata = ReadMetadata();
+
+			return documentToPost;
 		}
 
-		private static AttachmentType ParseAttachmentType(string attachmentType)
+		private static void ReadFileWithComment(ref DocumentToPost documentToPost)
 		{
-			switch (attachmentType)
-			{
-				case "text":
-					return AttachmentType.Nonformalized;
-				case "invoice":
-					return AttachmentType.Invoice;
-				default:
-					return AttachmentType.Nonformalized;
-			}
-		}
-
-		private static void ReadFileWithComment(ref Attachment attachment)
-		{
-			System.Console.Write("Имя файла: ");
-			var fileName = ReadFileName();
-			attachment.FileName = Path.GetFileName(fileName);
-			attachment.Content = File.ReadAllBytes(fileName);
+			System.Console.Write("Путь до файла: ");
+			var filePath = ReadFilePath();
+			documentToPost.Content = File.ReadAllBytes(filePath);
 			if (!InputHelpers.YesNoChoice(false, "Ввести комментарий?")) return;
 			System.Console.WriteLine("Комментарий к вложению (конец - двойной перевод строки):");
-			attachment.Comment = ReadCommentFromKeyboard();
+			documentToPost.Comment = ReadCommentFromKeyboard();
 		}
 
-		private static string ReadFileName()
+		private static Dictionary<string, string> ReadMetadata()
+		{
+			var metadata = new Dictionary<string, string>();
+
+			if (!InputHelpers.YesNoChoice(false, "Добавить метаданные?")) return metadata;
+			do
+			{
+				ReadKeyValue(metadata);
+			} while (InputHelpers.YesNoChoice(false, "Добавить ещё значение?"));
+
+			return metadata;
+		}
+
+		private static void ReadKeyValue(Dictionary<string, string> metadata)
+		{
+			string key;
+			do
+			{
+				System.Console.Write("Ключ: ");
+				key = System.Console.ReadLine();
+			} while (string.IsNullOrEmpty(key));
+
+			System.Console.Write("Значение: ");
+			var value = System.Console.ReadLine();
+			metadata[key] = value;
+		}
+
+		private static string ReadFilePath()
 		{
 			var sb = new StringBuilder();
 			while (true)
@@ -88,16 +115,19 @@ namespace Diadoc.Console
 				{
 					if (sb.Length > 2)
 					{
-						var fileName = DoAutocompleteFileName(sb.ToString());
-						if (fileName == null)
+						var filePath = DoAutocompleteFilePath(sb.ToString());
+						if (filePath == null)
 						{
 							sb.Clear();
 							continue;
 						}
-						return fileName;
+
+						return filePath;
 					}
+
 					continue;
 				}
+
 				if (k.Key == ConsoleKey.Backspace)
 				{
 					if (sb.Length > 0)
@@ -105,24 +135,28 @@ namespace Diadoc.Console
 						--sb.Length;
 						System.Console.Write("\b \b");
 					}
+
 					continue;
 				}
+
 				if (k.Key == ConsoleKey.Enter)
 				{
 					System.Console.WriteLine();
 					break;
 				}
+
 				System.Console.Write(k.KeyChar);
 				sb.Append(k.KeyChar);
 			}
+
 			return sb.ToString();
 		}
 
-		private static string DoAutocompleteFileName(string currentFileName)
+		private static string DoAutocompleteFilePath(string currentFilePath)
 		{
 			var files = Directory.EnumerateFiles(Environment.CurrentDirectory)
 				.Select(Path.GetFileName)
-				.Where(fn => fn != null && fn.StartsWith(currentFileName, StringComparison.CurrentCultureIgnoreCase)).ToArray();
+				.Where(f => f != null && f.StartsWith(currentFilePath, StringComparison.CurrentCultureIgnoreCase)).ToArray();
 			switch (files.Length)
 			{
 				case 0:
@@ -130,15 +164,16 @@ namespace Diadoc.Console
 					System.Console.WriteLine("Нет таких файлов");
 					break;
 				case 1:
-					var fileName = files.First();
-					System.Console.WriteLine(fileName.Substring(currentFileName.Length));
-					return fileName;
+					var filePath = files.First();
+					System.Console.WriteLine(filePath.Substring(currentFilePath.Length));
+					return filePath;
 				default:
 					System.Console.WriteLine();
 					foreach (var file in files)
 						System.Console.WriteLine(file);
 					break;
 			}
+
 			return null;
 		}
 
