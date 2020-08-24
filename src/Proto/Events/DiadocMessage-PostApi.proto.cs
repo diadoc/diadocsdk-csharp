@@ -3315,6 +3315,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _RefusalDisabled; }
       set { _RefusalDisabled = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.CustomDataItem> _CustomData = new global::System.Collections.Generic.List<Diadoc.Api.Proto.CustomDataItem>();
+    [global::ProtoBuf.ProtoMember(13, Name=@"CustomData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.CustomDataItem> CustomData
+    {
+      get { return _CustomData; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
