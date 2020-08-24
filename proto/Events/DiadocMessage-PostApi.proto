@@ -547,6 +547,7 @@ message TemplateDocumentAttachment {
 	optional bool NeedRecipientSignature = 10 [default = false];
 	optional PredefinedRecipientTitle PredefinedRecipientTitle = 11;
 	optional bool RefusalDisabled = 12 [default = false];
+	repeated CustomDataItem CustomData = 13;
 }
 
 message TemplatePatchToPost {
