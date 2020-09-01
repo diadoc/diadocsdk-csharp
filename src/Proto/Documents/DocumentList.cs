@@ -9,6 +9,7 @@ namespace Diadoc.Api.Proto.Documents
 	{
 		int TotalCount { get; }
 		ReadonlyList DocumentsList { get; }
+		bool HasMoreResults { get; }
 	}
 
 	[ComVisible(true)]
