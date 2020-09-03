@@ -170,7 +170,7 @@ namespace Diadoc.Api.Proto.Docflow
 
 		public Com.TotalCountType TotalCountTypeValue
 		{
-			get { return (Com.TotalCountType) TotalCountType; }
+			get { return (Com.TotalCountType)TotalCountType; }
 		}
 	}
 
@@ -277,7 +277,7 @@ namespace Diadoc.Api.Proto.Docflow
 
 		public Com.MessageType MessageTypeValue
 		{
-			get { return (Com.MessageType) MessageType; }
+			get { return (Com.MessageType)MessageType; }
 		}
 	}
 
@@ -460,6 +460,8 @@ namespace Diadoc.Api.Proto.Docflow
 		RevocationDocflowV3 Revocation { get; }
 		ResolutionDocflowV3 Resolution { get; }
 		ResolutionEntitiesV3 ResolutionEntities { get; }
+		ReadonlyList OuterDocflowsList { get; }
+		ReadonlyList OuterDocflowEntitiesList { get; }
 	}
 
 	[ComVisible(true)]
@@ -469,6 +471,15 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IDocflowV3))]
 	public partial class DocflowV3 : SafeComObject, IDocflowV3
 	{
+		public ReadonlyList OuterDocflowsList
+		{
+			get { return new ReadonlyList(OuterDocflows); }
+		}
+
+		public ReadonlyList OuterDocflowEntitiesList
+		{
+			get { return new ReadonlyList(OuterDocflowEntities); }
+		}
 	}
 
 	[ComVisible(true)]
@@ -583,6 +594,7 @@ namespace Diadoc.Api.Proto.Docflow
 		RevocationResponseDocflow RevocationResponse { get; }
 		string InitiatorBoxId { get; }
 		RevocationStatus RevocationStatus { get; }
+		ReadonlyList OuterDocflowEntitiesList { get; }
 	}
 
 	[ComVisible(true)]
@@ -592,6 +604,10 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IRevocationDocflowV3))]
 	public partial class RevocationDocflowV3 : SafeComObject, IRevocationDocflowV3
 	{
+		public ReadonlyList OuterDocflowEntitiesList
+		{
+			get { return new ReadonlyList(OuterDocflowEntities); }
+		}
 	}
 
 	[ComVisible(true)]
@@ -709,13 +725,13 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.ResolutionRequestType RequestTypeValue
 		{
-			get { return (Com.ResolutionRequestType) RequestType; }
-			set { RequestType = (ResolutionRequestType) value; }
+			get { return (Com.ResolutionRequestType)RequestType; }
+			set { RequestType = (ResolutionRequestType)value; }
 		}
 
 		public ReadonlyList ActionsList
 		{
-			get { return new ReadonlyList(Actions.Select(a => (Com.ResolutionAction) a).ToArray()); }
+			get { return new ReadonlyList(Actions.Select(a => (Com.ResolutionAction)a).ToArray()); }
 		}
 	}
 
@@ -738,8 +754,8 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.ResolutionType ResolutionTypeValue
 		{
-			get { return (Com.ResolutionType) ResolutionType; }
-			set { ResolutionType = (ResolutionType) value; }
+			get { return (Com.ResolutionType)ResolutionType; }
+			set { ResolutionType = (ResolutionType)value; }
 		}
 	}
 
@@ -797,6 +813,63 @@ namespace Diadoc.Api.Proto.Docflow
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IReceiptDocflowV3))]
 	public partial class ReceiptDocflowV3 : SafeComObject, IReceiptDocflowV3
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("6D431500-96A7-472E-B8F3-80FE0CD9D430")]
+	public interface IOuterDocflow
+	{
+		string DocflowNamedId { get; }
+		string ParentEntityId { get; }
+		string OuterDocflowEntityId { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.OuterDocflow")]
+	[Guid("B6EF1491-112A-476E-849A-3D76404B25EF")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IOuterDocflow))]
+	public partial class OuterDocflow : SafeComObject, IOuterDocflow
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("0A581B62-2356-4DCD-BD51-A7F400033F24")]
+	public interface IOuterDocflowEntities
+	{
+		string DocflowNamedId { get; }
+		string DocflowFriendlyName { get; }
+		ReadonlyList StatusEntitiesList { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.OuterDocflowEntities")]
+	[Guid("013A4BE8-E1DD-4E37-AECC-6B8A4DCE0630")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IOuterDocflowEntities))]
+	public partial class OuterDocflowEntities : SafeComObject, IOuterDocflowEntities
+	{
+		public ReadonlyList StatusEntitiesList
+		{
+			get { return new ReadonlyList(StatusEntities); }
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("04EC6E67-46A8-4517-9F1B-EC17BB9FB322")]
+	public interface IStatusEntity
+	{
+		SignedAttachmentV3 Attachment { get; set; }
+		Status Status { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.StatusEntity")]
+	[Guid("9A75FD97-4A82-4E5F-9AE7-8607AA85A957")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IStatusEntity))]
+	public partial class StatusEntity : SafeComObject, IStatusEntity
 	{
 	}
 }

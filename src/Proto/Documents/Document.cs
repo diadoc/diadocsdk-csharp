@@ -3,6 +3,10 @@ using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
 using Diadoc.Api.Proto.Documents.AcceptanceCertificateDocument;
 using Diadoc.Api.Proto.Documents.BilateralDocument;
+using Diadoc.Api.Proto.Documents.InvoiceDocument;
+using Diadoc.Api.Proto.Documents.NonformalizedDocument;
+using Diadoc.Api.Proto.Documents.UnilateralDocument;
+using Diadoc.Api.Proto.Documents.UniversalTransferDocument;
 
 namespace Diadoc.Api.Proto.Documents
 {
@@ -26,28 +30,28 @@ namespace Diadoc.Api.Proto.Documents
 		ReadonlyList ForwardDocumentEventsList { get; }
 
 		Content Content { get; }
-		NonformalizedDocument.NonformalizedDocumentMetadata NonformalizedDocumentMetadata { get; }
-		InvoiceDocument.InvoiceMetadata InvoiceMetadata { get; }
-		BilateralDocument.TrustConnectionRequestMetadata TrustConnectionRequestMetadata { get; }
-		BilateralDocument.BasicDocumentMetadata Torg12Metadata { get; }
-		InvoiceDocument.InvoiceRevisionMetadata InvoiceRevisionMetadata { get; }
-		InvoiceDocument.InvoiceCorrectionMetadata InvoiceCorrectionMetadata { get; }
-		InvoiceDocument.InvoiceCorrectionRevisionMetadata InvoiceCorrectionRevisionMetadata { get; }
+		NonformalizedDocumentMetadata NonformalizedDocumentMetadata { get; }
+		InvoiceMetadata InvoiceMetadata { get; }
+		TrustConnectionRequestMetadata TrustConnectionRequestMetadata { get; }
+		BasicDocumentMetadata Torg12Metadata { get; }
+		InvoiceRevisionMetadata InvoiceRevisionMetadata { get; }
+		InvoiceCorrectionMetadata InvoiceCorrectionMetadata { get; }
+		InvoiceCorrectionRevisionMetadata InvoiceCorrectionRevisionMetadata { get; }
 		AcceptanceCertificateMetadata AcceptanceCertificateMetadata { get; }
-		UnilateralDocument.ProformaInvoiceMetadata ProformaInvoiceMetadata { get; }
-		BilateralDocument.BasicDocumentMetadata XmlTorg12Metadata { get; }
-		BilateralDocument.BasicDocumentMetadata XmlAcceptanceCertificateMetadata { get; }
-		BilateralDocument.PriceListMetadata PriceListMetadata { get; }
-		NonformalizedDocument.NonformalizedDocumentMetadata PriceListAgreementMetadata { get; }
-		NonformalizedDocument.NonformalizedDocumentMetadata CertificateRegistryMetadata { get; }
-		BilateralDocument.BilateralDocumentMetadata ReconciliationActMetadata { get; }
-		BilateralDocument.ContractMetadata ContractMetadata { get; }
-		BilateralDocument.BasicDocumentMetadata Torg13Metadata { get; }
-		UnilateralDocument.ServiceDetailsMetadata ServiceDetailsMetadata { get; }
-		UniversalTransferDocument.UniversalTransferDocumentMetadata UniversalTransferDocumentMetadata { get; }
-		UniversalTransferDocument.UniversalTransferDocumentRevisionMetadata UniversalTransferDocumentRevisionMetadata { get; }
-		UniversalTransferDocument.UniversalCorrectionDocumentMetadata UniversalCorrectionDocumentMetadata { get; }
-		UniversalTransferDocument.UniversalCorrectionDocumentRevisionMetadata UniversalCorrectionDocumentRevisionMetadata { get; }
+		ProformaInvoiceMetadata ProformaInvoiceMetadata { get; }
+		BasicDocumentMetadata XmlTorg12Metadata { get; }
+		BasicDocumentMetadata XmlAcceptanceCertificateMetadata { get; }
+		PriceListMetadata PriceListMetadata { get; }
+		NonformalizedDocumentMetadata PriceListAgreementMetadata { get; }
+		NonformalizedDocumentMetadata CertificateRegistryMetadata { get; }
+		BilateralDocumentMetadata ReconciliationActMetadata { get; }
+		ContractMetadata ContractMetadata { get; }
+		BasicDocumentMetadata Torg13Metadata { get; }
+		ServiceDetailsMetadata ServiceDetailsMetadata { get; }
+		UniversalTransferDocumentMetadata UniversalTransferDocumentMetadata { get; }
+		UniversalTransferDocumentRevisionMetadata UniversalTransferDocumentRevisionMetadata { get; }
+		UniversalCorrectionDocumentMetadata UniversalCorrectionDocumentMetadata { get; }
+		UniversalCorrectionDocumentRevisionMetadata UniversalCorrectionDocumentRevisionMetadata { get; }
 		SupplementaryAgreementMetadata SupplementaryAgreementMetadata { get; }
 		RecipientReceiptMetadata RecipientReceiptMetadata { get; }
 		ConfirmationMetadata ConfirmationMetadata { get; }
@@ -86,6 +90,8 @@ namespace Diadoc.Api.Proto.Documents
 		Com.RecipientResponseStatus RecipientResponseStatusValue { get; }
 		Com.RoamingNotificationStatus RoamingNotificationStatusValue { get; }
 		string RoamingNotificationStatusDescription { get; }
+
+		ReadonlyList LastOuterDocflowsList { get; }
 	}
 
 	[ComVisible(true)]
@@ -103,7 +109,7 @@ namespace Diadoc.Api.Proto.Documents
 	public interface IRecipientReceiptMetadata
 	{
 		Com.GeneralReceiptStatus ReceiptStatusValue { get; }
-		Diadoc.Api.Proto.Documents.ConfirmationMetadata ConfirmationMetadata { get; set; }
+		ConfirmationMetadata ConfirmationMetadata { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -166,7 +172,7 @@ namespace Diadoc.Api.Proto.Documents
 
 		public Com.DocumentDirection DocumentDirectionValue
 		{
-			get { return (Com.DocumentDirection) DocumentDirection; }
+			get { return (Com.DocumentDirection)DocumentDirection; }
 		}
 
 		public Com.RoamingNotificationStatus RoamingNotificationStatusValue
@@ -219,7 +225,7 @@ namespace Diadoc.Api.Proto.Documents
 			get { return (Com.DocumentType)((int)DocumentType); }
 			set { DocumentType = (DocumentType)((int)value); }
 		}
-		
+
 		public Com.RevocationStatus DocumentRevocationStatus
 		{
 			get { return (Com.RevocationStatus)((int)RevocationStatus); }
@@ -229,6 +235,11 @@ namespace Diadoc.Api.Proto.Documents
 		public ReadonlyList MetadataList
 		{
 			get { return new ReadonlyList(Metadata); }
+		}
+
+		public ReadonlyList LastOuterDocflowsList
+		{
+			get { return new ReadonlyList(LastOuterDocflows); }
 		}
 	}
 
@@ -240,7 +251,7 @@ namespace Diadoc.Api.Proto.Documents
 	{
 		public Com.GeneralReceiptStatus ReceiptStatusValue
 		{
-			get { return (Com.GeneralReceiptStatus) ReceiptStatus; }
+			get { return (Com.GeneralReceiptStatus)ReceiptStatus; }
 		}
 	}
 
@@ -252,7 +263,7 @@ namespace Diadoc.Api.Proto.Documents
 	{
 		public Com.GeneralReceiptStatus ReceiptStatusValue
 		{
-			get { return (Com.GeneralReceiptStatus) ReceiptStatus; }
+			get { return (Com.GeneralReceiptStatus)ReceiptStatus; }
 		}
 
 		public DateTime DateTime
@@ -269,7 +280,7 @@ namespace Diadoc.Api.Proto.Documents
 	{
 		public Com.GeneralReceiptStatus ReceiptStatusValue
 		{
-			get { return (Com.GeneralReceiptStatus) ReceiptStatus; }
+			get { return (Com.GeneralReceiptStatus)ReceiptStatus; }
 		}
 	}
 
@@ -281,7 +292,7 @@ namespace Diadoc.Api.Proto.Documents
 	{
 		public Com.MessageType MessageTypeValue
 		{
-			get { return (Com.MessageType) MessageType; }
+			get { return (Com.MessageType)MessageType; }
 		}
 	}
 }

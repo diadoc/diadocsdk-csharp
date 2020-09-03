@@ -3,6 +3,7 @@ import "Documents/Document.proto";
 import "Docflow/AttachmentV3.proto";
 import "Docflow/RoamingNotification.proto";
 import "Docflow/ResolutionDocflowV3.proto";
+import "OuterDocflowStatus.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
@@ -18,6 +19,8 @@ message DocflowV3
 	optional ReceiptDocflowV3 SenderReceipt = 8;
 	optional ResolutionDocflowV3 Resolution = 9;
 	optional ResolutionEntitiesV3 ResolutionEntities = 10;
+	repeated OuterDocflow OuterDocflows = 12;
+	repeated OuterDocflowEntities OuterDocflowEntities = 13;
 }
 
 message SenderTitleDocflow
@@ -76,6 +79,7 @@ message RevocationDocflowV3
 	required string InitiatorBoxId = 4;
 	required Documents.RevocationStatus RevocationStatus = 5;
 	optional ResolutionEntitiesV3 ResolutionEntities = 6;
+	repeated OuterDocflowEntities OuterDocflowEntities  = 7;
 }
 
 message RevocationRequestDocflow
@@ -101,4 +105,24 @@ message ReceiptDocflowV3
 	optional Timestamp DeliveredAt = 4;
 	optional ConfirmationDocflow Confirmation = 5;
 	required Documents.GeneralReceiptStatus Status = 6;
+}
+
+message OuterDocflow
+{
+	required string DocflowNamedId = 1;
+	required string ParentEntityId = 2;
+	required string OuterDocflowEntityId = 3;
+}
+
+message OuterDocflowEntities
+{
+	required string DocflowNamedId = 1;
+	required string DocflowFriendlyName = 2;
+	repeated StatusEntity StatusEntities = 3;
+}
+
+message StatusEntity
+{
+	required SignedAttachmentV3 Attachment = 1;
+	required Status Status = 2;
 }

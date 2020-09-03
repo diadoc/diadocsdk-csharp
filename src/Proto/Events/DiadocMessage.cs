@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
 using Diadoc.Api.Proto.Documents;
+using MessageType = Diadoc.Api.Com.MessageType;
 
 namespace Diadoc.Api.Proto.Events
 {
@@ -28,7 +29,7 @@ namespace Diadoc.Api.Proto.Events
 		string DraftIsTransformedToMessageId { get; }
 		DateTime Timestamp { get; }
 		DateTime LastPatchTimestamp { get; }
-		Com.MessageType MessageTypeValue { get; }
+		MessageType MessageTypeValue { get; }
 	}
 
 	[ComVisible(true)]
@@ -57,9 +58,9 @@ namespace Diadoc.Api.Proto.Events
 			get { return new ReadonlyList(Entities); }
 		}
 
-		public Com.MessageType MessageTypeValue
+		public MessageType MessageTypeValue
 		{
-			get { return (Com.MessageType)MessageType; }
+			get { return (MessageType)MessageType; }
 		}
 	}
 
@@ -98,6 +99,7 @@ namespace Diadoc.Api.Proto.Events
 
 		TemplateTransformationInfo TemplateTransformationInfo { get; }
 		TemplateRefusalInfo TemplateRefusalInfo { get; }
+		OuterDocflowInfo OuterDocflow { get; }
 	}
 
 	[ComVisible(true)]
@@ -226,9 +228,15 @@ namespace Diadoc.Api.Proto.Events
 			get
 			{
 				if (Message != null)
+				{
 					return Message.Timestamp;
+				}
+
 				if (Patch != null)
+				{
 					return Patch.Timestamp;
+				}
+
 				return default(DateTime);
 			}
 		}
@@ -311,7 +319,7 @@ namespace Diadoc.Api.Proto.Events
 		bool MessageIsDelivered { get; }
 		string DeliveredPatchId { get; }
 		string PatchId { get; }
-		Com.MessageType MessageTypeValue { get; }
+		MessageType MessageTypeValue { get; }
 	}
 
 	[ComVisible(true)]
@@ -340,9 +348,9 @@ namespace Diadoc.Api.Proto.Events
 			get { return new ReadonlyList(EntityPatches); }
 		}
 
-		public Com.MessageType MessageTypeValue
+		public MessageType MessageTypeValue
 		{
-			get { return (Com.MessageType)MessageType; }
+			get { return (MessageType)MessageType; }
 		}
 	}
 
@@ -361,13 +369,10 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof(IGeneratedFile))]
 	public class GeneratedFile : SafeComObject, IGeneratedFile
 	{
-		private readonly string fileName;
-		private readonly byte[] content;
-
 		public GeneratedFile(string fileName, byte[] content)
 		{
-			this.fileName = fileName;
-			this.content = content;
+			this.FileName = fileName;
+			this.Content = content;
 		}
 
 		public void SaveContentToFile(string path)
@@ -375,15 +380,9 @@ namespace Diadoc.Api.Proto.Events
 			File.WriteAllBytes(path, Content);
 		}
 
-		public string FileName
-		{
-			get { return fileName; }
-		}
+		public string FileName { get; }
 
-		public byte[] Content
-		{
-			get { return content; }
-		}
+		public byte[] Content { get; }
 	}
 
 	[ComVisible(true)]
@@ -657,7 +656,9 @@ namespace Diadoc.Api.Proto.Events
 		public void SaveContentToFile(string fileName)
 		{
 			if (Content != null)
+			{
 				File.WriteAllBytes(fileName, Content);
+			}
 		}
 	}
 
@@ -1224,7 +1225,9 @@ namespace Diadoc.Api.Proto.Events
 		public void SaveContentToFile(string fileName)
 		{
 			if (Content != null)
+			{
 				File.WriteAllBytes(fileName, Content);
+			}
 		}
 
 		public void LoadSignatureFromFile(string fileName)
@@ -1866,8 +1869,15 @@ namespace Diadoc.Api.Proto.Events
 	{
 		public MetadataItem(string key, string value)
 		{
-			if (string.IsNullOrEmpty(key)) throw new ArgumentException("Key is empty");
-			if (string.IsNullOrEmpty(value)) throw new ArgumentException("Value is empty");
+			if (string.IsNullOrEmpty(key))
+			{
+				throw new ArgumentException("Key is empty");
+			}
+
+			if (string.IsNullOrEmpty(value))
+			{
+				throw new ArgumentException("Value is empty");
+			}
 
 			Key = key;
 			Value = value;

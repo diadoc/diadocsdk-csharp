@@ -14,6 +14,7 @@ import "Events/ResolutionInfo.proto";
 import "Events/ResolutionRequestInfo.proto";
 import "Events/ResolutionRequestDenialInfo.proto";
 import "Events/ResolutionRouteInfo.proto";
+import "OuterDocflow.proto";
 
 package Diadoc.Api.Proto.Events;
 
@@ -114,6 +115,7 @@ message Entity {
 	optional string Version = 26;
 	optional TemplateTransformationInfo TemplateTransformationInfo = 27;
 	optional TemplateRefusalInfo TemplateRefusalInfo = 28;
+	optional OuterDocflowInfo OuterDocflow  = 29;
 }
 
 message EntityPatch {
@@ -217,5 +219,6 @@ enum AttachmentType {
 	DeletionRestoration = 72;
 	TemplateTransformation = 73;
 	TemplateRefusal = 74;
+	OuterDocflow = 75;
 	//Неизвестные типы должны обрабатываться как Title
 }
