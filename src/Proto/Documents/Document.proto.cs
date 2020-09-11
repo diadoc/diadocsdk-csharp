@@ -23,6 +23,7 @@
 // Note: requires additional types generated from: ResolutionTarget.proto
 // Note: requires additional types generated from: ForwardDocumentEvent.proto
 // Note: requires additional types generated from: Events/DiadocMessage-PostApi.proto
+// Note: requires additional types generated from: OuterDocflow.proto
 namespace Diadoc.Api.Proto.Documents
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"Document")]
@@ -657,6 +658,37 @@ namespace Diadoc.Api.Proto.Documents
     {
       get { return _Version; }
       set { _Version = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.LastOuterDocflow> _LastOuterDocflows = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.LastOuterDocflow>();
+    [global::ProtoBuf.ProtoMember(77, Name=@"LastOuterDocflows", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.LastOuterDocflow> LastOuterDocflows
+    {
+      get { return _LastOuterDocflows; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LastOuterDocflow")]
+  public partial class LastOuterDocflow : global::ProtoBuf.IExtensible
+  {
+    public LastOuterDocflow() {}
+    
+    private string _ParentEntityId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ParentEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ParentEntityId
+    {
+      get { return _ParentEntityId; }
+      set { _ParentEntityId = value; }
+    }
+    private Diadoc.Api.Proto.OuterDocflowInfo _OuterDocflow;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"OuterDocflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.OuterDocflowInfo OuterDocflow
+    {
+      get { return _OuterDocflow; }
+      set { _OuterDocflow = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

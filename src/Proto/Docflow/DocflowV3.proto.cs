@@ -13,6 +13,7 @@
 // Note: requires additional types generated from: Docflow/AttachmentV3.proto
 // Note: requires additional types generated from: Docflow/RoamingNotification.proto
 // Note: requires additional types generated from: Docflow/ResolutionDocflowV3.proto
+// Note: requires additional types generated from: OuterDocflowStatus.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocflowV3")]
@@ -108,6 +109,20 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _ResolutionEntities; }
       set { _ResolutionEntities = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.OuterDocflow> _OuterDocflows = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.OuterDocflow>();
+    [global::ProtoBuf.ProtoMember(12, Name=@"OuterDocflows", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.OuterDocflow> OuterDocflows
+    {
+      get { return _OuterDocflows; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.OuterDocflowEntities> _OuterDocflowEntities = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.OuterDocflowEntities>();
+    [global::ProtoBuf.ProtoMember(13, Name=@"OuterDocflowEntities", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.OuterDocflowEntities> OuterDocflowEntities
+    {
+      get { return _OuterDocflowEntities; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -444,6 +459,13 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _ResolutionEntities; }
       set { _ResolutionEntities = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.OuterDocflowEntities> _OuterDocflowEntities = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.OuterDocflowEntities>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"OuterDocflowEntities", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.OuterDocflowEntities> OuterDocflowEntities
+    {
+      get { return _OuterDocflowEntities; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -581,6 +603,92 @@ namespace Diadoc.Api.Proto.Docflow
     private Diadoc.Api.Proto.Documents.GeneralReceiptStatus _Status;
     [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public Diadoc.Api.Proto.Documents.GeneralReceiptStatus Status
+    {
+      get { return _Status; }
+      set { _Status = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OuterDocflow")]
+  public partial class OuterDocflow : global::ProtoBuf.IExtensible
+  {
+    public OuterDocflow() {}
+    
+    private string _DocflowNamedId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"DocflowNamedId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocflowNamedId
+    {
+      get { return _DocflowNamedId; }
+      set { _DocflowNamedId = value; }
+    }
+    private string _ParentEntityId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"ParentEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ParentEntityId
+    {
+      get { return _ParentEntityId; }
+      set { _ParentEntityId = value; }
+    }
+    private string _OuterDocflowEntityId;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"OuterDocflowEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OuterDocflowEntityId
+    {
+      get { return _OuterDocflowEntityId; }
+      set { _OuterDocflowEntityId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OuterDocflowEntities")]
+  public partial class OuterDocflowEntities : global::ProtoBuf.IExtensible
+  {
+    public OuterDocflowEntities() {}
+    
+    private string _DocflowNamedId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"DocflowNamedId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocflowNamedId
+    {
+      get { return _DocflowNamedId; }
+      set { _DocflowNamedId = value; }
+    }
+    private string _DocflowFriendlyName;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"DocflowFriendlyName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocflowFriendlyName
+    {
+      get { return _DocflowFriendlyName; }
+      set { _DocflowFriendlyName = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.StatusEntity> _StatusEntities = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.StatusEntity>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"StatusEntities", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.StatusEntity> StatusEntities
+    {
+      get { return _StatusEntities; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"StatusEntity")]
+  public partial class StatusEntity : global::ProtoBuf.IExtensible
+  {
+    public StatusEntity() {}
+    
+    private Diadoc.Api.Proto.Docflow.SignedAttachmentV3 _Attachment;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Attachment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Docflow.SignedAttachmentV3 Attachment
+    {
+      get { return _Attachment; }
+      set { _Attachment = value; }
+    }
+    private Diadoc.Api.Proto.Status _Status;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Status Status
     {
       get { return _Status; }
       set { _Status = value; }

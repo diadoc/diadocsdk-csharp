@@ -18,6 +18,7 @@
 // Note: requires additional types generated from: Events/ResolutionRequestInfo.proto
 // Note: requires additional types generated from: Events/ResolutionRequestDenialInfo.proto
 // Note: requires additional types generated from: Events/ResolutionRouteInfo.proto
+// Note: requires additional types generated from: OuterDocflow.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BoxEventList")]
@@ -737,6 +738,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _TemplateRefusalInfo; }
       set { _TemplateRefusalInfo = value; }
     }
+
+    private Diadoc.Api.Proto.OuterDocflowInfo _OuterDocflow = null;
+    [global::ProtoBuf.ProtoMember(29, IsRequired = false, Name=@"OuterDocflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.OuterDocflowInfo OuterDocflow
+    {
+      get { return _OuterDocflow; }
+      set { _OuterDocflow = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -1111,7 +1121,10 @@ namespace Diadoc.Api.Proto.Events
       TemplateTransformation = 73,
             
       [global::ProtoBuf.ProtoEnum(Name=@"TemplateRefusal", Value=74)]
-      TemplateRefusal = 74
+      TemplateRefusal = 74,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"OuterDocflow", Value=75)]
+      OuterDocflow = 75
     }
   
 }

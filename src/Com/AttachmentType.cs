@@ -63,6 +63,7 @@ namespace Diadoc.Api.Com
 		Edition = 71,
 		DeletionRestoration = 72,
 		TemplateTransformation = 73,
-		TemplateRefusal = 74
+		TemplateRefusal = 74,
+		OuterDocflow = 75
 	}
 }

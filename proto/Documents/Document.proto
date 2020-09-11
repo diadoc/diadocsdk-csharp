@@ -13,6 +13,7 @@ import "Documents/UniversalTransferDocument.proto";
 import "ResolutionTarget.proto";
 import "ForwardDocumentEvent.proto";
 import "Events/DiadocMessage-PostApi.proto";
+import "OuterDocflow.proto";
 
 package Diadoc.Api.Proto.Documents;
 
@@ -90,8 +91,14 @@ message Document {
 	optional Origin Origin = 72;
 	optional string EditingSettingId = 73 [default = ""];
 	required LockMode LockMode = 74 [default = None];
-	required SenderReceiptMetadata SenderReceiptMetadata = 75; 
+	required SenderReceiptMetadata SenderReceiptMetadata = 75;
 	required string Version = 76;
+	repeated LastOuterDocflow LastOuterDocflows = 77;
+}
+
+message LastOuterDocflow {
+	required string ParentEntityId = 1;
+	required OuterDocflowInfo OuterDocflow = 2;
 }
 
 message ResolutionStatus {
@@ -108,7 +115,7 @@ enum ResolutionStatusType {
 	Disapproved = 2;
 	ApprovementRequested = 3;
 	SignatureRequested = 4;
-	SignatureDenied = 5; 
+	SignatureDenied = 5;
 	ActionsRequested = 6;
 }
 

@@ -1,0 +1,20 @@
+package Diadoc.Api.Proto;
+
+message Status {
+    required string NamedId = 1;
+    required string FriendlyName = 2;
+    required OuterStatusType Type = 3;
+    optional string Description = 4;
+    repeated StatusDetail Details = 5;
+}
+message StatusDetail{
+    optional string Code = 1;
+    optional string Text = 2;
+}
+enum OuterStatusType{
+    UnknownStatus = 0;
+    Normal = 1;
+    Success = 2;
+    Warning = 3;
+    Error = 4;
+}
