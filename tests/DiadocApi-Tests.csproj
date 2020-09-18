@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="$(TargetFramework) == 'net35' or $(TargetFramework) == 'net40'">
+    <Compile Remove="TaskAsyncronousCancel_Test.cs" />
     <Compile Remove="TaskAsyncronousPattern_Test.cs" />
   </ItemGroup>
 
@@ -21,5 +22,21 @@
 
   <ItemGroup>
     <ProjectReference Include="..\src\DiadocApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+    <PackageReference Include="NSubstitute" Version="4.2.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+    <PackageReference Include="NSubstitute" Version="4.2.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <PackageReference Include="NSubstitute" Version="4.2.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.2'">
+    <PackageReference Include="NSubstitute" Version="4.2.2" />
   </ItemGroup>
 </Project>

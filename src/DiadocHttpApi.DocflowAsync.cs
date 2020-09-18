@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Diadoc.Api.Proto.Docflow;
 using JetBrains.Annotations;
 
@@ -7,61 +8,61 @@ namespace Diadoc.Api
 	public partial class DiadocHttpApi
 	{
 		[ItemNotNull]
-		public Task<GetDocflowBatchResponse> GetDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowBatchRequest request)
+		public Task<GetDocflowBatchResponse> GetDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowBatchRequest request, CancellationToken ct = default)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetDocflows", boxId);
-			return PerformHttpRequestAsync<GetDocflowBatchRequest, GetDocflowBatchResponse>(authToken, queryString, request);
+			return PerformHttpRequestAsync<GetDocflowBatchRequest, GetDocflowBatchResponse>(authToken, queryString, request, ct: ct);
 		}
 
 		[ItemNotNull]
-		public Task<GetDocflowEventsResponse> GetDocflowEventsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowEventsRequest request)
+		public Task<GetDocflowEventsResponse> GetDocflowEventsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowEventsRequest request, CancellationToken ct = default)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetDocflowEvents", boxId);
-			return PerformHttpRequestAsync<GetDocflowEventsRequest, GetDocflowEventsResponse>(authToken, queryString, request);
+			return PerformHttpRequestAsync<GetDocflowEventsRequest, GetDocflowEventsResponse>(authToken, queryString, request, ct: ct);
 		}
 
 		[ItemNotNull]
-		public Task<SearchDocflowsResponse> SearchDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] SearchDocflowsRequest request)
+		public Task<SearchDocflowsResponse> SearchDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] SearchDocflowsRequest request, CancellationToken ct = default)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/SearchDocflows", boxId);
-			return PerformHttpRequestAsync<SearchDocflowsRequest, SearchDocflowsResponse>(authToken, queryString, request);
+			return PerformHttpRequestAsync<SearchDocflowsRequest, SearchDocflowsResponse>(authToken, queryString, request, ct: ct);
 		}
 
 		[ItemNotNull]
-		public Task<GetDocflowsByPacketIdResponse> GetDocflowsByPacketIdAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowsByPacketIdRequest request)
+		public Task<GetDocflowsByPacketIdResponse> GetDocflowsByPacketIdAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowsByPacketIdRequest request, CancellationToken ct = default)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetDocflowsByPacketId", boxId);
-			return PerformHttpRequestAsync<GetDocflowsByPacketIdRequest, GetDocflowsByPacketIdResponse>(authToken, queryString, request);
+			return PerformHttpRequestAsync<GetDocflowsByPacketIdRequest, GetDocflowsByPacketIdResponse>(authToken, queryString, request, ct: ct);
 		}
 
 		public partial class DocflowHttpApi
 		{
 			[ItemNotNull]
-			public Task<GetDocflowBatchResponseV3> GetDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowBatchRequest request)
+			public Task<GetDocflowBatchResponseV3> GetDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowBatchRequest request, CancellationToken ct = default)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/GetDocflows", boxId);
-				return diadocHttpApi.PerformHttpRequestAsync<GetDocflowBatchRequest, GetDocflowBatchResponseV3>(authToken, queryString, request);
+				return diadocHttpApi.PerformHttpRequestAsync<GetDocflowBatchRequest, GetDocflowBatchResponseV3>(authToken, queryString, request, ct: ct);
 			}
 
 			[ItemNotNull]
-			public Task<GetDocflowEventsResponseV3> GetDocflowEventsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowEventsRequest request)
+			public Task<GetDocflowEventsResponseV3> GetDocflowEventsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowEventsRequest request, CancellationToken ct = default)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/GetDocflowEvents", boxId);
-				return diadocHttpApi.PerformHttpRequestAsync<GetDocflowEventsRequest, GetDocflowEventsResponseV3>(authToken, queryString, request);
+				return diadocHttpApi.PerformHttpRequestAsync<GetDocflowEventsRequest, GetDocflowEventsResponseV3>(authToken, queryString, request, ct: ct);
 			}
 
 			[ItemNotNull]
-			public Task<SearchDocflowsResponseV3> SearchDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] SearchDocflowsRequest request)
+			public Task<SearchDocflowsResponseV3> SearchDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] SearchDocflowsRequest request, CancellationToken ct = default)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/SearchDocflows", boxId);
-				return diadocHttpApi.PerformHttpRequestAsync<SearchDocflowsRequest, SearchDocflowsResponseV3>(authToken, queryString, request);
+				return diadocHttpApi.PerformHttpRequestAsync<SearchDocflowsRequest, SearchDocflowsResponseV3>(authToken, queryString, request, ct: ct);
 			}
 
 			[ItemNotNull]
-			public Task<GetDocflowsByPacketIdResponseV3> GetDocflowsByPacketIdAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowsByPacketIdRequest request)
+			public Task<GetDocflowsByPacketIdResponseV3> GetDocflowsByPacketIdAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowsByPacketIdRequest request, CancellationToken ct = default)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/GetDocflowsByPacketId", boxId);
-				return diadocHttpApi.PerformHttpRequestAsync<GetDocflowsByPacketIdRequest, GetDocflowsByPacketIdResponseV3>(authToken, queryString, request);
+				return diadocHttpApi.PerformHttpRequestAsync<GetDocflowsByPacketIdRequest, GetDocflowsByPacketIdResponseV3>(authToken, queryString, request, ct: ct);
 			}
 		}
 	}

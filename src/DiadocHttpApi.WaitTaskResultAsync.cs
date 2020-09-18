@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Diadoc.Api
@@ -12,7 +13,8 @@ namespace Diadoc.Api
 			string url,
 			string taskId,
 			TimeSpan? timeout = null,
-			TimeSpan? delay = null)
+			TimeSpan? delay = null,
+			CancellationToken ct = default)
 			where TResult: class
 		{
 			var queryString = $"{url}?taskId={taskId}";
@@ -21,7 +23,7 @@ namespace Diadoc.Api
 			while (true)
 			{
 				var request = BuildHttpRequest(authToken, "GET", queryString, null);
-				var response = await HttpClient.PerformHttpRequestAsync(request, HttpStatusCode.NoContent).ConfigureAwait(false);
+				var response = await HttpClient.PerformHttpRequestAsync(request, ct: ct, HttpStatusCode.NoContent).ConfigureAwait(false);
 
 				if (response.StatusCode == HttpStatusCode.NoContent)
 				{
