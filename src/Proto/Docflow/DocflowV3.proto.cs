@@ -353,8 +353,10 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _IsFinished; }
       set { _IsFinished = value; }
     }
-    private Diadoc.Api.Proto.Docflow.SignedAttachmentV3 _AmendmentRequest;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"AmendmentRequest", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private Diadoc.Api.Proto.Docflow.SignedAttachmentV3 _AmendmentRequest = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"AmendmentRequest", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
     public Diadoc.Api.Proto.Docflow.SignedAttachmentV3 AmendmentRequest
     {
       get { return _AmendmentRequest; }
