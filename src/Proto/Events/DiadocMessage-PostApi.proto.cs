@@ -3203,6 +3203,24 @@ namespace Diadoc.Api.Proto.Events
       get { return _ToDepartmentId; }
       set { _ToDepartmentId = value; }
     }
+
+    private string _MessageProxyBoxId = "";
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"MessageProxyBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string MessageProxyBoxId
+    {
+      get { return _MessageProxyBoxId; }
+      set { _MessageProxyBoxId = value; }
+    }
+
+    private string _MessageProxyDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"MessageProxyDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string MessageProxyDepartmentId
+    {
+      get { return _MessageProxyDepartmentId; }
+      set { _MessageProxyDepartmentId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
