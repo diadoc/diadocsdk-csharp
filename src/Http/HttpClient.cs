@@ -113,9 +113,13 @@ namespace Diadoc.Api.Http
 			}
 			catch (WebException e)
 			{
-				var webResponse = e.Response as HttpWebResponse;
-				if (webResponse != null)
-					response = new HttpResponse(webResponse);
+				using (var webResponse = e.Response as HttpWebResponse)
+				{
+					if (webResponse != null)
+					{
+						response = new HttpResponse(webResponse);
+					}
+				}
 				string diadocErrorCode = null;
 				var additionalMessage = string.Empty;
 				HttpStatusCode? statusCode = null;
@@ -153,9 +157,13 @@ namespace Diadoc.Api.Http
 			}
 			catch (WebException e)
 			{
-				var webResponse = e.Response as HttpWebResponse;
-				if (webResponse != null)
-					response = new HttpResponse(webResponse);
+				using (var webResponse = e.Response as HttpWebResponse)
+				{
+					if (webResponse != null)
+					{
+						response = new HttpResponse(webResponse);
+					}
+				}
 				string diadocErrorCode = null;
 				var additionalMessage = string.Empty;
 				HttpStatusCode? statusCode = null;

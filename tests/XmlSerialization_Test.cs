@@ -91,8 +91,10 @@ namespace Diadoc.Api.Tests
 		private static void AssertClassCanBeSerializedToXml(object info)
 		{
 			var serializer = GetSerializer(info);
-			var memoryStream = new MemoryStream();
-			serializer.Serialize(memoryStream, info);
+			using (var memoryStream = new MemoryStream())
+			{
+				serializer.Serialize(memoryStream, info);
+			}
 		}
 
 		private static void AssertClassCanBeSerializedToJson(object info)
@@ -104,8 +106,10 @@ namespace Diadoc.Api.Tests
 
 		private static void AssertClassCanBeSerializedToProtobuf(object info)
 		{
-			var memoryStream = new MemoryStream();
-			Serializer.NonGeneric.Serialize(memoryStream, info);
+			using (var memoryStream = new MemoryStream())
+			{
+				Serializer.NonGeneric.Serialize(memoryStream, info);
+			}
 		}
 
 		private static XmlSerializer GetSerializer(object info)

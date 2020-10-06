@@ -82,11 +82,11 @@ namespace Diadoc.Api.Http
 			var contentLength = webResponse.ContentLength;
 			if (contentLength <= 0 && !isChunked)
 				return new byte[0];
-			var responseStream = webResponse.GetResponseStream();
-			if (responseStream == null)
-				return new byte[0];
-			using (responseStream)
+			using (var responseStream = webResponse.GetResponseStream())
 			{
+				if (responseStream == null)
+					return new byte[0];
+				
 				var buffer = new byte[!isChunked ? contentLength : 8192];
 				if (!isChunked)
 				{
