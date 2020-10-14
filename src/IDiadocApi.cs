@@ -22,6 +22,7 @@ using Diadoc.Api.Proto.Users;
 using Departments = Diadoc.Api.Proto.Departments;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
+using Diadoc.Api.Proto.Certificates;
 
 #if !NET35
 using System.Threading.Tasks;

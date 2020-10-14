@@ -1,4 +1,4 @@
-package Diadoc.Api.Proto;
+package Diadoc.Api.Proto.Certificates;
 
 message CertificateInfoV2 {
 	required string Thumbprint = 1;

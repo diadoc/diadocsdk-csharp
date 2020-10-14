@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: CertificateList.proto
-// Note: requires additional types generated from: CertificateInfoV2.proto
-namespace Diadoc.Api.Proto
+// Generated from: Certificates/CertificateList.proto
+// Note: requires additional types generated from: Certificates/CertificateInfoV2.proto
+namespace Diadoc.Api.Proto.Certificates
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CertificateList")]
   public partial class CertificateList : global::ProtoBuf.IExtensible
   {
     public CertificateList() {}
     
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.CertificateInfoV2> _Certificates = new global::System.Collections.Generic.List<Diadoc.Api.Proto.CertificateInfoV2>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Certificates.CertificateInfoV2> _Certificates = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Certificates.CertificateInfoV2>();
     [global::ProtoBuf.ProtoMember(1, Name=@"Certificates", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.CertificateInfoV2> Certificates
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Certificates.CertificateInfoV2> Certificates
     {
       get { return _Certificates; }
     }

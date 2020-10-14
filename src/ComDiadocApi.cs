@@ -5,6 +5,7 @@ using System.Security;
 using Diadoc.Api.Com;
 using Diadoc.Api.Cryptography;
 using Diadoc.Api.Proto;
+using Diadoc.Api.Proto.Certificates;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;

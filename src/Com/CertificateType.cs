@@ -8,9 +8,9 @@ namespace Diadoc.Api.Com
 	[XmlType(TypeName = "CertificateType", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum CertificateType
 	{
-		Unknown = Proto.CertificateType.Unknown,
-		Token = Proto.CertificateType.Token,
-		Dss = Proto.CertificateType.Dss,
-		KonturCertificate = Proto.CertificateType.KonturCertificate
+		Unknown = Proto.Certificates.CertificateType.Unknown,
+		Token = Proto.Certificates.CertificateType.Token,
+		Dss = Proto.Certificates.CertificateType.Dss,
+		KonturCertificate = Proto.Certificates.CertificateType.KonturCertificate
 	}
 }
