@@ -40,6 +40,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Attachment Attachment { get; }
 		SignatureV3 Signature { get; }
 		Entity Comment { get; }
+		string ContentTypeId { get; }
 	}
 
 	[ComVisible(true)]

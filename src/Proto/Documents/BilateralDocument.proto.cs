@@ -303,6 +303,9 @@ namespace Diadoc.Api.Proto.Documents.BilateralDocument
       [global::ProtoBuf.ProtoEnum(Name=@"OutboundWithRecipientSignature", Value=2)]
       OutboundWithRecipientSignature = 2,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundWithRecipientPartiallySignature", Value=16)]
+      OutboundWithRecipientPartiallySignature = 16,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"OutboundRecipientSignatureRequestRejected", Value=3)]
       OutboundRecipientSignatureRequestRejected = 3,
             
@@ -318,6 +321,9 @@ namespace Diadoc.Api.Proto.Documents.BilateralDocument
       [global::ProtoBuf.ProtoEnum(Name=@"InboundWithRecipientSignature", Value=5)]
       InboundWithRecipientSignature = 5,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundWithRecipientPartiallySignature", Value=17)]
+      InboundWithRecipientPartiallySignature = 17,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"InboundRecipientSignatureRequestRejected", Value=6)]
       InboundRecipientSignatureRequestRejected = 6,
             
@@ -329,6 +335,9 @@ namespace Diadoc.Api.Proto.Documents.BilateralDocument
             
       [global::ProtoBuf.ProtoEnum(Name=@"InternalWithRecipientSignature", Value=8)]
       InternalWithRecipientSignature = 8,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InternalWithRecipientPartiallySignature", Value=18)]
+      InternalWithRecipientPartiallySignature = 18,
             
       [global::ProtoBuf.ProtoEnum(Name=@"InternalRecipientSignatureRequestRejected", Value=9)]
       InternalRecipientSignatureRequestRejected = 9,

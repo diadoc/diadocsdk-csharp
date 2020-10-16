@@ -109,6 +109,13 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _Comment; }
       set { _Comment = value; }
     }
+    private string _ContentTypeId;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"ContentTypeId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ContentTypeId
+    {
+      get { return _ContentTypeId; }
+      set { _ContentTypeId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

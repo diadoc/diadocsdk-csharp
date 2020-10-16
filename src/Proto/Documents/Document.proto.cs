@@ -1004,7 +1004,10 @@ namespace Diadoc.Api.Proto.Documents
       RecipientSignatureRequestRejected = 4,
             
       [global::ProtoBuf.ProtoEnum(Name=@"InvalidRecipientSignature", Value=5)]
-      InvalidRecipientSignature = 5
+      InvalidRecipientSignature = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"WithRecipientPartiallySignature", Value=6)]
+      WithRecipientPartiallySignature = 6
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"MessageType")]
