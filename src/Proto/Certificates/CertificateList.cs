@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
 
-namespace Diadoc.Api.Proto
+namespace Diadoc.Api.Proto.Certificates
 {
 	[ComVisible(true)]
 	[Guid("7ED2CE25-AD3B-4D88-8C60-1AA9C4DD6314")]

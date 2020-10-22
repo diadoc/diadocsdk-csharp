@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
+using Diadoc.Api.Proto.Certificates;
 using Diadoc.Api.Proto.Users;
 
 namespace Diadoc.Api

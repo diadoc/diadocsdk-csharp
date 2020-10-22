@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: CertificateInfoV2.proto
-namespace Diadoc.Api.Proto
+// Generated from: Certificates/CertificateInfoV2.proto
+namespace Diadoc.Api.Proto.Certificates
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CertificateInfoV2")]
   public partial class CertificateInfoV2 : global::ProtoBuf.IExtensible
@@ -22,9 +22,9 @@ namespace Diadoc.Api.Proto
       get { return _Thumbprint; }
       set { _Thumbprint = value; }
     }
-    private Diadoc.Api.Proto.CertificateType _Type;
+    private Diadoc.Api.Proto.Certificates.CertificateType _Type;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Diadoc.Api.Proto.CertificateType Type
+    public Diadoc.Api.Proto.Certificates.CertificateType Type
     {
       get { return _Type; }
       set { _Type = value; }

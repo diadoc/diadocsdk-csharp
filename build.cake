@@ -184,8 +184,8 @@ Task("Repack")
 
 			if (needSigning)
 			{
-				var keyFile = signWithKeyFile.MakeAbsolute(Context.Environment).FullPath;
-				ilMergeSettings.ArgumentCustomization = args => args.Append("/keyfile:" + keyFile);
+				var keyFileAbsolutePath = signWithKeyFile.MakeAbsolute(Context.Environment).FullPath;
+				ilMergeSettings.ArgumentCustomization = args => args.Append("/keyfile:" + keyFileAbsolutePath);
 			}
 
 			ilMergeSettings.TargetPlatform = new TargetPlatform(targetPlatformVersion);
