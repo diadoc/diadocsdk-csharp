@@ -950,8 +950,8 @@ namespace Diadoc.Api.Proto
 	[Guid("A25F7B09-3936-4880-B9E6-7CB0130B03D7")]
 	public interface ICustomDataItem
 	{
-		string Key { get; }
-		string Value { get; }
+		string Key { get; set; }
+		string Value { get; set; }
 	}
 
 	[ComVisible(true)]
