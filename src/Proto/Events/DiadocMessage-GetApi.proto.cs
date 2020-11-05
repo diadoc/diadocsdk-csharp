@@ -367,6 +367,24 @@ namespace Diadoc.Api.Proto.Events
       get { return _LockMode; }
       set { _LockMode = value; }
     }
+
+    private string _MessageProxyBoxId = "";
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"MessageProxyBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string MessageProxyBoxId
+    {
+      get { return _MessageProxyBoxId; }
+      set { _MessageProxyBoxId = value; }
+    }
+
+    private string _MessageProxyDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"MessageProxyDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string MessageProxyDepartmentId
+    {
+      get { return _MessageProxyDepartmentId; }
+      set { _MessageProxyDepartmentId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -850,6 +868,24 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _LetterToDepartmentId; }
       set { _LetterToDepartmentId = value; }
+    }
+
+    private string _LetterProxyBoxId = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"LetterProxyBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string LetterProxyBoxId
+    {
+      get { return _LetterProxyBoxId; }
+      set { _LetterProxyBoxId = value; }
+    }
+
+    private string _LetterProxyDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"LetterProxyDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string LetterProxyDepartmentId
+    {
+      get { return _LetterProxyDepartmentId; }
+      set { _LetterProxyDepartmentId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

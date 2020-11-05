@@ -67,6 +67,8 @@ message Template {
     optional bool IsDeleted = 8 [default = false];
     optional string MessageToDepartmentId = 9;
     required LockMode LockMode = 10;
+    optional string MessageProxyBoxId = 11;
+    optional string MessageProxyDepartmentId = 12;
 }
 
 message MessagePatch {
@@ -133,6 +135,8 @@ message TemplateToLetterTransformationInfo
 	required string LetterToBoxId = 2;
 	optional string LetterFromDepartmentId = 3;
 	optional string LetterToDepartmentId = 4;
+	optional string LetterProxyBoxId = 5;
+	optional string LetterProxyDepartmentId = 6;
 }
 
 message TemplateTransformationInfo

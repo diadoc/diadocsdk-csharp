@@ -532,6 +532,8 @@ message TemplateToPost {
 	optional LockMode LockMode = 7 [default = None];
 	optional string FromDepartmentId = 8;
 	optional string ToDepartmentId = 9;
+	optional string MessageProxyBoxId = 10;
+	optional string MessageProxyDepartmentId = 11;
 }
 
 message TemplateDocumentAttachment {
