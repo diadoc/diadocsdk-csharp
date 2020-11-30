@@ -5,6 +5,7 @@ using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
+using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
 
 namespace Diadoc.Api
 {

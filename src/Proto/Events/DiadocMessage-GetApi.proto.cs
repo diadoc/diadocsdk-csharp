@@ -18,6 +18,7 @@
 // Note: requires additional types generated from: Events/ResolutionRequestInfo.proto
 // Note: requires additional types generated from: Events/ResolutionRequestDenialInfo.proto
 // Note: requires additional types generated from: Events/ResolutionRouteInfo.proto
+// Note: requires additional types generated from: Events/RevocationRequestInfo.proto
 // Note: requires additional types generated from: OuterDocflow.proto
 namespace Diadoc.Api.Proto.Events
 {
@@ -764,6 +765,15 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _OuterDocflow; }
       set { _OuterDocflow = value; }
+    }
+
+    private Diadoc.Api.Proto.Events.RevocationRequestInfo _RevocationRequestInfo = null;
+    [global::ProtoBuf.ProtoMember(30, IsRequired = false, Name=@"RevocationRequestInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.RevocationRequestInfo RevocationRequestInfo
+    {
+      get { return _RevocationRequestInfo; }
+      set { _RevocationRequestInfo = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

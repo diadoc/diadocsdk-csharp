@@ -23,6 +23,7 @@ using Departments = Diadoc.Api.Proto.Departments;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Diadoc.Api.Proto.Certificates;
+using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
 
 #if !NET35
 using System.Threading.Tasks;

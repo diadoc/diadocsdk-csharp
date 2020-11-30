@@ -27,6 +27,7 @@ using Department = Diadoc.Api.Proto.Department;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Departments = Diadoc.Api.Proto.Departments;
+using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
 
 namespace Diadoc.Api
 {
