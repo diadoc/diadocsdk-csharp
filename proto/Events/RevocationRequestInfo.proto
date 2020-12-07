@@ -1,0 +1,5 @@
+package Diadoc.Api.Proto.Events;
+
+message RevocationRequestInfo {
+    required string InitiatorBoxId = 1;
+}

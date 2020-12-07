@@ -24,6 +24,7 @@ using DocumentTitleType = Diadoc.Api.Proto.Invoicing.Signers.DocumentTitleType;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Departments = Diadoc.Api.Proto.Departments;
+using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
 
 namespace Diadoc.Api
 {

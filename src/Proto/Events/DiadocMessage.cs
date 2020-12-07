@@ -100,6 +100,7 @@ namespace Diadoc.Api.Proto.Events
 		TemplateTransformationInfo TemplateTransformationInfo { get; }
 		TemplateRefusalInfo TemplateRefusalInfo { get; }
 		OuterDocflowInfo OuterDocflow { get; }
+		RevocationRequestInfo RevocationRequestInfo { get; }
 	}
 
 	[ComVisible(true)]
