@@ -77,6 +77,9 @@ namespace Diadoc.Api.Proto.Documents.AcceptanceCertificateDocument
       [global::ProtoBuf.ProtoEnum(Name=@"OutboundWithRecipientSignature", Value=2)]
       OutboundWithRecipientSignature = 2,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundWithRecipientPartiallySignature", Value=16)]
+      OutboundWithRecipientPartiallySignature = 16,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"OutboundRecipientSignatureRequestRejected", Value=3)]
       OutboundRecipientSignatureRequestRejected = 3,
             
@@ -86,8 +89,8 @@ namespace Diadoc.Api.Proto.Documents.AcceptanceCertificateDocument
       [global::ProtoBuf.ProtoEnum(Name=@"OutboundInvalidSenderSignature", Value=11)]
       OutboundInvalidSenderSignature = 11,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"OutboundNoRecipientSignatureRequest", Value=16)]
-      OutboundNoRecipientSignatureRequest = 16,
+      [global::ProtoBuf.ProtoEnum(Name=@"OutboundNoRecipientSignatureRequest", Value=19)]
+      OutboundNoRecipientSignatureRequest = 19,
             
       [global::ProtoBuf.ProtoEnum(Name=@"InboundWaitingForRecipientSignature", Value=4)]
       InboundWaitingForRecipientSignature = 4,
@@ -95,20 +98,26 @@ namespace Diadoc.Api.Proto.Documents.AcceptanceCertificateDocument
       [global::ProtoBuf.ProtoEnum(Name=@"InboundWithRecipientSignature", Value=5)]
       InboundWithRecipientSignature = 5,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundWithRecipientPartiallySignature", Value=17)]
+      InboundWithRecipientPartiallySignature = 17,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"InboundRecipientSignatureRequestRejected", Value=6)]
       InboundRecipientSignatureRequestRejected = 6,
             
       [global::ProtoBuf.ProtoEnum(Name=@"InboundInvalidRecipientSignature", Value=12)]
       InboundInvalidRecipientSignature = 12,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"InboundNoRecipientSignatureRequest", Value=17)]
-      InboundNoRecipientSignatureRequest = 17,
+      [global::ProtoBuf.ProtoEnum(Name=@"InboundNoRecipientSignatureRequest", Value=20)]
+      InboundNoRecipientSignatureRequest = 20,
             
       [global::ProtoBuf.ProtoEnum(Name=@"InternalWaitingForRecipientSignature", Value=7)]
       InternalWaitingForRecipientSignature = 7,
             
       [global::ProtoBuf.ProtoEnum(Name=@"InternalWithRecipientSignature", Value=8)]
       InternalWithRecipientSignature = 8,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"InternalWithRecipientPartiallySignature", Value=18)]
+      InternalWithRecipientPartiallySignature = 18,
             
       [global::ProtoBuf.ProtoEnum(Name=@"InternalRecipientSignatureRequestRejected", Value=9)]
       InternalRecipientSignatureRequestRejected = 9,
@@ -122,8 +131,8 @@ namespace Diadoc.Api.Proto.Documents.AcceptanceCertificateDocument
       [global::ProtoBuf.ProtoEnum(Name=@"InternalInvalidRecipientSignature", Value=15)]
       InternalInvalidRecipientSignature = 15,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"InternalNoRecipientSignatureRequest", Value=18)]
-      InternalNoRecipientSignatureRequest = 18
+      [global::ProtoBuf.ProtoEnum(Name=@"InternalNoRecipientSignatureRequest", Value=21)]
+      InternalNoRecipientSignatureRequest = 21
     }
   
 }

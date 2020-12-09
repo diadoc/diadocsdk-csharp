@@ -775,6 +775,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _RevocationRequestInfo; }
       set { _RevocationRequestInfo = value; }
     }
+
+    private string _ContentTypeId = "";
+    [global::ProtoBuf.ProtoMember(31, IsRequired = false, Name=@"ContentTypeId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ContentTypeId
+    {
+      get { return _ContentTypeId; }
+      set { _ContentTypeId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

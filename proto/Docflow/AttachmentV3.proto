@@ -21,4 +21,5 @@ message SignedAttachmentV3
 	required Attachment Attachment = 1;
 	optional SignatureV3 Signature = 2;
 	optional Entity Comment = 3;
+	required string ContentTypeId = 4;
 }

@@ -188,6 +188,7 @@ enum RecipientResponseStatus {
 	WithRecipientSignature = 3;
 	RecipientSignatureRequestRejected = 4;
 	InvalidRecipientSignature = 5;
+	WithRecipientPartiallySignature = 6;
 }
 
 message Origin {

@@ -120,6 +120,7 @@ message Entity {
 	optional TemplateRefusalInfo TemplateRefusalInfo = 28;
 	optional OuterDocflowInfo OuterDocflow = 29;	
 	optional RevocationRequestInfo RevocationRequestInfo = 30;
+	optional string ContentTypeId = 31;
 }
 
 message EntityPatch {

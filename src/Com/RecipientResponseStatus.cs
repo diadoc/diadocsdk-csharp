@@ -15,5 +15,6 @@ namespace Diadoc.Api.Com
 		WithRecipientSignature = Diadoc.Api.Proto.Documents.RecipientResponseStatus.WithRecipientSignature,
 		RecipientSignatureRequestRejected = Diadoc.Api.Proto.Documents.RecipientResponseStatus.RecipientSignatureRequestRejected,
 		InvalidRecipientSignature = Diadoc.Api.Proto.Documents.RecipientResponseStatus.InvalidRecipientSignature,
+		WithRecipientPartiallySignature = Diadoc.Api.Proto.Documents.RecipientResponseStatus.WithRecipientPartiallySignature
 	}
 }
