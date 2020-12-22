@@ -4,6 +4,8 @@ using Diadoc.Api.Com;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
+using Diadoc.Api.Proto.Invoicing.Signers;
+using FunctionType = Diadoc.Api.Com.FunctionType;
 
 namespace Diadoc.Api.Proto.Forwarding
 {
@@ -18,7 +20,7 @@ namespace Diadoc.Api.Proto.Forwarding
 	[Guid("4794633C-A1F0-462E-A1DE-40E10E41F28A")]
 	[ProgId("Diadoc.Api.GetForwardedDocumentsResponse")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGetForwardedDocumentsResponse))]
+	[ComDefaultInterface(typeof(IGetForwardedDocumentsResponse))]
 	public partial class GetForwardedDocumentsResponse : SafeComObject, IGetForwardedDocumentsResponse
 	{
 		public ReadonlyList ForwardedDocumentsList
@@ -43,7 +45,7 @@ namespace Diadoc.Api.Proto.Forwarding
 	[Guid("8AF406A7-1EC8-438F-B547-5F53153F2B69")]
 	[ProgId("Diadoc.Api.ForwardedDocument")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IForwardedDocument))]
+	[ComDefaultInterface(typeof(IForwardedDocument))]
 	public partial class ForwardedDocument : SafeComObject, IForwardedDocument
 	{
 	}
@@ -62,7 +64,7 @@ namespace Diadoc.Api.Proto
 	[Guid("3C2DC1F3-00A1-4F40-9E50-12302E6F89AA")]
 	[ProgId("Diadoc.Api.Timestamp")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (ITimestamp))]
+	[ComDefaultInterface(typeof(ITimestamp))]
 	public partial class Timestamp : SafeComObject, ITimestamp
 	{
 		public DateTime DateTime
@@ -88,7 +90,7 @@ namespace Diadoc.Api.Proto.Forwarding
 	[Guid("02033018-627C-4D07-B555-9482CAD0C2FB")]
 	[ProgId("Diadoc.Api.ForwardedDocumentId")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IForwardedDocumentId))]
+	[ComDefaultInterface(typeof(IForwardedDocumentId))]
 	public partial class ForwardedDocumentId : SafeComObject, IForwardedDocumentId
 	{
 	}
@@ -114,7 +116,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("B55FB545-D3B2-43FC-B720-AA84A7ACA51E")]
 	[ProgId("Diadoc.Api.DocumentWithDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDocumentWithDocflow))]
+	[ComDefaultInterface(typeof(IDocumentWithDocflow))]
 	public partial class DocumentWithDocflow : SafeComObject, IDocumentWithDocflow
 	{
 		public ReadonlyList InitialDocumentIdsList
@@ -163,19 +165,19 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("7C393786-09A6-4586-9481-3158EC0867D8")]
 	[ProgId("Diadoc.Api.DocumentInfo")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDocumentInfo))]
+	[ComDefaultInterface(typeof(IDocumentInfo))]
 	public partial class DocumentInfo : SafeComObject, IDocumentInfo
 	{
 		public Com.DocumentType DocumentTypeValue
 		{
-			get { return (Com.DocumentType) DocumentType; }
-			set { DocumentType = (DocumentType) value; }
+			get { return (Com.DocumentType)DocumentType; }
+			set { DocumentType = (DocumentType)value; }
 		}
 
 		public Com.DocumentDirection DocumentDirectionValue
 		{
-			get { return (Com.DocumentDirection) DocumentDirection; }
-			set { DocumentDirection = (DocumentDirection) value; }
+			get { return (Com.DocumentDirection)DocumentDirection; }
+			set { DocumentDirection = (DocumentDirection)value; }
 		}
 	}
 }
@@ -194,7 +196,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("094AD617-530F-4C76-8098-2C34A0C75B4E")]
 	[ProgId("Diadoc.Api.DocumentDateAndNumber")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDocumentDateAndNumber))]
+	[ComDefaultInterface(typeof(IDocumentDateAndNumber))]
 	public partial class DocumentDateAndNumber : SafeComObject, IDocumentDateAndNumber
 	{
 	}
@@ -217,7 +219,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("E16EDCDC-CEFA-4C86-B5A3-82AA7187B0F6")]
 	[ProgId("Diadoc.Api.BasicDocumentInfo")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IBasicDocumentInfo))]
+	[ComDefaultInterface(typeof(IBasicDocumentInfo))]
 	public partial class BasicDocumentInfo : SafeComObject, IBasicDocumentInfo
 	{
 	}
@@ -239,7 +241,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("0B6F4885-B722-450C-A0C5-2BC580800423")]
 	[ProgId("Diadoc.Api.InvoiceDocumentInfo")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IInvoiceDocumentInfo))]
+	[ComDefaultInterface(typeof(IInvoiceDocumentInfo))]
 	public partial class InvoiceDocumentInfo : SafeComObject, IInvoiceDocumentInfo
 	{
 	}
@@ -252,7 +254,7 @@ namespace Diadoc.Api.Proto.Docflow
 		string Vat { get; }
 		int CurrencyCode { get; }
 		string Grounds { get; }
-		Com.FunctionType Function { get; }
+		FunctionType Function { get; }
 		DocumentDateAndNumber OriginalDocumentDateAndNumber { get; }
 	}
 
@@ -260,12 +262,12 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("E1BCADF2-7D17-444B-BEC3-6E01A30F00D1")]
 	[ProgId("Diadoc.Api.UniversalTransferDocumentInfo")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IUniversalTransferDocumentInfo))]
+	[ComDefaultInterface(typeof(IUniversalTransferDocumentInfo))]
 	public partial class UniversalTransferDocumentInfo : SafeComObject, IUniversalTransferDocumentInfo
 	{
-		Com.FunctionType IUniversalTransferDocumentInfo.Function
+		FunctionType IUniversalTransferDocumentInfo.Function
 		{
-			get { return (Com.FunctionType) Function; }
+			get { return (FunctionType)Function; }
 		}
 	}
 
@@ -279,7 +281,7 @@ namespace Diadoc.Api.Proto.Docflow
 		string VatDec { get; }
 		int CurrencyCode { get; }
 		string Grounds { get; }
-		Com.FunctionType Function { get; }
+		FunctionType Function { get; }
 		DocumentDateAndNumber OriginalDocumentDateAndNumber { get; }
 		DocumentDateAndNumber OriginalDocumentRevisionDateAndNumber { get; }
 		DocumentDateAndNumber OriginalDocumentCorrectionDateAndNumber { get; }
@@ -292,9 +294,9 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IUniversalCorrectionDocumentInfo))]
 	public partial class UniversalCorrectionDocumentInfo : SafeComObject, IUniversalCorrectionDocumentInfo
 	{
-		Com.FunctionType IUniversalCorrectionDocumentInfo.Function
+		FunctionType IUniversalCorrectionDocumentInfo.Function
 		{
-			get { return (Com.FunctionType) Function; }
+			get { return (FunctionType)Function; }
 		}
 	}
 }
@@ -319,7 +321,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("C0491E71-569B-4FEC-BCC4-F173B3498B49")]
 	[ProgId("Diadoc.Api.InvoiceCorrectionDocumentInfo")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IInvoiceCorrectionDocumentInfo))]
+	[ComDefaultInterface(typeof(IInvoiceCorrectionDocumentInfo))]
 	public partial class InvoiceCorrectionDocumentInfo : SafeComObject, IInvoiceCorrectionDocumentInfo
 	{
 	}
@@ -339,7 +341,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("6B888C27-7876-4AF2-925C-3974F2F1C038")]
 	[ProgId("Diadoc.Api.PriceListDocumentInfo")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IPriceListDocumentInfo))]
+	[ComDefaultInterface(typeof(IPriceListDocumentInfo))]
 	public partial class PriceListDocumentInfo : SafeComObject, IPriceListDocumentInfo
 	{
 	}
@@ -359,7 +361,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("ED012FCB-82F2-4D14-B96D-1DE06AE1D061")]
 	[ProgId("Diadoc.Api.ContractDocumentInfo")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IContractDocumentInfo))]
+	[ComDefaultInterface(typeof(IContractDocumentInfo))]
 	public partial class ContractDocumentInfo : SafeComObject, IContractDocumentInfo
 	{
 	}
@@ -416,7 +418,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("ADF03347-3A84-4A6F-A997-1518AD08CE22")]
 	[ProgId("Diadoc.Api.Docflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDocflow))]
+	[ComDefaultInterface(typeof(IDocflow))]
 	public partial class Docflow : SafeComObject, IDocflow
 	{
 		public ReadonlyList CustomDataList
@@ -441,7 +443,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("4ECB31F8-3CB3-4957-B304-1D989D52C5C6")]
 	[ProgId("Diadoc.Api.SignedAttachment")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (ISignedAttachment))]
+	[ComDefaultInterface(typeof(ISignedAttachment))]
 	public partial class SignedAttachment : SafeComObject, ISignedAttachment
 	{
 	}
@@ -462,7 +464,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("234E11E7-CDD5-4BB1-8C90-FE7CF274443B")]
 	[ProgId("Diadoc.Api.Attachment")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IAttachment))]
+	[ComDefaultInterface(typeof(IAttachment))]
 	public partial class Attachment : SafeComObject, IAttachment
 	{
 	}
@@ -483,7 +485,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("0C3FF695-070C-40C5-BC1C-61E60EBDB691")]
 	[ProgId("Diadoc.Api.Entity")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IEntity))]
+	[ComDefaultInterface(typeof(IEntity))]
 	public partial class Entity : SafeComObject, IEntity
 	{
 	}
@@ -506,7 +508,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("FD195FDF-7EBC-4C04-B381-536E11E39942")]
 	[ProgId("Diadoc.Api.Signature")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (ISignature))]
+	[ComDefaultInterface(typeof(ISignature))]
 	public partial class Signature : SafeComObject, ISignature
 	{
 	}
@@ -526,7 +528,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("99350250-1589-43B1-A8D4-4B73435CA9EA")]
 	[ProgId("Diadoc.Api.DocflowStatus")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDocflowStatus))]
+	[ComDefaultInterface(typeof(IDocflowStatus))]
 	public partial class DocflowStatus : SafeComObject, IDocflowStatus
 	{
 	}
@@ -547,13 +549,13 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("1F5ACD28-A357-46DB-9F7E-812130F17E2E")]
 	[ProgId("Diadoc.Api.DocflowStatusModel")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDocflowStatusModel))]
+	[ComDefaultInterface(typeof(IDocflowStatusModel))]
 	public partial class DocflowStatusModel : SafeComObject, IDocflowStatusModel
 	{
 		public Com.DocflowStatusSeverity SeverityValue
 		{
-			get { return (Com.DocflowStatusSeverity) Severity; }
-			set { Severity = (DocflowStatusSeverity) value; }
+			get { return (Com.DocflowStatusSeverity)Severity; }
+			set { Severity = (DocflowStatusSeverity)value; }
 		}
 	}
 }
@@ -578,7 +580,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("60F5617F-20AC-457B-A42B-D263AFDED386")]
 	[ProgId("Diadoc.Api.InboundInvoiceDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IInboundInvoiceDocflow))]
+	[ComDefaultInterface(typeof(IInboundInvoiceDocflow))]
 	public partial class InboundInvoiceDocflow : SafeComObject, IInboundInvoiceDocflow
 	{
 	}
@@ -609,7 +611,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("85EC89E0-C8BD-4AE1-916B-8D786D1AB817")]
 	[ProgId("Diadoc.Api.InboundUniversalTransferDocumentDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IInboundUniversalTransferDocumentDocflow))]
+	[ComDefaultInterface(typeof(IInboundUniversalTransferDocumentDocflow))]
 	public partial class InboundUniversalTransferDocumentDocflow : SafeComObject, IInboundUniversalTransferDocumentDocflow
 	{
 	}
@@ -630,7 +632,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("C1B645F7-B8D7-46B5-B6B0-A3995495B4E7")]
 	[ProgId("Diadoc.Api.InboundInvoiceReceiptDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IInboundInvoiceReceiptDocflow))]
+	[ComDefaultInterface(typeof(IInboundInvoiceReceiptDocflow))]
 	public partial class InboundInvoiceReceiptDocflow : SafeComObject, IInboundInvoiceReceiptDocflow
 	{
 	}
@@ -651,7 +653,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("E158F62A-7D1F-454C-8295-F9F3B3AB5D51")]
 	[ProgId("Diadoc.Api.InvoiceConfirmationDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IInvoiceConfirmationDocflow))]
+	[ComDefaultInterface(typeof(IInvoiceConfirmationDocflow))]
 	public partial class InvoiceConfirmationDocflow : SafeComObject, IInvoiceConfirmationDocflow
 	{
 	}
@@ -671,7 +673,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("93A89C35-C44A-4DC2-886F-82895411F74F")]
 	[ProgId("Diadoc.Api.ReceiptDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IReceiptDocflow))]
+	[ComDefaultInterface(typeof(IReceiptDocflow))]
 	public partial class ReceiptDocflow : SafeComObject, IReceiptDocflow
 	{
 	}
@@ -692,7 +694,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("F433C739-B7AF-4ABE-A8FF-D3B7378CB369")]
 	[ProgId("Diadoc.Api.InvoiceCorrectionRequestDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IInvoiceCorrectionRequestDocflow))]
+	[ComDefaultInterface(typeof(IInvoiceCorrectionRequestDocflow))]
 	public partial class InvoiceCorrectionRequestDocflow : SafeComObject, IInvoiceCorrectionRequestDocflow
 	{
 	}
@@ -719,7 +721,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("EE16D82C-7047-47C9-A306-B01C3BC43563")]
 	[ProgId("Diadoc.Api.OutboundInvoiceDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IOutboundInvoiceDocflow))]
+	[ComDefaultInterface(typeof(IOutboundInvoiceDocflow))]
 	public partial class OutboundInvoiceDocflow : SafeComObject, IOutboundInvoiceDocflow
 	{
 	}
@@ -751,7 +753,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("7E45E673-18D4-4DD4-88E2-5149B04F13C7")]
 	[ProgId("Diadoc.Api.OutboundUniversalTransferDocumentDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IOutboundUniversalTransferDocumentDocflow))]
+	[ComDefaultInterface(typeof(IOutboundUniversalTransferDocumentDocflow))]
 	public partial class OutboundUniversalTransferDocumentDocflow : SafeComObject, IOutboundUniversalTransferDocumentDocflow
 	{
 	}
@@ -779,7 +781,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("40A50529-25FE-40FD-8373-E9B97C5C3AF7")]
 	[ProgId("Diadoc.Api.XmlBilateralDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IXmlBilateralDocflow))]
+	[ComDefaultInterface(typeof(IXmlBilateralDocflow))]
 	public partial class XmlBilateralDocflow : SafeComObject, IXmlBilateralDocflow
 	{
 	}
@@ -801,7 +803,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("5B6150A9-2C34-4FF8-82EA-EC51CED31F00")]
 	[ProgId("Diadoc.Api.BuyerTitleDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IBuyerTitleDocflow))]
+	[ComDefaultInterface(typeof(IBuyerTitleDocflow))]
 	public partial class BuyerTitleDocflow : SafeComObject, IBuyerTitleDocflow
 	{
 	}
@@ -822,7 +824,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("CE41659A-58E3-4288-BA60-AE6EBB0304FB")]
 	[ProgId("Diadoc.Api.RecipientSignatureRejectionDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IRecipientSignatureRejectionDocflow))]
+	[ComDefaultInterface(typeof(IRecipientSignatureRejectionDocflow))]
 	public partial class RecipientSignatureRejectionDocflow : SafeComObject, IRecipientSignatureRejectionDocflow
 	{
 	}
@@ -851,7 +853,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("9F6B2F8B-CB5A-4890-B341-8FE154BEEE41")]
 	[ProgId("Diadoc.Api.BilateralDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IBilateralDocflow))]
+	[ComDefaultInterface(typeof(IBilateralDocflow))]
 	public partial class BilateralDocflow : SafeComObject, IBilateralDocflow
 	{
 	}
@@ -872,7 +874,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("64EBD561-A98F-49E9-8BD8-36F9976D11D2")]
 	[ProgId("Diadoc.Api.RecipientSignatureDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IRecipientSignatureDocflow))]
+	[ComDefaultInterface(typeof(IRecipientSignatureDocflow))]
 	public partial class RecipientSignatureDocflow : SafeComObject, IRecipientSignatureDocflow
 	{
 	}
@@ -895,7 +897,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("68C206EE-32E4-4966-BF5C-90D3E13631FC")]
 	[ProgId("Diadoc.Api.UnilateralDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IUnilateralDocflow))]
+	[ComDefaultInterface(typeof(IUnilateralDocflow))]
 	public partial class UnilateralDocflow : SafeComObject, IUnilateralDocflow
 	{
 	}
@@ -920,7 +922,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("7C3176DE-5B61-4D2D-84B6-95F20074FA25")]
 	[ProgId("Diadoc.Api.RevocationDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IRevocationDocflow))]
+	[ComDefaultInterface(typeof(IRevocationDocflow))]
 	public partial class RevocationDocflow : SafeComObject, IRevocationDocflow
 	{
 	}
@@ -938,7 +940,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("E2C1F246-B758-40ED-A0B7-1AC1C469ADEC")]
 	[ProgId("Diadoc.Api.ResolutionDocflow")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IResolutionDocflow))]
+	[ComDefaultInterface(typeof(IResolutionDocflow))]
 	public partial class ResolutionDocflow : SafeComObject, IResolutionDocflow
 	{
 	}
@@ -958,7 +960,7 @@ namespace Diadoc.Api.Proto
 	[Guid("E660345A-6C3B-48F8-9E39-C25AE5A50200")]
 	[ProgId("Diadoc.Api.CustomDataItem")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (ICustomDataItem))]
+	[ComDefaultInterface(typeof(ICustomDataItem))]
 	public partial class CustomDataItem : SafeComObject, ICustomDataItem
 	{
 	}
@@ -978,7 +980,7 @@ namespace Diadoc.Api.Proto
 	[Guid("D6399AD9-4BFD-4A06-AC64-0501E2CBCEA4")]
 	[ProgId("Diadoc.Api.ForwardDocumentEvent")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IForwardDocumentEvent))]
+	[ComDefaultInterface(typeof(IForwardDocumentEvent))]
 	public partial class ForwardDocumentEvent : SafeComObject, IForwardDocumentEvent
 	{
 	}
@@ -998,12 +1000,12 @@ namespace Diadoc.Api.Proto.Forwarding
 	[Guid("4D3463C5-1A18-44F4-A747-1BD44BB85F1C")]
 	[ProgId("Diadoc.Api.GetForwardedDocumentsRequest")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGetForwardedDocumentsRequest))]
+	[ComDefaultInterface(typeof(IGetForwardedDocumentsRequest))]
 	public partial class GetForwardedDocumentsRequest : SafeComObject, IGetForwardedDocumentsRequest
 	{
 		public void AddForwardedDocumentIdsItem(object item)
 		{
-			ForwardedDocumentIds.Add((ForwardedDocumentId) item);
+			ForwardedDocumentIds.Add((ForwardedDocumentId)item);
 		}
 	}
 }
@@ -1022,7 +1024,7 @@ namespace Diadoc.Api.Proto.Forwarding
 	[Guid("F95227DA-901D-49DA-9935-AA984C788BC1")]
 	[ProgId("Diadoc.Api.ForwardDocumentResponse")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IForwardDocumentResponse))]
+	[ComDefaultInterface(typeof(IForwardDocumentResponse))]
 	public partial class ForwardDocumentResponse : SafeComObject, IForwardDocumentResponse
 	{
 	}
@@ -1042,7 +1044,7 @@ namespace Diadoc.Api.Proto.Forwarding
 	[Guid("8A48BDE1-DBF6-4CA3-9770-0D47E14C985F")]
 	[ProgId("Diadoc.Api.ForwardDocumentRequest")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IForwardDocumentRequest))]
+	[ComDefaultInterface(typeof(IForwardDocumentRequest))]
 	public partial class ForwardDocumentRequest : SafeComObject, IForwardDocumentRequest
 	{
 	}
@@ -1063,7 +1065,7 @@ namespace Diadoc.Api.Proto.Forwarding
 	[Guid("8C1A949E-9ABF-47CC-B913-FBB910649449")]
 	[ProgId("Diadoc.Api.GetForwardedDocumentEventsResponse")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGetForwardedDocumentEventsResponse))]
+	[ComDefaultInterface(typeof(IGetForwardedDocumentEventsResponse))]
 	public partial class GetForwardedDocumentEventsResponse : SafeComObject, IGetForwardedDocumentEventsResponse
 	{
 		public ReadonlyList EventsList
@@ -1073,7 +1075,7 @@ namespace Diadoc.Api.Proto.Forwarding
 
 		public Com.TotalCountType TotalCountTypeValue
 		{
-			get { return (Com.TotalCountType) TotalCountType; }
+			get { return (Com.TotalCountType)TotalCountType; }
 		}
 	}
 }
@@ -1094,7 +1096,7 @@ namespace Diadoc.Api.Proto.Forwarding
 	[Guid("189DE681-0D16-4DAF-9930-1BF7E11EE126")]
 	[ProgId("Diadoc.Api.ForwardedDocumentEvent")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IForwardedDocumentEvent))]
+	[ComDefaultInterface(typeof(IForwardedDocumentEvent))]
 	public partial class ForwardedDocumentEvent : SafeComObject, IForwardedDocumentEvent
 	{
 	}
@@ -1116,7 +1118,7 @@ namespace Diadoc.Api.Proto.Forwarding
 	[Guid("B0862442-5AC4-4580-B49F-96F1F332AD58")]
 	[ProgId("Diadoc.Api.GetForwardedDocumentEventsRequest")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGetForwardedDocumentEventsRequest))]
+	[ComDefaultInterface(typeof(IGetForwardedDocumentEventsRequest))]
 	public partial class GetForwardedDocumentEventsRequest : SafeComObject, IGetForwardedDocumentEventsRequest
 	{
 	}
@@ -1137,13 +1139,13 @@ namespace Diadoc.Api.Proto
 	[Guid("203095AA-CB81-462D-BC38-6D0417BB4D65")]
 	[ProgId("Diadoc.Api.TimeBasedFilter")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (ITimeBasedFilter))]
+	[ComDefaultInterface(typeof(ITimeBasedFilter))]
 	public partial class TimeBasedFilter : SafeComObject, ITimeBasedFilter
 	{
 		public Com.SortDirection SortDirectionValue
 		{
-			get { return (Com.SortDirection) SortDirection; }
-			set { SortDirection = (SortDirection) value; }
+			get { return (Com.SortDirection)SortDirection; }
+			set { SortDirection = (SortDirection)value; }
 		}
 	}
 }
@@ -1161,7 +1163,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("B5C96AC5-8943-4D41-ABD8-06CC02FCEE9C")]
 	[ProgId("Diadoc.Api.GetDocflowBatchResponse")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGetDocflowBatchResponse))]
+	[ComDefaultInterface(typeof(IGetDocflowBatchResponse))]
 	public partial class GetDocflowBatchResponse : SafeComObject, IGetDocflowBatchResponse
 	{
 		public ReadonlyList DocumentsList
@@ -1184,12 +1186,12 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("1FCDA80E-6858-46AA-83FD-C71D2698CDEC")]
 	[ProgId("Diadoc.Api.GetDocflowBatchRequest")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGetDocflowBatchRequest))]
+	[ComDefaultInterface(typeof(IGetDocflowBatchRequest))]
 	public partial class GetDocflowBatchRequest : SafeComObject, IGetDocflowBatchRequest
 	{
 		public void AddRequestsItem(object item)
 		{
-			Requests.Add((GetDocflowRequest) item);
+			Requests.Add((GetDocflowRequest)item);
 		}
 	}
 }
@@ -1209,7 +1211,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("BB8A4A86-BE9D-418D-AC83-007AFA5ABE55")]
 	[ProgId("Diadoc.Api.GetDocflowRequest")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGetDocflowRequest))]
+	[ComDefaultInterface(typeof(IGetDocflowRequest))]
 	public partial class GetDocflowRequest : SafeComObject, IGetDocflowRequest
 	{
 	}
@@ -1230,7 +1232,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("1D94433D-37C6-4504-A91D-1408783F0AD2")]
 	[ProgId("Diadoc.Api.GetDocflowEventsResponse")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGetDocflowEventsResponse))]
+	[ComDefaultInterface(typeof(IGetDocflowEventsResponse))]
 	public partial class GetDocflowEventsResponse : SafeComObject, IGetDocflowEventsResponse
 	{
 		public ReadonlyList EventsList
@@ -1240,7 +1242,7 @@ namespace Diadoc.Api.Proto.Docflow
 
 		public Com.TotalCountType TotalCountTypeValue
 		{
-			get { return (Com.TotalCountType) TotalCountType; }
+			get { return (Com.TotalCountType)TotalCountType; }
 		}
 	}
 }
@@ -1264,7 +1266,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("A7C8A9B5-E7E8-4A78-ADAA-B0FE2F6EADDD")]
 	[ProgId("Diadoc.Api.DocflowEvent")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDocflowEvent))]
+	[ComDefaultInterface(typeof(IDocflowEvent))]
 	public partial class DocflowEvent : SafeComObject, IDocflowEvent
 	{
 	}
@@ -1287,7 +1289,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("1E46CEAF-98FF-4C17-AAB6-BDE6AB0B2D4F")]
 	[ProgId("Diadoc.Api.GetDocflowEventsRequest")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGetDocflowEventsRequest))]
+	[ComDefaultInterface(typeof(IGetDocflowEventsRequest))]
 	public partial class GetDocflowEventsRequest : SafeComObject, IGetDocflowEventsRequest
 	{
 	}
@@ -1307,7 +1309,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("1B8530CB-B699-4E04-9461-D71C78BE1841")]
 	[ProgId("Diadoc.Api.SearchDocflowsResponse")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (ISearchDocflowsResponse))]
+	[ComDefaultInterface(typeof(ISearchDocflowsResponse))]
 	public partial class SearchDocflowsResponse : SafeComObject, ISearchDocflowsResponse
 	{
 		public ReadonlyList DocumentsList
@@ -1334,13 +1336,13 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("97607201-3A41-48E5-A000-E2B367B13308")]
 	[ProgId("Diadoc.Api.SearchDocflowsRequest")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (ISearchDocflowsRequest))]
+	[ComDefaultInterface(typeof(ISearchDocflowsRequest))]
 	public partial class SearchDocflowsRequest : SafeComObject, ISearchDocflowsRequest
 	{
 		public Com.SearchScope ScopeValue
 		{
-			get { return (Com.SearchScope) Scope; }
-			set { Scope = (SearchScope) value; }
+			get { return (Com.SearchScope)Scope; }
+			set { Scope = (SearchScope)value; }
 		}
 	}
 }
@@ -1359,7 +1361,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("FD538009-6470-4D5F-B3D3-FC64F72FB2F5")]
 	[ProgId("Diadoc.Api.GetDocflowsByPacketIdResponse")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGetDocflowsByPacketIdResponse))]
+	[ComDefaultInterface(typeof(IGetDocflowsByPacketIdResponse))]
 	public partial class GetDocflowsByPacketIdResponse : SafeComObject, IGetDocflowsByPacketIdResponse
 	{
 		public ReadonlyList DocumentsList
@@ -1383,7 +1385,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("80C988B1-8EDA-4F72-90EF-4748F01C2146")]
 	[ProgId("Diadoc.Api.FetchedDocument")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IFetchedDocument))]
+	[ComDefaultInterface(typeof(IFetchedDocument))]
 	public partial class FetchedDocument : SafeComObject, IFetchedDocument
 	{
 	}
@@ -1405,7 +1407,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("49D9EE81-0C32-439D-9D57-1A6529FA0F7B")]
 	[ProgId("Diadoc.Api.GetDocflowsByPacketIdRequest")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IGetDocflowsByPacketIdRequest))]
+	[ComDefaultInterface(typeof(IGetDocflowsByPacketIdRequest))]
 	public partial class GetDocflowsByPacketIdRequest : SafeComObject, IGetDocflowsByPacketIdRequest
 	{
 	}
@@ -1424,7 +1426,7 @@ namespace Diadoc.Api.Proto.Events
 	[Guid("6569AF75-09C4-49DD-8D7B-CD86AD63975A")]
 	[ProgId("Diadoc.Api.PrepareDocumentsToSignResponse")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IPrepareDocumentsToSignResponse))]
+	[ComDefaultInterface(typeof(IPrepareDocumentsToSignResponse))]
 	public partial class PrepareDocumentsToSignResponse : SafeComObject, IPrepareDocumentsToSignResponse
 	{
 		public ReadonlyList DocumentPatchedContentsList
@@ -1449,7 +1451,7 @@ namespace Diadoc.Api.Proto.Events
 	[Guid("579C229A-855E-45F3-96F5-3F7606DE35A3")]
 	[ProgId("Diadoc.Api.DocumentPatchedContent")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDocumentPatchedContent))]
+	[ComDefaultInterface(typeof(IDocumentPatchedContent))]
 	public partial class DocumentPatchedContent : SafeComObject, IDocumentPatchedContent
 	{
 	}
@@ -1470,17 +1472,17 @@ namespace Diadoc.Api.Proto.Events
 	[Guid("67114699-DB39-4F63-9CD3-8BA82223FDC3")]
 	[ProgId("Diadoc.Api.PrepareDocumentsToSignRequest")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IPrepareDocumentsToSignRequest))]
+	[ComDefaultInterface(typeof(IPrepareDocumentsToSignRequest))]
 	public partial class PrepareDocumentsToSignRequest : SafeComObject, IPrepareDocumentsToSignRequest
 	{
 		public void AddDraftDocumentsItem(object item)
 		{
-			DraftDocuments.Add((DraftDocumentToPatch) item);
+			DraftDocuments.Add((DraftDocumentToPatch)item);
 		}
 
 		public void AddDocumentsItem(object item)
 		{
-			Documents.Add((DocumentToPatch) item);
+			Documents.Add((DocumentToPatch)item);
 		}
 	}
 }
@@ -1500,7 +1502,7 @@ namespace Diadoc.Api.Proto.Events
 	[Guid("6F53996E-1D99-4934-B026-55D24E8E2434")]
 	[ProgId("Diadoc.Api.DraftDocumentToPatch")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDraftDocumentToPatch))]
+	[ComDefaultInterface(typeof(IDraftDocumentToPatch))]
 	public partial class DraftDocumentToPatch : SafeComObject, IDraftDocumentToPatch
 	{
 	}
@@ -1514,15 +1516,20 @@ namespace Diadoc.Api.Proto.Events
 	{
 		DocumentId DocumentId { get; set; }
 		Signer Signer { get; set; }
+		void AddExtendedSigner([MarshalAs(UnmanagedType.IDispatch)] object item);
 	}
 
 	[ComVisible(true)]
 	[Guid("7A2CF092-042C-4492-A577-9A816ED330A7")]
 	[ProgId("Diadoc.Api.DocumentToPatch")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IDocumentToPatch))]
+	[ComDefaultInterface(typeof(IDocumentToPatch))]
 	public partial class DocumentToPatch : SafeComObject, IDocumentToPatch
 	{
+		public void AddExtendedSigner(object item)
+		{
+			ExtendedSigner.Add((ExtendedSigner)item);
+		}
 	}
 }
 
@@ -1543,7 +1550,7 @@ namespace Diadoc.Api.Proto
 	[Guid("3F868982-609E-4742-9D1B-222670349AFB")]
 	[ProgId("Diadoc.Api.User")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IUser))]
+	[ComDefaultInterface(typeof(IUser))]
 	public partial class User : SafeComObject, IUser
 	{
 		public ReadonlyList CloudCertificatesList
@@ -1605,7 +1612,7 @@ namespace Diadoc.Api.Proto
 	[Guid("5E7C74F3-E1CA-4B07-B711-20AE2772C332")]
 	[ProgId("Diadoc.Api.CertificateInfo")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (ICertificateInfo))]
+	[ComDefaultInterface(typeof(ICertificateInfo))]
 	public partial class CertificateInfo : SafeComObject, ICertificateInfo
 	{
 		public DateTime ValidFromDateTime
@@ -1636,7 +1643,7 @@ namespace Diadoc.Api.Proto
 	[ProgId("Diadoc.Api.AcquireCounteragentRequest")]
 	[Guid("1B48C883-8494-4EE7-984C-FCCA9BAE200B")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IAcquireCounteragentRequest))]
+	[ComDefaultInterface(typeof(IAcquireCounteragentRequest))]
 	public partial class AcquireCounteragentRequest : SafeComObject, IAcquireCounteragentRequest
 	{
 	}
@@ -1654,7 +1661,7 @@ namespace Diadoc.Api.Proto
 	[ProgId("Diadoc.Api.InvitationDocument")]
 	[Guid("713BBB50-5009-473F-8A3B-1F5194F77A2B")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof (IInvitationDocument))]
+	[ComDefaultInterface(typeof(IInvitationDocument))]
 	public partial class InvitationDocument : SafeComObject, IInvitationDocument
 	{
 	}

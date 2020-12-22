@@ -17,9 +17,7 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
 	[Guid("DEDACEE7-9280-4FBA-9CFF-DC84E7C5718B")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IExtendedSigner))]
-	public partial class ExtendedSigner
-		: SafeComObject
-		, IExtendedSigner
+	public partial class ExtendedSigner : SafeComObject, IExtendedSigner
 	{
 	}
 
@@ -47,8 +45,7 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
 	[Guid("9179E323-2421-4AFD-AE9E-2425727C5CD6")]
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IExtendedSignerDetails))]
-	public partial class ExtendedSignerDetails
-		: SafeComObject, IExtendedSignerDetails
+	public partial class ExtendedSignerDetails : SafeComObject, IExtendedSignerDetails
 	{
 		public Com.SignerType SignerTypeValue
 		{
