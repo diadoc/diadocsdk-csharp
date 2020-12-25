@@ -9,6 +9,7 @@ using System.Text;
 using JetBrains.Annotations;
 
 #if !NET35
+using System.Threading;
 using System.Threading.Tasks;
 #endif
 
@@ -28,7 +29,7 @@ namespace Diadoc.Api.Http
 		#if !NET35
 
 		[ItemNotNull]
-		Task<HttpResponse> PerformHttpRequestAsync([NotNull] HttpRequest request, params HttpStatusCode[] allowedStatusCodes);
+		Task<HttpResponse> PerformHttpRequestAsync([NotNull] HttpRequest request, CancellationToken ct = default, params HttpStatusCode[] allowedStatusCodes);
 
 		#endif
 	}
@@ -136,13 +137,13 @@ namespace Diadoc.Api.Http
 		#if !NET35
 
 		[ItemNotNull]
-		public virtual async Task<HttpResponse> PerformHttpRequestAsync(HttpRequest request, params HttpStatusCode[] allowedStatusCodes)
+		public virtual async Task<HttpResponse> PerformHttpRequestAsync(HttpRequest request, CancellationToken ct = default, params HttpStatusCode[] allowedStatusCodes)
 		{
 			HttpResponse response = null;
 			try
 			{
 				var webRequest = PrepareWebRequest(request);
-				using (var webResponse = await webRequest.GetResponseAsync().ConfigureAwait(false))
+				using (var webResponse = await webRequest.GetResponseAsync(ct).ConfigureAwait(false))
 					response = new HttpResponse((HttpWebResponse)webResponse);
 				if (!StatusCodeIsAllowed(response.StatusCode, allowedStatusCodes))
 				{

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
@@ -26,9 +27,10 @@ namespace Diadoc.Api.Tests
 		[TestCaseSource(nameof(GetAllSynchronousApiMethods))]
 		public void AllSynchronousApiMethodsShouldHaveAsyncCounterpartWithSameSignature(MethodInfo method)
 		{
-			var methodParameters = method.GetParameters().Select(x => x.ParameterType).ToArray();
+			var methodParameters = method.GetParameters().Select(x => x.ParameterType).ToList();
+			methodParameters.Add(typeof(CancellationToken));
 			var methodName = method.Name;
-			var asyncMethodCounterpart = method.ReflectedType?.GetMethod(methodName + "Async", methodParameters);
+			var asyncMethodCounterpart = method.ReflectedType?.GetMethod(methodName + "Async", methodParameters.ToArray());
 			Assert.NotNull(asyncMethodCounterpart, $"Type: {method.ReflectedType}, Method: {method} has no async counterpart");
 			if (method.ReturnType == typeof(void))
 				Assert.That(asyncMethodCounterpart.ReturnType, Is.EqualTo(typeof(Task)), $"Type: {method.ReflectedType}, Method: {method} async counterpart has wrong return type");
@@ -41,7 +43,7 @@ namespace Diadoc.Api.Tests
 		[TestCaseSource(nameof(GetAllAsynchronousApiMethods))]
 		public void AllAsynchronousApiMethodsShouldHaveSyncCounterpartWithSameSignature(MethodInfo method)
 		{
-			var methodParameters = method.GetParameters().Select(x => x.ParameterType).ToArray();
+			var methodParameters = method.GetParameters().Select(x => x.ParameterType).Where(x=> x != typeof(CancellationToken)).ToArray();
 			var methodNameWithoutAsync = method.Name.Substring(0, method.Name.Length - "Async".Length);
 			var syncMethodCounterpart = method.ReflectedType?.GetMethod(methodNameWithoutAsync, methodParameters);
 			Assert.NotNull(syncMethodCounterpart, $"Type: {method.ReflectedType}, Method: {method} has no synchronous counterpart");
@@ -68,7 +70,7 @@ namespace Diadoc.Api.Tests
 			Assert.NotNull(counterpart, method + " have no counterpart in IDiadocApi interface");
 			Assert.That(counterpart.ReturnType, Is.EqualTo(method.ReturnType));
 		}
-
+		
 		private static IEnumerable<MethodInfo> GetAllTapMethods()
 		{
 			var diadocApiTypes = typeof(IDiadocApi).Assembly.GetExportedTypes();

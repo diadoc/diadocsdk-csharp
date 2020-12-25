@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Diadoc.Api.Http;
 using JetBrains.Annotations;
@@ -10,7 +11,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		public async Task<string> UploadFileToShelfAsync(string authToken, byte[] data)
+		public async Task<string> UploadFileToShelfAsync(string authToken, byte[] data, CancellationToken ct = default)
 		{
 			var nameOnShelf = $"api-{Guid.NewGuid()}";
 			var parts = SplitDataIntoParts(data).ToList();
@@ -22,36 +23,36 @@ namespace Diadoc.Api
 			{
 				if (++attempts > maxAttempts)
 					throw new AggregateException("Reached the limit of attempts to send a file", httpErrors.ToArray());
-				missingParts = await PutMissingPartsAsync(authToken, nameOnShelf, parts, missingParts, httpErrors).ConfigureAwait(false);
+				missingParts = await PutMissingPartsAsync(authToken, nameOnShelf, parts, missingParts, httpErrors, ct: ct).ConfigureAwait(false);
 			}
 
 			return nameOnShelf;
 		}
 
 		[ItemNotNull]
-		private async Task<int[]> PutMissingPartsAsync(string authToken, string nameOnShelf, [NotNull] IList<ArraySegment<byte>> allParts, [NotNull] IList<int> missingParts, [NotNull] ICollection<HttpClientException> httpErrors)
+		private async Task<int[]> PutMissingPartsAsync(string authToken, string nameOnShelf, [NotNull] IList<ArraySegment<byte>> allParts, [NotNull] IList<int> missingParts, [NotNull] ICollection<HttpClientException> httpErrors, CancellationToken ct = default)
 		{
 			int[] currentMissingParts = null;
 			for (var i = 0; i < missingParts.Count; ++i)
 			{
 				var partIndex = missingParts[i];
-				currentMissingParts = await PutPartAsync(authToken, nameOnShelf, allParts[partIndex], partIndex, i == missingParts.Count - 1, httpErrors).ConfigureAwait(false);
+				currentMissingParts = await PutPartAsync(authToken, nameOnShelf, allParts[partIndex], partIndex, i == missingParts.Count - 1, httpErrors, ct: ct).ConfigureAwait(false);
 			}
 			if (currentMissingParts == null)
 				throw new Exception("ShelfUpload did not return missing parts");
 			return currentMissingParts;
 		}
 
-		public Task<byte[]> GetFileFromShelfAsync(string authToken, string nameOnShelf)
+		public Task<byte[]> GetFileFromShelfAsync(string authToken, string nameOnShelf, CancellationToken ct = default)
 		{
 			if (!nameOnShelf.Contains("__userId__"))
 				nameOnShelf = $"__userId__/{nameOnShelf}";
 			var queryString = $"ShelfDownload?nameOnShelf={nameOnShelf}";
-			return PerformHttpRequestAsync(authToken, "GET", queryString);
+			return PerformHttpRequestAsync(authToken, "GET", queryString, ct: ct);
 		}
 
 		[ItemCanBeNull]
-		private async Task<int[]> PutPartAsync(string authToken, string nameOnShelf, ArraySegment<byte> part, int partIndex, bool isLast, ICollection<HttpClientException> httpErrors)
+		private async Task<int[]> PutPartAsync(string authToken, string nameOnShelf, ArraySegment<byte> part, int partIndex, bool isLast, ICollection<HttpClientException> httpErrors, CancellationToken ct = default)
 		{
 			var queryString = $"ShelfUpload?nameOnShelf=__userId__/{nameOnShelf}&partIndex={partIndex}";
 			if (isLast)
@@ -59,7 +60,7 @@ namespace Diadoc.Api
 			try
 			{
 				var request = BuildRequest(authToken, "POST", queryString, new HttpRequestBody(part));
-				var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
+				var response = await HttpClient.PerformHttpRequestAsync(request, ct: ct).ConfigureAwait(false);
 				if (isLast)
 				{
 					var responseString = Encoding.UTF8.GetString(response.Content);
