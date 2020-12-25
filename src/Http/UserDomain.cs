@@ -21,6 +21,7 @@ namespace Diadoc.Api.Http
 				domain = user.Substring(idx + 1);
 				user = user.Substring(0, idx);
 			}
+
 			return new UserDomain { Domain = domain, User = user };
 		}
 	}

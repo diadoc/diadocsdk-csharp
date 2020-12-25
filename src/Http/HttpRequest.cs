@@ -7,7 +7,13 @@ namespace Diadoc.Api.Http
 {
 	public class HttpRequest
 	{
-		public HttpRequest(string httpMethod, string pathAndQuery, [CanBeNull] HttpRequestBody requestBody = null, int? timeoutInSeconds = null, string accept = null, Range range = null)
+		public HttpRequest(
+			string httpMethod,
+			string pathAndQuery,
+			[CanBeNull] HttpRequestBody requestBody = null,
+			int? timeoutInSeconds = null,
+			string accept = null,
+			Range range = null)
 		{
 			Method = httpMethod.ToUpper();
 			PathAndQuery = pathAndQuery;
@@ -36,7 +42,11 @@ namespace Diadoc.Api.Http
 
 		public void AddHeader(string name, string value)
 		{
-			if (AdditionalHeaders == null) AdditionalHeaders = new Dictionary<string, string>();
+			if (AdditionalHeaders == null)
+			{
+				AdditionalHeaders = new Dictionary<string, string>();
+			}
+
 			AdditionalHeaders.Add(name, value);
 		}
 

@@ -22,7 +22,10 @@ namespace Diadoc.Api.Http
 		[CanBeNull]
 		public string ContentType { get; private set; }
 
-		public long ContentLength { get { return body.Count; } }
+		public long ContentLength
+		{
+			get { return body.Count; }
+		}
 
 		public void WriteToStream([NotNull] Stream stream)
 		{

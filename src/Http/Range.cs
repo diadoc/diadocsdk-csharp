@@ -7,11 +7,19 @@ namespace Diadoc.Api.Http
 		public Range(int from, int to)
 		{
 			if (from < 0)
-				throw new ArgumentOutOfRangeException("from", from, "from cannot be less than 0");
+			{
+				throw new ArgumentOutOfRangeException("from", @from, "from cannot be less than 0");
+			}
+
 			if (to < 0)
-				throw new ArgumentOutOfRangeException("to", from, "to cannot be less than 0");
+			{
+				throw new ArgumentOutOfRangeException("to", @from, "to cannot be less than 0");
+			}
+
 			if (from > to)
+			{
 				throw new ArgumentOutOfRangeException("to", to, "to cannot be less than from");
+			}
 
 			From = from;
 			To = to;

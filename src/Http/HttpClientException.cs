@@ -5,12 +5,22 @@ namespace Diadoc.Api.Http
 {
 	public class HttpClientException : WebException
 	{
-		public HttpClientException([NotNull] string message, [NotNull] string additionalMessage, [NotNull] string requestPathAndQuery, [NotNull] WebException innerException, [CanBeNull] HttpResponse httpResponse)
-			: base(message, innerException, innerException.Status, innerException.Response)
+		public HttpClientException(
+			[NotNull] string message,
+			[NotNull] string additionalMessage,
+			[NotNull] string requestPathAndQuery,
+			[NotNull] WebException innerException,
+			[CanBeNull] HttpResponse httpResponse)
+			: base(
+				message,
+				innerException,
+				innerException.Status,
+				innerException.Response)
 		{
 			AdditionalMessage = additionalMessage;
 			RequestPathAndQuery = requestPathAndQuery;
 			HttpResponse = httpResponse;
+
 			if (httpResponse != null)
 			{
 				ResponseStatusCode = httpResponse.StatusCode;

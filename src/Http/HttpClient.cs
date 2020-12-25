@@ -41,19 +41,27 @@ namespace Diadoc.Api.Http
 
 		public HttpClient([NotNull] string baseUrl)
 		{
-			if (baseUrl == null) throw new ArgumentNullException("baseUrl");
-			if (!Uri.IsWellFormedUriString(baseUrl, UriKind.Absolute)) throw new ArgumentException(string.Format("{0} is not a well-formed uri", baseUrl));
+			if (baseUrl == null)
+			{
+				throw new ArgumentNullException("baseUrl");
+			}
+
+			if (!Uri.IsWellFormedUriString(baseUrl, UriKind.Absolute))
+			{
+				throw new ArgumentException(string.Format("{0} is not a well-formed uri", baseUrl));
+			}
+
 			this.baseUrl = baseUrl.EndsWith("/") ? baseUrl.Substring(0, baseUrl.Length - 1) : baseUrl;
 			UseSystemProxy = true;
 		}
 
 		/// <summary>
-		/// The default value is true
+		///     The default value is true
 		/// </summary>
 		public bool UseSystemProxy { get; set; }
 
 		/// <summary>
-		/// Client certificate used to establish https requests
+		///     Client certificate used to establish https requests
 		/// </summary>
 		public X509Certificate2 ClientCertificate { get; set; }
 
@@ -70,7 +78,11 @@ namespace Diadoc.Api.Http
 
 		public void SetProxyCredentials([NotNull] string user, [NotNull] string password)
 		{
-			if (user == null) throw new ArgumentNullException("user");
+			if (user == null)
+			{
+				throw new ArgumentNullException("user");
+			}
+
 			var userDomain = UserDomain.Parse(user);
 			proxyCredential = new NetworkCredential(userDomain.User, password, userDomain.Domain);
 		}
@@ -103,12 +115,16 @@ namespace Diadoc.Api.Http
 			{
 				var webRequest = PrepareWebRequest(request);
 				using (var webResponse = (HttpWebResponse)webRequest.GetResponse())
+				{
 					response = new HttpResponse(webResponse);
+				}
+
 				if (!StatusCodeIsAllowed(response.StatusCode, allowedStatusCodes))
 				{
 					var message = string.Format("Unexpected http status code: {0}", response.StatusCode);
 					throw new WebException(message, null, WebExceptionStatus.ProtocolError, null);
 				}
+
 				return response;
 			}
 			catch (WebException e)
@@ -120,18 +136,27 @@ namespace Diadoc.Api.Http
 						response = new HttpResponse(webResponse);
 					}
 				}
+
 				string diadocErrorCode = null;
 				var additionalMessage = string.Empty;
 				HttpStatusCode? statusCode = null;
 				if (response != null)
 				{
 					statusCode = response.StatusCode;
-					if (StatusCodeIsAllowed(statusCode.Value, allowedStatusCodes)) return response;
+					if (StatusCodeIsAllowed(statusCode.Value, allowedStatusCodes))
+					{
+						return response;
+					}
+
 					additionalMessage = GetAdditionalMessage(response);
 					diadocErrorCode = response.DiadocErrorCode;
 				}
+
 				if (e.Status == WebExceptionStatus.ReceiveFailure)
+				{
 					additionalMessage += " Ошибка подключения: Возможно, неправильные аутентификационные данные для прокси.";
+				}
+
 				var message = string.Format("BaseUrl={0}, PathAndQuery={1}, AdditionalMessage={2}, StatusCode={3}, DiadocErrorCode: {4}", baseUrl, request.PathAndQuery, additionalMessage, statusCode, diadocErrorCode);
 				throw new HttpClientException(message, additionalMessage, request.PathAndQuery, e, response);
 			}
@@ -147,12 +172,16 @@ namespace Diadoc.Api.Http
 			{
 				var webRequest = PrepareWebRequest(request);
 				using (var webResponse = await webRequest.GetResponseAsync().ConfigureAwait(false))
+				{
 					response = new HttpResponse((HttpWebResponse)webResponse);
+				}
+
 				if (!StatusCodeIsAllowed(response.StatusCode, allowedStatusCodes))
 				{
 					var message = string.Format("Unexpected http status code: {0}", response.StatusCode);
 					throw new WebException(message, null, WebExceptionStatus.ProtocolError, null);
 				}
+
 				return response;
 			}
 			catch (WebException e)
@@ -164,18 +193,27 @@ namespace Diadoc.Api.Http
 						response = new HttpResponse(webResponse);
 					}
 				}
+
 				string diadocErrorCode = null;
 				var additionalMessage = string.Empty;
 				HttpStatusCode? statusCode = null;
 				if (response != null)
 				{
 					statusCode = response.StatusCode;
-					if (StatusCodeIsAllowed(statusCode.Value, allowedStatusCodes)) return response;
+					if (StatusCodeIsAllowed(statusCode.Value, allowedStatusCodes))
+					{
+						return response;
+					}
+
 					additionalMessage = GetAdditionalMessage(response);
 					diadocErrorCode = response.DiadocErrorCode;
 				}
+
 				if (e.Status == WebExceptionStatus.ReceiveFailure)
+				{
 					additionalMessage += " Ошибка подключения: Возможно, неправильные аутентификационные данные для прокси.";
+				}
+
 				var message = string.Format("BaseUrl={0}, PathAndQuery={1}, AdditionalMessage={2}, StatusCode={3}, DiadocErrorCode: {4}", baseUrl, request.PathAndQuery, additionalMessage, statusCode, diadocErrorCode);
 				throw new HttpClientException(message, additionalMessage, request.PathAndQuery, e, response);
 			}
@@ -200,6 +238,7 @@ namespace Diadoc.Api.Http
 			{
 				additionalMessage = string.Format("Ошибка во время получения дополнительной информации от сервера: {0}.", ex.Message);
 			}
+
 			return additionalMessage;
 		}
 
@@ -214,24 +253,41 @@ namespace Diadoc.Api.Http
 			webRequest.Timeout = request.TimeoutInSeconds * 1000;
 			webRequest.AllowAutoRedirect = true;
 			if (ClientCertificate != null)
+			{
 				webRequest.ClientCertificates.Add(ClientCertificate);
+			}
+
 			if (request.AdditionalHeaders != null)
 			{
 				foreach (var kvp in request.AdditionalHeaders)
+				{
 					webRequest.Headers.Add(kvp.Key, kvp.Value);
+				}
 			}
+
 			if (!string.IsNullOrEmpty(request.Accept))
+			{
 				webRequest.Accept = request.Accept;
+			}
+
 			if (request.Range != null)
+			{
 				webRequest.AddRange(request.Range.From, request.Range.To);
+			}
+
 			if (request.Body != null && request.Body.ContentLength > 0)
 			{
 				webRequest.ContentType = request.Body.ContentType;
 				webRequest.ContentLength = request.Body.ContentLength;
 				using (var requestStream = webRequest.GetRequestStream())
+				{
 					request.Body.WriteToStream(requestStream);
+				}
 			}
-			else webRequest.ContentLength = 0;
+			else
+			{
+				webRequest.ContentLength = 0;
+			}
 
 			webRequest.UserAgent = UserAgentString;
 			return webRequest;
@@ -240,12 +296,17 @@ namespace Diadoc.Api.Http
 		private void ProxifyWebRequest([NotNull] WebRequest request)
 		{
 			if (!UseSystemProxy)
+			{
 				request.Proxy = proxyUri != null ? new WebProxy(proxyUri) { Credentials = proxyCredential } : null;
+			}
 			else if (request.Proxy != null && proxyCredential != null)
+			{
 				request.Proxy.Credentials = proxyCredential;
+			}
 		}
 
 		private static string UserAgentString { get; set; }
+
 		static HttpClient()
 		{
 			string sdkVersion = typeof(HttpClient).Assembly.GetName().Version.ToString();
@@ -254,12 +315,17 @@ namespace Diadoc.Api.Http
 			{
 				sdkVersion = FileVersionInfo.GetVersionInfo(typeof(HttpClient).Assembly.Location).FileVersion;
 			}
-			catch { }
+			catch
+			{
+			}
+
 			try
 			{
 				netFxVersion = FileVersionInfo.GetVersionInfo(typeof(int).Assembly.Location).FileVersion;
 			}
-			catch { }
+			catch
+			{
+			}
 
 			UserAgentString = string.Format("Diadoc C# SDK={0};OS={1};NETFX={2}",
 				sdkVersion,

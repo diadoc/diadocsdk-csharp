@@ -50,19 +50,24 @@ namespace Diadoc.Api.Http
 		public override string ToString()
 		{
 			var responseHeaders = webResponseHeaders.AllKeys.Any()
-				                      ? webResponseHeaders.AllKeys.Aggregate("\r\nResponseHeaders:", (s, key) => s + "\r\n  " + key + ": " + webResponseHeaders[key])
-				                      : string.Empty;
+				? webResponseHeaders.AllKeys.Aggregate("\r\nResponseHeaders:", (s, key) => s + "\r\n  " + key + ": " + webResponseHeaders[key])
+				: string.Empty;
 			var sb = new StringBuilder();
-			sb.AppendFormat("{0} ({1})", (int) StatusCode, StatusCode);
+			sb.AppendFormat("{0} ({1})", (int)StatusCode, StatusCode);
 			sb.AppendFormat(responseHeaders);
 			sb.AppendFormat("\r\nContent: {0}", FormatContent());
+
 			return sb.ToString();
 		}
 
 		[NotNull]
 		private string FormatContent()
 		{
-			if (Content.Length == 0) return "<NONE>";
+			if (Content.Length == 0)
+			{
+				return "<NONE>";
+			}
+
 			string content;
 			try
 			{
@@ -72,6 +77,7 @@ namespace Diadoc.Api.Http
 			{
 				content = Convert.ToBase64String(Content.Take(4096).ToArray());
 			}
+
 			return string.Format("[{0}]\r\n{1}", Content.Length, content);
 		}
 
@@ -81,12 +87,17 @@ namespace Diadoc.Api.Http
 			var isChunked = webResponse.GetResponseHeader("Transfer-Encoding").ToLowerInvariant() == "chunked";
 			var contentLength = webResponse.ContentLength;
 			if (contentLength <= 0 && !isChunked)
+			{
 				return new byte[0];
+			}
+
 			using (var responseStream = webResponse.GetResponseStream())
 			{
 				if (responseStream == null)
+				{
 					return new byte[0];
-				
+				}
+
 				var buffer = new byte[!isChunked ? contentLength : 8192];
 				if (!isChunked)
 				{
@@ -95,11 +106,16 @@ namespace Diadoc.Api.Http
 					{
 						var count = responseStream.Read(buffer, index, buffer.Length - index);
 						if (count == 0)
+						{
 							throw new InvalidOperationException("HttpResponse content is incomplete.");
+						}
+
 						index += count;
 					}
+
 					return buffer;
 				}
+
 				using (var memoryStream = new MemoryStream())
 				{
 					int count;
@@ -107,8 +123,11 @@ namespace Diadoc.Api.Http
 					{
 						count = responseStream.Read(buffer, 0, buffer.Length);
 						if (count > 0)
+						{
 							memoryStream.Write(buffer, 0, count);
+						}
 					} while (count > 0);
+
 					return memoryStream.ToArray();
 				}
 			}
@@ -118,7 +137,11 @@ namespace Diadoc.Api.Http
 		private static string TryGetContentDispositionFileName([NotNull] NameValueCollection webResponseHeaders)
 		{
 			var dispositions = webResponseHeaders.GetValues("Content-Disposition");
-			if (dispositions == null || dispositions.Length == 0) return null;
+			if (dispositions == null || dispositions.Length == 0)
+			{
+				return null;
+			}
+
 			return new ContentDisposition(dispositions[0]).FileName;
 		}
 
@@ -126,7 +149,11 @@ namespace Diadoc.Api.Http
 		private static int? TryGetRetryAfter([NotNull] NameValueCollection webResponseHeaders)
 		{
 			var values = webResponseHeaders.GetValues("Retry-After");
-			if (values == null || values.Length == 0) return null;
+			if (values == null || values.Length == 0)
+			{
+				return null;
+			}
+
 			return Convert.ToInt32(values[0], CultureInfo.InvariantCulture);
 		}
 
@@ -135,7 +162,10 @@ namespace Diadoc.Api.Http
 		{
 			var errorCodes = webResponseHeaders.GetValues("X-Diadoc-ErrorCode");
 			if (errorCodes == null || errorCodes.Length == 0)
+			{
 				return null;
+			}
+
 			return errorCodes[0];
 		}
 
@@ -158,11 +188,15 @@ namespace Diadoc.Api.Http
 
 			var values = webResponseHeaders.GetValues("Content-Range");
 			if (values == null || values.Length == 0)
+			{
 				return null;
+			}
 
 			var parts = values[0].Split(' ', '-', '/');
 			if (parts.Length < 3)
+			{
 				return null;
+			}
 
 			if (parts[1] == "*")
 			{

@@ -9,19 +9,24 @@ namespace Diadoc.Api.Http
 			: this(range, (long?)length)
 		{
 			if (range == null)
+			{
 				throw new ArgumentNullException("range");
+			}
 		}
 
 		public ContentRange([NotNull] Range range)
 			: this(range, null)
 		{
 			if (range == null)
+			{
 				throw new ArgumentNullException("range");
+			}
 		}
 
 		public ContentRange(long length)
 			: this(null, (long?)length)
-		{}
+		{
+		}
 
 		private ContentRange([CanBeNull] Range range, long? length)
 		{
