@@ -1574,6 +1574,7 @@ namespace Diadoc.Api.Proto.Events
 	public interface IDocumentSenderSignature
 	{
 		string ParentEntityId { get; set; }
+		string PatchedContentId { get; set; }
 		byte[] Signature { get; set; }
 		bool SignWithTestSignature { get; set; }
 		void LoadFromFile(string fileName);
