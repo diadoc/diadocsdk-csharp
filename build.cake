@@ -3,6 +3,8 @@
 #tool "nuget:?package=ILRepack.MSBuild.Task&version=2.0.13"
 #tool "nuget:?package=protobuf-net&version=1.0.0.280"
 #tool "nuget:?package=secure-file&version=1.0.31"
+#tool "nuget:?package=Brutal.Dev.StrongNameSigner&version=2.7.1"
+#addin "nuget:?package=Cake.StrongNameSigner&version=0.1.0"
 using Cake.Common.Diagnostics;
 using Cake.Git;
 using System.Text.RegularExpressions;
@@ -207,6 +209,7 @@ Task("Repack")
 					WorkingDirectory = outputDir.Combine(targetFramework),
 					Libs = new [] { sourceDir.Combine(targetFramework) }.ToList(),
 					Keyfile = signWithKeyFile,
+					DelaySign = true
 				};
 
 				CreateDirectory(outputDir.Combine(targetFramework));
@@ -215,6 +218,12 @@ Task("Repack")
 					sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
 					new FilePath[] { sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll") },
 					ilRepackSettings);
+
+				StrongNameSigner(new StrongNameSignerSettings {
+					AssemblyFile = outputDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
+					KeyFile =  signWithKeyFile
+				});
+				DeleteFiles(GetFiles(outputDir.Combine(targetFramework).FullPath + "/*.unsigned"));
 		}
 	});
 
