@@ -131,11 +131,11 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<ResolutionRouteList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		public Task<GetDocumentTypesResponse> GetDocumentTypesAsync(string authToken, string boxId)
+		public Task<GetDocumentTypesResponseV2> GetDocumentTypesV2Async(string authToken, string boxId)
 		{
-			var qsb = new PathAndQueryBuilder("/GetDocumentTypes");
+			var qsb = new PathAndQueryBuilder("/V2/GetDocumentTypes");
 			qsb.AddParameter("boxId", boxId);
-			return PerformHttpRequestAsync<GetDocumentTypesResponse>(authToken, "GET", qsb.BuildPathAndQuery());
+			return PerformHttpRequestAsync<GetDocumentTypesResponseV2>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
 		public Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, string nameOnShelf)
@@ -152,7 +152,7 @@ namespace Diadoc.Api
 			qsb.AddParameter("boxId", boxId);
 			return PerformHttpRequestAsync<DetectDocumentTypesResponse>(authToken, "POST", qsb.BuildPathAndQuery(), content);
 		}
-		
+
 		public Task<DetectTitleResponse> DetectDocumentTitlesAsync(string authToken, string boxId, string nameOnShelf)
 		{
 			var qsb = new PathAndQueryBuilder("/DetectDocumentTitles");

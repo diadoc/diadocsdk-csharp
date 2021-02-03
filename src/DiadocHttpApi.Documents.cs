@@ -132,11 +132,11 @@ namespace Diadoc.Api
 			return PerformHttpRequest<ResolutionRouteList>(authToken, "GET", queryString);
 		}
 
-		public GetDocumentTypesResponse GetDocumentTypes(string authToken, string boxId)
+		public GetDocumentTypesResponseV2 GetDocumentTypesV2(string authToken, string boxId)
 		{
-			var qsb = new PathAndQueryBuilder("/GetDocumentTypes");
+			var qsb = new PathAndQueryBuilder("/V2/GetDocumentTypes");
 			qsb.AddParameter("boxId", boxId);
-			return PerformHttpRequest<GetDocumentTypesResponse>(authToken, "GET", qsb.BuildPathAndQuery());
+			return PerformHttpRequest<GetDocumentTypesResponseV2>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
 		[Obsolete("Use DetectDocumentTitles")]
