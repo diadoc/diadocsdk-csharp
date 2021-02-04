@@ -202,28 +202,33 @@ Task("Repack")
 
 		void RepackWithILRepack(string targetFramework, TargetPlatformVersion targetPlatformVersion, FilePath signWithKeyFile)
 		{
-				var ilRepackSettings = new ILRepackSettings
-				{
-					Internalize = true,
-					TargetPlatform = targetPlatformVersion,
-					WorkingDirectory = outputDir.Combine(targetFramework),
-					Libs = new [] { sourceDir.Combine(targetFramework) }.ToList(),
-					Keyfile = signWithKeyFile,
-					DelaySign = true
-				};
+			var ilRepackSettings = new ILRepackSettings
+			{
+				Internalize = true,
+				TargetPlatform = targetPlatformVersion,
+				WorkingDirectory = outputDir.Combine(targetFramework),
+				Libs = new [] { sourceDir.Combine(targetFramework) }.ToList(),
+				Keyfile = signWithKeyFile,
+				DelaySign = signWithKeyFile != null
+					? true
+					: false
+			};
 
-				CreateDirectory(outputDir.Combine(targetFramework));
-				ILRepack(
-					outputDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
-					sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
-					new FilePath[] { sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll") },
-					ilRepackSettings);
+			CreateDirectory(outputDir.Combine(targetFramework));
+			ILRepack(
+				outputDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
+				sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
+				new FilePath[] { sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll") },
+				ilRepackSettings);
 
+			if (signWithKeyFile != null)
+			{
 				StrongNameSigner(new StrongNameSignerSettings {
 					AssemblyFile = outputDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
 					KeyFile =  signWithKeyFile
 				});
 				DeleteFiles(GetFiles(outputDir.Combine(targetFramework).FullPath + "/*.unsigned"));
+			}
 		}
 	});
 
