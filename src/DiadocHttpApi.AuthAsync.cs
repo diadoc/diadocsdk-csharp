@@ -2,41 +2,64 @@
 using System.Text;
 using System.Threading.Tasks;
 using Diadoc.Api.Http;
+using Diadoc.Api.Proto;
 
 namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		public async Task<string> AuthenticateAsync(string login, string password, string key = null, string id = null)
+		public Task<string> AuthenticateAsync(
+			string login,
+			string password,
+			string key = null,
+			string id = null)
 		{
-			var qsb = new PathAndQueryBuilder("/V2/Authenticate");
-			qsb.AddParameter("login", login);
-			qsb.AddParameter("password", password);
+			var qsb = new PathAndQueryBuilder("/V3/Authenticate");
+			qsb.AddParameter("type", "password");
+
+			var request = BuildHttpRequest(
+				null,
+				"POST",
+				qsb.BuildPathAndQuery(),
+				Serialize(new LoginPassword
+				{
+					Login = login,
+					Password = password
+				}));
+
 			if (!string.IsNullOrEmpty(key))
 			{
-				qsb.AddParameter("key", key);
-				qsb.AddParameter("id", id);
+				request.AddHeader("X-Diadoc-ServiceKey", key);
+				request.AddHeader("X-Diadoc-ServiceUserId", id);
 			}
 
-			var httpResponse = await PerformHttpRequestAsync(null, "POST", qsb.BuildPathAndQuery()).ConfigureAwait(false);
-			return Encoding.UTF8.GetString(httpResponse);
+			return PerformRequestAsync(request);
 		}
 
-		public async Task<string> AuthenticateByKeyAsync(string key, string id)
+		public Task<string> AuthenticateByKeyAsync(string key, string id)
 		{
-			var qsb = new PathAndQueryBuilder("/V2/Authenticate");
-			qsb.AddParameter("key", key);
-			qsb.AddParameter("id", id);
-			var httpResponse = await PerformHttpRequestAsync(null, "POST", qsb.BuildPathAndQuery()).ConfigureAwait(false);
-			return Encoding.UTF8.GetString(httpResponse);
+			var qsb = new PathAndQueryBuilder("/V3/Authenticate");
+			qsb.AddParameter("type", "trust");
+
+			var request = BuildHttpRequest(null, "POST", qsb.BuildPathAndQuery(), null);
+
+			request.AddHeader("X-Diadoc-ServiceKey", key);
+			request.AddHeader("X-Diadoc-ServiceUserId", id);
+
+			return PerformRequestAsync(request);
 		}
 
-		public async Task<string> AuthenticateBySidAsync(string sid)
+		public Task<string> AuthenticateBySidAsync(string sid)
 		{
-			var qsb = new PathAndQueryBuilder("/V2/Authenticate");
-			qsb.AddParameter("sid", sid);
-			var httpResponse = await PerformHttpRequestAsync(null, "POST", qsb.BuildPathAndQuery()).ConfigureAwait(false);
-			return Encoding.UTF8.GetString(httpResponse);
+			var qsb = new PathAndQueryBuilder("/V3/Authenticate");
+			qsb.AddParameter("type", "sid");
+			var request = BuildRequest(
+				null,
+				"POST",
+				qsb.BuildPathAndQuery(),
+				new HttpRequestBody(Encoding.UTF8.GetBytes(sid), "text/plain"));
+
+			return PerformRequestAsync(request);
 		}
 
 		public async Task<string> AuthenticateAsync(byte[] certificateBytes, bool useLocalSystemStorage = false)
@@ -98,29 +121,37 @@ namespace Diadoc.Api
 			return ConfirmAuthenticationByCertificateThumbprintAsync(thumbprint, token, saveBinding);
 		}
 
-		private Task<string> AuthenticateByCertificateAsync(byte[] certificateBytes, bool useLocalSystemStorage, string key, string id)
+		private async Task<string> AuthenticateByCertificateAsync(
+			byte[] certificateBytes,
+			bool useLocalSystemStorage,
+			string key,
+			string id)
 		{
-			var qsb = new PathAndQueryBuilder("/V2/Authenticate");
-			var authenticationWithKey = !string.IsNullOrEmpty(key);
-			if (authenticationWithKey)
-			{
-				qsb.AddParameter("key", key);
-				qsb.AddParameter("id", id);
-			}
+			var qsb = new PathAndQueryBuilder("/V3/Authenticate");
+			qsb.AddParameter("type", "certificate");
 
-			return PerformHttpRequestAsync(
+			var request = BuildRequest(
 				null,
 				"POST",
 				qsb.BuildPathAndQuery(),
-				certificateBytes,
-				responseContent => Convert.ToBase64String(crypt.Decrypt(responseContent, useLocalSystemStorage)));
+				new HttpRequestBody(certificateBytes, "application/octet-stream"));
+
+			if (!string.IsNullOrEmpty(key))
+			{
+				request.AddHeader("X-Diadoc-ServiceKey", key);
+				request.AddHeader("X-Diadoc-ServiceUserId", id);
+			}
+
+			var httpResponse = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
+			return Convert.ToBase64String(crypt.Decrypt(httpResponse.Content, useLocalSystemStorage));
 		}
 
 		private Task<string> ConfirmAuthenticationByCertificateAsync(byte[] certificateBytes, string token, bool saveBinding)
 		{
-			var qsb = new PathAndQueryBuilder("/V2/AuthenticateConfirm");
+			var qsb = new PathAndQueryBuilder("/V3/AuthenticateConfirm");
 			qsb.AddParameter("token", token);
 			qsb.AddParameter("saveBinding", saveBinding.ToString());
+
 			return PerformHttpRequestAsync(
 				null,
 				"POST",
@@ -131,16 +162,23 @@ namespace Diadoc.Api
 
 		private Task<string> ConfirmAuthenticationByCertificateThumbprintAsync(string thumbprint, string token, bool saveBinding)
 		{
-			var qsb = new PathAndQueryBuilder("/V2/AuthenticateConfirm");
+			var qsb = new PathAndQueryBuilder("/V3/AuthenticateConfirm");
 			qsb.AddParameter("thumbprint", thumbprint);
 			qsb.AddParameter("token", token);
 			qsb.AddParameter("saveBinding", saveBinding.ToString());
+
 			return PerformHttpRequestAsync(
 				null,
 				"POST",
 				qsb.BuildPathAndQuery(),
 				null,
 				responseContent => Encoding.UTF8.GetString(responseContent));
+		}
+
+		private async Task<string> PerformRequestAsync(HttpRequest request)
+		{
+			var httpResponse = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
+			return Encoding.UTF8.GetString(httpResponse.Content);
 		}
 	}
 }

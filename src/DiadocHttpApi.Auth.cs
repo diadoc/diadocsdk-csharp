@@ -35,12 +35,12 @@ namespace Diadoc.Api
 		{
 			var qsb = new PathAndQueryBuilder("/V3/Authenticate");
 			qsb.AddParameter("type", "trust");
-			
-			var request = BuildHttpRequest(null,"POST", qsb.BuildPathAndQuery(),null);
-			
+
+			var request = BuildHttpRequest(null, "POST", qsb.BuildPathAndQuery(), null);
+
 			request.AddHeader("X-Diadoc-ServiceKey", key);
 			request.AddHeader("X-Diadoc-ServiceUserId", id);
-			
+
 			return PerformRequest(request);
 		}
 
@@ -56,10 +56,10 @@ namespace Diadoc.Api
 			qsb.AddParameter("type", "sid");
 			var request = BuildRequest(
 				null,
-				"POST", 
+				"POST",
 				qsb.BuildPathAndQuery(),
 				new HttpRequestBody(Encoding.UTF8.GetBytes(sid), "text/plain"));
-			
+
 			return PerformRequest(request);
 		}
 
@@ -121,23 +121,27 @@ namespace Diadoc.Api
 			return ConfirmAuthenticationByCertificateThumbprint(thumbprint, token, saveBinding);
 		}
 
-		private string AuthenticateByCertificate(byte[] certificateBytes, bool useLocalSystemStorage, string key,
+		private string AuthenticateByCertificate(
+			byte[] certificateBytes,
+			bool useLocalSystemStorage,
+			string key,
 			string id)
 		{
 			var qsb = new PathAndQueryBuilder("/V3/Authenticate");
 			qsb.AddParameter("type", "certificate");
-			
+
 			var request = BuildRequest(
 				null,
-				"POST", 
+				"POST",
 				qsb.BuildPathAndQuery(),
-				new HttpRequestBody(certificateBytes, "application/octet-stream")); 
+				new HttpRequestBody(certificateBytes, "application/octet-stream"));
 
 			if (!string.IsNullOrEmpty(key))
 			{
 				request.AddHeader("X-Diadoc-ServiceKey", key);
 				request.AddHeader("X-Diadoc-ServiceUserId", id);
 			}
+
 			var httpResponse = HttpClient.PerformHttpRequest(request);
 			return Convert.ToBase64String(crypt.Decrypt(httpResponse.Content, useLocalSystemStorage));
 		}
@@ -147,7 +151,7 @@ namespace Diadoc.Api
 			var qsb = new PathAndQueryBuilder("/V3/AuthenticateConfirm");
 			qsb.AddParameter("token", token);
 			qsb.AddParameter("saveBinding", saveBinding.ToString());
-			
+
 			return PerformHttpRequest(
 				null,
 				"POST",
@@ -162,6 +166,7 @@ namespace Diadoc.Api
 			qsb.AddParameter("thumbprint", thumbprint);
 			qsb.AddParameter("token", token);
 			qsb.AddParameter("saveBinding", saveBinding.ToString());
+
 			return PerformHttpRequest(
 				null,
 				"POST",
