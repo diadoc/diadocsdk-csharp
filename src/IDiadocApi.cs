@@ -208,7 +208,7 @@ namespace Diadoc.Api
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails);
-		GetDocumentTypesResponse GetDocumentTypes(string authToken, string boxId);
+		GetDocumentTypesResponseV2 GetDocumentTypesV2(string authToken, string boxId);
 		DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, string nameOnShelf);
 		DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, byte[] content);
 		DetectTitleResponse DetectDocumentTitles(string authToken, string boxId, string nameOnShelf);
@@ -422,7 +422,7 @@ namespace Diadoc.Api
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
 		Task<ResolutionRouteList> GetResolutionRoutesForOrganizationAsync(string authToken, string orgId);
-		Task<GetDocumentTypesResponse> GetDocumentTypesAsync(string authToken, string boxId);
+		Task<GetDocumentTypesResponseV2> GetDocumentTypesV2Async(string authToken, string boxId);
 		Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, string nameOnShelf);
 		Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, byte[] content);
 		Task<DetectTitleResponse> DetectDocumentTitlesAsync(string authToken, string boxId, string nameOnShelf);

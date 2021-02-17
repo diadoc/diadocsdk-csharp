@@ -1196,13 +1196,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetResolutionRoutesForOrganization(authToken, orgId);
 		}
 
-		public GetDocumentTypesResponse GetDocumentTypes(string authToken, string boxId)
+		public GetDocumentTypesResponseV2 GetDocumentTypesV2(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException("authToken");
 			if (string.IsNullOrEmpty(boxId))
 				throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetDocumentTypes(authToken, boxId);
+			return diadocHttpApi.GetDocumentTypesV2(authToken, boxId);
 		}
 
 		[Obsolete("Use DetectDocumentTitles")]

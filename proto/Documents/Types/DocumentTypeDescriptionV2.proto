@@ -1,0 +1,56 @@
+package Diadoc.Api.Proto.Documents.Types;
+
+message DocumentTypeDescriptionV2 {
+	required string Name = 1;
+	required string Title = 2;
+	repeated int32 SupportedDocflows = 3;
+	required bool RequiresFnsRegistration = 4;
+	repeated DocumentFunctionV2 Functions = 9;
+}
+
+message GetDocumentTypesResponseV2 {
+	repeated DocumentTypeDescriptionV2 DocumentTypes = 1;
+}
+
+message DocumentFunctionV2 {
+	required string Name = 1;
+	repeated DocumentVersionV2 Versions = 2;
+}
+
+message DocumentVersionV2 {
+	required string Version = 1;
+	required bool SupportsContentPatching = 2;
+	required bool SupportsEncrypting = 3;
+	required bool SupportsPredefinedRecipientTitle = 7;
+	required bool SupportsAmendmentRequest = 8;
+	repeated DocumentTitleV2 Titles = 4;
+	required bool IsActual = 5;
+	repeated DocumentWorkflowV2 Workflows = 6;
+}
+
+message DocumentWorkflowV2 {
+	required int32 Id = 1;
+	required bool IsDefault = 2;
+}
+
+message DocumentTitleV2 {
+	required int32 Index = 7;
+	required bool IsFormal = 1;
+	optional string XsdUrl = 2;
+	optional string UserDataXsdUrl = 5;
+	required SignerInfoV2 SignerInfo  = 6;
+	repeated DocumentMetadataItemV2 MetadataItems = 3;
+	repeated DocumentMetadataItemV2 EncryptedMetadataItems = 4;
+}
+
+message SignerInfoV2 {
+	required int32 SignerType = 1;
+	required int32 ExtendedDocumentTitleType = 2 [default = -1];
+}
+
+message DocumentMetadataItemV2 {
+	required string Id = 1;
+	required int32 Type = 2;
+	required bool IsRequired = 3;
+	required int32 Source = 4;
+}

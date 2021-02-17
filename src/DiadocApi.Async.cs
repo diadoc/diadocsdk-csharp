@@ -116,7 +116,7 @@ namespace Diadoc.Api
 			if (userToUpdate == null) throw new ArgumentNullException("userToUpdate");
 			return diadocHttpApi.UpdateMyUserAsync(authToken, userToUpdate);
 		}
-		
+
 		public Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1062,13 +1062,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetResolutionRoutesForOrganizationAsync(authToken, orgId);
 		}
 
-		public Task<GetDocumentTypesResponse> GetDocumentTypesAsync(string authToken, string boxId)
+		public Task<GetDocumentTypesResponseV2> GetDocumentTypesV2Async(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException("authToken");
 			if (string.IsNullOrEmpty(boxId))
 				throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetDocumentTypesAsync(authToken, boxId);
+			return diadocHttpApi.GetDocumentTypesV2Async(authToken, boxId);
 		}
 
 		[Obsolete("Use DetectDocumentTitlesAsync")]
@@ -1092,7 +1092,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("boxId");
 			return diadocHttpApi.DetectDocumentTypesAsync(authToken, boxId, content);
 		}
-		
+
 		public Task<DetectTitleResponse> DetectDocumentTitlesAsync(string authToken, string boxId, string nameOnShelf)
 		{
 			if (string.IsNullOrEmpty(authToken))

@@ -430,8 +430,7 @@ namespace Diadoc.Api
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType, [MarshalAs(UnmanagedType.IDispatch)] object signerDetails);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType, [MarshalAs(UnmanagedType.IDispatch)] object signerDetails);
-
-		GetDocumentTypesResponse GetDocumentTypes(string token, string boxId);
+		GetDocumentTypesResponseV2 GetDocumentTypesV2(string token, string boxId);
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, string nameOnShelf);
 		DetectDocumentTypesResponse DetectDocumentTypes(string token, string boxId, byte[] content);
 		DetectTitleResponse DetectDocumentTitles(string token, string boxId, string nameOnShelf);
@@ -1385,12 +1384,12 @@ namespace Diadoc.Api
 
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType, object signerDetails)
 		{
-			return diadoc.PostExtendedSignerDetails(token, boxId, certificateBytes, (DocumentTitleType) documentTitleType, (ExtendedSignerDetailsToPost) signerDetails);
+			return diadoc.PostExtendedSignerDetails(token, boxId, certificateBytes, (DocumentTitleType)documentTitleType, (ExtendedSignerDetailsToPost)signerDetails);
 		}
 
-		public GetDocumentTypesResponse GetDocumentTypes(string token, string boxId)
+		public GetDocumentTypesResponseV2 GetDocumentTypesV2(string token, string boxId)
 		{
-			return diadoc.GetDocumentTypes(token, boxId);
+			return diadoc.GetDocumentTypesV2(token, boxId);
 		}
 
 		[Obsolete("Use DetectDocumentTitles")]
