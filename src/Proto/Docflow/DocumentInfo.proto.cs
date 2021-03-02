@@ -456,40 +456,36 @@ namespace Diadoc.Api.Proto.Docflow
     public SupplementaryAgreementDocumentInfo() {}
     
 
-    private string _Total = "";
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Total", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string Total
-    {
-      get { return _Total; }
-      set { _Total = value; }
-    }
-
     private string _ContractType = "";
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ContractType", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ContractType", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string ContractType
     {
       get { return _ContractType; }
       set { _ContractType = value; }
     }
-
-    private string _ContractNumber = "";
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"ContractNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string ContractNumber
+    private Diadoc.Api.Proto.Docflow.DocumentDateAndNumber _ContractDocumentDateAndNumber;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"ContractDocumentDateAndNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Docflow.DocumentDateAndNumber ContractDocumentDateAndNumber
     {
-      get { return _ContractNumber; }
-      set { _ContractNumber = value; }
+      get { return _ContractDocumentDateAndNumber; }
+      set { _ContractDocumentDateAndNumber = value; }
+    }
+    private Diadoc.Api.Proto.Docflow.DocumentDateAndNumber _DocumentDateAndNumber;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"DocumentDateAndNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Docflow.DocumentDateAndNumber DocumentDateAndNumber
+    {
+      get { return _DocumentDateAndNumber; }
+      set { _DocumentDateAndNumber = value; }
     }
 
-    private string _ContractDate = "";
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"ContractDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private string _Total = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Total", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
-    public string ContractDate
+    public string Total
     {
-      get { return _ContractDate; }
-      set { _ContractDate = value; }
+      get { return _Total; }
+      set { _Total = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

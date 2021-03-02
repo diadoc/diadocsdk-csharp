@@ -75,10 +75,10 @@ message ContractDocumentInfo
 
 message SupplementaryAgreementDocumentInfo
 {
-	optional string Total = 1;
-	optional string ContractType = 2;
-	optional string ContractNumber = 3;
-	optional string ContractDate = 4;
+	optional string ContractType = 1;
+	required DocumentDateAndNumber ContractDocumentDateAndNumber = 2;
+	required DocumentDateAndNumber DocumentDateAndNumber = 3;
+	optional string Total = 4;
 }
 
 message UniversalTransferDocumentInfo

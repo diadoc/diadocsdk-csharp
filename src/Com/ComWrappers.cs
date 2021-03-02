@@ -370,10 +370,10 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("55063C2D-4049-4215-BEDE-E8FE964892A7")]
 	public interface ISupplementaryAgreementDocumentInfo
 	{
-		string Total { get; }
 		string ContractType { get; }
-		string ContractNumber { get; }
-		string ContractDate { get; }
+		DocumentDateAndNumber ContractDocumentDateAndNumber { get; }
+		DocumentDateAndNumber DocumentDateAndNumber { get; }
+		string Total { get; }
 	}
 
 	[ComVisible(true)]
