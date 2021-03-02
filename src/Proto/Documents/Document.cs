@@ -92,6 +92,8 @@ namespace Diadoc.Api.Proto.Documents
 		string RoamingNotificationStatusDescription { get; }
 
 		ReadonlyList LastOuterDocflowsList { get; }
+		string ProxyBoxId { get; }
+		string ProxyDepartmentId { get; }
 	}
 
 	[ComVisible(true)]

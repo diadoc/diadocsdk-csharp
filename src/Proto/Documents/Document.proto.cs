@@ -666,6 +666,24 @@ namespace Diadoc.Api.Proto.Documents
       get { return _LastOuterDocflows; }
     }
   
+
+    private string _ProxyBoxId = "";
+    [global::ProtoBuf.ProtoMember(78, IsRequired = false, Name=@"ProxyBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ProxyBoxId
+    {
+      get { return _ProxyBoxId; }
+      set { _ProxyBoxId = value; }
+    }
+
+    private string _ProxyDepartmentId = "";
+    [global::ProtoBuf.ProtoMember(79, IsRequired = false, Name=@"ProxyDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ProxyDepartmentId
+    {
+      get { return _ProxyDepartmentId; }
+      set { _ProxyDepartmentId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
