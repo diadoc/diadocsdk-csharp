@@ -1,5 +1,6 @@
 # Sphinx documentation build artifacts
-tools/
+tools/*
+!tools/packages.config
 proto/**/*.cs
 diadoc.snk
 
