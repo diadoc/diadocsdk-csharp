@@ -414,6 +414,7 @@ namespace Diadoc.Api.Proto.Docflow
 		DocumentParticipants LetterParticipants { get; }
 		ReadonlyList TransformedToLetterIdsList { get; }
 		TemplateRefusalInfo TemplateRefusalInfo { get; }
+		bool IsReusable { get; }
 	}
 
 	[ComVisible(true)]

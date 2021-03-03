@@ -80,6 +80,7 @@ message DocumentTemplateInfo
 	repeated string TransformedToLetterIds = 2;
 	repeated TemplateTransformationInfo TemplateTransformationInfos = 3;
 	optional TemplateRefusalInfo TemplateRefusalInfo = 4;
+	optional bool IsReusable = 5 [default = false];
 }
 
 message TemplateTransformationInfo

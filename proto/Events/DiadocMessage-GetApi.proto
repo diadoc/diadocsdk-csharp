@@ -55,6 +55,7 @@ message Message {
 	required LockMode LockMode = 21 [default = None];
 	required Documents.MessageType MessageType = 22;
 	optional TemplateToLetterTransformationInfo TemplateToLetterTransformationInfo = 23;
+	optional bool IsReusable = 24 [default = false];
 }
 
 message Template {
@@ -70,6 +71,7 @@ message Template {
     required LockMode LockMode = 10;
     optional string MessageProxyBoxId = 11;
     optional string MessageProxyDepartmentId = 12;
+	optional bool IsReusable = 13 [default = false];
 }
 
 message MessagePatch {
