@@ -238,10 +238,9 @@ namespace Diadoc.Api.Proto.Docflow
 	public interface IDocumentInfoV3
 	{
 		FullVersion FullVersion { get; }
-		MessageType MessageType { get; }
 		int WorkflowId { get; }
 		DocumentParticipants Participants { get; }
-		DocumentDirection DocumentDirection { get; }
+		Com.DocumentDirection DocumentDirectionValue { get; }
 		string DepartmentId { get; }
 		string CustomDocumentId { get; }
 		ReadonlyList MetadataList { get; }
@@ -266,6 +265,10 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IDocumentInfoV3))]
 	public partial class DocumentInfoV3 : SafeComObject, IDocumentInfoV3
 	{
+		public Com.DocumentDirection DocumentDirectionValue
+		{
+			get { return (Com.DocumentDirection)DocumentDirection; }
+		}
 		public ReadonlyList MetadataList
 		{
 			get { return new ReadonlyList(Metadata); }
@@ -348,7 +351,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("5825EC56-B5B3-4CD6-A274-232406A510FE")]
 	public interface IPacketInfo
 	{
-		LockMode LockMode { get; }
+		Com.LockMode LockModeValue { get; }
 		string PacketId { get; }
 		Timestamp AddedAt { get; }
 	}
@@ -360,6 +363,10 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IPacketInfo))]
 	public partial class PacketInfo : SafeComObject, IPacketInfo
 	{
+		public Com.LockMode LockModeValue
+		{
+			get { return (Com.LockMode)LockMode; }
+		}
 	}
 
 	[ComVisible(true)]
@@ -492,7 +499,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
 		RoamingNotification RoamingNotification { get; }
-		SenderSignatureStatus SenderSignatureStatus { get; }
+		Com.SenderSignatureStatus SenderSignatureStatusValue { get; }
 	}
 
 	[ComVisible(true)]
@@ -502,6 +509,10 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(ISenderTitleDocflow))]
 	public partial class SenderTitleDocflow : SafeComObject, ISenderTitleDocflow
 	{
+		public Com.SenderSignatureStatus SenderSignatureStatusValue
+		{
+			get { return (Com.SenderSignatureStatus)SenderSignatureStatus; }
+		}
 	}
 
 	[ComVisible(true)]
@@ -552,7 +563,7 @@ namespace Diadoc.Api.Proto.Docflow
 		SignatureRejectionDocflow Rejection { get; }
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
-		RecipientResponseStatus ResponseStatus { get; }
+		Com.RecipientResponseStatus ResponseStatusValue { get; }
 	}
 
 	[ComVisible(true)]
@@ -562,6 +573,10 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IParticipantResponseDocflow))]
 	public partial class ParticipantResponseDocflow : SafeComObject, IParticipantResponseDocflow
 	{
+		public Com.RecipientResponseStatus ResponseStatusValue
+		{
+			get { return (Com.RecipientResponseStatus)ResponseStatus; }
+		}
 	}
 
 	[ComVisible(true)]
@@ -594,7 +609,7 @@ namespace Diadoc.Api.Proto.Docflow
 		RevocationRequestDocflow RevocationRequest { get; }
 		RevocationResponseDocflow RevocationResponse { get; }
 		string InitiatorBoxId { get; }
-		RevocationStatus RevocationStatus { get; }
+		Com.RevocationStatus RevocationStatusValue { get; }
 		ReadonlyList OuterDocflowEntitiesList { get; }
 	}
 
@@ -608,6 +623,10 @@ namespace Diadoc.Api.Proto.Docflow
 		public ReadonlyList OuterDocflowEntitiesList
 		{
 			get { return new ReadonlyList(OuterDocflowEntities); }
+		}
+		public Com.RevocationStatus RevocationStatusValue
+		{
+			get { return (Com.RevocationStatus)RevocationStatus; }
 		}
 	}
 
@@ -654,7 +673,7 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		bool IsFinished { get; }
 		string ParentEntityId { get; }
-		ResolutionStatus ResolutionStatus { get; }
+		Com.ResolutionStatus ResolutionStatusValue { get; }
 		string ResolutionEntityId { get; }
 	}
 
@@ -665,6 +684,11 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IResolutionDocflowV3))]
 	public partial class ResolutionDocflowV3 : SafeComObject, IResolutionDocflowV3
 	{
+		public Com.ResolutionStatus ResolutionStatusValue
+		{
+			get { return (Com.ResolutionStatus)ResolutionStatus;  }
+		}
+
 	}
 
 	[ComVisible(true)]
@@ -805,7 +829,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
 		ConfirmationDocflow Confirmation { get; }
-		GeneralReceiptStatus Status { get; }
+		Com.GeneralReceiptStatus StatusValue { get; }
 	}
 
 	[ComVisible(true)]
@@ -815,6 +839,10 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(IReceiptDocflowV3))]
 	public partial class ReceiptDocflowV3 : SafeComObject, IReceiptDocflowV3
 	{
+		public Com.GeneralReceiptStatus StatusValue
+		{
+			get { return (Com.GeneralReceiptStatus)Status; }
+		}
 	}
 
 	[ComVisible(true)]
