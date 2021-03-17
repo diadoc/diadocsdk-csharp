@@ -94,6 +94,8 @@ message Document {
 	required SenderReceiptMetadata SenderReceiptMetadata = 75;
 	required string Version = 76;
 	repeated LastOuterDocflow LastOuterDocflows = 77;
+	optional string ProxyBoxId = 78;
+	optional string ProxyDepartmentId = 79;
 }
 
 message LastOuterDocflow {
