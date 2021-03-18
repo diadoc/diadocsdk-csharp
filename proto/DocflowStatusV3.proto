@@ -1,0 +1,13 @@
+package Diadoc.Api.Proto;
+
+message DocflowStatusV3
+{
+    required DocflowStatusModelV3 PrimaryStatus = 1;
+    optional DocflowStatusModelV3 SecondaryStatus = 2;
+}
+
+message DocflowStatusModelV3
+{
+    optional string Severity = 1;
+    optional string StatusText = 2;
+}

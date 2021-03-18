@@ -14,6 +14,7 @@ import "ResolutionTarget.proto";
 import "ForwardDocumentEvent.proto";
 import "Events/DiadocMessage-PostApi.proto";
 import "OuterDocflow.proto";
+import "DocflowStatusV3.proto";
 
 package Diadoc.Api.Proto.Documents;
 
@@ -96,6 +97,7 @@ message Document {
 	repeated LastOuterDocflow LastOuterDocflows = 77;
 	optional string ProxyBoxId = 78;
 	optional string ProxyDepartmentId = 79;
+	required DocflowStatusV3 DocflowStatus = 80;
 }
 
 message LastOuterDocflow {

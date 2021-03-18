@@ -94,6 +94,7 @@ namespace Diadoc.Api.Proto.Documents
 		ReadonlyList LastOuterDocflowsList { get; }
 		string ProxyBoxId { get; }
 		string ProxyDepartmentId { get; }
+		DocflowStatusV3 DocflowStatus { get; }
 	}
 
 	[ComVisible(true)]

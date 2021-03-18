@@ -4,6 +4,7 @@ import "Docflow/AttachmentV3.proto";
 import "Docflow/RoamingNotification.proto";
 import "Docflow/ResolutionDocflowV3.proto";
 import "OuterDocflowStatus.proto";
+import "DocflowStatusV3.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
@@ -21,6 +22,7 @@ message DocflowV3
 	optional ResolutionEntitiesV3 ResolutionEntities = 10;
 	repeated OuterDocflow OuterDocflows = 12;
 	repeated OuterDocflowEntities OuterDocflowEntities = 13;
+	required DocflowStatusV3 DocflowStatus = 14;
 }
 
 message SenderTitleDocflow
