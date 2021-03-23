@@ -284,6 +284,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _TemplateToLetterTransformationInfo; }
       set { _TemplateToLetterTransformationInfo = value; }
     }
+
+    private bool _IsReusable = (bool)false;
+    [global::ProtoBuf.ProtoMember(24, IsRequired = false, Name=@"IsReusable", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsReusable
+    {
+      get { return _IsReusable; }
+      set { _IsReusable = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -385,6 +394,15 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _MessageProxyDepartmentId; }
       set { _MessageProxyDepartmentId = value; }
+    }
+
+    private bool _IsReusable = (bool)false;
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"IsReusable", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsReusable
+    {
+      get { return _IsReusable; }
+      set { _IsReusable = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

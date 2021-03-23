@@ -534,6 +534,7 @@ message TemplateToPost {
 	optional string ToDepartmentId = 9;
 	optional string MessageProxyBoxId = 10;
 	optional string MessageProxyDepartmentId = 11;
+	optional bool IsReusable = 12 [default = false];
 }
 
 message TemplateDocumentAttachment {

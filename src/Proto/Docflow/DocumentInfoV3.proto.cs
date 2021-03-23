@@ -398,6 +398,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _TemplateRefusalInfo; }
       set { _TemplateRefusalInfo = value; }
     }
+
+    private bool _IsReusable = (bool)false;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"IsReusable", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsReusable
+    {
+      get { return _IsReusable; }
+      set { _IsReusable = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

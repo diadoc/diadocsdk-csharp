@@ -542,6 +542,7 @@ namespace Diadoc.Api.Proto.Events
 		string ToDepartmentId { get; set; }
 		string MessageProxyBoxId { get; set; }
 		string MessageProxyDepartmentId { get; set; }
+		bool IsReusable { get; set; }
 		void AddDocumentAttachment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
 	}
 
