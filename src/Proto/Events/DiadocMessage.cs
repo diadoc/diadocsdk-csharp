@@ -537,6 +537,7 @@ namespace Diadoc.Api.Proto.Events
 		string MessageFromBoxId { get; set; }
 		string MessageToBoxId { get; set; }
 		LockMode LockMode { get; set; }
+		Com.LockMode LockModeValue { get; set; }
 		string MessageToDepartmentId { get; set; }
 		string FromDepartmentId { get; set; }
 		string ToDepartmentId { get; set; }
@@ -553,6 +554,12 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof(ITemplateToPost))]
 	public partial class TemplateToPost : SafeComObject, ITemplateToPost
 	{
+		public Com.LockMode LockModeValue
+		{
+			get { return (Com.LockMode)LockMode; }
+			set { LockMode = (LockMode)value; }
+		}
+
 		public void AddDocumentAttachment(object attachment)
 		{
 			DocumentAttachments.Add((TemplateDocumentAttachment)attachment);
