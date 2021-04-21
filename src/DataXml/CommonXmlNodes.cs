@@ -1,4 +1,4 @@
-namespace Diadoc.Api.DataXml
+﻿namespace Diadoc.Api.DataXml
 {
 	/// <remarks/>
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
@@ -701,5 +701,260 @@ namespace Diadoc.Api.DataXml
 			get { return this.certificateThumbprintField; }
 			set { this.certificateThumbprintField = value; }
 		}
+	}
+
+	/// <remarks/>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+	[System.SerializableAttribute()]
+	[System.Diagnostics.DebuggerStepThroughAttribute()]
+	[System.ComponentModel.DesignerCategoryAttribute("code")]
+	public partial class AdditionalInfoId736
+	{
+		private AdditionalInfo[] additionalInfoField;
+
+		private string infoFileIdField;
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlElementAttribute("AdditionalInfo",
+			Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+		public AdditionalInfo[] AdditionalInfo
+		{
+			get { return this.additionalInfoField; }
+			set { this.additionalInfoField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string InfoFileId
+		{
+			get { return this.infoFileIdField; }
+			set { this.infoFileIdField = value; }
+		}
+	}
+
+	/// <remarks/>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+	[System.SerializableAttribute()]
+	public enum TaxRateWithTwentyPercentAndTaxedByAgent
+	{
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("без НДС")]
+		WithoutVat,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("0%")]
+		Zero,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("10%")]
+		TenPercent,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("18%")]
+		EighteenPercent,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("20%")]
+		TwentyPercent,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("10/110")]
+		TenFraction,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("18/118")]
+		EighteenFraction,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("20/120")]
+		TwentyFraction,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("НДС исчисляется налоговым агентом")]
+		TaxedByAgent,
+	}
+
+	/// <remarks/>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+	[System.SerializableAttribute()]
+	[System.Xml.Serialization.XmlTypeAttribute(IncludeInSchema = false)]
+	public enum ItemsChoiceType
+	{
+		/// <remarks/>
+		PackageId,
+
+		/// <remarks/>
+		Unit,
+	}
+
+	/// <remarks/>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+	[System.SerializableAttribute()]
+	[System.Diagnostics.DebuggerStepThroughAttribute()]
+	[System.ComponentModel.DesignerCategoryAttribute("code")]
+	public partial class RussianAddress
+	{
+		private string zipCodeField;
+
+		private string regionField;
+
+		private string territoryField;
+
+		private string cityField;
+
+		private string localityField;
+
+		private string streetField;
+
+		private string buildingField;
+
+		private string blockField;
+
+		private string apartmentField;
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string ZipCode
+		{
+			get { return this.zipCodeField; }
+			set { this.zipCodeField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string Region
+		{
+			get { return this.regionField; }
+			set { this.regionField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string Territory
+		{
+			get { return this.territoryField; }
+			set { this.territoryField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string City
+		{
+			get { return this.cityField; }
+			set { this.cityField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string Locality
+		{
+			get { return this.localityField; }
+			set { this.localityField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string Street
+		{
+			get { return this.streetField; }
+			set { this.streetField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string Building
+		{
+			get { return this.buildingField; }
+			set { this.buildingField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string Block
+		{
+			get { return this.blockField; }
+			set { this.blockField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string Apartment
+		{
+			get { return this.apartmentField; }
+			set { this.apartmentField = value; }
+		}
+	}
+
+	/// <remarks/>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+	[System.SerializableAttribute()]
+	[System.Diagnostics.DebuggerStepThroughAttribute()]
+	[System.ComponentModel.DesignerCategoryAttribute("code")]
+	public partial class ForeignAddress
+	{
+		private string countryField;
+
+		private string addressField;
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string Country
+		{
+			get { return this.countryField; }
+			set { this.countryField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string Address
+		{
+			get { return this.addressField; }
+			set { this.addressField = value; }
+		}
+	}
+
+	/// <remarks/>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+	[System.SerializableAttribute()]
+	[System.Diagnostics.DebuggerStepThroughAttribute()]
+	[System.ComponentModel.DesignerCategoryAttribute("code")]
+	public partial class Address
+	{
+		private object itemField;
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlElementAttribute("AddressCode", typeof(string),
+			Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+		[System.Xml.Serialization.XmlElementAttribute("ForeignAddress", typeof(ForeignAddress),
+			Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+		[System.Xml.Serialization.XmlElementAttribute("RussianAddress", typeof(RussianAddress),
+			Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+		public object Item
+		{
+			get { return this.itemField; }
+			set { this.itemField = value; }
+		}
+	}
+
+	/// <remarks/>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+	[System.SerializableAttribute()]
+	public enum OrganizationType
+	{
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("1")]
+		LegalEntity,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("2")]
+		IndividualEntity,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("3")]
+		ForeignEntity,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("4")]
+		PhysicalEntity,
 	}
 }
