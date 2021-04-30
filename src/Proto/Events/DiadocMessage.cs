@@ -1262,6 +1262,10 @@ namespace Diadoc.Api.Proto.Events
 		bool SignByAttorney { get; set; }
 
 		bool SignWithTestSignature { get; set; }
+		bool IsApprovementSignature { get; set; }
+		string SignatureNameOnShelf { get; set; }
+		string PatchedContentId { get; set; }
+
 		void LoadFromFile(string fileName);
 	}
 
