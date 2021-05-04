@@ -24,6 +24,7 @@
 // Note: requires additional types generated from: ForwardDocumentEvent.proto
 // Note: requires additional types generated from: Events/DiadocMessage-PostApi.proto
 // Note: requires additional types generated from: OuterDocflow.proto
+// Note: requires additional types generated from: DocflowStatusV3.proto
 namespace Diadoc.Api.Proto.Documents
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"Document")]
@@ -683,6 +684,13 @@ namespace Diadoc.Api.Proto.Documents
     {
       get { return _ProxyDepartmentId; }
       set { _ProxyDepartmentId = value; }
+    }
+    private Diadoc.Api.Proto.DocflowStatusV3 _DocflowStatus;
+    [global::ProtoBuf.ProtoMember(80, IsRequired = true, Name=@"DocflowStatus", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.DocflowStatusV3 DocflowStatus
+    {
+      get { return _DocflowStatus; }
+      set { _DocflowStatus = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

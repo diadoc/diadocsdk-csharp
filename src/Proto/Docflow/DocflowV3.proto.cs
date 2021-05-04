@@ -14,6 +14,7 @@
 // Note: requires additional types generated from: Docflow/RoamingNotification.proto
 // Note: requires additional types generated from: Docflow/ResolutionDocflowV3.proto
 // Note: requires additional types generated from: OuterDocflowStatus.proto
+// Note: requires additional types generated from: DocflowStatusV3.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocflowV3")]
@@ -123,6 +124,13 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _OuterDocflowEntities; }
     }
   
+    private Diadoc.Api.Proto.DocflowStatusV3 _DocflowStatus;
+    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"DocflowStatus", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.DocflowStatusV3 DocflowStatus
+    {
+      get { return _DocflowStatus; }
+      set { _DocflowStatus = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

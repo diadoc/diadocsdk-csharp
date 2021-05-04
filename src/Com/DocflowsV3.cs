@@ -475,6 +475,7 @@ namespace Diadoc.Api.Proto.Docflow
 		ResolutionEntitiesV3 ResolutionEntities { get; }
 		ReadonlyList OuterDocflowsList { get; }
 		ReadonlyList OuterDocflowEntitiesList { get; }
+		DocflowStatusV3 DocflowStatus { get; }
 	}
 
 	[ComVisible(true)]
