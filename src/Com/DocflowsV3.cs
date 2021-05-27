@@ -598,6 +598,7 @@ namespace Diadoc.Api.Proto.Docflow
 		ReceiptDocflowV3 Receipt { get; }
 		int AmendmentFlags { get; }
 		string PlainText { get; }
+		ConfirmationDocflow ConfirmationDocflow { get; }
 	}
 
 	[ComVisible(true)]

@@ -71,6 +71,7 @@ message AmendmentRequestDocflow
 	optional ReceiptDocflowV3 Receipt = 5;
 	required int32 AmendmentFlags = 6;
 	optional string PlainText = 7;
+	optional ConfirmationDocflow ConfirmationDocflow = 8;
 }
 
 message RevocationDocflowV3
