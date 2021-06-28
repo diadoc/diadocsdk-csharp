@@ -2139,6 +2139,12 @@ namespace Diadoc.Api.DataXml.Ucd736
 
 		/// <remarks/>
 		ДИС,
+
+		/// <remarks/>
+		СвИСРК,
+
+		/// <remarks/>
+		СвИСЗК,
 	}
 
 	/// <remarks/>

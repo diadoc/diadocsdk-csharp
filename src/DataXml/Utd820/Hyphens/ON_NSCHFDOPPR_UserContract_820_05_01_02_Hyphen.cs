@@ -2213,6 +2213,12 @@ namespace Diadoc.Api.DataXml.Utd820.Hyphens
 
 		/// <remarks/>
 		СЧФДОП,
+
+		/// <remarks/>
+		СвРК,
+
+		/// <remarks/>
+		СвЗК,
 	}
 
 	/// <remarks/>
@@ -2262,5 +2268,25 @@ namespace Diadoc.Api.DataXml.Utd820.Hyphens
 		/// <remarks/>
 		[System.Xml.Serialization.XmlEnumAttribute("3")]
 		AgentSchema,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("4")]
+		СommissionAgentSales,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("5")]
+		AgentCommissionReturn,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("6")]
+		AgentCommissionPurchase,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("7")]
+		СommissionAgentReturn,
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlEnumAttribute("8")]
+		BuyerSellerReturn,
 	}
 }
