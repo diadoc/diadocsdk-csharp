@@ -1,0 +1,10 @@
+package Diadoc.Api.Proto;
+
+message BillingAccountList {
+	repeated BillingAccount BillingAccounts = 1;
+}
+
+message BillingAccount {
+	required string AccountId = 1;
+	required int32 ProductId = 2;
+}
