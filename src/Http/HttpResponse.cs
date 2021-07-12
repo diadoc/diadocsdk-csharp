@@ -13,7 +13,7 @@ namespace Diadoc.Api.Http
 	[Serializable]
 	public class HttpResponse
 	{
-		private readonly WebHeaderCollection webResponseHeaders;
+		private readonly NameValueCollection webResponseHeaders;
 
 		public HttpResponse([NotNull] HttpWebResponse webResponse)
 		{
