@@ -116,7 +116,7 @@ namespace Diadoc.Api.Http
 				var webRequest = PrepareWebRequest(request);
 				using (var webResponse = (HttpWebResponse)webRequest.GetResponse())
 				{
-					response = new HttpResponse(webResponse);
+					response = webResponse.ToHttpResponse();
 				}
 
 				if (!StatusCodeIsAllowed(response.StatusCode, allowedStatusCodes))
@@ -133,7 +133,7 @@ namespace Diadoc.Api.Http
 				{
 					if (webResponse != null)
 					{
-						response = new HttpResponse(webResponse);
+						response = webResponse.ToHttpResponse();
 					}
 				}
 
@@ -173,7 +173,7 @@ namespace Diadoc.Api.Http
 				var webRequest = PrepareWebRequest(request);
 				using (var webResponse = await webRequest.GetResponseAsync().ConfigureAwait(false))
 				{
-					response = new HttpResponse((HttpWebResponse)webResponse);
+					response = ((HttpWebResponse)webResponse).ToHttpResponse();
 				}
 
 				if (!StatusCodeIsAllowed(response.StatusCode, allowedStatusCodes))
@@ -190,7 +190,7 @@ namespace Diadoc.Api.Http
 				{
 					if (webResponse != null)
 					{
-						response = new HttpResponse(webResponse);
+						response = webResponse.ToHttpResponse();
 					}
 				}
 

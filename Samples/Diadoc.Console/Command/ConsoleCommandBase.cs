@@ -25,9 +25,9 @@ namespace Diadoc.Console.Command
 			Usage = "";
 			Description = "no description";
 		}
+		private CommandType CommandType { get; }
 
-		public string Command { get; private set; }
-		private CommandType CommandType { get; set; }
+		public string Command { get; }
 		public string Usage { get; protected set; }
 		public string Description { get; protected set; }
 
@@ -82,14 +82,15 @@ namespace Diadoc.Console.Command
 		private static void HandleHttpClientException(HttpClientException exception)
 		{
 			System.Console.WriteLine("При обработке команды произошла ошибка:");
-			if (exception.Status == WebExceptionStatus.ProtocolError &&
-				exception.ResponseStatusCode.HasValue &&
+			if (exception.ResponseStatusCode.HasValue &&
 				!TryHandleExceptionCode(exception.ResponseStatusCode.Value, exception.RequestPathAndQuery))
+			{
 				HandleUnknownException(exception);
-			else if (exception.Status == WebExceptionStatus.ReceiveFailure)
-				System.Console.WriteLine("Ошибка подключения: Возможно, неправильные аутентификационные данные для прокси. Попробуйте изменить имя пользователя и пароль, используя команду proxy");
+			}
 			else
+			{
 				HandleUnknownException(exception);
+			}
 		}
 
 		private void HandleUsageException(UsageException usageException)

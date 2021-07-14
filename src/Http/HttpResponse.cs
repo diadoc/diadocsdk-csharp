@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Specialized;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mime;
@@ -13,44 +12,39 @@ namespace Diadoc.Api.Http
 	[Serializable]
 	public class HttpResponse
 	{
-		private readonly NameValueCollection webResponseHeaders;
+		private readonly NameValueCollection headers;
 
-		public HttpResponse([NotNull] HttpWebResponse webResponse)
+		public HttpResponse(HttpStatusCode statusCode, byte[] content, NameValueCollection headers)
 		{
-			webResponseHeaders = webResponse.Headers;
-			StatusCode = webResponse.StatusCode;
-			ContentType = webResponse.ContentType;
-			ContentDispositionFileName = TryGetContentDispositionFileName(webResponseHeaders);
-			RetryAfter = TryGetRetryAfter(webResponseHeaders);
-			Content = GetResponseContent(webResponse);
-			DiadocErrorCode = TryGetDiadocErrorCode(webResponseHeaders);
-			ContentRange = TryGetContentRange(webResponseHeaders);
+			StatusCode = statusCode;
+			Content = content;
+			this.headers = headers;
 		}
 
 		public HttpStatusCode StatusCode { get; private set; }
 
-		[NotNull]
-		public string ContentType { get; private set; }
+		[CanBeNull]
+		public string ContentType => TryGetContentType(headers);
 
 		[CanBeNull]
-		public string ContentDispositionFileName { get; private set; }
+		public string ContentDispositionFileName => TryGetContentDispositionFileName(headers);
 
 		[CanBeNull]
-		public int? RetryAfter { get; private set; }
+		public int? RetryAfter => TryGetRetryAfter(headers);
 
 		[CanBeNull]
-		public ContentRange ContentRange { get; private set; }
+		public ContentRange ContentRange => TryGetContentRange(headers);
 
 		[NotNull]
 		public byte[] Content { get; private set; }
 
 		[CanBeNull]
-		public string DiadocErrorCode { get; private set; }
+		public string DiadocErrorCode => TryGetDiadocErrorCode(headers);
 
 		public override string ToString()
 		{
-			var responseHeaders = webResponseHeaders.AllKeys.Any()
-				? webResponseHeaders.AllKeys.Aggregate("\r\nResponseHeaders:", (s, key) => s + "\r\n  " + key + ": " + webResponseHeaders[key])
+			var responseHeaders = headers.AllKeys.Any()
+				? headers.AllKeys.Aggregate("\r\nResponseHeaders:", (s, key) => s + "\r\n  " + key + ": " + headers[key])
 				: string.Empty;
 			var sb = new StringBuilder();
 			sb.AppendFormat("{0} ({1})", (int)StatusCode, StatusCode);
@@ -81,58 +75,6 @@ namespace Diadoc.Api.Http
 			return string.Format("[{0}]\r\n{1}", Content.Length, content);
 		}
 
-		[NotNull]
-		public static byte[] GetResponseContent([NotNull] HttpWebResponse webResponse)
-		{
-			var isChunked = webResponse.GetResponseHeader("Transfer-Encoding").ToLowerInvariant() == "chunked";
-			var contentLength = webResponse.ContentLength;
-			if (contentLength <= 0 && !isChunked)
-			{
-				return new byte[0];
-			}
-
-			using (var responseStream = webResponse.GetResponseStream())
-			{
-				if (responseStream == null)
-				{
-					return new byte[0];
-				}
-
-				var buffer = new byte[!isChunked ? contentLength : 8192];
-				if (!isChunked)
-				{
-					var index = 0;
-					while (index < buffer.Length)
-					{
-						var count = responseStream.Read(buffer, index, buffer.Length - index);
-						if (count == 0)
-						{
-							throw new InvalidOperationException("HttpResponse content is incomplete.");
-						}
-
-						index += count;
-					}
-
-					return buffer;
-				}
-
-				using (var memoryStream = new MemoryStream())
-				{
-					int count;
-					do
-					{
-						count = responseStream.Read(buffer, 0, buffer.Length);
-						if (count > 0)
-						{
-							memoryStream.Write(buffer, 0, count);
-						}
-					} while (count > 0);
-
-					return memoryStream.ToArray();
-				}
-			}
-		}
-
 		[CanBeNull]
 		private static string TryGetContentDispositionFileName([NotNull] NameValueCollection webResponseHeaders)
 		{
@@ -155,6 +97,18 @@ namespace Diadoc.Api.Http
 			}
 
 			return Convert.ToInt32(values[0], CultureInfo.InvariantCulture);
+		}
+
+		[CanBeNull]
+		private static string TryGetContentType([NotNull] NameValueCollection webResponseHeaders)
+		{
+			var values = webResponseHeaders.GetValues("Content-Type");
+			if (values == null || values.Length == 0)
+			{
+				return null;
+			}
+
+			return values[0];
 		}
 
 		[CanBeNull]
@@ -199,8 +153,8 @@ namespace Diadoc.Api.Http
 			}
 
 			if (parts[1] == "*")
-			{
 				// Content-Range: bytes */1234
+			{
 				return new ContentRange(Convert.ToInt64(parts[2], CultureInfo.InvariantCulture));
 			}
 
@@ -209,8 +163,8 @@ namespace Diadoc.Api.Http
 				Convert.ToInt32(parts[2], CultureInfo.InvariantCulture));
 
 			if (parts[3] == "*")
-			{
 				// Content-Range: bytes 42-1233/*
+			{
 				return new ContentRange(range);
 			}
 
