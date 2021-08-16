@@ -78,6 +78,12 @@ message GetDocflowEventsRequest
 	optional bool PopulateDocuments = 3 [default = false];
 	optional bool InjectEntityContent = 4 [default = false];
 	optional bool PopulatePreviousDocumentStates = 5 [default = false];
+	repeated string MessageTypes = 6;
+	repeated string DocumentDirections = 7;
+	optional string DepartmentId = 8;
+	repeated string TypeNamedIds = 9;
+	optional string CounteragentBoxId = 10;
+	optional int32 Limit = 11 [default = 100];
 }
 
 message GetDocflowEventsResponse

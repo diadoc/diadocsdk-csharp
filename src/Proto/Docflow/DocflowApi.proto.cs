@@ -305,6 +305,54 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _PopulatePreviousDocumentStates; }
       set { _PopulatePreviousDocumentStates = value; }
     }
+    private readonly global::System.Collections.Generic.List<string> _MessageTypes = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"MessageTypes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> MessageTypes
+    {
+      get { return _MessageTypes; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<string> _DocumentDirections = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"DocumentDirections", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> DocumentDirections
+    {
+      get { return _DocumentDirections; }
+    }
+  
+
+    private string _DepartmentId = "";
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"DepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DepartmentId
+    {
+      get { return _DepartmentId; }
+      set { _DepartmentId = value; }
+    }
+    private readonly global::System.Collections.Generic.List<string> _TypeNamedIds = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(9, Name=@"TypeNamedIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> TypeNamedIds
+    {
+      get { return _TypeNamedIds; }
+    }
+  
+
+    private string _CounteragentBoxId = "";
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"CounteragentBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string CounteragentBoxId
+    {
+      get { return _CounteragentBoxId; }
+      set { _CounteragentBoxId = value; }
+    }
+
+    private int _Limit = (int)100;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"Limit", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)100)]
+    public int Limit
+    {
+      get { return _Limit; }
+      set { _Limit = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

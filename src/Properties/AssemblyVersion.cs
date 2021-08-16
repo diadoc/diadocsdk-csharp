@@ -6,6 +6,6 @@
 using System.Reflection;
 
 [assembly: AssemblyVersion("2.9.0.0")]
-[assembly: AssemblyFileVersion("2.9.5-dev")]
-[assembly: AssemblyInformationalVersion("2.9.5-dev")]
+[assembly: AssemblyFileVersion("2.9.17-dev")]
+[assembly: AssemblyInformationalVersion("2.9.17-dev")]
 

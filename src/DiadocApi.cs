@@ -240,11 +240,24 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationFeatures(authToken, boxId);
 		}
 
-		public BoxEventList GetNewEvents(string authToken, string boxId, string afterEventId = null)
+		public BoxEventList GetNewEvents(
+			string authToken,
+			string boxId,
+			string afterEventId = null,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int? limit = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetNewEvents(authToken, boxId, afterEventId);
+			return diadocHttpApi.GetNewEvents(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
 		}
 
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)

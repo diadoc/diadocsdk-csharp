@@ -66,7 +66,20 @@ namespace Diadoc.Api
 		Department GetDepartment(string authToken, string orgId, string departmentId);
 		void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps);
 		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
-		BoxEventList GetNewEvents(string authToken, string boxId, string afterEventId = null);
+		BoxEventList GetNewEvents(
+			string authToken,
+			string boxId,
+			string afterEventId = null,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int? limit = null);
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
 		Message PostMessage(string authToken, MessageToPost msg, string operationId = null);
 		Template PostTemplate(string authToken, TemplateToPost template, string operationId = null);
@@ -263,12 +276,27 @@ namespace Diadoc.Api
 		Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId);
 		Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps);
 		Task<OrganizationFeatures> GetOrganizationFeaturesAsync(string authToken, string boxId);
-		Task<BoxEventList> GetNewEventsAsync(string authToken, string boxId, string afterEventId = null);
+		Task<BoxEventList> GetNewEventsAsync(
+			string authToken,
+			string boxId,
+			string afterEventId = null,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int? limit = null);
 		Task<BoxEvent> GetEventAsync(string authToken, string boxId, string eventId);
 		Task<Message> PostMessageAsync(string authToken, MessageToPost msg, string operationId = null);
 		Task<Template> PostTemplateAsync(string authToken, TemplateToPost template, string operationId = null);
-		Task<Message> TransformTemplateToMessageAsync(string authToken, TemplateTransformationToPost templateTransformation, string operationId
- = null);
+		Task<Message> TransformTemplateToMessageAsync(
+			string authToken,
+			TemplateTransformationToPost templateTransformation,
+			string operationId = null);
 		Task<MessagePatch> PostMessagePatchAsync(string authToken, MessagePatchToPost patch, string operationId = null);
 		Task<MessagePatch> PostTemplatePatchAsync(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null);
 		Task PostRoamingNotificationAsync(string authToken, RoamingNotificationToPost notification);

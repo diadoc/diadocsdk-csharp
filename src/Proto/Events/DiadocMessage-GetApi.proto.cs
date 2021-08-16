@@ -85,6 +85,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _Patch; }
       set { _Patch = value; }
     }
+
+    private string _IndexKey = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"IndexKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string IndexKey
+    {
+      get { return _IndexKey; }
+      set { _IndexKey = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

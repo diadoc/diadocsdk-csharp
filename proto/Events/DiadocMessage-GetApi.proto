@@ -29,6 +29,7 @@ message BoxEvent {
 	required string EventId = 1;
 	optional Message Message = 2;
 	optional MessagePatch Patch = 3;
+	optional string IndexKey = 4;
 }
 
 message Message {

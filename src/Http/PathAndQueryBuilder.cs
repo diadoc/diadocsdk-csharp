@@ -29,6 +29,14 @@ namespace Diadoc.Api.Http
 			}
 		}
 
+		public void AddCommaSeparatedParameter(string key, params string[] values)
+		{
+			if (!string.IsNullOrEmpty(key) && values != null && values.Length != 0)
+			{
+				parameters.Add(key, string.Join(",", values));
+			}
+		}
+
 		public string BuildPathAndQuery()
 		{
 			var sb = new StringBuilder("/" + action);

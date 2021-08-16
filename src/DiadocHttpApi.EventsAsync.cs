@@ -8,12 +8,58 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		public Task<BoxEventList> GetNewEventsAsync(string authToken, string boxId, string afterEventId = null)
+		public Task<BoxEventList> GetNewEventsAsync(
+			string authToken,
+			string boxId,
+			string afterEventId = null,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int? limit = null)
 		{
-			var qsb = new PathAndQueryBuilder("/V5/GetNewEvents");
-			qsb.AddParameter("includeDrafts");
+			var qsb = new PathAndQueryBuilder("/V7/GetNewEvents");
 			qsb.AddParameter("boxId", boxId);
-			if (!string.IsNullOrEmpty(afterEventId)) qsb.AddParameter("afterEventId", afterEventId);
+			if (!string.IsNullOrEmpty(afterEventId))
+			{
+				qsb.AddParameter("afterEventId", afterEventId);
+			}
+			if (afterIndexKey != null)
+			{
+				qsb.AddParameter("afterIndexKey", afterIndexKey);
+			}
+			if (!string.IsNullOrEmpty(departmentId))
+			{
+				qsb.AddParameter("departmentId", departmentId);
+			}
+			qsb.AddCommaSeparatedParameter("messageType", messageTypes);
+			qsb.AddCommaSeparatedParameter("typeNamedId", typeNamedIds);
+			qsb.AddCommaSeparatedParameter("documentDirection", documentDirections);
+			if (timestampFromTicks != null)
+			{
+				qsb.AddParameter("timestampFromTicks", timestampFromTicks.ToString());
+			}
+			if (timestampToTicks != null)
+			{
+				qsb.AddParameter("timestampToTicks", timestampToTicks.ToString());
+			}
+			if (!string.IsNullOrEmpty(counteragentBoxId))
+			{
+				qsb.AddParameter("counteragentBoxId", counteragentBoxId);
+			}
+			if (!string.IsNullOrEmpty(orderBy))
+			{
+				qsb.AddParameter("orderBy", orderBy);
+			}
+			if (limit != null)
+			{
+				qsb.AddParameter("limit", limit.ToString());
+			}
 			return PerformHttpRequestAsync<BoxEventList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 

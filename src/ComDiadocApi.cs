@@ -60,7 +60,20 @@ namespace Diadoc.Api
 		Organization GetOrganizationByFnsParticipantId(string fnsParticipantId);
 		Box GetBox(string boxId);
 		Department GetDepartment(string authToken, string orgId, string departmentId);
-		BoxEventList GetNewEvents(string authToken, string boxId, string afterEventId);
+		BoxEventList GetNewEvents(
+			string authToken,
+			string boxId,
+			string afterEventId,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int? limit = null);
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
 		void SaveEntityContent(string authToken, string boxId, string messageId, string entityId, string filePath);
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message);
@@ -619,9 +632,22 @@ namespace Diadoc.Api
 			return diadoc.GetDepartment(authToken, orgId, departmentId);
 		}
 
-		public BoxEventList GetNewEvents(string authToken, string boxId, string afterEventId)
+		public BoxEventList GetNewEvents(
+			string authToken,
+			string boxId,
+			string afterEventId,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int? limit = null)
 		{
-			return diadoc.GetNewEvents(authToken, boxId, afterEventId);
+			return diadoc.GetNewEvents(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
 		}
 
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)
