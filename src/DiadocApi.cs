@@ -389,12 +389,13 @@ namespace Diadoc.Api
 			string boxId,
 			string messageId,
 			string attachmentId,
-			RevocationRequestInfo revocationRequestInfo)
+			RevocationRequestInfo revocationRequestInfo,
+			string contentTypeId = null)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (attachmentId == null) throw new ArgumentNullException("attachmentId");
-			return diadocHttpApi.GenerateRevocationRequestXml(authToken, boxId, messageId, attachmentId, revocationRequestInfo);
+			return diadocHttpApi.GenerateRevocationRequestXml(authToken, boxId, messageId, attachmentId, revocationRequestInfo, contentTypeId);
 		}
 
 		public GeneratedFile GenerateSignatureRejectionXml(string authToken,
