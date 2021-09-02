@@ -25,10 +25,15 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, correctionInfo);
 		}
 
-		public Task<GeneratedFile> GenerateRevocationRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo)
+		public Task<GeneratedFile> GenerateRevocationRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null)
 		{
-			var queryString = $"/GenerateRevocationRequestXml?boxId={boxId}&messageId={messageId}&attachmentId={attachmentId}";
-			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, revocationRequestInfo);
+			var queryBuilder = new PathAndQueryBuilder("/V2/GenerateRevocationRequestXml");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("messageId", messageId);
+			queryBuilder.AddParameter("attachmentId", attachmentId);
+			if (!string.IsNullOrEmpty(contentTypeId))
+				queryBuilder.AddParameter("contentTypeId", contentTypeId);
+			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), revocationRequestInfo);
 		}
 
 		public Task<GeneratedFile> GenerateSignatureRejectionXmlAsync(string authToken, string boxId, string messageId, string attachmentId, SignatureRejectionInfo signatureRejectionInfo)

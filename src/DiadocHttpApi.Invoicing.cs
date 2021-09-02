@@ -24,10 +24,15 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryString, correctionInfo);
 		}
 
-		public GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo)
+		public GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null)
 		{
-			var queryString = string.Format("/GenerateRevocationRequestXml?boxId={0}&messageId={1}&attachmentId={2}", boxId, messageId, attachmentId);
-			return PerformGenerateXmlHttpRequest(authToken, queryString, revocationRequestInfo);
+			var queryBuilder = new PathAndQueryBuilder("/V2/GenerateRevocationRequestXml");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("messageId", messageId);
+			queryBuilder.AddParameter("attachmentId", attachmentId);
+			if (!string.IsNullOrEmpty(contentTypeId))
+				queryBuilder.AddParameter("contentTypeId", contentTypeId);
+			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), revocationRequestInfo);
 		}
 
 		public GeneratedFile GenerateSignatureRejectionXml(string authToken, string boxId, string messageId, string attachmentId, SignatureRejectionInfo signatureRejectionInfo)
