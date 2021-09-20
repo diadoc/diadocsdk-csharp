@@ -28,7 +28,7 @@ namespace Diadoc.Api.Com
 		{
 			Bytes = File.ReadAllBytes(path);
 		}
-		
+
 		public void ReadFromText(string text, string codePage)
 		{
 			if (string.IsNullOrEmpty(codePage)) codePage = "utf-8";

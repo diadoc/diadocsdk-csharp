@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
 
 namespace Diadoc.Api.Proto.Documents.Types
@@ -22,12 +21,12 @@ namespace Diadoc.Api.Proto.Documents.Types
 	[ComDefaultInterface(typeof(IDocumentTypeDescriptionV2))]
 	public partial class DocumentTypeDescriptionV2 : SafeComObject, IDocumentTypeDescriptionV2
 	{
-		ReadonlyList IDocumentTypeDescriptionV2.SupportedDocflowList
+		public ReadonlyList SupportedDocflowList
 		{
-			get { return new ReadonlyList(SupportedDocflows.Select(x => x).ToArray()); }
+			get { return new ReadonlyList(SupportedDocflows); }
 		}
 
-		ReadonlyList IDocumentTypeDescriptionV2.FunctionList
+		public ReadonlyList FunctionList
 		{
 			get { return new ReadonlyList(Functions); }
 		}
@@ -47,7 +46,7 @@ namespace Diadoc.Api.Proto.Documents.Types
 	[ComDefaultInterface(typeof(IGetDocumentTypesResponseV2))]
 	public partial class GetDocumentTypesResponseV2 : SafeComObject, IGetDocumentTypesResponseV2
 	{
-		ReadonlyList IGetDocumentTypesResponseV2.DocumentTypeList
+		public ReadonlyList DocumentTypeList
 		{
 			get { return new ReadonlyList(DocumentTypes); }
 		}
@@ -68,7 +67,7 @@ namespace Diadoc.Api.Proto.Documents.Types
 	[ComDefaultInterface(typeof(IDocumentFunctionV2))]
 	public partial class DocumentFunctionV2 : SafeComObject, IDocumentFunctionV2
 	{
-		ReadonlyList IDocumentFunctionV2.VersionList
+		public ReadonlyList VersionList
 		{
 			get { return new ReadonlyList(Versions); }
 		}
@@ -93,12 +92,12 @@ namespace Diadoc.Api.Proto.Documents.Types
 	[ComDefaultInterface(typeof(IDocumentVersionV2))]
 	public partial class DocumentVersionV2 : SafeComObject, IDocumentVersionV2
 	{
-		ReadonlyList IDocumentVersionV2.TitleList
+		public ReadonlyList TitleList
 		{
 			get { return new ReadonlyList(Titles); }
 		}
 
-		ReadonlyList IDocumentVersionV2.WorkflowList
+		public ReadonlyList WorkflowList
 		{
 			get { return new ReadonlyList(Workflows); }
 		}
@@ -138,12 +137,12 @@ namespace Diadoc.Api.Proto.Documents.Types
 	[ComDefaultInterface(typeof(IDocumentTitleV2))]
 	public partial class DocumentTitleV2 : SafeComObject, IDocumentTitleV2
 	{
-		ReadonlyList IDocumentTitleV2.MetadataItemList
+		public ReadonlyList MetadataItemList
 		{
 			get { return new ReadonlyList(MetadataItems); }
 		}
 
-		ReadonlyList IDocumentTitleV2.EncryptedMetadataItemList
+		public ReadonlyList EncryptedMetadataItemList
 		{
 			get { return new ReadonlyList(EncryptedMetadataItems); }
 		}

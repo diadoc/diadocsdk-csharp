@@ -55,6 +55,18 @@ namespace Diadoc.Api.DataXml.Ucd736
 			set { this.signersField = value; }
 		}
 
+		public UniversalCorrectionDocumentBuyerTitle UseSignerReferences(SignerReference[] signerReferences)
+		{
+			this.Signers = signerReferences;
+			return this;
+		}
+
+		public UniversalCorrectionDocumentBuyerTitle UseSignerDetails(ExtendedSignerDetails_CorrectionBuyerTitle736[] signerDetails)
+		{
+			this.Signers = signerDetails;
+			return this;
+		}
+
 		/// <remarks/>
 		[System.Xml.Serialization.XmlAttributeAttribute()]
 		public string DocumentCreator
