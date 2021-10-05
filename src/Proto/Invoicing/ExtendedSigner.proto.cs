@@ -368,7 +368,10 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       Torg2Buyer = 9,
             
       [global::ProtoBuf.ProtoEnum(Name=@"Torg2AdditionalInfo", Value=10)]
-      Torg2AdditionalInfo = 10
+      Torg2AdditionalInfo = 10,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Ucd736Buyer", Value=11)]
+      Ucd736Buyer = 11
     }
   
 }
