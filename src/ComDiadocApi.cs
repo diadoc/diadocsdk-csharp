@@ -60,6 +60,7 @@ namespace Diadoc.Api
 		Organization GetOrganizationByFnsParticipantId(string fnsParticipantId);
 		Box GetBox(string boxId);
 		Department GetDepartment(string authToken, string orgId, string departmentId);
+
 		BoxEventList GetNewEvents(
 			string authToken,
 			string boxId,
@@ -74,6 +75,7 @@ namespace Diadoc.Api
 			string counteragentBoxId = null,
 			string orderBy = null,
 			int? limit = null);
+
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
 		void SaveEntityContent(string authToken, string boxId, string messageId, string entityId, string filePath);
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message);
@@ -348,7 +350,8 @@ namespace Diadoc.Api
 			string boxId,
 			string messageId,
 			string attachmentId,
-			[MarshalAs(UnmanagedType.IDispatch)] object revocationRequestInfo);
+			[MarshalAs(UnmanagedType.IDispatch)] object revocationRequestInfo,
+			string contentTypeId = null);
 
 		GeneratedFile GenerateSignatureRejectionXml(
 			string authToken,
@@ -850,13 +853,15 @@ namespace Diadoc.Api
 			string boxId,
 			string messageId,
 			string attachmentId,
-			object revocationRequestInfo)
+			object revocationRequestInfo,
+			string contentTypeId = null)
 		{
 			return diadoc.GenerateRevocationRequestXml(authToken,
 				boxId,
 				messageId,
 				attachmentId,
-				(RevocationRequestInfo) revocationRequestInfo);
+				(RevocationRequestInfo) revocationRequestInfo,
+				contentTypeId);
 		}
 
 		public GeneratedFile GenerateSignatureRejectionXml(
@@ -1410,7 +1415,7 @@ namespace Diadoc.Api
 
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType, object signerDetails)
 		{
-			return diadoc.PostExtendedSignerDetails(token, boxId, certificateBytes, (DocumentTitleType)documentTitleType, (ExtendedSignerDetailsToPost)signerDetails);
+			return diadoc.PostExtendedSignerDetails(token, boxId, certificateBytes, (DocumentTitleType) documentTitleType, (ExtendedSignerDetailsToPost) signerDetails);
 		}
 
 		public GetDocumentTypesResponseV2 GetDocumentTypesV2(string token, string boxId)
@@ -1701,7 +1706,7 @@ namespace Diadoc.Api
 			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request)
 		{
-			return diadoc.DetectCustomPrintForms(authToken, boxId, (CustomPrintFormDetectionRequest)request);
+			return diadoc.DetectCustomPrintForms(authToken, boxId, (CustomPrintFormDetectionRequest) request);
 		}
 	}
 }

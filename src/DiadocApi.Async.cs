@@ -325,12 +325,12 @@ namespace Diadoc.Api
 		}
 
 		public Task<GeneratedFile> GenerateRevocationRequestXmlAsync(string authToken, string boxId, string messageId,
-			string attachmentId, RevocationRequestInfo revocationRequestInfo)
+			string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (attachmentId == null) throw new ArgumentNullException("attachmentId");
-			return diadocHttpApi.GenerateRevocationRequestXmlAsync(authToken, boxId, messageId, attachmentId, revocationRequestInfo);
+			return diadocHttpApi.GenerateRevocationRequestXmlAsync(authToken, boxId, messageId, attachmentId, revocationRequestInfo, contentTypeId);
 		}
 
 		public Task<GeneratedFile> GenerateSignatureRejectionXmlAsync(string authToken, string boxId, string messageId,
