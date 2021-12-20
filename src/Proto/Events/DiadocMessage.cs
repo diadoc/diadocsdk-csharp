@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
 using Diadoc.Api.Proto.Documents;
+using Diadoc.Api.Proto.OuterDocflows;
 using MessageType = Diadoc.Api.Com.MessageType;
 
 namespace Diadoc.Api.Proto.Events
@@ -101,6 +102,7 @@ namespace Diadoc.Api.Proto.Events
 		TemplateRefusalInfo TemplateRefusalInfo { get; }
 		OuterDocflowInfo OuterDocflow { get; }
 		RevocationRequestInfo RevocationRequestInfo { get; }
+		PowerOfAttorneyInfo PowerOfAttorneyInfo { get; }
 	}
 
 	[ComVisible(true)]
@@ -1166,11 +1168,13 @@ namespace Diadoc.Api.Proto.Events
 
 		bool SignWithTestSignature { get; set; }
 		string NameOnShelf { get; set; }
+		PowerOfAttorneyToPost PowerOfAttorney { get; set; }
 
 		void LoadContentFromFile(string fileName);
 		void SaveContentToFile(string fileName);
 		void LoadSignatureFromFile(string fileName);
 		void SaveSignatureToFile(string fileName);
+		void SetPowerOfAttorney([MarshalAs(UnmanagedType.IDispatch)] object powerOfAttorney);
 	}
 
 	[ComVisible(true)]
@@ -1249,6 +1253,11 @@ namespace Diadoc.Api.Proto.Events
 		{
 			File.WriteAllBytes(fileName, Signature);
 		}
+
+		public void SetPowerOfAttorney(object powerOfAttorney)
+		{
+			PowerOfAttorney = (PowerOfAttorneyToPost) powerOfAttorney;
+		}
 	}
 
 	[ComVisible(true)]
@@ -1265,8 +1274,10 @@ namespace Diadoc.Api.Proto.Events
 		bool IsApprovementSignature { get; set; }
 		string SignatureNameOnShelf { get; set; }
 		string PatchedContentId { get; set; }
+		PowerOfAttorneyToPost PowerOfAttorney { get; set; }
 
 		void LoadFromFile(string fileName);
+		void SetPowerOfAttorney([MarshalAs(UnmanagedType.IDispatch)] object powerOfAttorney);
 	}
 
 	[ComVisible(true)]
@@ -1285,6 +1296,11 @@ namespace Diadoc.Api.Proto.Events
 		public void LoadFromFile(string fileName)
 		{
 			Signature = File.ReadAllBytes(fileName);
+		}
+
+		public void SetPowerOfAttorney(object powerOfAttorney)
+		{
+			PowerOfAttorney = (PowerOfAttorneyToPost) powerOfAttorney;
 		}
 	}
 
@@ -1589,7 +1605,9 @@ namespace Diadoc.Api.Proto.Events
 		string PatchedContentId { get; set; }
 		byte[] Signature { get; set; }
 		bool SignWithTestSignature { get; set; }
+		PowerOfAttorneyToPost PowerOfAttorney { get; set; }
 		void LoadFromFile(string fileName);
+		void SetPowerOfAttorney([MarshalAs(UnmanagedType.IDispatch)] object powerOfAttorney);
 	}
 
 	[ComVisible(true)]
@@ -1602,6 +1620,11 @@ namespace Diadoc.Api.Proto.Events
 		public void LoadFromFile(string fileName)
 		{
 			Signature = File.ReadAllBytes(fileName);
+		}
+
+		public void SetPowerOfAttorney(object powerOfAttorney)
+		{
+			PowerOfAttorney = (PowerOfAttorneyToPost) powerOfAttorney;
 		}
 	}
 
@@ -1897,5 +1920,45 @@ namespace Diadoc.Api.Proto.Events
 			Key = key;
 			Value = value;
 		}
+	}
+
+	[ComVisible(true)]
+	[Guid("3FBBD3E0-A2C9-48C9-95EB-BA0709169BDA")]
+	public interface IPowerOfAttorneyToPost
+	{
+		PowersOfAttorney.PowerOfAttorneyFullId FullId { get; set; }
+		bool UseDefault { get; set; }
+
+		void SetFullId([MarshalAs(UnmanagedType.IDispatch)] object fullId);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyToPost")]
+	[Guid("350CA799-E65C-4D74-A25F-685376BE0D62")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyToPost))]
+	public partial class PowerOfAttorneyToPost : SafeComObject, IPowerOfAttorneyToPost
+	{
+		public void SetFullId(object fullId)
+		{
+			FullId = (PowersOfAttorney.PowerOfAttorneyFullId) fullId;
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("C1BA080C-8856-4A48-BA55-36726B2B2EF3")]
+	public interface IPowerOfAttorneyInfo
+	{
+		PowersOfAttorney.PowerOfAttorneyFullId FullId { get; set; }
+		PowersOfAttorney.PowerOfAttorneyValidationStatus Status { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyInfo")]
+	[Guid("540CDB03-64E6-4815-82C4-F4F86AE5F802")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyInfo))]
+	public partial class PowerOfAttorneyInfo : SafeComObject, IPowerOfAttorneyInfo
+	{
 	}
 }

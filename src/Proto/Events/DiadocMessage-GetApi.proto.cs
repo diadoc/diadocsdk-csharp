@@ -19,7 +19,8 @@
 // Note: requires additional types generated from: Events/ResolutionRequestDenialInfo.proto
 // Note: requires additional types generated from: Events/ResolutionRouteInfo.proto
 // Note: requires additional types generated from: Events/RevocationRequestInfo.proto
-// Note: requires additional types generated from: OuterDocflow.proto
+// Note: requires additional types generated from: Events/PowerOfAttorneyInfo.proto
+// Note: requires additional types generated from: OuterDocflows/OuterDocflow.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BoxEventList")]
@@ -785,10 +786,10 @@ namespace Diadoc.Api.Proto.Events
       set { _TemplateRefusalInfo = value; }
     }
 
-    private Diadoc.Api.Proto.OuterDocflowInfo _OuterDocflow = null;
+    private Diadoc.Api.Proto.OuterDocflows.OuterDocflowInfo _OuterDocflow = null;
     [global::ProtoBuf.ProtoMember(29, IsRequired = false, Name=@"OuterDocflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.OuterDocflowInfo OuterDocflow
+    public Diadoc.Api.Proto.OuterDocflows.OuterDocflowInfo OuterDocflow
     {
       get { return _OuterDocflow; }
       set { _OuterDocflow = value; }
@@ -810,6 +811,15 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _ContentTypeId; }
       set { _ContentTypeId = value; }
+    }
+
+    private Diadoc.Api.Proto.Events.PowerOfAttorneyInfo _PowerOfAttorneyInfo = null;
+    [global::ProtoBuf.ProtoMember(32, IsRequired = false, Name=@"PowerOfAttorneyInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.PowerOfAttorneyInfo PowerOfAttorneyInfo
+    {
+      get { return _PowerOfAttorneyInfo; }
+      set { _PowerOfAttorneyInfo = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -1209,7 +1219,13 @@ namespace Diadoc.Api.Proto.Events
       OuterDocflow = 75,
             
       [global::ProtoBuf.ProtoEnum(Name=@"RoamingConfirmation", Value=76)]
-      RoamingConfirmation = 76
+      RoamingConfirmation = 76,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PowerOfAttorney", Value=77)]
+      PowerOfAttorney = 77,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PowerOfAttorneyStatus", Value=78)]
+      PowerOfAttorneyStatus = 78
     }
   
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Xml.Serialization;
 using Diadoc.Api.Com;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Events;
@@ -1721,5 +1722,21 @@ namespace Diadoc.Api.Proto
 	[ComDefaultInterface(typeof(IContent_v3))]
 	public partial class Content_v3 : SafeComObject, IContent_v3
 	{
+	}
+}
+
+namespace Diadoc.Api.Com
+{
+	[ComVisible(true)]
+	[Guid("9D585AFA-079E-438C-9749-EE61CD60B112")]
+	//NOTE: Это хотели, чтобы можно было использовать XML-сериализацию для классов
+	[XmlType(TypeName = "Severity", Namespace = "https://diadoc-api.kontur.ru")]
+	public enum Severity
+	{
+		UnknownSeverity = 0,
+		Info = 1,
+		Success = 2,
+		Warning = 3,
+		Error = 4
 	}
 }

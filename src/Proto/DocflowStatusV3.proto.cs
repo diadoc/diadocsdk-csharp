@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated from: DocflowStatusV3.proto
+// Note: requires additional types generated from: PowersOfAttorney/PowerOfAttorneyValidation.proto
 namespace Diadoc.Api.Proto
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocflowStatusV3")]
@@ -30,6 +31,15 @@ namespace Diadoc.Api.Proto
     {
       get { return _SecondaryStatus; }
       set { _SecondaryStatus = value; }
+    }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationStatus _PowerOfAttorneyGeneralStatus = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"PowerOfAttorneyGeneralStatus", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationStatus PowerOfAttorneyGeneralStatus
+    {
+      get { return _PowerOfAttorneyGeneralStatus; }
+      set { _PowerOfAttorneyGeneralStatus = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

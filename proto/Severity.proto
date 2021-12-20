@@ -1,0 +1,10 @@
+package Diadoc.Api.Proto;
+
+enum Severity
+{
+	UnknownSeverity = 0; //reserved for backward compatibility
+	Info = 1;
+	Success = 2;
+	Warning = 3;
+	Error = 4;
+}

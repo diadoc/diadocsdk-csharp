@@ -1,0 +1,20 @@
+import "PowersOfAttorney/PowerOfAttorney.proto";
+
+package Diadoc.Api.Proto.Employees.PowersOfAttorney;
+
+message EmployeePowerOfAttorneyList {
+    repeated EmployeePowerOfAttorney PowersOfAttorney = 1;
+}
+
+message EmployeePowerOfAttorney {
+    required Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorney PowerOfAttorney = 1;
+    required bool IsDefault = 2;
+}
+
+message EmployeePowerOfAttorneyToUpdate {
+    optional EmployeePowerOfAttorneyIsDefaultPatch IsDefaultPatch = 1;
+}
+
+message EmployeePowerOfAttorneyIsDefaultPatch {
+    required bool IsDefault = 1;
+}

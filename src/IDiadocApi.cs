@@ -23,6 +23,8 @@ using Departments = Diadoc.Api.Proto.Departments;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Diadoc.Api.Proto.Certificates;
+using Diadoc.Api.Proto.Employees.PowersOfAttorney;
+using Diadoc.Api.Proto.PowersOfAttorney;
 using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
 
 #if !NET35
@@ -236,6 +238,23 @@ namespace Diadoc.Api
 		EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId);
 		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);
 
+		EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, string userId, bool onlyActual);
+
+		EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
+			string authToken,
+			string boxId,
+			string userId,
+			string registrationNumber,
+			string issuerInn,
+			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate);
+
+		EmployeePowerOfAttorney AddEmployeePowerOfAttorney(
+			string authToken,
+			string boxId,
+			string userId,
+			string registrationNumber,
+			string issuerInn);
+
 		Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId);
 		Departments.DepartmentList GetDepartments(string authToken, string boxId, int? page = null, int? count = null);
 		Departments.Department CreateDepartment(string authToken, string boxId, Departments.DepartmentToCreate departmentToCreate);
@@ -246,6 +265,18 @@ namespace Diadoc.Api
 		void RegisterConfirm(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
 		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, CustomPrintFormDetectionRequest request);
 		BoxEvent GetLastEvent(string authToken, string boxId);
+
+		AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister);
+		PowerOfAttorneyRegisterResult RegisterPowerOfAttorneyResult(string authToken, string boxId, string taskId);
+
+		PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(
+			string authToken,
+			string boxId,
+			string registrationNumber,
+			string issuerInn,
+			PowerOfAttorneyPrevalidateRequest request);
+
+		PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId);
 
 #if !NET35
 
@@ -463,6 +494,24 @@ namespace Diadoc.Api
 		Task<Employee> UpdateEmployeeAsync(string authToken, string boxId, string userId, EmployeeToUpdate employeeToUpdate);
 		Task DeleteEmployeeAsync(string authToken, string boxId, string userId);
 		Task<Employee> GetMyEmployeeAsync(string authToken, string boxId);
+
+		Task<EmployeePowerOfAttorneyList> GetEmployeePowersOfAttorneyAsync(string authToken, string boxId, string userId, bool onlyActual);
+
+		Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyAsync(
+			string authToken,
+			string boxId,
+			string userId,
+			string registrationNumber,
+			string issuerInn,
+			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate);
+
+		Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyAsync(
+			string authToken,
+			string boxId,
+			string userId,
+			string registrationNumber,
+			string issuerInn);
+
 		Task<EmployeeSubscriptions> GetSubscriptionsAsync(string authToken, string boxId, string userId);
 		Task<EmployeeSubscriptions> UpdateSubscriptionsAsync(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);
 		Task<Departments.Department> GetDepartmentByFullIdAsync(string authToken, string boxId, string departmentId);
@@ -475,6 +524,18 @@ namespace Diadoc.Api
 		Task RegisterConfirmAsync(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
 		Task<CustomPrintFormDetectionResult> DetectCustomPrintFormsAsync(string authToken, string boxId, CustomPrintFormDetectionRequest request);
 		Task<BoxEvent> GetLastEventAsync(string authToken, string boxId);
+
+		Task<AsyncMethodResult> RegisterPowerOfAttorneyAsync(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister);
+		Task<PowerOfAttorneyRegisterResult> RegisterPowerOfAttorneyResultAsync(string authToken, string boxId, string taskId);
+
+		Task<PowerOfAttorneyPrevalidateResult> PrevalidatePowerOfAttorneyAsync(
+			string authToken,
+			string boxId,
+			string registrationNumber,
+			string issuerInn,
+			PowerOfAttorneyPrevalidateRequest request);
+
+		Task<PowerOfAttorney> GetPowerOfAttorneyInfoAsync(string authToken, string boxId, string messageId, string entityId);
 #endif
 	}
 }

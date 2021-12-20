@@ -1,4 +1,4 @@
-package Diadoc.Api.Proto;
+package Diadoc.Api.Proto.OuterDocflows;
 
 message Status {
     required string NamedId = 1;
@@ -7,11 +7,12 @@ message Status {
     optional string Description = 4;
     repeated StatusDetail Details = 5;
 }
-message StatusDetail{
+message StatusDetail {
     optional string Code = 1;
     optional string Text = 2;
 }
-enum OuterStatusType{
+
+enum OuterStatusType {
     UnknownStatus = 0;
     Normal = 1;
     Success = 2;

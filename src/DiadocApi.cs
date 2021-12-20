@@ -13,12 +13,14 @@ using Diadoc.Api.Proto.Documents.Types;
 using Diadoc.Api.Proto.Dss;
 using Diadoc.Api.Proto.Employees.Subscriptions;
 using Diadoc.Api.Proto.Employees;
+using Diadoc.Api.Proto.Employees.PowersOfAttorney;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Organizations;
+using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
@@ -1343,6 +1345,41 @@ namespace Diadoc.Api
 			return diadocHttpApi.UpdateSubscriptions(authToken, boxId, userId, subscriptionsToUpdate);
 		}
 
+		public EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, string userId, bool onlyActual = false)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (userId == null) throw new ArgumentNullException("userId");
+			return diadocHttpApi.GetEmployeePowersOfAttorney(authToken, boxId, userId, onlyActual);
+		}
+
+		public EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
+			string authToken,
+			string boxId,
+			string userId,
+			string registrationNumber,
+			string issuerInn,
+			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (userId == null) throw new ArgumentNullException("userId");
+			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
+			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
+			if (powerOfAttorneyToUpdate == null) throw new ArgumentNullException("powerOfAttorneyToUpdate");
+			return diadocHttpApi.UpdateEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn, powerOfAttorneyToUpdate);
+		}
+
+		public EmployeePowerOfAttorney AddEmployeePowerOfAttorney(string authToken, string boxId, string userId, string registrationNumber, string issuerInn)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (userId == null) throw new ArgumentNullException("userId");
+			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
+			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
+			return diadocHttpApi.AddEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
+		}
+
 		public Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1411,6 +1448,46 @@ namespace Diadoc.Api
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetLastEvent(authToken, boxId);
+		}
+
+		public AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (powerOfAttorneyToRegister == null) throw new ArgumentNullException("powerOfAttorneyToRegister");
+			return diadocHttpApi.RegisterPowerOfAttorney(authToken, boxId, powerOfAttorneyToRegister);
+		}
+
+		public PowerOfAttorneyRegisterResult RegisterPowerOfAttorneyResult(string authToken, string boxId, string taskId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (taskId == null) throw new ArgumentNullException("taskId");
+			return diadocHttpApi.RegisterPowerOfAttorneyResult(authToken, boxId, taskId);
+		}
+
+		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(
+			string authToken,
+			string boxId,
+			string registrationNumber,
+			string issuerInn,
+			PowerOfAttorneyPrevalidateRequest request)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
+			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
+			if (request == null) throw new ArgumentNullException("request");
+			return diadocHttpApi.PrevalidatePowerOfAttorney(authToken, boxId, registrationNumber, issuerInn, request);
+		}
+
+		public PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (messageId == null) throw new ArgumentNullException("messageId");
+			if (entityId == null) throw new ArgumentNullException("entityId");
+			return diadocHttpApi.GetPowerOfAttorneyInfo(authToken, boxId, messageId, entityId);
 		}
 	}
 }

@@ -52,4 +52,5 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'net35'">
     <Compile Remove="*Async.cs" />
   </ItemGroup>
+
 </Project>

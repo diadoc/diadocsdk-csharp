@@ -8,10 +8,10 @@ namespace Diadoc.Api.Com
 	[XmlType(TypeName = "OuterStatusType", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum OuterStatusType
 	{
-		UnknownStatus = Proto.OuterStatusType.UnknownStatus,
-		Normal = Proto.OuterStatusType.Normal,
-		Success = Proto.OuterStatusType.Success,
-		Warning = Proto.OuterStatusType.Warning,
-		Error = Proto.OuterStatusType.Error
+		UnknownStatus = Proto.OuterDocflows.OuterStatusType.UnknownStatus,
+		Normal = Proto.OuterDocflows.OuterStatusType.Normal,
+		Success = Proto.OuterDocflows.OuterStatusType.Success,
+		Warning = Proto.OuterDocflows.OuterStatusType.Warning,
+		Error = Proto.OuterDocflows.OuterStatusType.Error
 	}
 }

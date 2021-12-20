@@ -1,9 +1,12 @@
+import "PowersOfAttorney/PowerOfAttorneyValidation.proto";
+
 package Diadoc.Api.Proto;
 
 message DocflowStatusV3
 {
     required DocflowStatusModelV3 PrimaryStatus = 1;
     optional DocflowStatusModelV3 SecondaryStatus = 2;
+    optional PowersOfAttorney.PowerOfAttorneyValidationStatus PowerOfAttorneyGeneralStatus = 3;
 }
 
 message DocflowStatusModelV3
