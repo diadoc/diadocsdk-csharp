@@ -530,6 +530,7 @@ namespace Diadoc.Api.Proto.Docflow
 		SignedAttachmentV3 ConfirmationAttachment { get; }
 		Timestamp ConfirmedAt { get; }
 		ReceiptDocflowV3 Receipt { get; }
+		OperatorConfirmationDocflow RoamingConfirmation { get; }
 	}
 
 	[ComVisible(true)]
@@ -855,6 +856,23 @@ namespace Diadoc.Api.Proto.Docflow
 		{
 			get { return (Com.GeneralReceiptStatus)Status; }
 		}
+	}
+
+	[ComVisible(true)]
+	[Guid("86f2f2c7-8d06-482a-a421-4ec66ed71d54")]
+	public interface IOperatorConfirmationDocflow
+	{
+		SignedAttachmentV3 ConfirmationAttachment { get; }
+		Timestamp ConfirmedAt { get; }
+	}
+
+	[ComVisible(true)]
+	[Guid("e9527227-3578-4abc-aabc-d591ce0b10f2")]
+	[ProgId("Diadoc.Api.OperatorConfirmationDocflow")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IOperatorConfirmationDocflow))]
+	public partial class OperatorConfirmationDocflow : SafeComObject, IOperatorConfirmationDocflow
+	{
 	}
 
 	[ComVisible(true)]

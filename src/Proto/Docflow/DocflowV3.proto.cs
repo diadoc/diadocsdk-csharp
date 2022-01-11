@@ -233,6 +233,43 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _Receipt; }
       set { _Receipt = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.OperatorConfirmationDocflow _RoamingConfirmation = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"RoamingConfirmation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.OperatorConfirmationDocflow RoamingConfirmation
+    {
+      get { return _RoamingConfirmation; }
+      set { _RoamingConfirmation = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OperatorConfirmationDocflow")]
+  public partial class OperatorConfirmationDocflow : global::ProtoBuf.IExtensible
+  {
+    public OperatorConfirmationDocflow() {}
+    
+
+    private Diadoc.Api.Proto.Docflow.SignedAttachmentV3 _ConfirmationAttachment = null;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ConfirmationAttachment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.SignedAttachmentV3 ConfirmationAttachment
+    {
+      get { return _ConfirmationAttachment; }
+      set { _ConfirmationAttachment = value; }
+    }
+
+    private Diadoc.Api.Proto.Timestamp _ConfirmedAt = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ConfirmedAt", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Timestamp ConfirmedAt
+    {
+      get { return _ConfirmedAt; }
+      set { _ConfirmedAt = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

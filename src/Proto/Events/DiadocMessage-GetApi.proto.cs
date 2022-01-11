@@ -1206,7 +1206,10 @@ namespace Diadoc.Api.Proto.Events
       TemplateRefusal = 74,
             
       [global::ProtoBuf.ProtoEnum(Name=@"OuterDocflow", Value=75)]
-      OuterDocflow = 75
+      OuterDocflow = 75,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RoamingConfirmation", Value=76)]
+      RoamingConfirmation = 76
     }
   
 }

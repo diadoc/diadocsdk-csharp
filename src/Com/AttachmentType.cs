@@ -64,6 +64,7 @@ namespace Diadoc.Api.Com
 		DeletionRestoration = 72,
 		TemplateTransformation = 73,
 		TemplateRefusal = 74,
-		OuterDocflow = 75
+		OuterDocflow = 75,
+		RoamingConfirmation = 76
 	}
 }

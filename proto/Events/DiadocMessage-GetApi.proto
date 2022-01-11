@@ -230,5 +230,6 @@ enum AttachmentType {
 	TemplateTransformation = 73;
 	TemplateRefusal = 74;
 	OuterDocflow = 75;
+	RoamingConfirmation = 76;
 	//Неизвестные типы должны обрабатываться как Title
 }
