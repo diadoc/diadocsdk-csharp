@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: OuterDocflowStatus.proto
-namespace Diadoc.Api.Proto
+// Generated from: OuterDocflows/OuterDocflowStatus.proto
+namespace Diadoc.Api.Proto.OuterDocflows
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"Status")]
   public partial class Status : global::ProtoBuf.IExtensible
@@ -29,9 +29,9 @@ namespace Diadoc.Api.Proto
       get { return _FriendlyName; }
       set { _FriendlyName = value; }
     }
-    private Diadoc.Api.Proto.OuterStatusType _Type;
+    private Diadoc.Api.Proto.OuterDocflows.OuterStatusType _Type;
     [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Diadoc.Api.Proto.OuterStatusType Type
+    public Diadoc.Api.Proto.OuterDocflows.OuterStatusType Type
     {
       get { return _Type; }
       set { _Type = value; }
@@ -45,9 +45,9 @@ namespace Diadoc.Api.Proto
       get { return _Description; }
       set { _Description = value; }
     }
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.StatusDetail> _Details = new global::System.Collections.Generic.List<Diadoc.Api.Proto.StatusDetail>();
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.OuterDocflows.StatusDetail> _Details = new global::System.Collections.Generic.List<Diadoc.Api.Proto.OuterDocflows.StatusDetail>();
     [global::ProtoBuf.ProtoMember(5, Name=@"Details", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.StatusDetail> Details
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.OuterDocflows.StatusDetail> Details
     {
       get { return _Details; }
     }

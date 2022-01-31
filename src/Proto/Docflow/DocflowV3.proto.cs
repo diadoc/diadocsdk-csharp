@@ -13,7 +13,7 @@
 // Note: requires additional types generated from: Docflow/AttachmentV3.proto
 // Note: requires additional types generated from: Docflow/RoamingNotification.proto
 // Note: requires additional types generated from: Docflow/ResolutionDocflowV3.proto
-// Note: requires additional types generated from: OuterDocflowStatus.proto
+// Note: requires additional types generated from: OuterDocflows/OuterDocflowStatus.proto
 // Note: requires additional types generated from: DocflowStatusV3.proto
 namespace Diadoc.Api.Proto.Docflow
 {
@@ -742,9 +742,9 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _Attachment; }
       set { _Attachment = value; }
     }
-    private Diadoc.Api.Proto.Status _Status;
+    private Diadoc.Api.Proto.OuterDocflows.Status _Status;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.Status Status
+    public Diadoc.Api.Proto.OuterDocflows.Status Status
     {
       get { return _Status; }
       set { _Status = value; }

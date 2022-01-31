@@ -1,0 +1,95 @@
+import "Content_v3.proto";
+import "Timestamp.proto";
+import "User.proto";
+
+package Diadoc.Api.Proto.PowersOfAttorney;
+
+message PowerOfAttorneyFullId {
+    required string RegistrationNumber = 1;
+    required string IssuerInn = 2;
+}
+
+message PowerOfAttorney {
+    required PowerOfAttorneyFullId FullId = 1;
+    required PowerOfAttorneyIssuer Issuer = 2;
+    required PowerOfAttorneyConfidant Confidant = 3;
+    required Timestamp StartAt = 4;
+    required Timestamp ExpireAt = 5;
+}
+
+message PowerOfAttorneyIssuer {
+    optional PowerOfAttorneyIssuerType Type = 1 [default = UnknownIssuerType];
+    optional PowerOfAttorneyIssuerLegalEntity LegalEntity = 2;
+    optional PowerOfAttorneyIssuerForeignEntity ForeignEntity = 3;
+    optional PowerOfAttorneyIssuerIndividualEntity IndividualEntity = 4;
+    optional PowerOfAttorneyIssuerPhysicalEntity PhysicalEntity = 5;
+}
+
+enum PowerOfAttorneyIssuerType {
+    UnknownIssuerType = 0;
+    LegalEntity = 1;
+    ForeignEntity = 2;
+    IndividualEntity = 3;
+    PhysicalEntity = 4;
+}
+
+message PowerOfAttorneyIssuerLegalEntity {
+    required string Inn = 1;
+    required string Kpp = 2;
+    required string OrganizationName = 3;
+}
+
+message PowerOfAttorneyIssuerForeignEntity {
+    optional string Inn = 1;
+    optional string Kpp = 2;
+    required string OrganizationName = 3;
+}
+
+message PowerOfAttorneyIssuerIndividualEntity {
+    required string Inn = 1;
+    optional FullName PersonName = 2;
+}
+
+message PowerOfAttorneyIssuerPhysicalEntity {
+    required string Inn = 1;
+    optional FullName PersonName = 2;
+}
+
+message PowerOfAttorneyConfidant {
+    required FullName PersonName = 1;
+    required string Inn = 2;
+    optional PowerOfAttorneyConfidantOrganization Organization = 3;
+}
+
+message PowerOfAttorneyConfidantOrganization {
+    required string Inn = 1;
+    optional string Kpp = 2;
+    required string Name = 3;
+}
+
+message PowerOfAttorneyToRegister {
+    optional PowerOfAttorneyFullId FullId = 1;
+    optional PowerOfAttorneySignedContent Content = 2;
+}
+
+message PowerOfAttorneySignedContent {
+    required Content_v3 Content = 1;
+    required Content_v3 Signature = 2;
+}
+
+message PowerOfAttorneyRegisterResult {
+    required string OperationStatus = 1;
+    optional PowerOfAttorney PowerOfAttorney = 2;
+    optional PowerOfAttorneyStatus Status = 3;
+    repeated PowerOfAttorneyOperationError Errors = 4;
+}
+
+message PowerOfAttorneyStatus {
+    required string Status = 1;
+    optional Timestamp LastCheckAt = 2;
+}
+
+message PowerOfAttorneyOperationError {
+    required string Code = 1;
+    required string Text = 2;
+}

@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
 
-namespace Diadoc.Api.Proto
+namespace Diadoc.Api.Proto.OuterDocflows
 {
 	[ComVisible(true)]
 	[Guid("13E72D45-0EA2-44E4-844A-5EE08DEEFC0E")]

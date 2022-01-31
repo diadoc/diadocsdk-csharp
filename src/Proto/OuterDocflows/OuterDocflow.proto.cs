@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: OuterDocflow.proto
-// Note: requires additional types generated from: OuterDocflowStatus.proto
-namespace Diadoc.Api.Proto
+// Generated from: OuterDocflows/OuterDocflow.proto
+// Note: requires additional types generated from: OuterDocflows/OuterDocflowStatus.proto
+namespace Diadoc.Api.Proto.OuterDocflows
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OuterDocflowInfo")]
   public partial class OuterDocflowInfo : global::ProtoBuf.IExtensible
@@ -30,9 +30,9 @@ namespace Diadoc.Api.Proto
       get { return _DocflowFriendlyName; }
       set { _DocflowFriendlyName = value; }
     }
-    private Diadoc.Api.Proto.Status _Status;
+    private Diadoc.Api.Proto.OuterDocflows.Status _Status;
     [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.Status Status
+    public Diadoc.Api.Proto.OuterDocflows.Status Status
     {
       get { return _Status; }
       set { _Status = value; }

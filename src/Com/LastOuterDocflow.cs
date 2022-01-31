@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using Diadoc.Api.Proto.OuterDocflows;
 
 namespace Diadoc.Api.Proto.Documents
 {

@@ -14,6 +14,7 @@ import "Events/ResolutionInfo.proto";
 import "Events/ResolutionRequestInfo.proto";
 import "Invoicing/OrganizationInfo.proto";
 import "Docflow/DocumentInfo.proto";
+import "PowersOfAttorney/PowerOfAttorney.proto";
 
 package Diadoc.Api.Proto.Events;
 
@@ -81,7 +82,7 @@ message EncryptedDocumentMetadata {
 	required string FileId = 1;
 	required string BuyerFnsParticipantId = 2;
 	required string SenderFnsParticipantId = 3;
-	required Diadoc.Api.Proto.Docflow.DocumentDateAndNumber DocumentDateAndNumber = 4;
+	required Docflow.DocumentDateAndNumber DocumentDateAndNumber = 4;
 }
 
 message EncryptedXmlBasicDocumentMetadata {
@@ -91,13 +92,13 @@ message EncryptedXmlBasicDocumentMetadata {
 }
 
 message EncryptedInvoiceMetadata {
-	optional Diadoc.Api.Proto.Docflow.DocumentDateAndNumber RevisionDateAndNumber = 1;
+	optional Docflow.DocumentDateAndNumber RevisionDateAndNumber = 1;
 }
 
 message EncryptedInvoiceCorrectionMetadata {
-	required Diadoc.Api.Proto.Docflow.DocumentDateAndNumber OriginalInvoiceDateAndNumber = 1;
-	optional Diadoc.Api.Proto.Docflow.DocumentDateAndNumber OriginalInvoiceRevisionDateAndNumber = 2;
-	optional Diadoc.Api.Proto.Docflow.DocumentDateAndNumber InvoiceCorrectionRevisionDateAndNumber = 3;
+	required Docflow.DocumentDateAndNumber OriginalInvoiceDateAndNumber = 1;
+	optional Docflow.DocumentDateAndNumber OriginalInvoiceRevisionDateAndNumber = 2;
+	optional Docflow.DocumentDateAndNumber InvoiceCorrectionRevisionDateAndNumber = 3;
 }
 
 message XmlDocumentAttachment {
@@ -397,6 +398,7 @@ message DocumentSignature {
 	optional string SignatureNameOnShelf = 6;
 	optional string PatchedContentId = 7;
 	repeated string Labels = 8;
+	optional PowerOfAttorneyToPost PowerOfAttorney = 9;
 }
 
 message DocumentSenderSignature {
@@ -404,6 +406,7 @@ message DocumentSenderSignature {
 	optional bytes Signature = 2;
 	optional bool SignWithTestSignature = 4 [default = false];
 	optional string PatchedContentId = 5;
+	optional PowerOfAttorneyToPost PowerOfAttorney = 6;
 }
 
 message RequestedSignatureRejection {
@@ -418,6 +421,7 @@ message SignedContent {
 	optional string NameOnShelf = 4;
 	optional bool SignWithTestSignature = 5 [default = false];
 	optional string SignatureNameOnShelf = 6;
+	optional PowerOfAttorneyToPost PowerOfAttorney = 7;
 }
 
 message DraftToSend {
@@ -581,4 +585,9 @@ message TemplateTransformationToPost {
 message DocumentTransformation {
 	required string DocumentId = 1;
 	optional string CustomDocumentId = 2;
+}
+
+message PowerOfAttorneyToPost {
+    optional PowersOfAttorney.PowerOfAttorneyFullId FullId = 1;
+    required bool UseDefault = 2;
 }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
 using Diadoc.Api.Proto.Documents;
+using Diadoc.Api.Proto.OuterDocflows;
 using GeneralReceiptStatus = Diadoc.Api.Proto.Documents.GeneralReceiptStatus;
 using MessageType = Diadoc.Api.Proto.Documents.MessageType;
 using RecipientResponseStatus = Diadoc.Api.Proto.Documents.RecipientResponseStatus;
@@ -22,6 +23,7 @@ namespace Diadoc.Api.Proto.Docflow
 		bool IsValid { get; }
 		SignatureVerificationResult VerificationResult { get; }
 		Timestamp DeliveredAt { get; }
+		SignaturePowerOfAttorney PowerOfAttorney { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -929,6 +931,46 @@ namespace Diadoc.Api.Proto.Docflow
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IStatusEntity))]
 	public partial class StatusEntity : SafeComObject, IStatusEntity
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("ABF82797-03D2-4447-B045-521BA057EC99")]
+	public interface ISignaturePowerOfAttorney
+	{
+		Entity Entity { get; set; }
+		PowersOfAttorney.PowerOfAttorneyFullId FullId { get; set; }
+		PowersOfAttorney.PowerOfAttorneyValidationStatus Status { get; set; }
+		ReadonlyList StatusChangesList { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.SignaturePowerOfAttorney")]
+	[Guid("AE9E6CF2-3991-4DA7-A7CE-81084695678B")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ISignaturePowerOfAttorney))]
+	public partial class SignaturePowerOfAttorney : SafeComObject, ISignaturePowerOfAttorney
+	{
+		public ReadonlyList StatusChangesList
+		{
+			get { return new ReadonlyList(StatusChanges); }
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("69151AB1-AAD1-4098-935D-6AA882CBDF21")]
+	public interface IPowerOfAttorneyStatusChange
+	{
+		Entity Entity { get; set; }
+		PowersOfAttorney.PowerOfAttorneyValidationStatus PowerOfAttorneyStatus { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyStatusChange")]
+	[Guid("BC8C5779-D8A8-48A8-90CF-22EBB075220A")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyStatusChange))]
+	public partial class PowerOfAttorneyStatusChange : SafeComObject, IPowerOfAttorneyStatusChange
 	{
 	}
 }

@@ -13,7 +13,7 @@ import "Documents/UniversalTransferDocument.proto";
 import "ResolutionTarget.proto";
 import "ForwardDocumentEvent.proto";
 import "Events/DiadocMessage-PostApi.proto";
-import "OuterDocflow.proto";
+import "OuterDocflows/OuterDocflow.proto";
 import "DocflowStatusV3.proto";
 
 package Diadoc.Api.Proto.Documents;
@@ -102,7 +102,7 @@ message Document {
 
 message LastOuterDocflow {
 	required string ParentEntityId = 1;
-	required OuterDocflowInfo OuterDocflow = 2;
+	required OuterDocflows.OuterDocflowInfo OuterDocflow = 2;
 }
 
 message ResolutionStatus {

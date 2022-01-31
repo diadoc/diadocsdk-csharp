@@ -23,7 +23,7 @@
 // Note: requires additional types generated from: ResolutionTarget.proto
 // Note: requires additional types generated from: ForwardDocumentEvent.proto
 // Note: requires additional types generated from: Events/DiadocMessage-PostApi.proto
-// Note: requires additional types generated from: OuterDocflow.proto
+// Note: requires additional types generated from: OuterDocflows/OuterDocflow.proto
 // Note: requires additional types generated from: DocflowStatusV3.proto
 namespace Diadoc.Api.Proto.Documents
 {
@@ -709,9 +709,9 @@ namespace Diadoc.Api.Proto.Documents
       get { return _ParentEntityId; }
       set { _ParentEntityId = value; }
     }
-    private Diadoc.Api.Proto.OuterDocflowInfo _OuterDocflow;
+    private Diadoc.Api.Proto.OuterDocflows.OuterDocflowInfo _OuterDocflow;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"OuterDocflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.OuterDocflowInfo OuterDocflow
+    public Diadoc.Api.Proto.OuterDocflows.OuterDocflowInfo OuterDocflow
     {
       get { return _OuterDocflow; }
       set { _OuterDocflow = value; }

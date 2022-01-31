@@ -65,6 +65,8 @@ namespace Diadoc.Api.Com
 		TemplateTransformation = 73,
 		TemplateRefusal = 74,
 		OuterDocflow = 75,
-		RoamingConfirmation = 76
+		RoamingConfirmation = 76,
+		PowerOfAttorney = 77,
+		PowerOfAttorneyStatus = 78
 	}
 }

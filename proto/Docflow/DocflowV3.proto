@@ -3,7 +3,7 @@ import "Documents/Document.proto";
 import "Docflow/AttachmentV3.proto";
 import "Docflow/RoamingNotification.proto";
 import "Docflow/ResolutionDocflowV3.proto";
-import "OuterDocflowStatus.proto";
+import "OuterDocflows/OuterDocflowStatus.proto";
 import "DocflowStatusV3.proto";
 
 package Diadoc.Api.Proto.Docflow;
@@ -134,5 +134,5 @@ message OuterDocflowEntities
 message StatusEntity
 {
 	required SignedAttachmentV3 Attachment = 1;
-	required Status Status = 2;
+	required OuterDocflows.Status Status = 2;
 }

@@ -11,12 +11,14 @@ using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
 using Diadoc.Api.Proto.Dss;
 using Diadoc.Api.Proto.Employees;
+using Diadoc.Api.Proto.Employees.PowersOfAttorney;
 using Diadoc.Api.Proto.Employees.Subscriptions;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Organizations;
+using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
@@ -468,6 +470,22 @@ namespace Diadoc.Api
 		void DeleteEmployee(string authToken, string boxId, string userId);
 		EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId);
 		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, [MarshalAs(UnmanagedType.IDispatch)] object subscriptionsToUpdate);
+		EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, string userId, bool onlyActual = false);
+
+		EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
+			string authToken,
+			string boxId,
+			string userId,
+			string registrationNumber,
+			string issuerInn,
+			[MarshalAs(UnmanagedType.IDispatch)] object powerOfAttorneyToUpdate);
+
+		EmployeePowerOfAttorney AddEmployeePowerOfAttorney(
+			string authToken,
+			string boxId,
+			string userId,
+			string registrationNumber,
+			string issuerInn);
 
 		Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId);
 		Departments.DepartmentList GetDepartments(string authToken, string boxId, int? page = null, int? count = null);
@@ -492,6 +510,18 @@ namespace Diadoc.Api
 		BoxEvent GetLastEvent(string token, string boxId);
 
 		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
+
+		AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object powerOfAttorneyToRegister);
+		PowerOfAttorneyRegisterResult RegisterPowerOfAttorneyResult(string authToken, string boxId, string taskId);
+
+		PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(
+			string authToken,
+			string boxId,
+			string registrationNumber,
+			string issuerInn,
+			[MarshalAs(UnmanagedType.IDispatch)] object request);
+
+		PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId);
 	}
 
 	[ComVisible(true)]
@@ -715,6 +745,27 @@ namespace Diadoc.Api
 		public EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, object subscriptionsToUpdate)
 		{
 			return diadoc.UpdateSubscriptions(authToken, boxId, userId, (SubscriptionsToUpdate) subscriptionsToUpdate);
+		}
+
+		public EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, string userId, bool onlyActual = false)
+		{
+			return diadoc.GetEmployeePowersOfAttorney(authToken, boxId, userId, onlyActual);
+		}
+
+		public EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
+			string authToken,
+			string boxId,
+			string userId,
+			string registrationNumber,
+			string issuerInn,
+			object powerOfAttorneyToUpdate)
+		{
+			return diadoc.UpdateEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn, (EmployeePowerOfAttorneyToUpdate) powerOfAttorneyToUpdate);
+		}
+
+		public EmployeePowerOfAttorney AddEmployeePowerOfAttorney(string authToken, string boxId, string userId, string registrationNumber, string issuerInn)
+		{
+			return diadoc.AddEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
 
 		public Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId)
@@ -1707,6 +1758,26 @@ namespace Diadoc.Api
 			[MarshalAs(UnmanagedType.IDispatch)] object request)
 		{
 			return diadoc.DetectCustomPrintForms(authToken, boxId, (CustomPrintFormDetectionRequest) request);
+		}
+
+		public AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, object powerOfAttorneyToRegister)
+		{
+			return diadoc.RegisterPowerOfAttorney(authToken, boxId, (PowerOfAttorneyToRegister) powerOfAttorneyToRegister);
+		}
+
+		public PowerOfAttorneyRegisterResult RegisterPowerOfAttorneyResult(string authToken, string boxId, string taskId)
+		{
+			return diadoc.RegisterPowerOfAttorneyResult(authToken, boxId, taskId);
+		}
+
+		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(string authToken, string boxId, string registrationNumber, string issuerInn, object request)
+		{
+			return diadoc.PrevalidatePowerOfAttorney(authToken, boxId, registrationNumber, issuerInn, (PowerOfAttorneyPrevalidateRequest) request);
+		}
+
+		public PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId)
+		{
+			return diadoc.GetPowerOfAttorneyInfo(authToken, boxId, messageId, entityId);
 		}
 	}
 }

@@ -15,7 +15,8 @@ import "Events/ResolutionRequestInfo.proto";
 import "Events/ResolutionRequestDenialInfo.proto";
 import "Events/ResolutionRouteInfo.proto";
 import "Events/RevocationRequestInfo.proto";
-import "OuterDocflow.proto";
+import "Events/PowerOfAttorneyInfo.proto";
+import "OuterDocflows/OuterDocflow.proto";
 
 package Diadoc.Api.Proto.Events;
 
@@ -121,9 +122,10 @@ message Entity {
 	optional string Version = 26;
 	optional TemplateTransformationInfo TemplateTransformationInfo = 27;
 	optional TemplateRefusalInfo TemplateRefusalInfo = 28;
-	optional OuterDocflowInfo OuterDocflow = 29;	
+	optional OuterDocflows.OuterDocflowInfo OuterDocflow = 29;	
 	optional RevocationRequestInfo RevocationRequestInfo = 30;
 	optional string ContentTypeId = 31;
+	optional PowerOfAttorneyInfo PowerOfAttorneyInfo = 32;
 }
 
 message EntityPatch {
@@ -170,7 +172,7 @@ enum EntityType {
 	UnknownEntityType = 0;	// Reserved type to report to legacy clients for newly introduced entity types
 	Attachment = 1;
 	Signature = 2;
-	//Неизвестные типы должны обрабатываться клиентом как cущность Attachment с типом вложения AttachmentType.Nonformalized
+	//Неизвестные типы должны обрабатываться клиентом как сущность Attachment с типом вложения AttachmentType.Nonformalized
 }
 
 enum AttachmentType {
@@ -231,5 +233,7 @@ enum AttachmentType {
 	TemplateRefusal = 74;
 	OuterDocflow = 75;
 	RoamingConfirmation = 76;
+	PowerOfAttorney = 77;
+	PowerOfAttorneyStatus = 78;
 	//Неизвестные типы должны обрабатываться как Title
 }
