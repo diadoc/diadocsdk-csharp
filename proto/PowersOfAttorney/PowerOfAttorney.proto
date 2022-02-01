@@ -47,7 +47,7 @@ message PowerOfAttorneyIssuerForeignEntity {
 
 message PowerOfAttorneyIssuerIndividualEntity {
     required string Inn = 1;
-    optional FullName PersonName = 2;
+    required string OrganizationName = 3;
 }
 
 message PowerOfAttorneyIssuerPhysicalEntity {
