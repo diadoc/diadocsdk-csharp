@@ -107,7 +107,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	public interface IPowerOfAttorneyIssuerIndividualEntity
 	{
 		string Inn { get; set; }
-		FullName PersonName { get; set; }
+		string OrganizationName { get; set; }
 	}
 
 	[ComVisible(true)]

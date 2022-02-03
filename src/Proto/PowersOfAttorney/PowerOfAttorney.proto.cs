@@ -215,14 +215,12 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       get { return _Inn; }
       set { _Inn = value; }
     }
-
-    private Diadoc.Api.Proto.FullName _PersonName = null;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"PersonName", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.FullName PersonName
+    private string _OrganizationName;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"OrganizationName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OrganizationName
     {
-      get { return _PersonName; }
-      set { _PersonName = value; }
+      get { return _OrganizationName; }
+      set { _OrganizationName = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
