@@ -678,6 +678,8 @@
 
 		private string certificateThumbprintField;
 
+		private PowerOfAttorney powerOfAttorneyField;
+
 		/// <remarks/>
 		[System.Xml.Serialization.XmlAttributeAttribute()]
 		public string BoxId
@@ -701,6 +703,84 @@
 			get { return this.certificateThumbprintField; }
 			set { this.certificateThumbprintField = value; }
 		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+		public PowerOfAttorney PowerOfAttorney
+		{
+			get { return this.powerOfAttorneyField; }
+			set { this.powerOfAttorneyField = value; }
+		}
+	}
+
+	/// <remarks/>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+	[System.SerializableAttribute()]
+	[System.Diagnostics.DebuggerStepThroughAttribute()]
+	[System.ComponentModel.DesignerCategoryAttribute("code")]
+	public partial class PowerOfAttorney
+	{
+		private PowerOfAttorneyFullId fullIdField;
+
+		private PowerOfAttorneyUseDefault useDefaultField;
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlElementAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
+		public PowerOfAttorneyFullId FullId
+		{
+			get { return this.fullIdField; }
+			set { this.fullIdField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public PowerOfAttorneyUseDefault UseDefault
+		{
+			get { return this.useDefaultField; }
+			set { this.useDefaultField = value; }
+		}
+	}
+
+	/// <remarks/>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+	[System.SerializableAttribute()]
+	[System.Diagnostics.DebuggerStepThroughAttribute()]
+	[System.ComponentModel.DesignerCategoryAttribute("code")]
+	[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+	public partial class PowerOfAttorneyFullId
+	{
+		private string registrationNumberField;
+
+		private string issuerInnField;
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string RegistrationNumber
+		{
+			get { return this.registrationNumberField; }
+			set { this.registrationNumberField = value; }
+		}
+
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string IssuerInn
+		{
+			get { return this.issuerInnField; }
+			set { this.issuerInnField = value; }
+		}
+	}
+
+	/// <remarks/>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
+	[System.SerializableAttribute()]
+	[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+	public enum PowerOfAttorneyUseDefault
+	{
+		/// <remarks/>
+		@true,
+
+		/// <remarks/>
+		@false,
 	}
 
 	/// <remarks/>

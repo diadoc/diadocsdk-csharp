@@ -1,3 +1,5 @@
+import "Events/PowerOfAttorneyToPost.proto";
+
 package Diadoc.Api.Proto.Invoicing.Signers;
 
 message ExtendedSigner {
@@ -5,6 +7,7 @@ message ExtendedSigner {
 	optional bytes SignerCertificate = 2;
 	optional string SignerCertificateThumbprint = 3;
 	optional ExtendedSignerDetails SignerDetails = 4;
+	optional Events.PowerOfAttorneyToPost PowerOfAttorney = 5;
 }
 
 message ExtendedSignerDetails {
