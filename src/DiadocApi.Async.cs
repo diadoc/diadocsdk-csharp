@@ -1245,6 +1245,16 @@ namespace Diadoc.Api
 			return diadocHttpApi.AddEmployeePowerOfAttorneyAsync(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
 
+		public Task DeleteEmployeePowerOfAttorneyAsync(string authToken, string boxId, string userId, string registrationNumber, string issuerInn)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (userId == null) throw new ArgumentNullException("userId");
+			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
+			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
+			return diadocHttpApi.DeleteEmployeePowerOfAttorneyAsync(authToken, boxId, userId, registrationNumber, issuerInn);
+		}
+
 		public Task<Departments.Department> GetDepartmentByFullIdAsync(string authToken, string boxId, string departmentId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

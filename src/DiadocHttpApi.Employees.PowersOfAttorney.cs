@@ -44,5 +44,20 @@ namespace Diadoc.Api
 			queryString.AddParameter("issuerInn", issuerInn);
 			return PerformHttpRequest<EmployeePowerOfAttorney>(authToken, "POST", queryString.BuildPathAndQuery());
 		}
+
+		public void DeleteEmployeePowerOfAttorney(
+			string authToken,
+			string boxId,
+			string userId,
+			string registrationNumber,
+			string issuerInn)
+		{
+			var queryString = new PathAndQueryBuilder("/DeleteEmployeePowerOfAttorney");
+			queryString.AddParameter("boxId", boxId);
+			queryString.AddParameter("userId", userId);
+			queryString.AddParameter("registrationNumber", registrationNumber);
+			queryString.AddParameter("issuerInn", issuerInn);
+			PerformHttpRequest(authToken, "POST", queryString.BuildPathAndQuery());
+		}
 	}
 }
