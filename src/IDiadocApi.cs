@@ -255,6 +255,13 @@ namespace Diadoc.Api
 			string registrationNumber,
 			string issuerInn);
 
+		void DeleteEmployeePowerOfAttorney(
+			string authToken,
+			string boxId,
+			string userId,
+			string registrationNumber,
+			string issuerInn);
+
 		Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId);
 		Departments.DepartmentList GetDepartments(string authToken, string boxId, int? page = null, int? count = null);
 		Departments.Department CreateDepartment(string authToken, string boxId, Departments.DepartmentToCreate departmentToCreate);
@@ -506,6 +513,13 @@ namespace Diadoc.Api
 			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate);
 
 		Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyAsync(
+			string authToken,
+			string boxId,
+			string userId,
+			string registrationNumber,
+			string issuerInn);
+
+		Task DeleteEmployeePowerOfAttorneyAsync(
 			string authToken,
 			string boxId,
 			string userId,

@@ -1380,6 +1380,16 @@ namespace Diadoc.Api
 			return diadocHttpApi.AddEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
 
+		public void DeleteEmployeePowerOfAttorney(string authToken, string boxId, string userId, string registrationNumber, string issuerInn)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (userId == null) throw new ArgumentNullException("userId");
+			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
+			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
+			diadocHttpApi.DeleteEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
+		}
+
 		public Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
