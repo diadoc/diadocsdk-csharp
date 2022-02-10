@@ -14,7 +14,7 @@ import "Events/ResolutionInfo.proto";
 import "Events/ResolutionRequestInfo.proto";
 import "Invoicing/OrganizationInfo.proto";
 import "Docflow/DocumentInfo.proto";
-import "PowersOfAttorney/PowerOfAttorney.proto";
+import "Events/PowerOfAttorneyToPost.proto";
 
 package Diadoc.Api.Proto.Events;
 
@@ -585,9 +585,4 @@ message TemplateTransformationToPost {
 message DocumentTransformation {
 	required string DocumentId = 1;
 	optional string CustomDocumentId = 2;
-}
-
-message PowerOfAttorneyToPost {
-    optional PowersOfAttorney.PowerOfAttorneyFullId FullId = 1;
-    required bool UseDefault = 2;
 }

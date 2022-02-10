@@ -19,7 +19,7 @@
 // Note: requires additional types generated from: Events/ResolutionRequestInfo.proto
 // Note: requires additional types generated from: Invoicing/OrganizationInfo.proto
 // Note: requires additional types generated from: Docflow/DocumentInfo.proto
-// Note: requires additional types generated from: PowersOfAttorney/PowerOfAttorney.proto
+// Note: requires additional types generated from: Events/PowerOfAttorneyToPost.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MessageToPost")]
@@ -3528,32 +3528,6 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _CustomDocumentId; }
       set { _CustomDocumentId = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyToPost")]
-  public partial class PowerOfAttorneyToPost : global::ProtoBuf.IExtensible
-  {
-    public PowerOfAttorneyToPost() {}
-    
-
-    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyFullId _FullId = null;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"FullId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyFullId FullId
-    {
-      get { return _FullId; }
-      set { _FullId = value; }
-    }
-    private bool _UseDefault;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"UseDefault", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public bool UseDefault
-    {
-      get { return _UseDefault; }
-      set { _UseDefault = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

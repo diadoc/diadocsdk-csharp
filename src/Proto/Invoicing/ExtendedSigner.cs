@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using Diadoc.Api.Proto.Events;
 
 namespace Diadoc.Api.Proto.Invoicing.Signers
 {
@@ -10,6 +11,7 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
 		byte[] SignerCertificate { get; set; }
 		string SignerCertificateThumbprint { get; set; }
 		ExtendedSignerDetails SignerDetails { get; set; }
+		PowerOfAttorneyToPost PowerOfAttorney { get; set; }
 	}
 
 	[ComVisible(true)]
