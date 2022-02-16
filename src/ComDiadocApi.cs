@@ -445,7 +445,7 @@ namespace Diadoc.Api
 		DssSignResult DssSignResult(string authToken, string boxId, string taskId);
 
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
-		DocumentWorkflowSettings[] GetWorkflowsSettings(string authToken);
+		DocumentWorkflowSettings[] GetWorkflowsSettings(string authToken, string boxId);
 
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType);
@@ -1464,9 +1464,9 @@ namespace Diadoc.Api
 			return diadoc.GetDocumentsByMessageId(authToken, boxId, messageId);
 		}
 
-		public DocumentWorkflowSettings[] GetWorkflowsSettings(string authToken)
+		public DocumentWorkflowSettings[] GetWorkflowsSettings(string authToken, string boxId)
 		{
-			return diadoc.GetWorkflowsSettings(authToken);
+			return diadoc.GetWorkflowsSettings(authToken, boxId);
 		}
 
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType)

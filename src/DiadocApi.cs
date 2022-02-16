@@ -1103,11 +1103,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocumentsByMessageId(authToken, boxId, messageId);
 		}
 		
-		public DocumentWorkflowSettings[] GetWorkflowsSettings(string authToken)
+		public DocumentWorkflowSettings[] GetWorkflowsSettings(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException(nameof(authToken));
-			return diadocHttpApi.GetWorkflowsSettings(authToken);
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException(nameof(boxId));
+			return diadocHttpApi.GetWorkflowsSettings(authToken, boxId);
 		}
 
 		public List<KeyValueStorageEntry> GetOrganizationStorageEntries(

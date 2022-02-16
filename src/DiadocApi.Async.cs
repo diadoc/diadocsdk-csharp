@@ -974,11 +974,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocumentsByMessageIdAsync(authToken, boxId, messageId);
 		}
 		
-		public Task<DocumentWorkflowSettings[]> GetWorkflowsSettingsAsync(string authToken)
+		public Task<DocumentWorkflowSettings[]> GetWorkflowsSettingsAsync(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException(nameof(authToken));
-			return diadocHttpApi.GetWorkflowsSettingsAsync(authToken);
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException(nameof(boxId));
+			return diadocHttpApi.GetWorkflowsSettingsAsync(authToken, boxId);
 		}
 
 		public Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<string> keys)
