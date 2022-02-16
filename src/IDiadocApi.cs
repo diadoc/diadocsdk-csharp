@@ -240,12 +240,12 @@ namespace Diadoc.Api
 		EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId);
 		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);
 
-		EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, string userId, bool onlyActual);
+		EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, [CanBeNull] string userId = null, bool onlyActual = false);
 
 		EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
-			string userId,
+			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn,
 			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate);
@@ -253,14 +253,14 @@ namespace Diadoc.Api
 		EmployeePowerOfAttorney AddEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
-			string userId,
+			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
 
 		void DeleteEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
-			string userId,
+			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
 
@@ -505,12 +505,12 @@ namespace Diadoc.Api
 		Task DeleteEmployeeAsync(string authToken, string boxId, string userId);
 		Task<Employee> GetMyEmployeeAsync(string authToken, string boxId);
 
-		Task<EmployeePowerOfAttorneyList> GetEmployeePowersOfAttorneyAsync(string authToken, string boxId, string userId, bool onlyActual);
+		Task<EmployeePowerOfAttorneyList> GetEmployeePowersOfAttorneyAsync(string authToken, string boxId, [CanBeNull] string userId = null, bool onlyActual = false);
 
 		Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyAsync(
 			string authToken,
 			string boxId,
-			string userId,
+			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn,
 			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate);
@@ -518,14 +518,14 @@ namespace Diadoc.Api
 		Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyAsync(
 			string authToken,
 			string boxId,
-			string userId,
+			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
 
 		Task DeleteEmployeePowerOfAttorneyAsync(
 			string authToken,
 			string boxId,
-			string userId,
+			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
 

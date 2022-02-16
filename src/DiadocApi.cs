@@ -1355,46 +1355,42 @@ namespace Diadoc.Api
 			return diadocHttpApi.UpdateSubscriptions(authToken, boxId, userId, subscriptionsToUpdate);
 		}
 
-		public EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, string userId, bool onlyActual = false)
+		public EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, [CanBeNull] string userId = null, bool onlyActual = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (userId == null) throw new ArgumentNullException("userId");
 			return diadocHttpApi.GetEmployeePowersOfAttorney(authToken, boxId, userId, onlyActual);
 		}
 
 		public EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
-			string userId,
+			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn,
 			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (userId == null) throw new ArgumentNullException("userId");
 			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
 			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
 			if (powerOfAttorneyToUpdate == null) throw new ArgumentNullException("powerOfAttorneyToUpdate");
 			return diadocHttpApi.UpdateEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn, powerOfAttorneyToUpdate);
 		}
 
-		public EmployeePowerOfAttorney AddEmployeePowerOfAttorney(string authToken, string boxId, string userId, string registrationNumber, string issuerInn)
+		public EmployeePowerOfAttorney AddEmployeePowerOfAttorney(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (userId == null) throw new ArgumentNullException("userId");
 			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
 			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
 			return diadocHttpApi.AddEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
 
-		public void DeleteEmployeePowerOfAttorney(string authToken, string boxId, string userId, string registrationNumber, string issuerInn)
+		public void DeleteEmployeePowerOfAttorney(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (userId == null) throw new ArgumentNullException("userId");
 			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
 			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
 			diadocHttpApi.DeleteEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
