@@ -22,6 +22,7 @@ using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
+using JetBrains.Annotations;
 using DocumentTitleType = Diadoc.Api.Proto.Invoicing.Signers.DocumentTitleType;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
@@ -470,12 +471,12 @@ namespace Diadoc.Api
 		void DeleteEmployee(string authToken, string boxId, string userId);
 		EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId);
 		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, [MarshalAs(UnmanagedType.IDispatch)] object subscriptionsToUpdate);
-		EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, string userId, bool onlyActual = false);
+		EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, [CanBeNull] string userId = null, bool onlyActual = false);
 
 		EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
-			string userId,
+			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn,
 			[MarshalAs(UnmanagedType.IDispatch)] object powerOfAttorneyToUpdate);
@@ -483,14 +484,14 @@ namespace Diadoc.Api
 		EmployeePowerOfAttorney AddEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
-			string userId,
+			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
 
 		void DeleteEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
-			string userId,
+			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
 
@@ -754,7 +755,7 @@ namespace Diadoc.Api
 			return diadoc.UpdateSubscriptions(authToken, boxId, userId, (SubscriptionsToUpdate) subscriptionsToUpdate);
 		}
 
-		public EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, string userId, bool onlyActual = false)
+		public EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, [CanBeNull] string userId = null, bool onlyActual = false)
 		{
 			return diadoc.GetEmployeePowersOfAttorney(authToken, boxId, userId, onlyActual);
 		}
@@ -762,7 +763,7 @@ namespace Diadoc.Api
 		public EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
-			string userId,
+			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn,
 			object powerOfAttorneyToUpdate)
@@ -770,12 +771,12 @@ namespace Diadoc.Api
 			return diadoc.UpdateEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn, (EmployeePowerOfAttorneyToUpdate) powerOfAttorneyToUpdate);
 		}
 
-		public EmployeePowerOfAttorney AddEmployeePowerOfAttorney(string authToken, string boxId, string userId, string registrationNumber, string issuerInn)
+		public EmployeePowerOfAttorney AddEmployeePowerOfAttorney(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
 		{
 			return diadoc.AddEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
 
-		public void DeleteEmployeePowerOfAttorney(string authToken, string boxId, string userId, string registrationNumber, string issuerInn)
+		public void DeleteEmployeePowerOfAttorney(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
 		{
 			diadoc.DeleteEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
