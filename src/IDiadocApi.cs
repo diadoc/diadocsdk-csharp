@@ -25,6 +25,7 @@ using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Diadoc.Api.Proto.Certificates;
 using Diadoc.Api.Proto.Employees.PowersOfAttorney;
 using Diadoc.Api.Proto.PowersOfAttorney;
+using Diadoc.Protocols.Api.Documents;
 using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
 
 #if !NET35
@@ -207,6 +208,7 @@ namespace Diadoc.Api
 		AsyncMethodResult AcquireCounteragent(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
 		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
+		DocumentWorkflowSettings[] GetWorkflowsSettings(string authToken);
 		List<KeyValueStorageEntry> GetOrganizationStorageEntries(string authToken, string boxId, IEnumerable<string> keys);
 		void PutOrganizationStorageEntries(string authToken, string boxId, IEnumerable<KeyValueStorageEntry> entries);
 		AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey);
@@ -477,6 +479,7 @@ namespace Diadoc.Api
 		Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout
  = null, TimeSpan? delay = null);
 		Task<DocumentList> GetDocumentsByMessageIdAsync(string authToken, string boxId, string messageId);
+		Task<DocumentWorkflowSettings[]> GetWorkflowsSettingsAsync(string authToken);
 		Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<string> keys);
 		Task PutOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<KeyValueStorageEntry> entries);
 		Task<AsyncMethodResult> AutoSignReceiptsAsync(string authToken, string boxId, string certificateThumbprint, string batchKey);
