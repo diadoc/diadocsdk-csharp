@@ -10,6 +10,7 @@ namespace Diadoc.Api.Proto
 	{
 		int TotalCount { get; }
 		ReadonlyList CounteragentsList { get; }
+		Com.TotalCountType TotalCountTypeValue { get; }
 	}
 
 	[ComVisible(true)]
@@ -21,6 +22,11 @@ namespace Diadoc.Api.Proto
 		public ReadonlyList CounteragentsList
 		{
 			get { return new ReadonlyList(Counteragents); }
+		}
+
+		public Com.TotalCountType TotalCountTypeValue
+		{
+			get { return (Com.TotalCountType) TotalCountType; }
 		}
 
 		public override string ToString()
