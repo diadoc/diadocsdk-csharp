@@ -1,0 +1,94 @@
+package Diadoc.Api.Proto.Documents;
+
+message DocumentWorkflowSettingsList {
+	repeated DocumentWorkflowSettings DocumentWorkflowSettings = 1;
+}
+
+message DocumentWorkflowSettings {
+    required int32 Id = 1;
+    repeated ParticipantSetting Participants = 2;
+    optional OperatorConfirmationReceiptBehavior OperatorConfirmationReceiptBehavior = 3;
+    optional ReceiptOperatorConfirmationReceiptBehavior ReceiptOperatorConfirmationReceiptBehavior = 4;
+    optional OperatorConfirmationBehavior ReceiptOperatorConfirmationBehavior = 5;
+    optional AmendmentRequestResponseBehavior AmendmentRequestResponseBehavior = 6;
+    optional OperatorConfirmationBehavior AmendmentRequestOperatorConfirmationBehavior = 7;
+    optional RoamingConfirmationBehavior ReceiptRoamingConfirmationBehavior = 8;
+    optional RoamingConfirmationBehavior AmendmentRequestRoamingConfirmationBehavior = 9;
+    optional InvitationBehavior InvitationBehavior = 10;
+}
+message ParticipantSetting {
+    optional ParticipantEnum Participant = 1;
+    optional ParticipantAction ParticipantAction = 2;
+    optional TitleReceiptBehavior TitleReceiptBehavior = 3;
+    optional OperatorConfirmationBehavior OperatorConfirmationBehavior = 4;
+    optional RoamingConfirmationBehavior RoamingConfirmationBehavior = 5;
+}
+
+enum ParticipantEnum
+{
+    ParticipantEnumUnknown = 0;
+    Sender = 1;
+    Proxy = 2;
+    Recipient = 3;
+}
+enum ParticipantAction
+{
+    ParticipantActionUnknown = 0;
+    Title = 1;
+    Signature = 2;
+    OptionalSignature = 3;
+}
+
+enum TitleReceiptBehavior
+{
+    TitleReceiptBehaviorUnknown = 0;
+    TitleReceiptBehaviorNever = 1;
+    TitleReceiptBehaviorDefineByUser = 2;
+    TitleReceiptBehaviorAlways = 3;
+}
+
+enum OperatorConfirmationBehavior
+{
+    OperatorConfirmationBehaviorUnknown = 0;
+    OperatorConfirmationBehaviorNever = 1;
+    Initiator = 2;
+    InitiatorCounterpart = 3;
+}
+
+enum OperatorConfirmationReceiptBehavior
+{
+    OperatorConfirmationReceiptBehaviorUnknown = 0;
+    OperatorConfirmationReceiptBehaviorNever = 1;
+    OperatorConfirmationReceiptBehaviorAlways = 2;
+}
+
+enum ReceiptOperatorConfirmationReceiptBehavior
+{
+    ReceiptOperatorConfirmationReceiptBehaviorUnknown = 0;
+    ReceiptOperatorConfirmationReceiptBehaviorNever = 1;
+    ReceiptOperatorConfirmationReceiptBehaviorAlways = 2;
+}
+
+enum AmendmentRequestResponseBehavior
+{
+    AmendmentRequestResponseBehaviorUnknown = 0;
+    None = 1;
+    Receipt = 2;
+    OperatorConfirmation = 3;
+    OperatorConfirmationOrReceipt = 4;
+}
+
+enum InvitationBehavior
+{
+    InvitationBehaviorUnknown = 0;
+    InvitationBehaviorNever = 1;
+    InvitationBehaviorDefineByUser = 2;
+    InvitationBehaviorAlways = 3;
+}
+
+enum RoamingConfirmationBehavior
+{
+    RoamingConfirmationBehaviorUnknown = 0;
+    RoamingConfirmationBehaviorNever = 1;
+    RoamingConfirmationBehaviorAlways = 2;
+}

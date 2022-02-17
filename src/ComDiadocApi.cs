@@ -22,7 +22,6 @@ using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
-using Diadoc.Protocols.Api.Documents;
 using JetBrains.Annotations;
 using DocumentTitleType = Diadoc.Api.Proto.Invoicing.Signers.DocumentTitleType;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
@@ -445,7 +444,7 @@ namespace Diadoc.Api
 		DssSignResult DssSignResult(string authToken, string boxId, string taskId);
 
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
-		DocumentWorkflowSettings[] GetWorkflowsSettings(string authToken, string boxId);
+		DocumentWorkflowSettingsList GetWorkflowsSettings(string authToken, string boxId);
 
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, int documentTitleType);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, int documentTitleType);
@@ -1464,7 +1463,7 @@ namespace Diadoc.Api
 			return diadoc.GetDocumentsByMessageId(authToken, boxId, messageId);
 		}
 
-		public DocumentWorkflowSettings[] GetWorkflowsSettings(string authToken, string boxId)
+		public DocumentWorkflowSettingsList GetWorkflowsSettings(string authToken, string boxId)
 		{
 			return diadoc.GetWorkflowsSettings(authToken, boxId);
 		}

@@ -25,7 +25,6 @@ using Departments = Diadoc.Api.Proto.Departments;
 using Diadoc.Api.Proto.Certificates;
 using Diadoc.Api.Proto.Employees.PowersOfAttorney;
 using Diadoc.Api.Proto.PowersOfAttorney;
-using Diadoc.Protocols.Api.Documents;
 using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
 
 namespace Diadoc.Api
@@ -974,7 +973,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocumentsByMessageIdAsync(authToken, boxId, messageId);
 		}
 		
-		public Task<DocumentWorkflowSettings[]> GetWorkflowsSettingsAsync(string authToken, string boxId)
+		public Task<DocumentWorkflowSettingsList> GetWorkflowsSettingsAsync(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException(nameof(authToken));
