@@ -1,0 +1,9 @@
+package Diadoc.Api.Proto.Workflows.ParticipantAction;
+
+enum ParticipantAction
+{
+    Unknown = 0;
+    Title = 1;
+    Signature = 2;
+    OptionalSignature = 3;
+}

@@ -1,0 +1,9 @@
+package Diadoc.Api.Proto.Workflows.OperatorConfirmationBehavior;
+
+enum OperatorConfirmationBehavior
+{
+    Unknown = 0;
+    Never = 1;
+    Initiator = 2;
+    InitiatorCounterpart = 3;
+}

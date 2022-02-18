@@ -5,6 +5,7 @@ using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
+using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
 
 namespace Diadoc.Api

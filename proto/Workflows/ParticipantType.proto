@@ -1,0 +1,9 @@
+package Diadoc.Api.Proto.Workflows.ParticipantType;
+
+enum ParticipantType
+{
+    Unknown = 0;
+    Sender = 1;
+    Proxy = 2;
+    Recipient = 3;
+}

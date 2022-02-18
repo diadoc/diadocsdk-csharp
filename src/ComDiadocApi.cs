@@ -22,6 +22,7 @@ using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
+using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
 using DocumentTitleType = Diadoc.Api.Proto.Invoicing.Signers.DocumentTitleType;
 using DocumentType = Diadoc.Api.Proto.DocumentType;

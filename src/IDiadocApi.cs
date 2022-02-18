@@ -25,6 +25,7 @@ using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Diadoc.Api.Proto.Certificates;
 using Diadoc.Api.Proto.Employees.PowersOfAttorney;
 using Diadoc.Api.Proto.PowersOfAttorney;
+using Diadoc.Api.Proto.Workflows;
 using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
 
 #if !NET35
