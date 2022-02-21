@@ -73,11 +73,11 @@ namespace Diadoc.Api
 			string[] messageTypes = null,
 			string[] typeNamedIds = null,
 			string[] documentDirections = null,
-			long? timestampFromTicks = null,
-			long? timestampToTicks = null,
+			long timestampFromTicks = 0,
+			long timestampToTicks = 0,
 			string counteragentBoxId = null,
 			string orderBy = null,
-			int? limit = null);
+			int limit = 0);
 
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
 		void SaveEntityContent(string authToken, string boxId, string messageId, string entityId, string filePath);
@@ -496,7 +496,7 @@ namespace Diadoc.Api
 			string issuerInn);
 
 		Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId);
-		Departments.DepartmentList GetDepartments(string authToken, string boxId, int? page = null, int? count = null);
+		Departments.DepartmentList GetDepartments(string authToken, string boxId, int page = 0, int count = 0);
 		Departments.Department CreateDepartment(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object departmentToCreate);
 		Departments.Department UpdateDepartment(string authToken, string boxId, string departmentId, [MarshalAs(UnmanagedType.IDispatch)] object departmentToUpdate);
 		void DeleteDepartment(string authToken, string boxId, string departmentId);
@@ -682,13 +682,26 @@ namespace Diadoc.Api
 			string[] messageTypes = null,
 			string[] typeNamedIds = null,
 			string[] documentDirections = null,
-			long? timestampFromTicks = null,
-			long? timestampToTicks = null,
+			long timestampFromTicks = 0,
+			long timestampToTicks = 0,
 			string counteragentBoxId = null,
 			string orderBy = null,
-			int? limit = null)
+			int limit = 0)
 		{
-			return diadoc.GetNewEvents(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
+			return diadoc.GetNewEvents(
+				authToken,
+				boxId,
+				afterEventId,
+				afterIndexKey,
+				departmentId,
+				messageTypes,
+				typeNamedIds,
+				documentDirections,
+				timestampFromTicks != 0 ? timestampFromTicks : (long?)null,
+				timestampToTicks != 0 ? timestampToTicks : (long?)null,
+				counteragentBoxId,
+				orderBy,
+				limit != 0 ? limit : (int?)null);
 		}
 
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)
@@ -786,9 +799,9 @@ namespace Diadoc.Api
 			return diadoc.GetDepartmentByFullId(authToken, boxId, departmentId);
 		}
 
-		public Departments.DepartmentList GetDepartments(string authToken, string boxId, int? page = null, int? count = null)
+		public Departments.DepartmentList GetDepartments(string authToken, string boxId, int page = 0, int count = 0)
 		{
-			return diadoc.GetDepartments(authToken, boxId, page, count);
+			return diadoc.GetDepartments(authToken, boxId, page != 0 ? page : (int?)null, count != 0 ? count : (int?)null);
 		}
 
 		public Departments.Department CreateDepartment(string authToken, string boxId, object departmentToCreate)
@@ -1127,13 +1140,6 @@ namespace Diadoc.Api
 			string letterId = null,
 			string documentId = null)
 		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (documentTypeNamedId == null) throw new ArgumentNullException("documentTypeNamedId");
-			if (documentFunction == null) throw new ArgumentNullException("documentFunction");
-			if (documentVersion == null) throw new ArgumentNullException("documentVersion");
-			if (userContractData == null) throw new ArgumentNullException("userContractData");
-
 			return diadoc.GenerateTitleXml(
 				authToken,
 				boxId,
