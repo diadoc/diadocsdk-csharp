@@ -10,6 +10,7 @@
 // Generated from: Counteragent.proto
 // Note: requires additional types generated from: Organization.proto
 // Note: requires additional types generated from: DocumentId.proto
+// Note: requires additional types generated from: TotalCountType.proto
 namespace Diadoc.Api.Proto
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CounteragentList")]
@@ -31,6 +32,13 @@ namespace Diadoc.Api.Proto
       get { return _Counteragents; }
     }
   
+    private Diadoc.Api.Proto.TotalCountType _TotalCountType;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"TotalCountType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.TotalCountType TotalCountType
+    {
+      get { return _TotalCountType; }
+      set { _TotalCountType = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
