@@ -87,6 +87,11 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Organization>(null, "GET", queryString);
 		}
 
+		public Task<RoamingOperatorList> GetRoamingOperatorsAsync(string authToken, string boxId)
+		{
+			return PerformHttpRequestAsync<RoamingOperatorList>(authToken, "GET", $"/GetRoamingOperators?boxId={boxId}");
+		}
+
 		public Task<Box> GetBoxAsync(string boxId)
 		{
 			var queryString = $"/GetBox?boxId={boxId}";

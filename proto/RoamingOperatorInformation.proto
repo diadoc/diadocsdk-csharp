@@ -1,0 +1,17 @@
+package Diadoc.Api.Proto;
+
+message RoamingOperatorList {
+	repeated RoamingOperatorInformation RoamingOperators = 1;  
+}
+
+message RoamingOperatorInformation {
+ required string FnsId = 1;      
+ required string OperatorName = 2;     
+ repeated OperatorFeature OperatorFeatures = 3; 
+}
+
+message OperatorFeature {
+ required string Name = 1;
+ required bool IsEnabled = 2;
+ required string Description = 3;
+}

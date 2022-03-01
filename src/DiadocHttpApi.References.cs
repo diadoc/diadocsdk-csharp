@@ -86,6 +86,11 @@ namespace Diadoc.Api
 			return PerformHttpRequest<Organization>(null, "GET", queryString);
 		}
 
+		public RoamingOperatorList GetRoamingOperators(string authToken, string boxId)
+		{
+			return PerformHttpRequest<RoamingOperatorList>(authToken, "GET", string.Format("/GetRoamingOperators?boxId={0}", boxId));
+		}
+
 		public Box GetBox(string boxId)
 		{
 			var queryString = string.Format("/GetBox?boxId={0}", boxId);

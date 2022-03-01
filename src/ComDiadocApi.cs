@@ -638,6 +638,11 @@ namespace Diadoc.Api
 			return diadoc.GetOrganizationByInnKpp(inn, kpp);
 		}
 
+		public RoamingOperatorList GetRoamingOperators(string authToken,string boxId)
+		{
+			return diadoc.GetRoamingOperators(authToken, boxId);
+		}
+
 		public IDocumentProtocolResult GenerateDocumentProtocol(
 			string authToken,
 			string boxId,
