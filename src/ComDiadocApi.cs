@@ -246,7 +246,9 @@ namespace Diadoc.Api
 		PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId);
 
 		string GeneratePrintFormFromAttachment(string authToken, int documentType, byte[] content);
+
 		DateTime NullDateTime();
+
 		DocumentList GetDocuments(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object filter);
 
 		DocumentList GetDocuments(
@@ -261,6 +263,19 @@ namespace Diadoc.Api
 			string departmentId,
 			bool excludeSubdepartments,
 			string afterIndexKey);
+
+		DocumentList GetDocuments(
+			string authToken,
+			string boxId,
+			string filterCategory,
+			string counteragentBoxId,
+			string fromDocumentDate,
+			string toDocumentDate,
+			string departmentId,
+			bool excludeSubdepartments,
+			string afterIndexKey,
+			long timestampFromTicks = 0,
+			long timestampToTicks = 0);
 
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
 		SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId);
@@ -1227,6 +1242,11 @@ namespace Diadoc.Api
 			return dateTime == NullDateTime() ? (DateTime?) null : dateTime;
 		}
 
+		private DateTime? ToUtcDateTime(long dateTime)
+		{
+			return dateTime == 0 ? (DateTime?) null : new DateTime(dateTime, DateTimeKind.Utc);
+		}
+
 		public DocumentList GetDocuments(string authToken, object filter)
 		{
 			return diadoc.GetDocuments(authToken, (DocumentsFilter) filter);
@@ -1251,6 +1271,32 @@ namespace Diadoc.Api
 				counteragentBoxId,
 				GetNullable(timestampFrom),
 				GetNullable(timestampTo),
+				fromDocumentDate,
+				toDocumentDate,
+				departmentId,
+				excludeSubdepartments,
+				afterIndexKey);
+		}
+
+		public DocumentList GetDocuments(
+			string authToken,
+			string boxId,
+			string filterCategory,
+			string counteragentBoxId,
+			string fromDocumentDate,
+			string toDocumentDate,
+			string departmentId,
+			bool excludeSubdepartments,
+			string afterIndexKey,
+			long timestampFromTicks = 0,
+			long timestampToTicks = 0)
+		{
+			return diadoc.GetDocuments(authToken,
+				boxId,
+				filterCategory,
+				counteragentBoxId,
+				ToUtcDateTime(timestampFromTicks),
+				ToUtcDateTime(timestampToTicks),
 				fromDocumentDate,
 				toDocumentDate,
 				departmentId,

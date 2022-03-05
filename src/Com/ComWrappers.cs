@@ -58,6 +58,7 @@ namespace Diadoc.Api.Proto
 	public interface ITimestamp
 	{
 		DateTime DateTime { get; set; }
+		long Ticks { get; set; }
 	}
 
 	[ComVisible(true)]
