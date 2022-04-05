@@ -1,0 +1,10 @@
+package Diadoc.Api.Proto.Workflows.AmendmentRequestResponseBehavior;
+
+enum AmendmentRequestResponseBehavior
+{
+    Unknown = 0;
+    None = 1;
+    Receipt = 2;
+    OperatorConfirmation = 3;
+    OperatorConfirmationOrReceipt = 4;
+}

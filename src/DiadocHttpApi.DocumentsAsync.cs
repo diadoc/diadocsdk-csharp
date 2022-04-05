@@ -5,6 +5,7 @@ using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
+using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
 
 namespace Diadoc.Api
@@ -112,6 +113,13 @@ namespace Diadoc.Api
 			qsb.AddParameter("boxId", boxId);
 			qsb.AddParameter("messageId", messageId);
 			return PerformHttpRequestAsync<DocumentList>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+		
+		public Task<DocumentWorkflowSettingsList> GetWorkflowsSettingsAsync([NotNull] string authToken, string boxId)
+		{
+			var qsb = new PathAndQueryBuilder("/GetWorkflowsSettings");
+			qsb.AddParameter("boxId", boxId);
+			return PerformHttpRequestAsync<DocumentWorkflowSettingsList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
 		public Task<SignatureInfo> GetSignatureInfoAsync(string authToken, string boxId, string messageId, string entityId)

@@ -1,0 +1,9 @@
+package Diadoc.Api.Proto.Workflows.TitleReceiptBehavior;
+
+enum TitleReceiptBehavior
+{
+    Unknown = 0;
+    Never = 1;
+    DefineByUser = 2;
+    Always = 3;
+}

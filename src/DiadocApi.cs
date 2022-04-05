@@ -24,6 +24,7 @@ using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
+using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
 using Department = Diadoc.Api.Proto.Department;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
@@ -1100,6 +1101,15 @@ namespace Diadoc.Api
 			if (string.IsNullOrEmpty(messageId))
 				throw new ArgumentNullException("messageId");
 			return diadocHttpApi.GetDocumentsByMessageId(authToken, boxId, messageId);
+		}
+		
+		public DocumentWorkflowSettingsList GetWorkflowsSettings(string authToken, string boxId)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException(nameof(authToken));
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException(nameof(boxId));
+			return diadocHttpApi.GetWorkflowsSettings(authToken, boxId);
 		}
 
 		public List<KeyValueStorageEntry> GetOrganizationStorageEntries(
