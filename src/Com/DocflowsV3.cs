@@ -240,10 +240,8 @@ namespace Diadoc.Api.Proto.Docflow
 	public interface IDocumentInfoV3
 	{
 		FullVersion FullVersion { get; }
-		MessageType MessageType { get; }
 		int WorkflowId { get; }
 		DocumentParticipants Participants { get; }
-		DocumentDirection DocumentDirection { get; }
 		Com.DocumentDirection DocumentDirectionValue { get; }
 		string DepartmentId { get; }
 		string CustomDocumentId { get; }
@@ -356,7 +354,6 @@ namespace Diadoc.Api.Proto.Docflow
 	[Guid("5825EC56-B5B3-4CD6-A274-232406A510FE")]
 	public interface IPacketInfo
 	{
-		LockMode LockMode { get; }
 		Com.LockMode LockModeValue { get; }
 		string PacketId { get; }
 		Timestamp AddedAt { get; }
@@ -507,7 +504,6 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
 		RoamingNotification RoamingNotification { get; }
-		SenderSignatureStatus SenderSignatureStatus { get; }
 		Com.SenderSignatureStatus SenderSignatureStatusValue { get; }
 	}
 
@@ -573,7 +569,6 @@ namespace Diadoc.Api.Proto.Docflow
 		SignatureRejectionDocflow Rejection { get; }
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
-		RecipientResponseStatus ResponseStatus { get; }
 		Com.RecipientResponseStatus ResponseStatusValue { get; }
 	}
 
@@ -621,7 +616,6 @@ namespace Diadoc.Api.Proto.Docflow
 		RevocationRequestDocflow RevocationRequest { get; }
 		RevocationResponseDocflow RevocationResponse { get; }
 		string InitiatorBoxId { get; }
-		RevocationStatus RevocationStatus { get; }
 		Com.RevocationStatus RevocationStatusValue { get; }
 		ReadonlyList OuterDocflowEntitiesList { get; }
 	}
@@ -687,7 +681,6 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		bool IsFinished { get; }
 		string ParentEntityId { get; }
-		ResolutionStatus ResolutionStatus { get; }
 		Com.ResolutionStatus ResolutionStatusValue { get; }
 		string ResolutionEntityId { get; }
 	}
@@ -843,7 +836,6 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
 		ConfirmationDocflow Confirmation { get; }
-		GeneralReceiptStatus Status { get; }
 		Com.GeneralReceiptStatus StatusValue { get; }
 	}
 

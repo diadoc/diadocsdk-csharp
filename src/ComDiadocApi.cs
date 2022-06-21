@@ -69,16 +69,16 @@ namespace Diadoc.Api
 			string authToken,
 			string boxId,
 			string afterEventId,
-			string afterIndexKey = null,
-			string departmentId = null,
-			string[] messageTypes = null,
-			string[] typeNamedIds = null,
-			string[] documentDirections = null,
-			long timestampFromTicks = 0,
-			long timestampToTicks = 0,
-			string counteragentBoxId = null,
-			string orderBy = null,
-			int limit = 0);
+			string afterIndexKey,
+			string departmentId,
+			string[] messageTypes,
+			string[] typeNamedIds,
+			string[] documentDirections,
+			long timestampFromTicks,
+			long timestampToTicks,
+			string counteragentBoxId,
+			string orderBy,
+			int limit);
 
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
 		void SaveEntityContent(string authToken, string boxId, string messageId, string entityId, string filePath);
@@ -1345,8 +1345,8 @@ namespace Diadoc.Api
 			string departmentId,
 			bool excludeSubdepartments,
 			string afterIndexKey,
-			long timestampFromTicks = 0,
-			long timestampToTicks = 0)
+			long timestampFromTicks = 0L,
+			long timestampToTicks = 0L)
 		{
 			return diadoc.GetDocuments(authToken,
 				boxId,
