@@ -6,6 +6,7 @@ using Diadoc.Api.Com;
 using Diadoc.Api.Cryptography;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Certificates;
+using Diadoc.Api.Proto.Departments;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
@@ -24,10 +25,9 @@ using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
 using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
-using DocumentTitleType = Diadoc.Api.Proto.Invoicing.Signers.DocumentTitleType;
+using Department = Diadoc.Api.Proto.Department;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
-using Departments = Diadoc.Api.Proto.Departments;
 using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
 
 namespace Diadoc.Api
@@ -512,10 +512,10 @@ namespace Diadoc.Api
 			string registrationNumber,
 			string issuerInn);
 
-		Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId);
-		Departments.DepartmentList GetDepartments(string authToken, string boxId, int page = 0, int count = 0);
-		Departments.Department CreateDepartment(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object departmentToCreate);
-		Departments.Department UpdateDepartment(string authToken, string boxId, string departmentId, [MarshalAs(UnmanagedType.IDispatch)] object departmentToUpdate);
+		Proto.Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId);
+		DepartmentList GetDepartments(string authToken, string boxId, int page = 0, int count = 0);
+		Proto.Departments.Department CreateDepartment(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object departmentToCreate);
+		Proto.Departments.Department UpdateDepartment(string authToken, string boxId, string departmentId, [MarshalAs(UnmanagedType.IDispatch)] object departmentToUpdate);
 		void DeleteDepartment(string authToken, string boxId, string departmentId);
 
 		Template PostTemplate(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object template);
@@ -637,7 +637,7 @@ namespace Diadoc.Api
 
 		public Organization GetOrganizationByInn(string inn)
 		{
-			return diadoc.GetOrganizationByInnKpp(inn, null);
+			return diadoc.GetOrganizationByInnKpp(inn, kpp: null);
 		}
 
 		public Organization GetOrganizationByBoxId(string boxId)
@@ -714,11 +714,11 @@ namespace Diadoc.Api
 				messageTypes,
 				typeNamedIds,
 				documentDirections,
-				timestampFromTicks != 0 ? timestampFromTicks : (long?)null,
-				timestampToTicks != 0 ? timestampToTicks : (long?)null,
+				timestampFromTicks != 0 ? timestampFromTicks : (long?) null,
+				timestampToTicks != 0 ? timestampToTicks : (long?) null,
 				counteragentBoxId,
 				orderBy,
-				limit != 0 ? limit : (int?)null);
+				limit != 0 ? limit : (int?) null);
 		}
 
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)
@@ -770,11 +770,6 @@ namespace Diadoc.Api
 			diadoc.DeleteEmployee(authToken, boxId, userId);
 		}
 
-		public Employee GetMyEmployee(string authToken, string boxId)
-		{
-			return diadoc.GetMyEmployee(authToken, boxId);
-		}
-
 		public EmployeeSubscriptions GetSubscriptions(string authToken, string boxId, string userId)
 		{
 			return diadoc.GetSubscriptions(authToken, boxId, userId);
@@ -811,24 +806,24 @@ namespace Diadoc.Api
 			diadoc.DeleteEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
 
-		public Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId)
+		public Proto.Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId)
 		{
 			return diadoc.GetDepartmentByFullId(authToken, boxId, departmentId);
 		}
 
-		public Departments.DepartmentList GetDepartments(string authToken, string boxId, int page = 0, int count = 0)
+		public DepartmentList GetDepartments(string authToken, string boxId, int page = 0, int count = 0)
 		{
-			return diadoc.GetDepartments(authToken, boxId, page != 0 ? page : (int?)null, count != 0 ? count : (int?)null);
+			return diadoc.GetDepartments(authToken, boxId, page != 0 ? page : (int?) null, count != 0 ? count : (int?) null);
 		}
 
-		public Departments.Department CreateDepartment(string authToken, string boxId, object departmentToCreate)
+		public Proto.Departments.Department CreateDepartment(string authToken, string boxId, object departmentToCreate)
 		{
-			return diadoc.CreateDepartment(authToken, boxId, (Departments.DepartmentToCreate) departmentToCreate);
+			return diadoc.CreateDepartment(authToken, boxId, (DepartmentToCreate) departmentToCreate);
 		}
 
-		public Departments.Department UpdateDepartment(string authToken, string boxId, string departmentId, object departmentToUpdate)
+		public Proto.Departments.Department UpdateDepartment(string authToken, string boxId, string departmentId, object departmentToUpdate)
 		{
-			return diadoc.UpdateDepartment(authToken, boxId, departmentId, (Departments.DepartmentToUpdate) departmentToUpdate);
+			return diadoc.UpdateDepartment(authToken, boxId, departmentId, (DepartmentToUpdate) departmentToUpdate);
 		}
 
 		public void DeleteDepartment(string authToken, string boxId, string departmentId)
@@ -1306,17 +1301,7 @@ namespace Diadoc.Api
 
 		public DateTime NullDateTime()
 		{
-			return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-		}
-
-		public DateTime? GetNullable(DateTime dateTime)
-		{
-			return dateTime == NullDateTime() ? (DateTime?) null : dateTime;
-		}
-
-		private DateTime? ToUtcDateTime(long dateTime)
-		{
-			return dateTime == 0 ? (DateTime?) null : new DateTime(dateTime, DateTimeKind.Utc);
+			return new DateTime(year: 1970, month: 1, day: 1, hour: 0, minute: 0, second: 0, millisecond: 0, DateTimeKind.Utc);
 		}
 
 		public DocumentList GetDocuments(string authToken, object filter)
@@ -1579,6 +1564,59 @@ namespace Diadoc.Api
 			return diadoc.GetContent(token, typeNamedId, function, version, titleIndex, (XsdContentType) contentType);
 		}
 
+		public BoxEvent GetLastEvent(string token, string boxId)
+		{
+			return diadoc.GetLastEvent(token, boxId);
+		}
+
+		public CustomPrintFormDetectionResult DetectCustomPrintForms(
+			string authToken,
+			string boxId,
+			[MarshalAs(UnmanagedType.IDispatch)] object request)
+		{
+			return diadoc.DetectCustomPrintForms(authToken, boxId, (CustomPrintFormDetectionRequest) request);
+		}
+
+		public AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, object powerOfAttorneyToRegister)
+		{
+			return diadoc.RegisterPowerOfAttorney(authToken, boxId, (PowerOfAttorneyToRegister) powerOfAttorneyToRegister);
+		}
+
+		public PowerOfAttorneyRegisterResult RegisterPowerOfAttorneyResult(string authToken, string boxId, string taskId)
+		{
+			return diadoc.RegisterPowerOfAttorneyResult(authToken, boxId, taskId);
+		}
+
+		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(string authToken, string boxId, string registrationNumber, string issuerInn, object request)
+		{
+			return diadoc.PrevalidatePowerOfAttorney(authToken, boxId, registrationNumber, issuerInn, (PowerOfAttorneyPrevalidateRequest) request);
+		}
+
+		public PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId)
+		{
+			return diadoc.GetPowerOfAttorneyInfo(authToken, boxId, messageId, entityId);
+		}
+
+		public RoamingOperatorList GetRoamingOperators(string authToken, string boxId)
+		{
+			return diadoc.GetRoamingOperators(authToken, boxId);
+		}
+
+		public Employee GetMyEmployee(string authToken, string boxId)
+		{
+			return diadoc.GetMyEmployee(authToken, boxId);
+		}
+
+		public DateTime? GetNullable(DateTime dateTime)
+		{
+			return dateTime == NullDateTime() ? (DateTime?) null : dateTime;
+		}
+
+		private DateTime? ToUtcDateTime(long dateTime)
+		{
+			return dateTime == 0 ? (DateTime?) null : new DateTime(dateTime, DateTimeKind.Utc);
+		}
+
 		#region Counteragents
 
 		public Counteragent GetCounteragent(string authToken, string myOrgId, string counteragentOrgId)
@@ -1819,37 +1857,5 @@ namespace Diadoc.Api
 
 		#endregion
 
-		public BoxEvent GetLastEvent(string token, string boxId)
-		{
-			return diadoc.GetLastEvent(token, boxId);
-		}
-
-		public CustomPrintFormDetectionResult DetectCustomPrintForms(
-			string authToken,
-			string boxId,
-			[MarshalAs(UnmanagedType.IDispatch)] object request)
-		{
-			return diadoc.DetectCustomPrintForms(authToken, boxId, (CustomPrintFormDetectionRequest) request);
-		}
-
-		public AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, object powerOfAttorneyToRegister)
-		{
-			return diadoc.RegisterPowerOfAttorney(authToken, boxId, (PowerOfAttorneyToRegister) powerOfAttorneyToRegister);
-		}
-
-		public PowerOfAttorneyRegisterResult RegisterPowerOfAttorneyResult(string authToken, string boxId, string taskId)
-		{
-			return diadoc.RegisterPowerOfAttorneyResult(authToken, boxId, taskId);
-		}
-
-		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(string authToken, string boxId, string registrationNumber, string issuerInn, object request)
-		{
-			return diadoc.PrevalidatePowerOfAttorney(authToken, boxId, registrationNumber, issuerInn, (PowerOfAttorneyPrevalidateRequest) request);
-		}
-
-		public PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId)
-		{
-			return diadoc.GetPowerOfAttorneyInfo(authToken, boxId, messageId, entityId);
-		}
 	}
 }

@@ -215,6 +215,11 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationByInnKpp(inn, kpp);
 		}
 
+		public RoamingOperatorList GetRoamingOperators(string authToken, string boxId)
+		{
+			return diadocHttpApi.GetRoamingOperators(authToken, boxId);
+		}
+
 		public Box GetBox(string boxId)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");

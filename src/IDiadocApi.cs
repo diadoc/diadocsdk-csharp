@@ -65,6 +65,7 @@ namespace Diadoc.Api
 		Organization GetOrganizationByBoxId(string boxId);
 		Organization GetOrganizationByFnsParticipantId(string fnsParticipantId);
 		Organization GetOrganizationByInnKpp(string inn, string kpp);
+		RoamingOperatorList GetRoamingOperators(string authToken, string boxId);
 		Box GetBox(string boxId);
 		Department GetDepartment(string authToken, string orgId, string departmentId);
 		void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps);
@@ -312,6 +313,7 @@ namespace Diadoc.Api
 		Task<Organization> GetOrganizationByBoxIdAsync(string boxId);
 		Task<Organization> GetOrganizationByFnsParticipantIdAsync(string fnsParticipantId);
 		Task<Organization> GetOrganizationByInnKppAsync(string inn, string kpp);
+		Task<RoamingOperatorList> GetRoamingOperatorsAsync(string authToken, string boxId);
 		Task<Box> GetBoxAsync(string boxId);
 		Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId);
 		Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps);
