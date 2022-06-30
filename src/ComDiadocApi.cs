@@ -547,6 +547,10 @@ namespace Diadoc.Api
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
 		PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId);
+
+		RoamingOperatorList GetRoamingOperators(string authToken, string boxId);
+
+		Employee GetMyEmployee(string authToken, string boxId);
 	}
 
 	[ComVisible(true)]
