@@ -14,7 +14,7 @@ message CertificateInfoV2 {
 	optional string UserLastName = 11;
 	optional string UserShortName = 12;
 	optional bool IsDefault = 13;
-	required CertificateSubjectType CertificateSubjectType = 14;
+	optional CertificateSubjectType SubjectType = 14;
 }
 
 enum CertificateType {

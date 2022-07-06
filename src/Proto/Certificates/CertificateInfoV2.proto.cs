@@ -128,12 +128,14 @@ namespace Diadoc.Api.Proto.Certificates
       get { return _IsDefault; }
       set { _IsDefault = value; }
     }
-    private Diadoc.Api.Proto.Certificates.CertificateSubjectType _CertificateSubjectType;
-    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"CertificateSubjectType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Diadoc.Api.Proto.Certificates.CertificateSubjectType CertificateSubjectType
+
+    private Diadoc.Api.Proto.Certificates.CertificateSubjectType _SubjectType = Diadoc.Api.Proto.Certificates.CertificateSubjectType.UnknownCertificateSubjectType;
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"SubjectType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Certificates.CertificateSubjectType.UnknownCertificateSubjectType)]
+    public Diadoc.Api.Proto.Certificates.CertificateSubjectType SubjectType
     {
-      get { return _CertificateSubjectType; }
-      set { _CertificateSubjectType = value; }
+      get { return _SubjectType; }
+      set { _SubjectType = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
