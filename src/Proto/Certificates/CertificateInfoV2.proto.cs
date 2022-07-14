@@ -128,6 +128,15 @@ namespace Diadoc.Api.Proto.Certificates
       get { return _IsDefault; }
       set { _IsDefault = value; }
     }
+
+    private Diadoc.Api.Proto.Certificates.CertificateSubjectType _SubjectType = Diadoc.Api.Proto.Certificates.CertificateSubjectType.UnknownCertificateSubjectType;
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"SubjectType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Certificates.CertificateSubjectType.UnknownCertificateSubjectType)]
+    public Diadoc.Api.Proto.Certificates.CertificateSubjectType SubjectType
+    {
+      get { return _SubjectType; }
+      set { _SubjectType = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -148,6 +157,23 @@ namespace Diadoc.Api.Proto.Certificates
             
       [global::ProtoBuf.ProtoEnum(Name=@"KonturCertificate", Value=3)]
       KonturCertificate = 3
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"CertificateSubjectType")]
+    public enum CertificateSubjectType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownCertificateSubjectType", Value=0)]
+      UnknownCertificateSubjectType = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LegalEntity", Value=1)]
+      LegalEntity = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IndividualEntity", Value=2)]
+      IndividualEntity = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PhysicalPerson", Value=3)]
+      PhysicalPerson = 3
     }
   
 }

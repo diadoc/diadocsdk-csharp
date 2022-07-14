@@ -14,6 +14,7 @@ message CertificateInfoV2 {
 	optional string UserLastName = 11;
 	optional string UserShortName = 12;
 	optional bool IsDefault = 13;
+	optional CertificateSubjectType SubjectType = 14;
 }
 
 enum CertificateType {
@@ -21,4 +22,11 @@ enum CertificateType {
 	Token = 1;
 	Dss = 2;
 	KonturCertificate = 3;
+}
+
+enum CertificateSubjectType {
+    UnknownCertificateSubjectType = 0;
+    LegalEntity = 1;
+    IndividualEntity = 2;
+    PhysicalPerson = 3;
 }
