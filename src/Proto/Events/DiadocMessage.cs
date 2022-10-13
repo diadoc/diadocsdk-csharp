@@ -1950,6 +1950,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		PowersOfAttorney.PowerOfAttorneyFullId FullId { get; set; }
 		PowersOfAttorney.PowerOfAttorneyValidationStatus Status { get; set; }
+		RoamingSendingStatus RoamingSendingStatus { get; set; }
 	}
 
 	[ComVisible(true)]

@@ -935,6 +935,7 @@ namespace Diadoc.Api.Proto.Docflow
 		PowersOfAttorney.PowerOfAttorneyFullId FullId { get; set; }
 		PowersOfAttorney.PowerOfAttorneyValidationStatus Status { get; set; }
 		ReadonlyList StatusChangesList { get; }
+		RoamingSendingStatus RoamingSendingStatus { get; }
 	}
 
 	[ComVisible(true)]

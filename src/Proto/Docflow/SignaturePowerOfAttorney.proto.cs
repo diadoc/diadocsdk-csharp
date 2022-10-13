@@ -11,6 +11,7 @@
 // Note: requires additional types generated from: PowersOfAttorney/PowerOfAttorney.proto
 // Note: requires additional types generated from: PowersOfAttorney/PowerOfAttorneyValidation.proto
 // Note: requires additional types generated from: Docflow/Attachment.proto
+// Note: requires additional types generated from: RoamingSendingStatus.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SignaturePowerOfAttorney")]
@@ -48,6 +49,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _StatusChanges; }
     }
   
+
+    private Diadoc.Api.Proto.RoamingSendingStatus _RoamingSendingStatus = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"RoamingSendingStatus", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.RoamingSendingStatus RoamingSendingStatus
+    {
+      get { return _RoamingSendingStatus; }
+      set { _RoamingSendingStatus = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
