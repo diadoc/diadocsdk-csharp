@@ -23,8 +23,10 @@ namespace Diadoc.Api.Proto
       get { return _Severity; }
       set { _Severity = value; }
     }
-    private Diadoc.Api.Proto.RoamingSendingStatusNamedId _StatusNamedId;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"StatusNamedId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+
+    private Diadoc.Api.Proto.RoamingSendingStatusNamedId _StatusNamedId = Diadoc.Api.Proto.RoamingSendingStatusNamedId.UnknownStatus;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"StatusNamedId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.RoamingSendingStatusNamedId.UnknownStatus)]
     public Diadoc.Api.Proto.RoamingSendingStatusNamedId StatusNamedId
     {
       get { return _StatusNamedId; }

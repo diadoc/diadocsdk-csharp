@@ -4,7 +4,7 @@ package Diadoc.Api.Proto;
 
 message RoamingSendingStatus {
 	required Severity Severity = 1;
-	required RoamingSendingStatusNamedId StatusNamedId = 2;
+	optional RoamingSendingStatusNamedId StatusNamedId = 2 [default = UnknownStatus];
 	optional string StatusText = 3;
 	repeated RoamingSendingError Errors = 4;
 }
