@@ -1,0 +1,8 @@
+package Diadoc.Api.Proto.Certificates;
+
+enum CertificateSubjectType {
+    UnknownCertificateSubjectType = 0;
+    LegalEntity = 1;
+    IndividualEntity = 2;
+    PhysicalPerson = 3;
+}

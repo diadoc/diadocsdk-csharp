@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Certificates/CertificateInfoV2.proto
+// Note: requires additional types generated from: Certificates/CertificateSubjectType.proto
 namespace Diadoc.Api.Proto.Certificates
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CertificateInfoV2")]
@@ -157,23 +158,6 @@ namespace Diadoc.Api.Proto.Certificates
             
       [global::ProtoBuf.ProtoEnum(Name=@"KonturCertificate", Value=3)]
       KonturCertificate = 3
-    }
-  
-    [global::ProtoBuf.ProtoContract(Name=@"CertificateSubjectType")]
-    public enum CertificateSubjectType
-    {
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"UnknownCertificateSubjectType", Value=0)]
-      UnknownCertificateSubjectType = 0,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"LegalEntity", Value=1)]
-      LegalEntity = 1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"IndividualEntity", Value=2)]
-      IndividualEntity = 2,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"PhysicalPerson", Value=3)]
-      PhysicalPerson = 3
     }
   
 }
