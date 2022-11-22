@@ -381,6 +381,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _ResponseStatus; }
       set { _ResponseStatus = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.ConfirmationDocflow _Confirmation = null;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"Confirmation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.ConfirmationDocflow Confirmation
+    {
+      get { return _Confirmation; }
+      set { _Confirmation = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
