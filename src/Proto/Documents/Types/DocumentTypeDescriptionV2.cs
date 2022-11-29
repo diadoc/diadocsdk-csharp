@@ -152,6 +152,7 @@ namespace Diadoc.Api.Proto.Documents.Types
 	{
 		int SignerTypeValue { get; }
 		int ExtendedDocumentTitleTypeValue { get; }
+		string SignerUserDataXsdUrlValue { get; }
 	}
 
 	public partial class SignerInfoV2 : SafeComObject, ISignerInfoV2
@@ -164,6 +165,11 @@ namespace Diadoc.Api.Proto.Documents.Types
 		public int ExtendedDocumentTitleTypeValue
 		{
 			get { return ExtendedDocumentTitleType; }
+		}
+
+		public string SignerUserDataXsdUrlValue
+		{
+			get { return SignerUserDataXsdUrl; }
 		}
 	}
 

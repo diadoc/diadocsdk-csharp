@@ -46,6 +46,7 @@ message DocumentTitleV2 {
 message SignerInfoV2 {
 	required int32 SignerType = 1;
 	required int32 ExtendedDocumentTitleType = 2 [default = -1];
+	optional string SignerUserDataXsdUrl = 3;
 }
 
 message DocumentMetadataItemV2 {
