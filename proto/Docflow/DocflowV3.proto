@@ -67,6 +67,7 @@ message ParticipantResponseDocflow
 	optional Timestamp SentAt = 5;
 	optional Timestamp DeliveredAt = 6;
 	required Documents.RecipientResponseStatus ResponseStatus = 7;
+	optional ConfirmationDocflow Confirmation = 8;
 }
 
 message AmendmentRequestDocflow

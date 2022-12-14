@@ -570,6 +570,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp SentAt { get; }
 		Timestamp DeliveredAt { get; }
 		Com.RecipientResponseStatus ResponseStatusValue { get; }
+		ConfirmationDocflow Confirmation { get; }
 	}
 
 	[ComVisible(true)]
