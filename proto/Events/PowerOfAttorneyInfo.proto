@@ -1,9 +1,11 @@
 import "PowersOfAttorney/PowerOfAttorney.proto";
 import "PowersOfAttorney/PowerOfAttorneyValidation.proto";
+import "RoamingSendingStatus.proto";
 
 package Diadoc.Api.Proto.Events;
 
 message PowerOfAttorneyInfo {
     required PowersOfAttorney.PowerOfAttorneyFullId FullId = 1;
     optional PowersOfAttorney.PowerOfAttorneyValidationStatus Status = 2;
+    optional RoamingSendingStatus RoamingSendingStatus = 3;
 }

@@ -1,0 +1,21 @@
+import "Severity.proto";
+
+package Diadoc.Api.Proto;
+
+message RoamingSendingStatus {
+	required Severity Severity = 1;
+	optional RoamingSendingStatusNamedId StatusNamedId = 2 [default = UnknownStatus];
+	optional string StatusText = 3;
+	repeated RoamingSendingError Errors = 4;
+}
+
+enum RoamingSendingStatusNamedId {
+	UnknownStatus = 0; //reserved for backward compatibility
+	IsSent = 1;
+	SendingError = 2;
+}
+
+message RoamingSendingError {
+	required string Code = 1;
+	required string Text = 2;
+}

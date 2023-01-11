@@ -1,4 +1,5 @@
 import "PowersOfAttorney/PowerOfAttorneyValidation.proto";
+import "RoamingSendingStatus.proto";
 
 package Diadoc.Api.Proto;
 
@@ -7,6 +8,7 @@ message DocflowStatusV3
     required DocflowStatusModelV3 PrimaryStatus = 1;
     optional DocflowStatusModelV3 SecondaryStatus = 2;
     optional PowersOfAttorney.PowerOfAttorneyValidationStatus PowerOfAttorneyGeneralStatus = 3;
+    optional RoamingSendingStatus GeneralRoamingSendingStatus = 4;
 }
 
 message DocflowStatusModelV3

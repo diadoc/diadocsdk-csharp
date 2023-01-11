@@ -1,6 +1,7 @@
 import "PowersOfAttorney/PowerOfAttorney.proto";
 import "PowersOfAttorney/PowerOfAttorneyValidation.proto";
 import "Docflow/Attachment.proto";
+import "RoamingSendingStatus.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
@@ -9,6 +10,7 @@ message SignaturePowerOfAttorney {
     required PowersOfAttorney.PowerOfAttorneyFullId FullId = 2;
     optional PowersOfAttorney.PowerOfAttorneyValidationStatus Status = 3;
     repeated PowerOfAttorneyStatusChange StatusChanges = 4;
+    optional RoamingSendingStatus RoamingSendingStatus = 5;
 }
 
 message PowerOfAttorneyStatusChange {

@@ -9,6 +9,7 @@ namespace Diadoc.Api.Proto
 		DocflowStatusModelV3 PrimaryStatus { get; }
 		DocflowStatusModelV3 SecondaryStatus { get; }
 		PowersOfAttorney.PowerOfAttorneyValidationStatus PowerOfAttorneyGeneralStatus { get; }
+		RoamingSendingStatus GeneralRoamingSendingStatus { get; }
 	}
 
 	[ComVisible(true)]
