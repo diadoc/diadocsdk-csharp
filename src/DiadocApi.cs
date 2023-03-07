@@ -1108,7 +1108,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocumentsByMessageId(authToken, boxId, messageId);
 		}
 		
-		public DocumentWorkflowSettingsList GetWorkflowsSettings(string authToken, string boxId)
+		public DocumentWorkflowSettingsListV2 GetWorkflowsSettings(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException(nameof(authToken));
