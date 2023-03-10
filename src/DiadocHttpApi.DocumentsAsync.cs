@@ -115,11 +115,11 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<DocumentList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 		
-		public Task<DocumentWorkflowSettingsList> GetWorkflowsSettingsAsync([NotNull] string authToken, string boxId)
+		public Task<DocumentWorkflowSettingsListV2> GetWorkflowsSettingsAsync([NotNull] string authToken, string boxId)
 		{
-			var qsb = new PathAndQueryBuilder("/GetWorkflowsSettings");
+			var qsb = new PathAndQueryBuilder("/V2/GetWorkflowsSettings");
 			qsb.AddParameter("boxId", boxId);
-			return PerformHttpRequestAsync<DocumentWorkflowSettingsList>(authToken, "GET", qsb.BuildPathAndQuery());
+			return PerformHttpRequestAsync<DocumentWorkflowSettingsListV2>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
 		public Task<SignatureInfo> GetSignatureInfoAsync(string authToken, string boxId, string messageId, string entityId)

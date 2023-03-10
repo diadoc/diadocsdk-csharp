@@ -10,27 +10,48 @@ import "Workflows/RoamingConfirmationBehavior.proto";
 
 package Diadoc.Api.Proto.Workflows;
 
+message DocumentWorkflowSettingsListV2 {
+	repeated DocumentWorkflowSettingsV2 DocumentWorkflowSettings = 1;
+}
+
+message DocumentWorkflowSettingsV2 {
+	required int32 Id = 1;
+	repeated ParticipantSettingV2 Participants = 2;
+	optional OperatorConfirmationReceiptBehavior.OperatorConfirmationReceiptBehavior OperatorConfirmationReceiptBehavior = 3 [default = Unknown];
+	optional ReceiptOperatorConfirmationReceiptBehavior.ReceiptOperatorConfirmationReceiptBehavior ReceiptOperatorConfirmationReceiptBehavior = 4 [default = Unknown];
+	optional OperatorConfirmationBehavior.OperatorConfirmationBehavior ReceiptOperatorConfirmationBehavior = 5 [default = Unknown];
+	optional AmendmentRequestResponseBehavior.AmendmentRequestResponseBehavior AmendmentRequestResponseBehavior = 6 [default = Unknown];
+	optional RoamingConfirmationBehavior.RoamingConfirmationBehavior ReceiptRoamingConfirmationBehavior = 7 [default = Unknown];
+	optional InvitationBehavior.InvitationBehavior InvitationBehavior = 8 [default = Unknown];
+}
+
+message ParticipantSettingV2 {
+	optional ParticipantType.ParticipantType Participant = 1 [default = Unknown];
+	optional ParticipantAction.ParticipantAction ParticipantAction = 2 [default = Unknown];
+	optional TitleReceiptBehavior.TitleReceiptBehavior TitleReceiptBehavior = 3 [default = Unknown];
+}
+
 message DocumentWorkflowSettingsList {
 	repeated DocumentWorkflowSettings DocumentWorkflowSettings = 1;
 }
 
 message DocumentWorkflowSettings {
-    required int32 Id = 1;
-    repeated ParticipantSetting Participants = 2;
-    optional OperatorConfirmationReceiptBehavior.OperatorConfirmationReceiptBehavior OperatorConfirmationReceiptBehavior = 3 [default = Unknown];
-    optional ReceiptOperatorConfirmationReceiptBehavior.ReceiptOperatorConfirmationReceiptBehavior ReceiptOperatorConfirmationReceiptBehavior = 4 [default = Unknown];
-    optional OperatorConfirmationBehavior.OperatorConfirmationBehavior ReceiptOperatorConfirmationBehavior = 5 [default = Unknown];
-    optional AmendmentRequestResponseBehavior.AmendmentRequestResponseBehavior AmendmentRequestResponseBehavior = 6 [default = Unknown];
-    optional OperatorConfirmationBehavior.OperatorConfirmationBehavior AmendmentRequestOperatorConfirmationBehavior = 7 [default = Unknown];
-    optional RoamingConfirmationBehavior.RoamingConfirmationBehavior ReceiptRoamingConfirmationBehavior = 8 [default = Unknown];
-    optional RoamingConfirmationBehavior.RoamingConfirmationBehavior AmendmentRequestRoamingConfirmationBehavior = 9 [default = Unknown];
-    optional InvitationBehavior.InvitationBehavior InvitationBehavior = 10 [default = Unknown];
+	required int32 Id = 1;
+	repeated ParticipantSetting Participants = 2;
+	optional OperatorConfirmationReceiptBehavior.OperatorConfirmationReceiptBehavior OperatorConfirmationReceiptBehavior = 3 [default = Unknown];
+	optional ReceiptOperatorConfirmationReceiptBehavior.ReceiptOperatorConfirmationReceiptBehavior ReceiptOperatorConfirmationReceiptBehavior = 4 [default = Unknown];
+	optional OperatorConfirmationBehavior.OperatorConfirmationBehavior ReceiptOperatorConfirmationBehavior = 5 [default = Unknown];
+	optional AmendmentRequestResponseBehavior.AmendmentRequestResponseBehavior AmendmentRequestResponseBehavior = 6 [default = Unknown];
+	optional OperatorConfirmationBehavior.OperatorConfirmationBehavior AmendmentRequestOperatorConfirmationBehavior = 7 [default = Unknown];
+	optional RoamingConfirmationBehavior.RoamingConfirmationBehavior ReceiptRoamingConfirmationBehavior = 8 [default = Unknown];
+	optional RoamingConfirmationBehavior.RoamingConfirmationBehavior AmendmentRequestRoamingConfirmationBehavior = 9 [default = Unknown];
+	optional InvitationBehavior.InvitationBehavior InvitationBehavior = 10 [default = Unknown];
 }
 
 message ParticipantSetting {
-    optional ParticipantType.ParticipantType Participant = 1 [default = Unknown];
-    optional ParticipantAction.ParticipantAction ParticipantAction = 2 [default = Unknown];
-    optional TitleReceiptBehavior.TitleReceiptBehavior TitleReceiptBehavior = 3 [default = Unknown];
-    optional OperatorConfirmationBehavior.OperatorConfirmationBehavior OperatorConfirmationBehavior = 4 [default = Unknown];
-    optional RoamingConfirmationBehavior.RoamingConfirmationBehavior RoamingConfirmationBehavior = 5 [default = Unknown];
+	optional ParticipantType.ParticipantType Participant = 1 [default = Unknown];
+	optional ParticipantAction.ParticipantAction ParticipantAction = 2 [default = Unknown];
+	optional TitleReceiptBehavior.TitleReceiptBehavior TitleReceiptBehavior = 3 [default = Unknown];
+	optional OperatorConfirmationBehavior.OperatorConfirmationBehavior OperatorConfirmationBehavior = 4 [default = Unknown];
+	optional RoamingConfirmationBehavior.RoamingConfirmationBehavior RoamingConfirmationBehavior = 5 [default = Unknown];
 }

@@ -979,7 +979,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocumentsByMessageIdAsync(authToken, boxId, messageId);
 		}
 		
-		public Task<DocumentWorkflowSettingsList> GetWorkflowsSettingsAsync(string authToken, string boxId)
+		public Task<DocumentWorkflowSettingsListV2> GetWorkflowsSettingsAsync(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException(nameof(authToken));
