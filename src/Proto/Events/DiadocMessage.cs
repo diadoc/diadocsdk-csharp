@@ -209,6 +209,7 @@ namespace Diadoc.Api.Proto.Events
 		bool HasPatch { get; }
 		Message Message { get; }
 		MessagePatch Patch { get; }
+		string IndexKey { get; }
 	}
 
 	[ComVisible(true)]
