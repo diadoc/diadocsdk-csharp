@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Signers" type="Signers"/>
+	<xs:complexType name="Signers">
+		<xs:sequence>
+			<xs:element name="Signer" type="Signer" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name ="Signer">
+		<xs:sequence>
+			<xs:element name="SignerDetails" type="SignerDetails" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="SignerReference" type="SignerReference" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name ="SignerDetails">
+		<xs:attribute name="LastName" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1" />
+					<xs:maxLength value="60" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="FirstName" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1" />
+					<xs:maxLength value="60" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="MiddleName" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1" />
+					<xs:maxLength value="60" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Position" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="128" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="RegistrationCertificate" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="100"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="SignerOrganizationName" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1" />
+					<xs:maxLength value="1000" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="SignerPowers" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:integer">
+					<xs:enumeration value="0" />
+					<xs:enumeration value="1" />
+					<xs:enumeration value="2" />
+					<xs:enumeration value="3" />
+					<xs:enumeration value="4" />
+					<xs:enumeration value="5" />
+					<xs:enumeration value="6" />
+					<xs:enumeration value="7" />
+					<xs:enumeration value="8" />
+					<xs:enumeration value="21" />
+					<xs:enumeration value="22" />
+					<xs:enumeration value="23" />
+					<xs:enumeration value="29" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="SignerPowersBase" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1" />
+					<xs:maxLength value="255" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="SignerOrgPowersBase" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1" />
+					<xs:maxLength value="255" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="SignerStatus" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:integer">
+					<xs:enumeration value="1" />
+					<xs:enumeration value="2" />
+					<xs:enumeration value="3" />
+					<xs:enumeration value="4" />
+					<xs:enumeration value="5" />
+					<xs:enumeration value="6" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="SignerType" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="1" />
+					<xs:enumeration value="2" />
+					<xs:enumeration value="3" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="SignerInfo" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1" />
+					<xs:maxLength value="255" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Inn" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="10" />
+					<xs:maxLength value="12" />
+					<xs:pattern value="([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})([0-9]{10}|[0-9]{8})" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SignerReference">
+		<xs:sequence>
+			<xs:element name="PowerOfAttorney" type="PowerOfAttorney" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="BoxId" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="128" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="CertificateThumbprint" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0" />
+					<xs:maxLength value="128" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="CertificateBytes" type="xs:base64Binary" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="PowerOfAttorney">
+		<xs:sequence>
+			<xs:element name="FullId" type="PowerOfAttorneyFullId" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="UseDefault" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="true" />
+					<xs:enumeration value="false" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PowerOfAttorneyFullId">
+		<xs:attribute name="RegistrationNumber" type="xs:string" use="required"/>
+		<xs:attribute name="IssuerInn" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>

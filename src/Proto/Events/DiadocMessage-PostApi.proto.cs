@@ -2744,6 +2744,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _ExtendedSigner; }
     }
   
+
+    private byte[] _SignerContent = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"SignerContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public byte[] SignerContent
+    {
+      get { return _SignerContent; }
+      set { _SignerContent = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2807,6 +2816,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _ExtendedSigner; }
     }
   
+
+    private byte[] _SignerContent = null;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"SignerContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public byte[] SignerContent
+    {
+      get { return _SignerContent; }
+      set { _SignerContent = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2840,6 +2858,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _ExtendedSigner; }
     }
   
+
+    private byte[] _SignerContent = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"SignerContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public byte[] SignerContent
+    {
+      get { return _SignerContent; }
+      set { _SignerContent = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

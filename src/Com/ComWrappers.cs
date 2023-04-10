@@ -1498,6 +1498,8 @@ namespace Diadoc.Api.Proto.Events
 		DocumentId DocumentId { get; set; }
 		string ToBoxId { get; set; }
 		Signer Signer { get; set; }
+		ExtendedSigner ExtendedSigner { get; set; }
+		byte[] SignerContent { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -1518,6 +1520,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		DocumentId DocumentId { get; set; }
 		Signer Signer { get; set; }
+		byte[] SignerContent { get; set; }
 		void AddExtendedSigner([MarshalAs(UnmanagedType.IDispatch)] object item);
 	}
 

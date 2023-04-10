@@ -268,6 +268,15 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _ExtendedDocumentTitleType; }
       set { _ExtendedDocumentTitleType = value; }
     }
+
+    private string _SignerUserDataXsdUrl = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SignerUserDataXsdUrl", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string SignerUserDataXsdUrl
+    {
+      get { return _SignerUserDataXsdUrl; }
+      set { _SignerUserDataXsdUrl = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
