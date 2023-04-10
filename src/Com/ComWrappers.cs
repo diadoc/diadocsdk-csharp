@@ -1498,7 +1498,7 @@ namespace Diadoc.Api.Proto.Events
 		DocumentId DocumentId { get; set; }
 		string ToBoxId { get; set; }
 		Signer Signer { get; set; }
-		ExtendedSigner ExtendedSigner { get; set; }
+		ReadonlyList ExtendedSignerList { get; }
 		byte[] SignerContent { get; set; }
 	}
 
@@ -1509,6 +1509,10 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof(IDraftDocumentToPatch))]
 	public partial class DraftDocumentToPatch : SafeComObject, IDraftDocumentToPatch
 	{
+		public ReadonlyList ExtendedSignerList
+		{
+			get { return new ReadonlyList(ExtendedSigner); }
+		}
 	}
 }
 
