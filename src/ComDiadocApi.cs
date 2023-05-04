@@ -87,7 +87,7 @@ namespace Diadoc.Api
 		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch);
 		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch, string operationId);
 
-		[Obsolete("Use GenerateReceiptXml()")]
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		GeneratedFile GenerateInvoiceDocumentReceiptXml(
 			string authToken,
 			string boxId,
@@ -95,12 +95,18 @@ namespace Diadoc.Api
 			string attachmentId,
 			[MarshalAs(UnmanagedType.IDispatch)] object signer);
 
+		[Obsolete("Use GenerateInvoiceCorrectionRequestXmlV2()")]
 		GeneratedFile GenerateInvoiceCorrectionRequestXml(
 			string authToken,
 			string boxId,
 			string messageId,
 			string attachmentId,
 			[MarshalAs(UnmanagedType.IDispatch)] object correctionInfo);
+
+		GeneratedFile GenerateInvoiceCorrectionRequestXmlV2(
+			string authToken,
+			string boxId,
+			[MarshalAs(UnmanagedType.IDispatch)] object invoiceCorrectionRequestGenerationRequest);
 
 		GeneratedFile GenerateInvoiceXml(
 			string authToken,
@@ -315,7 +321,7 @@ namespace Diadoc.Api
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
 		InvoiceInfo ParseInvoiceXmlFromFile(string fileName);
 
-		[Obsolete("Use GenerateReceiptXml()")]
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		GeneratedFile GenerateDocumentReceiptXml(
 			string authToken,
 			string boxId,
@@ -323,12 +329,18 @@ namespace Diadoc.Api
 			string attachmentId,
 			[MarshalAs(UnmanagedType.IDispatch)] object signer);
 
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		GeneratedFile GenerateReceiptXml(
 			string authToken,
 			string boxId,
 			string messageId,
 			string attachmentId,
 			[MarshalAs(UnmanagedType.IDispatch)] object signer);
+
+		GeneratedFile GenerateReceiptXmlV2(
+			string authToken,
+			string boxId,
+			[MarshalAs(UnmanagedType.IDispatch)] object receiptGenerationRequest);
 
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] torg12SellerTitleXmlContent);
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string fileName);
@@ -372,12 +384,18 @@ namespace Diadoc.Api
 			[MarshalAs(UnmanagedType.IDispatch)] object revocationRequestInfo,
 			string contentTypeId = null);
 
+		[Obsolete("Use GenerateSignatureRejectionXmlV2()")]
 		GeneratedFile GenerateSignatureRejectionXml(
 			string authToken,
 			string boxId,
 			string messageId,
 			string attachmentId,
 			[MarshalAs(UnmanagedType.IDispatch)] object signatureRejectionInfo);
+
+		GeneratedFile GenerateSignatureRejectionXmlV2(
+			string authToken,
+			string boxId,
+			[MarshalAs(UnmanagedType.IDispatch)] object signatureRejectionGenerationRequest);
 
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
 		RevocationRequestInfo ParseRevocationRequestXmlFromFile(string fileName);
@@ -895,7 +913,7 @@ namespace Diadoc.Api
 			return diadoc.PostMessagePatch(authToken, (MessagePatchToPost) patch, operationId);
 		}
 
-		[Obsolete("Use GenerateReceiptXml()")]
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		public GeneratedFile GenerateDocumentReceiptXml(
 			string authToken,
 			string boxId,
@@ -906,7 +924,7 @@ namespace Diadoc.Api
 			return diadoc.GenerateReceiptXml(authToken, boxId, messageId, attachmentId, (Signer) signer);
 		}
 
-		[Obsolete("Use GenerateReceiptXml()")]
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		public GeneratedFile GenerateInvoiceDocumentReceiptXml(
 			string authToken,
 			string boxId,
@@ -917,6 +935,7 @@ namespace Diadoc.Api
 			return diadoc.GenerateDocumentReceiptXml(authToken, boxId, messageId, attachmentId, (Signer) signer);
 		}
 
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		public GeneratedFile GenerateReceiptXml(
 			string authToken,
 			string boxId,
@@ -927,6 +946,15 @@ namespace Diadoc.Api
 			return diadoc.GenerateReceiptXml(authToken, boxId, messageId, attachmentId, (Signer) signer);
 		}
 
+		public GeneratedFile GenerateReceiptXmlV2(
+			string authToken,
+			string boxId,
+			object receiptGenerationRequest)
+		{
+			return diadoc.GenerateReceiptXmlV2(authToken, boxId, (ReceiptGenerationRequestV2) receiptGenerationRequest);
+		}
+
+		[Obsolete("Use GenerateInvoiceCorrectionRequestXmlV2()")]
 		public GeneratedFile GenerateInvoiceCorrectionRequestXml(
 			string authToken,
 			string boxId,
@@ -934,11 +962,23 @@ namespace Diadoc.Api
 			string attachmentId,
 			object correctionInfo)
 		{
-			return diadoc.GenerateInvoiceCorrectionRequestXml(authToken,
+			return diadoc.GenerateInvoiceCorrectionRequestXml(
+				authToken,
 				boxId,
 				messageId,
 				attachmentId,
 				(InvoiceCorrectionRequestInfo) correctionInfo);
+		}
+
+		public GeneratedFile GenerateInvoiceCorrectionRequestXmlV2(
+			string authToken,
+			string boxId,
+			object invoiceCorrectionRequestGenerationRequest)
+		{
+			return diadoc.GenerateInvoiceCorrectionRequestXmlV2(
+				authToken,
+				boxId,
+				(InvoiceCorrectionRequestGenerationRequestV2) invoiceCorrectionRequestGenerationRequest);
 		}
 
 		public GeneratedFile GenerateRevocationRequestXml(
@@ -957,6 +997,7 @@ namespace Diadoc.Api
 				contentTypeId);
 		}
 
+		[Obsolete("Use GenerateSignatureRejectionXmlV2()")]
 		public GeneratedFile GenerateSignatureRejectionXml(
 			string authToken,
 			string boxId,
@@ -964,11 +1005,23 @@ namespace Diadoc.Api
 			string attachmentId,
 			object signatureRejectionInfo)
 		{
-			return diadoc.GenerateSignatureRejectionXml(authToken,
+			return diadoc.GenerateSignatureRejectionXml(
+				authToken,
 				boxId,
 				messageId,
 				attachmentId,
 				(SignatureRejectionInfo) signatureRejectionInfo);
+		}
+
+		public GeneratedFile GenerateSignatureRejectionXmlV2(
+			string authToken,
+			string boxId,
+			object signatureRejectionGenerationRequest)
+		{
+			return diadoc.GenerateSignatureRejectionXmlV2(
+				authToken,
+				boxId,
+				(SignatureRejectionGenerationRequestV2) signatureRejectionGenerationRequest);
 		}
 
 		public RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent)

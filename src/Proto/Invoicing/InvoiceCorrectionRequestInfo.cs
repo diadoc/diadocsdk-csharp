@@ -18,4 +18,23 @@ namespace Diadoc.Api.Proto.Invoicing
 	public partial class InvoiceCorrectionRequestInfo : SafeComObject, IInvoiceCorrectionRequestInfo
 	{
 	}
+
+	[ComVisible(true)]
+	[Guid("A5A07BBA-1818-4F54-9E61-BD096842C41F")]
+	public interface IInvoiceCorrectionRequestGenerationRequestV2
+	{
+		string ErrorMessage { get; set; }
+		string MessageId { get; set; }
+		string AttachmentId { get; set; }
+		byte[] SignerContent { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.InvoiceCorrectionRequestGenerationRequestV2")]
+	[Guid("BB970027-D15B-4BE6-A296-188F54E1E838")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IInvoiceCorrectionRequestGenerationRequestV2))]
+	public partial class InvoiceCorrectionRequestGenerationRequestV2 : SafeComObject, IInvoiceCorrectionRequestGenerationRequestV2
+	{
+	}
 }

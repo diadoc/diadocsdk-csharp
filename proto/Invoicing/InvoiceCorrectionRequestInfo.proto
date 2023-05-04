@@ -6,3 +6,10 @@ message InvoiceCorrectionRequestInfo {
 	required string ErrorMessage = 1;
 	required Signer Signer = 2;
 }
+
+message InvoiceCorrectionRequestGenerationRequestV2 {
+	required string ErrorMessage = 1;
+	required string MessageId = 2;
+	required string AttachmentId = 3;
+	required bytes SignerContent = 4;
+}
