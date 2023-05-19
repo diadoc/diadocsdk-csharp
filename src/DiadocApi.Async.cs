@@ -294,7 +294,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEntityContentAsync(authToken, boxId, messageId, entityId);
 		}
 
-		[Obsolete("Use GenerateReceiptXmlAsync()")]
+		[Obsolete("Use GenerateReceiptXmlV2Async()")]
 		public Task<GeneratedFile> GenerateDocumentReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
@@ -304,7 +304,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateReceiptXmlAsync(authToken, boxId, messageId, attachmentId, signer);
 		}
 
-		[Obsolete("Use GenerateReceiptXmlAsync()")]
+		[Obsolete("Use GenerateReceiptXmlV2Async()")]
 		public Task<GeneratedFile> GenerateInvoiceDocumentReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
@@ -314,6 +314,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateReceiptXmlAsync(authToken, boxId, messageId, attachmentId, signer);
 		}
 
+		[Obsolete("Use GenerateReceiptXmlV2Async()")]
 		public Task<GeneratedFile> GenerateReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
@@ -323,13 +324,34 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateReceiptXmlAsync(authToken, boxId, messageId, attachmentId, signer);
 		}
 
-		public Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlAsync(string authToken, string boxId, string messageId,
-			string attachmentId, InvoiceCorrectionRequestInfo correctionInfo)
+		public Task<GeneratedFile> GenerateReceiptXmlV2Async(string authToken, string boxId, ReceiptGenerationRequestV2 receiptGenerationRequest)
+		{
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (receiptGenerationRequest == null) throw new ArgumentNullException("receiptGenerationRequest");
+			return diadocHttpApi.GenerateReceiptXmlV2Async(authToken, boxId, receiptGenerationRequest);
+		}
+
+		[Obsolete("Use GenerateInvoiceCorrectionRequestXmlV2Async()")]
+		public Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlAsync(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			InvoiceCorrectionRequestInfo correctionInfo)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (attachmentId == null) throw new ArgumentNullException("attachmentId");
 			return diadocHttpApi.GenerateInvoiceCorrectionRequestXmlAsync(authToken, boxId, messageId, attachmentId, correctionInfo);
+		}
+
+		public Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlV2Async(
+			string authToken,
+			string boxId,
+			InvoiceCorrectionRequestGenerationRequestV2 invoiceCorrectionRequestGenerationRequest)
+		{
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GenerateInvoiceCorrectionRequestXmlV2Async(authToken, boxId, invoiceCorrectionRequestGenerationRequest);
 		}
 
 		public Task<GeneratedFile> GenerateRevocationRequestXmlAsync(string authToken, string boxId, string messageId,
@@ -341,13 +363,24 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateRevocationRequestXmlAsync(authToken, boxId, messageId, attachmentId, revocationRequestInfo, contentTypeId);
 		}
 
-		public Task<GeneratedFile> GenerateSignatureRejectionXmlAsync(string authToken, string boxId, string messageId,
-			string attachmentId, SignatureRejectionInfo signatureRejectionInfo)
+		[Obsolete("Use GenerateSignatureRejectionXmlV2Async()")]
+		public Task<GeneratedFile> GenerateSignatureRejectionXmlAsync(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			SignatureRejectionInfo signatureRejectionInfo)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (attachmentId == null) throw new ArgumentNullException("attachmentId");
 			return diadocHttpApi.GenerateSignatureRejectionXmlAsync(authToken, boxId, messageId, attachmentId, signatureRejectionInfo);
+		}
+
+		public Task<GeneratedFile> GenerateSignatureRejectionXmlV2Async(string authToken, string boxId, SignatureRejectionGenerationRequestV2 signatureRejectionGenerationRequest)
+		{
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GenerateSignatureRejectionXmlV2Async(authToken, boxId, signatureRejectionGenerationRequest);
 		}
 
 		public Task<InvoiceCorrectionRequestInfo> GetInvoiceCorrectionRequestInfoAsync(string authToken, string boxId, string messageId,

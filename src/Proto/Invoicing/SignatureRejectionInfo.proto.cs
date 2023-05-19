@@ -37,4 +37,44 @@ namespace Diadoc.Api.Proto.Invoicing
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SignatureRejectionGenerationRequestV2")]
+  public partial class SignatureRejectionGenerationRequestV2 : global::ProtoBuf.IExtensible
+  {
+    public SignatureRejectionGenerationRequestV2() {}
+    
+
+    private string _ErrorMessage = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ErrorMessage", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ErrorMessage
+    {
+      get { return _ErrorMessage; }
+      set { _ErrorMessage = value; }
+    }
+    private string _MessageId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"MessageId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string MessageId
+    {
+      get { return _MessageId; }
+      set { _MessageId = value; }
+    }
+    private string _AttachmentId;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"AttachmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string AttachmentId
+    {
+      get { return _AttachmentId; }
+      set { _AttachmentId = value; }
+    }
+    private byte[] _SignerContent;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"SignerContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] SignerContent
+    {
+      get { return _SignerContent; }
+      set { _SignerContent = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

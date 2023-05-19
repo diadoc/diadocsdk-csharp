@@ -12,17 +12,37 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		[Obsolete("Use GenerateReceiptXmlAsync()")]
+		[Obsolete("Use GenerateReceiptXmlV2Async()")]
 		public Task<GeneratedFile> GenerateInvoiceDocumentReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
-			var queryString = $"/GenerateInvoiceDocumentReceiptXml?boxId={boxId}&messageId={messageId}&attachmentId={attachmentId}";
-			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, signer);
+			return GenerateReceiptXmlAsync(authToken, boxId, messageId, attachmentId, signer);
 		}
 
-		public Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, InvoiceCorrectionRequestInfo correctionInfo)
+		[Obsolete("Use GenerateInvoiceCorrectionRequestXmlV2Async()")]
+		public Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlAsync(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			InvoiceCorrectionRequestInfo correctionInfo)
 		{
-			var queryString = $"/GenerateInvoiceCorrectionRequestXml?boxId={boxId}&messageId={messageId}&attachmentId={attachmentId}";
-			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, correctionInfo);
+			var queryBuilder = new PathAndQueryBuilder("/GenerateInvoiceCorrectionRequestXml");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("messageId", messageId);
+			queryBuilder.AddParameter("attachmentId", attachmentId);
+
+			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), correctionInfo);
+		}
+
+		public Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlV2Async(
+			string authToken,
+			string boxId,
+			InvoiceCorrectionRequestGenerationRequestV2 invoiceCorrectionRequestGenerationRequest)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/V2/GenerateInvoiceCorrectionRequestXml");
+			queryBuilder.AddParameter("boxId", boxId);
+
+			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), invoiceCorrectionRequestGenerationRequest);
 		}
 
 		public Task<GeneratedFile> GenerateRevocationRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null)
@@ -33,18 +53,33 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("attachmentId", attachmentId);
 			if (!string.IsNullOrEmpty(contentTypeId))
 				queryBuilder.AddParameter("contentTypeId", contentTypeId);
+
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), revocationRequestInfo);
 		}
 
+		[Obsolete("Use GenerateSignatureRejectionXmlV2Async")]
 		public Task<GeneratedFile> GenerateSignatureRejectionXmlAsync(string authToken, string boxId, string messageId, string attachmentId, SignatureRejectionInfo signatureRejectionInfo)
 		{
-			var queryString = $"/GenerateSignatureRejectionXml?boxId={boxId}&messageId={messageId}&attachmentId={attachmentId}";
-			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, signatureRejectionInfo);
+			var queryBuilder = new PathAndQueryBuilder("/GenerateSignatureRejectionXml");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("messageId", messageId);
+			queryBuilder.AddParameter("attachmentId", attachmentId);
+
+			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), signatureRejectionInfo);
+		}
+
+		public Task<GeneratedFile> GenerateSignatureRejectionXmlV2Async(string authToken, string boxId, SignatureRejectionGenerationRequestV2 signatureRejectionGenerationRequest)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/V2/GenerateSignatureRejectionXml");
+			queryBuilder.AddParameter("boxId", boxId);
+
+			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), signatureRejectionGenerationRequest);
 		}
 
 		public Task<InvoiceCorrectionRequestInfo> GetInvoiceCorrectionRequestInfoAsync(string authToken, string boxId, string messageId, string entityId)
 		{
 			var queryString = $"/GetInvoiceCorrectionRequestInfo?boxId={boxId}&messageId={messageId}&entityId={entityId}";
+
 			return PerformHttpRequestAsync<InvoiceCorrectionRequestInfo>(authToken, "GET", queryString);
 		}
 
@@ -73,6 +108,7 @@ namespace Diadoc.Api
 			var qsb = new PathAndQueryBuilder("/GenerateInvoiceXml").With("invoiceType", invoiceType);
 			if (disableValidation)
 				qsb.AddParameter("disableValidation");
+
 			return PerformGenerateXmlHttpRequestAsync(authToken, qsb.BuildPathAndQuery(), protoInvoice);
 		}
 
@@ -80,6 +116,7 @@ namespace Diadoc.Api
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
 			if (disableValidation) queryBuilder.AddParameter("disableValidation");
+
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
@@ -88,6 +125,7 @@ namespace Diadoc.Api
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
 			if (disableValidation) queryBuilder.AddParameter("disableValidation");
 			queryBuilder.AddParameter("documentVersion", DefaultDocumentVersions.TovTorg551);
+
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
@@ -97,6 +135,7 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
 			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
+
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
@@ -107,18 +146,21 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
 			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
 			queryBuilder.AddParameter("documentVersion", documentVersion ?? DefaultDocumentVersions.TovTorg551);
+
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
 		public Task<GeneratedFile> GenerateAcceptanceCertificateXmlForSellerAsync(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			var queryString = string.Format("/GenerateAcceptanceCertificateXmlForSeller{0}", disableValidation ? "?disableValidation" : "");
+
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, sellerInfo);
 		}
 
 		public Task<GeneratedFile> GenerateAcceptanceCertificateXmlForBuyerAsync(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			var queryString = string.Format("/GenerateAcceptanceCertificateXmlForBuyer?boxId={0}&sellerTitleMessageId={1}&sellerTitleAttachmentId={2}", boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, buyerInfo);
 		}
 
@@ -127,6 +169,7 @@ namespace Diadoc.Api
 			var queryBuilder = new PathAndQueryBuilder("/GenerateAcceptanceCertificateXmlForSeller");
 			if (disableValidation) queryBuilder.AddParameter("disableValidation");
 			queryBuilder.AddParameter("documentVersion", DefaultDocumentVersions.AcceptanceCerttificate552);
+
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
@@ -137,6 +180,7 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
 			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
 			queryBuilder.AddParameter("documentVersion", DefaultDocumentVersions.AcceptanceCerttificate552);
+
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
@@ -166,6 +210,7 @@ namespace Diadoc.Api
 
 			var request = BuildHttpRequest(authToken, "POST", queryBuilder.BuildPathAndQuery(), userContractData);
 			var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
+
 			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
 		}
 
@@ -181,6 +226,7 @@ namespace Diadoc.Api
 
 			var request = BuildHttpRequest(authToken, "POST", queryBuilder.BuildPathAndQuery(), userContractData);
 			var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
+
 			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
 		}
 
@@ -194,6 +240,7 @@ namespace Diadoc.Api
 
 			var request = BuildHttpRequest(authToken, "POST", queryBuilder.BuildPathAndQuery(), userContractData);
 			var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
+
 			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
 		}
 
@@ -202,6 +249,7 @@ namespace Diadoc.Api
 			var queryString = string.Format("/CanSendInvoice?boxId={0}", boxId);
 			var request = BuildHttpRequest(authToken, "POST", queryString, certificateBytes);
 			var response = await HttpClient.PerformHttpRequestAsync(request, HttpStatusCode.Forbidden).ConfigureAwait(false);
+
 			return response.StatusCode == HttpStatusCode.OK;
 		}
 
@@ -209,6 +257,7 @@ namespace Diadoc.Api
 		{
 			var queryString = string.Format("/SendFnsRegistrationMessage?boxId={0}", boxId);
 			var request = BuildHttpRequest(authToken, "POST", queryString, Serialize(fnsRegistrationMessageInfo));
+
 			return HttpClient.PerformHttpRequestAsync(request);
 		}
 
@@ -226,6 +275,7 @@ namespace Diadoc.Api
 		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
 		{
 			var documentTitleType = CreateUtdDocumentTitleType(forBuyer, forCorrection);
+
 			return GetExtendedSignerDetailsAsync(token, boxId, thumbprint, documentTitleType);
 		}
 
@@ -233,6 +283,7 @@ namespace Diadoc.Api
 		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
+
 			return GetExtendedSignerDetailsAsync(token, boxId, certificate.Thumbprint, forBuyer, forCorrection);
 		}
 
@@ -242,12 +293,14 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("thumbprint", thumbprint);
 			queryBuilder.AddParameter("documentTitleType", ((int) documentTitleType).ToString());
+
 			return PerformHttpRequestAsync<ExtendedSignerDetails>(token, "GET", queryBuilder.ToString());
 		}
 
 		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
+
 			return GetExtendedSignerDetailsAsync(token, boxId, certificate.Thumbprint, documentTitleType);
 		}
 
@@ -255,6 +308,7 @@ namespace Diadoc.Api
 		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var documentTitleType = CreateUtdDocumentTitleType(forBuyer, forCorrection);
+
 			return PostExtendedSignerDetailsAsync(token, boxId, thumbprint, documentTitleType, signerDetails);
 		}
 
@@ -262,6 +316,7 @@ namespace Diadoc.Api
 		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
+
 			return PostExtendedSignerDetailsAsync(token, boxId, certificate.Thumbprint, forBuyer, forCorrection, signerDetails);
 		}
 
@@ -271,12 +326,14 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("thumbprint", thumbprint);
 			queryBuilder.AddParameter("documentTitleType", ((int) documentTitleType).ToString());
+
 			return PerformHttpRequestAsync<ExtendedSignerDetails>(token, "POST", queryBuilder.ToString(), Serialize(signerDetails));
 		}
 
 		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
+
 			return PostExtendedSignerDetailsAsync(token, boxId, certificate.Thumbprint, documentTitleType, signerDetails);
 		}
 	}

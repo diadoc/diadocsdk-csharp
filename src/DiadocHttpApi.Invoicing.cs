@@ -11,17 +11,29 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		[Obsolete("Use GenerateReceiptXml()")]
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		public GeneratedFile GenerateInvoiceDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
-			var queryString = string.Format("/GenerateInvoiceDocumentReceiptXml?boxId={0}&messageId={1}&attachmentId={2}", boxId, messageId, attachmentId);
-			return PerformGenerateXmlHttpRequest(authToken, queryString, signer);
+			return GenerateReceiptXml(authToken, boxId, messageId, attachmentId, signer);
 		}
 
+		[Obsolete("Use GenerateInvoiceCorrectionRequestXmlV2()")]
 		public GeneratedFile GenerateInvoiceCorrectionRequestXml(string authToken, string boxId, string messageId, string attachmentId, InvoiceCorrectionRequestInfo correctionInfo)
 		{
-			var queryString = string.Format("/GenerateInvoiceCorrectionRequestXml?boxId={0}&messageId={1}&attachmentId={2}", boxId, messageId, attachmentId);
-			return PerformGenerateXmlHttpRequest(authToken, queryString, correctionInfo);
+			var queryBuilder = new PathAndQueryBuilder("/GenerateInvoiceCorrectionRequestXml");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("messageId", messageId);
+			queryBuilder.AddParameter("attachmentId", attachmentId);
+
+			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), correctionInfo);
+		}
+
+		public GeneratedFile GenerateInvoiceCorrectionRequestXmlV2(string authToken, string boxId, InvoiceCorrectionRequestGenerationRequestV2 invoiceCorrectionRequestGenerationRequest)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/V2/GenerateInvoiceCorrectionRequestXml");
+			queryBuilder.AddParameter("boxId", boxId);
+
+			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), invoiceCorrectionRequestGenerationRequest);
 		}
 
 		public GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null)
@@ -32,18 +44,33 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("attachmentId", attachmentId);
 			if (!string.IsNullOrEmpty(contentTypeId))
 				queryBuilder.AddParameter("contentTypeId", contentTypeId);
+
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), revocationRequestInfo);
 		}
 
+		[Obsolete("Use GenerateSignatureRejectionXmlV2")]
 		public GeneratedFile GenerateSignatureRejectionXml(string authToken, string boxId, string messageId, string attachmentId, SignatureRejectionInfo signatureRejectionInfo)
 		{
-			var queryString = string.Format("/GenerateSignatureRejectionXml?boxId={0}&messageId={1}&attachmentId={2}", boxId, messageId, attachmentId);
-			return PerformGenerateXmlHttpRequest(authToken, queryString, signatureRejectionInfo);
+			var queryBuilder = new PathAndQueryBuilder("/GenerateSignatureRejectionXml");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("messageId", messageId);
+			queryBuilder.AddParameter("attachmentId", attachmentId);
+
+			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), signatureRejectionInfo);
+		}
+
+		public GeneratedFile GenerateSignatureRejectionXmlV2(string authToken, string boxId, SignatureRejectionGenerationRequestV2 signatureRejectionGenerationRequest)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/V2/GenerateSignatureRejectionXml");
+			queryBuilder.AddParameter("boxId", boxId);
+
+			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), signatureRejectionGenerationRequest);
 		}
 
 		public InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId, string entityId)
 		{
 			var queryString = string.Format("/GetInvoiceCorrectionRequestInfo?boxId={0}&messageId={1}&entityId={2}", boxId, messageId, entityId);
+
 			return PerformHttpRequest<InvoiceCorrectionRequestInfo>(authToken, "GET", queryString);
 		}
 
@@ -70,6 +97,7 @@ namespace Diadoc.Api
 		private GeneratedFile GenerateInvoiceXml<T>(string authToken, T protoInvoice, string invoiceType, bool disableValidation = false) where T : class
 		{
 			var queryString = string.Format("/GenerateInvoiceXml?invoiceType={0}{1}", invoiceType, disableValidation ? "&disableValidation" : "");
+
 			return PerformGenerateXmlHttpRequest(authToken, queryString, protoInvoice);
 		}
 
@@ -77,6 +105,7 @@ namespace Diadoc.Api
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
 			if (disableValidation) queryBuilder.AddParameter("disableValidation");
+
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
@@ -85,6 +114,7 @@ namespace Diadoc.Api
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
 			if (disableValidation) queryBuilder.AddParameter("disableValidation");
 			queryBuilder.AddParameter("documentVersion", DefaultDocumentVersions.TovTorg551);
+
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
@@ -94,6 +124,7 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
 			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
+
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
@@ -104,18 +135,21 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
 			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
 			queryBuilder.AddParameter("documentVersion", documentVersion ?? DefaultDocumentVersions.TovTorg551);
+
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
 		public GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			var queryString = string.Format("/GenerateAcceptanceCertificateXmlForSeller{0}", disableValidation ? "?disableValidation" : "");
+
 			return PerformGenerateXmlHttpRequest(authToken, queryString, sellerInfo);
 		}
 
 		public GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			var queryString = string.Format("/GenerateAcceptanceCertificateXmlForBuyer?boxId={0}&sellerTitleMessageId={1}&sellerTitleAttachmentId={2}", boxId, sellerTitleMessageId, sellerTitleAttachmentId);
+
 			return PerformGenerateXmlHttpRequest(authToken, queryString, buyerInfo);
 		}
 
@@ -124,6 +158,7 @@ namespace Diadoc.Api
 			var queryBuilder = new PathAndQueryBuilder("/GenerateAcceptanceCertificateXmlForSeller");
 			if (disableValidation) queryBuilder.AddParameter("disableValidation");
 			queryBuilder.AddParameter("documentVersion", DefaultDocumentVersions.AcceptanceCerttificate552);
+
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
@@ -134,6 +169,7 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("sellerTitleMessageId", sellerTitleMessageId);
 			queryBuilder.AddParameter("sellerTitleAttachmentId", sellerTitleAttachmentId);
 			queryBuilder.AddParameter("documentVersion", DefaultDocumentVersions.AcceptanceCerttificate552);
+
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
@@ -163,6 +199,7 @@ namespace Diadoc.Api
 
 			var request = BuildHttpRequest(authToken, "POST", queryBuilder.BuildPathAndQuery(), userContractData);
 			var response = HttpClient.PerformHttpRequest(request);
+
 			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
 		}
 
@@ -178,6 +215,7 @@ namespace Diadoc.Api
 
 			var request = BuildHttpRequest(authToken, "POST", queryBuilder.BuildPathAndQuery(), userContractData);
 			var response = HttpClient.PerformHttpRequest(request);
+
 			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
 		}
 
@@ -191,6 +229,7 @@ namespace Diadoc.Api
 
 			var request = BuildHttpRequest(authToken, "POST", queryBuilder.BuildPathAndQuery(), userContractData);
 			var response = HttpClient.PerformHttpRequest(request);
+
 			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
 		}
 
@@ -223,6 +262,7 @@ namespace Diadoc.Api
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
 		{
 			var documentTitleType = CreateUtdDocumentTitleType(forBuyer, forCorrection);
+
 			return GetExtendedSignerDetails(token, boxId, thumbprint, documentTitleType);
 		}
 
@@ -230,6 +270,7 @@ namespace Diadoc.Api
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
+
 			return GetExtendedSignerDetails(token, boxId, certificate.Thumbprint, forBuyer, forCorrection);
 		}
 
@@ -239,12 +280,14 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("thumbprint", thumbprint);
 			queryBuilder.AddParameter("documentTitleType", ((int) documentTitleType).ToString());
+
 			return PerformHttpRequest<ExtendedSignerDetails>(token, "GET", queryBuilder.ToString());
 		}
 
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
+
 			return GetExtendedSignerDetails(token, boxId, certificate.Thumbprint, documentTitleType);
 		}
 
@@ -252,6 +295,7 @@ namespace Diadoc.Api
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var documentTitleType = CreateUtdDocumentTitleType(forBuyer, forCorrection);
+
 			return PostExtendedSignerDetails(token, boxId, thumbprint, documentTitleType, signerDetails);
 		}
 
@@ -259,6 +303,7 @@ namespace Diadoc.Api
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
+
 			return PostExtendedSignerDetails(token, boxId, certificate.Thumbprint, forBuyer, forCorrection, signerDetails);
 		}
 
@@ -268,20 +313,26 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("thumbprint", thumbprint);
 			queryBuilder.AddParameter("documentTitleType", ((int) documentTitleType).ToString());
+
 			return PerformHttpRequest<ExtendedSignerDetails>(token, "POST", queryBuilder.ToString(), Serialize(signerDetails));
 		}
 
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var certificate = new X509Certificate2(certificateBytes);
+
 			return PostExtendedSignerDetails(token, boxId, certificate.Thumbprint, documentTitleType, signerDetails);
 		}
 
 		private static DocumentTitleType CreateUtdDocumentTitleType(bool forBuyer, bool forCorrection)
 		{
 			return forBuyer
-				? (forCorrection ? DocumentTitleType.UcdBuyer : DocumentTitleType.UtdBuyer)
-				: (forCorrection ? DocumentTitleType.UcdSeller : DocumentTitleType.UtdSeller);
+				? forCorrection
+					? DocumentTitleType.UcdBuyer
+					: DocumentTitleType.UtdBuyer
+				: forCorrection
+					? DocumentTitleType.UcdSeller
+					: DocumentTitleType.UtdSeller;
 		}
 	}
 }

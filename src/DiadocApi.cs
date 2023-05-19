@@ -352,7 +352,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEntityContent(authToken, boxId, messageId, entityId);
 		}
 
-		[Obsolete("Use GenerateReceiptXml()")]
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		public GeneratedFile GenerateDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
@@ -362,7 +362,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateReceiptXml(authToken, boxId, messageId, attachmentId, signer);
 		}
 
-		[Obsolete("Use GenerateReceiptXml()")]
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		public GeneratedFile GenerateInvoiceDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
@@ -372,6 +372,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateReceiptXml(authToken, boxId, messageId, attachmentId, signer);
 		}
 
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		public GeneratedFile GenerateReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
@@ -381,7 +382,16 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateReceiptXml(authToken, boxId, messageId, attachmentId, signer);
 		}
 
-		public GeneratedFile GenerateInvoiceCorrectionRequestXml(string authToken,
+		public GeneratedFile GenerateReceiptXmlV2(string authToken, string boxId, ReceiptGenerationRequestV2 receiptGenerationRequestV2)
+		{
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (receiptGenerationRequestV2 == null) throw new ArgumentNullException("receiptGenerationRequestV2");
+			return diadocHttpApi.GenerateReceiptXmlV2(authToken, boxId, receiptGenerationRequestV2);
+		}
+
+		[Obsolete("Use GenerateInvoiceCorrectionRequestXmlV2()")]
+		public GeneratedFile GenerateInvoiceCorrectionRequestXml(
+			string authToken,
 			string boxId,
 			string messageId,
 			string attachmentId,
@@ -393,7 +403,17 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateInvoiceCorrectionRequestXml(authToken, boxId, messageId, attachmentId, correctionInfo);
 		}
 
-		public GeneratedFile GenerateRevocationRequestXml(string authToken,
+		public GeneratedFile GenerateInvoiceCorrectionRequestXmlV2(
+			string authToken,
+			string boxId,
+			InvoiceCorrectionRequestGenerationRequestV2 invoiceCorrectionRequestGenerationRequest)
+		{
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GenerateInvoiceCorrectionRequestXmlV2(authToken, boxId, invoiceCorrectionRequestGenerationRequest);
+		}
+
+		public GeneratedFile GenerateRevocationRequestXml(
+			string authToken,
 			string boxId,
 			string messageId,
 			string attachmentId,
@@ -406,7 +426,9 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateRevocationRequestXml(authToken, boxId, messageId, attachmentId, revocationRequestInfo, contentTypeId);
 		}
 
-		public GeneratedFile GenerateSignatureRejectionXml(string authToken,
+		[Obsolete("Use GenerateSignatureRejectionXmlV2()")]
+		public GeneratedFile GenerateSignatureRejectionXml(
+			string authToken,
 			string boxId,
 			string messageId,
 			string attachmentId,
@@ -416,6 +438,15 @@ namespace Diadoc.Api
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (attachmentId == null) throw new ArgumentNullException("attachmentId");
 			return diadocHttpApi.GenerateSignatureRejectionXml(authToken, boxId, messageId, attachmentId, signatureRejectionInfo);
+		}
+
+		public GeneratedFile GenerateSignatureRejectionXmlV2(
+			string authToken,
+			string boxId,
+			SignatureRejectionGenerationRequestV2 signatureRejectionGenerationRequest)
+		{
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GenerateSignatureRejectionXmlV2(authToken, boxId, signatureRejectionGenerationRequest);
 		}
 
 		public InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken,
