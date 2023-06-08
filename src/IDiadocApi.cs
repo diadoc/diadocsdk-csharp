@@ -293,6 +293,7 @@ namespace Diadoc.Api
 			PowerOfAttorneyPrevalidateRequest request);
 
 		PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId);
+		PowerOfAttorneyContent GetPowerOfAttorneyContent(string authToken, string boxId, string messageId, string entityId);
 
 #if !NET35
 
@@ -567,6 +568,7 @@ namespace Diadoc.Api
 			PowerOfAttorneyPrevalidateRequest request);
 
 		Task<PowerOfAttorney> GetPowerOfAttorneyInfoAsync(string authToken, string boxId, string messageId, string entityId);
+		Task<PowerOfAttorneyContent> GetPowerOfAttorneyContentAsync(string authToken, string boxId, string messageId, string entityId);
 #endif
 	}
 }

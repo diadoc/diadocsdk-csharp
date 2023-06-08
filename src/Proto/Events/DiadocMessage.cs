@@ -1927,8 +1927,10 @@ namespace Diadoc.Api.Proto.Events
 	{
 		PowersOfAttorney.PowerOfAttorneyFullId FullId { get; set; }
 		bool UseDefault { get; set; }
+		PowersOfAttorney.PowerOfAttorneySignedContent Content { get; set; }
 
 		void SetFullId([MarshalAs(UnmanagedType.IDispatch)] object fullId);
+		void SetContent([MarshalAs(UnmanagedType.IDispatch)] object content);
 	}
 
 	[ComVisible(true)]
@@ -1942,6 +1944,11 @@ namespace Diadoc.Api.Proto.Events
 		{
 			FullId = (PowersOfAttorney.PowerOfAttorneyFullId) fullId;
 		}
+
+		public void SetContent(object content)
+		{
+			Content = (PowersOfAttorney.PowerOfAttorneySignedContent) content;
+		}
 	}
 
 	[ComVisible(true)]
@@ -1951,6 +1958,7 @@ namespace Diadoc.Api.Proto.Events
 		PowersOfAttorney.PowerOfAttorneyFullId FullId { get; set; }
 		PowersOfAttorney.PowerOfAttorneyValidationStatus Status { get; set; }
 		RoamingSendingStatus RoamingSendingStatus { get; set; }
+		Com.PowerOfAttorneySendingType SendingType { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -1960,5 +1968,10 @@ namespace Diadoc.Api.Proto.Events
 	[ComDefaultInterface(typeof(IPowerOfAttorneyInfo))]
 	public partial class PowerOfAttorneyInfo : SafeComObject, IPowerOfAttorneyInfo
 	{
+		PowerOfAttorneySendingType IPowerOfAttorneyInfo.SendingType
+		{
+			get => (Com.PowerOfAttorneySendingType) SendingType;
+			set => SendingType = (PowersOfAttorney.PowerOfAttorneySendingType) value;
+		}
 	}
 }

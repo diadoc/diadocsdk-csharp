@@ -5,4 +5,5 @@ package Diadoc.Api.Proto.Events;
 message PowerOfAttorneyToPost {
     optional PowersOfAttorney.PowerOfAttorneyFullId FullId = 1;
     required bool UseDefault = 2;
+    optional PowersOfAttorney.PowerOfAttorneySignedContent Content = 3;
 }

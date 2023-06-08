@@ -11,6 +11,7 @@ message SignaturePowerOfAttorney {
     optional PowersOfAttorney.PowerOfAttorneyValidationStatus Status = 3;
     repeated PowerOfAttorneyStatusChange StatusChanges = 4;
     optional RoamingSendingStatus RoamingSendingStatus = 5;
+    optional PowersOfAttorney.PowerOfAttorneySendingType SendingType = 6 [default = Unknown];
 }
 
 message PowerOfAttorneyStatusChange {

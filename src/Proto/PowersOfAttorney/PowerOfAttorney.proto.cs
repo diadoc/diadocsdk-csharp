@@ -77,6 +77,24 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       get { return _ExpireAt; }
       set { _ExpireAt = value; }
     }
+
+    private string _System = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"System", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string System
+    {
+      get { return _System; }
+      set { _System = value; }
+    }
+
+    private string _IdFile = "";
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"IdFile", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string IdFile
+    {
+      get { return _IdFile; }
+      set { _IdFile = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -463,6 +481,30 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyContent")]
+  public partial class PowerOfAttorneyContent : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyContent() {}
+    
+    private byte[] _Content;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Content", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] Content
+    {
+      get { return _Content; }
+      set { _Content = value; }
+    }
+    private byte[] _Signature;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Signature", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] Signature
+    {
+      get { return _Signature; }
+      set { _Signature = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyIssuerType")]
     public enum PowerOfAttorneyIssuerType
     {
@@ -481,6 +523,20 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
             
       [global::ProtoBuf.ProtoEnum(Name=@"PhysicalEntity", Value=4)]
       PhysicalEntity = 4
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneySendingType")]
+    public enum PowerOfAttorneySendingType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Unknown", Value=0)]
+      Unknown = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Metadata", Value=1)]
+      Metadata = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"File", Value=2)]
+      File = 2
     }
   
 }

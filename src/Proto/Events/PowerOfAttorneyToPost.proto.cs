@@ -32,6 +32,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _UseDefault; }
       set { _UseDefault = value; }
     }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneySignedContent _Content = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Content", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneySignedContent Content
+    {
+      get { return _Content; }
+      set { _Content = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
