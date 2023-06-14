@@ -5,7 +5,7 @@
 //------------------------------------------------------------------------------
 using System.Reflection;
 
-[assembly: AssemblyVersion("2.11.0.0")]
-[assembly: AssemblyFileVersion("2.11.9-dev")]
-[assembly: AssemblyInformationalVersion("2.11.9-dev")]
+[assembly: AssemblyVersion("2.12.0.0")]
+[assembly: AssemblyFileVersion("2.12.0-dev")]
+[assembly: AssemblyInformationalVersion("2.12.0-dev")]
 
