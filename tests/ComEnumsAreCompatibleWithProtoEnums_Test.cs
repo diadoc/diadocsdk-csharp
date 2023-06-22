@@ -14,6 +14,7 @@ using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Organizations;
 using Diadoc.Api.Proto.Invoicing.Signers;
+using Diadoc.Api.Proto.PowersOfAttorney;
 using NUnit.Framework;
 using SignerType = Diadoc.Api.Proto.Invoicing.Signers.SignerType;
 
@@ -222,6 +223,14 @@ namespace Diadoc.Api.Tests
 				typeof(TotalCountType));
 		}
 
+		[Test]
+		public void Test_PowerOfAttorneySendingType()
+		{
+			AssertEnumsAreCompatible(
+				typeof(Com.PowerOfAttorneySendingType),
+				typeof(PowerOfAttorneySendingType));
+		}
+		
 		private static void AssertEnumsAreCompatible(Type comEnumType, Type protoEnumType)
 		{
 			var comEnumValues = GetEnumValues(comEnumType);

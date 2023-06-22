@@ -30,6 +30,8 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 		PowerOfAttorneyConfidant Confidant { get; set; }
 		Timestamp StartAt { get; set; }
 		Timestamp ExpireAt { get; set; }
+		string System { get; set; }
+		string IdFile { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -396,6 +398,23 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	public partial class PowerOfAttorneyOperationError : SafeComObject, IPowerOfAttorneyOperationError
 	{
 	}
+
+	[ComVisible(true)]
+	[Guid("C13F573E-0EF3-4638-B83B-EE8BB3613627")]
+	public interface IPowerOfAttorneyContent
+	{
+		byte[] Content { get; set; }
+		byte[] Signature { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyContent")]
+	[Guid("EBAAC087-F641-436E-85EF-243347F26886")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyContent))]
+	public partial class PowerOfAttorneyContent : SafeComObject, IPowerOfAttorneyContent
+	{
+	}
 }
 
 namespace Diadoc.Api.Com
@@ -424,5 +443,16 @@ namespace Diadoc.Api.Com
 		IsValid = 2,
 		IsNotValid = 3,
 		ValidationError = 4
+	}
+
+	[ComVisible(true)]
+	[Guid("D7F903B8-E8DA-480F-A66E-9899DC89C6B2")]
+	//NOTE: Это хотели, чтобы можно было использовать XML-сериализацию для классов
+	[XmlType(TypeName = "PowerOfAttorneySendingType", Namespace = "https://diadoc-api.kontur.ru")]
+	public enum PowerOfAttorneySendingType
+	{
+		Unknown = 0,
+		Metadata = 1,
+		File = 2
 	}
 }

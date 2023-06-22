@@ -43,6 +43,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _RoamingSendingStatus; }
       set { _RoamingSendingStatus = value; }
     }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneySendingType _SendingType = Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneySendingType.Unknown;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"SendingType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneySendingType.Unknown)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneySendingType SendingType
+    {
+      get { return _SendingType; }
+      set { _SendingType = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

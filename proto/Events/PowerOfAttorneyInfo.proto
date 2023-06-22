@@ -8,4 +8,5 @@ message PowerOfAttorneyInfo {
     required PowersOfAttorney.PowerOfAttorneyFullId FullId = 1;
     optional PowersOfAttorney.PowerOfAttorneyValidationStatus Status = 2;
     optional RoamingSendingStatus RoamingSendingStatus = 3;
+    optional PowersOfAttorney.PowerOfAttorneySendingType SendingType = 4 [default = Unknown];
 }

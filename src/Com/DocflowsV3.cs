@@ -936,6 +936,7 @@ namespace Diadoc.Api.Proto.Docflow
 		PowersOfAttorney.PowerOfAttorneyValidationStatus Status { get; set; }
 		ReadonlyList StatusChangesList { get; }
 		RoamingSendingStatus RoamingSendingStatus { get; }
+		Com.PowerOfAttorneySendingType SendingType { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -948,6 +949,12 @@ namespace Diadoc.Api.Proto.Docflow
 		public ReadonlyList StatusChangesList
 		{
 			get { return new ReadonlyList(StatusChanges); }
+		}
+
+		PowerOfAttorneySendingType ISignaturePowerOfAttorney.SendingType
+		{
+			get => (Com.PowerOfAttorneySendingType) SendingType;
+			set => SendingType = (PowersOfAttorney.PowerOfAttorneySendingType) value;
 		}
 	}
 
