@@ -1927,6 +1927,7 @@ namespace Diadoc.Api.Proto.Events
 	{
 		PowersOfAttorney.PowerOfAttorneyFullId FullId { get; set; }
 		bool UseDefault { get; set; }
+		bool SendAsFile { get; set; }
 		PowersOfAttorney.PowerOfAttorneySignedContent Content { get; set; }
 
 		void SetFullId([MarshalAs(UnmanagedType.IDispatch)] object fullId);
