@@ -41,6 +41,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _Content; }
       set { _Content = value; }
     }
+
+    private bool _SendAsFile = default(bool);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"SendAsFile", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool SendAsFile
+    {
+      get { return _SendAsFile; }
+      set { _SendAsFile = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
