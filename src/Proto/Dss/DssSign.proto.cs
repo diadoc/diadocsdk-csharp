@@ -152,7 +152,10 @@ namespace Diadoc.Api.Proto.Dss
       MyDss = 2,
             
       [global::ProtoBuf.ProtoEnum(Name=@"Applet", Value=3)]
-      Applet = 3
+      Applet = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MobileSdk", Value=4)]
+      MobileSdk = 4
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"DssOperator")]

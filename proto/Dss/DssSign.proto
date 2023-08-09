@@ -20,6 +20,7 @@ enum DssConfirmType {
 	Sms = 1;
 	MyDss = 2;
 	Applet = 3;
+	MobileSdk = 4;
 }
 
 enum DssOperator {

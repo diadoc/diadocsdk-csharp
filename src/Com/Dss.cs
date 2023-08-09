@@ -52,6 +52,9 @@ namespace Diadoc.Api.Proto.Dss
 	{
 		Com.DssOperationStatus OperationStatus { get; }
 		ReadonlyList FileSigningResultsList { get; }
+		Com.DssConfirmType ConfirmType { get; }
+		Com.DssOperator Operator { get; }
+		string PhoneLastNumbers { get; }
 	}
 
 	[ComVisible(true)]
@@ -69,6 +72,16 @@ namespace Diadoc.Api.Proto.Dss
 		Com.DssOperationStatus IDssSignResult.OperationStatus
 		{
 			get { return (Com.DssOperationStatus) OperationStatus; }
+		}
+
+		Com.DssConfirmType IDssSignResult.ConfirmType
+		{
+			get { return (Com.DssConfirmType) ConfirmType; }
+		}
+
+		Com.DssOperator IDssSignResult.Operator
+		{
+			get { return (Com.DssOperator) Operator; }
 		}
 	}
 

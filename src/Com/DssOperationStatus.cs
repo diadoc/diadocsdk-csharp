@@ -15,6 +15,7 @@ namespace Diadoc.Api.Com
 		CanceledByUser = 3,
 		Timeout = 4,
 		Crashed = 5,
-		UserHasUnconfirmedOperation = 6
+		UserHasUnconfirmedOperation = 6,
+		OperationRetryRequired = 7
 	}
 }
