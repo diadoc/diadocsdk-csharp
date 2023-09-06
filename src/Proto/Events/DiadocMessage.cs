@@ -1932,6 +1932,7 @@ namespace Diadoc.Api.Proto.Events
 
 		void SetFullId([MarshalAs(UnmanagedType.IDispatch)] object fullId);
 		void SetContent([MarshalAs(UnmanagedType.IDispatch)] object content);
+		void AddContent([MarshalAs(UnmanagedType.IDispatch)] object content);
 	}
 
 	[ComVisible(true)]
@@ -1949,6 +1950,11 @@ namespace Diadoc.Api.Proto.Events
 		public void SetContent(object content)
 		{
 			Content = (PowersOfAttorney.PowerOfAttorneySignedContent) content;
+		}
+
+		public void AddContent(object content)
+		{
+			Contents.Add((PowersOfAttorney.PowerOfAttorneySignedContent) content);
 		}
 	}
 

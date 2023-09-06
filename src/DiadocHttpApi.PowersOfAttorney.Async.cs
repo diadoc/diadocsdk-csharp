@@ -67,5 +67,18 @@ namespace Diadoc.Api
 			queryString.AddParameter("entityId", entityId);
 			return PerformHttpRequestAsync<PowerOfAttorneyContent>(authToken, "GET", queryString.BuildPathAndQuery());
 		}
+		
+		public Task<PowerOfAttorneyContentResponse> GetPowerOfAttorneyContentV2Async(
+			string authToken,
+			string boxId,
+			string messageId,
+			string entityId)
+		{
+			var queryString = new PathAndQueryBuilder("V2/GetPowerOfAttorneyContent");
+			queryString.AddParameter("boxId", boxId);
+			queryString.AddParameter("messageId", messageId);
+			queryString.AddParameter("entityId", entityId);
+			return PerformHttpRequestAsync<PowerOfAttorneyContentResponse>(authToken, "GET", queryString.BuildPathAndQuery());
+		}
 	}
 }
