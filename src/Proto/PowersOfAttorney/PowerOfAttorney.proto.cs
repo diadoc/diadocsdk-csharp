@@ -95,6 +95,13 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       get { return _IdFile; }
       set { _IdFile = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorney> _DelegationChain = new global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorney>();
+    [global::ProtoBuf.ProtoMember(8, Name=@"DelegationChain", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorney> DelegationChain
+    {
+      get { return _DelegationChain; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -499,6 +506,61 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
     {
       get { return _Signature; }
       set { _Signature = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyContentResponse")]
+  public partial class PowerOfAttorneyContentResponse : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyContentResponse() {}
+    
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyContentV2 _Content;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Content", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyContentV2 Content
+    {
+      get { return _Content; }
+      set { _Content = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyContentV2> _DelegationChain = new global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyContentV2>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"DelegationChain", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyContentV2> DelegationChain
+    {
+      get { return _DelegationChain; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyContentV2")]
+  public partial class PowerOfAttorneyContentV2 : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyContentV2() {}
+    
+    private byte[] _Content;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Content", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] Content
+    {
+      get { return _Content; }
+      set { _Content = value; }
+    }
+    private byte[] _Signature;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Signature", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] Signature
+    {
+      get { return _Signature; }
+      set { _Signature = value; }
+    }
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyFullId _FullId;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"FullId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyFullId FullId
+    {
+      get { return _FullId; }
+      set { _FullId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

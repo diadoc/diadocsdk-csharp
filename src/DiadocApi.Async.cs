@@ -1416,5 +1416,14 @@ namespace Diadoc.Api
 			if (entityId == null) throw new ArgumentNullException(nameof(entityId));
 			return diadocHttpApi.GetPowerOfAttorneyContentAsync(authToken, boxId, messageId, entityId);
 		}
+		
+		public Task<PowerOfAttorneyContentResponse> GetPowerOfAttorneyContentV2Async(string authToken, string boxId, string messageId, string entityId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
+			if (entityId == null) throw new ArgumentNullException(nameof(entityId));
+			return diadocHttpApi.GetPowerOfAttorneyContentV2Async(authToken, boxId, messageId, entityId);
+		}
 	}
 }

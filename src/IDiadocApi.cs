@@ -294,6 +294,7 @@ namespace Diadoc.Api
 
 		PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId);
 		PowerOfAttorneyContent GetPowerOfAttorneyContent(string authToken, string boxId, string messageId, string entityId);
+		PowerOfAttorneyContentResponse GetPowerOfAttorneyContentV2(string authToken, string boxId, string messageId, string entityId);
 
 #if !NET35
 
@@ -569,6 +570,7 @@ namespace Diadoc.Api
 
 		Task<PowerOfAttorney> GetPowerOfAttorneyInfoAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<PowerOfAttorneyContent> GetPowerOfAttorneyContentAsync(string authToken, string boxId, string messageId, string entityId);
+		Task<PowerOfAttorneyContentResponse> GetPowerOfAttorneyContentV2Async(string authToken, string boxId, string messageId, string entityId);
 #endif
 	}
 }

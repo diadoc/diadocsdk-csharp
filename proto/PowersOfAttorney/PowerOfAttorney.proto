@@ -17,6 +17,7 @@ message PowerOfAttorney {
     required Timestamp ExpireAt = 5;
     optional string System = 6;
     optional string IdFile = 7;
+    repeated PowerOfAttorney DelegationChain = 8;
 }
 
 message PowerOfAttorneyIssuer {
@@ -105,4 +106,15 @@ enum PowerOfAttorneySendingType {
 message PowerOfAttorneyContent {
     required bytes Content = 1;
     required bytes Signature = 2;
+}
+
+message PowerOfAttorneyContentResponse {
+    required PowerOfAttorneyContentV2 Content = 1;
+    repeated PowerOfAttorneyContentV2 DelegationChain = 2;
+}
+
+message PowerOfAttorneyContentV2 {
+    required bytes Content = 1;
+    required bytes Signature = 2;
+    required PowerOfAttorneyFullId FullId = 3;
 }

@@ -415,6 +415,43 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	public partial class PowerOfAttorneyContent : SafeComObject, IPowerOfAttorneyContent
 	{
 	}
+
+
+	[ComVisible(true)]
+	[Guid("4B9D4B86-C668-4D54-96F2-97CF1EBDDDA4")]
+	public interface IPowerOfAttorneyContentV2
+	{
+		byte[] Content { get; set; }
+		byte[] Signature { get; set; }
+		PowerOfAttorneyFullId FullId { get; set; }
+	}
+
+	[ComVisible(true)]
+	[Guid("8C805F16-DD4B-478C-BA50-1DBE48EC6DB0")]
+	[ProgId("Diadoc.Api.PowerOfAttorneyContentV2")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyContentV2))]
+	public partial class PowerOfAttorneyContentV2 : SafeComObject, IPowerOfAttorneyContentV2
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("9845E531-92E2-43D2-9AA1-8FB68EABC61E")]
+	public interface IPowerOfAttorneyContentResponse
+	{
+		PowerOfAttorneyContentV2 Content { get; }
+		ReadonlyList DelegationChainList { get; }
+	}
+
+	[ComVisible(true)]
+	[Guid("F7FCAE63-4B24-46CA-8D09-1292ADB200B3")]
+	[ProgId("Diadoc.Api.PowerOfAttorneyContentResponse")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyContentResponse))]
+	public partial class PowerOfAttorneyContentResponse : SafeComObject, IPowerOfAttorneyContentResponse
+	{
+		public ReadonlyList DelegationChainList => new ReadonlyList(DelegationChain);
+	}
 }
 
 namespace Diadoc.Api.Com
