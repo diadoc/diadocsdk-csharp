@@ -97,6 +97,7 @@ message MessagePatch {
 message Entity {
 	optional EntityType EntityType = 1 [default = UnknownEntityType];
 	required string EntityId = 2;
+ 	optional string AuthorUserId = 33;
 	optional string ParentEntityId = 3;
 	optional Content Content = 4;											// null <=> there is no content for this entity (very unlikely to happen)
 	optional AttachmentType AttachmentType = 5 [default = UnknownAttachmentType];	// only for EntityType.Attachment
