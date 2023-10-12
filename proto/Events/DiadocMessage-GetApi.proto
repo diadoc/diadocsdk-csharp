@@ -127,6 +127,7 @@ message Entity {
 	optional RevocationRequestInfo RevocationRequestInfo = 30;
 	optional string ContentTypeId = 31;
 	optional PowerOfAttorneyInfo PowerOfAttorneyInfo = 32;
+ 	optional MoveDocumentInfo MoveDocumentInfo = 34;
 }
 
 message EntityPatch {
@@ -160,6 +161,11 @@ message TemplateRefusalInfo
 	required string BoxId = 2;
 	optional string Author = 3;
 	optional string Comment = 4;
+}
+
+message MoveDocumentInfo {
+	required string MovedFromDepartment = 1;
+	required string MovedToDepartment = 2;
 }
 
 enum TemplateRefusalType {
