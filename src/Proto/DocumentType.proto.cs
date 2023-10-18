@@ -80,6 +80,9 @@ namespace Diadoc.Api.Proto
       [global::ProtoBuf.ProtoEnum(Name=@"UniversalTransferDocumentRevision", Value=45)]
       UniversalTransferDocumentRevision = 45,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"MesNotification", Value=46)]
+      MesNotification = 46,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"UniversalCorrectionDocument", Value=49)]
       UniversalCorrectionDocument = 49,
             
