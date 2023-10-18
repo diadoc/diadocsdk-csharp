@@ -31,6 +31,7 @@ namespace Diadoc.Api.Com
 		SupplementaryAgreement = 40,
 		UniversalTransferDocument = 41,
 		UniversalTransferDocumentRevision = 45,
+		MesNotification = 46,
 		UniversalCorrectionDocument = 49,
 		UniversalCorrectionDocumentRevision = 50,
 	}
