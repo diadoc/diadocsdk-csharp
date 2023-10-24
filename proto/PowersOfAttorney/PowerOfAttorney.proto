@@ -18,6 +18,7 @@ message PowerOfAttorney {
     optional string System = 6;
     optional string IdFile = 7;
     repeated PowerOfAttorney DelegationChain = 8;
+    required PowerOfAttorneyPermissionsInfo PermissionsInfo = 9;
 }
 
 message PowerOfAttorneyIssuer {
@@ -68,6 +69,34 @@ message PowerOfAttorneyConfidantOrganization {
     required string Inn = 1;
     optional string Kpp = 2;
     required string Name = 3;
+}
+
+message PowerOfAttorneyPermissionsInfo {
+    repeated PowerOfAttorneyPermissions Permissions = 1;
+    optional string TransferPermissionLoss = 2;
+    required string JointPermissions = 3;
+}
+
+message PowerOfAttorneyPermissions {
+    required string Type = 1;
+    optional string TextPermission = 2;
+    repeated PowerOfAttorneyMachineReadablePermission MachineReadablePermission = 3;
+}
+
+message PowerOfAttorneyMachineReadablePermission {
+    optional string Mnemonic = 1;
+    required string Code = 2;
+    required string Name = 3;
+    repeated PowerOfAttorneyRestrictions Restrictions = 4;
+}
+
+message PowerOfAttorneyRestrictions {
+    required int32 Id = 1;
+    required string Code = 2;
+    required string Name = 3;
+    optional string ValueName = 4;
+    optional string ValueCode = 5;
+    optional string ValueText = 6;
 }
 
 message PowerOfAttorneyToRegister {
