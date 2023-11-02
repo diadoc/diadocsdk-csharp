@@ -97,6 +97,7 @@ message MessagePatch {
 message Entity {
 	optional EntityType EntityType = 1 [default = UnknownEntityType];
 	required string EntityId = 2;
+ 	optional string AuthorUserId = 33;
 	optional string ParentEntityId = 3;
 	optional Content Content = 4;											// null <=> there is no content for this entity (very unlikely to happen)
 	optional AttachmentType AttachmentType = 5 [default = UnknownAttachmentType];	// only for EntityType.Attachment
@@ -126,6 +127,7 @@ message Entity {
 	optional RevocationRequestInfo RevocationRequestInfo = 30;
 	optional string ContentTypeId = 31;
 	optional PowerOfAttorneyInfo PowerOfAttorneyInfo = 32;
+ 	optional MoveDocumentInfo MoveDocumentInfo = 34;
 }
 
 message EntityPatch {
@@ -159,6 +161,11 @@ message TemplateRefusalInfo
 	required string BoxId = 2;
 	optional string Author = 3;
 	optional string Comment = 4;
+}
+
+message MoveDocumentInfo {
+	required string MovedFromDepartment = 1;
+	required string MovedToDepartment = 2;
 }
 
 enum TemplateRefusalType {
