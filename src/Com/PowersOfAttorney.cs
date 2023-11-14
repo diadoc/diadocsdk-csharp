@@ -32,6 +32,8 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 		Timestamp ExpireAt { get; set; }
 		string System { get; set; }
 		string IdFile { get; set; }
+		ReadonlyList DelegationChainList { get; }
+		PowerOfAttorneyPermissionsInfo PermissionsInfo { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -41,6 +43,10 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorney))]
 	public partial class PowerOfAttorney : SafeComObject, IPowerOfAttorney
 	{
+		public ReadonlyList DelegationChainList
+		{
+			get { return new ReadonlyList(DelegationChain); }
+		}
 	}
 
 	[ComVisible(true)]
@@ -452,6 +458,94 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	{
 		public ReadonlyList DelegationChainList => new ReadonlyList(DelegationChain);
 	}
+
+	[ComVisible(true)]
+	[Guid("AF93EA2C-7524-445C-B61F-5CC0A199C7A5")]
+	public interface IPowerOfAttorneyPermissionsInfo
+	{
+		ReadonlyList PermissionsList { get; }
+		string TransferPermissionLoss { get; set; }
+		string JointPermissions { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyPermissionsInfo")]
+	[Guid("20CE76E6-47B9-4C08-B934-8747201C8C36")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyPermissionsInfo))]
+	public partial class PowerOfAttorneyPermissionsInfo : SafeComObject, IPowerOfAttorneyPermissionsInfo
+	{
+		public ReadonlyList PermissionsList
+		{
+			get { return new ReadonlyList(Permissions); }
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("F7E7EB7A-3D54-444C-A40D-B44F480A104E")]
+	public interface IPowerOfAttorneyPermissions
+	{
+		string Type { get; set; }
+		string TextPermission { get; set; }
+		ReadonlyList MachineReadablePermissionList { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyPermissions")]
+	[Guid("51B68D13-0857-4E82-A92A-CF9304AD69DC")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyPermissions))]
+	public partial class PowerOfAttorneyPermissions : SafeComObject, IPowerOfAttorneyPermissions
+	{
+		public ReadonlyList MachineReadablePermissionList
+		{
+			get { return new ReadonlyList(MachineReadablePermission); }
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("EB463FB5-FCFB-44EE-9319-1C6E13937ACA")]
+	public interface IPowerOfAttorneyMachineReadablePermission
+	{
+		string Mnemonic { get; set; }
+		string Code { get; set; }
+		string Name { get; set; }
+		ReadonlyList RestrictionsList { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyMachineReadablePermission")]
+	[Guid("65BB8BA7-E38B-43CF-8BB1-D2D30FA10EE6")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyMachineReadablePermission))]
+	public partial class PowerOfAttorneyMachineReadablePermission : SafeComObject, IPowerOfAttorneyMachineReadablePermission
+	{
+		public ReadonlyList RestrictionsList
+		{
+			get { return new ReadonlyList(Restrictions); }
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("31D91BD4-1521-4F85-A1C5-FD655C490135")]
+	public interface IPowerOfAttorneyRestrictions
+	{
+		int Id { get; set; }
+		string Code { get; set; }
+		string Name { get; set; }
+		string ValueName { get; set; }
+		string ValueCode { get; set; }
+		string ValueText { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyRestrictions")]
+	[Guid("F5813D4C-52DF-454F-8134-636C97739A81")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyRestrictions))]
+	public partial class PowerOfAttorneyRestrictions : SafeComObject, IPowerOfAttorneyRestrictions
+	{
+	}
 }
 
 namespace Diadoc.Api.Com
@@ -490,6 +584,7 @@ namespace Diadoc.Api.Com
 	{
 		Unknown = 0,
 		Metadata = 1,
-		File = 2
+		File = 2,
+		DocumentContent = 3
 	}
 }

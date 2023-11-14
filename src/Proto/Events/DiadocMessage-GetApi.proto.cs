@@ -563,6 +563,15 @@ namespace Diadoc.Api.Proto.Events
       set { _EntityId = value; }
     }
 
+    private string _AuthorUserId = "";
+    [global::ProtoBuf.ProtoMember(33, IsRequired = false, Name=@"AuthorUserId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AuthorUserId
+    {
+      get { return _AuthorUserId; }
+      set { _AuthorUserId = value; }
+    }
+
     private string _ParentEntityId = "";
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"ParentEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
@@ -821,6 +830,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _PowerOfAttorneyInfo; }
       set { _PowerOfAttorneyInfo = value; }
     }
+
+    private Diadoc.Api.Proto.Events.MoveDocumentInfo _MoveDocumentInfo = null;
+    [global::ProtoBuf.ProtoMember(34, IsRequired = false, Name=@"MoveDocumentInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.MoveDocumentInfo MoveDocumentInfo
+    {
+      get { return _MoveDocumentInfo; }
+      set { _MoveDocumentInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -1012,6 +1030,30 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _Comment; }
       set { _Comment = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MoveDocumentInfo")]
+  public partial class MoveDocumentInfo : global::ProtoBuf.IExtensible
+  {
+    public MoveDocumentInfo() {}
+    
+    private string _MovedFromDepartment;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"MovedFromDepartment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string MovedFromDepartment
+    {
+      get { return _MovedFromDepartment; }
+      set { _MovedFromDepartment = value; }
+    }
+    private string _MovedToDepartment;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"MovedToDepartment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string MovedToDepartment
+    {
+      get { return _MovedToDepartment; }
+      set { _MovedToDepartment = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

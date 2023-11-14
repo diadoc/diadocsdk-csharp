@@ -8,4 +8,5 @@ message PowerOfAttorneyToPost {
     optional PowersOfAttorney.PowerOfAttorneySignedContent Content = 3;
     optional bool SendAsFile = 4;
     repeated PowersOfAttorney.PowerOfAttorneySignedContent Contents = 5;
+    optional bool UseDocumentContent = 6;
 }

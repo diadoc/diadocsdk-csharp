@@ -57,6 +57,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _Contents; }
     }
   
+
+    private bool _UseDocumentContent = default(bool);
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"UseDocumentContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool UseDocumentContent
+    {
+      get { return _UseDocumentContent; }
+      set { _UseDocumentContent = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -102,6 +102,13 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       get { return _DelegationChain; }
     }
   
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyPermissionsInfo _PermissionsInfo;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"PermissionsInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyPermissionsInfo PermissionsInfo
+    {
+      get { return _PermissionsInfo; }
+      set { _PermissionsInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -338,6 +345,170 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
     {
       get { return _Name; }
       set { _Name = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyPermissionsInfo")]
+  public partial class PowerOfAttorneyPermissionsInfo : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyPermissionsInfo() {}
+    
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyPermissions> _Permissions = new global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyPermissions>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"Permissions", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyPermissions> Permissions
+    {
+      get { return _Permissions; }
+    }
+  
+
+    private string _TransferPermissionLoss = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TransferPermissionLoss", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string TransferPermissionLoss
+    {
+      get { return _TransferPermissionLoss; }
+      set { _TransferPermissionLoss = value; }
+    }
+    private string _JointPermissions;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"JointPermissions", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string JointPermissions
+    {
+      get { return _JointPermissions; }
+      set { _JointPermissions = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyPermissions")]
+  public partial class PowerOfAttorneyPermissions : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyPermissions() {}
+    
+    private string _Type;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Type
+    {
+      get { return _Type; }
+      set { _Type = value; }
+    }
+
+    private string _TextPermission = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TextPermission", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string TextPermission
+    {
+      get { return _TextPermission; }
+      set { _TextPermission = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyMachineReadablePermission> _MachineReadablePermission = new global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyMachineReadablePermission>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"MachineReadablePermission", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyMachineReadablePermission> MachineReadablePermission
+    {
+      get { return _MachineReadablePermission; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyMachineReadablePermission")]
+  public partial class PowerOfAttorneyMachineReadablePermission : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyMachineReadablePermission() {}
+    
+
+    private string _Mnemonic = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Mnemonic", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Mnemonic
+    {
+      get { return _Mnemonic; }
+      set { _Mnemonic = value; }
+    }
+    private string _Code;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Code", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Code
+    {
+      get { return _Code; }
+      set { _Code = value; }
+    }
+    private string _Name;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"Name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Name
+    {
+      get { return _Name; }
+      set { _Name = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRestrictions> _Restrictions = new global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRestrictions>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Restrictions", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRestrictions> Restrictions
+    {
+      get { return _Restrictions; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyRestrictions")]
+  public partial class PowerOfAttorneyRestrictions : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyRestrictions() {}
+    
+    private int _Id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int Id
+    {
+      get { return _Id; }
+      set { _Id = value; }
+    }
+    private string _Code;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Code", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Code
+    {
+      get { return _Code; }
+      set { _Code = value; }
+    }
+    private string _Name;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"Name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Name
+    {
+      get { return _Name; }
+      set { _Name = value; }
+    }
+
+    private string _ValueName = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"ValueName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ValueName
+    {
+      get { return _ValueName; }
+      set { _ValueName = value; }
+    }
+
+    private string _ValueCode = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ValueCode", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ValueCode
+    {
+      get { return _ValueCode; }
+      set { _ValueCode = value; }
+    }
+
+    private string _ValueText = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"ValueText", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ValueText
+    {
+      get { return _ValueText; }
+      set { _ValueText = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -598,7 +769,10 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       Metadata = 1,
             
       [global::ProtoBuf.ProtoEnum(Name=@"File", Value=2)]
-      File = 2
+      File = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"DocumentContent", Value=3)]
+      DocumentContent = 3
     }
   
 }
