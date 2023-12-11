@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using Diadoc.Api.Com;
 using Diadoc.Api.Cryptography;
+using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Certificates;
 using Diadoc.Api.Proto.Departments;
@@ -583,7 +584,9 @@ namespace Diadoc.Api
 
 		public void Initialize(string apiClientId, string serverUrl)
 		{
-			diadoc = new DiadocApi(apiClientId, serverUrl, new WinApiCrypt());
+			var httpClient = new HttpClient(serverUrl);
+			httpClient.SetUserAgent(UserAgentBuilder.Build("COM"));
+			diadoc = new DiadocApi(new DiadocHttpApi(apiClientId, httpClient, new WinApiCrypt()));
 			DocflowApi = new ComDocflowApi(diadoc.Docflow);
 		}
 

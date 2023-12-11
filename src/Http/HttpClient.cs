@@ -38,6 +38,7 @@ namespace Diadoc.Api.Http
 		private readonly string baseUrl;
 		private NetworkCredential proxyCredential;
 		private Uri proxyUri;
+		private string userAgentString;
 
 		public HttpClient([NotNull] string baseUrl)
 		{
@@ -53,6 +54,7 @@ namespace Diadoc.Api.Http
 
 			this.baseUrl = baseUrl.EndsWith("/") ? baseUrl.Substring(0, baseUrl.Length - 1) : baseUrl;
 			UseSystemProxy = true;
+			userAgentString = UserAgentBuilder.Build("C#");
 		}
 
 		/// <summary>
@@ -91,6 +93,11 @@ namespace Diadoc.Api.Http
 		{
 			var userDomain = UserDomain.Parse(user);
 			proxyCredential = new NetworkCredential(userDomain.User, SecureStringToString(password), userDomain.Domain);
+		}
+
+		public void SetUserAgent([NotNull] string userAgent)
+		{
+			userAgentString = userAgent ?? throw new ArgumentNullException(nameof(userAgent));
 		}
 
 		[NotNull]
@@ -289,7 +296,7 @@ namespace Diadoc.Api.Http
 				webRequest.ContentLength = 0;
 			}
 
-			webRequest.UserAgent = UserAgentString;
+			webRequest.UserAgent = userAgentString;
 			return webRequest;
 		}
 
@@ -303,34 +310,6 @@ namespace Diadoc.Api.Http
 			{
 				request.Proxy.Credentials = proxyCredential;
 			}
-		}
-
-		private static string UserAgentString { get; set; }
-
-		static HttpClient()
-		{
-			string sdkVersion = typeof(HttpClient).Assembly.GetName().Version.ToString();
-			string netFxVersion = Environment.Version.ToString();
-			try
-			{
-				sdkVersion = FileVersionInfo.GetVersionInfo(typeof(HttpClient).Assembly.Location).FileVersion;
-			}
-			catch
-			{
-			}
-
-			try
-			{
-				netFxVersion = FileVersionInfo.GetVersionInfo(typeof(int).Assembly.Location).FileVersion;
-			}
-			catch
-			{
-			}
-
-			UserAgentString = string.Format("Diadoc C# SDK={0};OS={1};NETFX={2}",
-				sdkVersion,
-				Environment.OSVersion.VersionString,
-				netFxVersion);
 		}
 	}
 }
