@@ -95,7 +95,7 @@ namespace Diadoc.Api.Http
 			proxyCredential = new NetworkCredential(userDomain.User, SecureStringToString(password), userDomain.Domain);
 		}
 
-		public void SetUserAgent([NotNull] string userAgent)
+		internal void SetUserAgent([NotNull] string userAgent)
 		{
 			userAgentString = userAgent ?? throw new ArgumentNullException(nameof(userAgent));
 		}
