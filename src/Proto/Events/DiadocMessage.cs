@@ -70,6 +70,7 @@ namespace Diadoc.Api.Proto.Events
 	public interface IEntity
 	{
 		string EntityId { get; }
+		string AuthorUserId { get; }
 		string ParentEntityId { get; }
 		Com.EntityType EntityTypeValue { get; }
 		Com.AttachmentType AttachmentTypeValue { get; }
@@ -103,6 +104,7 @@ namespace Diadoc.Api.Proto.Events
 		OuterDocflowInfo OuterDocflow { get; }
 		RevocationRequestInfo RevocationRequestInfo { get; }
 		PowerOfAttorneyInfo PowerOfAttorneyInfo { get; }
+		MoveDocumentInfo MoveDocumentInfo { get; }
 	}
 
 	[ComVisible(true)]
@@ -1929,6 +1931,7 @@ namespace Diadoc.Api.Proto.Events
 		bool UseDefault { get; set; }
 		bool SendAsFile { get; set; }
 		PowersOfAttorney.PowerOfAttorneySignedContent Content { get; set; }
+		bool UseDocumentContent { get; set; }
 
 		void SetFullId([MarshalAs(UnmanagedType.IDispatch)] object fullId);
 		void SetContent([MarshalAs(UnmanagedType.IDispatch)] object content);
@@ -1980,5 +1983,22 @@ namespace Diadoc.Api.Proto.Events
 			get => (Com.PowerOfAttorneySendingType) SendingType;
 			set => SendingType = (PowersOfAttorney.PowerOfAttorneySendingType) value;
 		}
+	}
+
+	[ComVisible(true)]
+	[Guid("C5F83BE3-D6F6-4B80-9612-A176B75BB85D")]
+	public interface IMoveDocumentInfo
+	{
+		string MovedFromDepartment { get; set; }
+		string MovedToDepartment { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.MoveDocumentInfo")]
+	[Guid("CCDD37F8-D668-40A8-871F-B9EB24383E7C")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IMoveDocumentInfo))]
+	public partial class MoveDocumentInfo : SafeComObject, IMoveDocumentInfo
+	{
 	}
 }

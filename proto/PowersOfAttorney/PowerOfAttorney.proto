@@ -130,6 +130,7 @@ enum PowerOfAttorneySendingType {
     Unknown = 0;
     Metadata = 1;
     File = 2;
+    DocumentContent = 3;
 }
 
 message PowerOfAttorneyContent {
