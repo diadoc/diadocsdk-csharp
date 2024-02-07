@@ -9,6 +9,7 @@ namespace Diadoc.Api.Com
 	[XmlType(TypeName = "SignerType", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum SignerType
 	{
+		SignerTypeUnspecified = -1,
 		LegalEntity = 1,
 		IndividualEntity = 2,
 		PhysicalPerson = 3
