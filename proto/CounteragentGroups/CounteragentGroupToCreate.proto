@@ -1,0 +1,9 @@
+import "CounteragentGroups/DepartmentsInGroup.proto";
+
+package Diadoc.Api.Proto.CounteragentGroups;
+
+message CounteragentGroupToCreate
+{
+  required string Name = 1;
+  optional DepartmentsInGroup Departments = 2;
+}
