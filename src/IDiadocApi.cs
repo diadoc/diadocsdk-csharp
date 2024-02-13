@@ -23,6 +23,7 @@ using Departments = Diadoc.Api.Proto.Departments;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Diadoc.Api.Proto.Certificates;
+using Diadoc.Api.Proto.CounteragentGroups;
 using Diadoc.Api.Proto.Employees.PowersOfAttorney;
 using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Workflows;
@@ -295,6 +296,10 @@ namespace Diadoc.Api
 		PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId);
 		PowerOfAttorneyContent GetPowerOfAttorneyContent(string authToken, string boxId, string messageId, string entityId);
 		PowerOfAttorneyContentResponse GetPowerOfAttorneyContentV2(string authToken, string boxId, string messageId, string entityId);
+
+		CounteragentGroup CreateCounteragentGroup(string authToken, string boxId, CounteragentGroupToCreate counteragentGroupToCreate);
+		CounteragentGroup UpdateCounteragentGroup(string authToken, string boxId, string counteragentGroupId, CounteragentGroupToUpdate counteragentGroupToUpdate);
+		void DeleteCounteragentGroup(string authToken, string boxId, string counteragentGroupId);
 
 #if !NET35
 
@@ -571,6 +576,9 @@ namespace Diadoc.Api
 		Task<PowerOfAttorney> GetPowerOfAttorneyInfoAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<PowerOfAttorneyContent> GetPowerOfAttorneyContentAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<PowerOfAttorneyContentResponse> GetPowerOfAttorneyContentV2Async(string authToken, string boxId, string messageId, string entityId);
+		Task<CounteragentGroup> CreateCounteragentGroupAsync(string authToken, string boxId, CounteragentGroupToCreate counteragentGroupToCreate);
+		Task<CounteragentGroup> UpdateCounteragentGroupAsync(string authToken, string boxId, string counteragentGroupId, CounteragentGroupToUpdate counteragentGroupToUpdate);
+		Task DeleteCounteragentGroupAsync(string authToken, string boxId, string counteragentGroupId);
 #endif
 	}
 }

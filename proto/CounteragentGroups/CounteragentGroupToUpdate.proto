@@ -1,0 +1,15 @@
+import "CounteragentGroups/DepartmentsInGroup.proto";
+
+package Diadoc.Api.Proto.CounteragentGroups;
+
+message  CounteragentGroupToUpdate
+{
+  optional string Name = 1;
+  optional CounteragentGroupDepartmentPatch Departments = 2;
+}
+
+message CounteragentGroupDepartmentPatch
+{
+  required bool AnyDepartment = 1;
+  optional DepartmentsInGroup DepartmentId = 2;
+}
