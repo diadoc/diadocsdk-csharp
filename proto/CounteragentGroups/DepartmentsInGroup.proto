@@ -2,5 +2,5 @@ package Diadoc.Api.Proto.CounteragentGroups;
 
 message DepartmentsInGroup
 {
-  repeated string DepartmentId = 1;
+  repeated string DepartmentIds = 1;
 }
