@@ -15,11 +15,11 @@ namespace Diadoc.Api.Proto.CounteragentGroups
   {
     public DepartmentsInGroup() {}
     
-    private readonly global::System.Collections.Generic.List<string> _DepartmentId = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"DepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> DepartmentId
+    private readonly global::System.Collections.Generic.List<string> _DepartmentIds = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"DepartmentIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> DepartmentIds
     {
-      get { return _DepartmentId; }
+      get { return _DepartmentIds; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;

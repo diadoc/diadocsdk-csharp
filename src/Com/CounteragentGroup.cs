@@ -37,11 +37,11 @@ namespace Diadoc.Api.Proto.CounteragentGroups
 	[ComDefaultInterface(typeof(IDepartmentsInGroup))]
 	public partial class DepartmentsInGroup : SafeComObject, IDepartmentsInGroup
 	{
-		public ReadonlyList DepartmentIdList => new ReadonlyList(DepartmentId);
+		public ReadonlyList DepartmentIdList => new ReadonlyList(DepartmentIds);
 
 		public void AddDepartmentId(string departmentId)
 		{
-			DepartmentId.Add(departmentId);
+			DepartmentIds.Add(departmentId);
 		}
 	}
 
@@ -67,7 +67,7 @@ namespace Diadoc.Api.Proto.CounteragentGroups
 	public interface ICounteragentGroupToUpdate
 	{
 		string Name { get; set; }
-		CounteragentGroupDepartmentPatch Departments { get; set; }
+		CounteragentGroupDepartmentPatch GroupDepartments { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -84,7 +84,7 @@ namespace Diadoc.Api.Proto.CounteragentGroups
 	public interface ICounteragentGroupDepartmentPatch
 	{
 		bool AnyDepartment { get; set; }
-		DepartmentsInGroup DepartmentId { get; set; }
+		DepartmentsInGroup Departments { get; set; }
 	}
 
 	[ComVisible(true)]

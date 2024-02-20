@@ -26,13 +26,13 @@ namespace Diadoc.Api.Proto.CounteragentGroups
       set { _Name = value; }
     }
 
-    private Diadoc.Api.Proto.CounteragentGroups.CounteragentGroupDepartmentPatch _Departments = null;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Departments", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private Diadoc.Api.Proto.CounteragentGroups.CounteragentGroupDepartmentPatch _GroupDepartments = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"GroupDepartments", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.CounteragentGroups.CounteragentGroupDepartmentPatch Departments
+    public Diadoc.Api.Proto.CounteragentGroups.CounteragentGroupDepartmentPatch GroupDepartments
     {
-      get { return _Departments; }
-      set { _Departments = value; }
+      get { return _GroupDepartments; }
+      set { _GroupDepartments = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -52,13 +52,13 @@ namespace Diadoc.Api.Proto.CounteragentGroups
       set { _AnyDepartment = value; }
     }
 
-    private Diadoc.Api.Proto.CounteragentGroups.DepartmentsInGroup _DepartmentId = null;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private Diadoc.Api.Proto.CounteragentGroups.DepartmentsInGroup _Departments = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Departments", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.CounteragentGroups.DepartmentsInGroup DepartmentId
+    public Diadoc.Api.Proto.CounteragentGroups.DepartmentsInGroup Departments
     {
-      get { return _DepartmentId; }
-      set { _DepartmentId = value; }
+      get { return _Departments; }
+      set { _Departments = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
