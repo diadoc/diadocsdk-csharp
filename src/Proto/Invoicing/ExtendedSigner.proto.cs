@@ -206,8 +206,10 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       get { return _RegistrationCertificate; }
       set { _RegistrationCertificate = value; }
     }
-    private Diadoc.Api.Proto.Invoicing.Signers.SignerType _SignerType;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"SignerType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+
+    private Diadoc.Api.Proto.Invoicing.Signers.SignerType _SignerType = Diadoc.Api.Proto.Invoicing.Signers.SignerType.SignerTypeUnspecified;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SignerType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Invoicing.Signers.SignerType.SignerTypeUnspecified)]
     public Diadoc.Api.Proto.Invoicing.Signers.SignerType SignerType
     {
       get { return _SignerType; }
@@ -222,15 +224,19 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       get { return _SignerInfo; }
       set { _SignerInfo = value; }
     }
-    private Diadoc.Api.Proto.Invoicing.Signers.SignerPowers _SignerPowers;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"SignerPowers", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+
+    private Diadoc.Api.Proto.Invoicing.Signers.SignerPowers _SignerPowers = Diadoc.Api.Proto.Invoicing.Signers.SignerPowers.SignerPowersUnspecified;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"SignerPowers", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Invoicing.Signers.SignerPowers.SignerPowersUnspecified)]
     public Diadoc.Api.Proto.Invoicing.Signers.SignerPowers SignerPowers
     {
       get { return _SignerPowers; }
       set { _SignerPowers = value; }
     }
-    private Diadoc.Api.Proto.Invoicing.Signers.SignerStatus _SignerStatus;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"SignerStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+
+    private Diadoc.Api.Proto.Invoicing.Signers.SignerStatus _SignerStatus = Diadoc.Api.Proto.Invoicing.Signers.SignerStatus.SignerStatusUnspecified;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"SignerStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Invoicing.Signers.SignerStatus.SignerStatusUnspecified)]
     public Diadoc.Api.Proto.Invoicing.Signers.SignerStatus SignerStatus
     {
       get { return _SignerStatus; }
@@ -263,6 +269,9 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
     public enum SignerType
     {
             
+      [global::ProtoBuf.ProtoEnum(Name=@"SignerTypeUnspecified", Value=-1)]
+      SignerTypeUnspecified = -1,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"LegalEntity", Value=1)]
       LegalEntity = 1,
             
@@ -276,6 +285,9 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
     [global::ProtoBuf.ProtoContract(Name=@"SignerPowers")]
     public enum SignerPowers
     {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SignerPowersUnspecified", Value=-1)]
+      SignerPowersUnspecified = -1,
             
       [global::ProtoBuf.ProtoEnum(Name=@"InvoiceSigner", Value=0)]
       InvoiceSigner = 0,
@@ -320,6 +332,9 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
     [global::ProtoBuf.ProtoContract(Name=@"SignerStatus")]
     public enum SignerStatus
     {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"SignerStatusUnspecified", Value=-1)]
+      SignerStatusUnspecified = -1,
             
       [global::ProtoBuf.ProtoEnum(Name=@"SellerEmployee", Value=1)]
       SellerEmployee = 1,
@@ -381,7 +396,13 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       Torg2AdditionalInfo = 10,
             
       [global::ProtoBuf.ProtoEnum(Name=@"Ucd736Buyer", Value=11)]
-      Ucd736Buyer = 11
+      Ucd736Buyer = 11,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Utd970Seller", Value=12)]
+      Utd970Seller = 12,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Utd970Buyer", Value=13)]
+      Utd970Buyer = 13
     }
   
 }
