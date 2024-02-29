@@ -23,6 +23,7 @@ using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Departments = Diadoc.Api.Proto.Departments;
 using Diadoc.Api.Proto.Certificates;
+using Diadoc.Api.Proto.CounteragentGroups;
 using Diadoc.Api.Proto.Employees.PowersOfAttorney;
 using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Workflows;
@@ -1424,6 +1425,29 @@ namespace Diadoc.Api
 			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
 			if (entityId == null) throw new ArgumentNullException(nameof(entityId));
 			return diadocHttpApi.GetPowerOfAttorneyContentV2Async(authToken, boxId, messageId, entityId);
+		}
+
+		public Task<CounteragentGroup> CreateCounteragentGroupAsync(string authToken, string boxId, CounteragentGroupToCreate counteragentGroupToCreate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.CreateCounteragentGroupAsync(authToken, boxId, counteragentGroupToCreate);
+		}
+
+		public Task<CounteragentGroup> UpdateCounteragentGroupAsync(string authToken, string boxId, string counteragentGroupId, CounteragentGroupToUpdate counteragentGroupToUpdate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			return diadocHttpApi.UpdateCounteragentGroupAsync(authToken, boxId, counteragentGroupId, counteragentGroupToUpdate);
+		}
+
+		public Task DeleteCounteragentGroupAsync(string authToken, string boxId, string counteragentGroupId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			return diadocHttpApi.DeleteCounteragentGroupAsync(authToken, boxId, counteragentGroupId);
 		}
 	}
 }

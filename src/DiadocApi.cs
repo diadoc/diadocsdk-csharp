@@ -7,6 +7,7 @@ using Diadoc.Api.Cryptography;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Certificates;
+using Diadoc.Api.Proto.CounteragentGroups;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
@@ -1558,6 +1559,29 @@ namespace Diadoc.Api
 			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
 			if (entityId == null) throw new ArgumentNullException(nameof(entityId));
 			return diadocHttpApi.GetPowerOfAttorneyContentV2(authToken, boxId, messageId, entityId);
+		}
+
+		public CounteragentGroup CreateCounteragentGroup(string authToken, string boxId, CounteragentGroupToCreate counteragentGroupToCreate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.CreateCounteragentGroup(authToken, boxId, counteragentGroupToCreate);
+		}
+
+		public CounteragentGroup UpdateCounteragentGroup(string authToken, string boxId, string counteragentGroupId, CounteragentGroupToUpdate counteragentGroupToUpdate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			return diadocHttpApi.UpdateCounteragentGroup(authToken, boxId, counteragentGroupId, counteragentGroupToUpdate);
+		}
+
+		public void DeleteCounteragentGroup(string authToken, string boxId, string counteragentGroupId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			diadocHttpApi.DeleteCounteragentGroup(authToken, boxId, counteragentGroupId);
 		}
 	}
 }
