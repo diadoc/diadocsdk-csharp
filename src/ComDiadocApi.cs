@@ -605,6 +605,11 @@ namespace Diadoc.Api
 			diadoc.SetProxyCredentials(proxyUser, proxyPassword);
 		}
 
+		public void SetSolutionInfo(string solutionInfo)
+		{
+			diadoc.SetSolutionInfo(solutionInfo);
+		}
+
 		public void EnableSystemProxyUsage()
 		{
 			diadoc.EnableSystemProxyUsage();

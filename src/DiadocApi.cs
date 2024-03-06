@@ -90,6 +90,14 @@ namespace Diadoc.Api
 			diadocHttpApi.HttpClient.SetProxyCredentials(user, password);
 		}
 
+		/// <summary>
+		/// Установить информацию об интеграционном решении технологического партнера.
+		/// </summary>
+		public void SetSolutionInfo([NotNull] string solutionInfo)
+		{
+			diadocHttpApi.SolutionInfo = solutionInfo;
+		}
+
 		public string Authenticate(string login, string password, string key = null, string id = null)
 		{
 			return diadocHttpApi.Authenticate(login, password, key, id);

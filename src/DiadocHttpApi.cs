@@ -47,6 +47,11 @@ namespace Diadoc.Api
 		[NotNull] public IHttpClient HttpClient { get; }
 
 		[NotNull] public DocflowHttpApi Docflow { get; }
+		
+		/// <summary>
+		/// Информация об интеграционном решении технологического партнера.
+		/// </summary>
+		[CanBeNull] public string SolutionInfo { get; set; }
 
 		[NotNull]
 		protected byte[] PerformHttpRequest(
@@ -150,6 +155,10 @@ namespace Diadoc.Api
 				sb.AppendFormat(",ddauth_token={0}", token);
 			}
 			request.AddHeader("Authorization", sb.ToString());
+			if (!string.IsNullOrEmpty(SolutionInfo))
+			{
+				request.AddHeader("X-Solution-Info", SolutionInfo);
+			}
 			return request;
 		}
 
