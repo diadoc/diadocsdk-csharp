@@ -28,5 +28,41 @@ namespace Diadoc.Api
 			queryString.AddParameter("counteragentGroupId", counteragentGroupId);
 			return PerformHttpRequestAsync(authToken, "POST", queryString.BuildPathAndQuery());
 		}
+
+		public Task<CounteragentGroup> GetCounteragentGroupAsync(string authToken, string boxId, string counteragentGroupId)
+		{
+			var queryString = new PathAndQueryBuilder("/GetCounteragentGroup");
+			queryString.AddParameter("boxId", boxId);
+			queryString.AddParameter("counteragentGroupId", counteragentGroupId);
+			return PerformHttpRequestAsync<CounteragentGroup>(authToken, "GET", queryString.BuildPathAndQuery());
+		}
+
+		public Task<CounteragentGroupsList> GetCounteragentGroupsAsync(string authToken, string boxId, int? page = null, int? count = null)
+		{
+			var queryString = new PathAndQueryBuilder("/GetCounteragentGroups");
+			queryString.AddParameter("boxId", boxId);
+			queryString.AddParameter("page", page?.ToString());
+			queryString.AddParameter("count", count?.ToString());
+			return PerformHttpRequestAsync<CounteragentGroupsList>(authToken, "GET", queryString.BuildPathAndQuery());
+		}
+
+		public Task AddCounteragentToGroupAsync(string authToken, string boxId, string counteragentBoxId, string counteragentGroupId)
+		{
+			var queryString = new PathAndQueryBuilder("/AddCounteragentToGroup");
+			queryString.AddParameter("boxId", boxId);
+			queryString.AddParameter("counteragentBoxId", counteragentBoxId);
+			queryString.AddParameter("counteragentGroupId", counteragentGroupId);
+			return PerformHttpRequestAsync(authToken, "POST", queryString.BuildPathAndQuery());
+		}
+
+		public Task<CounteragentFromGroupResponse> GetCounteragentsFromGroupAsync(string authToken, string boxId, string counteragentGroupId, int? count = null, string afterIndexKey = null)
+		{
+			var queryString = new PathAndQueryBuilder("/GetCounteragentsFromGroup");
+			queryString.AddParameter("boxId", boxId);
+			queryString.AddParameter("counteragentGroupId", counteragentGroupId);
+			queryString.AddParameter("count", count?.ToString());
+			queryString.AddParameter("afterIndexKey", afterIndexKey);
+			return PerformHttpRequestAsync<CounteragentFromGroupResponse>(authToken, "GET", queryString.BuildPathAndQuery());
+		}
 	}
 }

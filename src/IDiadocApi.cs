@@ -300,6 +300,10 @@ namespace Diadoc.Api
 		CounteragentGroup CreateCounteragentGroup(string authToken, string boxId, CounteragentGroupToCreate counteragentGroupToCreate);
 		CounteragentGroup UpdateCounteragentGroup(string authToken, string boxId, string counteragentGroupId, CounteragentGroupToUpdate counteragentGroupToUpdate);
 		void DeleteCounteragentGroup(string authToken, string boxId, string counteragentGroupId);
+		CounteragentGroup GetCounteragentGroup(string authToken, string boxId, string counteragentGroupId);
+		CounteragentGroupsList GetCounteragentGroups(string authToken, string boxId, int? page = null, int? count = null);
+		void AddCounteragentToGroup(string authToken, string boxId, string counteragentBoxId, string counteragentGroupId);
+		CounteragentFromGroupResponse GetCounteragentsFromGroup(string authToken, string boxId, string counteragentGroupId, int? count = null, string afterIndexKey = null);
 
 #if !NET35
 
@@ -579,6 +583,10 @@ namespace Diadoc.Api
 		Task<CounteragentGroup> CreateCounteragentGroupAsync(string authToken, string boxId, CounteragentGroupToCreate counteragentGroupToCreate);
 		Task<CounteragentGroup> UpdateCounteragentGroupAsync(string authToken, string boxId, string counteragentGroupId, CounteragentGroupToUpdate counteragentGroupToUpdate);
 		Task DeleteCounteragentGroupAsync(string authToken, string boxId, string counteragentGroupId);
+		Task<CounteragentGroup> GetCounteragentGroupAsync(string authToken, string boxId, string counteragentGroupId);
+		Task<CounteragentGroupsList> GetCounteragentGroupsAsync(string authToken, string boxId, int? page = null, int? count = null);
+		Task AddCounteragentToGroupAsync(string authToken, string boxId, string counteragentBoxId, string counteragentGroupId);
+		Task<CounteragentFromGroupResponse> GetCounteragentsFromGroupAsync(string authToken, string boxId, string counteragentGroupId, int? count = null, string afterIndexKey = null);
 #endif
 	}
 }

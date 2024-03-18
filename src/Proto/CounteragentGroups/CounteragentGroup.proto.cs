@@ -44,4 +44,28 @@ namespace Diadoc.Api.Proto.CounteragentGroups
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CounteragentGroupsList")]
+  public partial class CounteragentGroupsList : global::ProtoBuf.IExtensible
+  {
+    public CounteragentGroupsList() {}
+    
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.CounteragentGroups.CounteragentGroup> _Groups = new global::System.Collections.Generic.List<Diadoc.Api.Proto.CounteragentGroups.CounteragentGroup>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"Groups", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.CounteragentGroups.CounteragentGroup> Groups
+    {
+      get { return _Groups; }
+    }
+  
+    private int _TotalCount;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"TotalCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int TotalCount
+    {
+      get { return _TotalCount; }
+      set { _TotalCount = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

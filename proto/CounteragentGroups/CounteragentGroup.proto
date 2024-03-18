@@ -8,3 +8,8 @@ message CounteragentGroup
   required string Name = 2;
   optional DepartmentsInGroup Departments = 3;
 }
+
+message CounteragentGroupsList {
+  repeated CounteragentGroup Groups = 1;
+  required int32 TotalCount = 2;
+}

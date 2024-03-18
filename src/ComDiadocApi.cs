@@ -1694,6 +1694,26 @@ namespace Diadoc.Api
 			diadoc.DeleteCounteragentGroup(authToken, boxId, counteragentGroupId);
 		}
 
+		public CounteragentGroup GetCounteragentGroup(string authToken, string boxId, string counteragentGroupId)
+		{
+			return diadoc.GetCounteragentGroup(authToken, boxId, counteragentGroupId);
+		}
+
+		public CounteragentGroupsList GetCounteragentGroups(string authToken, string boxId, int? page = null, int? count = null)
+		{
+			return diadoc.GetCounteragentGroups(authToken, boxId, page, count);
+		}
+
+		public void AddCounteragentToGroup(string authToken, string boxId, string counteragentBoxId, string counteragentGroupId)
+		{
+			diadoc.AddCounteragentToGroup(authToken, boxId, counteragentBoxId, counteragentGroupId);
+		}
+
+		public CounteragentFromGroupResponse GetCounteragentsFromGroup(string authToken, string boxId, string counteragentGroupId, int? count = null, string afterIndexKey = null)
+		{
+			return diadoc.GetCounteragentsFromGroup(authToken, boxId, counteragentGroupId, count, afterIndexKey);
+		}
+
 		#endregion
 
 		public DateTime? GetNullable(DateTime dateTime)

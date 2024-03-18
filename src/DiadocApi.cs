@@ -1591,5 +1591,37 @@ namespace Diadoc.Api
 			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
 			diadocHttpApi.DeleteCounteragentGroup(authToken, boxId, counteragentGroupId);
 		}
+
+		public CounteragentGroup GetCounteragentGroup(string authToken, string boxId, string counteragentGroupId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			return diadocHttpApi.GetCounteragentGroup(authToken, boxId, counteragentGroupId);
+		}
+
+		public CounteragentGroupsList GetCounteragentGroups(string authToken, string boxId, int? page = null, int? count = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetCounteragentGroups(authToken, boxId, page, count);
+		}
+
+		public void AddCounteragentToGroup(string authToken, string boxId, string counteragentBoxId, string counteragentGroupId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentBoxId == null) throw new ArgumentNullException("counteragentBoxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			diadocHttpApi.AddCounteragentToGroup(authToken, boxId, counteragentBoxId, counteragentGroupId);
+		}
+
+		public CounteragentFromGroupResponse GetCounteragentsFromGroup(string authToken, string boxId, string counteragentGroupId, int? count = null, string afterIndexKey = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			return diadocHttpApi.GetCounteragentsFromGroup(authToken, boxId, counteragentGroupId, count, afterIndexKey);
+		}
 	}
 }
