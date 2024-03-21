@@ -23,6 +23,7 @@ using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Departments = Diadoc.Api.Proto.Departments;
 using Diadoc.Api.Proto.Certificates;
+using Diadoc.Api.Proto.CounteragentGroups;
 using Diadoc.Api.Proto.Employees.PowersOfAttorney;
 using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Workflows;
@@ -1424,6 +1425,61 @@ namespace Diadoc.Api
 			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
 			if (entityId == null) throw new ArgumentNullException(nameof(entityId));
 			return diadocHttpApi.GetPowerOfAttorneyContentV2Async(authToken, boxId, messageId, entityId);
+		}
+
+		public Task<CounteragentGroup> CreateCounteragentGroupAsync(string authToken, string boxId, CounteragentGroupToCreate counteragentGroupToCreate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.CreateCounteragentGroupAsync(authToken, boxId, counteragentGroupToCreate);
+		}
+
+		public Task<CounteragentGroup> UpdateCounteragentGroupAsync(string authToken, string boxId, string counteragentGroupId, CounteragentGroupToUpdate counteragentGroupToUpdate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			return diadocHttpApi.UpdateCounteragentGroupAsync(authToken, boxId, counteragentGroupId, counteragentGroupToUpdate);
+		}
+
+		public Task DeleteCounteragentGroupAsync(string authToken, string boxId, string counteragentGroupId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			return diadocHttpApi.DeleteCounteragentGroupAsync(authToken, boxId, counteragentGroupId);
+		}
+
+		public Task<CounteragentGroup> GetCounteragentGroupAsync(string authToken, string boxId, string counteragentGroupId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			return diadocHttpApi.GetCounteragentGroupAsync(authToken, boxId, counteragentGroupId);
+		}
+
+		public Task<CounteragentGroupsList> GetCounteragentGroupsAsync(string authToken, string boxId, int? page = null, int? count = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetCounteragentGroupsAsync(authToken, boxId, page, count);
+		}
+
+		public Task AddCounteragentToGroupAsync(string authToken, string boxId, string counteragentBoxId, string counteragentGroupId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentBoxId == null) throw new ArgumentNullException("counteragentBoxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			return diadocHttpApi.AddCounteragentToGroupAsync(authToken, boxId, counteragentBoxId, counteragentGroupId);
+		}
+
+		public Task<CounteragentFromGroupResponse> GetCounteragentsFromGroupAsync(string authToken, string boxId, string counteragentGroupId, int? count = null, string afterIndexKey = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
+			return diadocHttpApi.GetCounteragentsFromGroupAsync(authToken, boxId, counteragentGroupId, count, afterIndexKey);
 		}
 	}
 }

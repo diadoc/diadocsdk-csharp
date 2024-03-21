@@ -18,6 +18,7 @@ message Counteragent {
 	optional string MessageFromCounteragent = 6;
 	optional string MessageToCounteragent = 7;
 	optional DocumentId InvitationDocumentId = 8;
+	optional string CounteragentGroupId = 9;
 }
 
 enum CounteragentStatus {
