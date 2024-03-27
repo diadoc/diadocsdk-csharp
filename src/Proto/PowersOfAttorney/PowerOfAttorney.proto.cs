@@ -109,6 +109,15 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       get { return _PermissionsInfo; }
       set { _PermissionsInfo = value; }
     }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyDelegationInfo _DelegationInfo = null;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"DelegationInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyDelegationInfo DelegationInfo
+    {
+      get { return _DelegationInfo; }
+      set { _DelegationInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -653,6 +662,32 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
     {
       get { return _Text; }
       set { _Text = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyDelegationInfo")]
+  public partial class PowerOfAttorneyDelegationInfo : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyDelegationInfo() {}
+    
+    private string _RootRegistrationNumber;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"RootRegistrationNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string RootRegistrationNumber
+    {
+      get { return _RootRegistrationNumber; }
+      set { _RootRegistrationNumber = value; }
+    }
+
+    private string _ParentRegistrationNumber = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ParentRegistrationNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ParentRegistrationNumber
+    {
+      get { return _ParentRegistrationNumber; }
+      set { _ParentRegistrationNumber = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
