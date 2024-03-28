@@ -19,6 +19,7 @@ message PowerOfAttorney {
     optional string IdFile = 7;
     repeated PowerOfAttorney DelegationChain = 8;
     required PowerOfAttorneyPermissionsInfo PermissionsInfo = 9;
+    optional PowerOfAttorneyDelegationInfo DelegationInfo = 10;
 }
 
 message PowerOfAttorneyIssuer {
@@ -131,6 +132,11 @@ enum PowerOfAttorneySendingType {
     Metadata = 1;
     File = 2;
     DocumentContent = 3;
+}
+
+message PowerOfAttorneyDelegationInfo {
+    required string RootRegistrationNumber = 1;
+    optional string ParentRegistrationNumber = 2;
 }
 
 message PowerOfAttorneyContent {
