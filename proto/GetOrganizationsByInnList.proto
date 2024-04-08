@@ -16,6 +16,7 @@ message OrganizationWithCounteragentStatus {
 	optional string MessageFromCounteragent = 4;
 	optional string MessageToCounteragent = 5;
 	optional DocumentId InvitationDocumentId = 6;
+	optional string CounteragentGroupId = 7;
 }
 
 message GetOrganizationsByInnListResponse {

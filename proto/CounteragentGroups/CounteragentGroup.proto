@@ -1,0 +1,15 @@
+import "CounteragentGroups/DepartmentsInGroup.proto";
+
+package Diadoc.Api.Proto.CounteragentGroups;
+
+message CounteragentGroup
+{
+  required string CounteragentGroupId = 1;
+  required string Name = 2;
+  optional DepartmentsInGroup Departments = 3;
+}
+
+message CounteragentGroupsList {
+  repeated CounteragentGroup Groups = 1;
+  required int32 TotalCount = 2;
+}

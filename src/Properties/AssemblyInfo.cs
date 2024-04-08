@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Diadoc")]
 [assembly: AssemblyTitle("Diadoc.Api")]
 [assembly: AssemblyCompany("ЗАО «ПФ «СКБ Контур»")]
-[assembly: AssemblyCopyright("© 2010-2023 ЗАО «ПФ «СКБ Контур»")]
+[assembly: AssemblyCopyright("© 2010-2024 ЗАО «ПФ «СКБ Контур»")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
