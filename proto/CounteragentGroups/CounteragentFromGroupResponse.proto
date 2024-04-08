@@ -1,0 +1,7 @@
+package Diadoc.Api.Proto.CounteragentGroups;
+
+message CounteragentFromGroupResponse {
+  repeated string CounteragentBoxId = 1;
+  required int32 TotalCount = 2;
+  optional string AfterIndexKey = 3;
+}
