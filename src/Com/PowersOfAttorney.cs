@@ -34,6 +34,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 		string IdFile { get; set; }
 		ReadonlyList DelegationChainList { get; }
 		PowerOfAttorneyPermissionsInfo PermissionsInfo { get; set; }
+		PowerOfAttorneyDelegationInfo DelegationInfo { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -544,6 +545,23 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ClassInterface(ClassInterfaceType.None)]
 	[ComDefaultInterface(typeof(IPowerOfAttorneyRestrictions))]
 	public partial class PowerOfAttorneyRestrictions : SafeComObject, IPowerOfAttorneyRestrictions
+	{
+	}
+	
+	[ComVisible(true)]
+	[Guid("D7F0A026-1580-480E-934F-89C90DF677FB")]
+	public interface IPowerOfAttorneyDelegationInfo
+	{
+		string RootRegistrationNumber { get; set; }
+		string ParentRegistrationNumber { get; set; }
+	}
+	
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyDelegationInfo")]
+	[Guid("2B4977C2-30AA-45F1-AFC3-032E6E751F4C")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyDelegationInfo))]
+	public partial class PowerOfAttorneyDelegationInfo : SafeComObject, IPowerOfAttorneyDelegationInfo
 	{
 	}
 }
