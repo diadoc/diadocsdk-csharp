@@ -4259,23 +4259,18 @@ namespace Diadoc.Api.DataXml.ON_NSCHFDOPPR_UserContract_970_05_02_01 {
     public enum UniversalTransferDocumentFunction {
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("РЎР§Р¤")]
-        РЎРР,
+        СЧФ,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Р”РћРџ")]
-        РРћРџ,
+        ДОП,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("РЎР§Р¤Р”РћРџ")]
-        РЎРРРРћРџ,
+        СЧФДОП,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("РЎРІР Рљ")]
-        РЎРІРРљ,
+        СвРК,
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("РЎРІР—Рљ")]
-        РЎРІРРљ1,
+        СвЗК,
     }
 }
