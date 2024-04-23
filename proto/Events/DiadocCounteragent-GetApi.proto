@@ -1,0 +1,32 @@
+///////////////////////////////////////////////////////////////////////////////
+// Протобуферы для читающих методов API:
+//	GetCounteragentEvents(string boxId, string? afterIndexKey, long? timestampFromTicks, long? timestampToTicks, int? limit) : BoxCounteragentEventList
+
+import "Counteragent.proto";
+import "TotalCountType.proto";
+import "DocumentId.proto";
+
+package Diadoc.Api.Proto.Events;
+
+message BoxCounteragentEventList {
+	repeated BoxCounteragentEvent Events = 1;
+	optional int32 TotalCount = 2;
+	required TotalCountType TotalCountType = 3;
+}
+
+message BoxCounteragentEvent {
+	required string EventId = 1;
+	optional CounteragentInfo Counteragent = 2;
+	optional string IndexKey = 3;
+}
+
+message CounteragentInfo {
+	required string CounteragentBoxId = 1;
+	required CounteragentStatus Status = 2;
+	required sfixed64 EventTimestampTicks = 3;
+	optional string LastEventComment = 4;
+	optional string MessageFromCounteragent = 5;
+	optional string MessageToCounteragent = 6;
+	optional DocumentId InvitationDocumentId = 7;
+	optional string CounteragentGroupId = 8;
+}
