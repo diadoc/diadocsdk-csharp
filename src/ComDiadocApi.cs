@@ -317,6 +317,15 @@ namespace Diadoc.Api
 
 		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId);
 		void BreakWithCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment);
+
+		BoxCounteragentEventList GetCounteragentEvents(
+			string authToken,
+			string boxId,
+			string afterIndexKey,
+			long timestampFromTicks,
+			long timestampToTicks,
+			int limit);
+
 		string UploadFileToShelf(string authToken, string fileName);
 		void GetFileFromShelf(string authToken, string nameOnShelf, string fileName);
 		RussianAddress ParseRussianAddress(string address);
@@ -1794,6 +1803,23 @@ namespace Diadoc.Api
 		public void BreakWithCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment)
 		{
 			diadoc.BreakWithCounteragent(authToken, myOrgId, counteragentOrgId, comment);
+		}
+
+		public BoxCounteragentEventList GetCounteragentEvents(
+			string authToken,
+			string boxId,
+			string afterIndexKey = null,
+			long timestampFromTicks = 0,
+			long timestampToTicks = 0,
+			int limit = 0)
+		{
+			return diadoc.GetCounteragentEvents(
+				authToken,
+				boxId,
+				afterIndexKey,
+				timestampFromTicks != 0 ? timestampFromTicks : (long?) null,
+				timestampToTicks != 0 ? timestampToTicks : (long?) null,
+				limit != 0 ? limit : (int?) null);
 		}
 
 		#endregion

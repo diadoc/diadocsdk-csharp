@@ -166,6 +166,13 @@ namespace Diadoc.Api
 		CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId, string counteragentOrgId);
 		CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null);
 		void BreakWithCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment);
+		BoxCounteragentEventList GetCounteragentEvents(
+			string authToken,
+			string boxId,
+			string afterIndexKey = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			int? limit = null);
 		string UploadFileToShelf(string authToken, byte[] data);
 		byte[] GetFileFromShelf(string authToken, string nameOnShelf);
 		RussianAddress ParseRussianAddress(string address);
@@ -454,6 +461,13 @@ namespace Diadoc.Api
 		Task<CounteragentList> GetCounteragentsAsync(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query
  = null, int? pageSize = null);
 		Task BreakWithCounteragentAsync(string authToken, string myOrgId, string counteragentOrgId, string comment);
+		Task<BoxCounteragentEventList> GetCounteragentEventsAsync(
+			string authToken,
+			string boxId,
+			string afterIndexKey = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			int? limit = null);
 		Task<string> UploadFileToShelfAsync(string authToken, byte[] data);
 		Task<byte[]> GetFileFromShelfAsync(string authToken, string nameOnShelf);
 		Task<RussianAddress> ParseRussianAddressAsync(string address);

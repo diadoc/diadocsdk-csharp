@@ -896,6 +896,19 @@ namespace Diadoc.Api
 			diadocHttpApi.BreakWithCounteragent(authToken, myOrgId, counteragentOrgId, comment);
 		}
 
+		public BoxCounteragentEventList GetCounteragentEvents(
+			string authToken,
+			string boxId,
+			string afterIndexKey = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			int? limit = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetCounteragentEvents(authToken, boxId, afterIndexKey, timestampFromTicks, timestampToTicks, limit);
+		}
+
 		public string UploadFileToShelf(string authToken, byte[] data)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");

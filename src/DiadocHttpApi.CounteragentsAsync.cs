@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
+using Diadoc.Api.Proto.Events;
 
 namespace Diadoc.Api
 {
@@ -57,6 +58,35 @@ namespace Diadoc.Api
 		public Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
 		{
 			return WaitTaskResultAsync<AcquireCounteragentResult>(authToken, "/AcquireCounteragentResult", taskId, timeout, delay);
+		}
+
+		public Task<BoxCounteragentEventList> GetCounteragentEventsAsync(
+			string authToken,
+			string boxId,
+			string afterIndexKey = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			int? limit = null)
+		{
+			var qsb = new PathAndQueryBuilder("/V1/GetCounteragentEvents");
+			qsb.AddParameter("boxId", boxId);
+			if (afterIndexKey != null)
+			{
+				qsb.AddParameter("afterIndexKey", afterIndexKey);
+			}
+			if (timestampFromTicks != null)
+			{
+				qsb.AddParameter("timestampFromTicks", timestampFromTicks.ToString());
+			}
+			if (timestampToTicks != null)
+			{
+				qsb.AddParameter("timestampToTicks", timestampToTicks.ToString());
+			}
+			if (limit != null)
+			{
+				qsb.AddParameter("limit", limit.ToString());
+			}
+			return PerformHttpRequestAsync<BoxCounteragentEventList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 	}
 }
