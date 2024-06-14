@@ -99,6 +99,14 @@ namespace Diadoc.Api
 			diadocHttpApi.SolutionInfo = solutionInfo;
 		}
 
+		/// <summary>
+		/// Использовать аутентификацию по протоколу OpenID Connect
+		/// </summary>
+		public void UseOidc()
+		{
+			diadocHttpApi.UseOidc = true;
+		}
+
 		public string Authenticate(string login, string password, string key = null, string id = null)
 		{
 			return diadocHttpApi.Authenticate(login, password, key, id);
