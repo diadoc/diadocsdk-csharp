@@ -205,31 +205,66 @@ namespace Diadoc.Api
 		public OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false)
 		{
 			if (inn == null) throw new ArgumentNullException("inn");
-			return diadocHttpApi.GetOrganizationsByInnKpp(inn, kpp, includeRelations);
+			return diadocHttpApi.GetOrganizationsByInnKpp(null, inn, kpp, includeRelations);
+		}
+
+		public OrganizationList GetOrganizationsByInnKpp(string authToken, string inn, string kpp, bool includeRelations = false)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (inn == null) throw new ArgumentNullException(nameof(inn));
+			return diadocHttpApi.GetOrganizationsByInnKpp(authToken, inn, kpp, includeRelations);
 		}
 
 		public Organization GetOrganizationById(string orgId)
 		{
 			if (orgId == null) throw new ArgumentNullException("orgId");
-			return diadocHttpApi.GetOrganizationById(orgId);
+			return diadocHttpApi.GetOrganizationById(null, orgId);
+		}
+
+		public Organization GetOrganizationById(string authToken, string orgId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (orgId == null) throw new ArgumentNullException(nameof(orgId));
+			return diadocHttpApi.GetOrganizationById(authToken, orgId);
 		}
 
 		public Organization GetOrganizationByBoxId(string boxId)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetOrganizationByBoxId(boxId);
+			return diadocHttpApi.GetOrganizationByBoxId(null, boxId);
+		}
+
+		public Organization GetOrganizationByBoxId(string authToken, string boxId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+			return diadocHttpApi.GetOrganizationByBoxId(authToken, boxId);
 		}
 
 		public Organization GetOrganizationByFnsParticipantId(string fnsParticipantId)
 		{
 			if (fnsParticipantId == null) throw new ArgumentException("fnsParticipantId");
-			return diadocHttpApi.GetOrganizationByFnsParticipantId(fnsParticipantId);
+			return diadocHttpApi.GetOrganizationByFnsParticipantId(null, fnsParticipantId);
+		}
+
+		public Organization GetOrganizationByFnsParticipantId(string authToken, string fnsParticipantId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (fnsParticipantId == null) throw new ArgumentNullException(nameof(fnsParticipantId));
+			return diadocHttpApi.GetOrganizationByFnsParticipantId(authToken, fnsParticipantId);
 		}
 
 		public Organization GetOrganizationByInnKpp(string inn, string kpp)
 		{
 			if (inn == null) throw new ArgumentException("inn");
-			return diadocHttpApi.GetOrganizationByInnKpp(inn, kpp);
+			return diadocHttpApi.GetOrganizationByInnKpp(null, inn, kpp);
+		}
+
+		public Organization GetOrganizationByInnKpp(string authToken, string inn, string kpp)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (inn == null) throw new ArgumentNullException(nameof(inn));
+			return diadocHttpApi.GetOrganizationByInnKpp(authToken, inn, kpp);
 		}
 
 		public RoamingOperatorList GetRoamingOperators(string authToken, string boxId)
@@ -240,7 +275,14 @@ namespace Diadoc.Api
 		public Box GetBox(string boxId)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetBox(boxId);
+			return diadocHttpApi.GetBox(null, boxId);
+		}
+
+		public Box GetBox(string authToken, string boxId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+			return diadocHttpApi.GetBox(authToken, boxId);
 		}
 
 		public Department GetDepartment(string authToken, string orgId, string departmentId)
@@ -723,13 +765,27 @@ namespace Diadoc.Api
 		public string Recognize(string fileName, byte[] content)
 		{
 			if (string.IsNullOrEmpty(fileName)) throw new ArgumentNullException("fileName");
-			return diadocHttpApi.Recognize(fileName, content);
+			return diadocHttpApi.Recognize(null, fileName, content);
+		}
+
+		public string Recognize(string authToken, string fileName, byte[] content)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (fileName == null) throw new ArgumentNullException(nameof(fileName));
+			return diadocHttpApi.Recognize(authToken, fileName, content);
 		}
 
 		public Recognized GetRecognized(string recognitionId)
 		{
 			if (string.IsNullOrEmpty(recognitionId)) throw new ArgumentNullException("recognitionId");
-			return diadocHttpApi.GetRecognized(recognitionId);
+			return diadocHttpApi.GetRecognized(null, recognitionId);
+		}
+
+		public Recognized GetRecognized(string authToken, string recognitionId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (recognitionId == null) throw new ArgumentNullException(nameof(recognitionId));
+			return diadocHttpApi.GetRecognized(authToken, recognitionId);
 		}
 
 		public DocumentList GetDocuments(string authToken,
@@ -933,72 +989,156 @@ namespace Diadoc.Api
 
 		public RussianAddress ParseRussianAddress(string address)
 		{
-			return diadocHttpApi.ParseRussianAddress(address);
+			return diadocHttpApi.ParseRussianAddress(null, address);
+		}
+
+		public RussianAddress ParseRussianAddress(string authToken, string address)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseRussianAddress(authToken, address);
 		}
 
 		public InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent)
 		{
-			return diadocHttpApi.ParseInvoiceXml(invoiceXmlContent);
+			return diadocHttpApi.ParseInvoiceXml(null, invoiceXmlContent);
+		}
+
+		public InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseInvoiceXml(authToken, invoiceXmlContent);
 		}
 
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTorg12SellerTitleXml(xmlContent);
+			return diadocHttpApi.ParseTorg12SellerTitleXml(null, xmlContent);
+		}
+
+		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseTorg12SellerTitleXml(authToken, xmlContent);
 		}
 
 		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTorg12BuyerTitleXml(xmlContent);
+			return diadocHttpApi.ParseTorg12BuyerTitleXml(null, xmlContent);
+		}
+
+		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseTorg12BuyerTitleXml(authToken, xmlContent);
 		}
 
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTovTorg551SellerTitleXml(xmlContent);
+			return diadocHttpApi.ParseTovTorg551SellerTitleXml(null, xmlContent);
+		}
+
+		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseTovTorg551SellerTitleXml(authToken, xmlContent);
 		}
 
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTovTorg551BuyerTitleXml(xmlContent);
+			return diadocHttpApi.ParseTovTorg551BuyerTitleXml(null, xmlContent);
+		}
+
+		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseTovTorg551BuyerTitleXml(authToken, xmlContent);
 		}
 
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXml(xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXml(null, xmlContent);
+		}
+
+		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXml(authToken, xmlContent);
 		}
 
 		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXml(xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXml(null, xmlContent);
+		}
+
+		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXml(authToken, xmlContent);
 		}
 
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXml(xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXml(null, xmlContent);
+		}
+
+		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXml(authToken, xmlContent);
 		}
 
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXml(xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXml(null, xmlContent);
+		}
+
+		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXml(authToken, xmlContent);
 		}
 
 		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
 		{
-			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXml(xmlContent, documentVersion);
+			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXml(null, xmlContent, documentVersion);
+		}
+
+		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXml(authToken, xmlContent, documentVersion);
 		}
 
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXml(xmlContent);
+			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXml(null, xmlContent);
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXml(authToken, xmlContent);
 		}
 
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
-			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(xmlContent, documentVersion);
+			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(null, xmlContent, documentVersion);
+		}
+
+		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(authToken, xmlContent, documentVersion);
 		}
 
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXml(xmlContent);
+			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXml(null, xmlContent);
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXml(authToken, xmlContent);
 		}
 
 		public byte[] ParseTitleXml(
@@ -1038,7 +1178,14 @@ namespace Diadoc.Api
 		{
 			if (innList == null)
 				throw new ArgumentNullException("innList");
-			return diadocHttpApi.GetOrganizationsByInnList(innList);
+			return diadocHttpApi.GetOrganizationsByInnList(null, innList);
+		}
+
+		public List<Organization> GetOrganizationsByInnList(string authToken, GetOrganizationsByInnListRequest innList)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (innList == null) throw new ArgumentNullException(nameof(innList));
+			return diadocHttpApi.GetOrganizationsByInnList(authToken, innList);
 		}
 
 		public List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken,
@@ -1056,12 +1203,24 @@ namespace Diadoc.Api
 
 		public RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent)
 		{
-			return diadocHttpApi.ParseRevocationRequestXml(revocationRequestXmlContent);
+			return diadocHttpApi.ParseRevocationRequestXml(null, revocationRequestXmlContent);
+		}
+
+		public RevocationRequestInfo ParseRevocationRequestXml(string authToken, byte[] revocationRequestXmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseRevocationRequestXml(authToken, revocationRequestXmlContent);
 		}
 
 		public SignatureRejectionInfo ParseSignatureRejectionXml(byte[] signatureRejectionXmlContent)
 		{
-			return diadocHttpApi.ParseSignatureRejectionXml(signatureRejectionXmlContent);
+			return diadocHttpApi.ParseSignatureRejectionXml(null, signatureRejectionXmlContent);
+		}
+
+		public SignatureRejectionInfo ParseSignatureRejectionXml(string authToken, byte[] signatureRejectionXmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseSignatureRejectionXml(authToken, signatureRejectionXmlContent);
 		}
 
 		public DocumentProtocolResult GenerateDocumentProtocol(string authToken,
@@ -1228,7 +1387,14 @@ namespace Diadoc.Api
 		{
 			if (string.IsNullOrEmpty(key))
 				throw new ArgumentNullException("key");
-			return diadocHttpApi.GetExternalServiceAuthInfo(key);
+			return diadocHttpApi.GetExternalServiceAuthInfo(null, key);
+		}
+
+		public ExternalServiceAuthInfo GetExternalServiceAuthInfo(string authToken, string key)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (key == null) throw new ArgumentNullException(nameof(key));
+			return diadocHttpApi.GetExternalServiceAuthInfo(authToken, key);
 		}
 
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)

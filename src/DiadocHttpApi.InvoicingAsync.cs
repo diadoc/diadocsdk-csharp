@@ -261,14 +261,14 @@ namespace Diadoc.Api
 			return HttpClient.PerformHttpRequestAsync(request);
 		}
 
-		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] xmlContent)
+		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(string authToken, byte[] xmlContent)
 		{
-			return PerformHttpRequestAsync<RevocationRequestInfo>(null, "POST", "/ParseRevocationRequestXml", xmlContent);
+			return PerformHttpRequestAsync<RevocationRequestInfo>(authToken, "POST", "/ParseRevocationRequestXml", xmlContent);
 		}
 
-		public Task<SignatureRejectionInfo> ParseSignatureRejectionXmlAsync(byte[] xmlContent)
+		public Task<SignatureRejectionInfo> ParseSignatureRejectionXmlAsync(string authToken, byte[] xmlContent)
 		{
-			return PerformHttpRequestAsync<SignatureRejectionInfo>(null, "POST", "/ParseSignatureRejectionXml", xmlContent);
+			return PerformHttpRequestAsync<SignatureRejectionInfo>(authToken, "POST", "/ParseSignatureRejectionXml", xmlContent);
 		}
 
 		[Obsolete("Use overload with DocumentTitleType parameter")]

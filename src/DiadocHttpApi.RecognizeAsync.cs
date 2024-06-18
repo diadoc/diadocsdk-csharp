@@ -7,23 +7,23 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		public async Task<string> RecognizeAsync(string fileName, byte[] content)
+		public async Task<string> RecognizeAsync(string authToken, string fileName, byte[] content)
 		{
 			var queryString = $"/Recognize?filename={fileName}";
-			var responseBytes = await PerformHttpRequestAsync(null, "POST", queryString, content).ConfigureAwait(false);
+			var responseBytes = await PerformHttpRequestAsync(authToken, "POST", queryString, content).ConfigureAwait(false);
 			return Encoding.UTF8.GetString(responseBytes);
 		}
 
-		public Task<Recognized> GetRecognizedAsync(string recognitionId)
+		public Task<Recognized> GetRecognizedAsync(string authToken, string recognitionId)
 		{
 			var queryString = $"/GetRecognized?recognitionId={recognitionId}";
-			return PerformHttpRequestAsync<Recognized>(null, "GET", queryString);
+			return PerformHttpRequestAsync<Recognized>(authToken, "GET", queryString);
 		}
 
-		public Task<RussianAddress> ParseRussianAddressAsync(string address)
+		public Task<RussianAddress> ParseRussianAddressAsync(string authToken, string address)
 		{
 			var queryString = $"/ParseRussianAddress?address={address}";
-			return PerformHttpRequestAsync<RussianAddress>(null, "GET", queryString);
+			return PerformHttpRequestAsync<RussianAddress>(authToken, "GET", queryString);
 		}
 	}
 }

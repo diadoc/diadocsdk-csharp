@@ -46,50 +46,50 @@ namespace Diadoc.Api
 			return PerformHttpRequest<CertificateList>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
 
-		public OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false)
+		public OrganizationList GetOrganizationsByInnKpp(string authToken, string inn, string kpp, bool includeRelations = false)
 		{
 			var qsb = new PathAndQueryBuilder("/GetOrganizationsByInnKpp");
 			qsb.AddParameter("inn", inn);
 			if (!string.IsNullOrEmpty(kpp)) qsb.AddParameter("kpp", kpp);
 			if (includeRelations)
 				qsb.AddParameter("includeRelations", "true");
-			return PerformHttpRequest<OrganizationList>(null, "GET", qsb.BuildPathAndQuery());
+			return PerformHttpRequest<OrganizationList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		public Organization GetOrganizationById(string orgId)
+		public Organization GetOrganizationById(string authToken, string orgId)
 		{
-			return GetOrganization(string.Format("/GetOrganization?orgId={0}", orgId));
+			return GetOrganization(authToken, string.Format("/GetOrganization?orgId={0}", orgId));
 		}
 
-		public Organization GetOrganizationByBoxId(string boxId)
+		public Organization GetOrganizationByBoxId(string authToken, string boxId)
 		{
-			return GetOrganization(string.Format("/GetOrganization?boxId={0}", boxId));
+			return GetOrganization(authToken, string.Format("/GetOrganization?boxId={0}", boxId));
 		}
 
-		public Organization GetOrganizationByFnsParticipantId(string fnsParticipantId)
+		public Organization GetOrganizationByFnsParticipantId(string authToken, string fnsParticipantId)
 		{
-			return GetOrganization(string.Format("/GetOrganization?fnsParticipantId={0}", fnsParticipantId));
+			return GetOrganization(authToken, string.Format("/GetOrganization?fnsParticipantId={0}", fnsParticipantId));
 		}
 
-		public Organization GetOrganizationByInnKpp(string inn, string kpp)
+		public Organization GetOrganizationByInnKpp(string authToken, string inn, string kpp)
 		{
 			var qsb = new PathAndQueryBuilder("/GetOrganization");
 			qsb.AddParameter("inn", inn);
 			if (!string.IsNullOrEmpty(kpp))
 				qsb.AddParameter("kpp", kpp);
 			var queryString = qsb.BuildPathAndQuery();
-			return GetOrganization(queryString);
+			return GetOrganization(authToken, queryString);
 		}
 
-		private Organization GetOrganization(string queryString)
+		private Organization GetOrganization(string authToken, string queryString)
 		{
-			return PerformHttpRequest<Organization>(null, "GET", queryString);
+			return PerformHttpRequest<Organization>(authToken, "GET", queryString);
 		}
 
-		public Box GetBox(string boxId)
+		public Box GetBox(string authToken, string boxId)
 		{
 			var queryString = string.Format("/GetBox?boxId={0}", boxId);
-			return PerformHttpRequest<Box>(null, "GET", queryString);
+			return PerformHttpRequest<Box>(authToken, "GET", queryString);
 		}
 
 		public Department GetDepartment(string authToken, string orgId, string departmentId)
@@ -111,10 +111,10 @@ namespace Diadoc.Api
 			return PerformHttpRequest<OrganizationUsersList>(authToken, "GET", queryString);
 		}
 
-		public List<Organization> GetOrganizationsByInnList(GetOrganizationsByInnListRequest innList)
+		public List<Organization> GetOrganizationsByInnList(string authToken, GetOrganizationsByInnListRequest innList)
 		{
 			const string queryString = "/GetOrganizationsByInnList";
-			var response = PerformHttpRequest<GetOrganizationsByInnListRequest, GetOrganizationsByInnListResponse>(null, queryString, innList);
+			var response = PerformHttpRequest<GetOrganizationsByInnListRequest, GetOrganizationsByInnListResponse>(authToken, queryString, innList);
 			return response.Organizations.Select(o => o.Organization).ToList();
 		}
 

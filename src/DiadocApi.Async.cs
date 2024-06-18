@@ -131,31 +131,66 @@ namespace Diadoc.Api
 		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false)
 		{
 			if (inn == null) throw new ArgumentNullException("inn");
-			return diadocHttpApi.GetOrganizationsByInnKppAsync(inn, kpp, includeRelations);
+			return diadocHttpApi.GetOrganizationsByInnKppAsync(null, inn, kpp, includeRelations);
+		}
+
+		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string authToken, string inn, string kpp, bool includeRelations = false)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (inn == null) throw new ArgumentNullException(nameof(inn));
+			return diadocHttpApi.GetOrganizationsByInnKppAsync(authToken, inn, kpp, includeRelations);
 		}
 
 		public Task<Organization> GetOrganizationByIdAsync(string orgId)
 		{
 			if (orgId == null) throw new ArgumentNullException("orgId");
-			return diadocHttpApi.GetOrganizationByIdAsync(orgId);
+			return diadocHttpApi.GetOrganizationByIdAsync(null, orgId);
+		}
+
+		public Task<Organization> GetOrganizationByIdAsync(string authToken, string orgId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (orgId == null) throw new ArgumentNullException(nameof(orgId));
+			return diadocHttpApi.GetOrganizationByIdAsync(authToken, orgId);
 		}
 
 		public Task<Organization> GetOrganizationByBoxIdAsync(string boxId)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetOrganizationByBoxIdAsync(boxId);
+			return diadocHttpApi.GetOrganizationByBoxIdAsync(null, boxId);
+		}
+
+		public Task<Organization> GetOrganizationByBoxIdAsync(string authToken, string boxId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+			return diadocHttpApi.GetOrganizationByBoxIdAsync(authToken, boxId);
 		}
 
 		public Task<Organization> GetOrganizationByFnsParticipantIdAsync(string fnsParticipantId)
 		{
 			if (fnsParticipantId == null) throw new ArgumentException("fnsParticipantId");
-			return diadocHttpApi.GetOrganizationByFnsParticipantIdAsync(fnsParticipantId);
+			return diadocHttpApi.GetOrganizationByFnsParticipantIdAsync(null, fnsParticipantId);
+		}
+
+		public Task<Organization> GetOrganizationByFnsParticipantIdAsync(string authToken, string fnsParticipantId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (fnsParticipantId == null) throw new ArgumentNullException(nameof(fnsParticipantId));
+			return diadocHttpApi.GetOrganizationByFnsParticipantIdAsync(authToken, fnsParticipantId);
 		}
 
 		public Task<Organization> GetOrganizationByInnKppAsync(string inn, string kpp)
 		{
 			if (inn == null) throw new ArgumentException("inn");
-			return diadocHttpApi.GetOrganizationByInnKppAsync(inn, kpp);
+			return diadocHttpApi.GetOrganizationByInnKppAsync(null, inn, kpp);
+		}
+
+		public Task<Organization> GetOrganizationByInnKppAsync(string authToken, string inn, string kpp)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (inn == null) throw new ArgumentNullException(nameof(inn));
+			return diadocHttpApi.GetOrganizationByInnKppAsync(authToken, inn, kpp);
 		}
 
 		public Task<RoamingOperatorList> GetRoamingOperatorsAsync(string authToken, string boxId)
@@ -166,7 +201,14 @@ namespace Diadoc.Api
 		public Task<Box> GetBoxAsync(string boxId)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetBoxAsync(boxId);
+			return diadocHttpApi.GetBoxAsync(null, boxId);
+		}
+
+		public Task<Box> GetBoxAsync(string authToken, string boxId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+			return diadocHttpApi.GetBoxAsync(authToken, boxId);
 		}
 
 		public Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId)
@@ -609,13 +651,27 @@ namespace Diadoc.Api
 		public Task<string> RecognizeAsync(string fileName, byte[] content)
 		{
 			if (string.IsNullOrEmpty(fileName)) throw new ArgumentNullException("fileName");
-			return diadocHttpApi.RecognizeAsync(fileName, content);
+			return diadocHttpApi.RecognizeAsync(null, fileName, content);
+		}
+
+		public Task<string> RecognizeAsync(string authToken, string fileName, byte[] content)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (fileName == null) throw new ArgumentNullException(nameof(fileName));
+			return diadocHttpApi.RecognizeAsync(authToken, fileName, content);
 		}
 
 		public Task<Recognized> GetRecognizedAsync(string recognitionId)
 		{
 			if (string.IsNullOrEmpty(recognitionId)) throw new ArgumentNullException("recognitionId");
-			return diadocHttpApi.GetRecognizedAsync(recognitionId);
+			return diadocHttpApi.GetRecognizedAsync(null, recognitionId);
+		}
+
+		public Task<Recognized> GetRecognizedAsync(string authToken, string recognitionId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (recognitionId == null) throw new ArgumentNullException(nameof(recognitionId));
+			return diadocHttpApi.GetRecognizedAsync(authToken, recognitionId);
 		}
 
 		public Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId,
@@ -801,72 +857,156 @@ namespace Diadoc.Api
 
 		public Task<RussianAddress> ParseRussianAddressAsync(string address)
 		{
-			return diadocHttpApi.ParseRussianAddressAsync(address);
+			return diadocHttpApi.ParseRussianAddressAsync(null, address);
+		}
+
+		public Task<RussianAddress> ParseRussianAddressAsync([NotNull] string authToken, string address)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseRussianAddressAsync(authToken, address);
 		}
 
 		public Task<InvoiceInfo> ParseInvoiceXmlAsync(byte[] invoiceXmlContent)
 		{
-			return diadocHttpApi.ParseInvoiceXmlAsync(invoiceXmlContent);
+			return diadocHttpApi.ParseInvoiceXmlAsync(null, invoiceXmlContent);
+		}
+
+		public Task<InvoiceInfo> ParseInvoiceXmlAsync(string authToken, byte[] invoiceXmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseInvoiceXmlAsync(authToken, invoiceXmlContent);
 		}
 
 		public Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTorg12SellerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseTorg12SellerTitleXmlAsync(null, xmlContent);
+		}
+
+		public Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseTorg12SellerTitleXmlAsync(authToken, xmlContent);
 		}
 
 		public Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTorg12BuyerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseTorg12BuyerTitleXmlAsync(null, xmlContent);
+		}
+
+		public Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseTorg12BuyerTitleXmlAsync(authToken, xmlContent);
 		}
 
 		public Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTovTorg551SellerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseTovTorg551SellerTitleXmlAsync(null, xmlContent);
+		}
+
+		public Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseTovTorg551SellerTitleXmlAsync(authToken, xmlContent);
 		}
 
 		public Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTovTorg551BuyerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseTovTorg551BuyerTitleXmlAsync(null, xmlContent);
+		}
+
+		public Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseTovTorg551BuyerTitleXmlAsync(authToken, xmlContent);
 		}
 
 		public Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXmlAsync(null, xmlContent);
+		}
+
+		public Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXmlAsync(authToken, xmlContent);
 		}
 
 		public Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXmlAsync(null, xmlContent);
+		}
+
+		public Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXmlAsync(authToken, xmlContent);
 		}
 
 		public Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXmlAsync(null, xmlContent);
+		}
+
+		public Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXmlAsync(authToken, xmlContent);
 		}
 
 		public Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXmlAsync(null, xmlContent);
+		}
+
+		public Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXmlAsync(authToken, xmlContent);
 		}
 
 		public Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
 		{
-			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXmlAsync(xmlContent, documentVersion);
+			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXmlAsync(null, xmlContent, documentVersion);
+		}
+
+		public Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXmlAsync(authToken, xmlContent, documentVersion);
 		}
 
 		public Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalTransferDocumentBuyerTitleXmlAsync(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXmlAsync(null, xmlContent);
+		}
+
+		public Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalTransferDocumentBuyerTitleXmlAsync(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXmlAsync(authToken, xmlContent);
 		}
 
 		public Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
-			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXmlAsync(xmlContent, documentVersion);
+			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXmlAsync(null, xmlContent, documentVersion);
+		}
+
+		public Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXmlAsync(authToken, xmlContent, documentVersion);
 		}
 
 		public Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(xmlContent);
+			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(null, xmlContent);
+		}
+
+		public Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(string authToken, byte[] xmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(authToken, xmlContent);
 		}
 
 		public Task<byte[]> ParseTitleXmlAsync(
@@ -906,7 +1046,14 @@ namespace Diadoc.Api
 		{
 			if (innList == null)
 				throw new ArgumentNullException("innList");
-			return diadocHttpApi.GetOrganizationsByInnListAsync(innList);
+			return diadocHttpApi.GetOrganizationsByInnListAsync(null, innList);
+		}
+
+		public Task<List<Organization>> GetOrganizationsByInnListAsync(string authToken, GetOrganizationsByInnListRequest innList)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (innList == null) throw new ArgumentNullException(nameof(innList));
+			return diadocHttpApi.GetOrganizationsByInnListAsync(authToken, innList);
 		}
 
 		public Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListAsync(string authToken, string myOrgId,
@@ -923,12 +1070,24 @@ namespace Diadoc.Api
 
 		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] revocationRequestXmlContent)
 		{
-			return diadocHttpApi.ParseRevocationRequestXmlAsync(revocationRequestXmlContent);
+			return diadocHttpApi.ParseRevocationRequestXmlAsync(null, revocationRequestXmlContent);
+		}
+
+		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(string authToken, byte[] revocationRequestXmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseRevocationRequestXmlAsync(authToken, revocationRequestXmlContent);
 		}
 
 		public Task<SignatureRejectionInfo> ParseSignatureRejectionXmlAsync(byte[] signatureRejectionXmlContent)
 		{
-			return diadocHttpApi.ParseSignatureRejectionXmlAsync(signatureRejectionXmlContent);
+			return diadocHttpApi.ParseSignatureRejectionXmlAsync(null, signatureRejectionXmlContent);
+		}
+
+		public Task<SignatureRejectionInfo> ParseSignatureRejectionXmlAsync(string authToken, byte[] signatureRejectionXmlContent)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseSignatureRejectionXmlAsync(authToken, signatureRejectionXmlContent);
 		}
 
 		public Task<DocumentProtocolResult> GenerateDocumentProtocolAsync(string authToken, string boxId, string messageId,
@@ -1079,7 +1238,14 @@ namespace Diadoc.Api
 		{
 			if (string.IsNullOrEmpty(key))
 				throw new ArgumentNullException("key");
-			return diadocHttpApi.GetExternalServiceAuthInfoAsync(key);
+			return diadocHttpApi.GetExternalServiceAuthInfoAsync(null, key);
+		}
+
+		public Task<ExternalServiceAuthInfo> GetExternalServiceAuthInfoAsync(string authToken, [NotNull] string key)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (key == null) throw new ArgumentNullException(nameof(key));
+			return diadocHttpApi.GetExternalServiceAuthInfoAsync(authToken, key);
 		}
 
 		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
