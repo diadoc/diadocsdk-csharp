@@ -1,5 +1,7 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Threading.Tasks;
+using Diadoc.Api.Constants;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Recognition;
 
@@ -20,10 +22,16 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Recognized>(null, "GET", queryString);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<RussianAddress> ParseRussianAddressAsync(string address)
 		{
+			return ParseRussianAddressAsync(null, address);
+		}
+
+		public Task<RussianAddress> ParseRussianAddressAsync(string authToken, string address)
+		{
 			var queryString = $"/ParseRussianAddress?address={address}";
-			return PerformHttpRequestAsync<RussianAddress>(null, "GET", queryString);
+			return PerformHttpRequestAsync<RussianAddress>(authToken, "GET", queryString);
 		}
 	}
 }

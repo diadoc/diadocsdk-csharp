@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
 using Diadoc.Api.Com;
+using Diadoc.Api.Constants;
 using Diadoc.Api.Cryptography;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
@@ -56,18 +57,30 @@ namespace Diadoc.Api
 		ReadonlyList GetOrganizationUsers(string authToken, string orgId);
 		ReadonlyList GetOrganizationUsersV2(string authToken, string boxId);
 		ReadonlyList GetMyOrganizations(string authToken, bool autoRegister = true);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		ReadonlyList GetOrganizationsByInnKpp(string inn, string kpp);
+		ReadonlyList GetOrganizationsByInnKpp(string authToken, string inn, string kpp);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationById(string orgId);
+		Organization GetOrganizationById(string authToken, string orgId);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByInn(string inn);
+		Organization GetOrganizationByInn(string authToken, string inn);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		ReadonlyList GetOrganizationsByInnList([MarshalAs(UnmanagedType.IDispatch)] object innList);
+		ReadonlyList GetOrganizationsByInnList(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object innList);
 
 		ReadonlyList GetOrganizationsByInnList(
 			string authToken,
 			string myOrgId,
 			[MarshalAs(UnmanagedType.IDispatch)] object innList);
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByFnsParticipantId(string fnsParticipantId);
+		Organization GetOrganizationByFnsParticipantId(string authToken, string fnsParticipantId);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Box GetBox(string boxId);
+		Box GetBox(string authToken, string boxId);
 		Department GetDepartment(string authToken, string orgId, string departmentId);
 
 		BoxEventList GetNewEvents(
@@ -358,9 +371,15 @@ namespace Diadoc.Api
 
 		string UploadFileToShelf(string authToken, string fileName);
 		void GetFileFromShelf(string authToken, string nameOnShelf, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RussianAddress ParseRussianAddress(string address);
+		RussianAddress ParseRussianAddress(string authToken, string address);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
+		InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		InvoiceInfo ParseInvoiceXmlFromFile(string fileName);
+		InvoiceInfo ParseInvoiceXmlFromFile(string authToken, string fileName);
 
 		[Obsolete("Use GenerateReceiptXmlV2()")]
 		GeneratedFile GenerateDocumentReceiptXml(
@@ -383,30 +402,78 @@ namespace Diadoc.Api
 			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object receiptGenerationRequest);
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] torg12SellerTitleXmlContent);
+		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(string authToken, byte[] torg12SellerTitleXmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string fileName);
+		Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] content);
+		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(string authToken, byte[] content);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string fileName);
+		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] torg12SellerTitleXmlContent);
+		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(string authToken, byte[] torg12SellerTitleXmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string fileName);
+		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] content);
+		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(string authToken, byte[] content);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string fileName);
+		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
+		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string fileName);
+		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent);
+		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string fileName);
+		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent);
+		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string fileName);
+		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent);
+		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string fileName);
+		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
+		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Utd);
+		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string authToken, string fileName, string documentVersion = DefaultDocumentVersions.Utd);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
+		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string fileName);
+		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
+		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Ucd);
+		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string authToken, string fileName, string documentVersion = DefaultDocumentVersions.Ucd);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent);
+		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string fileName);
+		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string authToken, string fileName);
 
 		byte[] ParseTitleXml(
 			string authToken,
@@ -438,12 +505,24 @@ namespace Diadoc.Api
 			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object signatureRejectionGenerationRequest);
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
+		RevocationRequestInfo ParseRevocationRequestXml(string authToken, byte[] revocationRequestXmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RevocationRequestInfo ParseRevocationRequestXmlFromFile(string fileName);
+		RevocationRequestInfo ParseRevocationRequestXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		SignatureRejectionInfo ParseSignatureRejectionXml(byte[] signatureRejectionXmlContent);
+		SignatureRejectionInfo ParseSignatureRejectionXml(string authToken, byte[] signatureRejectionXmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		SignatureRejectionInfo ParseSignatureRejectionXmlFromFile(string fileName);
+		SignatureRejectionInfo ParseSignatureRejectionXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByBoxId(string boxId);
+		Organization GetOrganizationByBoxId(string authToken, string boxId);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByInnKpp(string inn, string kpp);
+		Organization GetOrganizationByInnKpp(string authToken, string inn, string kpp);
 		IDocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId);
 
 		GetForwardedDocumentsResponse GetForwardedDocuments(
@@ -714,9 +793,19 @@ namespace Diadoc.Api
 			return new ReadonlyList(diadoc.GetOrganizationsByInnKpp(inn, kpp).Organizations);
 		}
 
+		public ReadonlyList GetOrganizationsByInnKpp(string authToken, string inn, string kpp)
+		{
+			return new ReadonlyList(diadoc.GetOrganizationsByInnKpp(authToken, inn, kpp).Organizations);
+		}
+
 		public Organization GetOrganizationById(string orgId)
 		{
 			return diadoc.GetOrganizationById(orgId);
+		}
+
+		public Organization GetOrganizationById(string authToken, string orgId)
+		{
+			return diadoc.GetOrganizationById(authToken, orgId);
 		}
 
 		public Organization GetOrganizationByInn(string inn)
@@ -724,9 +813,19 @@ namespace Diadoc.Api
 			return diadoc.GetOrganizationByInnKpp(inn, kpp: null);
 		}
 
+		public Organization GetOrganizationByInn(string authToken, string inn)
+		{
+			return diadoc.GetOrganizationByInnKpp(authToken, inn, kpp: null);
+		}
+
 		public Organization GetOrganizationByBoxId(string boxId)
 		{
 			return diadoc.GetOrganizationByBoxId(boxId);
+		}
+
+		public Organization GetOrganizationByBoxId(string authToken, string boxId)
+		{
+			return diadoc.GetOrganizationByBoxId(authToken, boxId);
 		}
 
 		public Organization GetOrganizationByFnsParticipantId(string fnsParticipantId)
@@ -734,9 +833,19 @@ namespace Diadoc.Api
 			return diadoc.GetOrganizationByFnsParticipantId(fnsParticipantId);
 		}
 
+		public Organization GetOrganizationByFnsParticipantId(string authToken, string fnsParticipantId)
+		{
+			return diadoc.GetOrganizationByFnsParticipantId(authToken, fnsParticipantId);
+		}
+
 		public Organization GetOrganizationByInnKpp(string inn, string kpp)
 		{
 			return diadoc.GetOrganizationByInnKpp(inn, kpp);
+		}
+
+		public Organization GetOrganizationByInnKpp(string authToken, string inn, string kpp)
+		{
+			return diadoc.GetOrganizationByInnKpp(authToken, inn, kpp);
 		}
 
 		public IDocumentProtocolResult GenerateDocumentProtocol(
@@ -753,6 +862,11 @@ namespace Diadoc.Api
 			return new ReadonlyList(diadoc.GetOrganizationsByInnList((GetOrganizationsByInnListRequest) innList));
 		}
 
+		public ReadonlyList GetOrganizationsByInnList(string authToken, object innList)
+		{
+			return new ReadonlyList(diadoc.GetOrganizationsByInnList(authToken, (GetOrganizationsByInnListRequest) innList));
+		}
+
 		public ReadonlyList GetOrganizationsByInnList(string authToken, string myOrgId, object innList)
 		{
 			return
@@ -762,6 +876,11 @@ namespace Diadoc.Api
 		public Box GetBox(string boxId)
 		{
 			return diadoc.GetBox(boxId);
+		}
+
+		public Box GetBox(string authToken, string boxId)
+		{
+			return diadoc.GetBox(authToken, boxId);
 		}
 
 		public OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId)
@@ -1091,9 +1210,19 @@ namespace Diadoc.Api
 			return diadoc.ParseRevocationRequestXml(revocationRequestXmlContent);
 		}
 
+		public RevocationRequestInfo ParseRevocationRequestXml(string authToken, byte[] revocationRequestXmlContent)
+		{
+			return diadoc.ParseRevocationRequestXml(authToken, revocationRequestXmlContent);
+		}
+
 		public RevocationRequestInfo ParseRevocationRequestXmlFromFile(string fileName)
 		{
 			return ParseRevocationRequestXml(File.ReadAllBytes(fileName));
+		}
+
+		public RevocationRequestInfo ParseRevocationRequestXmlFromFile(string authToken, string fileName)
+		{
+			return ParseRevocationRequestXml(authToken, File.ReadAllBytes(fileName));
 		}
 
 		public SignatureRejectionInfo ParseSignatureRejectionXml(byte[] signatureRejectionXmlContent)
@@ -1101,9 +1230,19 @@ namespace Diadoc.Api
 			return diadoc.ParseSignatureRejectionXml(signatureRejectionXmlContent);
 		}
 
+		public SignatureRejectionInfo ParseSignatureRejectionXml(string authToken, byte[] signatureRejectionXmlContent)
+		{
+			return diadoc.ParseSignatureRejectionXml(authToken, signatureRejectionXmlContent);
+		}
+
 		public SignatureRejectionInfo ParseSignatureRejectionXmlFromFile(string fileName)
 		{
 			return ParseSignatureRejectionXml(File.ReadAllBytes(fileName));
+		}
+
+		public SignatureRejectionInfo ParseSignatureRejectionXmlFromFile(string authToken, string fileName)
+		{
+			return ParseSignatureRejectionXml(authToken, File.ReadAllBytes(fileName));
 		}
 
 		public GeneratedFile GenerateInvoiceXml(string authToken, object invoiceInfo, bool disableValidation = false)
@@ -1932,9 +2071,19 @@ namespace Diadoc.Api
 			return diadoc.ParseRussianAddress(address);
 		}
 
+		public RussianAddress ParseRussianAddress(string authToken, string address)
+		{
+			return diadoc.ParseRussianAddress(authToken, address);
+		}
+
 		public InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent)
 		{
 			return diadoc.ParseInvoiceXml(invoiceXmlContent);
+		}
+
+		public InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent)
+		{
+			return diadoc.ParseInvoiceXml(authToken, invoiceXmlContent);
 		}
 
 		public InvoiceInfo ParseInvoiceXmlFromFile(string fileName)
@@ -1942,9 +2091,19 @@ namespace Diadoc.Api
 			return ParseInvoiceXml(File.ReadAllBytes(fileName));
 		}
 
+		public InvoiceInfo ParseInvoiceXmlFromFile(string authToken, string fileName)
+		{
+			return ParseInvoiceXml(authToken, File.ReadAllBytes(fileName));
+		}
+
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] torg12SellerTitleXmlContent)
 		{
 			return diadoc.ParseTorg12SellerTitleXml(torg12SellerTitleXmlContent);
+		}
+
+		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(string authToken, byte[] torg12SellerTitleXmlContent)
+		{
+			return diadoc.ParseTorg12SellerTitleXml(authToken, torg12SellerTitleXmlContent);
 		}
 
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string fileName)
@@ -1952,9 +2111,19 @@ namespace Diadoc.Api
 			return ParseTorg12SellerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		public Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string authToken, string fileName)
+		{
+			return ParseTorg12SellerTitleXml(authToken, File.ReadAllBytes(fileName));
+		}
+
 		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] content)
 		{
 			return diadoc.ParseTorg12BuyerTitleXml(content);
+		}
+
+		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(string authToken, byte[] content)
+		{
+			return diadoc.ParseTorg12BuyerTitleXml(authToken, content);
 		}
 
 		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string fileName)
@@ -1962,9 +2131,19 @@ namespace Diadoc.Api
 			return ParseTorg12BuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string authToken, string fileName)
+		{
+			return ParseTorg12BuyerTitleXml(authToken, File.ReadAllBytes(fileName));
+		}
+
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] torg12SellerTitleXmlContent)
 		{
 			return diadoc.ParseTovTorg551SellerTitleXml(torg12SellerTitleXmlContent);
+		}
+
+		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(string authToken, byte[] torg12SellerTitleXmlContent)
+		{
+			return diadoc.ParseTovTorg551SellerTitleXml(authToken, torg12SellerTitleXmlContent);
 		}
 
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string fileName)
@@ -1972,9 +2151,19 @@ namespace Diadoc.Api
 			return ParseTovTorg551SellerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string authToken, string fileName)
+		{
+			return ParseTovTorg551SellerTitleXml(authToken, File.ReadAllBytes(fileName));
+		}
+
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] content)
 		{
 			return diadoc.ParseTovTorg551BuyerTitleXml(content);
+		}
+
+		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(string authToken, byte[] content)
+		{
+			return diadoc.ParseTovTorg551BuyerTitleXml(authToken, content);
 		}
 
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string fileName)
@@ -1982,9 +2171,19 @@ namespace Diadoc.Api
 			return ParseTovTorg551BuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string authToken, string fileName)
+		{
+			return ParseTovTorg551BuyerTitleXml(authToken, File.ReadAllBytes(fileName));
+		}
+
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificateSellerTitleXml(xmlContent);
+		}
+
+		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(string authToken, byte[] xmlContent)
+		{
+			return diadoc.ParseAcceptanceCertificateSellerTitleXml(authToken, xmlContent);
 		}
 
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string fileName)
@@ -1992,9 +2191,19 @@ namespace Diadoc.Api
 			return ParseAcceptanceCertificateSellerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string authToken, string fileName)
+		{
+			return ParseAcceptanceCertificateSellerTitleXml(authToken, File.ReadAllBytes(fileName));
+		}
+
 		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificateBuyerTitleXml(xmlContent);
+		}
+
+		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(string authToken, byte[] xmlContent)
+		{
+			return diadoc.ParseAcceptanceCertificateBuyerTitleXml(authToken, xmlContent);
 		}
 
 		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string fileName)
@@ -2002,9 +2211,19 @@ namespace Diadoc.Api
 			return ParseAcceptanceCertificateBuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string authToken, string fileName)
+		{
+			return ParseAcceptanceCertificateBuyerTitleXml(authToken, File.ReadAllBytes(fileName));
+		}
+
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificate552SellerTitleXml(xmlContent);
+		}
+
+		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(string authToken, byte[] xmlContent)
+		{
+			return diadoc.ParseAcceptanceCertificate552SellerTitleXml(authToken, xmlContent);
 		}
 
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string fileName)
@@ -2012,9 +2231,19 @@ namespace Diadoc.Api
 			return ParseAcceptanceCertificate552SellerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string authToken, string fileName)
+		{
+			return ParseAcceptanceCertificate552SellerTitleXml(authToken, File.ReadAllBytes(fileName));
+		}
+
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificate552BuyerTitleXml(xmlContent);
+		}
+
+		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(string authToken, byte[] xmlContent)
+		{
+			return diadoc.ParseAcceptanceCertificate552BuyerTitleXml(authToken, xmlContent);
 		}
 
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string fileName)
@@ -2022,9 +2251,19 @@ namespace Diadoc.Api
 			return ParseAcceptanceCertificate552BuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string authToken, string fileName)
+		{
+			return ParseAcceptanceCertificate552BuyerTitleXml(authToken, File.ReadAllBytes(fileName));
+		}
+
 		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
 		{
 			return diadoc.ParseUniversalTransferDocumentSellerTitleXml(xmlContent, documentVersion);
+		}
+
+		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
+		{
+			return diadoc.ParseUniversalTransferDocumentSellerTitleXml(authToken, xmlContent, documentVersion);
 		}
 
 		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Utd)
@@ -2032,9 +2271,19 @@ namespace Diadoc.Api
 			return ParseUniversalTransferDocumentSellerTitleXml(File.ReadAllBytes(fileName), documentVersion);
 		}
 
+		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string authToken, string fileName, string documentVersion = DefaultDocumentVersions.Utd)
+		{
+			return ParseUniversalTransferDocumentSellerTitleXml(authToken, File.ReadAllBytes(fileName), documentVersion);
+		}
+
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent)
 		{
 			return diadoc.ParseUniversalTransferDocumentBuyerTitleXml(xmlContent);
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(string authToken, byte[] xmlContent)
+		{
+			return diadoc.ParseUniversalTransferDocumentBuyerTitleXml(authToken, xmlContent);
 		}
 
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string fileName)
@@ -2042,9 +2291,19 @@ namespace Diadoc.Api
 			return ParseUniversalTransferDocumentBuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string authToken, string fileName)
+		{
+			return ParseUniversalTransferDocumentBuyerTitleXml(authToken, File.ReadAllBytes(fileName));
+		}
+
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			return diadoc.ParseUniversalCorrectionDocumentSellerTitleXml(xmlContent, documentVersion);
+		}
+
+		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
+		{
+			return diadoc.ParseUniversalCorrectionDocumentSellerTitleXml(authToken, xmlContent, documentVersion);
 		}
 
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Ucd)
@@ -2052,14 +2311,29 @@ namespace Diadoc.Api
 			return ParseUniversalCorrectionDocumentSellerTitleXml(File.ReadAllBytes(fileName), documentVersion);
 		}
 
+		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string authToken, string fileName, string documentVersion = DefaultDocumentVersions.Ucd)
+		{
+			return ParseUniversalCorrectionDocumentSellerTitleXml(authToken, File.ReadAllBytes(fileName), documentVersion);
+		}
+
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent)
 		{
 			return diadoc.ParseUniversalCorrectionDocumentBuyerTitleXml(xmlContent);
 		}
 
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(string authToken, byte[] xmlContent)
+		{
+			return diadoc.ParseUniversalCorrectionDocumentBuyerTitleXml(authToken, xmlContent);
+		}
+
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string fileName)
 		{
 			return ParseUniversalCorrectionDocumentBuyerTitleXml(File.ReadAllBytes(fileName));
+		}
+
+		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string authToken, string fileName)
+		{
+			return ParseUniversalCorrectionDocumentBuyerTitleXml(authToken, File.ReadAllBytes(fileName));
 		}
 
 		public byte[] ParseTitleXml(
