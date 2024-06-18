@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
+using Diadoc.Api.Constants;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
@@ -248,14 +249,26 @@ namespace Diadoc.Api
 			HttpClient.PerformHttpRequest(request);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public RevocationRequestInfo ParseRevocationRequestXml(byte[] xmlContent)
 		{
-			return PerformHttpRequest<RevocationRequestInfo>(null, "POST", "/ParseRevocationRequestXml", xmlContent);
+			return ParseRevocationRequestXml(null, xmlContent);
 		}
 
+		public RevocationRequestInfo ParseRevocationRequestXml(string authToken, byte[] xmlContent)
+		{
+			return PerformHttpRequest<RevocationRequestInfo>(authToken, "POST", "/ParseRevocationRequestXml", xmlContent);
+		}
+
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public SignatureRejectionInfo ParseSignatureRejectionXml(byte[] xmlContent)
 		{
-			return PerformHttpRequest<SignatureRejectionInfo>(null, "POST", "/ParseSignatureRejectionXml", xmlContent);
+			return ParseSignatureRejectionXml(null, xmlContent);
+		}
+
+		public SignatureRejectionInfo ParseSignatureRejectionXml(string authToken, byte[] xmlContent)
+		{
+			return PerformHttpRequest<SignatureRejectionInfo>(authToken, "POST", "/ParseSignatureRejectionXml", xmlContent);
 		}
 
 		[Obsolete("Use overload with DocumentTitleType parameter")]
