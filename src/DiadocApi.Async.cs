@@ -741,6 +741,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.SendFnsRegistrationMessageAsync(authToken, boxId, fnsRegistrationMessageInfo);
 		}
 
+		[Obsolete("Use GetCounteragentV3Async()")]
 		public Task<Counteragent> GetCounteragentAsync(string authToken, string myOrgId, string counteragentOrgId)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
@@ -749,6 +750,15 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetCounteragentAsync(authToken, myOrgId, counteragentOrgId);
 		}
 
+		public Task<Counteragent> GetCounteragentV3Async(string authToken, string myBoxId, string counteragentBoxId)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(myBoxId)) throw new ArgumentNullException("myBoxId");
+			if (string.IsNullOrEmpty(counteragentBoxId)) throw new ArgumentNullException("counteragentBoxId");
+			return diadocHttpApi.GetCounteragentV3Async(authToken, myBoxId, counteragentBoxId);
+		}
+
+		[Obsolete("Use GetCounteragentsV3Async()")]
 		public Task<CounteragentList> GetCounteragentsAsync(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
@@ -756,6 +766,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetCounteragentsAsync(authToken, myOrgId, counteragentStatus, afterIndexKey, query, pageSize);
 		}
 
+		public Task<CounteragentList> GetCounteragentsV3Async(string authToken, string myBoxId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(myBoxId)) throw new ArgumentNullException("myBoxId");
+			return diadocHttpApi.GetCounteragentsV3Async(authToken, myBoxId, counteragentStatus, afterIndexKey, query, pageSize);
+		}
+
+		[Obsolete("Use GetCounteragentCertificatesV2Async()")]
 		public Task<CounteragentCertificateList> GetCounteragentCertificatesAsync(string authToken, string myOrgId, string counteragentOrgId)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
@@ -764,12 +782,29 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetCounteragentCertificatesAsync(authToken, myOrgId, counteragentOrgId);
 		}
 
+		public Task<CounteragentCertificateList> GetCounteragentCertificatesV2Async(string authToken, string myBoxId, string counteragentBoxId)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(myBoxId)) throw new ArgumentNullException("myBoxId");
+			if (string.IsNullOrEmpty(counteragentBoxId)) throw new ArgumentNullException("counteragentBoxId");
+			return diadocHttpApi.GetCounteragentCertificatesV2Async(authToken, myBoxId, counteragentBoxId);
+		}
+
+		[Obsolete("Use BreakWithCounteragentV2Async()")]
 		public Task BreakWithCounteragentAsync(string authToken, string myOrgId, string counteragentOrgId, string comment)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
 			if (string.IsNullOrEmpty(myOrgId)) throw new ArgumentNullException("myOrgId");
 			if (string.IsNullOrEmpty(counteragentOrgId)) throw new ArgumentNullException("counteragentOrgId");
 			return diadocHttpApi.BreakWithCounteragentAsync(authToken, myOrgId, counteragentOrgId, comment);
+		}
+
+		public Task BreakWithCounteragentV2Async(string authToken, string myBoxId, string counteragentBoxId, string comment)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(myBoxId)) throw new ArgumentNullException("myBoxId");
+			if (string.IsNullOrEmpty(counteragentBoxId)) throw new ArgumentNullException("counteragentBoxId");
+			return diadocHttpApi.BreakWithCounteragentV2Async(authToken, myBoxId, counteragentBoxId, comment);
 		}
 
 		public Task<BoxCounteragentEventList> GetCounteragentEventsAsync(
@@ -895,11 +930,19 @@ namespace Diadoc.Api
 				content);
 		}
 
+		[Obsolete("Use GetOrganizationUsersV2Async()")]
 		public Task<OrganizationUsersList> GetOrganizationUsersAsync(string authToken, string orgId)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
 			if (string.IsNullOrEmpty(orgId)) throw new ArgumentNullException("orgId");
 			return diadocHttpApi.GetOrganizationUsersAsync(authToken, orgId);
+		}
+
+		public Task<OrganizationUsersList> GetOrganizationUsersV2Async(string authToken, string boxId)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetOrganizationUsersV2Async(authToken, boxId);
 		}
 
 		public Task<List<Organization>> GetOrganizationsByInnListAsync(GetOrganizationsByInnListRequest innList)
@@ -1002,6 +1045,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.DssSignResultAsync(authToken, boxId, taskId);
 		}
 
+		[Obsolete("Use AcquireCounteragentV3Async()")]
 		public Task<AsyncMethodResult> AcquireCounteragentAsync(string authToken, string myOrgId, AcquireCounteragentRequest request,
 			string myDepartmentId = null)
 		{
@@ -1009,10 +1053,27 @@ namespace Diadoc.Api
 			return diadocHttpApi.AcquireCounteragentAsync(authToken, myOrgId, request, myDepartmentId);
 		}
 
+		public Task<AsyncMethodResult> AcquireCounteragentV3Async(
+			string authToken, 
+			string myBoxId, 
+			AcquireCounteragentRequest request,
+			string myDepartmentId = null)
+		{
+			if (request == null) throw new ArgumentNullException("request");
+			return diadocHttpApi.AcquireCounteragentV3Async(authToken, myBoxId, request, myDepartmentId);
+		}
+
+		[Obsolete("Use WaitAcquireCounteragentResultV2Async()")]
 		public Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
 		{
 			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
 			return diadocHttpApi.WaitAcquireCounteragentResultAsync(authToken, taskId, timeout, delay);
+		}
+
+		public Task<AcquireCounteragentResultV2> WaitAcquireCounteragentResultV2Async(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
+		{
+			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
+			return diadocHttpApi.WaitAcquireCounteragentResultV2Async(authToken, taskId, timeout, delay);
 		}
 
 		public Task<DocumentList> GetDocumentsByMessageIdAsync(string authToken, string boxId, string messageId)

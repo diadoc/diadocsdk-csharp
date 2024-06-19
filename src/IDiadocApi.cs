@@ -162,10 +162,22 @@ namespace Diadoc.Api
 		PrintFormResult GenerateForwardedDocumentPrintForm(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
 		bool CanSendInvoice(string authToken, string boxId, byte[] certificateBytes);
 		void SendFnsRegistrationMessage(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);
+
+		[Obsolete("Use GetCounteragentV3()")]
 		Counteragent GetCounteragent(string authToken, string myOrgId, string counteragentOrgId);
+		Counteragent GetCounteragentV3(string authToken, string myBoxId, string counteragentBoxId);
+
+		[Obsolete("Use GetCounteragentCertificatesV2()")]
 		CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId, string counteragentOrgId);
+		CounteragentCertificateList GetCounteragentCertificatesV2(string authToken, string myBoxId, string counteragentBoxId);
+
+		[Obsolete("Use GetCounteragentsV3()")]
 		CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null);
+		CounteragentList GetCounteragentsV3(string authToken, string myBoxId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null);
+
+		[Obsolete("Use BreakWithCounteragentV2()")]
 		void BreakWithCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment);
+		void BreakWithCounteragentV2(string authToken, string myBoxId, string counteragentBoxId, string comment);
 		BoxCounteragentEventList GetCounteragentEvents(
 			string authToken,
 			string boxId,
@@ -200,7 +212,9 @@ namespace Diadoc.Api
 			int titleIndex,
 			byte[] content);
 
+		[Obsolete("Use GetOrganizationUsersV2()")]
 		OrganizationUsersList GetOrganizationUsers(string authToken, string orgId);
+		OrganizationUsersList GetOrganizationUsersV2(string authToken, string boxId);
 		List<Organization> GetOrganizationsByInnList(GetOrganizationsByInnListRequest innList);
 		List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList);
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
@@ -220,8 +234,15 @@ namespace Diadoc.Api
 		CloudSignConfirmResult WaitCloudSignConfirmResult(string authToken, string taskId, TimeSpan? timeout = null);
 		AsyncMethodResult DssSign(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null);
 		DssSignResult DssSignResult(string authToken, string boxId, string taskId);
+
+		[Obsolete("Use AcquireCounteragentV3()")]
 		AsyncMethodResult AcquireCounteragent(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
+		AsyncMethodResult AcquireCounteragentV3(string authToken, string myBoxId, AcquireCounteragentRequest request, string myDepartmentId = null);
+
+		[Obsolete("Use WaitAcquireCounteragentResultV2()")]
 		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
+		AcquireCounteragentResultV2 WaitAcquireCounteragentResultV2(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
+
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
 		DocumentWorkflowSettingsListV2 GetWorkflowsSettings(string authToken, string boxId);
 		List<KeyValueStorageEntry> GetOrganizationStorageEntries(string authToken, string boxId, IEnumerable<string> keys);
@@ -456,11 +477,35 @@ namespace Diadoc.Api
 		Task<PrintFormResult> GenerateForwardedDocumentPrintFormAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
 		Task<bool> CanSendInvoiceAsync(string authToken, string boxId, byte[] certificateBytes);
 		Task SendFnsRegistrationMessageAsync(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);
+
+		[Obsolete("Use GetCounteragentV3Async()")]
 		Task<Counteragent> GetCounteragentAsync(string authToken, string myOrgId, string counteragentOrgId);
+		Task<Counteragent> GetCounteragentV3Async(string authToken, string myBoxId, string counteragentBoxId);
+
+		[Obsolete("Use GetCounteragentCertificatesV2Async()")]
 		Task<CounteragentCertificateList> GetCounteragentCertificatesAsync(string authToken, string myOrgId, string counteragentOrgId);
-		Task<CounteragentList> GetCounteragentsAsync(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query
- = null, int? pageSize = null);
+		Task<CounteragentCertificateList> GetCounteragentCertificatesV2Async(string authToken, string myBoxId, string counteragentBoxId);
+
+		[Obsolete("Use GetCounteragentsV3Async()")]
+		Task<CounteragentList> GetCounteragentsAsync(
+			string authToken, 
+			string myOrgId, 
+			string counteragentStatus,
+			string afterIndexKey, 
+			string query = null, 
+			int? pageSize = null);
+		Task<CounteragentList> GetCounteragentsV3Async(
+			string authToken, 
+			string myBoxId, 
+			string counteragentStatus, 
+			string afterIndexKey, 
+			string query = null, 
+			int? pageSize = null);
+
+		[Obsolete("Use BreakWithCounteragentV2Async()")]
 		Task BreakWithCounteragentAsync(string authToken, string myOrgId, string counteragentOrgId, string comment);
+		Task BreakWithCounteragentV2Async(string authToken, string myBoxId, string counteragentBoxId, string comment);
+
 		Task<BoxCounteragentEventList> GetCounteragentEventsAsync(
 			string authToken,
 			string boxId,
@@ -495,7 +540,10 @@ namespace Diadoc.Api
 			int titleIndex,
 			byte[] content);
 
+		[Obsolete("Use GetOrganizationUsersV2Async()")]
 		Task<OrganizationUsersList> GetOrganizationUsersAsync(string authToken, string orgId);
+		Task<OrganizationUsersList> GetOrganizationUsersV2Async(string authToken, string boxId);
+
 		Task<List<Organization>> GetOrganizationsByInnListAsync(GetOrganizationsByInnListRequest innList);
 		Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListAsync(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList);
 		Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] revocationRequestXmlContent);
@@ -513,10 +561,23 @@ namespace Diadoc.Api
  = null);
 		Task<AsyncMethodResult> DssSignAsync(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null);
 		Task<DssSignResult> DssSignResultAsync(string authToken, string boxId, string taskId);
-		Task<AsyncMethodResult> AcquireCounteragentAsync(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId
- = null);
-		Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout
- = null, TimeSpan? delay = null);
+
+		[Obsolete("Use AcquireCounteragentV3Async()")]
+		Task<AsyncMethodResult> AcquireCounteragentAsync(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
+		Task<AsyncMethodResult> AcquireCounteragentV3Async(string authToken, string myBoxId, AcquireCounteragentRequest request, string myDepartmentId = null);
+
+		[Obsolete("Use WaitAcquireCounteragentResultV2Async()")]
+		Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(
+			string authToken, 
+			string taskId, 
+			TimeSpan? timeout = null, 
+			TimeSpan? delay = null);
+		Task<AcquireCounteragentResultV2> WaitAcquireCounteragentResultV2Async(
+			string authToken, 
+			string taskId, 
+			TimeSpan? timeout = null, 
+			TimeSpan? delay = null);
+
 		Task<DocumentList> GetDocumentsByMessageIdAsync(string authToken, string boxId, string messageId);
 		Task<DocumentWorkflowSettingsListV2> GetWorkflowsSettingsAsync(string authToken, string boxId);
 		Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<string> keys);
