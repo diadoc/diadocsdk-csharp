@@ -8,6 +8,7 @@ message AcquireCounteragentRequest {
 	optional string Inn = 2;
 	optional string MessageToCounteragent = 3;
 	optional InvitationDocument InvitationDocument = 4;
+	optional string BoxId = 5;
 }
 
 message InvitationDocument {
@@ -19,5 +20,10 @@ message InvitationDocument {
 
 message AcquireCounteragentResult {
 	required string OrgId = 1;
+	optional DocumentId InvitationDocumentId = 2;
+}
+
+message AcquireCounteragentResultV2 {
+	required string BoxId = 1;
 	optional DocumentId InvitationDocumentId = 2;
 }

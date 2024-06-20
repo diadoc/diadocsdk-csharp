@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
@@ -105,9 +106,16 @@ namespace Diadoc.Api
 			PerformHttpRequest(authToken, "POST", "/UpdateOrganizationProperties", Serialize(orgProps));
 		}
 
+		[Obsolete("Use GetOrganizationUsersV2()")]
 		public OrganizationUsersList GetOrganizationUsers(string authToken, string orgId)
 		{
 			var queryString = string.Format("/GetOrganizationUsers?orgId={0}", orgId);
+			return PerformHttpRequest<OrganizationUsersList>(authToken, "GET", queryString);
+		}
+
+		public OrganizationUsersList GetOrganizationUsersV2(string authToken, string boxId)
+		{
+			var queryString = string.Format("V2/GetOrganizationUsers?boxId={0}", boxId);
 			return PerformHttpRequest<OrganizationUsersList>(authToken, "GET", queryString);
 		}
 
