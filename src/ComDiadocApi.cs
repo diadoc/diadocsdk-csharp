@@ -51,7 +51,10 @@ namespace Diadoc.Api
 		string AuthenticateWithSid(string sid);
 		OrganizationUserPermissions GetMyPermissions(string authToken, string orgId);
 		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
+
+		[Obsolete("Use GetOrganizationUsersV2()")]
 		ReadonlyList GetOrganizationUsers(string authToken, string orgId);
+		ReadonlyList GetOrganizationUsersV2(string authToken, string boxId);
 		ReadonlyList GetMyOrganizations(string authToken, bool autoRegister = true);
 		ReadonlyList GetOrganizationsByInnKpp(string inn, string kpp);
 		Organization GetOrganizationById(string orgId);
@@ -291,9 +294,16 @@ namespace Diadoc.Api
 
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
 		SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId);
-		Counteragent GetCounteragent(string authToken, string myOrgId, string counteragentOrgId);
-		CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId, string counteragentOrgId);
 
+		[Obsolete("Use GetCounteragentV3()")]
+		Counteragent GetCounteragent(string authToken, string myOrgId, string counteragentOrgId);
+		Counteragent GetCounteragentV3(string authToken, string myBoxId, string counteragentBoxId);
+
+		[Obsolete("Use GetCounteragentCertificatesV2()")]
+		CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId, string counteragentOrgId);
+		CounteragentCertificateList GetCounteragentCertificatesV2(string authToken, string myBoxId, string counteragentBoxId);
+
+		[Obsolete("Use GetCounteragentsV3()")]
 		CounteragentList GetCounteragents(
 			string authToken,
 			string myOrgId,
@@ -301,7 +311,15 @@ namespace Diadoc.Api
 			string afterIndexKey,
 			string query = null,
 			int pageSize = 0);
+		CounteragentList GetCounteragentsV3(
+			string authToken, 
+			string myBoxId, 
+			string counteragentStatus, 
+			string afterIndexKey, 
+			string query = null, 
+			int pageSize = 0);
 
+		[Obsolete("Use AcquireCounteragentV3()")]
 		void AcquireCounteragent(
 			string authToken,
 			string myOrgId,
@@ -309,14 +327,26 @@ namespace Diadoc.Api
 			string comment,
 			string myDepartmentId = null);
 
+		[Obsolete("Use AcquireCounteragentV3()")]
 		AsyncMethodResult AcquireCounteragent2(
 			string authToken,
 			string myOrgId,
 			[MarshalAs(UnmanagedType.IDispatch)] object acquireCounteragentRequest,
 			string myDepartmentId = null);
 
+		AsyncMethodResult AcquireCounteragentV3(
+			string authToken,
+			string myBoxId,
+			[MarshalAs(UnmanagedType.IDispatch)] object acquireCounteragentRequeststring,
+			string myDepartmentId = null);
+
+		[Obsolete("Use WaitAcquireCounteragentResultV2()")]
 		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId);
+		AcquireCounteragentResultV2 WaitAcquireCounteragentResultV2(string authToken, string taskId);
+
+		[Obsolete("Use BreakWithCounteragentV2()")]
 		void BreakWithCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment);
+		void BreakWithCounteragentV2(string authToken, string myBoxId, string counteragentBoxId, string comment);
 
 		BoxCounteragentEventList GetCounteragentEvents(
 			string authToken,
@@ -663,9 +693,15 @@ namespace Diadoc.Api
 			return diadoc.GetMyPermissions(authToken, orgId);
 		}
 
+		[Obsolete("Use GetOrganizationUsersV2()")]
 		public ReadonlyList GetOrganizationUsers(string authToken, string orgId)
 		{
 			return new ReadonlyList(diadoc.GetOrganizationUsers(authToken, orgId).Users);
+		}
+
+		public ReadonlyList GetOrganizationUsersV2(string authToken, string boxId)
+		{
+			return new ReadonlyList(diadoc.GetOrganizationUsersV2(authToken, boxId).Users);
 		}
 
 		public ReadonlyList GetMyOrganizations(string authToken, bool autoRegister = true)
@@ -1741,11 +1777,18 @@ namespace Diadoc.Api
 
 		#region Counteragents
 
+		[Obsolete("Use GetCounteragentV3()")]
 		public Counteragent GetCounteragent(string authToken, string myOrgId, string counteragentOrgId)
 		{
 			return diadoc.GetCounteragent(authToken, myOrgId, counteragentOrgId);
 		}
+		
+		public Counteragent GetCounteragentV3(string authToken, string myBoxId, string counteragentBoxId)
+		{
+			return diadoc.GetCounteragentV3(authToken, myBoxId, counteragentBoxId);
+		}
 
+		[Obsolete("Use GetCounteragentCertificatesV2()")]
 		public CounteragentCertificateList GetCounteragentCertificates(
 			string authToken,
 			string myOrgId,
@@ -1754,6 +1797,12 @@ namespace Diadoc.Api
 			return diadoc.GetCounteragentCertificates(authToken, myOrgId, counteragentOrgId);
 		}
 
+		public CounteragentCertificateList GetCounteragentCertificatesV2(string authToken, string myBoxId, string counteragentBoxId)
+		{
+			return diadoc.GetCounteragentCertificatesV2(authToken, myBoxId, counteragentBoxId);
+		}
+
+		[Obsolete("Use GetCounteragentsV3()")]
 		public CounteragentList GetCounteragents(
 			string authToken,
 			string myOrgId,
@@ -1766,6 +1815,19 @@ namespace Diadoc.Api
 			return diadoc.GetCounteragents(authToken, myOrgId, counteragentStatus, afterIndexKey, query, size);
 		}
 
+		public CounteragentList GetCounteragentsV3(
+			string authToken, 
+			string myBoxId, 
+			string counteragentStatus, 
+			string afterIndexKey, 
+			string query = null, 
+			int pageSize = 0)
+		{
+			var size = pageSize == 0 ? (int?) null : pageSize;
+			return diadoc.GetCounteragentsV3(authToken, myBoxId, counteragentStatus, afterIndexKey, query, size);
+		}
+
+		[Obsolete("Use GetCounteragentsV3()")]
 		public void AcquireCounteragent(
 			string authToken,
 			string myOrgId,
@@ -1783,6 +1845,7 @@ namespace Diadoc.Api
 				myDepartmentId);
 		}
 
+		[Obsolete("Use AcquireCounteragentV3()")]
 		public AsyncMethodResult AcquireCounteragent2(
 			string authToken,
 			string myOrgId,
@@ -1795,14 +1858,38 @@ namespace Diadoc.Api
 				myDepartmentId);
 		}
 
+		public AsyncMethodResult AcquireCounteragentV3(
+			string authToken,
+			string myBoxId,
+			[MarshalAs(UnmanagedType.IDispatch)] object acquireCounteragentRequeststring,
+			string myDepartmentId = null)
+		{
+			return diadoc.AcquireCounteragentV3(authToken,
+				myBoxId,
+				(AcquireCounteragentRequest) acquireCounteragentRequeststring,
+				myDepartmentId);
+		}
+
+		[Obsolete("Use WaitAcquireCounteragentResultV2()")]
 		public AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId)
 		{
 			return diadoc.WaitAcquireCounteragentResult(authToken, taskId);
 		}
 
+		public AcquireCounteragentResultV2 WaitAcquireCounteragentResultV2(string authToken, string taskId)
+		{
+			return diadoc.WaitAcquireCounteragentResultV2(authToken, taskId);
+		}
+
+		[Obsolete("Use BreakWithCounteragentV2()")]
 		public void BreakWithCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment)
 		{
 			diadoc.BreakWithCounteragent(authToken, myOrgId, counteragentOrgId, comment);
+		}
+
+		public void BreakWithCounteragentV2(string authToken, string myBoxId, string counteragentBoxId, string comment)
+		{
+			diadoc.BreakWithCounteragentV2(authToken, myBoxId, counteragentBoxId, comment);
 		}
 
 		public BoxCounteragentEventList GetCounteragentEvents(

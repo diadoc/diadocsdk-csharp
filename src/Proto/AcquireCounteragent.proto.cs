@@ -53,6 +53,15 @@ namespace Diadoc.Api.Proto
       get { return _InvitationDocument; }
       set { _InvitationDocument = value; }
     }
+
+    private string _BoxId = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"BoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string BoxId
+    {
+      get { return _BoxId; }
+      set { _BoxId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -111,6 +120,32 @@ namespace Diadoc.Api.Proto
     {
       get { return _OrgId; }
       set { _OrgId = value; }
+    }
+
+    private Diadoc.Api.Proto.DocumentId _InvitationDocumentId = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"InvitationDocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.DocumentId InvitationDocumentId
+    {
+      get { return _InvitationDocumentId; }
+      set { _InvitationDocumentId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AcquireCounteragentResultV2")]
+  public partial class AcquireCounteragentResultV2 : global::ProtoBuf.IExtensible
+  {
+    public AcquireCounteragentResultV2() {}
+    
+    private string _BoxId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"BoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string BoxId
+    {
+      get { return _BoxId; }
+      set { _BoxId = value; }
     }
 
     private Diadoc.Api.Proto.DocumentId _InvitationDocumentId = null;

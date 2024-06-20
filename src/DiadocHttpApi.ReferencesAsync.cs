@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Diadoc.Api.Http;
@@ -106,9 +107,16 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync(authToken, "POST", "/UpdateOrganizationProperties", Serialize(orgProps));
 		}
 
+		[Obsolete("Use GetOrganizationUsersV2Async()")]
 		public Task<OrganizationUsersList> GetOrganizationUsersAsync(string authToken, string orgId)
 		{
 			var queryString = $"/GetOrganizationUsers?orgId={orgId}";
+			return PerformHttpRequestAsync<OrganizationUsersList>(authToken, "GET", queryString);
+		}
+
+		public Task<OrganizationUsersList> GetOrganizationUsersV2Async(string authToken, string boxId)
+		{
+			var queryString = $@"V2/GetOrganizationUsers?boxId={boxId}";
 			return PerformHttpRequestAsync<OrganizationUsersList>(authToken, "GET", queryString);
 		}
 
