@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Security;
-using Diadoc.Api.Constants;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
@@ -62,23 +61,17 @@ namespace Diadoc.Api
 		string AuthenticateWithKeyConfirm(string thumbprint, string token, bool saveBinding = false);
 		OrganizationUserPermissions GetMyPermissions(string authToken, string orgId);
 		OrganizationList GetMyOrganizations(string authToken, bool autoRegister = true);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false);
 		OrganizationList GetOrganizationsByInnKpp(string authToken, string inn, string kpp, bool includeRelations = false);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationById(string orgId);
 		Organization GetOrganizationById(string authToken, string orgId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByBoxId(string boxId);
 		Organization GetOrganizationByBoxId(string authToken, string boxId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByFnsParticipantId(string fnsParticipantId);
 		Organization GetOrganizationByFnsParticipantId(string authToken, string fnsParticipantId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByInnKpp(string inn, string kpp);
 		Organization GetOrganizationByInnKpp(string authToken, string inn, string kpp);
 		RoamingOperatorList GetRoamingOperators(string authToken, string boxId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Box GetBox(string boxId);
 		Box GetBox(string authToken, string boxId);
 		Department GetDepartment(string authToken, string orgId, string departmentId);
@@ -158,10 +151,8 @@ namespace Diadoc.Api
 		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
 		PrintFormResult GetGeneratedPrintForm(string authToken, DocumentType documentType, string printFormId);
 		PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		string Recognize(string fileName, byte[] content);
 		string Recognize(string authToken, string fileName, byte[] content);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Recognized GetRecognized(string recognitionId);
 		Recognized GetRecognized(string authToken, string recognitionId);
 		DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count = null);
@@ -192,47 +183,32 @@ namespace Diadoc.Api
 			int? limit = null);
 		string UploadFileToShelf(string authToken, byte[] data);
 		byte[] GetFileFromShelf(string authToken, string nameOnShelf);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RussianAddress ParseRussianAddress(string address);
 		RussianAddress ParseRussianAddress(string authToken, string address);
-
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
 		InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent);
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] xmlContent);
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent);
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent);
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent);
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent);
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent);
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(string authToken, byte[] xmlContent);
 
@@ -246,14 +222,11 @@ namespace Diadoc.Api
 			byte[] content);
 
 		OrganizationUsersList GetOrganizationUsers(string authToken, string orgId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		List<Organization> GetOrganizationsByInnList(GetOrganizationsByInnListRequest innList);
 		List<Organization> GetOrganizationsByInnList(string authToken, GetOrganizationsByInnListRequest innList);
 		List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
 		RevocationRequestInfo ParseRevocationRequestXml(string authToken, byte[] revocationRequestXmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		SignatureRejectionInfo ParseSignatureRejectionXml(byte[] signatureRejectionXmlContent);
 		SignatureRejectionInfo ParseSignatureRejectionXml(string authToken, byte[] signatureRejectionXmlContent);
 		DocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId);
@@ -279,7 +252,6 @@ namespace Diadoc.Api
 		void PutOrganizationStorageEntries(string authToken, string boxId, IEnumerable<KeyValueStorageEntry> entries);
 		AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey);
 		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId, TimeSpan? timeout = null);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		ExternalServiceAuthInfo GetExternalServiceAuthInfo(string key);
 		ExternalServiceAuthInfo GetExternalServiceAuthInfo(string authToken, string key);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
@@ -385,23 +357,17 @@ namespace Diadoc.Api
 		Task<UserV2> GetMyUserV2Async(string authToken);
 		Task<UserV2> UpdateMyUserAsync(string authToken, UserToUpdate userToUpdate);
 		Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false);
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string authToken, string inn, string kpp, bool includeRelations = false);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Organization> GetOrganizationByIdAsync(string orgId);
 		Task<Organization> GetOrganizationByIdAsync(string authToken, string orgId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Organization> GetOrganizationByBoxIdAsync(string boxId);
 		Task<Organization> GetOrganizationByBoxIdAsync(string authToken, string boxId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Organization> GetOrganizationByFnsParticipantIdAsync(string fnsParticipantId);
 		Task<Organization> GetOrganizationByFnsParticipantIdAsync(string authToken, string fnsParticipantId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Organization> GetOrganizationByInnKppAsync(string inn, string kpp);
 		Task<Organization> GetOrganizationByInnKppAsync(string authToken, string inn, string kpp);
 		Task<RoamingOperatorList> GetRoamingOperatorsAsync(string authToken, string boxId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Box> GetBoxAsync(string boxId);
 		Task<Box> GetBoxAsync(string authToken, string boxId);
 		Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId);
@@ -498,10 +464,8 @@ namespace Diadoc.Api
 		[Obsolete("Use GetGeneratedPrintFormAsync without `documentType` parameter")]
 		Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, DocumentType documentType, string printFormId);
 		Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, string printFormId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<string> RecognizeAsync(string fileName, byte[] content);
 		Task<string> RecognizeAsync(string authToken, string fileName, byte[] content);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Recognized> GetRecognizedAsync(string recognitionId);
 		Task<Recognized> GetRecognizedAsync(string authToken, string recognitionId);
 		Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count
@@ -539,46 +503,32 @@ namespace Diadoc.Api
 			int? limit = null);
 		Task<string> UploadFileToShelfAsync(string authToken, byte[] data);
 		Task<byte[]> GetFileFromShelfAsync(string authToken, string nameOnShelf);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<RussianAddress> ParseRussianAddressAsync(string address);
 		Task<RussianAddress> ParseRussianAddressAsync(string authToken, string address);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<InvoiceInfo> ParseInvoiceXmlAsync(byte[] invoiceXmlContent);
 		Task<InvoiceInfo> ParseInvoiceXmlAsync(string authToken, byte[] invoiceXmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(byte[] xmlContent);
 		Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(byte[] xmlContent);
 		Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(byte[] xmlContent);
 		Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(byte[] xmlContent);
 		Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(byte[] xmlContent);
 		Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(byte[] xmlContent);
 		Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(byte[] xmlContent);
 		Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(byte[] xmlContent);
 		Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
 		Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalTransferDocumentBuyerTitleXmlAsync(byte[] xmlContent);
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalTransferDocumentBuyerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
 		Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(byte[] xmlContent);
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(string authToken, byte[] xmlContent);
 
@@ -592,14 +542,11 @@ namespace Diadoc.Api
 			byte[] content);
 
 		Task<OrganizationUsersList> GetOrganizationUsersAsync(string authToken, string orgId);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<List<Organization>> GetOrganizationsByInnListAsync(GetOrganizationsByInnListRequest innList);
 		Task<List<Organization>> GetOrganizationsByInnListAsync(string authToken, GetOrganizationsByInnListRequest innList);
 		Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListAsync(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] revocationRequestXmlContent);
 		Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(string authToken, byte[] revocationRequestXmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<SignatureRejectionInfo> ParseSignatureRejectionXmlAsync(byte[] signatureRejectionXmlContent);
 		Task<SignatureRejectionInfo> ParseSignatureRejectionXmlAsync(string authToken, byte[] signatureRejectionXmlContent);
 		Task<DocumentProtocolResult> GenerateDocumentProtocolAsync(string authToken, string boxId, string messageId, string documentId);
@@ -626,7 +573,6 @@ namespace Diadoc.Api
 		Task<AsyncMethodResult> AutoSignReceiptsAsync(string authToken, string boxId, string certificateThumbprint, string batchKey);
 		Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout
  = null);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<ExternalServiceAuthInfo> GetExternalServiceAuthInfoAsync(string key);
 		Task<ExternalServiceAuthInfo> GetExternalServiceAuthInfoAsync(string authToken, string key);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
