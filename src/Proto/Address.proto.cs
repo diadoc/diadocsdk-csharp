@@ -131,6 +131,15 @@ namespace Diadoc.Api.Proto
       get { return _Apartment; }
       set { _Apartment = value; }
     }
+
+    private string _OtherInformation = "";
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"OtherInformation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string OtherInformation
+    {
+      get { return _OtherInformation; }
+      set { _OtherInformation = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
