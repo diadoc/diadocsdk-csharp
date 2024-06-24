@@ -4,6 +4,11 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
+		public ExternalServiceAuthInfo GetExternalServiceAuthInfo(string key)
+		{
+			return GetExternalServiceAuthInfo(null, key);
+		}
+
 		public ExternalServiceAuthInfo GetExternalServiceAuthInfo(string authToken, string key)
 		{
 			var queryString = string.Format("/GetExternalServiceAuthInfo?key={0}", key);

@@ -261,9 +261,19 @@ namespace Diadoc.Api
 			return HttpClient.PerformHttpRequestAsync(request);
 		}
 
+		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] xmlContent)
+		{
+			return ParseRevocationRequestXmlAsync(null, xmlContent);
+		}
+
 		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(string authToken, byte[] xmlContent)
 		{
 			return PerformHttpRequestAsync<RevocationRequestInfo>(authToken, "POST", "/ParseRevocationRequestXml", xmlContent);
+		}
+
+		public Task<SignatureRejectionInfo> ParseSignatureRejectionXmlAsync(byte[] xmlContent)
+		{
+			return ParseSignatureRejectionXmlAsync(null, xmlContent);
 		}
 
 		public Task<SignatureRejectionInfo> ParseSignatureRejectionXmlAsync(string authToken, byte[] xmlContent)

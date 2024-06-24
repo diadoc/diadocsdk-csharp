@@ -248,9 +248,19 @@ namespace Diadoc.Api
 			HttpClient.PerformHttpRequest(request);
 		}
 
+		public RevocationRequestInfo ParseRevocationRequestXml(byte[] xmlContent)
+		{
+			return ParseRevocationRequestXml(null, xmlContent);
+		}
+
 		public RevocationRequestInfo ParseRevocationRequestXml(string authToken, byte[] xmlContent)
 		{
 			return PerformHttpRequest<RevocationRequestInfo>(authToken, "POST", "/ParseRevocationRequestXml", xmlContent);
+		}
+
+		public SignatureRejectionInfo ParseSignatureRejectionXml(byte[] xmlContent)
+		{
+			return ParseSignatureRejectionXml(null, xmlContent);
 		}
 
 		public SignatureRejectionInfo ParseSignatureRejectionXml(string authToken, byte[] xmlContent)

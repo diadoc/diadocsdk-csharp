@@ -46,6 +46,11 @@ namespace Diadoc.Api
 			return PerformHttpRequest<CertificateList>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
 
+		public OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false)
+		{
+			return GetOrganizationsByInnKpp(null, inn, kpp, includeRelations);
+		}
+
 		public OrganizationList GetOrganizationsByInnKpp(string authToken, string inn, string kpp, bool includeRelations = false)
 		{
 			var qsb = new PathAndQueryBuilder("/GetOrganizationsByInnKpp");
@@ -56,9 +61,19 @@ namespace Diadoc.Api
 			return PerformHttpRequest<OrganizationList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		public Organization GetOrganizationById(string orgId)
+		{
+			return GetOrganizationById(null, orgId);
+		}
+
 		public Organization GetOrganizationById(string authToken, string orgId)
 		{
 			return GetOrganization(authToken, string.Format("/GetOrganization?orgId={0}", orgId));
+		}
+
+		public Organization GetOrganizationByBoxId(string boxId)
+		{
+			return GetOrganizationByBoxId(null, boxId);
 		}
 
 		public Organization GetOrganizationByBoxId(string authToken, string boxId)
@@ -66,9 +81,19 @@ namespace Diadoc.Api
 			return GetOrganization(authToken, string.Format("/GetOrganization?boxId={0}", boxId));
 		}
 
+		public Organization GetOrganizationByFnsParticipantId(string fnsParticipantId)
+		{
+			return GetOrganizationByFnsParticipantId(null, fnsParticipantId);
+		}
+
 		public Organization GetOrganizationByFnsParticipantId(string authToken, string fnsParticipantId)
 		{
 			return GetOrganization(authToken, string.Format("/GetOrganization?fnsParticipantId={0}", fnsParticipantId));
+		}
+
+		public Organization GetOrganizationByInnKpp(string inn, string kpp)
+		{
+			return GetOrganizationByInnKpp(null, inn, kpp);
 		}
 
 		public Organization GetOrganizationByInnKpp(string authToken, string inn, string kpp)
@@ -84,6 +109,11 @@ namespace Diadoc.Api
 		private Organization GetOrganization(string authToken, string queryString)
 		{
 			return PerformHttpRequest<Organization>(authToken, "GET", queryString);
+		}
+
+		public Box GetBox(string boxId)
+		{
+			return GetBox(null, boxId);
 		}
 
 		public Box GetBox(string authToken, string boxId)
@@ -109,6 +139,11 @@ namespace Diadoc.Api
 		{
 			var queryString = string.Format("/GetOrganizationUsers?orgId={0}", orgId);
 			return PerformHttpRequest<OrganizationUsersList>(authToken, "GET", queryString);
+		}
+
+		public List<Organization> GetOrganizationsByInnList(GetOrganizationsByInnListRequest innList)
+		{
+			return GetOrganizationsByInnList(null, innList);
 		}
 
 		public List<Organization> GetOrganizationsByInnList(string authToken, GetOrganizationsByInnListRequest innList)

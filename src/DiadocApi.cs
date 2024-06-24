@@ -205,7 +205,7 @@ namespace Diadoc.Api
 		public OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false)
 		{
 			if (inn == null) throw new ArgumentNullException("inn");
-			return diadocHttpApi.GetOrganizationsByInnKpp(null, inn, kpp, includeRelations);
+			return diadocHttpApi.GetOrganizationsByInnKpp(inn, kpp, includeRelations);
 		}
 
 		public OrganizationList GetOrganizationsByInnKpp(string authToken, string inn, string kpp, bool includeRelations = false)
@@ -218,7 +218,7 @@ namespace Diadoc.Api
 		public Organization GetOrganizationById(string orgId)
 		{
 			if (orgId == null) throw new ArgumentNullException("orgId");
-			return diadocHttpApi.GetOrganizationById(null, orgId);
+			return diadocHttpApi.GetOrganizationById(orgId);
 		}
 
 		public Organization GetOrganizationById(string authToken, string orgId)
@@ -231,7 +231,7 @@ namespace Diadoc.Api
 		public Organization GetOrganizationByBoxId(string boxId)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetOrganizationByBoxId(null, boxId);
+			return diadocHttpApi.GetOrganizationByBoxId(boxId);
 		}
 
 		public Organization GetOrganizationByBoxId(string authToken, string boxId)
@@ -244,7 +244,7 @@ namespace Diadoc.Api
 		public Organization GetOrganizationByFnsParticipantId(string fnsParticipantId)
 		{
 			if (fnsParticipantId == null) throw new ArgumentException("fnsParticipantId");
-			return diadocHttpApi.GetOrganizationByFnsParticipantId(null, fnsParticipantId);
+			return diadocHttpApi.GetOrganizationByFnsParticipantId(fnsParticipantId);
 		}
 
 		public Organization GetOrganizationByFnsParticipantId(string authToken, string fnsParticipantId)
@@ -257,7 +257,7 @@ namespace Diadoc.Api
 		public Organization GetOrganizationByInnKpp(string inn, string kpp)
 		{
 			if (inn == null) throw new ArgumentException("inn");
-			return diadocHttpApi.GetOrganizationByInnKpp(null, inn, kpp);
+			return diadocHttpApi.GetOrganizationByInnKpp(inn, kpp);
 		}
 
 		public Organization GetOrganizationByInnKpp(string authToken, string inn, string kpp)
@@ -275,7 +275,7 @@ namespace Diadoc.Api
 		public Box GetBox(string boxId)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetBox(null, boxId);
+			return diadocHttpApi.GetBox(boxId);
 		}
 
 		public Box GetBox(string authToken, string boxId)
@@ -765,7 +765,7 @@ namespace Diadoc.Api
 		public string Recognize(string fileName, byte[] content)
 		{
 			if (string.IsNullOrEmpty(fileName)) throw new ArgumentNullException("fileName");
-			return diadocHttpApi.Recognize(null, fileName, content);
+			return diadocHttpApi.Recognize(fileName, content);
 		}
 
 		public string Recognize(string authToken, string fileName, byte[] content)
@@ -778,7 +778,7 @@ namespace Diadoc.Api
 		public Recognized GetRecognized(string recognitionId)
 		{
 			if (string.IsNullOrEmpty(recognitionId)) throw new ArgumentNullException("recognitionId");
-			return diadocHttpApi.GetRecognized(null, recognitionId);
+			return diadocHttpApi.GetRecognized(recognitionId);
 		}
 
 		public Recognized GetRecognized(string authToken, string recognitionId)
@@ -989,7 +989,7 @@ namespace Diadoc.Api
 
 		public RussianAddress ParseRussianAddress(string address)
 		{
-			return diadocHttpApi.ParseRussianAddress(null, address);
+			return diadocHttpApi.ParseRussianAddress(address);
 		}
 
 		public RussianAddress ParseRussianAddress(string authToken, string address)
@@ -1000,7 +1000,7 @@ namespace Diadoc.Api
 
 		public InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent)
 		{
-			return diadocHttpApi.ParseInvoiceXml(null, invoiceXmlContent);
+			return diadocHttpApi.ParseInvoiceXml(invoiceXmlContent);
 		}
 
 		public InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent)
@@ -1011,7 +1011,7 @@ namespace Diadoc.Api
 
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTorg12SellerTitleXml(null, xmlContent);
+			return diadocHttpApi.ParseTorg12SellerTitleXml(xmlContent);
 		}
 
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(string authToken, byte[] xmlContent)
@@ -1022,7 +1022,7 @@ namespace Diadoc.Api
 
 		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTorg12BuyerTitleXml(null, xmlContent);
+			return diadocHttpApi.ParseTorg12BuyerTitleXml(xmlContent);
 		}
 
 		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(string authToken, byte[] xmlContent)
@@ -1033,7 +1033,7 @@ namespace Diadoc.Api
 
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTovTorg551SellerTitleXml(null, xmlContent);
+			return diadocHttpApi.ParseTovTorg551SellerTitleXml(xmlContent);
 		}
 
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(string authToken, byte[] xmlContent)
@@ -1044,7 +1044,7 @@ namespace Diadoc.Api
 
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseTovTorg551BuyerTitleXml(null, xmlContent);
+			return diadocHttpApi.ParseTovTorg551BuyerTitleXml(xmlContent);
 		}
 
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(string authToken, byte[] xmlContent)
@@ -1055,7 +1055,7 @@ namespace Diadoc.Api
 
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXml(null, xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXml(xmlContent);
 		}
 
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(string authToken, byte[] xmlContent)
@@ -1066,7 +1066,7 @@ namespace Diadoc.Api
 
 		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXml(null, xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXml(xmlContent);
 		}
 
 		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(string authToken, byte[] xmlContent)
@@ -1077,7 +1077,7 @@ namespace Diadoc.Api
 
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXml(null, xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXml(xmlContent);
 		}
 
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(string authToken, byte[] xmlContent)
@@ -1088,7 +1088,7 @@ namespace Diadoc.Api
 
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXml(null, xmlContent);
+			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXml(xmlContent);
 		}
 
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(string authToken, byte[] xmlContent)
@@ -1099,7 +1099,7 @@ namespace Diadoc.Api
 
 		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
 		{
-			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXml(null, xmlContent, documentVersion);
+			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXml(xmlContent, documentVersion);
 		}
 
 		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
@@ -1110,7 +1110,7 @@ namespace Diadoc.Api
 
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXml(null, xmlContent);
+			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXml(xmlContent);
 		}
 
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(string authToken, byte[] xmlContent)
@@ -1121,7 +1121,7 @@ namespace Diadoc.Api
 
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
-			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(null, xmlContent, documentVersion);
+			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(xmlContent, documentVersion);
 		}
 
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
@@ -1132,7 +1132,7 @@ namespace Diadoc.Api
 
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent)
 		{
-			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXml(null, xmlContent);
+			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXml(xmlContent);
 		}
 
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(string authToken, byte[] xmlContent)
@@ -1178,7 +1178,7 @@ namespace Diadoc.Api
 		{
 			if (innList == null)
 				throw new ArgumentNullException("innList");
-			return diadocHttpApi.GetOrganizationsByInnList(null, innList);
+			return diadocHttpApi.GetOrganizationsByInnList(innList);
 		}
 
 		public List<Organization> GetOrganizationsByInnList(string authToken, GetOrganizationsByInnListRequest innList)
@@ -1203,7 +1203,7 @@ namespace Diadoc.Api
 
 		public RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent)
 		{
-			return diadocHttpApi.ParseRevocationRequestXml(null, revocationRequestXmlContent);
+			return diadocHttpApi.ParseRevocationRequestXml(revocationRequestXmlContent);
 		}
 
 		public RevocationRequestInfo ParseRevocationRequestXml(string authToken, byte[] revocationRequestXmlContent)
@@ -1214,7 +1214,7 @@ namespace Diadoc.Api
 
 		public SignatureRejectionInfo ParseSignatureRejectionXml(byte[] signatureRejectionXmlContent)
 		{
-			return diadocHttpApi.ParseSignatureRejectionXml(null, signatureRejectionXmlContent);
+			return diadocHttpApi.ParseSignatureRejectionXml(signatureRejectionXmlContent);
 		}
 
 		public SignatureRejectionInfo ParseSignatureRejectionXml(string authToken, byte[] signatureRejectionXmlContent)
@@ -1387,7 +1387,7 @@ namespace Diadoc.Api
 		{
 			if (string.IsNullOrEmpty(key))
 				throw new ArgumentNullException("key");
-			return diadocHttpApi.GetExternalServiceAuthInfo(null, key);
+			return diadocHttpApi.GetExternalServiceAuthInfo(key);
 		}
 
 		public ExternalServiceAuthInfo GetExternalServiceAuthInfo(string authToken, string key)

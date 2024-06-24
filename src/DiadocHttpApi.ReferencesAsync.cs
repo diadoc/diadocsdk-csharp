@@ -47,6 +47,11 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<CertificateList>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
 
+		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false)
+		{
+			return GetOrganizationsByInnKppAsync(null, inn, kpp, includeRelations);
+		}
+
 		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string authToken, string inn, string kpp, bool includeRelations = false)
 		{
 			var qsb = new PathAndQueryBuilder("/GetOrganizationsByInnKpp");
@@ -57,9 +62,19 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<OrganizationList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		public Task<Organization> GetOrganizationByIdAsync(string orgId)
+		{
+			return GetOrganizationByIdAsync(null, orgId);
+		}
+
 		public Task<Organization> GetOrganizationByIdAsync(string authToken, string orgId)
 		{
 			return GetOrganizationAsync(authToken, $"/GetOrganization?orgId={orgId}");
+		}
+
+		public Task<Organization> GetOrganizationByBoxIdAsync(string boxId)
+		{
+			return GetOrganizationByBoxIdAsync(null, boxId);
 		}
 
 		public Task<Organization> GetOrganizationByBoxIdAsync(string authToken, string boxId)
@@ -67,9 +82,19 @@ namespace Diadoc.Api
 			return GetOrganizationAsync(authToken, $"/GetOrganization?boxId={boxId}");
 		}
 
+		public Task<Organization> GetOrganizationByFnsParticipantIdAsync(string fnsParticipantId)
+		{
+			return GetOrganizationByFnsParticipantIdAsync(null, fnsParticipantId);
+		}
+
 		public Task<Organization> GetOrganizationByFnsParticipantIdAsync(string authToken, string fnsParticipantId)
 		{
 			return GetOrganizationAsync(authToken, $"/GetOrganization?fnsParticipantId={fnsParticipantId}");
+		}
+
+		public Task<Organization> GetOrganizationByInnKppAsync(string inn, string kpp)
+		{
+			return GetOrganizationByInnKppAsync(null, inn, kpp);
 		}
 
 		public Task<Organization> GetOrganizationByInnKppAsync(string authToken, string inn, string kpp)
@@ -85,6 +110,11 @@ namespace Diadoc.Api
 		private Task<Organization> GetOrganizationAsync(string authToken, string queryString)
 		{
 			return PerformHttpRequestAsync<Organization>(authToken, "GET", queryString);
+		}
+
+		public Task<Box> GetBoxAsync(string boxId)
+		{
+			return GetBoxAsync(null, boxId);
 		}
 
 		public Task<Box> GetBoxAsync(string authToken, string boxId)
@@ -110,6 +140,11 @@ namespace Diadoc.Api
 		{
 			var queryString = $"/GetOrganizationUsers?orgId={orgId}";
 			return PerformHttpRequestAsync<OrganizationUsersList>(authToken, "GET", queryString);
+		}
+
+		public Task<List<Organization>> GetOrganizationsByInnListAsync(GetOrganizationsByInnListRequest innList)
+		{
+			return GetOrganizationsByInnListAsync(null, innList);
 		}
 
 		public async Task<List<Organization>> GetOrganizationsByInnListAsync(string authToken, GetOrganizationsByInnListRequest innList)

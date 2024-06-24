@@ -6,6 +6,11 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
+		public string Recognize(string fileName, byte[] content)
+		{
+			return Recognize(null, fileName, content);
+		}
+
 		public string Recognize(string authToken, string fileName, byte[] content)
 		{
 			var queryString = string.Format("/Recognize?filename={0}", fileName);
@@ -13,10 +18,20 @@ namespace Diadoc.Api
 			return Encoding.UTF8.GetString(responseBytes);
 		}
 
+		public Recognized GetRecognized(string recognitionId)
+		{
+			return GetRecognized(null, recognitionId);
+		}
+
 		public Recognized GetRecognized(string authToken, string recognitionId)
 		{
 			var queryString = string.Format("/GetRecognized?recognitionId={0}", recognitionId);
 			return PerformHttpRequest<Recognized>(authToken, "GET", queryString);
+		}
+
+		public RussianAddress ParseRussianAddress(string address)
+		{
+			return ParseRussianAddress(null, address);
 		}
 
 		public RussianAddress ParseRussianAddress(string authToken, string address)
