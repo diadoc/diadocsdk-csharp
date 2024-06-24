@@ -185,6 +185,7 @@ namespace Diadoc.Api
 		byte[] GetFileFromShelf(string authToken, string nameOnShelf);
 		RussianAddress ParseRussianAddress(string address);
 		RussianAddress ParseRussianAddress(string authToken, string address);
+
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
 		InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent);
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent);
@@ -505,6 +506,7 @@ namespace Diadoc.Api
 		Task<byte[]> GetFileFromShelfAsync(string authToken, string nameOnShelf);
 		Task<RussianAddress> ParseRussianAddressAsync(string address);
 		Task<RussianAddress> ParseRussianAddressAsync(string authToken, string address);
+
 		Task<InvoiceInfo> ParseInvoiceXmlAsync(byte[] invoiceXmlContent);
 		Task<InvoiceInfo> ParseInvoiceXmlAsync(string authToken, byte[] invoiceXmlContent);
 		Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(byte[] xmlContent);
