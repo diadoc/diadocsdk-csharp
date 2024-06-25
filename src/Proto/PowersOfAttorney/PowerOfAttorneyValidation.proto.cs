@@ -159,7 +159,10 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       IsNotValid = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ValidationError", Value=4)]
-      ValidationError = 4
+      ValidationError = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"IsNotAttached", Value=5)]
+      IsNotAttached = 5
     }
   
 }

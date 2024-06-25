@@ -16,6 +16,7 @@ enum PowerOfAttorneyValidationStatusNamedId {
 	IsValid = 2;
 	IsNotValid = 3;
 	ValidationError = 4;
+	IsNotAttached = 5;
 }
 
 message PowerOfAttorneyValidationError {

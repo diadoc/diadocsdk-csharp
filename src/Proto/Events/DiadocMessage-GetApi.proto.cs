@@ -12,6 +12,7 @@
 // Note: requires additional types generated from: DocumentId.proto
 // Note: requires additional types generated from: LockMode.proto
 // Note: requires additional types generated from: TotalCountType.proto
+// Note: requires additional types generated from: Docflow/PowerOfAttorneyAttachmentStatus.proto
 // Note: requires additional types generated from: Documents/Document.proto
 // Note: requires additional types generated from: Events/CancellationInfo.proto
 // Note: requires additional types generated from: Events/ResolutionInfo.proto
@@ -838,6 +839,15 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _MoveDocumentInfo; }
       set { _MoveDocumentInfo = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.PowerOfAttorneyAttachmentStatus _PowerOfAttorneyAttachmentStatus = null;
+    [global::ProtoBuf.ProtoMember(35, IsRequired = false, Name=@"PowerOfAttorneyAttachmentStatus", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus
+    {
+      get { return _PowerOfAttorneyAttachmentStatus; }
+      set { _PowerOfAttorneyAttachmentStatus = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
