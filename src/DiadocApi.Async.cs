@@ -846,7 +846,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseRussianAddressAsync(address);
 		}
 
-		public Task<RussianAddress> ParseRussianAddressAsync([NotNull] string authToken, string address)
+		public Task<RussianAddress> ParseRussianAddressAsync(string authToken, string address)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseRussianAddressAsync(authToken, address);
