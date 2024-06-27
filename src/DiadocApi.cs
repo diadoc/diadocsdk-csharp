@@ -768,24 +768,10 @@ namespace Diadoc.Api
 			return diadocHttpApi.Recognize(fileName, content);
 		}
 
-		public string Recognize(string authToken, string fileName, byte[] content)
-		{
-			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
-			if (fileName == null) throw new ArgumentNullException(nameof(fileName));
-			return diadocHttpApi.Recognize(authToken, fileName, content);
-		}
-
 		public Recognized GetRecognized(string recognitionId)
 		{
 			if (string.IsNullOrEmpty(recognitionId)) throw new ArgumentNullException("recognitionId");
 			return diadocHttpApi.GetRecognized(recognitionId);
-		}
-
-		public Recognized GetRecognized(string authToken, string recognitionId)
-		{
-			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
-			if (recognitionId == null) throw new ArgumentNullException(nameof(recognitionId));
-			return diadocHttpApi.GetRecognized(authToken, recognitionId);
 		}
 
 		public DocumentList GetDocuments(string authToken,
@@ -1388,13 +1374,6 @@ namespace Diadoc.Api
 			if (string.IsNullOrEmpty(key))
 				throw new ArgumentNullException("key");
 			return diadocHttpApi.GetExternalServiceAuthInfo(key);
-		}
-
-		public ExternalServiceAuthInfo GetExternalServiceAuthInfo(string authToken, string key)
-		{
-			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
-			if (key == null) throw new ArgumentNullException(nameof(key));
-			return diadocHttpApi.GetExternalServiceAuthInfo(authToken, key);
 		}
 
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)

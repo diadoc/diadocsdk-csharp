@@ -255,9 +255,7 @@ namespace Diadoc.Api
 		byte[] GetEntityContent(string authToken, string boxId, string messageId, string entityId);
 		string NewGuid();
 		string Recognize(string fileName, string filePath);
-		string Recognize(string authToken, string fileName, string filePath);
 		Recognized GetRecognized(string recognitionId);
-		Recognized GetRecognized(string authToken, string recognitionId);
 		PrintFormResult GeneratePrintForm(string authToken, string boxId, string messageId, string documentId);
 
 		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
@@ -1457,19 +1455,9 @@ namespace Diadoc.Api
 			return diadoc.Recognize(fileName, File.ReadAllBytes(filePath));
 		}
 
-		public string Recognize(string authToken, string fileName, string filePath)
-		{
-			return diadoc.Recognize(authToken, fileName, File.ReadAllBytes(filePath));
-		}
-
 		public Recognized GetRecognized(string recognitionId)
 		{
 			return diadoc.GetRecognized(recognitionId);
-		}
-
-		public Recognized GetRecognized(string authToken, string recognitionId)
-		{
-			return diadoc.GetRecognized(authToken, recognitionId);
 		}
 
 		public PrintFormResult GeneratePrintForm(string authToken, string boxId, string messageId, string documentId)

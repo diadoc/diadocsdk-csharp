@@ -654,24 +654,10 @@ namespace Diadoc.Api
 			return diadocHttpApi.RecognizeAsync(fileName, content);
 		}
 
-		public Task<string> RecognizeAsync(string authToken, string fileName, byte[] content)
-		{
-			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
-			if (fileName == null) throw new ArgumentNullException(nameof(fileName));
-			return diadocHttpApi.RecognizeAsync(authToken, fileName, content);
-		}
-
 		public Task<Recognized> GetRecognizedAsync(string recognitionId)
 		{
 			if (string.IsNullOrEmpty(recognitionId)) throw new ArgumentNullException("recognitionId");
 			return diadocHttpApi.GetRecognizedAsync(recognitionId);
-		}
-
-		public Task<Recognized> GetRecognizedAsync(string authToken, string recognitionId)
-		{
-			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
-			if (recognitionId == null) throw new ArgumentNullException(nameof(recognitionId));
-			return diadocHttpApi.GetRecognizedAsync(authToken, recognitionId);
 		}
 
 		public Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId,
@@ -1239,13 +1225,6 @@ namespace Diadoc.Api
 			if (string.IsNullOrEmpty(key))
 				throw new ArgumentNullException("key");
 			return diadocHttpApi.GetExternalServiceAuthInfoAsync(key);
-		}
-
-		public Task<ExternalServiceAuthInfo> GetExternalServiceAuthInfoAsync(string authToken, [NotNull] string key)
-		{
-			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
-			if (key == null) throw new ArgumentNullException(nameof(key));
-			return diadocHttpApi.GetExternalServiceAuthInfoAsync(authToken, key);
 		}
 
 		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)

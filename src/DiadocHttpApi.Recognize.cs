@@ -8,25 +8,15 @@ namespace Diadoc.Api
 	{
 		public string Recognize(string fileName, byte[] content)
 		{
-			return Recognize(null, fileName, content);
-		}
-
-		public string Recognize(string authToken, string fileName, byte[] content)
-		{
 			var queryString = string.Format("/Recognize?filename={0}", fileName);
-			var responseBytes = PerformHttpRequest(authToken, "POST", queryString, content);
+			var responseBytes = PerformHttpRequest(null, "POST", queryString, content);
 			return Encoding.UTF8.GetString(responseBytes);
 		}
 
 		public Recognized GetRecognized(string recognitionId)
 		{
-			return GetRecognized(null, recognitionId);
-		}
-
-		public Recognized GetRecognized(string authToken, string recognitionId)
-		{
 			var queryString = string.Format("/GetRecognized?recognitionId={0}", recognitionId);
-			return PerformHttpRequest<Recognized>(authToken, "GET", queryString);
+			return PerformHttpRequest<Recognized>(null, "GET", queryString);
 		}
 
 		public RussianAddress ParseRussianAddress(string address)

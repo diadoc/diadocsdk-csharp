@@ -6,13 +6,8 @@ namespace Diadoc.Api
 	{
 		public ExternalServiceAuthInfo GetExternalServiceAuthInfo(string key)
 		{
-			return GetExternalServiceAuthInfo(null, key);
-		}
-
-		public ExternalServiceAuthInfo GetExternalServiceAuthInfo(string authToken, string key)
-		{
 			var queryString = string.Format("/GetExternalServiceAuthInfo?key={0}", key);
-			return PerformHttpRequest<ExternalServiceAuthInfo>(authToken, "GET", queryString);
+			return PerformHttpRequest<ExternalServiceAuthInfo>(null, "GET", queryString);
 		}
 	}
 }

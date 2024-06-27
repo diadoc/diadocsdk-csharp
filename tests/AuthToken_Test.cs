@@ -53,7 +53,13 @@ namespace Diadoc.Api.Tests
 			"Authenticate",
 			"AuthenticateByKey",
 			"AuthenticateBySid",
-			"AuthenticateWithKey"
+			"AuthenticateWithKey",
+			"Recognize",
+			"GetRecognized",
+			"RecognizeAsync",
+			"GetRecognizedAsync",
+			"GetExternalServiceAuthInfo",
+			"GetExternalServiceAuthInfoAsync"
 		};
 	}
 }

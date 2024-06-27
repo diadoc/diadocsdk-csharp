@@ -152,9 +152,7 @@ namespace Diadoc.Api
 		PrintFormResult GetGeneratedPrintForm(string authToken, DocumentType documentType, string printFormId);
 		PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId);
 		string Recognize(string fileName, byte[] content);
-		string Recognize(string authToken, string fileName, byte[] content);
 		Recognized GetRecognized(string recognitionId);
-		Recognized GetRecognized(string authToken, string recognitionId);
 		DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count = null);
 		DocumentList GetDocuments(string authToken, DocumentsFilter filter);
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
@@ -254,7 +252,6 @@ namespace Diadoc.Api
 		AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey);
 		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId, TimeSpan? timeout = null);
 		ExternalServiceAuthInfo GetExternalServiceAuthInfo(string key);
-		ExternalServiceAuthInfo GetExternalServiceAuthInfo(string authToken, string key);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
@@ -466,9 +463,7 @@ namespace Diadoc.Api
 		Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, DocumentType documentType, string printFormId);
 		Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, string printFormId);
 		Task<string> RecognizeAsync(string fileName, byte[] content);
-		Task<string> RecognizeAsync(string authToken, string fileName, byte[] content);
 		Task<Recognized> GetRecognizedAsync(string recognitionId);
-		Task<Recognized> GetRecognizedAsync(string authToken, string recognitionId);
 		Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count
  = null);
 		Task<DocumentList> GetDocumentsAsync(string authToken, DocumentsFilter filter);
@@ -576,7 +571,6 @@ namespace Diadoc.Api
 		Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout
  = null);
 		Task<ExternalServiceAuthInfo> GetExternalServiceAuthInfoAsync(string key);
-		Task<ExternalServiceAuthInfo> GetExternalServiceAuthInfoAsync(string authToken, string key);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
