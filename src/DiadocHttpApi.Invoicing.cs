@@ -250,12 +250,22 @@ namespace Diadoc.Api
 
 		public RevocationRequestInfo ParseRevocationRequestXml(byte[] xmlContent)
 		{
-			return PerformHttpRequest<RevocationRequestInfo>(null, "POST", "/ParseRevocationRequestXml", xmlContent);
+			return ParseRevocationRequestXml(null, xmlContent);
+		}
+
+		public RevocationRequestInfo ParseRevocationRequestXml(string authToken, byte[] xmlContent)
+		{
+			return PerformHttpRequest<RevocationRequestInfo>(authToken, "POST", "/ParseRevocationRequestXml", xmlContent);
 		}
 
 		public SignatureRejectionInfo ParseSignatureRejectionXml(byte[] xmlContent)
 		{
-			return PerformHttpRequest<SignatureRejectionInfo>(null, "POST", "/ParseSignatureRejectionXml", xmlContent);
+			return ParseSignatureRejectionXml(null, xmlContent);
+		}
+
+		public SignatureRejectionInfo ParseSignatureRejectionXml(string authToken, byte[] xmlContent)
+		{
+			return PerformHttpRequest<SignatureRejectionInfo>(authToken, "POST", "/ParseSignatureRejectionXml", xmlContent);
 		}
 
 		[Obsolete("Use overload with DocumentTitleType parameter")]

@@ -49,48 +49,78 @@ namespace Diadoc.Api
 
 		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false)
 		{
+			return GetOrganizationsByInnKppAsync(null, inn, kpp, includeRelations);
+		}
+
+		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string authToken, string inn, string kpp, bool includeRelations = false)
+		{
 			var qsb = new PathAndQueryBuilder("/GetOrganizationsByInnKpp");
 			qsb.AddParameter("inn", inn);
 			if (!string.IsNullOrEmpty(kpp)) qsb.AddParameter("kpp", kpp);
 			if (includeRelations)
 				qsb.AddParameter("includeRelations", "true");
-			return PerformHttpRequestAsync<OrganizationList>(null, "GET", qsb.BuildPathAndQuery());
+			return PerformHttpRequestAsync<OrganizationList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
 		public Task<Organization> GetOrganizationByIdAsync(string orgId)
 		{
-			return GetOrganizationAsync($"/GetOrganization?orgId={orgId}");
+			return GetOrganizationByIdAsync(null, orgId);
+		}
+
+		public Task<Organization> GetOrganizationByIdAsync(string authToken, string orgId)
+		{
+			return GetOrganizationAsync(authToken, $"/GetOrganization?orgId={orgId}");
 		}
 
 		public Task<Organization> GetOrganizationByBoxIdAsync(string boxId)
 		{
-			return GetOrganizationAsync($"/GetOrganization?boxId={boxId}");
+			return GetOrganizationByBoxIdAsync(null, boxId);
+		}
+
+		public Task<Organization> GetOrganizationByBoxIdAsync(string authToken, string boxId)
+		{
+			return GetOrganizationAsync(authToken, $"/GetOrganization?boxId={boxId}");
 		}
 
 		public Task<Organization> GetOrganizationByFnsParticipantIdAsync(string fnsParticipantId)
 		{
-			return GetOrganizationAsync($"/GetOrganization?fnsParticipantId={fnsParticipantId}");
+			return GetOrganizationByFnsParticipantIdAsync(null, fnsParticipantId);
+		}
+
+		public Task<Organization> GetOrganizationByFnsParticipantIdAsync(string authToken, string fnsParticipantId)
+		{
+			return GetOrganizationAsync(authToken, $"/GetOrganization?fnsParticipantId={fnsParticipantId}");
 		}
 
 		public Task<Organization> GetOrganizationByInnKppAsync(string inn, string kpp)
+		{
+			return GetOrganizationByInnKppAsync(null, inn, kpp);
+		}
+
+		public Task<Organization> GetOrganizationByInnKppAsync(string authToken, string inn, string kpp)
 		{
 			var qsb = new PathAndQueryBuilder("/GetOrganization");
 			qsb.AddParameter("inn", inn);
 			if (!string.IsNullOrEmpty(kpp))
 				qsb.AddParameter("kpp", kpp);
 			var queryString = qsb.BuildPathAndQuery();
-			return GetOrganizationAsync(queryString);
+			return GetOrganizationAsync(authToken, queryString);
 		}
 
-		private Task<Organization> GetOrganizationAsync(string queryString)
+		private Task<Organization> GetOrganizationAsync(string authToken, string queryString)
 		{
-			return PerformHttpRequestAsync<Organization>(null, "GET", queryString);
+			return PerformHttpRequestAsync<Organization>(authToken, "GET", queryString);
 		}
 
 		public Task<Box> GetBoxAsync(string boxId)
 		{
+			return GetBoxAsync(null, boxId);
+		}
+
+		public Task<Box> GetBoxAsync(string authToken, string boxId)
+		{
 			var queryString = $"/GetBox?boxId={boxId}";
-			return PerformHttpRequestAsync<Box>(null, "GET", queryString);
+			return PerformHttpRequestAsync<Box>(authToken, "GET", queryString);
 		}
 
 		public Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId)
@@ -112,10 +142,15 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<OrganizationUsersList>(authToken, "GET", queryString);
 		}
 
-		public async Task<List<Organization>> GetOrganizationsByInnListAsync(GetOrganizationsByInnListRequest innList)
+		public Task<List<Organization>> GetOrganizationsByInnListAsync(GetOrganizationsByInnListRequest innList)
+		{
+			return GetOrganizationsByInnListAsync(null, innList);
+		}
+
+		public async Task<List<Organization>> GetOrganizationsByInnListAsync(string authToken, GetOrganizationsByInnListRequest innList)
 		{
 			const string queryString = "/GetOrganizationsByInnList";
-			var response = await PerformHttpRequestAsync<GetOrganizationsByInnListRequest, GetOrganizationsByInnListResponse>(null, queryString, innList).ConfigureAwait(false);
+			var response = await PerformHttpRequestAsync<GetOrganizationsByInnListRequest, GetOrganizationsByInnListResponse>(authToken, queryString, innList).ConfigureAwait(false);
 			return response.Organizations.Select(o => o.Organization).ToList();
 		}
 
