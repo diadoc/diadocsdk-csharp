@@ -8,6 +8,7 @@ namespace Diadoc.Api.Com
 	[XmlType(TypeName = "StatusName", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum StatusName
 	{
+		Unknown = Proto.Docflow.StatusName.Unknown,
 		PowerOfAttorneyAttached = Proto.Docflow.StatusName.PowerOfAttorneyAttached,
 		PowerOfAttorneyNotRequired = Proto.Docflow.StatusName.PowerOfAttorneyNotRequired,
 		PowerOfAttorneyRequired = Proto.Docflow.StatusName.PowerOfAttorneyRequired
