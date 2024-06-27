@@ -2,6 +2,7 @@
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Diadoc.Api.Constants;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
@@ -261,6 +262,7 @@ namespace Diadoc.Api
 			return HttpClient.PerformHttpRequestAsync(request);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] xmlContent)
 		{
 			return ParseRevocationRequestXmlAsync(null, xmlContent);
@@ -271,6 +273,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<RevocationRequestInfo>(authToken, "POST", "/ParseRevocationRequestXml", xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<SignatureRejectionInfo> ParseSignatureRejectionXmlAsync(byte[] xmlContent)
 		{
 			return ParseSignatureRejectionXmlAsync(null, xmlContent);

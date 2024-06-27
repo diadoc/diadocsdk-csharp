@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Diadoc.Api.Constants;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Certificates;
@@ -47,6 +49,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<CertificateList>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false)
 		{
 			return GetOrganizationsByInnKppAsync(null, inn, kpp, includeRelations);
@@ -62,6 +65,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<OrganizationList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<Organization> GetOrganizationByIdAsync(string orgId)
 		{
 			return GetOrganizationByIdAsync(null, orgId);
@@ -72,6 +76,7 @@ namespace Diadoc.Api
 			return GetOrganizationAsync(authToken, $"/GetOrganization?orgId={orgId}");
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<Organization> GetOrganizationByBoxIdAsync(string boxId)
 		{
 			return GetOrganizationByBoxIdAsync(null, boxId);
@@ -82,6 +87,7 @@ namespace Diadoc.Api
 			return GetOrganizationAsync(authToken, $"/GetOrganization?boxId={boxId}");
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<Organization> GetOrganizationByFnsParticipantIdAsync(string fnsParticipantId)
 		{
 			return GetOrganizationByFnsParticipantIdAsync(null, fnsParticipantId);
@@ -92,6 +98,7 @@ namespace Diadoc.Api
 			return GetOrganizationAsync(authToken, $"/GetOrganization?fnsParticipantId={fnsParticipantId}");
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<Organization> GetOrganizationByInnKppAsync(string inn, string kpp)
 		{
 			return GetOrganizationByInnKppAsync(null, inn, kpp);
@@ -112,6 +119,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Organization>(authToken, "GET", queryString);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<Box> GetBoxAsync(string boxId)
 		{
 			return GetBoxAsync(null, boxId);
@@ -142,6 +150,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<OrganizationUsersList>(authToken, "GET", queryString);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<List<Organization>> GetOrganizationsByInnListAsync(GetOrganizationsByInnListRequest innList)
 		{
 			return GetOrganizationsByInnListAsync(null, innList);

@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
 using Diadoc.Api.Com;
+using Diadoc.Api.Constants;
 using Diadoc.Api.Cryptography;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
@@ -53,12 +54,16 @@ namespace Diadoc.Api
 		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
 		ReadonlyList GetOrganizationUsers(string authToken, string orgId);
 		ReadonlyList GetMyOrganizations(string authToken, bool autoRegister = true);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		ReadonlyList GetOrganizationsByInnKpp(string inn, string kpp);
 		ReadonlyList GetOrganizationsByInnKpp(string authToken, string inn, string kpp);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationById(string orgId);
 		Organization GetOrganizationById(string authToken, string orgId);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByInn(string inn);
 		Organization GetOrganizationByInn(string authToken, string inn);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		ReadonlyList GetOrganizationsByInnList([MarshalAs(UnmanagedType.IDispatch)] object innList);
 		ReadonlyList GetOrganizationsByInnList(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object innList);
 
@@ -67,8 +72,10 @@ namespace Diadoc.Api
 			string myOrgId,
 			[MarshalAs(UnmanagedType.IDispatch)] object innList);
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByFnsParticipantId(string fnsParticipantId);
 		Organization GetOrganizationByFnsParticipantId(string authToken, string fnsParticipantId);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Box GetBox(string boxId);
 		Box GetBox(string authToken, string boxId);
 		Department GetDepartment(string authToken, string orgId, string departmentId);
@@ -334,10 +341,13 @@ namespace Diadoc.Api
 
 		string UploadFileToShelf(string authToken, string fileName);
 		void GetFileFromShelf(string authToken, string nameOnShelf, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RussianAddress ParseRussianAddress(string address);
 		RussianAddress ParseRussianAddress(string authToken, string address);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
 		InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		InvoiceInfo ParseInvoiceXmlFromFile(string fileName);
 		InvoiceInfo ParseInvoiceXmlFromFile(string authToken, string fileName);
 
@@ -362,52 +372,76 @@ namespace Diadoc.Api
 			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object receiptGenerationRequest);
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] torg12SellerTitleXmlContent);
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(string authToken, byte[] torg12SellerTitleXmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string fileName);
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] content);
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(string authToken, byte[] content);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string fileName);
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] torg12SellerTitleXmlContent);
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(string authToken, byte[] torg12SellerTitleXmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string fileName);
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] content);
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(string authToken, byte[] content);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string fileName);
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string fileName);
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent);
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string fileName);
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent);
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string fileName);
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent);
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string fileName);
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Utd);
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXmlFromFile(string authToken, string fileName, string documentVersion = DefaultDocumentVersions.Utd);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string fileName);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Ucd);
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string authToken, string fileName, string documentVersion = DefaultDocumentVersions.Ucd);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(string authToken, byte[] xmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string fileName);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string authToken, string fileName);
 
@@ -441,16 +475,22 @@ namespace Diadoc.Api
 			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object signatureRejectionGenerationRequest);
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
 		RevocationRequestInfo ParseRevocationRequestXml(string authToken, byte[] revocationRequestXmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RevocationRequestInfo ParseRevocationRequestXmlFromFile(string fileName);
 		RevocationRequestInfo ParseRevocationRequestXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		SignatureRejectionInfo ParseSignatureRejectionXml(byte[] signatureRejectionXmlContent);
 		SignatureRejectionInfo ParseSignatureRejectionXml(string authToken, byte[] signatureRejectionXmlContent);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		SignatureRejectionInfo ParseSignatureRejectionXmlFromFile(string fileName);
 		SignatureRejectionInfo ParseSignatureRejectionXmlFromFile(string authToken, string fileName);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByBoxId(string boxId);
 		Organization GetOrganizationByBoxId(string authToken, string boxId);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByInnKpp(string inn, string kpp);
 		Organization GetOrganizationByInnKpp(string authToken, string inn, string kpp);
 		IDocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId);

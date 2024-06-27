@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
+using Diadoc.Api.Constants;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Recognition;
 
@@ -19,6 +21,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<Recognized>(null, "GET", queryString);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public RussianAddress ParseRussianAddress(string address)
 		{
 			return ParseRussianAddress(null, address);

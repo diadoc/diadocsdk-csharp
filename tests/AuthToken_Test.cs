@@ -29,6 +29,27 @@ namespace Diadoc.Api.Tests
 				Assert.That(counterpartWithToken, Is.Not.Null, () => $"Method doesn't have overload with authToken: {clientType}.{methodInfo.Name}");
 			}
 		}
+
+		[Test]
+		[TestCase(typeof(IDiadocApi))]
+		[TestCase(typeof(DiadocHttpApi))]
+		[TestCase(typeof(IDocflowApi))]
+		[TestCase(typeof(DiadocHttpApi.DocflowHttpApi))]
+		[TestCase(typeof(IComDiadocApi))]
+		public void Every_api_method_without_auth_token_is_marked_obsolete(Type clientType)
+		{
+			foreach (var methodInfo in ApiMethodsHelper.GetAllApiMethodsForType(clientType, ExceptMethods))
+			{
+				var parameters = methodInfo.GetParameters();
+				if (parameters.Any(x => (x.Name == "token" || x.Name == "authToken") && x.ParameterType == typeof(string)))
+				{
+					continue;
+				}
+
+				var obsoleteAttribute = methodInfo.GetCustomAttributes(typeof(ObsoleteAttribute), true);
+				Assert.That(obsoleteAttribute, Is.Not.Null);
+			}
+		}
 		
 		private static readonly HashSet<string> ExceptMethods = new HashSet<string>
 		{

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Diadoc.Api.Constants;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Certificates;
@@ -46,6 +48,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<CertificateList>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false)
 		{
 			return GetOrganizationsByInnKpp(null, inn, kpp, includeRelations);
@@ -61,6 +64,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<OrganizationList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Organization GetOrganizationById(string orgId)
 		{
 			return GetOrganizationById(null, orgId);
@@ -71,6 +75,7 @@ namespace Diadoc.Api
 			return GetOrganization(authToken, string.Format("/GetOrganization?orgId={0}", orgId));
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Organization GetOrganizationByBoxId(string boxId)
 		{
 			return GetOrganizationByBoxId(null, boxId);
@@ -81,6 +86,7 @@ namespace Diadoc.Api
 			return GetOrganization(authToken, string.Format("/GetOrganization?boxId={0}", boxId));
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Organization GetOrganizationByFnsParticipantId(string fnsParticipantId)
 		{
 			return GetOrganizationByFnsParticipantId(null, fnsParticipantId);
@@ -91,6 +97,7 @@ namespace Diadoc.Api
 			return GetOrganization(authToken, string.Format("/GetOrganization?fnsParticipantId={0}", fnsParticipantId));
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Organization GetOrganizationByInnKpp(string inn, string kpp)
 		{
 			return GetOrganizationByInnKpp(null, inn, kpp);
@@ -111,6 +118,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<Organization>(authToken, "GET", queryString);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Box GetBox(string boxId)
 		{
 			return GetBox(null, boxId);
@@ -141,6 +149,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<OrganizationUsersList>(authToken, "GET", queryString);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public List<Organization> GetOrganizationsByInnList(GetOrganizationsByInnListRequest innList)
 		{
 			return GetOrganizationsByInnList(null, innList);

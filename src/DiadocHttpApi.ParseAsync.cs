@@ -1,4 +1,6 @@
+using System;
 using System.Threading.Tasks;
+using Diadoc.Api.Constants;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Invoicing;
 
@@ -6,6 +8,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<InvoiceInfo> ParseInvoiceXmlAsync(byte[] invoiceXmlContent)
 		{
 			return ParseInvoiceXmlAsync(null, invoiceXmlContent);
@@ -16,6 +19,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<InvoiceInfo>(authToken, "POST", "/ParseInvoiceXml", invoiceXmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(byte[] xmlContent)
 		{
 			return ParseTorg12SellerTitleXmlAsync(null, xmlContent);
@@ -26,6 +30,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Torg12SellerTitleInfo>(authToken, "POST", "/ParseTorg12SellerTitleXml", xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(byte[] xmlContent)
 		{
 			return ParseTorg12BuyerTitleXmlAsync(null, xmlContent);
@@ -36,6 +41,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Torg12BuyerTitleInfo>(authToken, "POST", "/ParseTorg12BuyerTitleXml", xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(byte[] xmlContent)
 		{
 			return ParseTovTorg551SellerTitleXmlAsync(null, xmlContent);
@@ -46,6 +52,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<TovTorgSellerTitleInfo>(authToken, "POST", $"/ParseTorg12SellerTitleXml?documentVersion={DefaultDocumentVersions.TovTorg551}", xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(byte[] xmlContent)
 		{
 			return ParseTovTorg551BuyerTitleXmlAsync(null, xmlContent);
@@ -56,6 +63,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<TovTorgBuyerTitleInfo>(authToken, "POST", $"/ParseTorg12BuyerTitleXml?documentVersion={DefaultDocumentVersions.TovTorg551}", xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(byte[] xmlContent)
 		{
 			return ParseAcceptanceCertificateSellerTitleXmlAsync(null, xmlContent);
@@ -66,6 +74,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<AcceptanceCertificateSellerTitleInfo>(authToken, "POST", "/ParseAcceptanceCertificateSellerTitleXml", xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(byte[] xmlContent)
 		{
 			return ParseAcceptanceCertificateBuyerTitleXmlAsync(null, xmlContent);
@@ -76,6 +85,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<AcceptanceCertificateBuyerTitleInfo>(authToken, "POST", "/ParseAcceptanceCertificateBuyerTitleXml", xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(byte[] xmlContent)
 		{
 			return ParseAcceptanceCertificate552SellerTitleXmlAsync(null, xmlContent);
@@ -86,6 +96,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<AcceptanceCertificate552SellerTitleInfo>(authToken, "POST", $"/ParseAcceptanceCertificateSellerTitleXml?documentVersion={DefaultDocumentVersions.AcceptanceCerttificate552}", xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(byte[] xmlContent)
 		{
 			return ParseAcceptanceCertificate552BuyerTitleXmlAsync(null, xmlContent);
@@ -96,6 +107,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<AcceptanceCertificate552BuyerTitleInfo>(authToken, "POST", $"/ParseAcceptanceCertificateBuyerTitleXml?documentVersion={DefaultDocumentVersions.AcceptanceCerttificate552}", xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
 		{
 			return ParseUniversalTransferDocumentSellerTitleXmlAsync(null, xmlContent, documentVersion);
@@ -108,6 +120,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<UniversalTransferDocumentSellerTitleInfo>(authToken, "POST", query.BuildPathAndQuery(), xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalTransferDocumentBuyerTitleXmlAsync(byte[] xmlContent)
 		{
 			return ParseUniversalTransferDocumentBuyerTitleXmlAsync(null, xmlContent);
@@ -118,6 +131,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<UniversalTransferDocumentBuyerTitleInfo>(authToken, "POST", "/ParseUniversalTransferDocumentBuyerTitleXml", xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			return ParseUniversalCorrectionDocumentSellerTitleXmlAsync(null, xmlContent, documentVersion);
@@ -130,6 +144,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<UniversalCorrectionDocumentSellerTitleInfo>(authToken, "POST", query.BuildPathAndQuery(), xmlContent);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(byte[] xmlContent)
 		{
 			return ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(null, xmlContent);
