@@ -2,6 +2,7 @@ import "Docflow/Attachment.proto";
 import "Content.proto";
 import "Timestamp.proto";
 import "SignatureVerificationResult.proto";
+import "Docflow/PowerOfAttorneyAttachmentStatus.proto";
 import "Docflow/SignaturePowerOfAttorney.proto";
 
 package Diadoc.Api.Proto.Docflow;
@@ -16,6 +17,7 @@ message SignatureV3
 	optional SignatureVerificationResult VerificationResult = 6;
 	optional Timestamp DeliveredAt = 7;
 	optional SignaturePowerOfAttorney PowerOfAttorney = 8;
+	optional PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus = 9;
 }
 
 message SignedAttachmentV3

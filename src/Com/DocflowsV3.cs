@@ -974,4 +974,22 @@ namespace Diadoc.Api.Proto.Docflow
 	public partial class PowerOfAttorneyStatusChange : SafeComObject, IPowerOfAttorneyStatusChange
 	{
 	}
+
+	[ComVisible(true)]
+	[Guid("323895BF-40C5-4ECE-BF30-7AA8FC1FD449")]
+	public interface IPowerOfAttorneyAttachmentStatus
+	{
+		Com.StatusName StatusName { get; }
+		string Comment { get; }
+	}
+	
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyAttachmentStatus")]
+	[Guid("AFD8A332-B774-48CE-941C-3349029B31AB")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyAttachmentStatus))]
+	public partial class PowerOfAttorneyAttachmentStatus : SafeComObject, IPowerOfAttorneyAttachmentStatus
+	{
+		Com.StatusName IPowerOfAttorneyAttachmentStatus.StatusName => (Com.StatusName) StatusName;
+	}
 }

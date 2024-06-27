@@ -12,6 +12,7 @@
 // Note: requires additional types generated from: Content.proto
 // Note: requires additional types generated from: Timestamp.proto
 // Note: requires additional types generated from: SignatureVerificationResult.proto
+// Note: requires additional types generated from: Docflow/PowerOfAttorneyAttachmentStatus.proto
 // Note: requires additional types generated from: Docflow/SignaturePowerOfAttorney.proto
 namespace Diadoc.Api.Proto.Docflow
 {
@@ -83,6 +84,15 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _PowerOfAttorney; }
       set { _PowerOfAttorney = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.PowerOfAttorneyAttachmentStatus _PowerOfAttorneyAttachmentStatus = null;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"PowerOfAttorneyAttachmentStatus", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus
+    {
+      get { return _PowerOfAttorneyAttachmentStatus; }
+      set { _PowerOfAttorneyAttachmentStatus = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

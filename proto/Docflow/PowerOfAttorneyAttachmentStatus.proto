@@ -1,0 +1,14 @@
+package Diadoc.Api.Proto.Docflow;
+
+message PowerOfAttorneyAttachmentStatus {
+	required StatusName StatusName = 1 [default = Unknown];
+	optional string Comment = 2;
+}
+
+enum StatusName
+{
+	Unknown = 0;
+	PowerOfAttorneyAttached = 1;
+	PowerOfAttorneyNotRequired = 2;
+	PowerOfAttorneyRequired = 3;
+}

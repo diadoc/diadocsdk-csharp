@@ -8,6 +8,7 @@ import "Content.proto";
 import "DocumentId.proto";
 import "LockMode.proto";
 import "TotalCountType.proto";
+import "Docflow/PowerOfAttorneyAttachmentStatus.proto";
 import "Documents/Document.proto";
 import "Events/CancellationInfo.proto";
 import "Events/ResolutionInfo.proto";
@@ -128,6 +129,7 @@ message Entity {
 	optional string ContentTypeId = 31;
 	optional PowerOfAttorneyInfo PowerOfAttorneyInfo = 32;
  	optional MoveDocumentInfo MoveDocumentInfo = 34;
+	optional Docflow.PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus = 35;  // only for EntityType.Signature
 }
 
 message EntityPatch {
