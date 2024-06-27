@@ -40,14 +40,17 @@ namespace Diadoc.Api.Proto.Docflow
     public enum StatusName
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PowerOfAttorneyAttached", Value=0)]
-      PowerOfAttorneyAttached = 0,
+      [global::ProtoBuf.ProtoEnum(Name=@"Unknown", Value=0)]
+      Unknown = 0,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PowerOfAttorneyNotRequired", Value=1)]
-      PowerOfAttorneyNotRequired = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"PowerOfAttorneyAttached", Value=1)]
+      PowerOfAttorneyAttached = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PowerOfAttorneyRequired", Value=2)]
-      PowerOfAttorneyRequired = 2
+      [global::ProtoBuf.ProtoEnum(Name=@"PowerOfAttorneyNotRequired", Value=2)]
+      PowerOfAttorneyNotRequired = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PowerOfAttorneyRequired", Value=3)]
+      PowerOfAttorneyRequired = 3
     }
   
 }
