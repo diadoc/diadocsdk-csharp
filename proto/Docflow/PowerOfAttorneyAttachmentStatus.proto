@@ -7,7 +7,7 @@ message PowerOfAttorneyAttachmentStatus {
 
 enum StatusName
 {
-    Unknown = 0;
+	Unknown = 0;
 	PowerOfAttorneyAttached = 1;
 	PowerOfAttorneyNotRequired = 2;
 	PowerOfAttorneyRequired = 3;
