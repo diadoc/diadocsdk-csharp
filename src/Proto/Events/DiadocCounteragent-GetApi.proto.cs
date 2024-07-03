@@ -11,6 +11,7 @@
 // Note: requires additional types generated from: Counteragent.proto
 // Note: requires additional types generated from: TotalCountType.proto
 // Note: requires additional types generated from: DocumentId.proto
+// Note: requires additional types generated from: Events/CounteragentEventType.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BoxCounteragentEventList")]
@@ -76,6 +77,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _IndexKey; }
       set { _IndexKey = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CounteragentEventType> _EventTypes = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CounteragentEventType>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"EventTypes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CounteragentEventType> EventTypes
+    {
+      get { return _EventTypes; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
