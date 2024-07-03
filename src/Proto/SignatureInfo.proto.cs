@@ -10,6 +10,7 @@
 // Generated from: SignatureInfo.proto
 // Note: requires additional types generated from: SignatureVerificationResult.proto
 // Note: requires additional types generated from: Timestamp.proto
+// Note: requires additional types generated from: Certificates/CertificateInfoV2.proto
 namespace Diadoc.Api.Proto
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SignatureInfo")]
@@ -145,6 +146,15 @@ namespace Diadoc.Api.Proto
     {
       get { return _Email; }
       set { _Email = value; }
+    }
+
+    private Diadoc.Api.Proto.Certificates.CertificateSubjectType _CertificateSubjectType = Diadoc.Api.Proto.Certificates.CertificateSubjectType.UnknownCertificateSubjectType;
+    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"CertificateSubjectType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Certificates.CertificateSubjectType.UnknownCertificateSubjectType)]
+    public Diadoc.Api.Proto.Certificates.CertificateSubjectType CertificateSubjectType
+    {
+      get { return _CertificateSubjectType; }
+      set { _CertificateSubjectType = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
