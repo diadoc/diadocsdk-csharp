@@ -591,7 +591,8 @@ namespace Diadoc.Api.Com
 		CanNotBeValidated = 1,
 		IsValid = 2,
 		IsNotValid = 3,
-		ValidationError = 4
+		ValidationError = 4,
+		IsNotAttached = 5
 	}
 
 	[ComVisible(true)]
