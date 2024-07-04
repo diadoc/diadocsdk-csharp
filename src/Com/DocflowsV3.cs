@@ -24,6 +24,7 @@ namespace Diadoc.Api.Proto.Docflow
 		SignatureVerificationResult VerificationResult { get; }
 		Timestamp DeliveredAt { get; }
 		SignaturePowerOfAttorney PowerOfAttorney { get; set; }
+		PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus { get; set; }
 	}
 
 	[ComVisible(true)]

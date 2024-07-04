@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
+using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.OuterDocflows;
 using MessageType = Diadoc.Api.Com.MessageType;
@@ -105,6 +106,7 @@ namespace Diadoc.Api.Proto.Events
 		RevocationRequestInfo RevocationRequestInfo { get; }
 		PowerOfAttorneyInfo PowerOfAttorneyInfo { get; }
 		MoveDocumentInfo MoveDocumentInfo { get; }
+		PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus { get; }
 	}
 
 	[ComVisible(true)]
