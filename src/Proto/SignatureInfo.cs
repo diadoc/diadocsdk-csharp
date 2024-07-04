@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Diadoc.Api.Proto.Certificates;
 
 namespace Diadoc.Api.Proto
 {
@@ -22,6 +23,7 @@ namespace Diadoc.Api.Proto
 		string Surname { get; set; }
 		string Snils { get; set; }
 		string Email { get; set; }
+		Com.CertificateSubjectType CertificateSubjectType { get; }
 	}
 
 	[ComVisible(true)]
@@ -40,5 +42,7 @@ namespace Diadoc.Api.Proto
 		{
 			get { return new DateTime(SignatureVerificationTime.Ticks, DateTimeKind.Utc); }
 		}
+
+		Com.CertificateSubjectType ISignatureInfo.CertificateSubjectType => (Com.CertificateSubjectType) CertificateSubjectType;
 	}
 }
