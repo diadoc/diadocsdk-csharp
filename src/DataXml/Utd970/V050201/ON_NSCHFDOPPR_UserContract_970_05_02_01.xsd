@@ -6,13 +6,13 @@
         <xs:element minOccurs="0" name="MetaData">
           <xs:complexType>
             <xs:sequence>
-              <xs:element default="0" name="IncludeIdentificationNumbers">
+              <xs:element maxOccurs="unbounded" default="0" name="IncludeIdentificationNumbers">
                 <xs:annotation>
-                  <xs:documentation>Тип товаров, подлежащих маркировке (используется для корректного заполнения данных о маркировке в ИдФайл)</xs:documentation>
+                  <xs:documentation>Типы товаров, подлежащих маркировке (используется для корректного заполнения данных о маркировке в ИдФайл)</xs:documentation>
                   <xs:documentation>0 - товары, подлежащие маркировке (значение по умолчанию)</xs:documentation>
                   <xs:documentation>1 - алкогольная продукция, подлежащая маркировке</xs:documentation>
                   <xs:documentation>2 - табачная продукция, сырье, никотинсодержащая продукция и никотиновое сырье</xs:documentation>
-                  <xs:documentation>На основании переданного типа будет сформирован соответствующий признак в ИдФайл о наличии в документе товаров, подлежащих маркировке</xs:documentation>
+                  <xs:documentation>На основании переданных типов будут сформированы соответствующие признаки в ИдФайл о наличии в документе товаров, подлежащих маркировке</xs:documentation>
                 </xs:annotation>
                 <xs:simpleType>
                   <xs:restriction base="xs:integer">
@@ -2280,6 +2280,41 @@
             <xs:documentation>СвИП - СвЮЛУч - СвФЛУч - СвИнНеУч</xs:documentation>
           </xs:annotation>
         </xs:attribute>
+        <xs:attribute name="StatusId">
+          <xs:annotation>
+            <xs:documentation>ИдСтат - Идентификация статуса</xs:documentation>
+            <xs:documentation>При значении 'LegalEntity' в конечный файл значение 'ИО'</xs:documentation>
+            <xs:documentation>При значении 'PhysicalPerson' в конечный файл значение 'ИГ'</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="LegalEntity" />
+              <xs:enumeration value="PhysicalPerson" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="LegalEntityId" type="string255">
+          <xs:annotation>
+            <xs:documentation>Идентиф - Идентификатор иностранной организации</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Country">
+          <xs:annotation>
+            <xs:documentation>КодСтр - Код страны</xs:documentation>
+            <xs:documentation>НаимСтран будет заполнен автоматически</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:length value="3" />
+              <xs:pattern value="[0-9]{3}" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="OrganizationOrPersonInfo" type="string255">
+          <xs:annotation>
+            <xs:documentation>ИныеСвед - Иные сведения, идентифицирующие ФЛ или ЮЛ</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -2365,11 +2400,6 @@
         <xs:documentation>СвГосРегИп - Реквизиты свидетельства о государственной регистрации ИП</xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="OrganizationOrPersonInfo" type="string255">
-      <xs:annotation>
-        <xs:documentation>ИныеСвед - Иные сведения, идентифицирующие ФЛ или ЮЛ</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
     <xs:attribute name="PersonStatusId">
       <xs:annotation>
         <xs:documentation>
@@ -2385,36 +2415,6 @@
           <xs:enumeration value="1" />
         </xs:restriction>
       </xs:simpleType>
-    </xs:attribute>
-    <xs:attribute name="StatusId">
-      <xs:annotation>
-        <xs:documentation>ИдСтат - Идентификация статуса</xs:documentation>
-        <xs:documentation>При значении 'LegalEntity' в конечный файл значение 'ИО'</xs:documentation>
-        <xs:documentation>При значении 'PhysicalPerson' в конечный файл значение 'ИГ'</xs:documentation>
-      </xs:annotation>
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="LegalEntity" />
-          <xs:enumeration value="PhysicalPerson" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-    <xs:attribute name="Country">
-      <xs:annotation>
-        <xs:documentation>КодСтр - Код страны</xs:documentation>
-        <xs:documentation>НаимСтран будет заполнен автоматически</xs:documentation>
-      </xs:annotation>
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:length value="3" />
-          <xs:pattern value="[0-9]{3}" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-    <xs:attribute name="LegalEntityId" type="string255">
-      <xs:annotation>
-        <xs:documentation>Идентиф - Идентификатор иностранной организации</xs:documentation>
-      </xs:annotation>
     </xs:attribute>
     <xs:attribute name="OtherContactInfo" type="string255">
       <xs:annotation>
