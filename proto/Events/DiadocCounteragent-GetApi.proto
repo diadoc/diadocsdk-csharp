@@ -5,6 +5,7 @@
 import "Counteragent.proto";
 import "TotalCountType.proto";
 import "DocumentId.proto";
+import "Events/CounteragentEventType.proto";
 
 package Diadoc.Api.Proto.Events;
 
@@ -18,6 +19,7 @@ message BoxCounteragentEvent {
 	required string EventId = 1;
 	optional CounteragentInfo Counteragent = 2;
 	optional string IndexKey = 3;
+	repeated CounteragentEventType EventTypes = 4;
 }
 
 message CounteragentInfo {
