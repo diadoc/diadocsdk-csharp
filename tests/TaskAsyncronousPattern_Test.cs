@@ -101,12 +101,14 @@ namespace Diadoc.Api.Tests
 				typeof(DocflowApi),
 				typeof(DiadocHttpApi.DocflowHttpApi)
 			};
-			return apiTypes.SelectMany(GetAllApiMethodsForType);
+			return apiTypes.SelectMany(type => ApiMethodsHelper.GetAllApiMethodsForType(type, ExceptMethods));
 		}
 
 		private static IEnumerable<MethodInfo> GetAllDiadocHttpApiMethods()
 		{
-			return GetAllApiMethodsForType(typeof(DiadocHttpApi)).Where(x => !x.Name.StartsWith("WaitTaskResult"));
+			return ApiMethodsHelper
+				.GetAllApiMethodsForType(typeof(DiadocHttpApi), ExceptMethods)
+				.Where(x => !x.Name.StartsWith("WaitTaskResult"));
 		}
 
 		private static readonly string[] ExceptMethods =
@@ -115,17 +117,8 @@ namespace Diadoc.Api.Tests
 			"EnableSystemProxyUsage",
 			"DisableSystemProxyUsage",
 			"SetProxyCredentials",
-			"SetSolutionInfo"
+			"SetSolutionInfo",
+			"UseOidc"
 		};
-
-		private static readonly string[] ObjectMethods = typeof(object).GetMethods().Select(x => x.Name).ToArray();
-
-		private static IEnumerable<MethodInfo> GetAllApiMethodsForType(Type type)
-		{
-			return type.GetMethods()
-				.Where(x => !x.Name.StartsWith("get_") && !x.Name.StartsWith("set_"))
-				.Where(x => !ExceptMethods.Contains(x.Name))
-				.Where(x => !ObjectMethods.Contains(x.Name));
-		}
 	}
 }
