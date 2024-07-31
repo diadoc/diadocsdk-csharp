@@ -137,6 +137,22 @@ namespace Diadoc.Api.Proto.Certificates
       get { return _SubjectType; }
       set { _SubjectType = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Certificates.CertificateUsages> _Usages = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Certificates.CertificateUsages>();
+    [global::ProtoBuf.ProtoMember(15, Name=@"Usages", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Certificates.CertificateUsages> Usages
+    {
+      get { return _Usages; }
+    }
+  
+
+    private Diadoc.Api.Proto.Certificates.DssCertificateType _DssType = Diadoc.Api.Proto.Certificates.DssCertificateType.UnknownDssType;
+    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"DssType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Certificates.DssCertificateType.UnknownDssType)]
+    public Diadoc.Api.Proto.Certificates.DssCertificateType DssType
+    {
+      get { return _DssType; }
+      set { _DssType = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -174,6 +190,43 @@ namespace Diadoc.Api.Proto.Certificates
             
       [global::ProtoBuf.ProtoEnum(Name=@"PhysicalPerson", Value=3)]
       PhysicalPerson = 3
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"DssCertificateType")]
+    public enum DssCertificateType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownDssType", Value=0)]
+      UnknownDssType = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MyDss", Value=1)]
+      MyDss = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"KSignServer", Value=2)]
+      KSignServer = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"KSignRutoken", Value=3)]
+      KSignRutoken = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"KSignMobile", Value=4)]
+      KSignMobile = 4
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"CertificateUsages")]
+    public enum CertificateUsages
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownUsages", Value=0)]
+      UnknownUsages = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CloudUsages", Value=1)]
+      CloudUsages = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TokenUsages", Value=2)]
+      TokenUsages = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"DssUsages", Value=3)]
+      DssUsages = 3
     }
   
 }
