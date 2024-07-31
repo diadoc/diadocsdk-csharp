@@ -15,6 +15,8 @@ message CertificateInfoV2 {
 	optional string UserShortName = 12;
 	optional bool IsDefault = 13;
 	optional CertificateSubjectType SubjectType = 14;
+	repeated CertificateUsage Usages = 15;
+	optional DssCertificateType DssType = 16;
 }
 
 enum CertificateType {
@@ -25,8 +27,23 @@ enum CertificateType {
 }
 
 enum CertificateSubjectType {
-    UnknownCertificateSubjectType = 0;
-    LegalEntity = 1;
-    IndividualEntity = 2;
-    PhysicalPerson = 3;
+	UnknownCertificateSubjectType = 0;
+	LegalEntity = 1;
+	IndividualEntity = 2;
+	PhysicalPerson = 3;
+}
+
+enum DssCertificateType {
+	UnknownDssType = 0;
+	MyDss = 1;
+	KSignServer = 2;
+	KSignRutoken = 3;
+	KSignMobile = 4;
+}
+
+enum CertificateUsage {
+	UnknownUsage = 0;
+	KonturCertificateUsage = 1;
+	TokenUsage = 2;
+	DssUsage = 3;
 }
