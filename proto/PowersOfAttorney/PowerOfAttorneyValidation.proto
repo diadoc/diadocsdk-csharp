@@ -7,7 +7,9 @@ message PowerOfAttorneyValidationStatus {
 	optional Severity Severity = 1 [default = UnknownSeverity];
 	optional PowerOfAttorneyValidationStatusNamedId StatusNamedId = 2 [default = UnknownStatus];
 	optional string StatusText = 3;
-	repeated PowerOfAttorneyValidationError Errors = 4;
+	repeated PowerOfAttorneyValidationError Errors = 4 [deprecated = true];
+	optional ValidationProtocol ValidationProtocol = 5;
+	optional PowerOfAttorneyValidationError OperationError = 6;
 }
 
 enum PowerOfAttorneyValidationStatusNamedId {
@@ -17,6 +19,7 @@ enum PowerOfAttorneyValidationStatusNamedId {
 	IsNotValid = 3;
 	ValidationError = 4;
 	IsNotAttached = 5;
+	HasWarnings = 6;
 }
 
 message PowerOfAttorneyValidationError {
@@ -36,4 +39,14 @@ message ConfidantCertificateToPrevalidate {
 
 message PowerOfAttorneyPrevalidateResult {
     required PowerOfAttorneyValidationStatus PrevalidateStatus = 1;
+}
+
+message ValidationProtocol {
+	repeated ValidationCheckResult CheckResults = 1;
+}
+
+message ValidationCheckResult {
+	required string Status = 1;
+	required string Name = 2;
+	optional PowerOfAttorneyValidationError Error = 3;
 }
