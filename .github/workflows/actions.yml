@@ -1,0 +1,75 @@
+﻿on:
+  push:
+    paths-ignore:
+      - "**/*.md"
+      - "**/*.yml"
+      
+jobs:
+  build_and_test:
+    runs-on: windows-2019
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
+      - name: Setup dotnet (5.0.x)
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 5.0.x
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Run the build script
+        uses: cake-build/cake-action@v2
+        env:
+          diadoc_signing_secret: ${{ secrets.DIADOC_SIGNING_SECRET }}
+          github_ref_type: ${{ github.ref_type }}
+        with:
+          target: Default
+          arguments: |
+            configuration: Release
+          verbosity: Diagnostic
+          cake-version: 1.3.0
+          
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: packages
+          path: |
+            bin/Release/*.nupkg
+            bin/Release/*.zip
+          if-no-files-found: error
+
+  publish:
+    runs-on: ubuntu-20.04
+    needs: build_and_test
+    if: startsWith(github.event.ref, 'refs/tags/version')
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.x
+      
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: packages
+
+      - name: Create github release
+        uses: softprops/action-gh-release@v1
+        with:
+          fail_on_unmatched_files: true
+          draft: false
+          prerelease: false
+          files: |
+            **/*.nupkg
+            **/*.zip
+
+      - name: Push NuGet package
+        run: |
+          dotnet nuget push "**/*.nupkg" --source ${{ secrets.NUGET_SOURCE }} --api-key ${{ secrets.NUGET_KEY }}

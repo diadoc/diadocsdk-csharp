@@ -1,10 +1,10 @@
 #tool "nuget:?package=ILMerge&version=2.12.803"
-#addin "nuget:?package=Cake.Git&version=0.21.0"
+#addin "nuget:?package=Cake.Git&version=1.0.0"
 #tool "nuget:?package=ILRepack.MSBuild.Task&version=2.0.13"
 #tool "nuget:?package=protobuf-net&version=1.0.0.280"
 #tool "nuget:?package=secure-file&version=1.0.31"
 #tool "nuget:?package=Brutal.Dev.StrongNameSigner&version=2.7.1"
-#addin "nuget:?package=Cake.StrongNameSigner&version=0.1.0"
+#addin "nuget:?package=Cake.StrongNameSigner&version=0.2.0"
 using Cake.Common.Diagnostics;
 using Cake.Git;
 using System.Text.RegularExpressions;
@@ -21,7 +21,6 @@ var binariesNet45Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net45-bina
 var binariesNet461Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net461-binaries.zip");
 var binariesNetStandard2Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-netstandard2.0-binaries.zip");
 var needSigning = false;
-
 var packageVersion = "";
 
 //////////////////////////////////////////////////////////////////////
@@ -30,7 +29,7 @@ var packageVersion = "";
 
 Setup(context =>
 {
-	if (BuildSystem.IsRunningOnAppVeyor && AppVeyor.Environment.PullRequest.IsPullRequest)
+	if (BuildSystem.IsRunningOnGitHubActions)
 	{
 		needSigning = false;
 		return;
@@ -72,7 +71,7 @@ Task("GenerateVersionInfo")
 		var tagVersion = GetVersionFromTag();
 		var clearVersion = ClearVersionTag(tagVersion) ?? "1.0.0";
 		var semanticVersionForNuget = GetSemanticVersionV1(clearVersion);
-		var semanticVersion = GetSemanticVersionV2(clearVersion) + dbgSuffix;
+		var semanticVersion = semanticVersionForNuget + dbgSuffix;
 
 		var versionParts = clearVersion.Split('.');
 		var majorVersion = 1;
@@ -271,21 +270,6 @@ Task("Nuget-Pack")
 		NuGetPack("./nuspec/DiadocApi.nuspec", nuGetPackSettings);
 	});
 
-Task("PublishArtifactsToAppVeyor")
-	.IsDependentOn("Nuget-Pack")
-	.WithCriteria(x => BuildSystem.IsRunningOnAppVeyor)
-	.Does(() =>
-	{
-		AppVeyor.UploadArtifact(binariesNet35Zip);
-		AppVeyor.UploadArtifact(binariesNet45Zip);
-		AppVeyor.UploadArtifact(binariesNet461Zip);
-		AppVeyor.UploadArtifact(binariesNetStandard2Zip);
-		foreach (var upload in GetFiles(buildDir + "/*.nupkg"))
-		{
-			AppVeyor.UploadArtifact(upload​);
-		}
-	});
-
 Task("Test")
 	.IsDependentOn("Build")
 	.Does(() =>
@@ -301,9 +285,6 @@ Task("Test")
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
-Task("Default")
-	.IsDependentOn("AppVeyor");
-
 Task("FullBuild")
 	.IsDependentOn("GenerateVersionInfo")
 	.IsDependentOn("Build");
@@ -313,13 +294,12 @@ Task("Rebuild")
 	.IsDependentOn("GenerateVersionInfo")
 	.IsDependentOn("Build");
 
-Task("Appveyor")
+Task("Default")
 	.IsDependentOn("PrepareBinaries")
 	.IsDependentOn("Build")
 	.IsDependentOn("Test")
 	.IsDependentOn("Repack")
-	.IsDependentOn("Nuget-Pack")
-	.IsDependentOn("PublishArtifactsToAppVeyor");
+	.IsDependentOn("Nuget-Pack");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
@@ -335,12 +315,12 @@ public string GetVersionFromTag()
 {
 	var lastestTag = "";
 
-	if (BuildSystem.IsRunningOnAppVeyor)
+	if (BuildSystem.GitHubActions.IsRunningOnGitHubActions)
 	{
-		var tag = BuildSystem.AppVeyor.Environment.Repository.Tag;
-		if (tag.IsTag)
+		var workflow = BuildSystem.GitHubActions.Environment.Workflow;
+		if(EnvironmentVariable("github_ref_type") == "tag")
 		{
-			return tag.Name;
+			return workflow.Ref.Replace("refs/tags/", "");
 		}
 	}
 
@@ -361,47 +341,19 @@ public string GetVersionFromTag()
 
 public string GetSemanticVersionV1(string clearVersion)
 {
-	if (BuildSystem.IsRunningOnAppVeyor)
+	if (BuildSystem.GitHubActions.IsRunningOnGitHubActions)
 	{
-		var tag = BuildSystem.AppVeyor.Environment.Repository.Tag;
-		if (tag.IsTag)
+		var workflow = BuildSystem.GitHubActions.Environment.Workflow;
+		if(EnvironmentVariable("github_ref_type") == "tag")
 		{
 			return clearVersion;
 		}
-
-		var buildNumber = BuildSystem.AppVeyor.Environment.Build.Number;
+		
+		var buildNumber = workflow.RunNumber;
 		return $"{clearVersion}-CI{buildNumber}";
 	}
 
 	return $"{clearVersion}-dev";
-}
-
-public string GetSemanticVersionV2(string clearVersion)
-{
-	if (BuildSystem.IsRunningOnAppVeyor)
-	{
-		var tag = BuildSystem.AppVeyor.Environment.Repository.Tag;
-		if (tag.IsTag)
-		{
-			return clearVersion;
-		}
-
-		return GetAppVeyorBuildVersion(clearVersion);
-	}
-	return $"{clearVersion}-dev";
-}
-
-public string GetAppVeyorBuildVersion(string clearVersion)
-{
-	if (BuildSystem.IsRunningOnAppVeyor)
-	{
-		var buildNumber = BuildSystem.AppVeyor.Environment.Build.Number;
-		clearVersion += $"-CI.{buildNumber}";
-		return (AppVeyor.Environment.PullRequest.IsPullRequest
-			? clearVersion += $"-PR.{AppVeyor.Environment.PullRequest.Number}"
-			: clearVersion += "-" + AppVeyor.Environment.Repository.Branch);
-	}
-	return clearVersion;
 }
 
 public static string ClearVersionTag(string lastestTag)
