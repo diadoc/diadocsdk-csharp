@@ -29,7 +29,7 @@ var packageVersion = "";
 
 Setup(context =>
 {
-	if (BuildSystem.IsRunningOnGitHubActions)
+	if (BuildSystem.IsRunningOnGitHubActions && BuildSystem.GitHubActions.Environment.PullRequest.IsPullRequest)
 	{
 		needSigning = false;
 		return;

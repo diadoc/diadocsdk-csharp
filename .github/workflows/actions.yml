@@ -42,7 +42,7 @@ jobs:
           if-no-files-found: error
 
   publish:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: build_and_test
     if: startsWith(github.event.ref, 'refs/tags/version')
     steps:
@@ -54,7 +54,7 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.x
-      
+
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
