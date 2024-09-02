@@ -46,7 +46,7 @@ message ValidationProtocol {
 }
 
 message ValidationCheckResult {
-	required PowerOfAttorneyValidationCheckStatus Status = 1;
+	optional PowerOfAttorneyValidationCheckStatus Status = 1 [default = UnknownCheckStatus];
 	required string Name = 2;
 	optional PowerOfAttorneyValidationError Error = 3;
 }

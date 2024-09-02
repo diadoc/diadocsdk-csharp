@@ -182,8 +182,10 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
   {
     public ValidationCheckResult() {}
     
-    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationCheckStatus _Status;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationCheckStatus _Status = Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationCheckStatus.UnknownCheckStatus;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationCheckStatus.UnknownCheckStatus)]
     public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationCheckStatus Status
     {
       get { return _Status; }
