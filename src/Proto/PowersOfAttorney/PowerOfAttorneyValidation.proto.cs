@@ -182,9 +182,9 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
   {
     public ValidationCheckResult() {}
     
-    private string _Status;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string Status
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationCheckStatus _Status;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationCheckStatus Status
     {
       get { return _Status; }
       set { _Status = value; }
@@ -234,6 +234,23 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
             
       [global::ProtoBuf.ProtoEnum(Name=@"HasWarnings", Value=6)]
       HasWarnings = 6
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyValidationCheckStatus")]
+    public enum PowerOfAttorneyValidationCheckStatus
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownCheckStatus", Value=0)]
+      UnknownCheckStatus = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Ok", Value=1)]
+      Ok = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Warning", Value=2)]
+      Warning = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Error", Value=3)]
+      Error = 3
     }
   
 }

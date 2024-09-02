@@ -46,7 +46,14 @@ message ValidationProtocol {
 }
 
 message ValidationCheckResult {
-	required string Status = 1;
+	required PowerOfAttorneyValidationCheckStatus Status = 1;
 	required string Name = 2;
 	optional PowerOfAttorneyValidationError Error = 3;
+}
+
+enum PowerOfAttorneyValidationCheckStatus {
+	UnknownCheckStatus = 0;  //reserved for backward compatibility
+	Ok = 1;
+	Warning = 2;
+	Error = 3;
 }
