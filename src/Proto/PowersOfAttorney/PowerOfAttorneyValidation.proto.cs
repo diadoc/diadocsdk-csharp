@@ -45,12 +45,30 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       set { _StatusText = value; }
     }
     private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationError> _Errors = new global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationError>();
-    [global::ProtoBuf.ProtoMember(4, Name=@"Errors", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.Obsolete, global::ProtoBuf.ProtoMember(4, Name=@"Errors", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationError> Errors
     {
       get { return _Errors; }
     }
   
+
+    private Diadoc.Api.Proto.PowersOfAttorney.ValidationProtocol _ValidationProtocol = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ValidationProtocol", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.ValidationProtocol ValidationProtocol
+    {
+      get { return _ValidationProtocol; }
+      set { _ValidationProtocol = value; }
+    }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationError _OperationError = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"OperationError", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationError OperationError
+    {
+      get { return _OperationError; }
+      set { _OperationError = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -142,6 +160,58 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ValidationProtocol")]
+  public partial class ValidationProtocol : global::ProtoBuf.IExtensible
+  {
+    public ValidationProtocol() {}
+    
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.ValidationCheckResult> _CheckResults = new global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.ValidationCheckResult>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"CheckResults", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.ValidationCheckResult> CheckResults
+    {
+      get { return _CheckResults; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ValidationCheckResult")]
+  public partial class ValidationCheckResult : global::ProtoBuf.IExtensible
+  {
+    public ValidationCheckResult() {}
+    
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationCheckStatus _Status = Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationCheckStatus.UnknownCheckStatus;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationCheckStatus.UnknownCheckStatus)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationCheckStatus Status
+    {
+      get { return _Status; }
+      set { _Status = value; }
+    }
+    private string _Name;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Name
+    {
+      get { return _Name; }
+      set { _Name = value; }
+    }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationError _Error = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Error", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyValidationError Error
+    {
+      get { return _Error; }
+      set { _Error = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyValidationStatusNamedId")]
     public enum PowerOfAttorneyValidationStatusNamedId
     {
@@ -162,7 +232,27 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       ValidationError = 4,
             
       [global::ProtoBuf.ProtoEnum(Name=@"IsNotAttached", Value=5)]
-      IsNotAttached = 5
+      IsNotAttached = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"HasWarnings", Value=6)]
+      HasWarnings = 6
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyValidationCheckStatus")]
+    public enum PowerOfAttorneyValidationCheckStatus
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownCheckStatus", Value=0)]
+      UnknownCheckStatus = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Ok", Value=1)]
+      Ok = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Warning", Value=2)]
+      Warning = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Error", Value=3)]
+      Error = 3
     }
   
 }

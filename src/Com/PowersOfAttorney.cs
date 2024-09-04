@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Diadoc.Api.Com;
 
@@ -242,13 +243,36 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	}
 
 	[ComVisible(true)]
+	[Guid("BAA0604F-7111-47E5-880C-81B6FD6683CD")]
+	public interface IValidationProtocol
+	{
+		ReadonlyList CheckResultsList { get; }
+	}
+	
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.ValidationProtocol")]
+	[Guid("ECE41E66-4BFC-4C96-BB3A-AF7D9734927B")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IValidationProtocol))]
+	public partial class ValidationProtocol : SafeComObject, IValidationProtocol
+	{
+		public ReadonlyList CheckResultsList
+		{
+			get { return new ReadonlyList(CheckResults); }
+		}
+	}
+
+	[ComVisible(true)]
 	[Guid("26B870BC-D36B-4CA2-8C5B-903DE398CD28")]
 	public interface IPowerOfAttorneyValidationStatus
 	{
 		Com.Severity Severity { get; }
 		Com.PowerOfAttorneyValidationStatusNamedId StatusNamedId { get; }
 		string StatusText { get; }
+		[Obsolete]
 		ReadonlyList ErrorsList { get; }
+		ValidationProtocol ValidationProtocol { get; }
+		PowerOfAttorneyValidationError OperationError { get; }
 	}
 
 	[ComVisible(true)]
@@ -289,6 +313,29 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorneyValidationError))]
 	public partial class PowerOfAttorneyValidationError : SafeComObject, IPowerOfAttorneyValidationError
 	{
+	}
+	
+	[ComVisible(true)]
+	[Guid("AC2185A0-5D6D-4371-A487-A75EC0627897")]
+	public interface IValidationCheckResult
+	{
+		Com.PowerOfAttorneyValidationCheckStatus Status { get; }
+		string Name { get; }
+		
+		PowerOfAttorneyValidationError Error { get; }
+	}
+	
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.ValidationCheckResult")]
+	[Guid("04838F25-EFC4-4ACD-9789-731F07CAA1C9")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IValidationCheckResult))]
+	public partial class ValidationCheckResult : SafeComObject, IValidationCheckResult
+	{
+		Com.PowerOfAttorneyValidationCheckStatus IValidationCheckResult.Status
+		{
+			get { return (Com.PowerOfAttorneyValidationCheckStatus) Status; }
+		}
 	}
 
 	[ComVisible(true)]
@@ -605,5 +652,17 @@ namespace Diadoc.Api.Com
 		Metadata = 1,
 		File = 2,
 		DocumentContent = 3
+	}
+
+	[ComVisible(true)]
+	[Guid("097F4C55-AB9A-4571-8A8E-3F1B0022CBF9")]
+	//NOTE: Это хотели, чтобы можно было использовать XML-сериализацию для классов
+	[XmlType(TypeName = "PowerOfAttorneyValidationCheckStatus", Namespace = "https://diadoc-api.kontur.ru")]
+	public enum PowerOfAttorneyValidationCheckStatus
+	{
+		UnknownCheckStatus = 0,
+		Ok = 1,
+		Warning = 2,
+		Error = 3
 	}
 }
