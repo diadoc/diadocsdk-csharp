@@ -52,6 +52,11 @@ namespace Diadoc.Api
 		/// Информация об интеграционном решении технологического партнера.
 		/// </summary>
 		[CanBeNull] public string SolutionInfo { get; set; }
+		
+		/// <summary>
+		/// Использовать аутентификацию по протоколу OpenID Connect
+		/// </summary>
+		public bool UseOidc { get; set; }
 
 		[NotNull]
 		protected byte[] PerformHttpRequest(
@@ -148,18 +153,32 @@ namespace Diadoc.Api
 			[CanBeNull] HttpRequestBody body)
 		{
 			var request = new HttpRequest(method, queryString, body, accept: httpSerializer.ResponseContentType);
+			request.AddHeader("Authorization", GetAuthorizationHeaderValue(token));
+			if (!string.IsNullOrEmpty(SolutionInfo))
+			{
+				request.AddHeader("X-Solution-Info", SolutionInfo);
+			}
+			return request;
+		}
+
+		private string GetAuthorizationHeaderValue([CanBeNull] string token)
+		{
+			if (UseOidc)
+			{
+				if (string.IsNullOrEmpty(token))
+				{
+					throw new ArgumentNullException(nameof(token), "access_token is required for OpenID Connect authentication");
+				}
+				return $"Bearer {token}";
+			}
 			var sb = new StringBuilder("DiadocAuth ");
 			sb.AppendFormat("ddauth_api_client_id={0}", apiClientId);
 			if (!string.IsNullOrEmpty(token))
 			{
 				sb.AppendFormat(",ddauth_token={0}", token);
 			}
-			request.AddHeader("Authorization", sb.ToString());
-			if (!string.IsNullOrEmpty(SolutionInfo))
-			{
-				request.AddHeader("X-Solution-Info", SolutionInfo);
-			}
-			return request;
+
+			return sb.ToString();
 		}
 
 		[NotNull]
