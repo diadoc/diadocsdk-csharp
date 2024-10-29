@@ -1755,6 +1755,7 @@ namespace Diadoc.Api.Proto.Events
 		string RouteId { get; set; }
 		string Comment { get; set; }
 		ReadonlyList LabelsList { get; }
+		bool IsAuthorFullyNotified { get; }
 		void AddLabel(string label);
 	}
 
