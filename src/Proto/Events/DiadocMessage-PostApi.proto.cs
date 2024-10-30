@@ -2148,8 +2148,10 @@ namespace Diadoc.Api.Proto.Events
       get { return _Labels; }
     }
   
-    private bool _IsAuthorFullyNotified;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"IsAuthorFullyNotified", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private bool _IsAuthorFullyNotified = (bool)false;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"IsAuthorFullyNotified", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
     public bool IsAuthorFullyNotified
     {
       get { return _IsAuthorFullyNotified; }
