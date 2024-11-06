@@ -3,6 +3,8 @@ import "Certificates/CertificateInfoV2.proto";
 
 package Diadoc.Api.Proto.Certificates;
 
+option java_outer_classname = "CertificateVerificationRequestProtos";
+
 message CertificateVerificationRequest {
     required bytes CertificateContent = 1;
 }

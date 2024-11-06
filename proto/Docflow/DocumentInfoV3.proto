@@ -10,6 +10,8 @@ import "CustomDataItem.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "DocumentInfoV3Protos";
+
 message DocumentInfoV3
 {
 	required FullVersion FullVersion = 1;

@@ -10,6 +10,8 @@ import "Docflow/DocumentWithDocflow.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "DocflowApiProtos";
+
 message GetDocflowBatchRequest
 {
 	repeated GetDocflowRequest Requests = 1;

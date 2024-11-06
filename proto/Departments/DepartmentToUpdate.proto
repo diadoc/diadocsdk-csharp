@@ -2,7 +2,9 @@ import "Address.proto";
 
 package Diadoc.Api.Proto.Departments;
 
-message DepartmentToUpdate 
+option java_outer_classname = "DepartmentToUpdateProtos";
+
+message DepartmentToUpdate
 {
 	optional ParentDepartmentPatch ParentDepartment=1;
 	optional DepartmentNamingPatch DepartmentNaming=2;

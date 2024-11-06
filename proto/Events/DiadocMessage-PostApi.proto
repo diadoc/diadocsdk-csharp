@@ -18,6 +18,8 @@ import "Events/PowerOfAttorneyToPost.proto";
 
 package Diadoc.Api.Proto.Events;
 
+option java_outer_classname = "DiadocMessage_PostApiProtos";
+
 message MessageToPost {
 	required string FromBoxId = 1;
 	optional string ToBoxId = 2;

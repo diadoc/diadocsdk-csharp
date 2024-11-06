@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto;
 
+option java_outer_classname = "ResolutionRouteListProtos";
+
 message ResolutionRouteList {
 	repeated ResolutionRoute ResolutionRoutes = 1;
 }

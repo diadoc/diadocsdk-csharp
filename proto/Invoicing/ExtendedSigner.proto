@@ -2,6 +2,8 @@ import "Events/PowerOfAttorneyToPost.proto";
 
 package Diadoc.Api.Proto.Invoicing.Signers;
 
+option java_outer_classname = "ExtendedSignerProtos";
+
 message ExtendedSigner {
 	optional string BoxId = 1;
 	optional bytes SignerCertificate = 2;

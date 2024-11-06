@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.KeyValueStorage;
 
+option java_outer_classname = "KeyValueStorageProtos";
+
 ///////////////////////////////////////////////////////////////////////////////
 // Протобуфер для представления записи хранилища, то есть пары (ключ, значение)
 

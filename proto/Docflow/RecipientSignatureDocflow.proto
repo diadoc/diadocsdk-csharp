@@ -3,6 +3,8 @@ import "Docflow/Attachment.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "RecipientSignatureDocflowProtos";
+
 message RecipientSignatureDocflow
 {
 	optional bool IsFinished = 1;

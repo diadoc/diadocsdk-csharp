@@ -1,6 +1,8 @@
 import "Certificates/CertificateInfoV2.proto";
 package Diadoc.Api.Proto.Certificates;
 
+option java_outer_classname = "CertificateListProtos";
+
 message CertificateList {
 	repeated CertificateInfoV2 Certificates = 1;
 }

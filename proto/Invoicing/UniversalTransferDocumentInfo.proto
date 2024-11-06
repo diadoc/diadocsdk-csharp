@@ -4,6 +4,8 @@ import "Invoicing/ExtendedOrganizationInfo.proto";
 
 package Diadoc.Api.Proto.Invoicing;
 
+option java_outer_classname = "UniversalTransferDocumentInfoProtos";
+
 message UniversalTransferDocumentSellerTitleInfo {
 	required FunctionType Function = 1;  // Функция документа // Функция
 	optional string DocumentName = 2;    // Наименование первичного документа, определенное организацией // НаимДокОпр

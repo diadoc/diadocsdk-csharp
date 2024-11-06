@@ -2,6 +2,8 @@ import "Timestamp.proto";
 
 package Diadoc.Api.Proto;
 
+option java_outer_classname = "SignatureVerificationResultProtos";
+
 message SignatureVerificationResult
 {
 	required bool IsValid = 1;

@@ -2,6 +2,8 @@ import "Events/DiadocMessage-PostApi.proto";
 
 package Diadoc.Api.Proto.Documents;
 
+option java_outer_classname = "DetectTitleResponseProtos";
+
 message DetectTitleResponse {
 	repeated DetectedDocumentTitle DocumentTitles = 1;
 }

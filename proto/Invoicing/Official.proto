@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Invoicing;
 
+option java_outer_classname = "OfficialProtos";
+
 // Должностное лицо
 message Official {
 	required string Surname = 1;

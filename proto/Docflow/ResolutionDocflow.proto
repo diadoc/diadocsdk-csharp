@@ -4,6 +4,8 @@ import "Docflow/Attachment.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "ResolutionDocflowProtos";
+
 message ResolutionDocflow
 {
 }

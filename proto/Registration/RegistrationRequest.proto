@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Registration;
 
+option java_outer_classname = "RegistrationRequestProtos";
+
 message RegistrationRequest {
     optional bytes CertificateContent = 1;
     optional string Thumbprint = 2;

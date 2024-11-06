@@ -2,6 +2,8 @@ import "Content_v2.proto";
 
 package Diadoc.Api.Proto;
 
+option java_outer_classname = "CloudSignProtos";
+
 message CloudSignRequest {
 	repeated CloudSignFile Files = 1; 
 }

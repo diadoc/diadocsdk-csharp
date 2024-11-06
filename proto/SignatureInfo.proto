@@ -4,6 +4,8 @@ import "Certificates/CertificateInfoV2.proto";
 
 package Diadoc.Api.Proto;
 
+option java_outer_classname = "SignatureInfoProtos";
+
 message SignatureInfo 
 {
 	required Timestamp SigningTime = 1; //Время фомирования подписи 

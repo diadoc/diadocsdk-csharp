@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Events;
 
+option java_outer_classname = "CounteragentEventTypeProtos";
+
 enum CounteragentEventType
 {
 	UnknownCounteragentEventType = 0;

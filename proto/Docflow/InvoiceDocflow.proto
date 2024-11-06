@@ -4,6 +4,8 @@ import "Docflow/ReceiptDocflow.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "InvoiceDocflowProtos";
+
 message InboundInvoiceDocflow
 {
 	optional bool IsFinished = 1;

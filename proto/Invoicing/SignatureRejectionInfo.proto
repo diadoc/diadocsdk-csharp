@@ -2,6 +2,8 @@ import "Invoicing/Signer.proto";
 
 package Diadoc.Api.Proto.Invoicing;
 
+option java_outer_classname = "SignatureRejectionInfoProtos";
+
 message SignatureRejectionInfo {
 	optional string ErrorMessage = 1;
 	required Signer Signer = 2;

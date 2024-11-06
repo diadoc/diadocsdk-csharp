@@ -3,6 +3,8 @@ import "DocumentId.proto";
 
 package Diadoc.Api.Proto;
 
+option java_outer_classname = "AcquireCounteragentProtos";
+
 message AcquireCounteragentRequest {
 	optional string OrgId = 1;
 	optional string Inn = 2;

@@ -8,6 +8,8 @@ import "DocflowStatusV3.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "DocflowV3Protos";
+
 message DocflowV3
 {
 	required SenderTitleDocflow SenderTitle = 1;

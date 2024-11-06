@@ -4,6 +4,8 @@ import "Docflow/RecipientSignatureRejectionDocflow.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "BilateralDocflowProtos";
+
 message BilateralDocflow
 {
 	optional bool IsFinished = 1;
