@@ -998,6 +998,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetCounteragentEvents(authToken, boxId, afterIndexKey, timestampFromTicks, timestampToTicks, limit);
 		}
 
+		[Obsolete("Use UploadFileToShelfV2 or UploadLargeFileToShelf")]
 		public string UploadFileToShelf(string authToken, byte[] data)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
@@ -1005,11 +1006,33 @@ namespace Diadoc.Api
 			return diadocHttpApi.UploadFileToShelf(authToken, data);
 		}
 
+		public string UploadFileToShelfV2(string authToken, byte[] content, [CanBeNull] string fileExtension)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (content == null) throw new ArgumentNullException("content");
+			return diadocHttpApi.UploadFileToShelfV2(authToken, content, fileExtension);
+		}
+		
+		public string UploadLargeFileToShelf(string authToken, byte[] content, [CanBeNull] string fileExtension)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (content == null) throw new ArgumentNullException("content");
+			return diadocHttpApi.UploadLargeFileToShelf(authToken, content, fileExtension);
+		}
+
+		[Obsolete("Use GetFileFromShelfV2")]
 		public byte[] GetFileFromShelf(string authToken, string nameOnShelf)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
 			if (string.IsNullOrEmpty(nameOnShelf)) throw new ArgumentNullException("nameOnShelf");
 			return diadocHttpApi.GetFileFromShelf(authToken, nameOnShelf);
+		}
+
+		public byte[] GetFileFromShelfV2(string authToken, string fileName)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(fileName)) throw new ArgumentNullException("fileName");
+			return diadocHttpApi.GetFileFromShelfV2(authToken, fileName);
 		}
 
 		public RussianAddress ParseRussianAddress(string address)

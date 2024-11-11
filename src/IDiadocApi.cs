@@ -198,8 +198,13 @@ namespace Diadoc.Api
 			long? timestampFromTicks = null,
 			long? timestampToTicks = null,
 			int? limit = null);
+		[Obsolete("Use UploadFileToShelfV2 or UploadLargeFileToShelf")]
 		string UploadFileToShelf(string authToken, byte[] data);
+		string UploadFileToShelfV2(string authToken, byte[] content, [CanBeNull] string fileExtension);
+		string UploadLargeFileToShelf(string authToken, byte[] content, [CanBeNull] string fileExtension);
+		[Obsolete("Use GetFileFromShelfV2")]
 		byte[] GetFileFromShelf(string authToken, string nameOnShelf);
+		byte[] GetFileFromShelfV2(string authToken, string fileName);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RussianAddress ParseRussianAddress(string address);
 		RussianAddress ParseRussianAddress(string authToken, string address);
@@ -572,8 +577,13 @@ namespace Diadoc.Api
 			long? timestampFromTicks = null,
 			long? timestampToTicks = null,
 			int? limit = null);
+		[Obsolete("Use UploadFileToShelfV2Async or UploadLargeFileToShelfAsync")]
 		Task<string> UploadFileToShelfAsync(string authToken, byte[] data);
+		Task<string> UploadFileToShelfV2Async(string authToken, byte[] content, [CanBeNull] string fileExtension);
+		Task<string> UploadLargeFileToShelfAsync(string authToken, byte[] content, [CanBeNull] string fileExtension);
+		[Obsolete("Use GetFileFromShelfV2Async")]
 		Task<byte[]> GetFileFromShelfAsync(string authToken, string nameOnShelf);
+		Task<byte[]> GetFileFromShelfV2Async(string authToken, string fileName);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<RussianAddress> ParseRussianAddressAsync(string address);
 		Task<RussianAddress> ParseRussianAddressAsync(string authToken, string address);

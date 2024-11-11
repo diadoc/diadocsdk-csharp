@@ -2052,14 +2052,33 @@ namespace Diadoc.Api
 
 		#region Shelf
 
+		[Obsolete("Use UploadFileToShelfV2 or UploadLargeFileToShelf")]
 		public string UploadFileToShelf(string authToken, string fileName)
 		{
 			return diadoc.UploadFileToShelf(authToken, File.ReadAllBytes(fileName));
 		}
 
+		public string UploadFileToShelfV2(string authToken, string fileName)
+		{
+			var fileExtension = Path.GetExtension(fileName);
+			return diadoc.UploadFileToShelfV2(authToken, File.ReadAllBytes(fileName), fileExtension);
+		}
+		
+		public string UploadLargeFileToShelf(string authToken, string fileName)
+		{
+			var fileExtension = Path.GetExtension(fileName);
+			return diadoc.UploadLargeFileToShelf(authToken, File.ReadAllBytes(fileName), fileExtension);
+		}
+
+		[Obsolete("Use GetFileFromShelfV2")]
 		public void GetFileFromShelf(string authToken, string nameOnShelf, string fileName)
 		{
 			File.WriteAllBytes(fileName, diadoc.GetFileFromShelf(authToken, nameOnShelf));
+		}
+
+		public void GetFileFromShelfV2(string authToken, string nameOnShelf, string fileName)
+		{
+			File.WriteAllBytes(fileName, diadoc.GetFileFromShelfV2(authToken, nameOnShelf));
 		}
 
 		#endregion

@@ -862,6 +862,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetCounteragentEventsAsync(authToken, boxId, afterIndexKey, timestampFromTicks, timestampToTicks, limit);
 		}
 
+		[Obsolete("Use UploadFileToShelfV2Async or UploadLargeFileToShelfAsync")]
 		public Task<string> UploadFileToShelfAsync(string authToken, byte[] data)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
@@ -869,11 +870,33 @@ namespace Diadoc.Api
 			return diadocHttpApi.UploadFileToShelfAsync(authToken, data);
 		}
 
+		public Task<string> UploadFileToShelfV2Async(string authToken, byte[] content, [CanBeNull] string fileExtension)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (content == null) throw new ArgumentNullException("content");
+			return diadocHttpApi.UploadFileToShelfV2Async(authToken, content, fileExtension);
+		}
+
+		public Task<string> UploadLargeFileToShelfAsync(string authToken, byte[] content, [CanBeNull] string fileExtension)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (content == null) throw new ArgumentNullException("content");
+			return diadocHttpApi.UploadLargeFileToShelfAsync(authToken, content, fileExtension);
+		}
+
+		[Obsolete("Use GetFileFromShelfV2Async")]
 		public Task<byte[]> GetFileFromShelfAsync(string authToken, string nameOnShelf)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
 			if (string.IsNullOrEmpty(nameOnShelf)) throw new ArgumentNullException("nameOnShelf");
 			return diadocHttpApi.GetFileFromShelfAsync(authToken, nameOnShelf);
+		}
+
+		public Task<byte[]> GetFileFromShelfV2Async(string authToken, string fileName)
+		{
+			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(fileName)) throw new ArgumentNullException("fileName");
+			return diadocHttpApi.GetFileFromShelfV2Async(authToken, fileName);
 		}
 
 		public Task<RussianAddress> ParseRussianAddressAsync(string address)
