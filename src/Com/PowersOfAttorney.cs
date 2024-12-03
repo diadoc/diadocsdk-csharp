@@ -601,6 +601,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	{
 		string RootRegistrationNumber { get; set; }
 		string ParentRegistrationNumber { get; set; }
+		PowerOfAttorneyIssuer RootIssuer { get; set; }
 	}
 	
 	[ComVisible(true)]
