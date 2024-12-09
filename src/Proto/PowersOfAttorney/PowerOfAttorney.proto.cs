@@ -689,13 +689,13 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       get { return _ParentRegistrationNumber; }
       set { _ParentRegistrationNumber = value; }
     }
-    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyIssuer _RootIssuer;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"RootIssuer", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyIssuer RootIssuer
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyIssuer> _RootIssuers = new global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyIssuer>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"RootIssuers", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyIssuer> RootIssuers
     {
-      get { return _RootIssuer; }
-      set { _RootIssuer = value; }
+      get { return _RootIssuers; }
     }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

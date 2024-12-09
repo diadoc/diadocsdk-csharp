@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Diadoc.Api.Com;
@@ -601,7 +602,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	{
 		string RootRegistrationNumber { get; set; }
 		string ParentRegistrationNumber { get; set; }
-		PowerOfAttorneyIssuer RootIssuer { get; set; }
+		List<PowerOfAttorneyIssuer> RootIssuers { get; }
 	}
 	
 	[ComVisible(true)]
