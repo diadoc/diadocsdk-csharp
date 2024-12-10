@@ -602,7 +602,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	{
 		string RootRegistrationNumber { get; set; }
 		string ParentRegistrationNumber { get; set; }
-		List<PowerOfAttorneyIssuer> RootIssuers { get; }
+		ReadonlyList RootIssuersList { get; }
 	}
 	
 	[ComVisible(true)]
@@ -612,6 +612,10 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorneyDelegationInfo))]
 	public partial class PowerOfAttorneyDelegationInfo : SafeComObject, IPowerOfAttorneyDelegationInfo
 	{
+		public ReadonlyList RootIssuersList
+		{
+			get { return new ReadonlyList(RootIssuers); }
+		}
 	}
 }
 
