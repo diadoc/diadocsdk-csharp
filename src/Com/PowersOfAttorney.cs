@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Diadoc.Api.Com;
@@ -601,6 +602,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	{
 		string RootRegistrationNumber { get; set; }
 		string ParentRegistrationNumber { get; set; }
+		ReadonlyList RootIssuersList { get; }
 	}
 	
 	[ComVisible(true)]
@@ -610,6 +612,10 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorneyDelegationInfo))]
 	public partial class PowerOfAttorneyDelegationInfo : SafeComObject, IPowerOfAttorneyDelegationInfo
 	{
+		public ReadonlyList RootIssuersList
+		{
+			get { return new ReadonlyList(RootIssuers); }
+		}
 	}
 }
 
