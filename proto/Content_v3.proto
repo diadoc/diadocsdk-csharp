@@ -2,6 +2,8 @@ import "DocumentId.proto";
 
 package Diadoc.Api.Proto;
 
+option java_outer_classname = "Content_v3Protos";
+
 message Content_v3 {
 	optional bytes Content = 1;
 	optional string NameOnShelf = 2;

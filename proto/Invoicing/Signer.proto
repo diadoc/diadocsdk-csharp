@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Invoicing;
 
+option java_outer_classname = "SignerProtos";
+
 message Signer {
 	optional bytes SignerCertificate = 1;
 	optional SignerDetails SignerDetails = 2;

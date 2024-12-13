@@ -9,6 +9,8 @@ import "Docflow/DocumentWithDocflowV3.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "DocflowApiV3Protos";
+
 message GetDocflowBatchResponseV3
 {
 	repeated DocumentWithDocflowV3 Documents = 1;

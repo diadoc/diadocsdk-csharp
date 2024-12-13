@@ -4,6 +4,8 @@ import "ResolutionRequestType.proto";
 
 package Diadoc.Api.Proto.Events;
 
+option java_outer_classname = "ResolutionRequestInfoProtos";
+
 message ResolutionRequestInfo {
 	optional ResolutionRequestType RequestType = 1 [default = UnknownResolutionRequestType];
 	required string Author = 2;

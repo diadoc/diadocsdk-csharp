@@ -3,6 +3,8 @@ import "RoamingSendingStatus.proto";
 
 package Diadoc.Api.Proto;
 
+option java_outer_classname = "DocflowStatusV3Protos";
+
 message DocflowStatusV3
 {
     required DocflowStatusModelV3 PrimaryStatus = 1;

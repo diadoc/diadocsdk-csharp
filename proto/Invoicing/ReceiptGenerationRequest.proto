@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Invoicing;
 
+option java_outer_classname = "ReceiptGenerationRequestProtos";
+
 message ReceiptGenerationRequestV2 {
 	required string MessageId = 1;
 	required string AttachmentId = 2;

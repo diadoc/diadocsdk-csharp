@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Documents.InvoiceDocument;
 
+option java_outer_classname = "InvoiceDocumentProtos";
+
 message InvoiceMetadata {
 	optional InvoiceStatus InvoiceStatus = 1 [default = UnknownInvoiceStatus];
 	required string Total = 2;

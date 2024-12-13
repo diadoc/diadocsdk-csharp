@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Events;
 
+option java_outer_classname = "ResolutionRouteInfoProtos";
+
 message ResolutionRouteAssignmentInfo {
 	required string RouteId = 1;
 	required string Author = 2;

@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Recognition;
 
+option java_outer_classname = "RecognitionProtos";
+
 message Recognized {
 	required string RecognitionId = 1;
 	optional string ErrorMessage = 2;

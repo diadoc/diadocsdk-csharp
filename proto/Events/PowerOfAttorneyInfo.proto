@@ -4,6 +4,8 @@ import "RoamingSendingStatus.proto";
 
 package Diadoc.Api.Proto.Events;
 
+option java_outer_classname = "PowerOfAttorneyInfoProtos";
+
 message PowerOfAttorneyInfo {
     required PowersOfAttorney.PowerOfAttorneyFullId FullId = 1;
     optional PowersOfAttorney.PowerOfAttorneyValidationStatus Status = 2;

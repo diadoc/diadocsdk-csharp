@@ -3,6 +3,8 @@ import "OrganizationUserPermissions.proto";
 
 package Diadoc.Api.Proto.Employees;
 
+option java_outer_classname = "EmployeeToUpdateProtos";
+
 message EmployeeToUpdate
 {
 	optional EmployeePermissionsPatch Permissions = 1;

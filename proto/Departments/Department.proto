@@ -2,6 +2,8 @@ import "Address.proto";
 import "Timestamp.proto";
 import "Departments/Routing.proto";
 
+option java_outer_classname = "DepartmentProtos";
+
 package Diadoc.Api.Proto.Departments;
 
 message Department

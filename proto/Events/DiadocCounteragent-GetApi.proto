@@ -9,6 +9,8 @@ import "Events/CounteragentEventType.proto";
 
 package Diadoc.Api.Proto.Events;
 
+option java_outer_classname = "DiadocCounteragent_GetApiProtos";
+
 message BoxCounteragentEventList {
 	repeated BoxCounteragentEvent Events = 1;
 	optional int32 TotalCount = 2;

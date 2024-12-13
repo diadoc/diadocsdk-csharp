@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto;
 
+option java_outer_classname = "ResolutionTypeProtos";
+
 enum ResolutionType
 {
 	UnknownResolutionType = -1; // Reserved type to report to legacy clients for newly introduced types

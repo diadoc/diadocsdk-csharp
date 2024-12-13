@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.OuterDocflows;
 
+option java_outer_classname = "OuterDocflowStatusProtos";
+
 message Status {
     required string NamedId = 1;
     required string FriendlyName = 2;

@@ -6,6 +6,8 @@ import "Invoicing/TovTorgInfo.proto";
 
 package Diadoc.Api.Proto.Invoicing;
 
+option java_outer_classname = "AcceptanceCertificate552InfoProtos";
+
 message AcceptanceCertificate552SellerTitleInfo {
 	required Organizations.ExtendedOrganizationInfo Seller = 1; // Исполнитель (продавец услуг) // Исполнитель
 	required Organizations.ExtendedOrganizationInfo Buyer = 2; // Заказчик (покупатель услуг) // Заказчик

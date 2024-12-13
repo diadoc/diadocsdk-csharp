@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Workflows.OperatorConfirmationBehavior;
 
+option java_outer_classname = "OperatorConfirmationBehaviorProtos";
+
 enum OperatorConfirmationBehavior
 {
     Unknown = 0;

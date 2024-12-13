@@ -11,6 +11,8 @@ import "Forwarding/ForwardedDocument.proto";
 
 package Diadoc.Api.Proto.Forwarding;
 
+option java_outer_classname = "ForwardingApiProtos";
+
 message ForwardDocumentRequest
 {
 	required string ToBoxId = 1;

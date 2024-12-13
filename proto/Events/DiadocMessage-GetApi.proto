@@ -21,6 +21,8 @@ import "OuterDocflows/OuterDocflow.proto";
 
 package Diadoc.Api.Proto.Events;
 
+option java_outer_classname = "DiadocMessage_GetApiProtos";
+
 message BoxEventList {
 	repeated BoxEvent Events = 1;
 	optional int32 TotalCount = 2;

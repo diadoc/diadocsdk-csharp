@@ -2,6 +2,8 @@ import "Docflow/ReceiptDocflow.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "UnilateralDocflowProtos";
+
 message UnilateralDocflow
 {
 	optional bool IsFinished = 1;

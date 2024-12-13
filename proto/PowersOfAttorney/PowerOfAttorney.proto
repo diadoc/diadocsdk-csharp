@@ -4,6 +4,8 @@ import "User.proto";
 
 package Diadoc.Api.Proto.PowersOfAttorney;
 
+option java_outer_classname = "PowerOfAttorneyProtos";
+
 message PowerOfAttorneyFullId {
     required string RegistrationNumber = 1;
     required string IssuerInn = 2;

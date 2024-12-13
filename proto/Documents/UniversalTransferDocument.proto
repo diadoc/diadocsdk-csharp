@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Documents.UniversalTransferDocument;
 
+option java_outer_classname = "UniversalTransferDocumentProtos";
+
 message UniversalTransferDocumentMetadata {
 	optional UniversalTransferDocumentStatus DocumentStatus = 1 [default = UnknownDocumentStatus];
 	required string Total = 2; // TotalSum;

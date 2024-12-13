@@ -3,6 +3,8 @@ import "Invoicing/OrganizationInfo.proto";
 
 package Diadoc.Api.Proto.Invoicing;
 
+option java_outer_classname = "InvoiceInfoProtos";
+
 message InvoiceInfo {
 	required string InvoiceDate = 1;					// дата СФ
 	required string InvoiceNumber = 2;					// номер СФ

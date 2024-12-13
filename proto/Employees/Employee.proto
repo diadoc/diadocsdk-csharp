@@ -4,6 +4,8 @@ import "Timestamp.proto";
 
 package Diadoc.Api.Proto.Employees;
 
+option java_outer_classname = "EmployeeProtos";
+
 message Employee
 {
 	required UserV2 User = 1;

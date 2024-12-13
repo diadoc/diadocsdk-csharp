@@ -5,6 +5,8 @@ import "SignatureVerificationResult.proto";
 import "Docflow/PowerOfAttorneyAttachmentStatus.proto";
 import "Docflow/SignaturePowerOfAttorney.proto";
 
+option java_outer_classname = "AttachmentV3Protos";
+
 package Diadoc.Api.Proto.Docflow;
 
 message SignatureV3

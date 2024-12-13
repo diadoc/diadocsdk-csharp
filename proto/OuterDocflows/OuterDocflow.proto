@@ -2,6 +2,8 @@ import "OuterDocflows/OuterDocflowStatus.proto";
 
 package Diadoc.Api.Proto.OuterDocflows;
 
+option java_outer_classname = "OuterDocflowProtos";
+
 message OuterDocflowInfo {
     required string DocflowNamedId = 1;
     required string DocflowFriendlyName = 2;

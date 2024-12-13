@@ -4,6 +4,8 @@ import "Invoicing/UniversalTransferDocumentInfo.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "DocumentInfoProtos";
+
 message DocumentInfo
 {
 	optional DocumentType DocumentType = 1 [default = UnknownDocumentType];

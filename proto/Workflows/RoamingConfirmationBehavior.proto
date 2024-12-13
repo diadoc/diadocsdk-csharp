@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Workflows.RoamingConfirmationBehavior;
 
+option java_outer_classname = "RoamingConfirmationBehaviorProtos";
+
 enum RoamingConfirmationBehavior
 {
     Unknown = 0;

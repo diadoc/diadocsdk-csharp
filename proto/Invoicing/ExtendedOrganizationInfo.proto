@@ -2,6 +2,8 @@ import "Address.proto";
 
 package Diadoc.Api.Proto.Invoicing.Organizations;
 
+option java_outer_classname = "ExtendedOrganizationInfoProtos";
+
 message ExtendedOrganizationInfo {
   optional string BoxId = 1;       // идентификатор ящика в Диадоке
   optional string OrgName = 2;     // название //НаимОрг

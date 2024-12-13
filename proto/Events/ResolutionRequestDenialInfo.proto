@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Events;
 
+option java_outer_classname = "ResolutionRequestDenialInfoProtos";
+
 message ResolutionRequestDenialInfo {
 	required string Author = 1;
 	optional string InitialRequestId = 2;

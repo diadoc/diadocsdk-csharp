@@ -8,6 +8,8 @@ import "Docflow/AttachmentV3.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "ResolutionDocflowV3Protos";
+
 message ResolutionDocflowV3
 {
 	required bool IsFinished = 1;
@@ -31,7 +33,7 @@ enum ResolutionStatus
 	SignatureRequestRejected = 7;
 	SignedWithApprovingSignature = 8;
 	SignedWithPrimarySignature = 9;
-	PrimarySignatureRejected = 10; 
+	PrimarySignatureRejected = 10;
 	ActionsRequested = 11;
 }
 

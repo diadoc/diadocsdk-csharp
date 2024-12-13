@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Documents;
 
+option java_outer_classname = "DocumentZipProtos";
+
 message DocumentZipGenerationResult {
 	optional string ZipFileNameOnShelf = 1;
 }

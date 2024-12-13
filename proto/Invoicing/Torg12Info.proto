@@ -4,6 +4,8 @@ import "Invoicing/OrganizationInfo.proto";
 
 package Diadoc.Api.Proto.Invoicing;
 
+option java_outer_classname = "Torg12InfoProtos";
+
 // Со стороны продавца
 message Torg12SellerTitleInfo {
 	required string DocumentDate = 1;										// дата товарной накладной

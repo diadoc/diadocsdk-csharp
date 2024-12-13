@@ -2,6 +2,8 @@ import "Content_v3.proto";
 
 package Diadoc.Api.Proto.Dss;
 
+option java_outer_classname = "DssSignProtos";
+
 message DssSignRequest
 {
 	repeated DssSignFile Files = 1;

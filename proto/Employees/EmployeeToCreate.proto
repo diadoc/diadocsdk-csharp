@@ -3,6 +3,8 @@ import "Employees/Employee.proto";
 
 package Diadoc.Api.Proto.Employees;
 
+option java_outer_classname = "EmployeeToCreateProtos";
+
 message EmployeeToCreate
 {
 	required EmployeeToCreateCredentials Credentials = 1;

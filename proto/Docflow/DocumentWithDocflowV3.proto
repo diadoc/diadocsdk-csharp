@@ -5,6 +5,8 @@ import "Docflow/DocflowV3.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "DocumentWithDocflowV3Protos";
+
 message DocumentWithDocflowV3
 {
 	required DocumentId DocumentId = 1;

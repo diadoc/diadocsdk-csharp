@@ -2,6 +2,8 @@ import "CounteragentGroups/DepartmentsInGroup.proto";
 
 package Diadoc.Api.Proto.CounteragentGroups;
 
+option java_outer_classname = "CounteragentGroupToCreateProtos";
+
 message CounteragentGroupToCreate
 {
   required string Name = 1;

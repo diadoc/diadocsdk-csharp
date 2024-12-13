@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Workflows.TitleReceiptBehavior;
 
+option java_outer_classname = "TitleReceiptBehaviorProtos";
+
 enum TitleReceiptBehavior
 {
     Unknown = 0;

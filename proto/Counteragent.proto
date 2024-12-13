@@ -4,6 +4,8 @@ import "TotalCountType.proto";
 
 package Diadoc.Api.Proto;
 
+option java_outer_classname = "CounteragentProtos";
+
 message CounteragentList {
 	required int32 TotalCount = 1;
 	repeated Counteragent Counteragents = 2;

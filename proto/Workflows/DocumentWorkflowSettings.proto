@@ -10,6 +10,8 @@ import "Workflows/RoamingConfirmationBehavior.proto";
 
 package Diadoc.Api.Proto.Workflows;
 
+option java_outer_classname = "DocumentWorkflowSettingsProtos";
+
 message DocumentWorkflowSettingsListV2 {
 	repeated DocumentWorkflowSettingsV2 DocumentWorkflowSettings = 1;
 }

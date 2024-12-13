@@ -12,6 +12,8 @@ import "Docflow/RoamingNotification.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "DocflowApiProtos";
+
 message Docflow
 {
 	optional bool IsFinished = 1;
@@ -39,7 +41,7 @@ message Docflow
 
 	optional InboundUniversalTransferDocumentDocflow InboundUniversalTransferDocumentDocflow = 18; // for UniversalTransferDocument, UniversalTransferDocumentRevision, UniversalCorrectionDocument
 	optional OutboundUniversalTransferDocumentDocflow OutboundUniversalTransferDocumentDocflow = 19; // for UniversalTransferDocument, UniversalTransferDocumentRevision, UniversalCorrectionDocument
-    
+
 	optional RoamingNotification RoamingNotification = 20;
 }
 

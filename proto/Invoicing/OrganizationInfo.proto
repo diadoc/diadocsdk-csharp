@@ -2,6 +2,8 @@ import "Address.proto";
 
 package Diadoc.Api.Proto.Invoicing;
 
+option java_outer_classname = "OrganizationInfoProtos";
+
 message DocflowParticipant {
 	optional string BoxId = 1;								// идентификатор ящика в Диадоке
 	optional string Inn = 2;								// ИНН организации-участника обмена

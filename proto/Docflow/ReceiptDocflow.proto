@@ -2,6 +2,8 @@ import "Docflow/Attachment.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "ReceiptDocflowProtos";
+
 message ReceiptDocflow
 {
 	optional bool IsFinished = 1;

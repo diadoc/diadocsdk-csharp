@@ -2,6 +2,8 @@ import "Organizations/BlockStatus.proto";
 
 package Diadoc.Api.Proto.Organizations;
 
+option java_outer_classname = "OrganizationFeaturesProtos";
+
 message OrganizationFeatures
 {
     required BlockStatus BlockStatus = 1;

@@ -3,6 +3,8 @@ import "Departments/Routing.proto";
 
 package Diadoc.Api.Proto.Departments;
 
+option java_outer_classname = "DepartmentToCreateProtos";
+
 message DepartmentToCreate
 {
 	optional string ParentDepartmentId = 1;

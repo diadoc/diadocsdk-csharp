@@ -3,6 +3,8 @@ import "Organizations/AutoBlockStatus.proto";
 
 package Diadoc.Api.Proto.Organizations;
 
+option java_outer_classname = "BlockStatusProtos";
+
 message BlockStatus
 {
     required ManualBlockStatus ManualBlockStatus = 1;

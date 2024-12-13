@@ -2,6 +2,8 @@ import "PowersOfAttorney/PowerOfAttorney.proto";
 
 package Diadoc.Api.Proto.Events;
 
+option java_outer_classname = "PowerOfAttorneyToPostProtos";
+
 message PowerOfAttorneyToPost {
     optional PowersOfAttorney.PowerOfAttorneyFullId FullId = 1;
     required bool UseDefault = 2;
