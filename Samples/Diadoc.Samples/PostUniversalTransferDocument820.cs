@@ -188,12 +188,12 @@ namespace Diadoc.Samples
 							Unit = "796",
 							Quantity = 10,
 							QuantitySpecified = true,
-							HyphenVat = InvoiceTableItemHyphenVat.True,
-							HyphenSubtotal = InvoiceTableItemHyphenSubtotal.True
+							HyphenVat = InvoiceTableItemHyphenVat.@true,
+							HyphenSubtotal = InvoiceTableItemHyphenSubtotal.@true
 						}
 					},
-					HyphenVat = InvoiceTableHyphenVat.True,
-					HyphenTotal = InvoiceTableHyphenTotal.True
+					HyphenVat = InvoiceTableHyphenVat.@true,
+					HyphenTotal = InvoiceTableHyphenTotal.@true
 				},
 				Currency = "643",
 				DocumentCreator = "Наименование экономического субъекта – составителя файла обмена счета-фактуры",
@@ -201,7 +201,7 @@ namespace Diadoc.Samples
 
 			// Передадим информацию о подписанте документа, т.е. персональные данные подписываемого сотрудника,
 			// которые осядут в самом xml:
-			universalTransferDocumentWithHyphens.UseSignerDetails(new[]
+			universalTransferDocumentWithHyphens.Signers = new[]
 			{
 				new ExtendedSignerDetails_SellerTitle
 				{
@@ -213,7 +213,7 @@ namespace Diadoc.Samples
 					Inn = "7750370238",
 					Position = "директор"
 				}
-			});
+			};
 			// Альтернативный способ заполнения данных подписанта:
 			// отправить в хранилище Диадока аналогичный набор данных через метод PostExtendedSignerDetails
 			// и затем использовать universalTransferDocumentWithHyphens.UseSignerReferences(new SignerReference[])
