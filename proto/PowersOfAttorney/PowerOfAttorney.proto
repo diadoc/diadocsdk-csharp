@@ -155,3 +155,44 @@ message PowerOfAttorneyContentV2 {
     required bytes Signature = 2;
     required PowerOfAttorneyFullId FullId = 3;
 }
+
+message PowerOfAttorneyRepresentative {
+  optional PowerOfAttorneyRepresentativeType Type = 1;
+  optional PowerOfAttorneyRepresentativeLegalEntity LegalEntity = 2;     
+  optional PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity IndividualEntrepreneur = 3;
+  optional PowerOfAttorneyRepresentativePhysicalEntity PhysicalEntity = 4;
+  optional PowerOfAttorneyRepresentativeLegalEntity LegalEntitySubsidiary = 5; 
+  optional PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity ForeignLegalEntitySubsidiary = 6;
+ }
+ 
+enum PowerOfAttorneyRepresentativeType {
+    UnknownRepresentativeType = 0;
+    RepresentativeLegalEntity = 1;  
+    RepresentativeIndividualEntrepreneurEntity = 2;
+    RepresentativePhysicalEntity = 3;
+    RepresentativeLegalEntitySubsidiary = 4;
+    RepresentativeForeignLegalEntitySubsidiary = 5;
+ }
+
+message PowerOfAttorneyRepresentativeLegalEntity  {    
+    optional string Inn = 1;    
+    required string Kpp = 2;
+    required string OrganizationName = 3;    
+    repeated PowerOfAttorneyRepresentativePhysicalEntity PhysicalEntity = 4;
+}
+ 
+message PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity {
+    required string Inn = 1;    
+    required string OrganizationName = 2;
+  }
+  
+message PowerOfAttorneyRepresentativePhysicalEntity {    
+   optional string Inn = 1;    
+   required FullName PersonName = 2;
+}
+ 
+message PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity {
+    optional string Inn = 1;
+    optional string Kpp = 2;
+    required string OrganizationName = 3;
+}
