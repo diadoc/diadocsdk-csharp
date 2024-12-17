@@ -20,6 +20,7 @@ message PowerOfAttorney {
     repeated PowerOfAttorney DelegationChain = 8;
     required PowerOfAttorneyPermissionsInfo PermissionsInfo = 9;
     optional PowerOfAttorneyDelegationInfo DelegationInfo = 10;
+    repeated PowerOfAttorneyRepresentative Representatives = 11;
 }
 
 message PowerOfAttorneyIssuer {
