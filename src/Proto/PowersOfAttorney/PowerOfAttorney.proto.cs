@@ -118,6 +118,13 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       get { return _DelegationInfo; }
       set { _DelegationInfo = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentative> _Representatives = new global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentative>();
+    [global::ProtoBuf.ProtoMember(11, Name=@"Representatives", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentative> Representatives
+    {
+      get { return _Representatives; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
