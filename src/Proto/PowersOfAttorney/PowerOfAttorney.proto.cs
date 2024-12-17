@@ -780,6 +780,195 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyRepresentative")]
+  public partial class PowerOfAttorneyRepresentative : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyRepresentative() {}
+    
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeType _Type = Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeType.UnknownRepresentativeType;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeType.UnknownRepresentativeType)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeType Type
+    {
+      get { return _Type; }
+      set { _Type = value; }
+    }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeLegalEntity _LegalEntity = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"LegalEntity", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeLegalEntity LegalEntity
+    {
+      get { return _LegalEntity; }
+      set { _LegalEntity = value; }
+    }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity _IndividualEntrepreneur = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"IndividualEntrepreneur", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity IndividualEntrepreneur
+    {
+      get { return _IndividualEntrepreneur; }
+      set { _IndividualEntrepreneur = value; }
+    }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativePhysicalEntity _PhysicalEntity = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"PhysicalEntity", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativePhysicalEntity PhysicalEntity
+    {
+      get { return _PhysicalEntity; }
+      set { _PhysicalEntity = value; }
+    }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeLegalEntity _LegalEntitySubsidiary = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"LegalEntitySubsidiary", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeLegalEntity LegalEntitySubsidiary
+    {
+      get { return _LegalEntitySubsidiary; }
+      set { _LegalEntitySubsidiary = value; }
+    }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity _ForeignLegalEntitySubsidiary = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"ForeignLegalEntitySubsidiary", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity ForeignLegalEntitySubsidiary
+    {
+      get { return _ForeignLegalEntitySubsidiary; }
+      set { _ForeignLegalEntitySubsidiary = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyRepresentativeLegalEntity")]
+  public partial class PowerOfAttorneyRepresentativeLegalEntity : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyRepresentativeLegalEntity() {}
+    
+
+    private string _Inn = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Inn", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Inn
+    {
+      get { return _Inn; }
+      set { _Inn = value; }
+    }
+    private string _Kpp;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Kpp", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Kpp
+    {
+      get { return _Kpp; }
+      set { _Kpp = value; }
+    }
+    private string _OrganizationName;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"OrganizationName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OrganizationName
+    {
+      get { return _OrganizationName; }
+      set { _OrganizationName = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativePhysicalEntity> _PhysicalEntity = new global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativePhysicalEntity>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"PhysicalEntity", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativePhysicalEntity> PhysicalEntity
+    {
+      get { return _PhysicalEntity; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity")]
+  public partial class PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity() {}
+    
+    private string _Inn;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Inn", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Inn
+    {
+      get { return _Inn; }
+      set { _Inn = value; }
+    }
+    private string _OrganizationName;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"OrganizationName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OrganizationName
+    {
+      get { return _OrganizationName; }
+      set { _OrganizationName = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyRepresentativePhysicalEntity")]
+  public partial class PowerOfAttorneyRepresentativePhysicalEntity : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyRepresentativePhysicalEntity() {}
+    
+
+    private string _Inn = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Inn", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Inn
+    {
+      get { return _Inn; }
+      set { _Inn = value; }
+    }
+    private Diadoc.Api.Proto.FullName _PersonName;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"PersonName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.FullName PersonName
+    {
+      get { return _PersonName; }
+      set { _PersonName = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity")]
+  public partial class PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity() {}
+    
+
+    private string _Inn = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Inn", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Inn
+    {
+      get { return _Inn; }
+      set { _Inn = value; }
+    }
+
+    private string _Kpp = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Kpp", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Kpp
+    {
+      get { return _Kpp; }
+      set { _Kpp = value; }
+    }
+    private string _OrganizationName;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"OrganizationName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OrganizationName
+    {
+      get { return _OrganizationName; }
+      set { _OrganizationName = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyIssuerType")]
     public enum PowerOfAttorneyIssuerType
     {
@@ -815,6 +1004,29 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
             
       [global::ProtoBuf.ProtoEnum(Name=@"DocumentContent", Value=3)]
       DocumentContent = 3
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyRepresentativeType")]
+    public enum PowerOfAttorneyRepresentativeType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownRepresentativeType", Value=0)]
+      UnknownRepresentativeType = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RepresentativeLegalEntity", Value=1)]
+      RepresentativeLegalEntity = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RepresentativeIndividualEntrepreneurEntity", Value=2)]
+      RepresentativeIndividualEntrepreneurEntity = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RepresentativePhysicalEntity", Value=3)]
+      RepresentativePhysicalEntity = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RepresentativeLegalEntitySubsidiary", Value=4)]
+      RepresentativeLegalEntitySubsidiary = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RepresentativeForeignLegalEntitySubsidiary", Value=5)]
+      RepresentativeForeignLegalEntitySubsidiary = 5
     }
   
 }
