@@ -37,7 +37,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 		ReadonlyList DelegationChainList { get; }
 		PowerOfAttorneyPermissionsInfo PermissionsInfo { get; set; }
 		PowerOfAttorneyDelegationInfo DelegationInfo { get; set; }
-		PowerOfAttorneyRepresentative[] RepresentativesList { get; }
+		ReadonlyList RepresentativesList { get; }
 	}
 
 	[ComVisible(true)]
@@ -48,7 +48,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	public partial class PowerOfAttorney : SafeComObject, IPowerOfAttorney
 	{
 		public ReadonlyList DelegationChainList => new ReadonlyList(DelegationChain);
-		public PowerOfAttorneyRepresentative[] RepresentativesList => new List<PowerOfAttorneyRepresentative>(Representatives).ToArray();
+		public ReadonlyList RepresentativesList => new ReadonlyList(Representatives);
 	}
 
 	[ComVisible(true)]
@@ -84,7 +84,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 		string Inn { get; set; }
 		string Kpp { get; set; }
 		string OrganizationName { get; set; }
-		PowerOfAttorneyRepresentativePhysicalEntity[] PhysicalEntities { get; }
+		ReadonlyList PhysicalEntities { get; }
 	}
 
 	[ComVisible(true)]
@@ -94,7 +94,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorneyRepresentativeLegalEntity))]
 	public partial class PowerOfAttorneyRepresentativeLegalEntity : SafeComObject, IPowerOfAttorneyRepresentativeLegalEntity
 	{
-		public PowerOfAttorneyRepresentativePhysicalEntity[] PhysicalEntities => new List<PowerOfAttorneyRepresentativePhysicalEntity>(PhysicalEntity).ToArray();
+		public ReadonlyList PhysicalEntities => new ReadonlyList(PhysicalEntity);
 	}
 
 	[ComVisible(true)]
