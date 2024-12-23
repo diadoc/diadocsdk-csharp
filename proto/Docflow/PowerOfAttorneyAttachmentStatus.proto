@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "PowerOfAttorneyAttachmentStatusProtos";
+
 message PowerOfAttorneyAttachmentStatus {
 	required StatusName StatusName = 1 [default = Unknown];
 	optional string Comment = 2;

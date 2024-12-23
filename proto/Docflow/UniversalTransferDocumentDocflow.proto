@@ -7,6 +7,8 @@ import "Docflow/InvoiceDocflow.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "UniversalTransferDocumentDocflowProtos";
+
 message InboundUniversalTransferDocumentDocflow
 {
   optional bool IsFinished = 1;

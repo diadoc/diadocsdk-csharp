@@ -2,6 +2,8 @@ import "Documents/ReceiptStatus.proto";
 
 package Diadoc.Api.Proto.Documents.BilateralDocument;
 
+option java_outer_classname = "BilateralDocumentProtos";
+
 message TrustConnectionRequestMetadata {
 	optional BilateralDocumentStatus TrustConnectionRequestStatus = 1 [default = UnknownBilateralDocumentStatus];
 }

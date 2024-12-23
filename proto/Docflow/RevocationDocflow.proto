@@ -4,10 +4,12 @@ import "Docflow/RecipientSignatureRejectionDocflow.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "RevocationDocflowProtos";
+
 message RevocationDocflow
 {
 	optional bool IsFinished = 1;
-	
+
 	optional SignedAttachment RevocationRequestAttachment = 2;
 
 	optional RecipientSignatureDocflow RecipientSignatureDocflow = 3;

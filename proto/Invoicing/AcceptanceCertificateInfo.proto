@@ -4,6 +4,8 @@ import "Invoicing/OrganizationInfo.proto";
 
 package Diadoc.Api.Proto.Invoicing;
 
+option java_outer_classname = "AcceptanceCertificateInfoProtos";
+
 // Со стороны исполнителя
 message AcceptanceCertificateSellerTitleInfo {
 	required DiadocOrganizationInfo Seller = 1;								// исполнитель (продавец услуг)

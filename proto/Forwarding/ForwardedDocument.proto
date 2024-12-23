@@ -4,6 +4,8 @@ import "Docflow/DocumentWithDocflow.proto";
 
 package Diadoc.Api.Proto.Forwarding;
 
+option java_outer_classname = "ForwardedDocumentProtos";
+
 message ForwardedDocumentId
 {
 	optional string FromBoxId = 1;

@@ -2,6 +2,8 @@ import "DocumentId.proto";
 
 package Diadoc.Api.Proto.Documents;
 
+option java_outer_classname = "DocumentsMoveOperationProtos";
+
 message DocumentsMoveOperation
 {
 	required string BoxId = 1;

@@ -3,6 +3,8 @@ import "Content_v3.proto";
 
 package Diadoc.Api.Proto.PowersOfAttorney;
 
+option java_outer_classname = "PowerOfAttorneyValidationProtos";
+
 message PowerOfAttorneyValidationStatus {
 	optional Severity Severity = 1 [default = UnknownSeverity];
 	optional PowerOfAttorneyValidationStatusNamedId StatusNamedId = 2 [default = UnknownStatus];

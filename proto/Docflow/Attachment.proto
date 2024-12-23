@@ -2,6 +2,8 @@ import "Content.proto";
 import "Timestamp.proto";
 import "SignatureVerificationResult.proto";
 
+option java_outer_classname = "AttachmentProtos";
+
 package Diadoc.Api.Proto.Docflow;
 
 message Entity

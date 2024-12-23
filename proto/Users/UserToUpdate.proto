@@ -2,6 +2,8 @@ import "User.proto";
 
 package Diadoc.Api.Proto.Users;
 
+option java_outer_classname = "UserToUpdateProtos";
+
 message UserToUpdate
 {
 	optional UserLoginPatch Login = 1;

@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Certificates;
 
+option java_outer_classname = "CertificateInfoV2Protos";
+
 message CertificateInfoV2 {
 	required string Thumbprint = 1;
 	required CertificateType Type = 2;

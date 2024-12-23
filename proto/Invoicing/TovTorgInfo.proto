@@ -5,6 +5,8 @@ import "Invoicing/UniversalTransferDocumentInfo.proto";
 
 package Diadoc.Api.Proto.Invoicing;
 
+option java_outer_classname = "TovTorgInfoProtos";
+
 message TovTorgSellerTitleInfo {
 	required Organizations.ExtendedOrganizationInfo Seller = 1; // Продавец // СодФХЖ1.Продавец
 	required Organizations.ExtendedOrganizationInfo Buyer = 2; // Покупатель // СодФХЖ1.Покупатель

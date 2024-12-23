@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Employees.Subscriptions;
 
+option java_outer_classname = "SubscriptionProtos";
+
 message EmployeeSubscriptions {
 	repeated Subscription Subscriptions = 1;
 }

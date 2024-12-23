@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Documents;
 
+option java_outer_classname = "DocumentProtocolProtos";
+
 message DocumentProtocol {
 	required bytes PrintForm = 1;
 	required bytes Signature = 2;

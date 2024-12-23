@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Documents.Types;
 
+option java_outer_classname = "DocumentTypeDescriptionV2Protos";
+
 message DocumentTypeDescriptionV2 {
 	required string Name = 1;
 	required string Title = 2;

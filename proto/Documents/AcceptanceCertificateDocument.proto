@@ -2,6 +2,8 @@ import "Documents/ReceiptStatus.proto";
 
 package Diadoc.Api.Proto.Documents.AcceptanceCertificateDocument;
 
+option java_outer_classname = "AcceptanceCertificateDocumentProtos";
+
 message AcceptanceCertificateMetadata {
 	optional AcceptanceCertificateDocumentStatus DocumentStatus = 1 [default = UnknownAcceptanceCertificateDocumentStatus];
 	required string Total = 2;

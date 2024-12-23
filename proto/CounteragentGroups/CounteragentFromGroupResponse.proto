@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.CounteragentGroups;
 
+option java_outer_classname = "CounteragentFromGroupResponseProtos";
+
 message CounteragentFromGroupResponse {
   repeated string CounteragentBoxId = 1;
   required int32 TotalCount = 2;

@@ -5,6 +5,8 @@ import "RoamingSendingStatus.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
+option java_outer_classname = "SignaturePowerOfAttorneyProtos";
+
 message SignaturePowerOfAttorney {
     required Entity Entity = 1;
     required PowersOfAttorney.PowerOfAttorneyFullId FullId = 2;

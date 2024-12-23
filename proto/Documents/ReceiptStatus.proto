@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Documents;
 
+option java_outer_classname = "ReceiptStatusProtos";
+
 enum ReceiptStatus {
 	UnknownReceiptStatus = 0; // Reserved state to report to legacy client for new statuses
 	ReceiptStatusNone = 1;

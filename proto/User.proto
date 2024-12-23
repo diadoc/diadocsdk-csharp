@@ -2,6 +2,8 @@ import "CertificateInfo.proto";
 
 package Diadoc.Api.Proto;
 
+option java_outer_classname = "UserProtos";
+
 message User {
 	optional string Id = 1;
 	optional string LastName = 2;

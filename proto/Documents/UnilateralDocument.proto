@@ -2,6 +2,8 @@ import "Documents/ReceiptStatus.proto";
 
 package Diadoc.Api.Proto.Documents.UnilateralDocument;
 
+option java_outer_classname = "UnilateralDocumentProtos";
+
 message ProformaInvoiceMetadata {
 	optional UnilateralDocumentStatus DocumentStatus = 1 [default = UnknownUnilateralDocumentStatus];
 	required string Total = 2;

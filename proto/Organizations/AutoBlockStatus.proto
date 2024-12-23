@@ -1,5 +1,7 @@
 package Diadoc.Api.Proto.Organizations;
 
+option java_outer_classname = "AutoBlockStatusProtos";
+
 message AutoBlockStatus
 {
     required bool IsBlocked = 1;
