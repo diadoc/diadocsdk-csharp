@@ -707,7 +707,6 @@ namespace Diadoc.Api.Com
 
 	[ComVisible(true)]
 	[Guid("D8F15E75-17BC-4154-8DD5-AB1EFCAC9A0B")]
-	//NOTE: Это хотели, чтобы можно было использовать XML-сериализацию для классов
 	[XmlType(TypeName = "PowerOfAttorneyRepresentativeType", Namespace = "https://diadoc-api.kontur.ru")]
 	public enum PowerOfAttorneyRepresentativeType
 	{
