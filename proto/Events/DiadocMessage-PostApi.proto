@@ -344,6 +344,7 @@ message ResolutionRouteAssignment
 	required string RouteId = 2;
 	optional string Comment = 3;
 	repeated string Labels = 4;
+	optional bool IsAuthorFullyNotified = 5 [default = false];
 }
 
 message ResolutionRequestCancellationAttachment {
