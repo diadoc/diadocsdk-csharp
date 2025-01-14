@@ -19,7 +19,6 @@ using JetBrains.Annotations;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Organizations;
 using Diadoc.Api.Proto.Registration;
-using Diadoc.Api.Proto.Users;
 using Departments = Diadoc.Api.Proto.Departments;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
@@ -278,7 +277,6 @@ namespace Diadoc.Api
 		[Obsolete("Use GetMyUserV2")]
 		User GetMyUser(string authToken);
 		UserV2 GetMyUserV2(string authToken);
-		UserV2 UpdateMyUser(string authToken, UserToUpdate userToUpdate);
 		CertificateList GetMyCertificates(string authToken, string boxId);
 		AsyncMethodResult CloudSign(string authToken, CloudSignRequest request, string certificateThumbprint);
 		CloudSignResult WaitCloudSignResult(string authToken, string taskId, TimeSpan? timeout = null);
@@ -403,7 +401,6 @@ namespace Diadoc.Api
 		[Obsolete("Use GetMyUserV2Async")]
 		Task<User> GetMyUserAsync(string authToken);
 		Task<UserV2> GetMyUserV2Async(string authToken);
-		Task<UserV2> UpdateMyUserAsync(string authToken, UserToUpdate userToUpdate);
 		Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false);

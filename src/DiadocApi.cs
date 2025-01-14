@@ -24,7 +24,6 @@ using Diadoc.Api.Proto.Organizations;
 using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
-using Diadoc.Api.Proto.Users;
 using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
 using Department = Diadoc.Api.Proto.Department;
@@ -186,13 +185,6 @@ namespace Diadoc.Api
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			return diadocHttpApi.GetMyUserV2(authToken);
-		}
-
-		public UserV2 UpdateMyUser(string authToken, UserToUpdate userToUpdate)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (userToUpdate == null) throw new ArgumentNullException("userToUpdate");
-			return diadocHttpApi.UpdateMyUser(authToken, userToUpdate);
 		}
 
 		public CertificateList GetMyCertificates(string authToken, string boxId)

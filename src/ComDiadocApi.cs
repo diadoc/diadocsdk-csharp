@@ -25,7 +25,6 @@ using Diadoc.Api.Proto.Organizations;
 using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
-using Diadoc.Api.Proto.Users;
 using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
 using Department = Diadoc.Api.Proto.Department;
@@ -586,7 +585,6 @@ namespace Diadoc.Api
 
 		User GetMyUser(string authToken);
 		UserV2 GetMyUserV2(string authToken);
-		UserV2 UpdateMyUser(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object userToUpdate);
 		CertificateList GetMyCertificates(string authToken, string boxId);
 
 		AsyncMethodResult CloudSign(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object request, string certificateThumbprint);
@@ -1712,11 +1710,6 @@ namespace Diadoc.Api
 		public UserV2 GetMyUserV2(string authToken)
 		{
 			return diadoc.GetMyUserV2(authToken);
-		}
-
-		public UserV2 UpdateMyUser(string authToken, object userToUpdate)
-		{
-			return diadoc.UpdateMyUser(authToken, (UserToUpdate) userToUpdate);
 		}
 
 		public CertificateList GetMyCertificates(string authToken, string boxId)
