@@ -158,9 +158,9 @@ message PowerOfAttorneyContentV2 {
 }
 
 message PowerOfAttorneyRepresentative {
-  optional PowerOfAttorneyRepresentativeType Type = 1;
+  optional PowerOfAttorneyRepresentativeType Type = 1 [default = UnknownRepresentativeType];
   optional PowerOfAttorneyRepresentativeLegalEntity LegalEntity = 2;     
-  optional PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity IndividualEntrepreneur = 3;
+  optional PowerOfAttorneyRepresentativeIndividualEntity IndividualEntity = 3;
   optional PowerOfAttorneyRepresentativePhysicalEntity PhysicalEntity = 4;
   optional PowerOfAttorneyRepresentativeLegalEntity LegalEntitySubsidiary = 5; 
   optional PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity ForeignLegalEntitySubsidiary = 6;
@@ -169,7 +169,7 @@ message PowerOfAttorneyRepresentative {
 enum PowerOfAttorneyRepresentativeType {
     UnknownRepresentativeType = 0;
     RepresentativeLegalEntity = 1;  
-    RepresentativeIndividualEntrepreneurEntity = 2;
+    RepresentativeIndividualEntity = 2;
     RepresentativePhysicalEntity = 3;
     RepresentativeLegalEntitySubsidiary = 4;
     RepresentativeForeignLegalEntitySubsidiary = 5;
@@ -182,7 +182,7 @@ message PowerOfAttorneyRepresentativeLegalEntity  {
     repeated PowerOfAttorneyRepresentativePhysicalEntity PhysicalEntity = 4;
 }
  
-message PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity {
+message PowerOfAttorneyRepresentativeIndividualEntity {
     required string Inn = 1;    
     required string OrganizationName = 2;
   }

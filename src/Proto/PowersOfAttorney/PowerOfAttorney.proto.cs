@@ -811,13 +811,13 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       set { _LegalEntity = value; }
     }
 
-    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity _IndividualEntrepreneur = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"IndividualEntrepreneur", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeIndividualEntity _IndividualEntity = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"IndividualEntity", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity IndividualEntrepreneur
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativeIndividualEntity IndividualEntity
     {
-      get { return _IndividualEntrepreneur; }
-      set { _IndividualEntrepreneur = value; }
+      get { return _IndividualEntity; }
+      set { _IndividualEntity = value; }
     }
 
     private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyRepresentativePhysicalEntity _PhysicalEntity = null;
@@ -891,10 +891,10 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity")]
-  public partial class PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyRepresentativeIndividualEntity")]
+  public partial class PowerOfAttorneyRepresentativeIndividualEntity : global::ProtoBuf.IExtensible
   {
-    public PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity() {}
+    public PowerOfAttorneyRepresentativeIndividualEntity() {}
     
     private string _Inn;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Inn", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -1023,8 +1023,8 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       [global::ProtoBuf.ProtoEnum(Name=@"RepresentativeLegalEntity", Value=1)]
       RepresentativeLegalEntity = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RepresentativeIndividualEntrepreneurEntity", Value=2)]
-      RepresentativeIndividualEntrepreneurEntity = 2,
+      [global::ProtoBuf.ProtoEnum(Name=@"RepresentativeIndividualEntity", Value=2)]
+      RepresentativeIndividualEntity = 2,
             
       [global::ProtoBuf.ProtoEnum(Name=@"RepresentativePhysicalEntity", Value=3)]
       RepresentativePhysicalEntity = 3,

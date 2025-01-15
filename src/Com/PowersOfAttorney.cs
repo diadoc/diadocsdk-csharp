@@ -57,7 +57,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	{
 		Com.PowerOfAttorneyRepresentativeType Type { get; set; }
 		PowerOfAttorneyRepresentativeLegalEntity LegalEntity { get; set; }
-		PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity IndividualEntrepreneur { get; set; }
+		PowerOfAttorneyRepresentativeIndividualEntity IndividualEntity { get; set; }
 		PowerOfAttorneyRepresentativePhysicalEntity PhysicalEntity { get; set; }
 		PowerOfAttorneyRepresentativeLegalEntity LegalEntitySubsidiary { get; set; }
 		PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity ForeignLegalEntitySubsidiary { get; set; }
@@ -99,18 +99,18 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 
 	[ComVisible(true)]
 	[Guid("76FBD853-9519-4BD6-A788-5B914F4168BB")]
-	public interface IPowerOfAttorneyRepresentativeIndividualEntrepreneurEntity
+	public interface IPowerOfAttorneyRepresentativeIndividualEntity
 	{
 		string Inn { get; set; }
 		string OrganizationName { get; set; }
 	}
 
 	[ComVisible(true)]
-	[ProgId("Diadoc.Api.PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity")]
+	[ProgId("Diadoc.Api.PowerOfAttorneyRepresentativeIndividualEntity")]
 	[Guid("EB4BCB26-4AFB-4030-9659-C1A9458A40C4")]
 	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof(IPowerOfAttorneyRepresentativeIndividualEntrepreneurEntity))]
-	public partial class PowerOfAttorneyRepresentativeIndividualEntrepreneurEntity : SafeComObject, IPowerOfAttorneyRepresentativeIndividualEntrepreneurEntity
+	[ComDefaultInterface(typeof(IPowerOfAttorneyRepresentativeIndividualEntity))]
+	public partial class PowerOfAttorneyRepresentativeIndividualEntity : SafeComObject, IPowerOfAttorneyRepresentativeIndividualEntity
 	{
 	}
 
