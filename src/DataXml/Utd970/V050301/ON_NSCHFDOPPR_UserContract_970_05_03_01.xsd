@@ -692,7 +692,7 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
-          <xs:attribute name="TaxRate" type="TaxRateUtd970V3" use="required">
+          <xs:attribute name="TaxRate" type="TaxRateUtd970" use="required">
             <xs:annotation>
               <xs:documentation>НалСт - ставка налога</xs:documentation>
             </xs:annotation>
@@ -1713,17 +1713,6 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="TaxRateUtd970">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NoVat" />
-      <xs:enumeration value="ZeroPercent" />
-      <xs:enumeration value="TenPercent" />
-      <xs:enumeration value="TwentyPercent" />
-      <xs:enumeration value="TenFraction" />
-      <xs:enumeration value="TwentyFraction" />
-      <xs:enumeration value="TaxedByAgent" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="TaxRateUtd970V3">
     <xs:restriction base="xs:string">
       <xs:enumeration value="NoVat" />
       <xs:enumeration value="ZeroPercent" />

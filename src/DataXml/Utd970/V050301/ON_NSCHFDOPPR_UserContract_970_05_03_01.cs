@@ -1635,7 +1635,7 @@ namespace Diadoc.Api.DataXml.ON_NSCHFDOPPR_UserContract_970_05_03_01 {
         
         private bool exciseFieldSpecified;
         
-        private TaxRateUtd970V3 taxRateField;
+        private TaxRateUtd970 taxRateField;
         
         private decimal subtotalWithVatExcludedField;
         
@@ -1878,7 +1878,7 @@ namespace Diadoc.Api.DataXml.ON_NSCHFDOPPR_UserContract_970_05_03_01 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public TaxRateUtd970V3 TaxRate {
+        public TaxRateUtd970 TaxRate {
             get {
                 return this.taxRateField;
             }
@@ -2500,7 +2500,7 @@ namespace Diadoc.Api.DataXml.ON_NSCHFDOPPR_UserContract_970_05_03_01 {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
-    public enum TaxRateUtd970V3 {
+    public enum TaxRateUtd970 {
         
         /// <remarks/>
         NoVat,
