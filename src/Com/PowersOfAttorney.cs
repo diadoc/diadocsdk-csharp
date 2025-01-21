@@ -150,7 +150,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	}
 
 	[ComVisible(true)]
-	[Guid("9098DB49-90C1-44E4-A116-EADB9DA3B124")]
+	[Guid("55DFF897-C2FE-4A71-ADC2-7907C2190750")]
 	public interface IPowerOfAttorneyIssuer
 	{
 		Com.PowerOfAttorneyIssuerType Type { get; set; }
