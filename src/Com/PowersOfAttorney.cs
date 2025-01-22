@@ -37,6 +37,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 		ReadonlyList DelegationChainList { get; }
 		PowerOfAttorneyPermissionsInfo PermissionsInfo { get; set; }
 		PowerOfAttorneyDelegationInfo DelegationInfo { get; set; }
+		ReadonlyList RepresentativesList { get; }
 	}
 
 	[ComVisible(true)]
@@ -46,10 +47,106 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorney))]
 	public partial class PowerOfAttorney : SafeComObject, IPowerOfAttorney
 	{
-		public ReadonlyList DelegationChainList
+		public ReadonlyList DelegationChainList => new ReadonlyList(DelegationChain);
+		public ReadonlyList RepresentativesList => new ReadonlyList(Representatives);
+	}
+
+	[ComVisible(true)]
+	[Guid("C8A6DB43-EB31-480B-9515-FC7E6AB4AFB3")]
+	public interface IPowerOfAttorneyRepresentative
+	{
+		Com.PowerOfAttorneyRepresentativeType Type { get; set; }
+		PowerOfAttorneyRepresentativeLegalEntity LegalEntity { get; set; }
+		PowerOfAttorneyRepresentativeIndividualEntity IndividualEntity { get; set; }
+		PowerOfAttorneyRepresentativePhysicalEntity PhysicalEntity { get; set; }
+		PowerOfAttorneyRepresentativeLegalEntity LegalEntitySubsidiary { get; set; }
+		PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity ForeignLegalEntitySubsidiary { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyRepresentative")]
+	[Guid("85C4946B-CEB6-47D5-9D64-EA7EDE3C1330")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyRepresentative))]
+	public partial class PowerOfAttorneyRepresentative : SafeComObject, IPowerOfAttorneyRepresentative
+	{
+		Com.PowerOfAttorneyRepresentativeType IPowerOfAttorneyRepresentative.Type
 		{
-			get { return new ReadonlyList(DelegationChain); }
+			get => (Com.PowerOfAttorneyRepresentativeType) Type;
+			set => Type = (PowerOfAttorneyRepresentativeType) value;
 		}
+	}
+
+	[ComVisible(true)]
+	[Guid("24282D30-965C-4E33-B48A-EC234D2AEDD3")]
+	public interface IPowerOfAttorneyRepresentativeLegalEntity
+	{
+		string Inn { get; set; }
+		string Kpp { get; set; }
+		string OrganizationName { get; set; }
+		ReadonlyList PhysicalEntities { get; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyRepresentativeLegalEntity")]
+	[Guid("324CF76F-78C7-4CA2-A985-676C9890C198")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyRepresentativeLegalEntity))]
+	public partial class PowerOfAttorneyRepresentativeLegalEntity : SafeComObject, IPowerOfAttorneyRepresentativeLegalEntity
+	{
+		public ReadonlyList PhysicalEntities => new ReadonlyList(PhysicalEntity);
+	}
+
+	[ComVisible(true)]
+	[Guid("76FBD853-9519-4BD6-A788-5B914F4168BB")]
+	public interface IPowerOfAttorneyRepresentativeIndividualEntity
+	{
+		string Inn { get; set; }
+		string OrganizationName { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyRepresentativeIndividualEntity")]
+	[Guid("EB4BCB26-4AFB-4030-9659-C1A9458A40C4")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyRepresentativeIndividualEntity))]
+	public partial class PowerOfAttorneyRepresentativeIndividualEntity : SafeComObject, IPowerOfAttorneyRepresentativeIndividualEntity
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("A249CB40-62FC-4674-9D09-221C37325742")]
+	public interface IPowerOfAttorneyRepresentativePhysicalEntity
+	{
+		string Inn { get; set; }
+		FullName PersonName { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.IPowerOfAttorneyRepresentativePhysicalEntity")]
+	[Guid("C6D795EB-936A-422F-9F04-135D616B507B")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyRepresentativePhysicalEntity))]
+	public partial class PowerOfAttorneyRepresentativePhysicalEntity : SafeComObject, IPowerOfAttorneyRepresentativePhysicalEntity
+	{
+	}
+
+	[ComVisible(true)]
+	[Guid("1E1F4224-B22C-4A29-87FD-B0F63CEBF8B4")]
+	public interface IPowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity
+	{
+		string Inn { get; set; }
+		string Kpp { get; set; }
+		string OrganizationName { get; set; }
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity")]
+	[Guid("03A0A8F3-C18A-4922-A781-71355AB7A3F0")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity))]
+	public partial class PowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity : SafeComObject, IPowerOfAttorneyRepresentativeForeignLegalSubsidiaryEntity
+	{
 	}
 
 	[ComVisible(true)]
@@ -72,8 +169,8 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	{
 		Com.PowerOfAttorneyIssuerType IPowerOfAttorneyIssuer.Type
 		{
-			get { return (Com.PowerOfAttorneyIssuerType) Type; }
-			set { Type = (PowerOfAttorneyIssuerType) value; }
+			get => (Com.PowerOfAttorneyIssuerType) Type;
+			set => Type = (PowerOfAttorneyIssuerType) value;
 		}
 	}
 
@@ -249,7 +346,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	{
 		ReadonlyList CheckResultsList { get; }
 	}
-	
+
 	[ComVisible(true)]
 	[ProgId("Diadoc.Api.ValidationProtocol")]
 	[Guid("ECE41E66-4BFC-4C96-BB3A-AF7D9734927B")]
@@ -257,10 +354,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IValidationProtocol))]
 	public partial class ValidationProtocol : SafeComObject, IValidationProtocol
 	{
-		public ReadonlyList CheckResultsList
-		{
-			get { return new ReadonlyList(CheckResults); }
-		}
+		public ReadonlyList CheckResultsList => new ReadonlyList(CheckResults);
 	}
 
 	[ComVisible(true)]
@@ -270,8 +364,9 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 		Com.Severity Severity { get; }
 		Com.PowerOfAttorneyValidationStatusNamedId StatusNamedId { get; }
 		string StatusText { get; }
-		[Obsolete]
-		ReadonlyList ErrorsList { get; }
+
+		[Obsolete] ReadonlyList ErrorsList { get; }
+
 		ValidationProtocol ValidationProtocol { get; }
 		PowerOfAttorneyValidationError OperationError { get; }
 	}
@@ -283,20 +378,11 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorneyValidationStatus))]
 	public partial class PowerOfAttorneyValidationStatus : SafeComObject, IPowerOfAttorneyValidationStatus
 	{
-		Com.Severity IPowerOfAttorneyValidationStatus.Severity
-		{
-			get { return (Com.Severity) Severity; }
-		}
+		Com.Severity IPowerOfAttorneyValidationStatus.Severity => (Com.Severity) Severity;
 
-		Com.PowerOfAttorneyValidationStatusNamedId IPowerOfAttorneyValidationStatus.StatusNamedId
-		{
-			get { return (Com.PowerOfAttorneyValidationStatusNamedId) StatusNamedId; }
-		}
+		Com.PowerOfAttorneyValidationStatusNamedId IPowerOfAttorneyValidationStatus.StatusNamedId => (Com.PowerOfAttorneyValidationStatusNamedId) StatusNamedId;
 
-		public ReadonlyList ErrorsList
-		{
-			get { return new ReadonlyList(Errors); }
-		}
+		public ReadonlyList ErrorsList => new ReadonlyList(Errors);
 	}
 
 	[ComVisible(true)]
@@ -315,17 +401,17 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	public partial class PowerOfAttorneyValidationError : SafeComObject, IPowerOfAttorneyValidationError
 	{
 	}
-	
+
 	[ComVisible(true)]
 	[Guid("AC2185A0-5D6D-4371-A487-A75EC0627897")]
 	public interface IValidationCheckResult
 	{
 		Com.PowerOfAttorneyValidationCheckStatus Status { get; }
 		string Name { get; }
-		
+
 		PowerOfAttorneyValidationError Error { get; }
 	}
-	
+
 	[ComVisible(true)]
 	[ProgId("Diadoc.Api.ValidationCheckResult")]
 	[Guid("04838F25-EFC4-4ACD-9789-731F07CAA1C9")]
@@ -333,10 +419,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IValidationCheckResult))]
 	public partial class ValidationCheckResult : SafeComObject, IValidationCheckResult
 	{
-		Com.PowerOfAttorneyValidationCheckStatus IValidationCheckResult.Status
-		{
-			get { return (Com.PowerOfAttorneyValidationCheckStatus) Status; }
-		}
+		Com.PowerOfAttorneyValidationCheckStatus IValidationCheckResult.Status => (Com.PowerOfAttorneyValidationCheckStatus) Status;
 	}
 
 	[ComVisible(true)]
@@ -414,10 +497,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorneyRegisterResult))]
 	public partial class PowerOfAttorneyRegisterResult : SafeComObject, IPowerOfAttorneyRegisterResult
 	{
-		public ReadonlyList ErrorsList
-		{
-			get { return new ReadonlyList(Errors); }
-		}
+		public ReadonlyList ErrorsList => new ReadonlyList(Errors);
 	}
 
 	[ComVisible(true)]
@@ -524,10 +604,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorneyPermissionsInfo))]
 	public partial class PowerOfAttorneyPermissionsInfo : SafeComObject, IPowerOfAttorneyPermissionsInfo
 	{
-		public ReadonlyList PermissionsList
-		{
-			get { return new ReadonlyList(Permissions); }
-		}
+		public ReadonlyList PermissionsList => new ReadonlyList(Permissions);
 	}
 
 	[ComVisible(true)]
@@ -546,10 +623,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorneyPermissions))]
 	public partial class PowerOfAttorneyPermissions : SafeComObject, IPowerOfAttorneyPermissions
 	{
-		public ReadonlyList MachineReadablePermissionList
-		{
-			get { return new ReadonlyList(MachineReadablePermission); }
-		}
+		public ReadonlyList MachineReadablePermissionList => new ReadonlyList(MachineReadablePermission);
 	}
 
 	[ComVisible(true)]
@@ -569,10 +643,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorneyMachineReadablePermission))]
 	public partial class PowerOfAttorneyMachineReadablePermission : SafeComObject, IPowerOfAttorneyMachineReadablePermission
 	{
-		public ReadonlyList RestrictionsList
-		{
-			get { return new ReadonlyList(Restrictions); }
-		}
+		public ReadonlyList RestrictionsList => new ReadonlyList(Restrictions);
 	}
 
 	[ComVisible(true)]
@@ -595,7 +666,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	public partial class PowerOfAttorneyRestrictions : SafeComObject, IPowerOfAttorneyRestrictions
 	{
 	}
-	
+
 	[ComVisible(true)]
 	[Guid("D7F0A026-1580-480E-934F-89C90DF677FB")]
 	public interface IPowerOfAttorneyDelegationInfo
@@ -604,7 +675,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 		string ParentRegistrationNumber { get; set; }
 		ReadonlyList RootIssuersList { get; }
 	}
-	
+
 	[ComVisible(true)]
 	[ProgId("Diadoc.Api.PowerOfAttorneyDelegationInfo")]
 	[Guid("2B4977C2-30AA-45F1-AFC3-032E6E751F4C")]
@@ -632,6 +703,19 @@ namespace Diadoc.Api.Com
 		ForeignEntity = 2,
 		IndividualEntity = 3,
 		PhysicalEntity = 4
+	}
+
+	[ComVisible(true)]
+	[Guid("D8F15E75-17BC-4154-8DD5-AB1EFCAC9A0B")]
+	[XmlType(TypeName = "PowerOfAttorneyRepresentativeType", Namespace = "https://diadoc-api.kontur.ru")]
+	public enum PowerOfAttorneyRepresentativeType
+	{
+		UnknownRepresentativeType = 0,
+		RepresentativeLegalEntity = 1,
+		RepresentativeIndividualEntrepreneurEntity = 2,
+		RepresentativePhysicalEntity = 3,
+		RepresentativeLegalEntitySubsidiary = 4,
+		RepresentativeForeignLegalEntitySubsidiary = 5
 	}
 
 	[ComVisible(true)]
