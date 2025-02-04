@@ -5,7 +5,6 @@ using Diadoc.Api.Constants;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Certificates;
-using Diadoc.Api.Proto.Users;
 
 namespace Diadoc.Api
 {
@@ -33,11 +32,6 @@ namespace Diadoc.Api
 		public UserV2 GetMyUserV2(string authToken)
 		{
 			return PerformHttpRequest<UserV2>(authToken, "GET", "/V2/GetMyUser");
-		}
-
-		public UserV2 UpdateMyUser(string authToken, UserToUpdate userToUpdate)
-		{
-			return PerformHttpRequest<UserToUpdate, UserV2>(authToken, "/UpdateMyUser", userToUpdate);
 		}
 
 		public CertificateList GetMyCertificates(string authToken, string boxId)
