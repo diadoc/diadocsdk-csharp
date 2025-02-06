@@ -4,8 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Diadoc.Api;
 using Diadoc.Api.Cryptography;
-using Diadoc.Api.DataXml;
-using Diadoc.Api.DataXml.Ucd736;
+using Diadoc.Api.DataXml.ON_NKORSCHFDOPPR_UserContract_1_996_03_05_01_03;
 using Diadoc.Api.Proto.Events;
 
 namespace Diadoc.Samples
@@ -42,7 +41,7 @@ namespace Diadoc.Samples
 			// Перечислим связку идентификаторов, которая характеризует полный формализованный тип документа в Диадоке 
 			var typeNamedId = "UniversalCorrectionDocument"; // строковый идентификатор типа УКД
 			var function = "КСЧФ"; // функция, представляющая УКД как корректировочный счёт-фактуру
-			var version = "ucd736_05_01_02"; // версия, отвечающая за то, что документ сформирован в формате приказа №736
+			var version = "ucd736_05_01_03"; // версия, отвечающая за то, что документ сформирован в формате приказа №736
 
 			// Теперь создадим сам формализованный документ.
 			// Мы должны получить xml, которая будет удовлетворять его схеме
@@ -137,7 +136,7 @@ namespace Diadoc.Samples
 				Function = UniversalCorrectionDocumentFunction.КСЧФ,
 				DocumentDate = "01.01.2020",
 				DocumentNumber = "134",
-				CurrencyName = UniversalCorrectionDocumentCurrencyName.GetCurrencyNameByCode,
+				CurrencyName = UniversalCorrectionDocumentCurrencyName.Item1,
 				Seller = new ExtendedOrganizationInfo_ForeignAddress1000
 				{
 					Item = new ExtendedOrganizationDetails_ForeignAddress1000
@@ -145,7 +144,7 @@ namespace Diadoc.Samples
 						Inn = "7750370238",
 						Kpp = "770100101",
 						OrgName = "ЗАО Очень Древний Папирус",
-						OrgType = OrganizationType.LegalEntity,
+						OrgType = OrganizationType.Item1,
 						Address = new Address_ForeignAddress1000
 						{
 							Item = new RussianAddress
@@ -161,7 +160,7 @@ namespace Diadoc.Samples
 					{
 						Inn = "9500000005",
 						Kpp = "667301001",
-						OrgType = OrganizationType.LegalEntity,
+						OrgType = OrganizationType.Item1,
 						OrgName = "ООО Тестовое Юрлицо обычное",
 						Address = new Address_ForeignAddress1000
 						{
@@ -198,12 +197,12 @@ namespace Diadoc.Samples
 							},
 							Subtotal = new ExtendedInvoiceCorrectionItemSubtotal
 							{
-								ItemElementName = ExtendedInvoiceCorrectionItemSubtotalDiffType.AmountsInc,
+								ItemElementName = ItemChoiceType3.AmountsInc,
 								Item = (decimal)10
 							},
 							TaxRate = new ExtendedInvoiceCorrectionItemTaxRate
 							{
-								OriginalValue = TaxRateWithTwentyPercentAndTaxedByAgent.TaxedByAgent
+								OriginalValue = TaxRateUcd736AndUtd820.НДСисчисляетсяналоговымагентом
 							}
 						},
 					},
@@ -234,11 +233,11 @@ namespace Diadoc.Samples
 
 			// Передадим информацию о подписанте документа, т.е. персональные данные подписываемого сотрудника,
 			// которые осядут в самом xml:
-			universalCorrectionDocument.UseSignerDetails(new[]
+			universalCorrectionDocument.Signers = new[]
 			{
 				new ExtendedSignerDetails_CorrectionSellerTitle
 				{
-					SignerType = ExtendedSignerDetailsBaseSignerType.LegalEntity,
+					SignerType = ExtendedSignerDetailsBaseSignerType.Item1,
 					FirstName = "Иван",
 					MiddleName = "Иванович",
 					LastName = "Иванов",
@@ -246,10 +245,10 @@ namespace Diadoc.Samples
 					Inn = "7750370238",
 					Position = "директор"
 				}
-			});
+			};
 			// Альтернативный способ заполнения данных подписанта:
 			// отправить в хранилище Диадока аналогичный набор данных через метод PostExtendedSignerDetails
-			// и затем использовать universalCorrectionDocument.UseSignerReferences(new SignerReference[])
+			// и затем использовать universalCorrectionDocument.Signers = new SignerReference[]
 
 			return universalCorrectionDocument;
 		}
