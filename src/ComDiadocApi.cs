@@ -886,9 +886,15 @@ namespace Diadoc.Api
 			return diadoc.GetOrganizationFeatures(authToken, boxId);
 		}
 
+		[Obsolete("Use a similar method with boxId: GetDepartmentV2()")]
 		public Department GetDepartment(string authToken, string orgId, string departmentId)
 		{
 			return diadoc.GetDepartment(authToken, orgId, departmentId);
+		}
+
+		public Department GetDepartmentV2(string authToken, string boxId, string departmentId)
+		{
+			return diadoc.GetDepartmentV2(authToken, boxId, departmentId);
 		}
 
 		public BoxEventList GetNewEvents(

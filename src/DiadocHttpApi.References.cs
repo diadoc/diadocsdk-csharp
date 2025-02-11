@@ -124,10 +124,19 @@ namespace Diadoc.Api
 			return PerformHttpRequest<Box>(authToken, "GET", queryString);
 		}
 
+		[Obsolete("Use a similar method with boxId: GetDepartmentV2()")]
 		public Department GetDepartment(string authToken, string orgId, string departmentId)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GetDepartment");
 			queryBuilder.AddParameter("orgId", orgId);
+			queryBuilder.AddParameter("departmentId", departmentId);
+			return PerformHttpRequest<Department>(authToken, "GET", queryBuilder.BuildPathAndQuery());
+		}
+
+		public Department GetDepartmentV2(string authToken, string boxId, string departmentId)
+		{
+			var queryBuilder = new PathAndQueryBuilder("V2/GetDepartment");
+			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("departmentId", departmentId);
 			return PerformHttpRequest<Department>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
