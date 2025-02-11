@@ -203,6 +203,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetBoxAsync(authToken, boxId);
 		}
 
+		[Obsolete("Use a similar method with boxId: GetDepartmentV2Async()")]
 		public Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

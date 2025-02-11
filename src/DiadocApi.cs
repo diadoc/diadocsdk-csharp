@@ -277,6 +277,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetBox(authToken, boxId);
 		}
 
+		[Obsolete("Use a similar method with boxId: GetDepartmentV2()")]
 		public Department GetDepartment(string authToken, string orgId, string departmentId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

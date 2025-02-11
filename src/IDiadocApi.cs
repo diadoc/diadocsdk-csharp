@@ -80,6 +80,7 @@ namespace Diadoc.Api
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Box GetBox(string boxId);
 		Box GetBox(string authToken, string boxId);
+		[Obsolete("Use a similar method with boxId: GetDepartmentV2()")]
 		Department GetDepartment(string authToken, string orgId, string departmentId);
 		Department GetDepartmentV2(string authToken, string boxId, string departmentId);
 		void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps);
@@ -422,6 +423,7 @@ namespace Diadoc.Api
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Box> GetBoxAsync(string boxId);
 		Task<Box> GetBoxAsync(string authToken, string boxId);
+		[Obsolete("Use a similar method with boxId: GetDepartmentV2Async()")]
 		Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId);
 		Task<Department> GetDepartmentV2Async(string authToken, string boxId, string departmentId);
 		Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps);

@@ -125,6 +125,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Box>(authToken, "GET", queryString);
 		}
 
+		[Obsolete("Use a similar method with boxId: GetDepartmentV2Async()")]
 		public Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GetDepartment");
