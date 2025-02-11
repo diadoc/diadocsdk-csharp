@@ -277,12 +277,21 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetBox(authToken, boxId);
 		}
 
+		[Obsolete("Use a similar method with boxId: GetDepartmentV2()")]
 		public Department GetDepartment(string authToken, string orgId, string departmentId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (orgId == null) throw new ArgumentNullException("orgId");
 			if (departmentId == null) throw new ArgumentNullException("departmentId");
 			return diadocHttpApi.GetDepartment(authToken, orgId, departmentId);
+		}
+
+		public Department GetDepartmentV2(string authToken, string boxId, string departmentId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (departmentId == null) throw new ArgumentNullException("departmentId");
+			return diadocHttpApi.GetDepartmentV2(authToken, boxId, departmentId);
 		}
 
 		public void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps)
