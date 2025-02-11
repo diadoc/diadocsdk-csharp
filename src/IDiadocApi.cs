@@ -81,6 +81,7 @@ namespace Diadoc.Api
 		Box GetBox(string boxId);
 		Box GetBox(string authToken, string boxId);
 		Department GetDepartment(string authToken, string orgId, string departmentId);
+		Department GetDepartmentV2(string authToken, string boxId, string departmentId);
 		void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps);
 		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
 		BoxEventList GetNewEvents(
@@ -422,6 +423,7 @@ namespace Diadoc.Api
 		Task<Box> GetBoxAsync(string boxId);
 		Task<Box> GetBoxAsync(string authToken, string boxId);
 		Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId);
+		Task<Department> GetDepartmentV2Async(string authToken, string boxId, string departmentId);
 		Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps);
 		Task<OrganizationFeatures> GetOrganizationFeaturesAsync(string authToken, string boxId);
 		Task<BoxEventList> GetNewEventsAsync(

@@ -133,6 +133,14 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Department>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
 
+		public Task<Department> GetDepartmentV2Async(string authToken, string boxId, string departmentId)
+		{
+			var queryBuilder = new PathAndQueryBuilder("V2/GetDepartment");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("departmentId", departmentId);
+			return PerformHttpRequestAsync<Department>(authToken, "GET", queryBuilder.BuildPathAndQuery());
+		}
+
 		public Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps)
 		{
 			return PerformHttpRequestAsync(authToken, "POST", "/UpdateOrganizationProperties", Serialize(orgProps));

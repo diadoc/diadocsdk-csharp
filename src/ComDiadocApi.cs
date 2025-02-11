@@ -891,6 +891,11 @@ namespace Diadoc.Api
 			return diadoc.GetDepartment(authToken, orgId, departmentId);
 		}
 
+		public Department GetDepartmentV2(string authToken, string boxId, string departmentId)
+		{
+			return diadoc.GetDepartmentV2(authToken, boxId, departmentId);
+		}
+
 		public BoxEventList GetNewEvents(
 			string authToken,
 			string boxId,

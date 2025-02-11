@@ -211,6 +211,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDepartmentAsync(authToken, orgId, departmentId);
 		}
 
+		public Task<Department> GetDepartmentV2Async(string authToken, string boxId, string departmentId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (departmentId == null) throw new ArgumentNullException("departmentId");
+			return diadocHttpApi.GetDepartmentV2Async(authToken, boxId, departmentId);
+		}
+
 		public Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
