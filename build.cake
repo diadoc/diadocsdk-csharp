@@ -8,6 +8,7 @@
 using Cake.Common.Diagnostics;
 using Cake.Git;
 using System.Text.RegularExpressions;
+using Cake.Common.Tools.DotNet;
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
@@ -149,16 +150,11 @@ Task("Build")
 	.IsDependentOn("GenerateProtoFiles")
 	.Does(() =>
 	{
-		if(IsRunningOnWindows())
+		var settings = new DotNetBuildSettings
 		{
-			// Use MSBuild
-			MSBuild(DiadocApiSolutionPath, settings => settings.SetConfiguration(configuration).WithTarget("Restore").WithTarget("Build"));
-		}
-		else
-		{
-			// Use XBuild
-			XBuild(DiadocApiSolutionPath, settings => settings.SetConfiguration(configuration).WithTarget("Restore").WithTarget("Build"));
-		}
+			Configuration = configuration
+		};
+		DotNetBuild(DiadocApiSolutionPath, settings);
 	});
 
 Task("Repack")
