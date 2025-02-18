@@ -149,16 +149,11 @@ Task("Build")
 	.IsDependentOn("GenerateProtoFiles")
 	.Does(() =>
 	{
-		if(IsRunningOnWindows())
+		var settings = new DotNetBuildSettings
 		{
-			// Use MSBuild
-			MSBuild(DiadocApiSolutionPath, settings => settings.SetConfiguration(configuration).WithTarget("Restore").WithTarget("Build"));
-		}
-		else
-		{
-			// Use XBuild
-			XBuild(DiadocApiSolutionPath, settings => settings.SetConfiguration(configuration).WithTarget("Restore").WithTarget("Build"));
-		}
+			Configuration = configuration
+		};
+		DotNetBuild(DiadocApiSolutionPath, settings);
 	});
 
 Task("Repack")
