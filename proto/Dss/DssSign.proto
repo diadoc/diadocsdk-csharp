@@ -39,6 +39,7 @@ enum DssConfirmType {
 	MyDss = 2;
 	Applet = 3;
 	MobileSdk = 4;
+	GosKey = 5;
 }
 
 enum DssOperator {
