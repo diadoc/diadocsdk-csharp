@@ -1,15 +1,14 @@
 ﻿using System.IO;
+using Diadoc.Api.Proto;
 using JetBrains.Annotations;
-using ProtoBuf;
 
 namespace Diadoc.Api
 {
-	public class ProtobufHttpSerializer: IHttpSerializer
+	public class ProtobufHttpSerializer : IHttpSerializer
 	{
 		[NotNull]
-		public byte[] Serialize<T>([NotNull] T obj) where T: class
+		public byte[] Serialize<T>([NotNull] T obj) where T : class
 		{
-			ProtobufPrepareSerializerInitializer<T>.Prepare();
 			using (var mem = new MemoryStream())
 			{
 				Serializer.Serialize(mem, obj);
@@ -18,11 +17,12 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
-		public T Deserialize<T>([NotNull] byte[] bytes) where T: class
+		public T Deserialize<T>([NotNull] byte[] bytes) where T : class
 		{
-			ProtobufPrepareSerializerInitializer<T>.Prepare();
 			using (var ms = new MemoryStream(bytes))
+			{
 				return Serializer.Deserialize<T>(ms);
+			}
 		}
 
 		[CanBeNull]
