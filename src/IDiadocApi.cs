@@ -282,6 +282,9 @@ namespace Diadoc.Api
 		AsyncMethodResult CloudSignConfirm(string authToken, string cloudSignToken, string confirmationCode, ContentLocationPreference? locationPreference = null);
 		CloudSignConfirmResult WaitCloudSignConfirmResult(string authToken, string taskId, TimeSpan? timeout = null);
 		AsyncMethodResult DssSign(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null);
+		
+		[Obsolete("Currently unavailable. Use DssSign()")]
+		AsyncMethodResult DssSignV2(string authToken, string boxId, DssSignRequestV2 request);
 		DssSignResult DssSignResult(string authToken, string boxId, string taskId);
 
 		[Obsolete("Use AcquireCounteragentV3()")]
@@ -658,6 +661,9 @@ namespace Diadoc.Api
 		Task<CloudSignConfirmResult> WaitCloudSignConfirmResultAsync(string authToken, string taskId, TimeSpan? timeout
  = null);
 		Task<AsyncMethodResult> DssSignAsync(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null);
+		
+		[Obsolete("Currently unavailable. Use DssSign()")]
+		Task<AsyncMethodResult> DssSignV2Async(string authToken, string boxId, DssSignRequestV2 request);
 		Task<DssSignResult> DssSignResultAsync(string authToken, string boxId, string taskId);
 
 		[Obsolete("Use AcquireCounteragentV3Async()")]
