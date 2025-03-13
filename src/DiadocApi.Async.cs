@@ -1197,6 +1197,14 @@ namespace Diadoc.Api
 			if (request == null) throw new ArgumentNullException("request");
 			return diadocHttpApi.DssSignAsync(authToken, boxId, request, certificateThumbprint);
 		}
+		
+		[Obsolete("Currently unavailable. Use DssSignAsync")]
+		public Task<AsyncMethodResult> DssSignV2Async(string authToken, string boxId, DssSignRequestV2 request)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			if (request == null) throw new ArgumentNullException("request");
+			return diadocHttpApi.DssSignV2Async(authToken, boxId, request);
+		}
 
 		public Task<DssSignResult> DssSignResultAsync(string authToken, string boxId, string taskId)
 		{

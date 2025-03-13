@@ -7,6 +7,30 @@ message DssSignRequest
 	repeated DssSignFile Files = 1;
 }
 
+message DssSignRequestV2
+{
+	repeated DssSignFile Files = 1;
+	required DssSignDataSource SignDataSource = 2;
+	optional DssCertificateData CertificateData = 3;
+	optional DssGosKeyData GosKeyData = 4;
+}
+
+enum DssSignDataSource {
+	CertificateSign = 0;
+	GosKeySign = 1;
+}
+
+message DssCertificateData
+{
+	required string Thumbprint = 1;
+}
+
+message DssGosKeyData
+{
+	optional string Snils = 1;
+	optional string Oid = 2;
+}
+
 message DssSignFile
 {
 	required Content_v3 Content = 1;
@@ -21,6 +45,7 @@ enum DssConfirmType {
 	MyDss = 2;
 	Applet = 3;
 	MobileSdk = 4;
+	GosKey = 5;
 }
 
 enum DssOperator {
