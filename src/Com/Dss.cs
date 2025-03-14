@@ -1,8 +1,78 @@
 ﻿using System.Runtime.InteropServices;
 using Diadoc.Api.Com;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api.Proto.Dss
 {
+	[ComVisible(true)]
+	[Guid("3169BD03-2C1A-4DFB-97A2-F1BF969A411F")]
+	public interface IDssSignRequestV2
+	{
+		ReadonlyList FilesList { get; }
+		void AddFileItem([MarshalAs(UnmanagedType.IDispatch)] object file);
+		DssCertificateData CertificateData { get; set; }
+		DssGosKeyData GosKeyData { get; set; }
+		Com.DssSignDataSource SignDataSourceValue { get; set; }
+	}
+	
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.DssSignRequestV2")]
+	[Guid("2179CB4C-91F6-4ABD-B201-57816DD08CAA")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IDssSignRequestV2))]
+	public partial class DssSignRequestV2 : SafeComObject, IDssSignRequestV2
+	{
+		public ReadonlyList FilesList
+		{
+			get { return new ReadonlyList(Files); }
+		}
+
+		public void AddFileItem(object file)
+		{
+			Files.Add((DssSignFile) file);
+		}
+
+		public Com.DssSignDataSource SignDataSourceValue
+		{
+			get { return (Com.DssSignDataSource) SignDataSource; }
+			set { SignDataSource = (DssSignDataSource)value; }
+		}
+	}
+
+	[ComVisible(true)]
+	[Guid("3B235943-DDC3-41D9-A254-9EDFDAF3ED60")]
+	public interface IDssCertificateData
+	{
+		string Thumbprint { get; set; }
+	}
+	
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.CertificateData")]
+	[Guid("F23A4E9A-8D85-4B21-B06C-97FDAB4743E4")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IDssCertificateData))]
+	public partial class DssCertificateData : SafeComObject, IDssCertificateData
+	{
+	}
+	
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.GosKeyData")]
+	[Guid("F7446966-C856-411A-85AB-3A6281158E70")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IDssGosKeyData))]
+	public partial class DssGosKeyData : SafeComObject, IDssGosKeyData
+	{
+	}
+	
+	[ComVisible(true)]
+	[Guid("C6E479B7-7353-40EC-AD9B-77A09E899BA2")]
+	public interface IDssGosKeyData
+	{
+		string Snils { get; set; }
+		string Oid { get; set; }
+	}
+	
+	
 	[ComVisible(true)]
 	[Guid("9FD6F79C-26AB-4F1A-893C-D6CD02549033")]
 	public interface IDssSignRequest
