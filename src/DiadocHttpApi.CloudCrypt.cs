@@ -68,7 +68,7 @@ namespace Diadoc.Api
 		[Obsolete("Currently unavailable. Use DssSign")]
 		public AsyncMethodResult DssSignV2(string authToken, string boxId, DssSignRequestV2 request)
 		{
-			var queryString = new PathAndQueryBuilder("V2/DssSign");
+			var queryString = new PathAndQueryBuilder("/V2/DssSign");
 			queryString.AddParameter("boxId", boxId);
 
 			return PerformHttpRequest<AsyncMethodResult>(authToken, "POST", queryString.BuildPathAndQuery(), Serialize(request));
