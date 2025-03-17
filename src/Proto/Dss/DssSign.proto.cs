@@ -28,6 +28,93 @@ namespace Diadoc.Api.Proto.Dss
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DssSignRequestV2")]
+  public partial class DssSignRequestV2 : global::ProtoBuf.IExtensible
+  {
+    public DssSignRequestV2() {}
+    
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Dss.DssSignFile> _Files = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Dss.DssSignFile>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"Files", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Dss.DssSignFile> Files
+    {
+      get { return _Files; }
+    }
+  
+    private Diadoc.Api.Proto.Dss.DssSignDataSource _SignDataSource;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"SignDataSource", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Dss.DssSignDataSource SignDataSource
+    {
+      get { return _SignDataSource; }
+      set { _SignDataSource = value; }
+    }
+
+    private Diadoc.Api.Proto.Dss.DssCertificateData _CertificateData = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"CertificateData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Dss.DssCertificateData CertificateData
+    {
+      get { return _CertificateData; }
+      set { _CertificateData = value; }
+    }
+
+    private Diadoc.Api.Proto.Dss.DssGosKeyData _GosKeyData = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"GosKeyData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Dss.DssGosKeyData GosKeyData
+    {
+      get { return _GosKeyData; }
+      set { _GosKeyData = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DssCertificateData")]
+  public partial class DssCertificateData : global::ProtoBuf.IExtensible
+  {
+    public DssCertificateData() {}
+    
+    private string _Thumbprint;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Thumbprint", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Thumbprint
+    {
+      get { return _Thumbprint; }
+      set { _Thumbprint = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DssGosKeyData")]
+  public partial class DssGosKeyData : global::ProtoBuf.IExtensible
+  {
+    public DssGosKeyData() {}
+    
+
+    private string _Snils = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Snils", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Snils
+    {
+      get { return _Snils; }
+      set { _Snils = value; }
+    }
+
+    private string _Oid = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Oid", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Oid
+    {
+      get { return _Oid; }
+      set { _Oid = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DssSignFile")]
   public partial class DssSignFile : global::ProtoBuf.IExtensible
   {
@@ -135,6 +222,17 @@ namespace Diadoc.Api.Proto.Dss
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+    [global::ProtoBuf.ProtoContract(Name=@"DssSignDataSource")]
+    public enum DssSignDataSource
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"CertificateSign", Value=0)]
+      CertificateSign = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GosKeySign", Value=1)]
+      GosKeySign = 1
+    }
+  
     [global::ProtoBuf.ProtoContract(Name=@"DssConfirmType")]
     public enum DssConfirmType
     {
@@ -155,7 +253,10 @@ namespace Diadoc.Api.Proto.Dss
       Applet = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"MobileSdk", Value=4)]
-      MobileSdk = 4
+      MobileSdk = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GosKey", Value=5)]
+      GosKey = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"DssOperator")]
