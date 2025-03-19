@@ -12,6 +12,7 @@ namespace Diadoc.Samples
 				PostNonformalizedDocument.RunSample();
 				PostLargeDocumentWithShelf.RunSample();
 				PostUniversalTransferDocument820.RunSample();
+				PostUniversalTransferDocument970.RunSample();
 				PostUniversalCorrectionDocument736.RunSample();
 				PatchDocumentWithReceipt.RunSample();
 			}
