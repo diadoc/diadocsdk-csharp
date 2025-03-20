@@ -37,6 +37,7 @@ namespace Diadoc.Api.Proto.Events
 		string ProxyTitle { get; }
 		bool PacketIsLocked { get; }
 		Diadoc.Api.Com.LockMode LockModeValue { get; }
+		TemplateToLetterTransformationInfo TemplateToLetterTransformationInfo { get; }
 		bool IsReusable { get; }
 	}
 
@@ -75,6 +76,27 @@ namespace Diadoc.Api.Proto.Events
 		{
 			get { return (Diadoc.Api.Com.LockMode)LockMode; }
 		}
+	}
+
+	[ComVisible(true)]
+	[Guid("F2B62A56-262C-4FCB-B9E8-80F6B1C46590")]
+	public interface ITemplateToLetterTransformationInfo
+	{
+		string LetterFromBoxId { get; }
+		string LetterToBoxId { get; }
+		string LetterFromDepartmentId { get; }
+		string LetterToDepartmentId { get; }
+		string LetterProxyBoxId { get; }
+		string LetterProxyDepartmentId { get; }
+	}
+
+	[ComVisible(true)]
+	[Guid("EAA0C98F-078B-4615-BE73-B225B64EBBA3")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(ITemplateToLetterTransformationInfo))]
+	public partial class TemplateToLetterTransformationInfo : SafeComObject, ITemplateToLetterTransformationInfo
+	{
+		
 	}
 
 	[ComVisible(true)]
