@@ -32,6 +32,12 @@ namespace Diadoc.Api.Proto.Events
 		DateTime Timestamp { get; }
 		DateTime LastPatchTimestamp { get; }
 		MessageType MessageTypeValue { get; }
+		bool IsProxified { get; }
+		string ProxyBoxId { get; }
+		string ProxyTitle { get; }
+		bool PacketIsLocked { get; }
+		Diadoc.Api.Com.LockMode LockModeValue { get; }
+		bool IsReusable { get; }
 	}
 
 	[ComVisible(true)]
@@ -63,6 +69,11 @@ namespace Diadoc.Api.Proto.Events
 		public MessageType MessageTypeValue
 		{
 			get { return (MessageType)MessageType; }
+		}
+
+		public Diadoc.Api.Com.LockMode LockModeValue
+		{
+			get { return (Diadoc.Api.Com.LockMode)LockMode; }
 		}
 	}
 
@@ -213,6 +224,7 @@ namespace Diadoc.Api.Proto.Events
 		bool HasPatch { get; }
 		Message Message { get; }
 		MessagePatch Patch { get; }
+		string IndexKey { get; }
 	}
 
 	[ComVisible(true)]
