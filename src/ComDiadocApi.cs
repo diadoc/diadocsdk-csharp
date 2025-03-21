@@ -66,11 +66,21 @@ namespace Diadoc.Api
 		Organization GetOrganizationByInn(string authToken, string inn);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		ReadonlyList GetOrganizationsByInnList([MarshalAs(UnmanagedType.IDispatch)] object innList);
+
+		[Obsolete("Use a similar method: GetOrganizationsByInnListV2()")]
 		ReadonlyList GetOrganizationsByInnList(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object innList);
 
+		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2()")]
 		ReadonlyList GetOrganizationsByInnList(
 			string authToken,
 			string myOrgId,
+			[MarshalAs(UnmanagedType.IDispatch)] object innList);
+
+		ReadonlyList GetOrganizationsByInnListV2(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object innList);
+
+		ReadonlyList GetOrganizationsByInnListV2(
+			string authToken,
+			string myBoxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object innList);
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
@@ -852,20 +862,32 @@ namespace Diadoc.Api
 			return diadoc.GenerateDocumentProtocol(authToken, boxId, messageId, documentId);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public ReadonlyList GetOrganizationsByInnList(object innList)
 		{
 			return new ReadonlyList(diadoc.GetOrganizationsByInnList((GetOrganizationsByInnListRequest) innList));
 		}
 
+		[Obsolete("Use a similar method: GetOrganizationsByInnListV2()")]
 		public ReadonlyList GetOrganizationsByInnList(string authToken, object innList)
 		{
 			return new ReadonlyList(diadoc.GetOrganizationsByInnList(authToken, (GetOrganizationsByInnListRequest) innList));
 		}
 
+		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2()")]
 		public ReadonlyList GetOrganizationsByInnList(string authToken, string myOrgId, object innList)
 		{
-			return
-				new ReadonlyList(diadoc.GetOrganizationsByInnList(authToken, myOrgId, (GetOrganizationsByInnListRequest) innList));
+			return new ReadonlyList(diadoc.GetOrganizationsByInnList(authToken, myOrgId, (GetOrganizationsByInnListRequest) innList));
+		}
+
+		public ReadonlyList GetOrganizationsByInnListV2(string authToken, object innList)
+		{
+			return new ReadonlyList(diadoc.GetOrganizationsByInnListV2(authToken, (GetOrganizationsByInnListRequest) innList));
+		}
+
+		public ReadonlyList GetOrganizationsByInnListV2(string authToken, string myBoxId, object innList)
+		{
+			return new ReadonlyList(diadoc.GetOrganizationsByInnListV2(authToken, myBoxId, (GetOrganizationsByInnListRequest) innList));
 		}
 
 		public Box GetBox(string boxId)
