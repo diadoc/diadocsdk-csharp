@@ -159,8 +159,6 @@ namespace Diadoc.Api
 		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
 		PrintFormResult GetGeneratedPrintForm(string authToken, DocumentType documentType, string printFormId);
 		PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId);
-		string Recognize(string fileName, byte[] content);
-		Recognized GetRecognized(string recognitionId);
 		DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count = null);
 		DocumentList GetDocuments(string authToken, DocumentsFilter filter);
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
@@ -301,7 +299,6 @@ namespace Diadoc.Api
 		void PutOrganizationStorageEntries(string authToken, string boxId, IEnumerable<KeyValueStorageEntry> entries);
 		AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey);
 		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId, TimeSpan? timeout = null);
-		ExternalServiceAuthInfo GetExternalServiceAuthInfo(string key);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
