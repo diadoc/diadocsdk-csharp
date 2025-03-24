@@ -1305,13 +1305,6 @@ namespace Diadoc.Api
 			return diadocHttpApi.WaitAutosignReceiptsResultAsync(authToken, taskId, timeout);
 		}
 
-		public Task<ExternalServiceAuthInfo> GetExternalServiceAuthInfoAsync(string key)
-		{
-			if (string.IsNullOrEmpty(key))
-				throw new ArgumentNullException("key");
-			return diadocHttpApi.GetExternalServiceAuthInfoAsync(key);
-		}
-
 		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
 		{
 			if (string.IsNullOrEmpty(token))
