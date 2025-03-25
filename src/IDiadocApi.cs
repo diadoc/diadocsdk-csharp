@@ -14,7 +14,6 @@ using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
-using Diadoc.Api.Proto.Recognition;
 using JetBrains.Annotations;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Organizations;
@@ -516,8 +515,6 @@ namespace Diadoc.Api
 		[Obsolete("Use GetGeneratedPrintFormAsync without `documentType` parameter")]
 		Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, DocumentType documentType, string printFormId);
 		Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, string printFormId);
-		Task<string> RecognizeAsync(string fileName, byte[] content);
-		Task<Recognized> GetRecognizedAsync(string recognitionId);
 		Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count
  = null);
 		Task<DocumentList> GetDocumentsAsync(string authToken, DocumentsFilter filter);
