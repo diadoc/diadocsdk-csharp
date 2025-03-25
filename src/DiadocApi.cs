@@ -22,7 +22,6 @@ using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Organizations;
 using Diadoc.Api.Proto.PowersOfAttorney;
-using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
