@@ -9,5 +9,15 @@ if ($env:DIADOC_SIGNING_SECRET -and (Test-Path -Path "./src/diadoc.snk.encrypted
     $keyFile = Get-Item -Path "./src/diadoc.snk"
 }
 
+$semVerObject = dotnet-gitversion --roll-forward LatestMajor /overrideconfig assembly-versioning-scheme="MajorMinorPatch" /output json /overrideconfig tag-prefix=versions/ increment=Patch mode=ContinuousDelivery | 
+    ConvertFrom-Json
+
+if ($env:GITHUB_ACTIONS -eq "true")
+{
+
+}
+
+
+
 
 
