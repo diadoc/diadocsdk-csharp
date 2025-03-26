@@ -1091,7 +1091,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnListAsync(innList);
 		}
 
-		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2Async()")]
+		[Obsolete("Use a similar method: GetOrganizationsByInnListV2Async()")]
 		public Task<List<Organization>> GetOrganizationsByInnListAsync(string authToken, GetOrganizationsByInnListRequest innList)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
@@ -1099,7 +1099,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnListAsync(authToken, innList);
 		}
 
-		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2Async()")]
+		[Obsolete("Use a similar method: GetOrganizationsByInnListAuthorizedAsync()")]
 		public Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListAsync(string authToken, string myOrgId,
 			GetOrganizationsByInnListRequest innList)
 		{
@@ -1119,7 +1119,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnListV2Async(authToken, innList);
 		}
 
-		public Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListV2Async(
+		public Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListAuthorizedAsync(
 			string authToken,
 			string myBoxId,
 			GetOrganizationsByInnListRequest innList)
@@ -1130,7 +1130,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("myBoxId");
 			if (innList == null)
 				throw new ArgumentNullException("innList");
-			return diadocHttpApi.GetOrganizationsByInnListV2Async(authToken, myBoxId, innList);
+			return diadocHttpApi.GetOrganizationsByInnListAuthorizedAsync(authToken, myBoxId, innList);
 		}
 
 		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] revocationRequestXmlContent)
