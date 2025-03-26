@@ -266,12 +266,12 @@ namespace Diadoc.Api
 		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2()")]
 		List<Organization> GetOrganizationsByInnList(string authToken, GetOrganizationsByInnListRequest innList);
 
-		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2()")]
+		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListAuthorized()")]
 		List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList);
 
 		List<Organization> GetOrganizationsByInnListV2(string authToken, GetOrganizationsByInnListRequest innList);
 
-		List<OrganizationWithCounteragentStatus> GetOrganizationsByInnListV2(string authToken, string myBoxId, GetOrganizationsByInnListRequest innList);
+		List<OrganizationWithCounteragentStatus> GetOrganizationsByInnListAuthorized(string authToken, string myBoxId, GetOrganizationsByInnListRequest innList);
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
@@ -652,11 +652,11 @@ namespace Diadoc.Api
 		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2Async()")]
 		Task<List<Organization>> GetOrganizationsByInnListAsync(string authToken, GetOrganizationsByInnListRequest innList);
 
-		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2Async()")]
+		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListAuthorizedAsync()")]
 		Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListAsync(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList);
 
 		Task<List<Organization>> GetOrganizationsByInnListV2Async(string authToken, GetOrganizationsByInnListRequest innList);
-		Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListV2Async(string authToken, string myBoxId, GetOrganizationsByInnListRequest innList);
+		Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListAuthorizedAsync(string authToken, string myBoxId, GetOrganizationsByInnListRequest innList);
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] revocationRequestXmlContent);

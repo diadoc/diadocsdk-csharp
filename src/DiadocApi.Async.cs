@@ -1119,7 +1119,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnListV2Async(authToken, innList);
 		}
 
-		public Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListV2Async(
+		public Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListAuthorizedAsync(
 			string authToken,
 			string myBoxId,
 			GetOrganizationsByInnListRequest innList)
@@ -1130,7 +1130,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("myBoxId");
 			if (innList == null)
 				throw new ArgumentNullException("innList");
-			return diadocHttpApi.GetOrganizationsByInnListV2Async(authToken, myBoxId, innList);
+			return diadocHttpApi.GetOrganizationsByInnListAuthorizedAsync(authToken, myBoxId, innList);
 		}
 
 		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] revocationRequestXmlContent)
