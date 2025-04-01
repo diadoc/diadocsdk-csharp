@@ -5,7 +5,7 @@
 
 jobs:
   build_and_test:
-    runs-on: windows-2019
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
         with:
@@ -16,27 +16,17 @@ jobs:
         with:
           dotnet-version: 6.x
 
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v2
-
-      - name: Run the build script
-        uses: cake-build/cake-action@v2
-        env:
-          diadoc_signing_secret: ${{ secrets.DIADOC_SIGNING_SECRET }}
-          github_ref_type: ${{ github.ref_type }}
-        with:
-          target: Default
-          arguments: |
-            configuration: Release
-          verbosity: Diagnostic
-          cake-version: 1.3.0
+      - name: Build
+        shell: pwsh
+        run: |
+          ./build.ps1
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: packages
           path: |
-            bin/Release/*.nupkg
+            bin/Release/DiadocApi.Nuget/*.nupkg
             bin/Release/*.zip
           if-no-files-found: error
 
