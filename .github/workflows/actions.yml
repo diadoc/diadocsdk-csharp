@@ -21,7 +21,7 @@ jobs:
         env:
           DIADOC_SIGNING_SECRET: ${{ secrets.DIADOC_SIGNING_SECRET }}
         run: |
-          ./build.ps1
+          & ./build.ps1
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
