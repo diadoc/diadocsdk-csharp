@@ -125,26 +125,21 @@ Push-Location -Path "./bin"
 if($keyFile)
 {
     $advancedArgs = "/keyFile:`"$keyFile`""
-    $advancedArgsStandard = " /delaysign /keyFile:`"$keyFile`""
 }
 
 Write-Host -Object "`n##### Repack libraries"
-$netTargets = @(
-    @{"Target" = "net45"; "adArgs" = $advancedArgs},
-    @{"Target" = "net461"; "adArgs" = $advancedArgs},
-    @{"Target" = "netstandard2.0"; "adArgs" = $advancedArgsStandard}
-    )
+$netTargets = @("net45", "net461", "netstandard2.0")
 
 foreach($netTarget in $netTargets)
 {
-    Write-Host -Object "`n Repack $($netTarget.Target)"
-    ilrepack --roll-forward LatestMajor /lib:"./$configuration/DiadocApi/$($netTarget.Target)" /internalize /out:"./$configuration/DiadocApi.Nuget/$($netTarget.Target)/DiadocApi.dll" "./$configuration/DiadocApi/net45/DiadocApi.dll" "./$configuration/DiadocApi/net45/protobuf-net.dll" $($netTarget.adArgs)
+    Write-Host -Object "`n Repack $netTarget"
+    ilrepack --roll-forward LatestMajor /lib:"./$configuration/DiadocApi/$netTarget" /internalize /out:"./$configuration/DiadocApi.Nuget/$netTarget/DiadocApi.dll" "./$configuration/DiadocApi/net45/DiadocApi.dll" "./$configuration/DiadocApi/net45/protobuf-net.dll" $advancedArgs
     if($LASTEXITCODE)
     {
-        throw "ilrepack failed for $($netTarget.Target)"
+        throw "ilrepack failed for $netTarget"
     }
-    Get-ChildItem -Path "./$configuration/DiadocApi/$($netTarget.Target)" -File -Filter "*.xml" | Copy-Item -Destination "./$configuration/DiadocApi.Nuget/$($netTarget.Target)" -Force
-    Compress-Archive -Path "./$configuration/DiadocApi.Nuget/$($netTarget.Target)" -DestinationPath "./$configuration/diadocsdk-csharp-$($netTarget.Target)-binaries.zip" -Force
+    Get-ChildItem -Path "./$configuration/DiadocApi/$netTarget" -File -Filter "*.xml" | Copy-Item -Destination "./$configuration/DiadocApi.Nuget/$netTarget" -Force
+    Compress-Archive -Path "./$configuration/DiadocApi.Nuget/$netTarget" -DestinationPath "./$configuration/diadocsdk-csharp-$netTarget-binaries.zip" -Force
 }
 
 Copy-Item -Path "../LICENSE.md" -Destination "./$configuration/DiadocApi.Nuget/LICENSE.md" -Force
