@@ -18,6 +18,8 @@ jobs:
 
       - name: Build
         shell: pwsh
+        env:
+          diadoc_signing_secret: ${{ secrets.DIADOC_SIGNING_SECRET }}
         run: |
           ./build.ps1
 

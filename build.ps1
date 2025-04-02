@@ -16,7 +16,7 @@ $null = install-Package protobuf-net -MaximumVersion 1.0.0.280 -Confirm:$false -
 
 # Decrypted chapter
 $keyFile = $null 
-if ($env:DIADOC_SIGNING_SECRET -and (Test-Path -Path "./src/diadoc.snk.encrypted") -and $env:GITHUB_ACTIONS -ne "true") 
+if ($env:DIADOC_SIGNING_SECRET -and (Test-Path -Path "./src/diadoc.snk.encrypted")) 
 {
     Write-Host -Object "`n##### Trying to decrypt diadoc.snk.encrypted"
     dotnet-encrypto --roll-forward LatestMajor decrypt -i "./src/diadoc.snk.encrypted" -o "./src/diadoc.snk" -p $env:DIADOC_SIGNING_SECRET
