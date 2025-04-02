@@ -19,7 +19,7 @@ $keyFile = $null
 if ($env:DIADOC_SIGNING_SECRET -and (Test-Path -Path "./src/diadoc.snk.encrypted")) 
 {
     Write-Host -Object "`n##### Trying to decrypt diadoc.snk.encrypted"
-    dotnet-encrypto --roll-forward LatestMajor decrypt -i "./src/diadoc.snk.encrypted" -o "./src/diadoc.snk" -p $env:DIADOC_SIGNING_SECRET
+    dotnet-encrypto --roll-forward LatestMajor decrypt -i "./src/diadoc.snk.encrypted" -o "./src/diadoc.snk" -p "$env:DIADOC_SIGNING_SECRET"
     if($LASTEXITCODE)
     {
         throw "dotnet-encrypto failed for ./src/diadoc.snk.encrypted"
