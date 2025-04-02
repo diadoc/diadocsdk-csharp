@@ -1,189 +1,155 @@
-##########################################################################
-# This is the Cake bootstrapper script for PowerShell.
-# This file was downloaded from https://github.com/cake-build/resources
-# Feel free to change this file to fit your needs.
-##########################################################################
-
-<#
-
-.SYNOPSIS
-This is a Powershell script to bootstrap a Cake build.
-
-.DESCRIPTION
-This Powershell script will download NuGet if missing, restore NuGet tools (including Cake)
-and execute your Cake build script with the parameters you provide.
-
-.PARAMETER Script
-The build script to execute.
-.PARAMETER Target
-The build script target to run.
-.PARAMETER Configuration
-The build configuration to use.
-.PARAMETER Verbosity
-Specifies the amount of information to be displayed.
-.PARAMETER Experimental
-Tells Cake to use the latest Roslyn release.
-.PARAMETER WhatIf
-Performs a dry run of the build script.
-No tasks will be executed.
-.PARAMETER Mono
-Tells Cake to use the Mono scripting engine.
-.PARAMETER SkipToolPackageRestore
-Skips restoring of packages.
-.PARAMETER ScriptArgs
-Remaining arguments are added here.
-
-.LINK
-http://cakebuild.net
-
-#>
-
-[CmdletBinding()]
-Param(
-    [string]$Script = "build.cake",
-    [string]$Target = "Default",
-    [ValidateSet("Release", "Debug")]
-    [string]$Configuration = "Release",
-    [ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
-    [string]$Verbosity = "Verbose",
-    [switch]$Experimental,
-    [Alias("DryRun","Noop")]
-    [switch]$WhatIf,
-    [switch]$Mono,
-    [switch]$SkipToolPackageRestore,
-    [Parameter(Position=0,Mandatory=$false,ValueFromRemainingArguments=$true)]
-    [string[]]$ScriptArgs
+param (
+    [string]$configuration = "Release"
 )
 
-[Reflection.Assembly]::LoadWithPartialName("System.Security") | Out-Null
-function MD5HashFile([string] $filePath)
+$ErrorActionPreference = "Stop"
+Write-Host -Object "`n##### Changing directory to $PSScriptRoot"
+Push-Location -Path $PSScriptRoot
+
+Write-Host -Object "`n##### Installing necessery dotnet tools"
+dotnet tool install --global dotnet-encrypto --version 1.1.4
+dotnet tool install --global GitVersion.Tool --version 5.12.0
+dotnet tool install --global dotnet-ilrepack
+
+Write-Host -Object "`n##### Installing legacy version of package protobuf-net (1.0.0.280)"
+$null = install-Package protobuf-net -MaximumVersion 1.0.0.280 -Confirm:$false -Scope CurrentUser -Force -Destination "./tools/"
+
+# Decrypted chapter
+$keyFile = $null 
+if ($env:DIADOC_SIGNING_SECRET -and (Test-Path -Path "./src/diadoc.snk.encrypted")) 
 {
-    if ([string]::IsNullOrEmpty($filePath) -or !(Test-Path $filePath -PathType Leaf))
+    Write-Host -Object "`n##### Trying to decrypt diadoc.snk.encrypted"
+    dotnet-encrypto --roll-forward "LatestMajor" decrypt -i "./src/diadoc.snk.encrypted" -o "./src/diadoc.snk" -p $env:DIADOC_SIGNING_SECRET
+    if($LASTEXITCODE)
     {
-        return $null
+        throw "dotnet-encrypto failed for ./src/diadoc.snk.encrypted"
+    }
+    $keyFile = Get-Item -Path "./src/diadoc.snk"
+}
+
+# Versioning chapter
+Write-Host -Object "`n##### Calculating versions"
+$semVerObject = dotnet-gitversion --roll-forward LatestMajor /output json /overrideconfig assembly-versioning-scheme="MajorMinorPatch" tag-prefix=versions/ increment=Patch | 
+    ConvertFrom-Json
+
+if($LASTEXITCODE)
+{
+    throw "dotnet-gitversion failed for semver calculating "
+}
+
+$semVer = $semVerObject.SemVer + "-pre"
+$assemblyVer = "$($semVerObject.Major)" + "." + "$($semVerObject.Minor)" + ".0.0"
+if ($env:GITHUB_ACTIONS -eq "true")
+{
+    $semVer = $semVerObject.SemVer + "-ci" + $env:GITHUB_RUN_NUMBER
+    if($env:GITHUB_REF_TYPE -eq "tag")
+    {
+        $semVer = $semVerObject.MajorMinorPatch
+    }
+}
+
+Write-Host "Version from tag: $($semVerObject.MajorMinorPatch)"
+Write-Host "Assembly version: $assemblyVer"
+Write-Host "Nuget version: $semVer"
+Write-Host "Semantic version: $semVer"
+
+# Patch cs file
+Write-Host -Object "`n##### Patching assemblies version"
+$assemblyInfo = @"
+[assembly: System.Reflection.AssemblyVersion("$assemblyVer")]
+[assembly: System.Reflection.AssemblyFileVersion("$semVer")]
+[assembly: System.Reflection.AssemblyInformationalVersion("$semVer")]
+"@
+
+Set-Content -Path "./src/Properties/AssemblyVersion.cs" -Value $assemblyInfo
+Set-Content -Path "./Samples/Diadoc.Console/Properties/AssemblyVersion.cs" -Value $assemblyInfo
+Set-Content -Path "./Samples/Diadoc.Samples/Properties/AssemblyVersion.cs" -Value $assemblyInfo
+
+# Cleanup build dir
+Remove-Item -Recurse -Force -Path "./bin/$configuration" -ErrorAction SilentlyContinue
+$null = New-Item -ItemType Directory -Path "./bin/$configuration" 
+$null = New-Item -ItemType Directory -Path "./src/Proto" -Force
+
+# Generate proto files
+Write-Host -Object "`n##### Generate proto classes"
+Write-Host -Object "Changing directory to ./proto"
+Copy-Item -Path "./tools/protobuf-net.1.0.0.280/lib/protobuf-net.dll" -Destination "./tools/protobuf-net.1.0.0.280/Tools" -Force
+
+# Prepare linux
+if($PSVersionTable.Platform -eq "Unix")
+{
+    Copy-Item -Path "./tools/protoc" -Destination "./tools/protobuf-net.1.0.0.280/Tools/protoc.exe" -Force
+}
+
+Push-Location -Path "./proto"
+$ProtoFiles = Get-ChildItem -File -Filter "*.proto" -Recurse |
+    ForEach-Object {
+        ($_ | Resolve-Path -Relative) -replace "(^\.\/)|(^\.\\)"
     }
 
-    [System.IO.Stream] $file = $null;
-    [System.Security.Cryptography.MD5] $md5 = $null;
-    try
+foreach($ProtoFile in $ProtoFiles)
+{
+    Write-Host -Object "Attempt to compile $ProtoFile"
+    if($PSVersionTable.Platform -eq "Unix")
     {
-        $md5 = [System.Security.Cryptography.MD5]::Create()
-        $file = [System.IO.File]::OpenRead($filePath)
-        return [System.BitConverter]::ToString($md5.ComputeHash($file))
-    }
-    finally
-    {
-        if ($file -ne $null)
+        mono "../tools/protobuf-net.1.0.0.280/Tools/protogen.exe" -i:$ProtoFile -o:"../src/Proto/$ProtoFile.cs" -q | out-null
+        if($LASTEXITCODE)
         {
-            $file.Dispose()
+            throw "protogen failed for $ProtoFile generating"
         }
-    }
-}
-
-Write-Host "Preparing to run build script..."
-
-if(!$PSScriptRoot){
-    $PSScriptRoot = Split-Path $MyInvocation.MyCommand.Path -Parent
-}
-
-$TOOLS_DIR = Join-Path $PSScriptRoot "tools"
-$NUGET_EXE = Join-Path $TOOLS_DIR "nuget.exe"
-$CAKE_EXE = Join-Path $TOOLS_DIR "Cake/Cake.exe"
-$NUGET_URL = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
-$PACKAGES_CONFIG = Join-Path $TOOLS_DIR "packages.config"
-$PACKAGES_CONFIG_MD5 = Join-Path $TOOLS_DIR "packages.config.md5sum"
-
-# Should we use mono?
-$UseMono = "";
-if($Mono.IsPresent) {
-    Write-Verbose -Message "Using the Mono based scripting engine."
-    $UseMono = "--mono"
-}
-
-# Should we use the new Roslyn?
-$UseExperimental = "";
-if($Experimental.IsPresent -and !($Mono.IsPresent)) {
-    Write-Verbose -Message "Using experimental version of Roslyn."
-    $UseExperimental = "--experimental"
-}
-
-# Is this a dry run?
-$UseDryRun = "";
-if($WhatIf.IsPresent) {
-    $UseDryRun = "--dryrun"
-}
-
-# Make sure tools folder exists
-if ((Test-Path $PSScriptRoot) -and !(Test-Path $TOOLS_DIR)) {
-    Write-Verbose -Message "Creating tools directory..."
-    New-Item -Path $TOOLS_DIR -Type directory | out-null
-}
-
-# Make sure that packages.config exist.
-if (!(Test-Path $PACKAGES_CONFIG)) {
-    Write-Verbose -Message "Downloading packages.config..."
-    try { (New-Object System.Net.WebClient).DownloadFile("http://cakebuild.net/download/bootstrapper/packages", $PACKAGES_CONFIG) } catch {
-        Throw "Could not download packages.config."
-    }
-}
-
-# Try find NuGet.exe in path if not exists
-if (!(Test-Path $NUGET_EXE)) {
-    Write-Verbose -Message "Trying to find nuget.exe in PATH..."
-    $existingPaths = $Env:Path -Split ';' | Where-Object { (![string]::IsNullOrEmpty($_)) -and (Test-Path $_) }
-    $NUGET_EXE_IN_PATH = Get-ChildItem -Path $existingPaths -Filter "nuget.exe" | Select -First 1
-    if ($NUGET_EXE_IN_PATH -ne $null -and (Test-Path $NUGET_EXE_IN_PATH.FullName)) {
-        Write-Verbose -Message "Found in PATH at $($NUGET_EXE_IN_PATH.FullName)."
-        $NUGET_EXE = $NUGET_EXE_IN_PATH.FullName
-    }
-}
-
-# Try download NuGet.exe if not exists
-if (!(Test-Path $NUGET_EXE)) {
-    Write-Verbose -Message "Downloading NuGet.exe..."
-    try {
-        (New-Object System.Net.WebClient).DownloadFile($NUGET_URL, $NUGET_EXE)
-    } catch {
-        Throw "Could not download NuGet.exe."
-    }
-}
-
-# Save nuget.exe path to environment to be available to child processed
-$ENV:NUGET_EXE = $NUGET_EXE
-
-# Restore tools from NuGet?
-if(-Not $SkipToolPackageRestore.IsPresent) {
-    Push-Location
-    Set-Location $TOOLS_DIR
-
-    # Check for changes in packages.config and remove installed tools if true.
-    [string] $md5Hash = MD5HashFile($PACKAGES_CONFIG)
-    if((!(Test-Path $PACKAGES_CONFIG_MD5)) -Or
-      ($md5Hash -ne (Get-Content $PACKAGES_CONFIG_MD5 ))) {
-        Write-Verbose -Message "Missing or changed package.config hash..."
-        Remove-Item * -Recurse -Exclude packages.config,nuget.exe
+        continue
     }
 
-    Write-Verbose -Message "Restoring tools from NuGet..."
-    $NuGetOutput = Invoke-Expression "&`"$NUGET_EXE`" install -ExcludeVersion -OutputDirectory `"$TOOLS_DIR`""
-
-    if ($LASTEXITCODE -ne 0) {
-        Throw "An error occured while restoring NuGet tools."
-    }
-    else
+    & "../tools/protobuf-net.1.0.0.280/Tools/protogen.exe" -i:$ProtoFile -o:"../src/Proto/$ProtoFile.cs" -q
+    if($LASTEXITCODE)
     {
-        $md5Hash | Out-File $PACKAGES_CONFIG_MD5 -Encoding "ASCII"
+        throw "protogen failed for $ProtoFile generating"
     }
-    Write-Verbose -Message ($NuGetOutput | out-string)
-    Pop-Location
+}
+Pop-Location
+
+# Build chapter
+Write-Host -Object "`n##### Build solution"
+dotnet build -c $configuration "./DiadocApi.sln" --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
+if($LASTEXITCODE)
+{
+    throw "dotnet build ./DiadocApi.sln"
 }
 
-# Make sure that Cake has been installed.
-if (!(Test-Path $CAKE_EXE)) {
-    Throw "Could not find Cake.exe at $CAKE_EXE"
+# Test chapter
+Write-Host -Object "`n##### Dotnet test"
+dotnet test --configuration $configuration "./DiadocApi.sln" --no-build --nologo -v q /clp:ErrorsOnly
+
+# Repack chapter
+Push-Location -Path "./bin"
+if($keyFile)
+{
+    $advancedArgs = "/keyFile:`"$keyFile`""
 }
 
-# Start Cake
-Write-Host "Running build script..."
-Invoke-Expression "& `"$CAKE_EXE`" `"$Script`" --target=`"$Target`" --configuration=`"$Configuration`" --verbosity=`"$Verbosity`" $UseMono $UseDryRun $UseExperimental $ScriptArgs"
-exit $LASTEXITCODE
+Write-Host -Object "`n##### Repack libraries"
+$netTargets = @("net45", "net461", "netstandard2.0")
+
+foreach($netTarget in $netTargets)
+{
+    Write-Host -Object "`n Repack $netTarget"
+    ilrepack --roll-forward LatestMajor /lib:"./$configuration/DiadocApi/$netTarget" /internalize /out:"./$configuration/DiadocApi.Nuget/$netTarget/DiadocApi.dll" "./$configuration/DiadocApi/net45/DiadocApi.dll" "./$configuration/DiadocApi/net45/protobuf-net.dll" $advancedArgs
+    if($LASTEXITCODE)
+    {
+        throw "ilrepack failed for $netTarget"
+    }
+    Get-ChildItem -Path "./$configuration/DiadocApi/$netTarget" -File -Filter "*.xml" | Copy-Item -Destination "./$configuration/DiadocApi.Nuget/$netTarget" -Force
+    Compress-Archive -Path "./$configuration/DiadocApi.Nuget/$netTarget" -DestinationPath "./$configuration/diadocsdk-csharp-$netTarget-binaries.zip" -Force
+}
+
+Copy-Item -Path "../LICENSE.md" -Destination "./$configuration/DiadocApi.Nuget/LICENSE.md" -Force
+Pop-Location
+
+Write-Host -Object "`n##### Pack nuget"
+dotnet pack --no-build --no-restore -o "./bin/Release/DiadocApi.Nuget" /p:WarningLevel=0 /p:NuspecFile="../nuspec/DiadocApi.nuspec" /p:NuspecBasePath="../bin/Release/DiadocApi.Nuget" /p:NuspecProperties=version=$semVer "./src/DiadocApi.csproj"
+if($LASTEXITCODE)
+{
+        throw "dotnet pack failed for ./src/DiadocApi.csproj"
+}
+
+Pop-Location

@@ -2,6 +2,7 @@
 <package >
   <metadata>
     <id>DiadocSDK</id>
+    <version>1.0.0</version>
     <authors>SKB Kontur</authors>
     <owners>SKB Kontur</owners>
     <licenseUrl>https://github.com/diadoc/diadocsdk-csharp/blob/master/LICENSE.md</licenseUrl>
@@ -12,7 +13,6 @@
     <copyright>Copyright 2016</copyright>
     <tags>diadoc diadoc-api diadoc-sdk kontur skbkontur</tags>
     <dependencies>
-      <group targetFramework="net35" />
       <group targetFramework="net45" />
       <group targetFramework="net461" />
       <group targetFramework="netstandard2.0" />
@@ -20,14 +20,6 @@
   </metadata>
   <files>
     <file src="LICENSE.md" />
-    <file src="net35/DiadocApi.dll" target="lib/net35" />
-    <file src="net35/DiadocApi.xml" target="lib/net35" />
-    <file src="net35/Diadoc_Reg.bat" target="lib/net35" />
-    <file src="net35/Diadoc_Reg64.bat" target="lib/net35" />
-    <file src="net35/Diadoc_Unblock.bat" target="lib/net35" />
-    <file src="net35/Diadoc_Unreg.bat" target="lib/net35" />
-    <file src="net35/Diadoc_Unreg64.bat" target="lib/net35" />
-    <file src="net35/readme.txt" target="lib/net35" />
     <file src="net45/DiadocApi.dll" target="lib/net45" />
     <file src="net45/DiadocApi.xml" target="lib/net45" />
     <file src="net461/DiadocApi.dll" target="lib/net461" />
