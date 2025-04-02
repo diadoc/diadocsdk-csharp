@@ -22,7 +22,6 @@ using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Organizations;
 using Diadoc.Api.Proto.PowersOfAttorney;
-using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
@@ -763,18 +762,6 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetGeneratedPrintForm(authToken, printFormId);
 		}
 
-		public string Recognize(string fileName, byte[] content)
-		{
-			if (string.IsNullOrEmpty(fileName)) throw new ArgumentNullException("fileName");
-			return diadocHttpApi.Recognize(fileName, content);
-		}
-
-		public Recognized GetRecognized(string recognitionId)
-		{
-			if (string.IsNullOrEmpty(recognitionId)) throw new ArgumentNullException("recognitionId");
-			return diadocHttpApi.GetRecognized(recognitionId);
-		}
-
 		public DocumentList GetDocuments(string authToken,
 			string boxId,
 			string filterCategory,
@@ -1456,13 +1443,6 @@ namespace Diadoc.Api
 			if (string.IsNullOrEmpty(taskId))
 				throw new ArgumentNullException("taskId");
 			return diadocHttpApi.WaitAutosignReceiptsResult(authToken, taskId, timeout);
-		}
-
-		public ExternalServiceAuthInfo GetExternalServiceAuthInfo(string key)
-		{
-			if (string.IsNullOrEmpty(key))
-				throw new ArgumentNullException("key");
-			return diadocHttpApi.GetExternalServiceAuthInfo(key);
 		}
 
 		public ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)

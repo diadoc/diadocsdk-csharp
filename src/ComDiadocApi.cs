@@ -23,7 +23,6 @@ using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.Organizations;
 using Diadoc.Api.Proto.PowersOfAttorney;
-using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
@@ -263,8 +262,6 @@ namespace Diadoc.Api
 		void MoveDocuments(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object query);
 		byte[] GetEntityContent(string authToken, string boxId, string messageId, string entityId);
 		string NewGuid();
-		string Recognize(string fileName, string filePath);
-		Recognized GetRecognized(string recognitionId);
 		PrintFormResult GeneratePrintForm(string authToken, string boxId, string messageId, string documentId);
 
 		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
@@ -1528,16 +1525,6 @@ namespace Diadoc.Api
 		public string NewGuid()
 		{
 			return Guid.NewGuid().ToString();
-		}
-
-		public string Recognize(string fileName, string filePath)
-		{
-			return diadoc.Recognize(fileName, File.ReadAllBytes(filePath));
-		}
-
-		public Recognized GetRecognized(string recognitionId)
-		{
-			return diadoc.GetRecognized(recognitionId);
 		}
 
 		public PrintFormResult GeneratePrintForm(string authToken, string boxId, string messageId, string documentId)
