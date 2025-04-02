@@ -7,7 +7,7 @@ Write-Host -Object "`n##### Changing directory to $PSScriptRoot"
 Push-Location -Path $PSScriptRoot
 
 Write-Host -Object "`n##### Installing necessery dotnet tools"
-dotnet tool install --global dotnet-encrypto --version 1.0.6
+dotnet tool install --global dotnet-encrypto --version 1.1.4
 dotnet tool install --global GitVersion.Tool --version 5.12.0
 dotnet tool install --global dotnet-ilrepack
 
@@ -19,7 +19,7 @@ $keyFile = $null
 if ($env:DIADOC_SIGNING_SECRET -and (Test-Path -Path "./src/diadoc.snk.encrypted")) 
 {
     Write-Host -Object "`n##### Trying to decrypt diadoc.snk.encrypted"
-    dotnet-encrypto --roll-forward LatestMajor decrypt -i "./src/diadoc.snk.encrypted" -o "./src/diadoc.snk" -p "$env:DIADOC_SIGNING_SECRET"
+    dotnet-encrypto --roll-forward "LatestMajor" decrypt -i "./src/diadoc.snk.encrypted" -o "./src/diadoc.snk" -p $env:DIADOC_SIGNING_SECRET
     if($LASTEXITCODE)
     {
         throw "dotnet-encrypto failed for ./src/diadoc.snk.encrypted"
