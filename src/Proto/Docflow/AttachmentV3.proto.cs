@@ -94,6 +94,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _PowerOfAttorneyAttachmentStatus; }
       set { _PowerOfAttorneyAttachmentStatus = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.SignatureTypeInfo _SignatureTypeInfo = null;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"SignatureTypeInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.SignatureTypeInfo SignatureTypeInfo
+    {
+      get { return _SignatureTypeInfo; }
+      set { _SignatureTypeInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -140,5 +149,110 @@ namespace Diadoc.Api.Proto.Docflow
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SignatureTypeInfo")]
+  public partial class SignatureTypeInfo : global::ProtoBuf.IExtensible
+  {
+    public SignatureTypeInfo() {}
+    
+    private Diadoc.Api.Proto.Docflow.SignatureType _SignatureType;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"SignatureType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Docflow.SignatureType SignatureType
+    {
+      get { return _SignatureType; }
+      set { _SignatureType = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.QualifiedDetails _QualifiedDetails = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"QualifiedDetails", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.QualifiedDetails QualifiedDetails
+    {
+      get { return _QualifiedDetails; }
+      set { _QualifiedDetails = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.NonQualifiedDetails _NonQualifiedDetails = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"NonQualifiedDetails", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.NonQualifiedDetails NonQualifiedDetails
+    {
+      get { return _NonQualifiedDetails; }
+      set { _NonQualifiedDetails = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"QualifiedDetails")]
+  public partial class QualifiedDetails : global::ProtoBuf.IExtensible
+  {
+    public QualifiedDetails() {}
+    
+    private Diadoc.Api.Proto.Docflow.QualifiedDetails.QualifiedSignatureSource _SignatureSource;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"SignatureSource", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Docflow.QualifiedDetails.QualifiedSignatureSource SignatureSource
+    {
+      get { return _SignatureSource; }
+      set { _SignatureSource = value; }
+    }
+    [global::ProtoBuf.ProtoContract(Name=@"QualifiedSignatureSource")]
+    public enum QualifiedSignatureSource
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Default", Value=0)]
+      Default = 0
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"NonQualifiedDetails")]
+  public partial class NonQualifiedDetails : global::ProtoBuf.IExtensible
+  {
+    public NonQualifiedDetails() {}
+    
+    private Diadoc.Api.Proto.Docflow.NonQualifiedDetails.NonQualifiedSignatureSource _SignatureSource;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"SignatureSource", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Docflow.NonQualifiedDetails.NonQualifiedSignatureSource SignatureSource
+    {
+      get { return _SignatureSource; }
+      set { _SignatureSource = value; }
+    }
+    [global::ProtoBuf.ProtoContract(Name=@"NonQualifiedSignatureSource")]
+    public enum NonQualifiedSignatureSource
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Default", Value=0)]
+      Default = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"GosKey", Value=1)]
+      GosKey = 1
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"SignatureType")]
+    public enum SignatureType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownSignatureType", Value=0)]
+      UnknownSignatureType = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"OnVerification", Value=1)]
+      OnVerification = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Qualified", Value=2)]
+      Qualified = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"NonQualified", Value=3)]
+      NonQualified = 3
+    }
   
 }
