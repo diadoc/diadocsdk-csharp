@@ -14,6 +14,8 @@ namespace Diadoc.Samples
 				PostUniversalTransferDocument820.RunSample();
 				PostUniversalCorrectionDocument736.RunSample();
 				PostUniversalTransferDocument970.RunSample();
+				PostXmlAcceptanceCertificateRezru552.RunSample();
+				PostXmlTorg12TovTorg551.RunSample();
 				PatchDocumentWithReceipt.RunSample();
 			}
 			catch (Exception ex)
