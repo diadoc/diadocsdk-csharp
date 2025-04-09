@@ -4,6 +4,7 @@
 #tool "nuget:?package=protobuf-net&version=1.0.0.280"
 #tool "nuget:?package=secure-file&version=1.0.31"
 #tool "nuget:?package=Brutal.Dev.StrongNameSigner&version=2.7.1"
+#tool "nuget:?package=NuGet.CommandLine&version=6.13.2"
 #addin "nuget:?package=Cake.StrongNameSigner&version=0.2.0"
 using Cake.Common.Diagnostics;
 using Cake.Git;
