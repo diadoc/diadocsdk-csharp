@@ -18,6 +18,7 @@ message SignatureV3
 	optional Timestamp DeliveredAt = 7;
 	optional SignaturePowerOfAttorney PowerOfAttorney = 8;
 	optional PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus = 9;
+	optional SignatureTypeInfo SignatureTypeInfo = 10;
 }
 
 message SignedAttachmentV3
@@ -26,4 +27,34 @@ message SignedAttachmentV3
 	optional SignatureV3 Signature = 2;
 	optional Entity Comment = 3;
 	required string ContentTypeId = 4;
+}
+
+message SignatureTypeInfo {
+	required SignatureType SignatureType = 1;
+	optional QualifiedDetails QualifiedDetails = 2;
+	optional NonQualifiedDetails NonQualifiedDetails = 3;
+}
+
+enum SignatureType {
+	UnknownSignatureType = 0;
+	OnVerification = 1;
+	Qualified = 2;
+	NonQualified = 3;
+}
+
+message QualifiedDetails {
+	required QualifiedSignatureSource SignatureSource = 1;
+
+	enum QualifiedSignatureSource {
+		Default = 0;
+	}
+}
+
+message NonQualifiedDetails {
+	required NonQualifiedSignatureSource SignatureSource = 1;
+
+	enum NonQualifiedSignatureSource {
+		Default = 0;
+		GosKey = 1;
+	}
 }
