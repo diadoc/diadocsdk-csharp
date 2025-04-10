@@ -14,6 +14,7 @@ namespace Diadoc.Api.Com
 		Sms = 1,
 		MyDss = 2,
 		Applet = 3,
-		MobileSdk = 4
+		MobileSdk = 4,
+		GosKey = 5
 	}
 }

@@ -1734,6 +1734,12 @@ namespace Diadoc.Api
 		{
 			return diadoc.DssSign(authToken, boxId, (DssSignRequest) request, certificateThumbprint);
 		}
+		
+		[Obsolete("Currently unavailable. Use DssSign")]
+		public AsyncMethodResult DssSignV2(string authToken, string boxId, object request)
+		{
+			return diadoc.DssSignV2(authToken, boxId, (DssSignRequestV2) request);
+		}
 
 		public DssSignResult DssSignResult(string authToken, string boxId, string taskId)
 		{
