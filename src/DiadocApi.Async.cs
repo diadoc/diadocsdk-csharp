@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Diadoc.Api.Constants;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
@@ -1082,6 +1083,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationUsersV2Async(authToken, boxId);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<List<Organization>> GetOrganizationsByInnListAsync(GetOrganizationsByInnListRequest innList)
 		{
 			if (innList == null)
@@ -1089,6 +1091,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnListAsync(innList);
 		}
 
+		[Obsolete("Use a similar method: GetOrganizationsByInnListV2Async()")]
 		public Task<List<Organization>> GetOrganizationsByInnListAsync(string authToken, GetOrganizationsByInnListRequest innList)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
@@ -1096,6 +1099,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnListAsync(authToken, innList);
 		}
 
+		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2Async()")]
 		public Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListAsync(string authToken, string myOrgId,
 			GetOrganizationsByInnListRequest innList)
 		{
@@ -1106,6 +1110,27 @@ namespace Diadoc.Api
 			if (innList == null)
 				throw new ArgumentNullException("innList");
 			return diadocHttpApi.GetOrganizationsByInnListAsync(authToken, myOrgId, innList);
+		}
+
+		public Task<List<Organization>> GetOrganizationsByInnListV2Async(string authToken, GetOrganizationsByInnListRequest innList)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (innList == null) throw new ArgumentNullException(nameof(innList));
+			return diadocHttpApi.GetOrganizationsByInnListV2Async(authToken, innList);
+		}
+
+		public Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListV2Async(
+			string authToken,
+			string myBoxId,
+			GetOrganizationsByInnListRequest innList)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(myBoxId))
+				throw new ArgumentNullException("myBoxId");
+			if (innList == null)
+				throw new ArgumentNullException("innList");
+			return diadocHttpApi.GetOrganizationsByInnListV2Async(authToken, myBoxId, innList);
 		}
 
 		public Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] revocationRequestXmlContent)

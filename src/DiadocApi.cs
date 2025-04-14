@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Security;
+using Diadoc.Api.Constants;
 using Diadoc.Api.Cryptography;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
@@ -1218,6 +1219,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationUsersV2(authToken, boxId);
 		}
 
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public List<Organization> GetOrganizationsByInnList(GetOrganizationsByInnListRequest innList)
 		{
 			if (innList == null)
@@ -1225,6 +1227,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnList(innList);
 		}
 
+		[Obsolete("Use a similar method: GetOrganizationsByInnListV2()")]
 		public List<Organization> GetOrganizationsByInnList(string authToken, GetOrganizationsByInnListRequest innList)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
@@ -1232,6 +1235,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnList(authToken, innList);
 		}
 
+		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2()")]
 		public List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken,
 			string myOrgId,
 			GetOrganizationsByInnListRequest innList)
@@ -1243,6 +1247,27 @@ namespace Diadoc.Api
 			if (innList == null)
 				throw new ArgumentNullException("innList");
 			return diadocHttpApi.GetOrganizationsByInnList(authToken, myOrgId, innList);
+		}
+
+		public List<Organization> GetOrganizationsByInnListV2(string authToken, GetOrganizationsByInnListRequest innList)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (innList == null) throw new ArgumentNullException(nameof(innList));
+			return diadocHttpApi.GetOrganizationsByInnListV2(authToken, innList);
+		}
+
+		public List<OrganizationWithCounteragentStatus> GetOrganizationsByInnListV2(
+			string authToken,
+			string myBoxId,
+			GetOrganizationsByInnListRequest innList)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(myBoxId))
+				throw new ArgumentNullException("myBoxId");
+			if (innList == null)
+				throw new ArgumentNullException("innList");
+			return diadocHttpApi.GetOrganizationsByInnListV2(authToken, myBoxId, innList);
 		}
 
 		public RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent)

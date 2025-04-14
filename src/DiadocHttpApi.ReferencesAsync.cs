@@ -166,6 +166,7 @@ namespace Diadoc.Api
 			return GetOrganizationsByInnListAsync(null, innList);
 		}
 
+		[Obsolete("Use a similar method: GetOrganizationsByInnListV2Async()")]
 		public async Task<List<Organization>> GetOrganizationsByInnListAsync(string authToken, GetOrganizationsByInnListRequest innList)
 		{
 			const string queryString = "/GetOrganizationsByInnList";
@@ -173,9 +174,24 @@ namespace Diadoc.Api
 			return response.Organizations.Select(o => o.Organization).ToList();
 		}
 
+		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2Async()")]
 		public async Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListAsync(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList)
 		{
 			var queryString = $"/GetOrganizationsByInnList?myOrgId={myOrgId}";
+			var response = await PerformHttpRequestAsync<GetOrganizationsByInnListRequest, GetOrganizationsByInnListResponse>(authToken, queryString, innList).ConfigureAwait(false);
+			return response.Organizations;
+		}
+
+		public async Task<List<Organization>> GetOrganizationsByInnListV2Async(string authToken, GetOrganizationsByInnListRequest innList)
+		{
+			const string queryString = "/V2/GetOrganizationsByInnList";
+			var response = await PerformHttpRequestAsync<GetOrganizationsByInnListRequest, GetOrganizationsByInnListResponse>(authToken, queryString, innList).ConfigureAwait(false);
+			return response.Organizations.Select(o => o.Organization).ToList();
+		}
+
+		public async Task<List<OrganizationWithCounteragentStatus>> GetOrganizationsByInnListV2Async(string authToken, string myBoxId, GetOrganizationsByInnListRequest innList)
+		{
+			var queryString = $"/V2/GetOrganizationsByInnList?myBoxId={myBoxId}";
 			var response = await PerformHttpRequestAsync<GetOrganizationsByInnListRequest, GetOrganizationsByInnListResponse>(authToken, queryString, innList).ConfigureAwait(false);
 			return response.Organizations;
 		}
