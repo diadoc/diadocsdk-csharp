@@ -1235,7 +1235,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnList(authToken, innList);
 		}
 
-		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListAuthorized()")]
+		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2()")]
 		public List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken,
 			string myOrgId,
 			GetOrganizationsByInnListRequest innList)
@@ -1256,7 +1256,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnListV2(authToken, innList);
 		}
 
-		public List<OrganizationWithCounteragentStatus> GetOrganizationsByInnListAuthorized(
+		public List<OrganizationWithCounteragentStatus> GetOrganizationsByInnListV2(
 			string authToken,
 			string myBoxId,
 			GetOrganizationsByInnListRequest innList)
@@ -1267,7 +1267,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("myBoxId");
 			if (innList == null)
 				throw new ArgumentNullException("innList");
-			return diadocHttpApi.GetOrganizationsByInnListAuthorized(authToken, myBoxId, innList);
+			return diadocHttpApi.GetOrganizationsByInnListV2(authToken, myBoxId, innList);
 		}
 
 		public RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent)

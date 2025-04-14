@@ -173,7 +173,7 @@ namespace Diadoc.Api
 			return response.Organizations.Select(o => o.Organization).ToList();
 		}
 
-		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListAuthorized()")]
+		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2()")]
 		public List<OrganizationWithCounteragentStatus> GetOrganizationsByInnList(string authToken, string myOrgId, GetOrganizationsByInnListRequest innList)
 		{
 			var queryString = string.Format("/GetOrganizationsByInnList?myOrgId={0}", myOrgId);
@@ -188,9 +188,9 @@ namespace Diadoc.Api
 			return response.Organizations.Select(o => o.Organization).ToList();
 		}
 
-		public List<OrganizationWithCounteragentStatus> GetOrganizationsByInnListAuthorized(string authToken, string myBoxId, GetOrganizationsByInnListRequest innList)
+		public List<OrganizationWithCounteragentStatus> GetOrganizationsByInnListV2(string authToken, string myBoxId, GetOrganizationsByInnListRequest innList)
 		{
-			var queryString = string.Format("/GetOrganizationsByInnListAuthorized?myBoxId={0}", myBoxId);
+			var queryString = string.Format("/V2/GetOrganizationsByInnList?myBoxId={0}", myBoxId);
 			var response = PerformHttpRequest<GetOrganizationsByInnListRequest, GetOrganizationsByInnListResponse>(authToken, queryString, innList);
 			return response.Organizations;
 		}

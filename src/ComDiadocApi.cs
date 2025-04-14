@@ -70,7 +70,7 @@ namespace Diadoc.Api
 		[Obsolete("Use a similar method: GetOrganizationsByInnListV2()")]
 		ReadonlyList GetOrganizationsByInnList(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object innList);
 
-		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListAuthorized()")]
+		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2()")]
 		ReadonlyList GetOrganizationsByInnList(
 			string authToken,
 			string myOrgId,
@@ -78,7 +78,7 @@ namespace Diadoc.Api
 
 		ReadonlyList GetOrganizationsByInnListV2(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object innList);
 
-		ReadonlyList GetOrganizationsByInnListAuthorized(
+		ReadonlyList GetOrganizationsByInnListV2(
 			string authToken,
 			string myBoxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object innList);
@@ -874,7 +874,7 @@ namespace Diadoc.Api
 			return new ReadonlyList(diadoc.GetOrganizationsByInnList(authToken, (GetOrganizationsByInnListRequest) innList));
 		}
 
-		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListAuthorized()")]
+		[Obsolete("Use a similar method with boxId: GetOrganizationsByInnListV2()")]
 		public ReadonlyList GetOrganizationsByInnList(string authToken, string myOrgId, object innList)
 		{
 			return new ReadonlyList(diadoc.GetOrganizationsByInnList(authToken, myOrgId, (GetOrganizationsByInnListRequest) innList));
@@ -885,9 +885,9 @@ namespace Diadoc.Api
 			return new ReadonlyList(diadoc.GetOrganizationsByInnListV2(authToken, (GetOrganizationsByInnListRequest) innList));
 		}
 
-		public ReadonlyList GetOrganizationsByInnListAuthorized(string authToken, string myBoxId, object innList)
+		public ReadonlyList GetOrganizationsByInnListV2(string authToken, string myBoxId, object innList)
 		{
-			return new ReadonlyList(diadoc.GetOrganizationsByInnListAuthorized(authToken, myBoxId, (GetOrganizationsByInnListRequest) innList));
+			return new ReadonlyList(diadoc.GetOrganizationsByInnListV2(authToken, myBoxId, (GetOrganizationsByInnListRequest) innList));
 		}
 
 		public Box GetBox(string boxId)
