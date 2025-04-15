@@ -148,6 +148,7 @@ namespace Diadoc.Api
 		GeneratedFile GenerateTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, int titleIndex, byte[] userContractData, bool disableValidation = false, string editingSettingId = null, string letterId = null, string documentId = null);
 		GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null);
 		GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
+		GeneratedFile GenerateSystemUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Message GetMessage(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null);
@@ -502,6 +503,7 @@ namespace Diadoc.Api
  = false, string editingSettingId = null);
 		Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion
  = null);
+		Task<GeneratedFile> GenerateSystemUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature =
  false, bool injectEntityContent = false);
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature
