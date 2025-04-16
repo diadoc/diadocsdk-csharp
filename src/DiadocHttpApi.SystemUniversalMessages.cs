@@ -7,7 +7,7 @@ namespace Diadoc.Api
 	{
 		public GeneratedFile GenerateSystemUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData)
 		{
-			var queryBuilder = new PathAndQueryBuilder("/GenerateTitleXml");
+			var queryBuilder = new PathAndQueryBuilder("/GenerateSystemUniversalMessage");
 			queryBuilder.AddParameter("boxId", boxId);
 			queryBuilder.AddParameter("messageId", messageId);
 			queryBuilder.AddParameter("attachmentId", attachmentId);
