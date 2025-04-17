@@ -146,6 +146,13 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<MessagePatchToPost, MessagePatch>(authToken, qsb.BuildPathAndQuery(), patch);
 		}
 
+		public Task<MessagePatch> PostMessagePatchV4Async(string authToken, MessagePatchToPostV2 patch, string operationId = null)
+		{
+			var qsb = new PathAndQueryBuilder("/V4/PostMessagePatch");
+			qsb.AddParameter("operationId", operationId);
+			return PerformHttpRequestAsync<MessagePatchToPostV2, MessagePatch>(authToken, qsb.BuildPathAndQuery(), patch);
+		}
+
 		public Task<MessagePatch> PostTemplatePatchAsync(
 			string authToken,
 			string boxId,
@@ -170,12 +177,12 @@ namespace Diadoc.Api
 			var queryString = "/PrepareDocumentsToSign" + (excludeContent ? "?excludeContent" : "");
 			return PerformHttpRequestAsync<PrepareDocumentsToSignRequest, PrepareDocumentsToSignResponse>(authToken, queryString, request);
 		}
-		
+
 		[NotNull]
 		public Task<BoxEvent> GetLastEventAsync([NotNull] string authToken, [NotNull] string boxId)
 		{
 			var queryString = BuildQueryStringWithBoxId("GetLastEvent", boxId);
-			return PerformHttpRequestAsync<BoxEvent>(authToken,"GET", queryString, allowStatusCodes: HttpStatusCode.NoContent);
+			return PerformHttpRequestAsync<BoxEvent>(authToken, "GET", queryString, allowStatusCodes: HttpStatusCode.NoContent);
 		}
 	}
 }

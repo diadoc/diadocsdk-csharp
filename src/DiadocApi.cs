@@ -50,7 +50,7 @@ namespace Diadoc.Api
 		}
 
 		/// <summary>
-		///   The default value is true
+		///     The default value is true
 		/// </summary>
 		public bool UsingSystemProxy
 		{
@@ -361,6 +361,13 @@ namespace Diadoc.Api
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (patch == null) throw new ArgumentNullException("patch");
 			return diadocHttpApi.PostMessagePatch(authToken, patch, operationId);
+		}
+
+		public MessagePatch PostMessagePatchV4(string authToken, MessagePatchToPostV2 patch, string operationId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (patch == null) throw new ArgumentNullException("patch");
+			return diadocHttpApi.PostMessagePatchV4(authToken, patch, operationId);
 		}
 
 		public MessagePatch PostTemplatePatch(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null)
@@ -1000,7 +1007,7 @@ namespace Diadoc.Api
 			if (content == null) throw new ArgumentNullException("content");
 			return diadocHttpApi.UploadFileToShelfV2(authToken, content, fileExtension);
 		}
-		
+
 		public string UploadLargeFileToShelf(string authToken, byte[] content, [CanBeNull] string fileExtension)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
@@ -1389,7 +1396,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("messageId");
 			return diadocHttpApi.GetDocumentsByMessageId(authToken, boxId, messageId);
 		}
-		
+
 		public DocumentWorkflowSettingsListV2 GetWorkflowsSettings(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1794,7 +1801,7 @@ namespace Diadoc.Api
 			if (entityId == null) throw new ArgumentNullException(nameof(entityId));
 			return diadocHttpApi.GetPowerOfAttorneyContent(authToken, boxId, messageId, entityId);
 		}
-		
+
 		public PowerOfAttorneyContentResponse GetPowerOfAttorneyContentV2(string authToken, string boxId, string messageId, string entityId)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));

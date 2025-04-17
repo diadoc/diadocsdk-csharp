@@ -289,6 +289,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostMessagePatchAsync(authToken, patch, operationId);
 		}
 
+		public Task<MessagePatch> PostMessagePatchV2Async(string authToken, MessagePatchToPostV2 patch, string operationId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (patch == null) throw new ArgumentNullException("patch");
+			return diadocHttpApi.PostMessagePatchV4Async(authToken, patch, operationId);
+		}
+
 		public Task<MessagePatch> PostTemplatePatchAsync(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1210,8 +1217,8 @@ namespace Diadoc.Api
 		}
 
 		public Task<AsyncMethodResult> AcquireCounteragentV3Async(
-			string authToken, 
-			string myBoxId, 
+			string authToken,
+			string myBoxId,
 			AcquireCounteragentRequest request,
 			string myDepartmentId = null)
 		{
@@ -1242,7 +1249,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("messageId");
 			return diadocHttpApi.GetDocumentsByMessageIdAsync(authToken, boxId, messageId);
 		}
-		
+
 		public Task<DocumentWorkflowSettingsListV2> GetWorkflowsSettingsAsync(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1587,8 +1594,8 @@ namespace Diadoc.Api
 
 		public Task<BoxEvent> GetLastEventAsync(string authToken, string boxId)
 		{
-			if(authToken == null) throw new ArgumentNullException("authToken");
-			if(boxId == null) throw new ArgumentNullException("boxId");
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetLastEventAsync(authToken, boxId);
 		}
 
@@ -1640,7 +1647,7 @@ namespace Diadoc.Api
 			if (entityId == null) throw new ArgumentNullException(nameof(entityId));
 			return diadocHttpApi.GetPowerOfAttorneyContentAsync(authToken, boxId, messageId, entityId);
 		}
-		
+
 		public Task<PowerOfAttorneyContentResponse> GetPowerOfAttorneyContentV2Async(string authToken, string boxId, string messageId, string entityId)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));

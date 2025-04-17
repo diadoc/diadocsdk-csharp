@@ -102,6 +102,8 @@ namespace Diadoc.Api
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message, string operationId);
 		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch);
 		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch, string operationId);
+		MessagePatch PostMessagePatchV4(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch);
+		MessagePatch PostMessagePatchV4(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch, string operationId);
 
 		[Obsolete("Use GenerateReceiptXmlV2()")]
 		GeneratedFile GenerateInvoiceDocumentReceiptXml(
@@ -1093,6 +1095,16 @@ namespace Diadoc.Api
 		public MessagePatch PostMessagePatch(string authToken, object patch, string operationId)
 		{
 			return diadoc.PostMessagePatch(authToken, (MessagePatchToPost) patch, operationId);
+		}
+		
+		public MessagePatch PostMessagePatchV4(string authToken, object patch)
+		{
+			return diadoc.PostMessagePatchV4(authToken, (MessagePatchToPostV2) patch);
+		}
+
+		public MessagePatch PostMessagePatchV4(string authToken, object patch, string operationId)
+		{
+			return diadoc.PostMessagePatchV4(authToken, (MessagePatchToPostV2) patch, operationId);
 		}
 
 		[Obsolete("Use GenerateReceiptXmlV2()")]
