@@ -326,6 +326,26 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetNewEvents(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
 		}
+		
+		public BoxEventList GetNewEventsV8(
+			string authToken,
+			string boxId,
+			string afterEventId = null,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int? limit = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetNewEventsV8(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
+		}
 
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)
 		{

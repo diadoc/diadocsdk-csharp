@@ -98,6 +98,21 @@ namespace Diadoc.Api
 			string counteragentBoxId = null,
 			string orderBy = null,
 			int? limit = null);
+
+		BoxEventList GetNewEventsV8(
+			string authToken,
+			string boxId,
+			string afterEventId = null,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int? limit = null);
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
 		Message PostMessage(string authToken, MessageToPost msg, string operationId = null);
 		Template PostTemplate(string authToken, TemplateToPost template, string operationId = null);
@@ -426,6 +441,20 @@ namespace Diadoc.Api
 		Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps);
 		Task<OrganizationFeatures> GetOrganizationFeaturesAsync(string authToken, string boxId);
 		Task<BoxEventList> GetNewEventsAsync(
+			string authToken,
+			string boxId,
+			string afterEventId = null,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int? limit = null);
+		Task<BoxEventList> GetNewEventsV8Async(
 			string authToken,
 			string boxId,
 			string afterEventId = null,

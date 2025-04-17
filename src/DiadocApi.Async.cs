@@ -253,6 +253,26 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetNewEventsAsync(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
 		}
 
+		public Task<BoxEventList> GetNewEventsV8Async(
+			string authToken,
+			string boxId,
+			string afterEventId = null,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int? limit = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetNewEventsV8Async(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
+		}
+
 		public Task<BoxEvent> GetEventAsync(string authToken, string boxId, string eventId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
