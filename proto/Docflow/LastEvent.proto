@@ -1,0 +1,9 @@
+import "Timestamp.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message LastEvent
+{
+	required string EventId = 1;
+	required Timestamp Timestamp = 2;
+}

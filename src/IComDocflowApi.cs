@@ -11,5 +11,9 @@ namespace Diadoc.Api
 		GetDocflowEventsResponseV3 GetDocflowEvents(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
 		SearchDocflowsResponseV3 SearchDocflows(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
 		GetDocflowsByPacketIdResponseV3 GetDocflowsByPacketId(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
+		GetDocflowBatchResponseV4 GetDocflowsV4(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
+		GetDocflowEventsResponseV4 GetDocflowEventsV4(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
+		SearchDocflowsResponseV4 SearchDocflowsV4(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
+		GetDocflowsByPacketIdResponseV4 GetDocflowsByPacketIdV4(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
 	}
 }

@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: Docflow/DocumentWithDocflowV3.proto
+// Generated from: Docflow/DocumentWithDocflowV4.proto
 // Note: requires additional types generated from: DocumentId.proto
 // Note: requires additional types generated from: Timestamp.proto
 // Note: requires additional types generated from: Docflow/DocumentInfoV3.proto
-// Note: requires additional types generated from: Docflow/DocflowV3.proto
+// Note: requires additional types generated from: Docflow/DocflowV4.proto
 // Note: requires additional types generated from: Docflow/LastEvent.proto
 namespace Diadoc.Api.Proto.Docflow
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentWithDocflowV3")]
-  public partial class DocumentWithDocflowV3 : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentWithDocflowV4")]
+  public partial class DocumentWithDocflowV4 : global::ProtoBuf.IExtensible
   {
-    public DocumentWithDocflowV3() {}
+    public DocumentWithDocflowV4() {}
     
     private Diadoc.Api.Proto.DocumentId _DocumentId;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"DocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -41,9 +41,9 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _DocumentInfo; }
       set { _DocumentInfo = value; }
     }
-    private Diadoc.Api.Proto.Docflow.DocflowV3 _Docflow;
+    private Diadoc.Api.Proto.Docflow.DocflowV4 _Docflow;
     [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"Docflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.Docflow.DocflowV3 Docflow
+    public Diadoc.Api.Proto.Docflow.DocflowV4 Docflow
     {
       get { return _Docflow; }
       set { _Docflow = value; }

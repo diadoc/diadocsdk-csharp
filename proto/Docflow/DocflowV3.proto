@@ -5,6 +5,7 @@ import "Docflow/RoamingNotification.proto";
 import "Docflow/ResolutionDocflowV3.proto";
 import "OuterDocflows/OuterDocflowStatus.proto";
 import "DocflowStatusV3.proto";
+import "Docflow/UniversalMessageAttachmentDocflow.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
@@ -56,6 +57,7 @@ message SignatureRejectionDocflow
 	required bool IsFormal = 2;
 	optional Timestamp DeliveredAt = 3;
 	optional string PlainText = 4;
+	optional UniversalMessageAttachmentDocflow UniversalMessage = 5;
 }
 
 message ParticipantResponseDocflow
@@ -80,7 +82,9 @@ message AmendmentRequestDocflow
 	required int32 AmendmentFlags = 6;
 	optional string PlainText = 7;
 	optional ConfirmationDocflow ConfirmationDocflow = 8;
+	optional UniversalMessageAttachmentDocflow UniversalMessage = 9; 
 }
+
 
 message RevocationDocflowV3
 {
@@ -116,6 +120,7 @@ message ReceiptDocflowV3
 	optional Timestamp DeliveredAt = 4;
 	optional ConfirmationDocflow Confirmation = 5;
 	required Documents.GeneralReceiptStatus Status = 6;
+	optional UniversalMessageAttachmentDocflow UniversalMessage = 7;
 }
 
 message OuterDocflow

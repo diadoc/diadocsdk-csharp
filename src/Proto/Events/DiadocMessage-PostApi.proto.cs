@@ -20,6 +20,7 @@
 // Note: requires additional types generated from: Invoicing/OrganizationInfo.proto
 // Note: requires additional types generated from: Docflow/DocumentInfo.proto
 // Note: requires additional types generated from: Events/PowerOfAttorneyToPost.proto
+// Note: requires additional types generated from: UniversalMessage.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MessageToPost")]
@@ -289,6 +290,196 @@ namespace Diadoc.Api.Proto.Events
       get { return _LockMode; }
       set { _LockMode = value; }
     }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"MessagePatchToPostV2")]
+  public partial class MessagePatchToPostV2 : global::ProtoBuf.IExtensible
+  {
+    public MessagePatchToPostV2() {}
+    
+    private string _BoxId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"BoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string BoxId
+    {
+      get { return _BoxId; }
+      set { _BoxId = value; }
+    }
+    private string _MessageId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"MessageId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string MessageId
+    {
+      get { return _MessageId; }
+      set { _MessageId = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> _Receipts = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"Receipts", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ReceiptAttachment> Receipts
+    {
+      get { return _Receipts; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CorrectionRequestAttachment> _CorrectionRequests = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CorrectionRequestAttachment>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"CorrectionRequests", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CorrectionRequestAttachment> CorrectionRequests
+    {
+      get { return _CorrectionRequests; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.DocumentSignature> _Signatures = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.DocumentSignature>();
+    [global::ProtoBuf.ProtoMember(5, Name=@"Signatures", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.DocumentSignature> Signatures
+    {
+      get { return _Signatures; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionAttachment> _Resolutions = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionAttachment>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"Resolutions", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionAttachment> Resolutions
+    {
+      get { return _Resolutions; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestAttachment> _ResolutionRequests = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestAttachment>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"ResolutionRequests", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestAttachment> ResolutionRequests
+    {
+      get { return _ResolutionRequests; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestCancellationAttachment> _ResolutionRequestCancellations = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestCancellationAttachment>();
+    [global::ProtoBuf.ProtoMember(8, Name=@"ResolutionRequestCancellations", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestCancellationAttachment> ResolutionRequestCancellations
+    {
+      get { return _ResolutionRequestCancellations; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestDenialAttachment> _ResolutionRequestDenials = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestDenialAttachment>();
+    [global::ProtoBuf.ProtoMember(9, Name=@"ResolutionRequestDenials", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestDenialAttachment> ResolutionRequestDenials
+    {
+      get { return _ResolutionRequestDenials; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestDenialCancellationAttachment> _ResolutionRequestDenialCancellations = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestDenialCancellationAttachment>();
+    [global::ProtoBuf.ProtoMember(10, Name=@"ResolutionRequestDenialCancellations", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRequestDenialCancellationAttachment> ResolutionRequestDenialCancellations
+    {
+      get { return _ResolutionRequestDenialCancellations; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RevocationRequestAttachment> _RevocationRequests = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RevocationRequestAttachment>();
+    [global::ProtoBuf.ProtoMember(11, Name=@"RevocationRequests", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RevocationRequestAttachment> RevocationRequests
+    {
+      get { return _RevocationRequests; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.XmlSignatureRejectionAttachment> _XmlSignatureRejections = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.XmlSignatureRejectionAttachment>();
+    [global::ProtoBuf.ProtoMember(12, Name=@"XmlSignatureRejections", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.XmlSignatureRejectionAttachment> XmlSignatureRejections
+    {
+      get { return _XmlSignatureRejections; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDataPatch> _CustomDataPatches = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDataPatch>();
+    [global::ProtoBuf.ProtoMember(13, Name=@"CustomDataPatches", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.CustomDataPatch> CustomDataPatches
+    {
+      get { return _CustomDataPatches; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteAssignment> _ResolutionRouteAssignments = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteAssignment>();
+    [global::ProtoBuf.ProtoMember(14, Name=@"ResolutionRouteAssignments", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteAssignment> ResolutionRouteAssignments
+    {
+      get { return _ResolutionRouteAssignments; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.SignatureVerification> _SignatureVerifications = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.SignatureVerification>();
+    [global::ProtoBuf.ProtoMember(15, Name=@"SignatureVerifications", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.SignatureVerification> SignatureVerifications
+    {
+      get { return _SignatureVerifications; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.EditDocumentPacketCommand> _EditDocumentPacketCommands = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.EditDocumentPacketCommand>();
+    [global::ProtoBuf.ProtoMember(16, Name=@"EditDocumentPacketCommands", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.EditDocumentPacketCommand> EditDocumentPacketCommands
+    {
+      get { return _EditDocumentPacketCommands; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteRemoval> _ResolutionRouteRemovals = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteRemoval>();
+    [global::ProtoBuf.ProtoMember(17, Name=@"ResolutionRouteRemovals", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.ResolutionRouteRemoval> ResolutionRouteRemovals
+    {
+      get { return _ResolutionRouteRemovals; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> _RecipientTitles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment>();
+    [global::ProtoBuf.ProtoMember(18, Name=@"RecipientTitles", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientTitleAttachment> RecipientTitles
+    {
+      get { return _RecipientTitles; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.EditingPatch> _EditingPatches = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.EditingPatch>();
+    [global::ProtoBuf.ProtoMember(19, Name=@"EditingPatches", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.EditingPatch> EditingPatches
+    {
+      get { return _EditingPatches; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.UniversalMessageAttachment> _UniversalMessages = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.UniversalMessageAttachment>();
+    [global::ProtoBuf.ProtoMember(20, Name=@"UniversalMessages", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.UniversalMessageAttachment> UniversalMessages
+    {
+      get { return _UniversalMessages; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UniversalMessageAttachment")]
+  public partial class UniversalMessageAttachment : global::ProtoBuf.IExtensible
+  {
+    public UniversalMessageAttachment() {}
+    
+    private string _ParentEntityId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ParentEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ParentEntityId
+    {
+      get { return _ParentEntityId; }
+      set { _ParentEntityId = value; }
+    }
+
+    private Diadoc.Api.Proto.UniversalMessageCodeGroup _CodeGroup = Diadoc.Api.Proto.UniversalMessageCodeGroup.UnknownUniversalMessageCodeGroup;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"CodeGroup", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.UniversalMessageCodeGroup.UnknownUniversalMessageCodeGroup)]
+    public Diadoc.Api.Proto.UniversalMessageCodeGroup CodeGroup
+    {
+      get { return _CodeGroup; }
+      set { _CodeGroup = value; }
+    }
+    private Diadoc.Api.Proto.Events.UnsignedContent _UniversalMessageContent;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"UniversalMessageContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Events.UnsignedContent UniversalMessageContent
+    {
+      get { return _UniversalMessageContent; }
+      set { _UniversalMessageContent = value; }
+    }
+    private readonly global::System.Collections.Generic.List<string> _Labels = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Labels", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> Labels
+    {
+      get { return _Labels; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -31,11 +31,34 @@ namespace Diadoc.Api
 			return docflowHttpApi.SearchDocflows(authToken, boxId, request);
 		}
 
-		public GetDocflowsByPacketIdResponseV3 GetDocflowsByPacketId(string authToken, string boxId,
-			GetDocflowsByPacketIdRequest request)
+		public GetDocflowsByPacketIdResponseV3 GetDocflowsByPacketId(string authToken, string boxId, GetDocflowsByPacketIdRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return docflowHttpApi.GetDocflowsByPacketId(authToken, boxId, request);
+		}
+
+		public GetDocflowBatchResponseV4 GetDocflowsV4(string authToken, string boxId, GetDocflowBatchRequest request)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return docflowHttpApi.GetDocflowsV4(authToken, boxId, request);
+		}
+
+		public GetDocflowEventsResponseV4 GetDocflowEventsV4(string authToken, string boxId, GetDocflowEventsRequest request)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return docflowHttpApi.GetDocflowEventsV4(authToken, boxId, request);
+		}
+
+		public SearchDocflowsResponseV4 SearchDocflowsV4(string authToken, string boxId, SearchDocflowsRequest request)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return docflowHttpApi.SearchDocflowsV4(authToken, boxId, request);
+		}
+
+		public GetDocflowsByPacketIdResponseV4 GetDocflowsByPacketIdV4(string authToken, string boxId, GetDocflowsByPacketIdRequest request)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return docflowHttpApi.GetDocflowsByPacketIdV4(authToken, boxId, request);
 		}
 	}
 }
