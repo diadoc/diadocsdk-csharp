@@ -683,6 +683,7 @@ namespace Diadoc.Api
 		void RegisterConfirm(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object registrationConfirmRequest);
 
 		BoxEvent GetLastEvent(string token, string boxId);
+		BoxEvent GetLastEventV2(string token, string boxId);
 
 		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
 
@@ -1873,6 +1874,11 @@ namespace Diadoc.Api
 		public BoxEvent GetLastEvent(string token, string boxId)
 		{
 			return diadoc.GetLastEvent(token, boxId);
+		}
+
+		public BoxEvent GetLastEventV2(string token, string boxId)
+		{
+			return diadoc.GetLastEventV2(token, boxId);
 		}
 
 		public CustomPrintFormDetectionResult DetectCustomPrintForms(

@@ -247,5 +247,12 @@ namespace Diadoc.Api
 			var queryString = BuildQueryStringWithBoxId("GetLastEvent", boxId);
 			return PerformHttpRequestAsync<BoxEvent>(authToken, "GET", queryString, allowStatusCodes: HttpStatusCode.NoContent);
 		}
+
+		[NotNull]
+		public Task<BoxEvent> GetLastEventV2Async([NotNull] string authToken, [NotNull] string boxId)
+		{
+			var queryString = BuildQueryStringWithBoxId("/V2/GetLastEvent", boxId);
+			return PerformHttpRequestAsync<BoxEvent>(authToken, "GET", queryString, allowStatusCodes: HttpStatusCode.NoContent);
+		}
 	}
 }

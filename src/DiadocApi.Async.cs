@@ -1627,6 +1627,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetLastEventAsync(authToken, boxId);
 		}
 
+		public Task<BoxEvent> GetLastEventV2Async(string authToken, string boxId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetLastEventV2Async(authToken, boxId);
+		}
+
 		public Task<AsyncMethodResult> RegisterPowerOfAttorneyAsync(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

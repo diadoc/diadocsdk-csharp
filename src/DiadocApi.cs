@@ -1781,6 +1781,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetLastEvent(authToken, boxId);
 		}
 
+		public BoxEvent GetLastEventV2(string authToken, string boxId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetLastEventV2(authToken, boxId);
+		}
+
 		public AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
