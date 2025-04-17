@@ -114,6 +114,7 @@ namespace Diadoc.Api
 			string orderBy = null,
 			int? limit = null);
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
+		BoxEvent GetEventV3(string authToken, string boxId, string eventId);
 		Message PostMessage(string authToken, MessageToPost msg, string operationId = null);
 		Template PostTemplate(string authToken, TemplateToPost template, string operationId = null);
 		Message TransformTemplateToMessage(string authToken, TemplateTransformationToPost templateTransformation, string operationId = null);
@@ -469,6 +470,7 @@ namespace Diadoc.Api
 			string orderBy = null,
 			int? limit = null);
 		Task<BoxEvent> GetEventAsync(string authToken, string boxId, string eventId);
+		Task<BoxEvent> GetEventV3Async(string authToken, string boxId, string eventId);
 		Task<Message> PostMessageAsync(string authToken, MessageToPost msg, string operationId = null);
 		Task<Template> PostTemplateAsync(string authToken, TemplateToPost template, string operationId = null);
 		Task<Message> TransformTemplateToMessageAsync(

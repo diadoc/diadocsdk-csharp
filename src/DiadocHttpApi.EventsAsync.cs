@@ -126,6 +126,14 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<BoxEvent>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		public Task<BoxEvent> GetEventV3Async(string authToken, string boxId, string eventId)
+		{
+			var qsb = new PathAndQueryBuilder("/V3/GetEvent");
+			qsb.AddParameter("eventId", eventId);
+			qsb.AddParameter("boxId", boxId);
+			return PerformHttpRequestAsync<BoxEvent>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+
 		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			var qsb = new PathAndQueryBuilder("/V5/GetMessage");

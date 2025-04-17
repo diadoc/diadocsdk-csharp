@@ -355,6 +355,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEvent(authToken, boxId, eventId);
 		}
 
+		public BoxEvent GetEventV3(string authToken, string boxId, string eventId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (eventId == null) throw new ArgumentNullException("eventId");
+			return diadocHttpApi.GetEventV3(authToken, boxId, eventId);
+		}
+
 		public Message PostMessage(string authToken, MessageToPost msg, string operationId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

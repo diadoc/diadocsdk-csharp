@@ -977,6 +977,11 @@ namespace Diadoc.Api
 			return diadoc.GetEvent(authToken, boxId, eventId);
 		}
 
+		public BoxEvent GetEventV3(string authToken, string boxId, string eventId)
+		{
+			return diadoc.GetEventV3(authToken, boxId, eventId);
+		}
+
 		public void SaveEntityContent(string authToken, string boxId, string messageId, string entityId, string filePath)
 		{
 			File.WriteAllBytes(filePath, diadoc.GetEntityContent(authToken, boxId, messageId, entityId));

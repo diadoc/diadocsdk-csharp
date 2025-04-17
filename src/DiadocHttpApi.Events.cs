@@ -122,6 +122,12 @@ namespace Diadoc.Api
 			return PerformHttpRequest<BoxEvent>(authToken, "GET", queryString);
 		}
 
+		public BoxEvent GetEventV3(string authToken, string boxId, string eventId)
+		{
+			var queryString = string.Format("/V3/GetEvent?eventId={0}&boxId={1}", eventId, boxId);
+			return PerformHttpRequest<BoxEvent>(authToken, "GET", queryString);
+		}
+
 		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			var qsb = new PathAndQueryBuilder("/V5/GetMessage");
