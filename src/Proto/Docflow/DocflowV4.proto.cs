@@ -362,42 +362,4 @@ namespace Diadoc.Api.Proto.Docflow
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentWithDocflowV4")]
-  public partial class DocumentWithDocflowV4 : global::ProtoBuf.IExtensible
-  {
-    public DocumentWithDocflowV4() {}
-    
-    private Diadoc.Api.Proto.DocumentId _DocumentId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"DocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.DocumentId DocumentId
-    {
-      get { return _DocumentId; }
-      set { _DocumentId = value; }
-    }
-    private Diadoc.Api.Proto.Docflow.LastEvent _LastEvent;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"LastEvent", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.Docflow.LastEvent LastEvent
-    {
-      get { return _LastEvent; }
-      set { _LastEvent = value; }
-    }
-    private Diadoc.Api.Proto.Docflow.DocumentInfoV3 _DocumentInfo;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"DocumentInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.Docflow.DocumentInfoV3 DocumentInfo
-    {
-      get { return _DocumentInfo; }
-      set { _DocumentInfo = value; }
-    }
-    private Diadoc.Api.Proto.Docflow.DocflowV4 _Docflow;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"Docflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.Docflow.DocflowV4 Docflow
-    {
-      get { return _Docflow; }
-      set { _Docflow = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
 }
