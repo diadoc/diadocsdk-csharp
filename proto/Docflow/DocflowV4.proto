@@ -1,0 +1,68 @@
+import "Timestamp.proto";
+import "Documents/Document.proto";
+import "Docflow/AttachmentV3.proto";
+import "Docflow/Attachment.proto";
+import "Docflow/ResolutionDocflowV3.proto";
+import "DocflowStatusV3.proto";
+import "Docflow/DocumentInfoV3.proto";
+import "DocumentId.proto";
+import "Docflow/UniversalMessageAttachmentDocflow.proto";
+import "Docflow/DocflowV3.proto";
+import "Docflow/LastEvent.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message RevocationDocflowV4
+{
+    required bool IsFinished = 1;
+    required RevocationRequestDocflow RevocationRequest = 2;
+    optional RevocationResponseDocflowV4 RevocationResponse = 3;
+    required string InitiatorBoxId = 4;
+    required Documents.RevocationStatus RevocationStatus = 5;
+    optional ResolutionEntitiesV3 ResolutionEntities = 6;
+    repeated OuterDocflowEntities OuterDocflowEntities  = 7;
+}
+ 
+message RevocationResponseDocflowV4
+{
+    optional SignatureV3 RecipientSignature = 1;
+    optional SignatureRejectionDocflowV4 SignatureRejection = 2;
+}
+ 
+message ParticipantResponseDocflowV4
+{
+    required bool IsFinished = 1;
+    optional SignatureV3 Signature = 2;
+    optional SignedAttachmentV3 Title = 3;
+    optional SignatureRejectionDocflowV4 Rejection = 4;
+    optional Timestamp SentAt = 5;
+    optional Timestamp DeliveredAt = 6;
+    required Documents.RecipientResponseStatus ResponseStatus = 7;
+    optional ConfirmationDocflow Confirmation = 8;
+}
+
+message SignatureRejectionDocflowV4
+{
+    optional SignedAttachmentV3 SignatureRejection = 1; //поменялась опциональность по сравнению с SignatureRejectionDocflow
+    required bool IsFormal = 2;
+    optional Timestamp DeliveredAt = 3;
+    optional string PlainText = 4;
+    optional UniversalMessageAttachmentDocflow UniversalMessage = 5;
+}
+ 
+message DocflowV4
+{
+    required SenderTitleDocflow SenderTitle = 1;
+    optional ConfirmationDocflow Confirmation = 2;
+    optional ParticipantResponseDocflowV4 ProxyResponse = 11;
+    optional ReceiptDocflowV3 RecipientReceipt = 4;
+    optional ParticipantResponseDocflowV4 RecipientResponse = 5;
+    optional AmendmentRequestDocflow AmendmentRequest = 6;
+    optional RevocationDocflowV4 Revocation = 7;
+    optional ReceiptDocflowV3 SenderReceipt = 8;
+    optional ResolutionDocflowV3 Resolution = 9;
+    optional ResolutionEntitiesV3 ResolutionEntities = 10;
+    repeated OuterDocflow OuterDocflows = 12;
+    repeated OuterDocflowEntities OuterDocflowEntities = 13;
+    required DocflowStatusV3 DocflowStatus = 14;
+}

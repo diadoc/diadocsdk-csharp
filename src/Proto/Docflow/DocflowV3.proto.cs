@@ -15,6 +15,7 @@
 // Note: requires additional types generated from: Docflow/ResolutionDocflowV3.proto
 // Note: requires additional types generated from: OuterDocflows/OuterDocflowStatus.proto
 // Note: requires additional types generated from: DocflowStatusV3.proto
+// Note: requires additional types generated from: Docflow/UniversalMessageAttachmentDocflow.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocflowV3")]
@@ -312,6 +313,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _PlainText; }
       set { _PlainText = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow _UniversalMessage = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"UniversalMessage", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow UniversalMessage
+    {
+      get { return _UniversalMessage; }
+      set { _UniversalMessage = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -467,6 +477,15 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _ConfirmationDocflow; }
       set { _ConfirmationDocflow = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow _UniversalMessage = null;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"UniversalMessage", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow UniversalMessage
+    {
+      get { return _UniversalMessage; }
+      set { _UniversalMessage = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -671,6 +690,15 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _Status; }
       set { _Status = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow _UniversalMessage = null;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"UniversalMessage", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow UniversalMessage
+    {
+      get { return _UniversalMessage; }
+      set { _UniversalMessage = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
