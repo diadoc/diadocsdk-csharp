@@ -1533,6 +1533,11 @@ namespace Diadoc.Api
 		{
 			return diadoc.GetMessage(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
 		}
+		
+		public Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
+		{
+			return diadoc.GetMessageV6(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
+		}
 
 		public Message GetMessageForDocument(
 			string authToken,
@@ -1543,6 +1548,17 @@ namespace Diadoc.Api
 			bool injectEntityContent = false)
 		{
 			return diadoc.GetMessage(authToken, boxId, messageId, documentId, withOriginalSignature, injectEntityContent);
+		}
+		
+		public Message GetMessageForDocumentV6(
+			string authToken,
+			string boxId,
+			string messageId,
+			string documentId,
+			bool withOriginalSignature = false,
+			bool injectEntityContent = false)
+		{
+			return diadoc.GetMessageV6(authToken, boxId, messageId, documentId, withOriginalSignature, injectEntityContent);
 		}
 
 		public Template GetTemplate(string authToken, string boxId, string messageId)

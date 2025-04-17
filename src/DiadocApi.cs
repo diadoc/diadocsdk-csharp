@@ -739,6 +739,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetMessage(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
 		}
 
+		public Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (messageId == null) throw new ArgumentNullException("messageId");
+			return diadocHttpApi.GetMessageV6(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
+		}
+
 		public Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -746,6 +754,15 @@ namespace Diadoc.Api
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (entityId == null) throw new ArgumentNullException("entityId");
 			return diadocHttpApi.GetMessage(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
+		}
+
+		public Message GetMessageV6(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (messageId == null) throw new ArgumentNullException("messageId");
+			if (entityId == null) throw new ArgumentNullException("entityId");
+			return diadocHttpApi.GetMessageV6(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
 		}
 
 		public Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null)
