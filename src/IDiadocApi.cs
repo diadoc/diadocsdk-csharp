@@ -168,6 +168,7 @@ namespace Diadoc.Api
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Message GetMessage(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false);
+		Message GetMessageV6(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, DraftToSend draftToSend, string operationId = null);
@@ -480,7 +481,7 @@ namespace Diadoc.Api
 			TemplateTransformationToPost templateTransformation,
 			string operationId = null);
 		Task<MessagePatch> PostMessagePatchAsync(string authToken, MessagePatchToPost patch, string operationId = null);
-		Task<MessagePatch> PostMessagePatchV2Async(string authToken, MessagePatchToPostV2 patch, string operationId = null);
+		Task<MessagePatch> PostMessagePatchV4Async(string authToken, MessagePatchToPostV2 patch, string operationId = null);
 		Task<MessagePatch> PostTemplatePatchAsync(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null);
 		Task PostRoamingNotificationAsync(string authToken, RoamingNotificationToPost notification);
 		Task DeleteAsync(string authToken, string boxId, string messageId, string documentId);

@@ -145,37 +145,29 @@ namespace Diadoc.Api.Proto.Docflow
   {
     public DocflowEventV4() {}
     
-
-    private string _EventId = "";
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"EventId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
+    private string _EventId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"EventId", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string EventId
     {
       get { return _EventId; }
       set { _EventId = value; }
     }
-
-    private Diadoc.Api.Proto.Timestamp _Timestamp = null;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Timestamp", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
+    private Diadoc.Api.Proto.Timestamp _Timestamp;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Timestamp", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public Diadoc.Api.Proto.Timestamp Timestamp
     {
       get { return _Timestamp; }
       set { _Timestamp = value; }
     }
-
-    private Diadoc.Api.Proto.DocumentId _DocumentId = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"DocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
+    private Diadoc.Api.Proto.DocumentId _DocumentId;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"DocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public Diadoc.Api.Proto.DocumentId DocumentId
     {
       get { return _DocumentId; }
       set { _DocumentId = value; }
     }
-
-    private byte[] _IndexKey = null;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"IndexKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
+    private byte[] _IndexKey;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"IndexKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public byte[] IndexKey
     {
       get { return _IndexKey; }

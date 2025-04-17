@@ -37,10 +37,10 @@ message GetDocflowEventsResponseV4
 
 message DocflowEventV4
 {
-	optional string EventId = 1;
-	optional Timestamp Timestamp = 2;
-	optional DocumentId DocumentId = 3;
-	optional bytes IndexKey = 4;
+	required string EventId = 1;
+	required Timestamp Timestamp = 2;
+	required DocumentId DocumentId = 3;
+	required bytes IndexKey = 4;
 	optional DocumentWithDocflowV4 Document = 5;
 	optional string PreviousEventId = 6;
 	optional DocumentWithDocflowV4 PreviousDocumentState = 7;

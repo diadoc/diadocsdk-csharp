@@ -261,6 +261,7 @@ namespace Diadoc.Api
 			string entityId);
 
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+		Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 
 		Message GetMessageForDocument(
 			string authToken,
