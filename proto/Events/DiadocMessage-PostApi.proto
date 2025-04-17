@@ -15,6 +15,7 @@ import "Events/ResolutionRequestInfo.proto";
 import "Invoicing/OrganizationInfo.proto";
 import "Docflow/DocumentInfo.proto";
 import "Events/PowerOfAttorneyToPost.proto";
+import "UniversalMessage.proto";
 
 package Diadoc.Api.Proto.Events;
 
@@ -53,6 +54,36 @@ message MessageToPost {
 	repeated XmlDocumentAttachment UniversalTransferDocumentSellerTitles = 33;
 	repeated DocumentAttachment DocumentAttachments = 34;
 	optional LockMode LockMode = 35 [default = None];
+}
+
+message MessagePatchToPostV2 {
+    required string BoxId = 1;
+    required string MessageId = 2;
+    repeated ReceiptAttachment Receipts = 3;
+    repeated CorrectionRequestAttachment CorrectionRequests = 4;
+    repeated DocumentSignature Signatures = 5;
+    repeated ResolutionAttachment Resolutions = 6;
+    repeated ResolutionRequestAttachment ResolutionRequests = 7;
+    repeated ResolutionRequestCancellationAttachment ResolutionRequestCancellations = 8;
+    repeated ResolutionRequestDenialAttachment ResolutionRequestDenials = 9;
+    repeated ResolutionRequestDenialCancellationAttachment ResolutionRequestDenialCancellations = 10;
+    repeated RevocationRequestAttachment RevocationRequests = 11;
+    repeated XmlSignatureRejectionAttachment XmlSignatureRejections = 12;
+    repeated CustomDataPatch CustomDataPatches = 13;
+    repeated ResolutionRouteAssignment ResolutionRouteAssignments = 14;
+    repeated SignatureVerification SignatureVerifications = 15;
+    repeated EditDocumentPacketCommand EditDocumentPacketCommands = 16;
+    repeated ResolutionRouteRemoval ResolutionRouteRemovals = 17;
+    repeated RecipientTitleAttachment RecipientTitles = 18;
+    repeated EditingPatch EditingPatches = 19;
+    repeated UniversalMessageAttachment UniversalMessages = 20;
+}  
+ 
+message UniversalMessageAttachment {
+    required string ParentEntityId = 1;
+    optional UniversalMessageCodeGroup CodeGroup = 2 [default = UnknownUniversalMessageCodeGroup];
+    required UnsignedContent UniversalMessageContent = 3;
+    repeated string Labels = 4;
 }
 
 message EncryptedXmlDocumentAttachment {

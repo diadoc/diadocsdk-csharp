@@ -1,15 +1,15 @@
 import "DocumentId.proto";
 import "Timestamp.proto";
 import "Docflow/DocumentInfoV3.proto";
-import "Docflow/DocflowV3.proto";
+import "Docflow/DocflowV4.proto";
 import "Docflow/LastEvent.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
-message DocumentWithDocflowV3
+message DocumentWithDocflowV4
 {
 	required DocumentId DocumentId = 1;
 	required LastEvent LastEvent = 2;
 	required DocumentInfoV3 DocumentInfo = 3;
-	required DocflowV3 Docflow = 4;
+	required DocflowV4 Docflow = 4;
 }
