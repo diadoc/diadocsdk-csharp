@@ -2,6 +2,7 @@ import "DocumentId.proto";
 import "Timestamp.proto";
 import "Docflow/DocumentInfoV3.proto";
 import "Docflow/DocflowV3.proto";
+import "Docflow/LastEvent.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
@@ -11,10 +12,4 @@ message DocumentWithDocflowV3
 	required LastEvent LastEvent = 2;
 	required DocumentInfoV3 DocumentInfo = 3;
 	required DocflowV3 Docflow = 4;
-}
-
-message LastEvent
-{
-	required string EventId = 1;
-	required Timestamp Timestamp = 2;
 }

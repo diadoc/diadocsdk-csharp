@@ -12,6 +12,7 @@
 // Note: requires additional types generated from: Timestamp.proto
 // Note: requires additional types generated from: Docflow/DocumentInfoV3.proto
 // Note: requires additional types generated from: Docflow/DocflowV3.proto
+// Note: requires additional types generated from: Docflow/LastEvent.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentWithDocflowV3")]
@@ -46,30 +47,6 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _Docflow; }
       set { _Docflow = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LastEvent")]
-  public partial class LastEvent : global::ProtoBuf.IExtensible
-  {
-    public LastEvent() {}
-    
-    private string _EventId;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"EventId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string EventId
-    {
-      get { return _EventId; }
-      set { _EventId = value; }
-    }
-    private Diadoc.Api.Proto.Timestamp _Timestamp;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Timestamp", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Diadoc.Api.Proto.Timestamp Timestamp
-    {
-      get { return _Timestamp; }
-      set { _Timestamp = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
