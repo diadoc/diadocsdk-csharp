@@ -69,6 +69,34 @@ namespace Diadoc.Api
 				var queryString = BuildQueryStringWithBoxId("/V3/GetDocflowsByPacketId", boxId);
 				return diadocHttpApi.PerformHttpRequest<GetDocflowsByPacketIdRequest, GetDocflowsByPacketIdResponseV3>(authToken, queryString, request);
 			}
+
+			[NotNull]
+			public GetDocflowBatchResponseV4 GetDocflowsV4([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowBatchRequest request)
+			{
+				var queryString = BuildQueryStringWithBoxId("/V4/GetDocflows", boxId);
+				return diadocHttpApi.PerformHttpRequest<GetDocflowBatchRequest, GetDocflowBatchResponseV4>(authToken, queryString, request);
+			}
+
+			[NotNull]
+			public GetDocflowEventsResponseV4 GetDocflowEventsV4([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowEventsRequest request)
+			{
+				var queryString = BuildQueryStringWithBoxId("/V4/GetDocflowEvents", boxId);
+				return diadocHttpApi.PerformHttpRequest<GetDocflowEventsRequest, GetDocflowEventsResponseV4>(authToken, queryString, request);
+			}
+
+			[NotNull]
+			public SearchDocflowsResponseV4 SearchDocflowsV4([NotNull] string authToken, [NotNull] string boxId, [NotNull] SearchDocflowsRequest request)
+			{
+				var queryString = BuildQueryStringWithBoxId("/V4/SearchDocflows", boxId);
+				return diadocHttpApi.PerformHttpRequest<SearchDocflowsRequest, SearchDocflowsResponseV4>(authToken, queryString, request);
+			}
+
+			[NotNull]
+			public GetDocflowsByPacketIdResponseV4 GetDocflowsByPacketIdV4([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowsByPacketIdRequest request)
+			{
+				var queryString = BuildQueryStringWithBoxId("/V4/GetDocflowsByPacketId", boxId);
+				return diadocHttpApi.PerformHttpRequest<GetDocflowsByPacketIdRequest, GetDocflowsByPacketIdResponseV4>(authToken, queryString, request);
+			}
 		}
 	}
 }

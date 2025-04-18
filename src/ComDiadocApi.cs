@@ -96,12 +96,29 @@ namespace Diadoc.Api
 			string orderBy,
 			int limit);
 
+		BoxEventList GetNewEventsV8(
+			string authToken,
+			string boxId,
+			string afterEventId,
+			string afterIndexKey,
+			string departmentId,
+			string[] messageTypes,
+			string[] typeNamedIds,
+			string[] documentDirections,
+			long timestampFromTicks,
+			long timestampToTicks,
+			string counteragentBoxId,
+			string orderBy,
+			int limit);
+
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
 		void SaveEntityContent(string authToken, string boxId, string messageId, string entityId, string filePath);
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message);
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message, string operationId);
 		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch);
 		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch, string operationId);
+		MessagePatch PostMessagePatchV4(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch);
+		MessagePatch PostMessagePatchV4(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch, string operationId);
 
 		[Obsolete("Use GenerateReceiptXmlV2()")]
 		GeneratedFile GenerateInvoiceDocumentReceiptXml(
@@ -244,6 +261,7 @@ namespace Diadoc.Api
 			string entityId);
 
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+		Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 
 		Message GetMessageForDocument(
 			string authToken,
@@ -666,6 +684,7 @@ namespace Diadoc.Api
 		void RegisterConfirm(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object registrationConfirmRequest);
 
 		BoxEvent GetLastEvent(string token, string boxId);
+		BoxEvent GetLastEventV2(string token, string boxId);
 
 		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
 
@@ -924,10 +943,45 @@ namespace Diadoc.Api
 				orderBy,
 				limit != 0 ? limit : (int?) null);
 		}
+		public BoxEventList GetNewEventsV8(
+			string authToken,
+			string boxId,
+			string afterEventId,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long timestampFromTicks = 0,
+			long timestampToTicks = 0,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int limit = 0)
+		{
+			return diadoc.GetNewEventsV8(
+				authToken,
+				boxId,
+				afterEventId,
+				afterIndexKey,
+				departmentId,
+				messageTypes,
+				typeNamedIds,
+				documentDirections,
+				timestampFromTicks != 0 ? timestampFromTicks : (long?) null,
+				timestampToTicks != 0 ? timestampToTicks : (long?) null,
+				counteragentBoxId,
+				orderBy,
+				limit != 0 ? limit : (int?) null);
+		}
 
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)
 		{
 			return diadoc.GetEvent(authToken, boxId, eventId);
+		}
+
+		public BoxEvent GetEventV3(string authToken, string boxId, string eventId)
+		{
+			return diadoc.GetEventV3(authToken, boxId, eventId);
 		}
 
 		public void SaveEntityContent(string authToken, string boxId, string messageId, string entityId, string filePath)
@@ -1093,6 +1147,16 @@ namespace Diadoc.Api
 		public MessagePatch PostMessagePatch(string authToken, object patch, string operationId)
 		{
 			return diadoc.PostMessagePatch(authToken, (MessagePatchToPost) patch, operationId);
+		}
+		
+		public MessagePatch PostMessagePatchV4(string authToken, object patch)
+		{
+			return diadoc.PostMessagePatchV4(authToken, (MessagePatchToPostV2) patch);
+		}
+
+		public MessagePatch PostMessagePatchV4(string authToken, object patch, string operationId)
+		{
+			return diadoc.PostMessagePatchV4(authToken, (MessagePatchToPostV2) patch, operationId);
 		}
 
 		[Obsolete("Use GenerateReceiptXmlV2()")]
@@ -1470,6 +1534,11 @@ namespace Diadoc.Api
 		{
 			return diadoc.GetMessage(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
 		}
+		
+		public Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
+		{
+			return diadoc.GetMessageV6(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
+		}
 
 		public Message GetMessageForDocument(
 			string authToken,
@@ -1480,6 +1549,17 @@ namespace Diadoc.Api
 			bool injectEntityContent = false)
 		{
 			return diadoc.GetMessage(authToken, boxId, messageId, documentId, withOriginalSignature, injectEntityContent);
+		}
+		
+		public Message GetMessageForDocumentV6(
+			string authToken,
+			string boxId,
+			string messageId,
+			string documentId,
+			bool withOriginalSignature = false,
+			bool injectEntityContent = false)
+		{
+			return diadoc.GetMessageV6(authToken, boxId, messageId, documentId, withOriginalSignature, injectEntityContent);
 		}
 
 		public Template GetTemplate(string authToken, string boxId, string messageId)
@@ -1811,6 +1891,11 @@ namespace Diadoc.Api
 		public BoxEvent GetLastEvent(string token, string boxId)
 		{
 			return diadoc.GetLastEvent(token, boxId);
+		}
+
+		public BoxEvent GetLastEventV2(string token, string boxId)
+		{
+			return diadoc.GetLastEventV2(token, boxId);
 		}
 
 		public CustomPrintFormDetectionResult DetectCustomPrintForms(

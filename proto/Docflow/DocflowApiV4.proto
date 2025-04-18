@@ -1,0 +1,47 @@
+import "Timestamp.proto";
+import "DocumentId.proto";
+import "TotalCountType.proto";
+import "Docflow/DocumentWithDocflowV4.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message GetDocflowBatchResponseV4
+{
+	repeated DocumentWithDocflowV4 Documents = 1;
+}
+
+message SearchDocflowsResponseV4
+{
+	repeated DocumentWithDocflowV4 Documents = 1;
+	optional bool HaveMoreDocuments = 2;
+}
+
+message FetchedDocumentV4
+{
+	required DocumentWithDocflowV4 Document = 1;
+	required bytes IndexKey = 2;
+}
+
+message GetDocflowsByPacketIdResponseV4
+{
+	repeated FetchedDocumentV4 Documents = 1;
+	optional bytes NextPageIndexKey = 2;
+}
+
+message GetDocflowEventsResponseV4
+{
+	optional int32 TotalCount = 1;
+	repeated DocflowEventV4 Events = 2;
+	required TotalCountType TotalCountType = 3;
+}
+
+message DocflowEventV4
+{
+	required string EventId = 1;
+	required Timestamp Timestamp = 2;
+	required DocumentId DocumentId = 3;
+	required bytes IndexKey = 4;
+	optional DocumentWithDocflowV4 Document = 5;
+	optional string PreviousEventId = 6;
+	optional DocumentWithDocflowV4 PreviousDocumentState = 7;
+}
