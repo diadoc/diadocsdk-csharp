@@ -32,6 +32,15 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       get { return _IssuerInn; }
       set { _IssuerInn = value; }
     }
+
+    private string _RepresentativeInn = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"RepresentativeInn", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string RepresentativeInn
+    {
+      get { return _RepresentativeInn; }
+      set { _RepresentativeInn = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
