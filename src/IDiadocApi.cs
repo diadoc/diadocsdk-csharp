@@ -84,6 +84,7 @@ namespace Diadoc.Api
 		Department GetDepartmentV2(string authToken, string boxId, string departmentId);
 		void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps);
 		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
+		[Obsolete("Use GetNewEventsV8()")]
 		BoxEventList GetNewEvents(
 			string authToken,
 			string boxId,
@@ -113,11 +114,13 @@ namespace Diadoc.Api
 			string counteragentBoxId = null,
 			string orderBy = null,
 			int? limit = null);
+		[Obsolete("Use GetEventV3()")]
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
 		BoxEvent GetEventV3(string authToken, string boxId, string eventId);
 		Message PostMessage(string authToken, MessageToPost msg, string operationId = null);
 		Template PostTemplate(string authToken, TemplateToPost template, string operationId = null);
 		Message TransformTemplateToMessage(string authToken, TemplateTransformationToPost templateTransformation, string operationId = null);
+		[Obsolete("Use PostMessagePatchV4()")]
 		MessagePatch PostMessagePatch(string authToken, MessagePatchToPost patch, string operationId = null);
 		MessagePatch PostMessagePatchV4(string authToken, MessagePatchToPostV2 patch, string operationId = null);
 		MessagePatch PostTemplatePatch(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null);
@@ -165,8 +168,10 @@ namespace Diadoc.Api
 		GeneratedFile GenerateTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, int titleIndex, byte[] userContractData, bool disableValidation = false, string editingSettingId = null, string letterId = null, string documentId = null);
 		GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null);
 		GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
+		[Obsolete("Use GetMessageV6()")]
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+		[Obsolete("Use GetMessageV6()")]
 		Message GetMessage(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Message GetMessageV6(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null);
@@ -376,6 +381,7 @@ namespace Diadoc.Api
 		RegistrationResponse Register(string authToken, RegistrationRequest registrationRequest);
 		void RegisterConfirm(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
 		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, CustomPrintFormDetectionRequest request);
+		[Obsolete("Use GetLastEventV2()")]
 		BoxEvent GetLastEvent(string authToken, string boxId);
 		BoxEvent GetLastEventV2(string authToken, string boxId);
 
@@ -444,6 +450,7 @@ namespace Diadoc.Api
 		Task<Department> GetDepartmentV2Async(string authToken, string boxId, string departmentId);
 		Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps);
 		Task<OrganizationFeatures> GetOrganizationFeaturesAsync(string authToken, string boxId);
+		[Obsolete("Use GetNewEventsV8Async()")]
 		Task<BoxEventList> GetNewEventsAsync(
 			string authToken,
 			string boxId,
@@ -472,6 +479,7 @@ namespace Diadoc.Api
 			string counteragentBoxId = null,
 			string orderBy = null,
 			int? limit = null);
+		[Obsolete("Use GetEventV3Async()")]
 		Task<BoxEvent> GetEventAsync(string authToken, string boxId, string eventId);
 		Task<BoxEvent> GetEventV3Async(string authToken, string boxId, string eventId);
 		Task<Message> PostMessageAsync(string authToken, MessageToPost msg, string operationId = null);
@@ -480,6 +488,7 @@ namespace Diadoc.Api
 			string authToken,
 			TemplateTransformationToPost templateTransformation,
 			string operationId = null);
+		[Obsolete("Use PostMessagePatchV4Async()")]
 		Task<MessagePatch> PostMessagePatchAsync(string authToken, MessagePatchToPost patch, string operationId = null);
 		Task<MessagePatch> PostMessagePatchV4Async(string authToken, MessagePatchToPostV2 patch, string operationId = null);
 		Task<MessagePatch> PostTemplatePatchAsync(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null);
@@ -538,8 +547,10 @@ namespace Diadoc.Api
  = false, string editingSettingId = null);
 		Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion
  = null);
+		[Obsolete("Use GetMessageV6Async()")]
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Task<Message> GetMessageV6Async(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+		[Obsolete("Use GetMessageV6Async()")]
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Task<Message> GetMessageV6Async(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Task<Template> GetTemplateAsync(string authToken, string boxId, string templateId, string entityId = null);
@@ -772,6 +783,7 @@ namespace Diadoc.Api
 		Task<RegistrationResponse> RegisterAsync(string authToken, RegistrationRequest registrationRequest);
 		Task RegisterConfirmAsync(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
 		Task<CustomPrintFormDetectionResult> DetectCustomPrintFormsAsync(string authToken, string boxId, CustomPrintFormDetectionRequest request);
+		[Obsolete("Use GetLastEventV2Async()")]
 		Task<BoxEvent> GetLastEventAsync(string authToken, string boxId);
 		Task<BoxEvent> GetLastEventV2Async(string authToken, string boxId);
 
