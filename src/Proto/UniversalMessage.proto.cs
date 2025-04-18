@@ -16,8 +16,10 @@ namespace Diadoc.Api.Proto
   {
     public UniversalMessageInfo() {}
     
-    private Diadoc.Api.Proto.UniversalMessageCodeGroup _CodeGroup;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"CodeGroup", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+
+    private Diadoc.Api.Proto.UniversalMessageCodeGroup _CodeGroup = Diadoc.Api.Proto.UniversalMessageCodeGroup.UnknownUniversalMessageCodeGroup;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"CodeGroup", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.UniversalMessageCodeGroup.UnknownUniversalMessageCodeGroup)]
     public Diadoc.Api.Proto.UniversalMessageCodeGroup CodeGroup
     {
       get { return _CodeGroup; }

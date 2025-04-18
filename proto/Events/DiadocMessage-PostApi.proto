@@ -81,7 +81,7 @@ message MessagePatchToPostV2 {
  
 message UniversalMessageAttachment {
     required string ParentEntityId = 1;
-    required UniversalMessageCodeGroup CodeGroup = 2;
+    optional UniversalMessageCodeGroup CodeGroup = 2 [default = UnknownUniversalMessageCodeGroup];
     required UnsignedContent UniversalMessageContent = 3;
     repeated string Labels = 4;
 }

@@ -3,7 +3,7 @@ import "Docflow/Attachment.proto";
 package Diadoc.Api.Proto;
  
 message UniversalMessageInfo {
-    required UniversalMessageCodeGroup CodeGroup = 1;
+    optional UniversalMessageCodeGroup CodeGroup = 1 [default = UnknownUniversalMessageCodeGroup];
     repeated UniversalMessageEvent Events = 2;
 }
  
