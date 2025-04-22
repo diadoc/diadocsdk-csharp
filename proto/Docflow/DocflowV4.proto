@@ -43,11 +43,35 @@ message ParticipantResponseDocflowV4
 
 message SignatureRejectionDocflowV4
 {
-    optional SignedAttachmentV3 SignatureRejection = 1; //поменялась опциональность по сравнению с SignatureRejectionDocflow
+    optional SignedAttachmentV3 SignatureRejection = 1;
     required bool IsFormal = 2;
     optional Timestamp DeliveredAt = 3;
     optional string PlainText = 4;
     optional UniversalMessageAttachmentDocflow UniversalMessage = 5;
+}
+
+message AmendmentRequestDocflowV4
+{
+    required bool IsFinished = 1;
+    optional SignedAttachmentV3 AmendmentRequest = 2;
+    optional Timestamp SentAt = 3;
+    optional Timestamp DeliveredAt = 4;
+    optional ReceiptDocflowV4 Receipt = 5;
+    required int32 AmendmentFlags = 6;
+    optional string PlainText = 7;
+    optional ConfirmationDocflow ConfirmationDocflow = 8;
+    optional UniversalMessageAttachmentDocflow UniversalMessage = 9; 
+}
+
+message ReceiptDocflowV4
+{
+    required bool IsFinished = 1;
+    optional SignedAttachmentV3 ReceiptAttachment = 2;
+    optional Timestamp SentAt = 3;
+    optional Timestamp DeliveredAt = 4;
+    optional ConfirmationDocflow Confirmation = 5;
+    required Documents.GeneralReceiptStatus Status = 6;
+    optional UniversalMessageAttachmentDocflow UniversalMessage = 7;
 }
  
 message DocflowV4
@@ -55,11 +79,11 @@ message DocflowV4
     required SenderTitleDocflow SenderTitle = 1;
     optional ConfirmationDocflow Confirmation = 2;
     optional ParticipantResponseDocflowV4 ProxyResponse = 11;
-    optional ReceiptDocflowV3 RecipientReceipt = 4;
+    optional ReceiptDocflowV4 RecipientReceipt = 4;
     optional ParticipantResponseDocflowV4 RecipientResponse = 5;
-    optional AmendmentRequestDocflow AmendmentRequest = 6;
+    optional AmendmentRequestDocflowV4 AmendmentRequest = 6;
     optional RevocationDocflowV4 Revocation = 7;
-    optional ReceiptDocflowV3 SenderReceipt = 8;
+    optional ReceiptDocflowV4 SenderReceipt = 8;
     optional ResolutionDocflowV3 Resolution = 9;
     optional ResolutionEntitiesV3 ResolutionEntities = 10;
     repeated OuterDocflow OuterDocflows = 12;
