@@ -243,6 +243,162 @@ namespace Diadoc.Api.Proto.Docflow
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"AmendmentRequestDocflowV4")]
+  public partial class AmendmentRequestDocflowV4 : global::ProtoBuf.IExtensible
+  {
+    public AmendmentRequestDocflowV4() {}
+    
+    private bool _IsFinished;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"IsFinished", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool IsFinished
+    {
+      get { return _IsFinished; }
+      set { _IsFinished = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.SignedAttachmentV3 _AmendmentRequest = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"AmendmentRequest", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.SignedAttachmentV3 AmendmentRequest
+    {
+      get { return _AmendmentRequest; }
+      set { _AmendmentRequest = value; }
+    }
+
+    private Diadoc.Api.Proto.Timestamp _SentAt = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SentAt", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Timestamp SentAt
+    {
+      get { return _SentAt; }
+      set { _SentAt = value; }
+    }
+
+    private Diadoc.Api.Proto.Timestamp _DeliveredAt = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"DeliveredAt", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Timestamp DeliveredAt
+    {
+      get { return _DeliveredAt; }
+      set { _DeliveredAt = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.ReceiptDocflowV4 _Receipt = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Receipt", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.ReceiptDocflowV4 Receipt
+    {
+      get { return _Receipt; }
+      set { _Receipt = value; }
+    }
+    private int _AmendmentFlags;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"AmendmentFlags", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int AmendmentFlags
+    {
+      get { return _AmendmentFlags; }
+      set { _AmendmentFlags = value; }
+    }
+
+    private string _PlainText = "";
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"PlainText", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string PlainText
+    {
+      get { return _PlainText; }
+      set { _PlainText = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.ConfirmationDocflow _ConfirmationDocflow = null;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"ConfirmationDocflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.ConfirmationDocflow ConfirmationDocflow
+    {
+      get { return _ConfirmationDocflow; }
+      set { _ConfirmationDocflow = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow _UniversalMessage = null;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"UniversalMessage", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow UniversalMessage
+    {
+      get { return _UniversalMessage; }
+      set { _UniversalMessage = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ReceiptDocflowV4")]
+  public partial class ReceiptDocflowV4 : global::ProtoBuf.IExtensible
+  {
+    public ReceiptDocflowV4() {}
+    
+    private bool _IsFinished;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"IsFinished", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool IsFinished
+    {
+      get { return _IsFinished; }
+      set { _IsFinished = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.SignedAttachmentV3 _ReceiptAttachment = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ReceiptAttachment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.SignedAttachmentV3 ReceiptAttachment
+    {
+      get { return _ReceiptAttachment; }
+      set { _ReceiptAttachment = value; }
+    }
+
+    private Diadoc.Api.Proto.Timestamp _SentAt = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SentAt", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Timestamp SentAt
+    {
+      get { return _SentAt; }
+      set { _SentAt = value; }
+    }
+
+    private Diadoc.Api.Proto.Timestamp _DeliveredAt = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"DeliveredAt", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Timestamp DeliveredAt
+    {
+      get { return _DeliveredAt; }
+      set { _DeliveredAt = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.ConfirmationDocflow _Confirmation = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Confirmation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.ConfirmationDocflow Confirmation
+    {
+      get { return _Confirmation; }
+      set { _Confirmation = value; }
+    }
+    private Diadoc.Api.Proto.Documents.GeneralReceiptStatus _Status;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.GeneralReceiptStatus Status
+    {
+      get { return _Status; }
+      set { _Status = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow _UniversalMessage = null;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"UniversalMessage", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow UniversalMessage
+    {
+      get { return _UniversalMessage; }
+      set { _UniversalMessage = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocflowV4")]
   public partial class DocflowV4 : global::ProtoBuf.IExtensible
   {
@@ -274,10 +430,10 @@ namespace Diadoc.Api.Proto.Docflow
       set { _ProxyResponse = value; }
     }
 
-    private Diadoc.Api.Proto.Docflow.ReceiptDocflowV3 _RecipientReceipt = null;
+    private Diadoc.Api.Proto.Docflow.ReceiptDocflowV4 _RecipientReceipt = null;
     [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"RecipientReceipt", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.ReceiptDocflowV3 RecipientReceipt
+    public Diadoc.Api.Proto.Docflow.ReceiptDocflowV4 RecipientReceipt
     {
       get { return _RecipientReceipt; }
       set { _RecipientReceipt = value; }
@@ -292,10 +448,10 @@ namespace Diadoc.Api.Proto.Docflow
       set { _RecipientResponse = value; }
     }
 
-    private Diadoc.Api.Proto.Docflow.AmendmentRequestDocflow _AmendmentRequest = null;
+    private Diadoc.Api.Proto.Docflow.AmendmentRequestDocflowV4 _AmendmentRequest = null;
     [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"AmendmentRequest", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.AmendmentRequestDocflow AmendmentRequest
+    public Diadoc.Api.Proto.Docflow.AmendmentRequestDocflowV4 AmendmentRequest
     {
       get { return _AmendmentRequest; }
       set { _AmendmentRequest = value; }
@@ -310,10 +466,10 @@ namespace Diadoc.Api.Proto.Docflow
       set { _Revocation = value; }
     }
 
-    private Diadoc.Api.Proto.Docflow.ReceiptDocflowV3 _SenderReceipt = null;
+    private Diadoc.Api.Proto.Docflow.ReceiptDocflowV4 _SenderReceipt = null;
     [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"SenderReceipt", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.ReceiptDocflowV3 SenderReceipt
+    public Diadoc.Api.Proto.Docflow.ReceiptDocflowV4 SenderReceipt
     {
       get { return _SenderReceipt; }
       set { _SenderReceipt = value; }
