@@ -177,10 +177,10 @@ namespace Diadoc.Api.Proto.Docflow
       set { _ResponseStatus = value; }
     }
 
-    private Diadoc.Api.Proto.Docflow.ConfirmationDocflow _Confirmation = null;
+    private Diadoc.Api.Proto.Docflow.ConfirmationDocflowV4 _Confirmation = null;
     [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"Confirmation", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.ConfirmationDocflow Confirmation
+    public Diadoc.Api.Proto.Docflow.ConfirmationDocflowV4 Confirmation
     {
       get { return _Confirmation; }
       set { _Confirmation = value; }
@@ -308,10 +308,10 @@ namespace Diadoc.Api.Proto.Docflow
       set { _PlainText = value; }
     }
 
-    private Diadoc.Api.Proto.Docflow.ConfirmationDocflow _ConfirmationDocflow = null;
+    private Diadoc.Api.Proto.Docflow.ConfirmationDocflowV4 _ConfirmationDocflow = null;
     [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"ConfirmationDocflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.ConfirmationDocflow ConfirmationDocflow
+    public Diadoc.Api.Proto.Docflow.ConfirmationDocflowV4 ConfirmationDocflow
     {
       get { return _ConfirmationDocflow; }
       set { _ConfirmationDocflow = value; }
@@ -370,10 +370,10 @@ namespace Diadoc.Api.Proto.Docflow
       set { _DeliveredAt = value; }
     }
 
-    private Diadoc.Api.Proto.Docflow.ConfirmationDocflow _Confirmation = null;
+    private Diadoc.Api.Proto.Docflow.ConfirmationDocflowV4 _Confirmation = null;
     [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Confirmation", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.ConfirmationDocflow Confirmation
+    public Diadoc.Api.Proto.Docflow.ConfirmationDocflowV4 Confirmation
     {
       get { return _Confirmation; }
       set { _Confirmation = value; }
@@ -399,6 +399,59 @@ namespace Diadoc.Api.Proto.Docflow
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ConfirmationDocflowV4")]
+  public partial class ConfirmationDocflowV4 : global::ProtoBuf.IExtensible
+  {
+    public ConfirmationDocflowV4() {}
+    
+    private bool _IsFinished;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"IsFinished", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool IsFinished
+    {
+      get { return _IsFinished; }
+      set { _IsFinished = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.SignedAttachmentV3 _ConfirmationAttachment = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ConfirmationAttachment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.SignedAttachmentV3 ConfirmationAttachment
+    {
+      get { return _ConfirmationAttachment; }
+      set { _ConfirmationAttachment = value; }
+    }
+
+    private Diadoc.Api.Proto.Timestamp _ConfirmedAt = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"ConfirmedAt", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Timestamp ConfirmedAt
+    {
+      get { return _ConfirmedAt; }
+      set { _ConfirmedAt = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.ReceiptDocflowV4 _Receipt = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Receipt", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.ReceiptDocflowV4 Receipt
+    {
+      get { return _Receipt; }
+      set { _Receipt = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.OperatorConfirmationDocflow _RoamingConfirmation = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"RoamingConfirmation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.OperatorConfirmationDocflow RoamingConfirmation
+    {
+      get { return _RoamingConfirmation; }
+      set { _RoamingConfirmation = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocflowV4")]
   public partial class DocflowV4 : global::ProtoBuf.IExtensible
   {
@@ -412,10 +465,10 @@ namespace Diadoc.Api.Proto.Docflow
       set { _SenderTitle = value; }
     }
 
-    private Diadoc.Api.Proto.Docflow.ConfirmationDocflow _Confirmation = null;
+    private Diadoc.Api.Proto.Docflow.ConfirmationDocflowV4 _Confirmation = null;
     [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Confirmation", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.ConfirmationDocflow Confirmation
+    public Diadoc.Api.Proto.Docflow.ConfirmationDocflowV4 Confirmation
     {
       get { return _Confirmation; }
       set { _Confirmation = value; }
