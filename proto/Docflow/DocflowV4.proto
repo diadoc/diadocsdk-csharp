@@ -38,7 +38,7 @@ message ParticipantResponseDocflowV4
     optional Timestamp SentAt = 5;
     optional Timestamp DeliveredAt = 6;
     required Documents.RecipientResponseStatus ResponseStatus = 7;
-    optional ConfirmationDocflow Confirmation = 8;
+    optional ConfirmationDocflowV4 Confirmation = 8;
 }
 
 message SignatureRejectionDocflowV4
@@ -59,7 +59,7 @@ message AmendmentRequestDocflowV4
     optional ReceiptDocflowV4 Receipt = 5;
     required int32 AmendmentFlags = 6;
     optional string PlainText = 7;
-    optional ConfirmationDocflow ConfirmationDocflow = 8;
+    optional ConfirmationDocflowV4 ConfirmationDocflow = 8;
     optional UniversalMessageAttachmentDocflow UniversalMessage = 9; 
 }
 
@@ -69,15 +69,25 @@ message ReceiptDocflowV4
     optional SignedAttachmentV3 ReceiptAttachment = 2;
     optional Timestamp SentAt = 3;
     optional Timestamp DeliveredAt = 4;
-    optional ConfirmationDocflow Confirmation = 5;
+    optional ConfirmationDocflowV4 Confirmation = 5;
     required Documents.GeneralReceiptStatus Status = 6;
     optional UniversalMessageAttachmentDocflow UniversalMessage = 7;
 }
+
+message ConfirmationDocflowV4
+{
+    required bool IsFinished = 1;
+    optional SignedAttachmentV3 ConfirmationAttachment = 2;
+    optional Timestamp ConfirmedAt = 3;
+    optional ReceiptDocflowV4 Receipt = 4;
+    optional OperatorConfirmationDocflow RoamingConfirmation = 5;
+}
+
  
 message DocflowV4
 {
     required SenderTitleDocflow SenderTitle = 1;
-    optional ConfirmationDocflow Confirmation = 2;
+    optional ConfirmationDocflowV4 Confirmation = 2;
     optional ParticipantResponseDocflowV4 ProxyResponse = 11;
     optional ReceiptDocflowV4 RecipientReceipt = 4;
     optional ParticipantResponseDocflowV4 RecipientResponse = 5;
