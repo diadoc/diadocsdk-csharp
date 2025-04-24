@@ -5,17 +5,17 @@
     <TargetFrameworks>net35;net45;net461;netstandard2.0</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(SolutionDir)\bin\$(Configuration)\$(AssemblyName)\</OutputPath>
-	<IncludeBuildOutput>false</IncludeBuildOutput>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
     <IsPackable>true</IsPackable>
-	<PackageIcon>diadoc-icon-128-128.png</PackageIcon>
-	<PackageProjectUrl>https://github.com/diadoc/diadocsdk-csharp</PackageProjectUrl>
-	<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageIcon>diadoc-icon-128-128.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/diadoc/diadocsdk-csharp</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-	<PackageTags>diadoc diadoc-api diadoc-sdk kontur skbkontur</PackageTags>
-	<Authors>SKB Kontur</Authors>
-	<PackageId>DiadocSDK</PackageId>
-	<Copyright>Copyright 2016</Copyright>
-	<Description>Official Diadoc SDK</Description>
+    <PackageTags>diadoc diadoc-api diadoc-sdk kontur skbkontur</PackageTags>
+    <Authors>SKB Kontur</Authors>
+    <PackageId>DiadocSDK</PackageId>
+    <Copyright>Copyright 2016</Copyright>
+    <Description>Official Diadoc SDK</Description>
     <NoWarn>1591</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>

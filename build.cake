@@ -148,7 +148,7 @@ Task("Build")
 			ArgumentCustomization = (args) =>
 			{
 				return args
-					.Append("/p:Version={0}", semanticVersionForNuget)
+					.Append("/p:PackageVersion={0}", semanticVersionForNuget)
 					.Append("/p:AssemblyVersion={0}", assemblyVersion)
 					.Append("/p:FileVersion={0}", assemblyVersion)
 					.Append("/p:AssemblyInformationalVersion={0}", semanticVersion);
