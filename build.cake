@@ -23,7 +23,10 @@ var binariesNet45Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net45-bina
 var binariesNet461Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net461-binaries.zip");
 var binariesNetStandard2Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-netstandard2.0-binaries.zip");
 var needSigning = false;
-var packageVersion = "";
+var clearVersion = "";
+var assemblyVersion = "";
+var semanticVersionForNuget = "";
+var semanticVersion = "";
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -71,9 +74,9 @@ Task("GenerateVersionInfo")
 	.Does(context =>
 	{
 		var tagVersion = GetVersionFromTag();
-		var clearVersion = ClearVersionTag(tagVersion) ?? "1.0.0";
-		var semanticVersionForNuget = GetSemanticVersionV1(clearVersion);
-		var semanticVersion = semanticVersionForNuget + dbgSuffix;
+		clearVersion = ClearVersionTag(tagVersion) ?? "1.0.0";
+		semanticVersionForNuget = GetSemanticVersionV1(clearVersion);
+		semanticVersion = semanticVersionForNuget + dbgSuffix;
 
 		var versionParts = clearVersion.Split('.');
 		var majorVersion = 1;
@@ -81,7 +84,8 @@ Task("GenerateVersionInfo")
 		int.TryParse(versionParts[0], out majorVersion);
 		if (versionParts.Length > 1)
 			int.TryParse(versionParts[1], out minorVersion);
-		var assemblyVersion = $"{majorVersion}.{minorVersion}.0.0";
+			
+		assemblyVersion = $"{majorVersion}.{minorVersion}.0.0";
 
 		if (!string.IsNullOrEmpty(clearVersion))
 		{
@@ -90,19 +94,6 @@ Task("GenerateVersionInfo")
 			Information($"Nuget version: {semanticVersionForNuget}");
 			Information($"Semantic version: {semanticVersion}");
 		}
-
-		var datetimeNow = DateTime.Now;
-		var secondsPart = (long)datetimeNow.TimeOfDay.TotalSeconds;
-		var assemblyInfo = new AssemblyInfoSettings
-		{
-			Version = assemblyVersion,
-			FileVersion = semanticVersionForNuget,
-			InformationalVersion = semanticVersion
-		};
-		packageVersion = assemblyInfo.FileVersion;
-		CreateAssemblyInfo("./src/Properties/AssemblyVersion.cs", assemblyInfo);
-		CreateAssemblyInfo("./Samples/Diadoc.Console/Properties/AssemblyVersion.cs", assemblyInfo);
-		CreateAssemblyInfo("./Samples/Diadoc.Samples/Properties/AssemblyVersion.cs", assemblyInfo);
 	});
 
 Task("GenerateProtoFiles")
@@ -153,7 +144,15 @@ Task("Build")
 	{
 		var settings = new DotNetBuildSettings
 		{
-			Configuration = configuration
+			Configuration = configuration,
+			ArgumentCustomization = (args) =>
+			{
+				return args
+					.Append("/p:Version={0}", semanticVersionForNuget)
+					.Append("/p:AssemblyVersion={0}", assemblyVersion)
+					.Append("/p:FileVersion={0}", assemblyVersion)
+					.Append("/p:AssemblyInformationalVersion={0}", semanticVersion);
+			}
 		};
 		DotNetBuild(DiadocApiSolutionPath, settings);
 	});
@@ -254,6 +253,41 @@ Task("PrepareBinaries")
 		}
 	});
 
+Task("Dotnet-Pack")
+	.IsDependentOn("PrepareBinaries")
+	.Does(() =>
+	{
+		var settings = new DotNetCorePackSettings
+		{
+			Configuration = configuration,
+			NoBuild = true,
+			NoRestore = true,
+			NoDependencies = true,
+			OutputDirectory = "./bin/Release/DiadocApi.Nuget",
+			ArgumentCustomization = (args) =>
+			{
+				return args
+					.Append("/p:PackageVersion={0}", semanticVersionForNuget)
+					.Append("/p:AssemblyVersion={0}", assemblyVersion)
+					.Append("/p:FileVersion={0}", assemblyVersion)
+					.Append("/p:AssemblyInformationalVersion={0}", semanticVersion);
+			}
+		};
+
+		DotNetCorePack("./src/DiadocApi.csproj", settings);
+	});
+
+Task("Test")
+	.IsDependentOn("Build")
+	.Does(() =>
+	{
+		DotNetCoreTest(DiadocApiSolutionPath, new DotNetCoreTestSettings {
+			NoRestore = false,
+			NoBuild = true,
+			Configuration = configuration
+		});
+	});
+
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
@@ -270,7 +304,9 @@ Task("Rebuild")
 Task("Default")
 	.IsDependentOn("PrepareBinaries")
 	.IsDependentOn("Build")
-	.IsDependentOn("Repack");
+	.IsDependentOn("Test")
+	.IsDependentOn("Repack")
+	.IsDependentOn("Dotnet-Pack");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
