@@ -264,6 +264,13 @@ namespace Diadoc.Api
 			byte[] userContractData,
 			string documentVersion = null);
 
+		GeneratedFile GenerateSystemUniversalMessage(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			byte[] userContractData);
+
 		InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(
 			string authToken,
 			string boxId,
@@ -1290,6 +1297,21 @@ namespace Diadoc.Api
 				authToken,
 				boxId,
 				(SignatureRejectionGenerationRequestV2) signatureRejectionGenerationRequest);
+		}
+
+		public GeneratedFile GenerateSystemUniversalMessage(
+			string authToken,
+			string boxId,
+			string messageId,
+			string attachmentId,
+			byte[] userContractData)
+		{
+			return diadoc.GenerateSystemUniversalMessage(
+				authToken,
+				boxId,
+				messageId,
+				attachmentId,
+				userContractData);
 		}
 
 		public RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent)

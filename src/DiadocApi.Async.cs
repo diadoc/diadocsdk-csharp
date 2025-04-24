@@ -620,6 +620,16 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateRecipientTitleXmlAsync(authToken, boxId, senderTitleMessageId, senderTitleAttachmentId, userContractData);
 		}
 
+		public Task<GeneratedFile> GenerateSystemUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
+			if (attachmentId == null) throw new ArgumentNullException(nameof(attachmentId));
+			if (userContractData == null) throw new ArgumentNullException(nameof(userContractData));
+			return diadocHttpApi.GenerateSystemUniversalMessageAsync(authToken, boxId, messageId, attachmentId, userContractData);
+		}
+		
 		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

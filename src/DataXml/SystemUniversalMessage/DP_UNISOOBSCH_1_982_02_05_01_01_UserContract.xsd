@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:element name="UniversalMessage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UniversalMessageInfos">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="UniversalMessageInfo" type="UniversalMessageInfo" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>СвСобытДок - Сведения о событиях, имеющих отношение к выставлению, получению и/или проверке первичных и иных документов, включая счета-фактуры</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Sender" type="PersonInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Отправитель универсального сообщения</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Recipient" type="PersonInfo" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Получатель универсального сообщения</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="UniversalMessageInfo">
+		<xs:sequence>
+			<xs:element name="PlainText" type="string10000" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Текст универсального сообщения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="StatusCode" use="required">
+			<xs:annotation>
+				<xs:documentation>Статус универсального сообщения</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="1999"/>
+					<xs:enumeration value="2999"/>
+					<xs:enumeration value="3999"/>
+					<xs:enumeration value="4002"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="PersonInfo">
+		<xs:sequence>
+			<xs:element name="Fio" type="Fio" minOccurs="0"/>
+			<xs:element name="Contacts" type="Contacts" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Position" type="string255">
+			<xs:annotation>
+				<xs:documentation>Должн - Должность</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="UseDefaultPersonInfo" use="required">
+			<xs:annotation>
+				<xs:documentation>Автоматическое заполнение ФИО и должности из настроек сотрудника указанных в сервисе</xs:documentation>
+				<xs:documentation>Если данные в сервисе не найдены, то значение будет взято из значения в элементах Fio и Position</xs:documentation>
+				<xs:documentation>Если данные в сервисе не найдены и в элементах Fio и Position пустые значения, то элементы в конечном файле не сформируются</xs:documentation>
+				<xs:documentation>Контактные данные будут формироваться из элемента Contacts (при его наличии) независимо от значения UseDefaultPersonInfo</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="true" />
+					<xs:enumeration value="false" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="Contacts">
+		<xs:sequence>
+			<xs:element name="Phones" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Phone" type="string20" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Тлф - Номер контактного телефона/факс</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Emails" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Email" type="string100" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>ЭлПочта - Адрес электронной почты</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="OtherContactInfo" type="string255">
+			<xs:annotation>
+				<xs:documentation>ИнКонт - Иные контактные данные</xs:documentation>
+				<xs:documentation>Поле OtherContactInfo обязательно, если не указаны элементы Phones и Emails</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	
+	<xs:complexType name="Fio">
+		<xs:attribute name="LastName" type="string60" use="required"/>
+		<xs:attribute name="FirstName" type="string60" use="required"/>
+		<xs:attribute name="MiddleName" type="string60"/>
+	</xs:complexType>
+
+	<xs:simpleType name="string20">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="string60">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="string100">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="string255">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="string10000">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10000"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
