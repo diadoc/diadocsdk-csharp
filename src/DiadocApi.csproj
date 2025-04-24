@@ -5,7 +5,17 @@
     <TargetFrameworks>net35;net45;net461;netstandard2.0</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(SolutionDir)\bin\$(Configuration)\$(AssemblyName)\</OutputPath>
+	<IncludeBuildOutput>false</IncludeBuildOutput>
+    <IsPackable>true</IsPackable>
+	<PackageIcon>diadoc-icon-128-128.png</PackageIcon>
+	<PackageProjectUrl>https://github.com/diadoc/diadocsdk-csharp</PackageProjectUrl>
+	<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<PackageTags>diadoc diadoc-api diadoc-sdk kontur skbkontur</PackageTags>
+	<Authors>SKB Kontur</Authors>
+	<PackageId>DiadocSDK</PackageId>
+	<Copyright>Copyright 2016</Copyright>
+	<Description>Official Diadoc SDK</Description>
     <NoWarn>1591</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -23,26 +33,14 @@
     <AssemblyOriginatorKeyFile>diadoc.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="Diadoc_Reg.bat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Diadoc_Reg64.bat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Diadoc_Unblock.bat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Diadoc_Unreg.bat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Diadoc_Unreg64.bat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="readme.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+	  <None Include="..\bin\Release\DiadocApi.Nuget\net45\*" PackagePath="lib\net45" Pack="true" />
+	  <None Include="..\bin\Release\DiadocApi.Nuget\net461\*" PackagePath="lib\net461" Pack="true" />
+	  <None Include="..\bin\Release\DiadocApi.Nuget\netstandard2.0\*" PackagePath="lib\netstandard2.0" Pack="true" />
+	  <None Include="..\README.md" PackagePath="\" Pack="true" />
+	  <None Include="..\LICENSE.md" PackagePath="\" Pack="true" />
+	  <None Include="..\src\diadoc-icon-128-128.png" PackagePath="\" Pack="true" />
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" PrivateAssets="All" />
