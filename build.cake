@@ -254,30 +254,6 @@ Task("PrepareBinaries")
 		}
 	});
 
-Task("Nuget-Pack")
-	.IsDependentOn("PrepareBinaries")
-	.Does(() =>
-	{
-		var nuGetPackSettings = new NuGetPackSettings
-		{
-			Version = packageVersion,
-			BasePath = buildDirNuget.FullPath,
-			OutputDirectory = buildDir.FullPath
-		};
-		NuGetPack("./nuspec/DiadocApi.nuspec", nuGetPackSettings);
-	});
-
-Task("Test")
-	.IsDependentOn("Build")
-	.Does(() =>
-	{
-		DotNetCoreTest(DiadocApiSolutionPath, new DotNetCoreTestSettings {
-			NoRestore = false,
-			NoBuild = true,
-			Configuration = configuration
-		});
-	});
-
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
@@ -294,9 +270,7 @@ Task("Rebuild")
 Task("Default")
 	.IsDependentOn("PrepareBinaries")
 	.IsDependentOn("Build")
-	.IsDependentOn("Test")
-	.IsDependentOn("Repack")
-	.IsDependentOn("Nuget-Pack");
+	.IsDependentOn("Repack");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
