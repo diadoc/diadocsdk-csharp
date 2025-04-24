@@ -263,7 +263,7 @@ Task("Dotnet-Pack")
 			NoBuild = true,
 			NoRestore = true,
 			NoDependencies = true,
-			OutputDirectory = "./bin/Release/DiadocApi.Nuget",
+			OutputDirectory = "./bin/Release",
 			ArgumentCustomization = (args) =>
 			{
 				return args
