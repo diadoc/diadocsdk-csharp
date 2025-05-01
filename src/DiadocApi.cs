@@ -1000,7 +1000,7 @@ namespace Diadoc.Api
 			if (content == null) throw new ArgumentNullException("content");
 			return diadocHttpApi.UploadFileToShelfV2(authToken, content, fileExtension);
 		}
-		
+
 		public string UploadLargeFileToShelf(string authToken, byte[] content, [CanBeNull] string fileExtension)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
@@ -1339,6 +1339,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.DssSign(authToken, boxId, request, certificateThumbprint);
 		}
 
+		[Obsolete("Currently unavailable. Use DssSign")]
+		public AsyncMethodResult DssSignV2(string authToken, string boxId, DssSignRequestV2 request)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			if (request == null) throw new ArgumentNullException("request");
+			return diadocHttpApi.DssSignV2(authToken, boxId, request);
+		}
+
 		public DssSignResult DssSignResult(string authToken, string boxId, string taskId)
 		{
 			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
@@ -1389,7 +1397,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("messageId");
 			return diadocHttpApi.GetDocumentsByMessageId(authToken, boxId, messageId);
 		}
-		
+
 		public DocumentWorkflowSettingsListV2 GetWorkflowsSettings(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1794,7 +1802,7 @@ namespace Diadoc.Api
 			if (entityId == null) throw new ArgumentNullException(nameof(entityId));
 			return diadocHttpApi.GetPowerOfAttorneyContent(authToken, boxId, messageId, entityId);
 		}
-		
+
 		public PowerOfAttorneyContentResponse GetPowerOfAttorneyContentV2(string authToken, string boxId, string messageId, string entityId)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
