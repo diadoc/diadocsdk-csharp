@@ -2148,6 +2148,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _Labels; }
     }
   
+
+    private bool _IsAuthorFullyNotified = (bool)false;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"IsAuthorFullyNotified", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsAuthorFullyNotified
+    {
+      get { return _IsAuthorFullyNotified; }
+      set { _IsAuthorFullyNotified = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
