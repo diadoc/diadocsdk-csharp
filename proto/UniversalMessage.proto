@@ -1,0 +1,21 @@
+import "Docflow/Attachment.proto";
+
+package Diadoc.Api.Proto;
+ 
+message UniversalMessageInfo {
+    optional UniversalMessageCodeGroup CodeGroup = 1 [default = UnknownUniversalMessageCodeGroup];
+    repeated UniversalMessageEvent Events = 2;
+}
+ 
+message UniversalMessageEvent {
+    required string StatusCode = 1;
+    optional string PlainText = 2;
+}
+ 
+enum UniversalMessageCodeGroup {
+    UnknownUniversalMessageCodeGroup = 0;
+    Receipt = 1;
+    AmendmentRequest = 2;
+    Rejection = 3;
+    InformationMessage = 4;
+}

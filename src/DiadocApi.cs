@@ -51,7 +51,7 @@ namespace Diadoc.Api
 		}
 
 		/// <summary>
-		///   The default value is true
+		///     The default value is true
 		/// </summary>
 		public bool UsingSystemProxy
 		{
@@ -327,6 +327,26 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetNewEvents(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
 		}
+		
+		public BoxEventList GetNewEventsV8(
+			string authToken,
+			string boxId,
+			string afterEventId = null,
+			string afterIndexKey = null,
+			string departmentId = null,
+			string[] messageTypes = null,
+			string[] typeNamedIds = null,
+			string[] documentDirections = null,
+			long? timestampFromTicks = null,
+			long? timestampToTicks = null,
+			string counteragentBoxId = null,
+			string orderBy = null,
+			int? limit = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetNewEventsV8(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
+		}
 
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)
 		{
@@ -334,6 +354,14 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (eventId == null) throw new ArgumentNullException("eventId");
 			return diadocHttpApi.GetEvent(authToken, boxId, eventId);
+		}
+
+		public BoxEvent GetEventV3(string authToken, string boxId, string eventId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (eventId == null) throw new ArgumentNullException("eventId");
+			return diadocHttpApi.GetEventV3(authToken, boxId, eventId);
 		}
 
 		public Message PostMessage(string authToken, MessageToPost msg, string operationId = null)
@@ -362,6 +390,13 @@ namespace Diadoc.Api
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (patch == null) throw new ArgumentNullException("patch");
 			return diadocHttpApi.PostMessagePatch(authToken, patch, operationId);
+		}
+
+		public MessagePatch PostMessagePatchV4(string authToken, MessagePatchToPostV2 patch, string operationId = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (patch == null) throw new ArgumentNullException("patch");
+			return diadocHttpApi.PostMessagePatchV4(authToken, patch, operationId);
 		}
 
 		public MessagePatch PostTemplatePatch(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null)
@@ -705,6 +740,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetMessage(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
 		}
 
+		public Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (messageId == null) throw new ArgumentNullException("messageId");
+			return diadocHttpApi.GetMessageV6(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
+		}
+
 		public Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -712,6 +755,15 @@ namespace Diadoc.Api
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (entityId == null) throw new ArgumentNullException("entityId");
 			return diadocHttpApi.GetMessage(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
+		}
+
+		public Message GetMessageV6(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (messageId == null) throw new ArgumentNullException("messageId");
+			if (entityId == null) throw new ArgumentNullException("entityId");
+			return diadocHttpApi.GetMessageV6(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
 		}
 
 		public Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null)
@@ -1001,7 +1053,7 @@ namespace Diadoc.Api
 			if (content == null) throw new ArgumentNullException("content");
 			return diadocHttpApi.UploadFileToShelfV2(authToken, content, fileExtension);
 		}
-		
+
 		public string UploadLargeFileToShelf(string authToken, byte[] content, [CanBeNull] string fileExtension)
 		{
 			if (string.IsNullOrEmpty(authToken)) throw new ArgumentNullException("authToken");
@@ -1414,7 +1466,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("messageId");
 			return diadocHttpApi.GetDocumentsByMessageId(authToken, boxId, messageId);
 		}
-		
+
 		public DocumentWorkflowSettingsListV2 GetWorkflowsSettings(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1771,6 +1823,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetLastEvent(authToken, boxId);
 		}
 
+		public BoxEvent GetLastEventV2(string authToken, string boxId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetLastEventV2(authToken, boxId);
+		}
+
 		public AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1819,7 +1878,7 @@ namespace Diadoc.Api
 			if (entityId == null) throw new ArgumentNullException(nameof(entityId));
 			return diadocHttpApi.GetPowerOfAttorneyContent(authToken, boxId, messageId, entityId);
 		}
-		
+
 		public PowerOfAttorneyContentResponse GetPowerOfAttorneyContentV2(string authToken, string boxId, string messageId, string entityId)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
