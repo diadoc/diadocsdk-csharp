@@ -150,6 +150,7 @@ Task("Build")
 				return args
 					.Append("/p:PackageVersion={0}", semanticVersionForNuget)
 					.Append("/p:AssemblyVersion={0}", assemblyVersion)
+					.Append("/p:AssemblyFileVersion={0}", assemblyVersion)
 					.Append("/p:FileVersion={0}", assemblyVersion)
 					.Append("/p:InformationalVersion={0}", semanticVersion)
 					.Append("/p:AssemblyInformationalVersion={0}", semanticVersion);
@@ -270,6 +271,7 @@ Task("Dotnet-Pack")
 				return args
 					.Append("/p:PackageVersion={0}", semanticVersionForNuget)
 					.Append("/p:AssemblyVersion={0}", assemblyVersion)
+					.Append("/p:AssemblyFileVersion={0}", assemblyVersion)
 					.Append("/p:FileVersion={0}", assemblyVersion)
 					.Append("/p:InformationalVersion={0}", semanticVersion)
 					.Append("/p:AssemblyInformationalVersion={0}", semanticVersion);
