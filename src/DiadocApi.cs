@@ -732,14 +732,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateRecipientTitleXml(authToken, boxId, senderTitleMessageId, senderTitleAttachmentId, userContractData, documentVersion);
 		}
 
-		public GeneratedFile GenerateSystemUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData)
+		public GeneratedFile GenerateUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
 			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
 			if (attachmentId == null) throw new ArgumentNullException(nameof(attachmentId));
 			if (userContractData == null) throw new ArgumentNullException(nameof(userContractData));
-			return diadocHttpApi.GenerateSystemUniversalMessage(authToken, boxId, messageId, attachmentId, userContractData);
+			return diadocHttpApi.GenerateUniversalMessage(authToken, boxId, messageId, attachmentId, userContractData);
 		}
 
 		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)

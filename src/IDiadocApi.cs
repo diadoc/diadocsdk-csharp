@@ -168,7 +168,7 @@ namespace Diadoc.Api
 		GeneratedFile GenerateTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, int titleIndex, byte[] userContractData, bool disableValidation = false, string editingSettingId = null, string letterId = null, string documentId = null);
 		GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null);
 		GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
-		GeneratedFile GenerateSystemUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
+		GeneratedFile GenerateUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
 		[Obsolete("Use GetMessageV6()")]
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
@@ -558,7 +558,7 @@ namespace Diadoc.Api
  = false, string editingSettingId = null);
 		Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion
  = null);
-		Task<GeneratedFile> GenerateSystemUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
+		Task<GeneratedFile> GenerateUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
 		[Obsolete("Use GetMessageV6Async()")]
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Task<Message> GetMessageV6Async(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);

@@ -264,7 +264,7 @@ namespace Diadoc.Api
 			byte[] userContractData,
 			string documentVersion = null);
 
-		GeneratedFile GenerateSystemUniversalMessage(
+		GeneratedFile GenerateUniversalMessage(
 			string authToken,
 			string boxId,
 			string messageId,
@@ -1299,14 +1299,14 @@ namespace Diadoc.Api
 				(SignatureRejectionGenerationRequestV2) signatureRejectionGenerationRequest);
 		}
 
-		public GeneratedFile GenerateSystemUniversalMessage(
+		public GeneratedFile GenerateUniversalMessage(
 			string authToken,
 			string boxId,
 			string messageId,
 			string attachmentId,
 			byte[] userContractData)
 		{
-			return diadoc.GenerateSystemUniversalMessage(
+			return diadoc.GenerateUniversalMessage(
 				authToken,
 				boxId,
 				messageId,
