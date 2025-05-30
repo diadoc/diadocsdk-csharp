@@ -22,6 +22,7 @@
 // Note: requires additional types generated from: Events/RevocationRequestInfo.proto
 // Note: requires additional types generated from: Events/PowerOfAttorneyInfo.proto
 // Note: requires additional types generated from: OuterDocflows/OuterDocflow.proto
+// Note: requires additional types generated from: UniversalMessage.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BoxEventList")]
@@ -849,6 +850,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _PowerOfAttorneyAttachmentStatus; }
       set { _PowerOfAttorneyAttachmentStatus = value; }
     }
+
+    private Diadoc.Api.Proto.UniversalMessageInfo _UniversalMessageInfo = null;
+    [global::ProtoBuf.ProtoMember(36, IsRequired = false, Name=@"UniversalMessageInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.UniversalMessageInfo UniversalMessageInfo
+    {
+      get { return _UniversalMessageInfo; }
+      set { _UniversalMessageInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -1277,7 +1287,10 @@ namespace Diadoc.Api.Proto.Events
       PowerOfAttorney = 77,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PowerOfAttorneyStatus", Value=78)]
-      PowerOfAttorneyStatus = 78
+      PowerOfAttorneyStatus = 78,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalMessage", Value=79)]
+      UniversalMessage = 79
     }
   
 }

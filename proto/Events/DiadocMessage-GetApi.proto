@@ -18,6 +18,7 @@ import "Events/ResolutionRouteInfo.proto";
 import "Events/RevocationRequestInfo.proto";
 import "Events/PowerOfAttorneyInfo.proto";
 import "OuterDocflows/OuterDocflow.proto";
+import "UniversalMessage.proto";
 
 package Diadoc.Api.Proto.Events;
 
@@ -130,6 +131,7 @@ message Entity {
 	optional PowerOfAttorneyInfo PowerOfAttorneyInfo = 32;
  	optional MoveDocumentInfo MoveDocumentInfo = 34;
 	optional Docflow.PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus = 35;  // only for EntityType.Signature
+	optional UniversalMessageInfo UniversalMessageInfo = 36;
 }
 
 message EntityPatch {
@@ -244,5 +246,6 @@ enum AttachmentType {
 	RoamingConfirmation = 76;
 	PowerOfAttorney = 77;
 	PowerOfAttorneyStatus = 78;
+	UniversalMessage = 79;
 	//Неизвестные типы должны обрабатываться как Title
 }

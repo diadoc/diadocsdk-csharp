@@ -67,6 +67,7 @@ namespace Diadoc.Api.Com
 		OuterDocflow = 75,
 		RoamingConfirmation = 76,
 		PowerOfAttorney = 77,
-		PowerOfAttorneyStatus = 78
+		PowerOfAttorneyStatus = 78,
+		UniversalMessage = 79
 	}
 }
