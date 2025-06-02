@@ -961,6 +961,12 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseRussianAddressAsync(authToken, address);
 		}
 
+		public Task<GarAddress> ParseGarAddressAsync(string authToken, string address)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseGarAddressAsync(authToken, address);
+		}
+
 		public Task<InvoiceInfo> ParseInvoiceXmlAsync(byte[] invoiceXmlContent)
 		{
 			return diadocHttpApi.ParseInvoiceXmlAsync(invoiceXmlContent);

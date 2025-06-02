@@ -18,5 +18,11 @@ namespace Diadoc.Api
 			var queryString = $"/ParseRussianAddress?address={address}";
 			return PerformHttpRequestAsync<RussianAddress>(authToken, "GET", queryString);
 		}
+
+		public Task<GarAddress> ParseGarAddressAsync(string authToken, string address)
+		{
+			var queryString = $"/V1/ParseGarAddress?address={address}";
+			return PerformHttpRequestAsync<GarAddress>(authToken, "GET", queryString);
+		}
 	}
 }

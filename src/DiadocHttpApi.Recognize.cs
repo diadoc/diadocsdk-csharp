@@ -17,5 +17,11 @@ namespace Diadoc.Api
 			var queryString = string.Format("/ParseRussianAddress?address={0}", address);
 			return PerformHttpRequest<RussianAddress>(authToken, "GET", queryString);
 		}
+
+		public GarAddress ParseGarAddress(string authToken, string address)
+		{
+			var queryString = string.Format("/V1/ParseGarAddress?address={0}", address);
+			return PerformHttpRequest<GarAddress>(authToken, "GET", queryString);
+		}
 	}
 }
