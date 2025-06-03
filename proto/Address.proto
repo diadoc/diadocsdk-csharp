@@ -23,3 +23,37 @@ message ForeignAddress {
 	required string Country = 1;	// страна (код)
 	required string Address = 2;	// текст адреса
 }
+
+message GarAddress {
+	required string FiasId = 1;
+	optional string ZipCode = 2;
+	required string RegionCode = 3;
+	optional GarAddressNameElement MunicipalDistrict = 4;
+	optional GarAddressNameElement UrbanSettlement = 5;
+	optional GarAddressNameElement City = 6;
+	optional GarAddressNameElement PlanningStructure = 7;
+	optional GarAddressNameElement Street = 8;
+	optional string Stead = 9;
+	optional GarHouse Garhouse = 10;
+	optional GarAddressNumberElement RoomWithinBuilding = 11;
+	optional GarAddressNumberElement RoomWithinApartment = 12;
+}
+
+message GarHouse {
+	required string Abbreviation = 1;
+	required string Number = 2;
+	optional string AddNumber1 = 3; 
+	optional string AddAbbreviation1 = 4;
+	optional string AddNumber2 = 5;
+	optional string AddAbbreviation2 = 6;
+}
+
+message GarAddressNameElement {
+	required string Abbreviation = 1;
+	required string Name = 2;
+}
+
+message GarAddressNumberElement {
+	required string Abbreviation = 1;
+	required string Number = 2;
+}

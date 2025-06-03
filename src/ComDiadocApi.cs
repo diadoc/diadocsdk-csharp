@@ -405,6 +405,7 @@ namespace Diadoc.Api
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RussianAddress ParseRussianAddress(string address);
 		RussianAddress ParseRussianAddress(string authToken, string address);
+		GarAddress ParseGarAddress(string authToken, string address);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
 		InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent);
@@ -2208,6 +2209,11 @@ namespace Diadoc.Api
 		public RussianAddress ParseRussianAddress(string authToken, string address)
 		{
 			return diadoc.ParseRussianAddress(authToken, address);
+		}
+
+		public GarAddress ParseGarAddress(string authToken, string address)
+		{
+			return diadoc.ParseGarAddress(authToken, address);
 		}
 
 		public InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent)

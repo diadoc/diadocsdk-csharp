@@ -169,4 +169,226 @@ namespace Diadoc.Api.Proto
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GarAddress")]
+  public partial class GarAddress : global::ProtoBuf.IExtensible
+  {
+    public GarAddress() {}
+    
+    private string _FiasId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"FiasId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string FiasId
+    {
+      get { return _FiasId; }
+      set { _FiasId = value; }
+    }
+
+    private string _ZipCode = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ZipCode", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ZipCode
+    {
+      get { return _ZipCode; }
+      set { _ZipCode = value; }
+    }
+    private string _RegionCode;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"RegionCode", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string RegionCode
+    {
+      get { return _RegionCode; }
+      set { _RegionCode = value; }
+    }
+
+    private Diadoc.Api.Proto.GarAddressNameElement _MunicipalDistrict = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"MunicipalDistrict", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.GarAddressNameElement MunicipalDistrict
+    {
+      get { return _MunicipalDistrict; }
+      set { _MunicipalDistrict = value; }
+    }
+
+    private Diadoc.Api.Proto.GarAddressNameElement _UrbanSettlement = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"UrbanSettlement", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.GarAddressNameElement UrbanSettlement
+    {
+      get { return _UrbanSettlement; }
+      set { _UrbanSettlement = value; }
+    }
+
+    private Diadoc.Api.Proto.GarAddressNameElement _City = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"City", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.GarAddressNameElement City
+    {
+      get { return _City; }
+      set { _City = value; }
+    }
+
+    private Diadoc.Api.Proto.GarAddressNameElement _PlanningStructure = null;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"PlanningStructure", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.GarAddressNameElement PlanningStructure
+    {
+      get { return _PlanningStructure; }
+      set { _PlanningStructure = value; }
+    }
+
+    private Diadoc.Api.Proto.GarAddressNameElement _Street = null;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"Street", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.GarAddressNameElement Street
+    {
+      get { return _Street; }
+      set { _Street = value; }
+    }
+
+    private string _Stead = "";
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"Stead", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Stead
+    {
+      get { return _Stead; }
+      set { _Stead = value; }
+    }
+
+    private Diadoc.Api.Proto.GarHouse _Garhouse = null;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"Garhouse", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.GarHouse Garhouse
+    {
+      get { return _Garhouse; }
+      set { _Garhouse = value; }
+    }
+
+    private Diadoc.Api.Proto.GarAddressNumberElement _RoomWithinBuilding = null;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"RoomWithinBuilding", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.GarAddressNumberElement RoomWithinBuilding
+    {
+      get { return _RoomWithinBuilding; }
+      set { _RoomWithinBuilding = value; }
+    }
+
+    private Diadoc.Api.Proto.GarAddressNumberElement _RoomWithinApartment = null;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"RoomWithinApartment", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.GarAddressNumberElement RoomWithinApartment
+    {
+      get { return _RoomWithinApartment; }
+      set { _RoomWithinApartment = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GarHouse")]
+  public partial class GarHouse : global::ProtoBuf.IExtensible
+  {
+    public GarHouse() {}
+    
+    private string _Abbreviation;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Abbreviation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Abbreviation
+    {
+      get { return _Abbreviation; }
+      set { _Abbreviation = value; }
+    }
+    private string _Number;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Number", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Number
+    {
+      get { return _Number; }
+      set { _Number = value; }
+    }
+
+    private string _AddNumber1 = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"AddNumber1", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AddNumber1
+    {
+      get { return _AddNumber1; }
+      set { _AddNumber1 = value; }
+    }
+
+    private string _AddAbbreviation1 = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"AddAbbreviation1", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AddAbbreviation1
+    {
+      get { return _AddAbbreviation1; }
+      set { _AddAbbreviation1 = value; }
+    }
+
+    private string _AddNumber2 = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"AddNumber2", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AddNumber2
+    {
+      get { return _AddNumber2; }
+      set { _AddNumber2 = value; }
+    }
+
+    private string _AddAbbreviation2 = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"AddAbbreviation2", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string AddAbbreviation2
+    {
+      get { return _AddAbbreviation2; }
+      set { _AddAbbreviation2 = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GarAddressNameElement")]
+  public partial class GarAddressNameElement : global::ProtoBuf.IExtensible
+  {
+    public GarAddressNameElement() {}
+    
+    private string _Abbreviation;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Abbreviation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Abbreviation
+    {
+      get { return _Abbreviation; }
+      set { _Abbreviation = value; }
+    }
+    private string _Name;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Name
+    {
+      get { return _Name; }
+      set { _Name = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"GarAddressNumberElement")]
+  public partial class GarAddressNumberElement : global::ProtoBuf.IExtensible
+  {
+    public GarAddressNumberElement() {}
+    
+    private string _Abbreviation;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Abbreviation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Abbreviation
+    {
+      get { return _Abbreviation; }
+      set { _Abbreviation = value; }
+    }
+    private string _Number;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Number", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Number
+    {
+      get { return _Number; }
+      set { _Number = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

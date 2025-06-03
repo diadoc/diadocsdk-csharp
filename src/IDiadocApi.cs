@@ -231,6 +231,7 @@ namespace Diadoc.Api
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RussianAddress ParseRussianAddress(string address);
 		RussianAddress ParseRussianAddress(string authToken, string address);
+		GarAddress ParseGarAddress(string authToken, string address);
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
@@ -640,6 +641,7 @@ namespace Diadoc.Api
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<RussianAddress> ParseRussianAddressAsync(string address);
 		Task<RussianAddress> ParseRussianAddressAsync(string authToken, string address);
+		Task<GarAddress> ParseGarAddressAsync(string authToken, string address);
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<InvoiceInfo> ParseInvoiceXmlAsync(byte[] invoiceXmlContent);
