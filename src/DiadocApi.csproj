@@ -48,7 +48,9 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" PrivateAssets="All" />
-    <PackageReference Include="protobuf-net-diadoc" Version="1.0.0.286" />
+    <PackageReference Include="protobuf-net-diadoc" Version="1.0.0.286">
+  	<PrivateAssets>All</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net35'">
