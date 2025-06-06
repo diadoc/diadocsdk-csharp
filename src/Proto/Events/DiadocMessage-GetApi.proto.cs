@@ -1290,7 +1290,10 @@ namespace Diadoc.Api.Proto.Events
       PowerOfAttorneyStatus = 78,
             
       [global::ProtoBuf.ProtoEnum(Name=@"UniversalMessage", Value=79)]
-      UniversalMessage = 79
+      UniversalMessage = 79,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TtGisFixationCancellationRequest", Value=87)]
+      TtGisFixationCancellationRequest = 87
     }
   
 }

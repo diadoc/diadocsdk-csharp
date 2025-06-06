@@ -742,6 +742,15 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateUniversalMessage(authToken, boxId, messageId, attachmentId, userContractData);
 		}
 
+		public byte[] GenerateTtGisFixationCancellationRequest(string authToken, string boxId, string messageId, string documentId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
+			if (documentId == null) throw new ArgumentNullException(nameof(documentId));
+			return diadocHttpApi.GenerateTtGisFixationCancellationRequest(authToken, boxId, messageId, documentId);
+		}
+
 		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

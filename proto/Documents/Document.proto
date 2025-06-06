@@ -15,6 +15,7 @@ import "ForwardDocumentEvent.proto";
 import "Events/DiadocMessage-PostApi.proto";
 import "OuterDocflows/OuterDocflow.proto";
 import "DocflowStatusV3.proto";
+import "TtGisFixationCancellationStatus.proto";
 
 package Diadoc.Api.Proto.Documents;
 
@@ -98,6 +99,7 @@ message Document {
 	optional string ProxyBoxId = 78;
 	optional string ProxyDepartmentId = 79;
 	required DocflowStatusV3 DocflowStatus = 80;
+	optional TtGisFixationCancellationStatus TtGisFixationCancellationStatus = 81 [default = TtGisFixationCancellationStatusNone];
 }
 
 message LastOuterDocflow {
