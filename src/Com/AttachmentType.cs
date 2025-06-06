@@ -68,6 +68,7 @@ namespace Diadoc.Api.Com
 		RoamingConfirmation = 76,
 		PowerOfAttorney = 77,
 		PowerOfAttorneyStatus = 78,
-		UniversalMessage = 79
+		UniversalMessage = 79,
+		TtGisFixationCancellationRequest = 87
 	}
 }

@@ -629,7 +629,16 @@ namespace Diadoc.Api
 			if (userContractData == null) throw new ArgumentNullException(nameof(userContractData));
 			return diadocHttpApi.GenerateUniversalMessageAsync(authToken, boxId, messageId, attachmentId, userContractData);
 		}
-		
+
+		public Task<byte[]> GenerateTtGisFixationCancellationRequestAsync(string authToken, string boxId, string messageId, string documentId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
+			if (documentId == null) throw new ArgumentNullException(nameof(documentId));
+			return diadocHttpApi.GenerateTtGisFixationCancellationRequestAsync(authToken, boxId, messageId, documentId);
+		}
+
 		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

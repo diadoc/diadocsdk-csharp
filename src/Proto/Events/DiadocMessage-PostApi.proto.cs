@@ -440,6 +440,37 @@ namespace Diadoc.Api.Proto.Events
       get { return _UniversalMessages; }
     }
   
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.TtGisFixationCancellationRequestAttachment> _TtGisFixationCancellationRequests = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.TtGisFixationCancellationRequestAttachment>();
+    [global::ProtoBuf.ProtoMember(21, Name=@"TtGisFixationCancellationRequests", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.TtGisFixationCancellationRequestAttachment> TtGisFixationCancellationRequests
+    {
+      get { return _TtGisFixationCancellationRequests; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TtGisFixationCancellationRequestAttachment")]
+  public partial class TtGisFixationCancellationRequestAttachment : global::ProtoBuf.IExtensible
+  {
+    public TtGisFixationCancellationRequestAttachment() {}
+    
+    private string _DocumentId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"DocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DocumentId
+    {
+      get { return _DocumentId; }
+      set { _DocumentId = value; }
+    }
+    private Diadoc.Api.Proto.Events.SignedContent _SignedContent;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"SignedContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Events.SignedContent SignedContent
+    {
+      get { return _SignedContent; }
+      set { _SignedContent = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2168,6 +2199,13 @@ namespace Diadoc.Api.Proto.Events
     public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.EditingPatch> EditingPatches
     {
       get { return _EditingPatches; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.TtGisFixationCancellationRequestAttachment> _TtGisFixationCancellationRequests = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.TtGisFixationCancellationRequestAttachment>();
+    [global::ProtoBuf.ProtoMember(25, Name=@"TtGisFixationCancellationRequests", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.TtGisFixationCancellationRequestAttachment> TtGisFixationCancellationRequests
+    {
+      get { return _TtGisFixationCancellationRequests; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;
