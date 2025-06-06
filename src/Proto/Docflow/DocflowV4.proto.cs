@@ -566,6 +566,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _DocflowStatus; }
       set { _DocflowStatus = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.TtGisFixationDocflow _TtGisFixation = null;
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"TtGisFixation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.TtGisFixationDocflow TtGisFixation
+    {
+      get { return _TtGisFixation; }
+      set { _TtGisFixation = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

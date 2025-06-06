@@ -169,6 +169,7 @@ namespace Diadoc.Api
 		GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null);
 		GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
 		GeneratedFile GenerateUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
+		byte[] GenerateTtGisFixationCancellationRequest(string authToken, string boxId, string messageId, string documentId);
 		[Obsolete("Use GetMessageV6()")]
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
@@ -560,6 +561,7 @@ namespace Diadoc.Api
 		Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion
  = null);
 		Task<GeneratedFile> GenerateUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
+		Task<byte[]> GenerateTtGisFixationCancellationRequestAsync(string authToken, string boxId, string messageId, string documentId);
 		[Obsolete("Use GetMessageV6Async()")]
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Task<Message> GetMessageV6Async(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
