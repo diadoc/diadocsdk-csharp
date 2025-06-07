@@ -154,6 +154,7 @@ namespace Diadoc.Api
 		{
 			var request = new HttpRequest(method, queryString, body, accept: httpSerializer.ResponseContentType);
 			request.AddHeader("Authorization", GetAuthorizationHeaderValue(token));
+			request.AddHeader("Accept-Encoding", "gzip, deflate, br, zstd");
 			if (!string.IsNullOrEmpty(SolutionInfo))
 			{
 				request.AddHeader("X-Solution-Info", SolutionInfo);
