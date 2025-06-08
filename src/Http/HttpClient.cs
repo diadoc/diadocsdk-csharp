@@ -259,6 +259,7 @@ namespace Diadoc.Api.Http
 			webRequest.Method = request.Method;
 			webRequest.Timeout = request.TimeoutInSeconds * 1000;
 			webRequest.AllowAutoRedirect = true;
+			webRequest.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 			if (ClientCertificate != null)
 			{
 				webRequest.ClientCertificates.Add(ClientCertificate);
