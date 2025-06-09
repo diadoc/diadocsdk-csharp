@@ -77,8 +77,14 @@ message MessagePatchToPostV2 {
     repeated RecipientTitleAttachment RecipientTitles = 18;
     repeated EditingPatch EditingPatches = 19;
     repeated UniversalMessageAttachment UniversalMessages = 20;
-}  
- 
+    repeated TtGisFixationCancellationRequestAttachment TtGisFixationCancellationRequests = 21;
+}
+
+message TtGisFixationCancellationRequestAttachment {
+	required string DocumentId = 1;
+	required SignedContent SignedContent = 2;
+}
+
 message UniversalMessageAttachment {
     required string ParentEntityId = 1;
     optional UniversalMessageCodeGroup CodeGroup = 2 [default = UnknownUniversalMessageCodeGroup];
@@ -345,6 +351,7 @@ message MessagePatchToPost {
 	repeated ResolutionRouteRemoval ResolutionRouteRemovals = 21;
 	repeated RecipientTitleAttachment RecipientTitles = 22;
 	repeated EditingPatch EditingPatches = 24;
+	repeated TtGisFixationCancellationRequestAttachment TtGisFixationCancellationRequests = 25;
 }
 
 message EditingPatch {
