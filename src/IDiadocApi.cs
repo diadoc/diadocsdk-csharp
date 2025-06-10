@@ -281,6 +281,10 @@ namespace Diadoc.Api
 			string documentVersion,
 			int titleIndex,
 			byte[] content);
+		
+		byte[] ParseUniversalMessageXml(string authToken, byte[] content);
+		
+		byte[] ParseUniversalMessage(string authToken, string boxId, string messageId, string attachmentId);
 
 		[Obsolete("Use GetOrganizationUsersV2()")]
 		OrganizationUsersList GetOrganizationUsers(string authToken, string orgId);
