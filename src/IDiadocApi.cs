@@ -695,6 +695,10 @@ namespace Diadoc.Api
 			string documentVersion,
 			int titleIndex,
 			byte[] content);
+		
+		Task<byte[]> ParseUniversalMessageXmlAsync(string authToken, byte[] content);
+		
+		Task<byte[]> ParseUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId);
 
 		[Obsolete("Use GetOrganizationUsersV2Async()")]
 		Task<OrganizationUsersList> GetOrganizationUsersAsync(string authToken, string orgId);
