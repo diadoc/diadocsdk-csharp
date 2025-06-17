@@ -629,7 +629,16 @@ namespace Diadoc.Api
 			if (userContractData == null) throw new ArgumentNullException(nameof(userContractData));
 			return diadocHttpApi.GenerateUniversalMessageAsync(authToken, boxId, messageId, attachmentId, userContractData);
 		}
-		
+
+		public Task<byte[]> GenerateTtGisFixationCancellationRequestAsync(string authToken, string boxId, string messageId, string documentId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
+			if (documentId == null) throw new ArgumentNullException(nameof(documentId));
+			return diadocHttpApi.GenerateTtGisFixationCancellationRequestAsync(authToken, boxId, messageId, documentId);
+		}
+
 		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1221,6 +1230,22 @@ namespace Diadoc.Api
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseSignatureRejectionXmlAsync(authToken, signatureRejectionXmlContent);
+		}
+		
+		public Task<byte[]> ParseUniversalMessageXmlAsync(string authToken, byte[] content)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			return diadocHttpApi.ParseUniversalMessageXmlAsync(authToken, content);
+		}
+		
+		public Task<byte[]> ParseUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
+			if (attachmentId == null) throw new ArgumentNullException(nameof(attachmentId));
+			
+			return diadocHttpApi.ParseUniversalMessageAsync(authToken, boxId, messageId, attachmentId);
 		}
 
 		public Task<DocumentProtocolResult> GenerateDocumentProtocolAsync(string authToken, string boxId, string messageId,
