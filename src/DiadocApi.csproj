@@ -38,6 +38,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
+	  <None Include="..\bin\Release\DiadocApi.Nuget\net35\*" PackagePath="lib\net35" Pack="true" />
 	  <None Include="..\bin\Release\DiadocApi.Nuget\net45\*" PackagePath="lib\net45" Pack="true" />
 	  <None Include="..\bin\Release\DiadocApi.Nuget\net461\*" PackagePath="lib\net461" Pack="true" />
 	  <None Include="..\bin\Release\DiadocApi.Nuget\netstandard2.0\*" PackagePath="lib\netstandard2.0" Pack="true" />
