@@ -1871,6 +1871,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.RegisterPowerOfAttorneyResult(authToken, boxId, taskId);
 		}
 
+		[Obsolete("Use PrevalidatePowerOfAttorneyV2()")]
 		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(
 			string authToken,
 			string boxId,
@@ -1884,6 +1885,17 @@ namespace Diadoc.Api
 			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
 			if (request == null) throw new ArgumentNullException("request");
 			return diadocHttpApi.PrevalidatePowerOfAttorney(authToken, boxId, registrationNumber, issuerInn, request);
+		}
+		
+		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorneyV2(
+			string authToken,
+			string boxId,
+			PowerOfAttorneyPrevalidateRequestV2 request)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (request == null) throw new ArgumentNullException("request");
+			return diadocHttpApi.PrevalidatePowerOfAttorneyV2(authToken, boxId, request);
 		}
 
 		public PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId)

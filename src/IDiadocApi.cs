@@ -401,12 +401,18 @@ namespace Diadoc.Api
 		AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister);
 		PowerOfAttorneyRegisterResult RegisterPowerOfAttorneyResult(string authToken, string boxId, string taskId);
 
+		[Obsolete("Use PrevalidatePowerOfAttorneyV2")]
 		PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(
 			string authToken,
 			string boxId,
 			string registrationNumber,
 			string issuerInn,
 			PowerOfAttorneyPrevalidateRequest request);
+		
+		PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorneyV2(
+			string authToken,
+			string boxId,
+			PowerOfAttorneyPrevalidateRequestV2 request);
 
 		PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId);
 		PowerOfAttorneyContent GetPowerOfAttorneyContent(string authToken, string boxId, string messageId, string entityId);
@@ -814,12 +820,18 @@ namespace Diadoc.Api
 		Task<AsyncMethodResult> RegisterPowerOfAttorneyAsync(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister);
 		Task<PowerOfAttorneyRegisterResult> RegisterPowerOfAttorneyResultAsync(string authToken, string boxId, string taskId);
 
+		[Obsolete("Use PrevalidatePowerOfAttorneyV2Async()")]
 		Task<PowerOfAttorneyPrevalidateResult> PrevalidatePowerOfAttorneyAsync(
 			string authToken,
 			string boxId,
 			string registrationNumber,
 			string issuerInn,
 			PowerOfAttorneyPrevalidateRequest request);
+
+		Task<PowerOfAttorneyPrevalidateResult> PrevalidatePowerOfAttorneyV2Async(
+			string authToken,
+			string boxId,
+			PowerOfAttorneyPrevalidateRequestV2 request);
 
 		Task<PowerOfAttorney> GetPowerOfAttorneyInfoAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<PowerOfAttorneyContent> GetPowerOfAttorneyContentAsync(string authToken, string boxId, string messageId, string entityId);
