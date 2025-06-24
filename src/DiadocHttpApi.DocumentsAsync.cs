@@ -131,13 +131,21 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<SignatureInfo>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		[ItemNotNull]
+		[Obsolete("Use GetResolutionRoutesAsync")]
 		public Task<ResolutionRouteList> GetResolutionRoutesForOrganizationAsync([NotNull] string authToken, [NotNull] string orgId)
 		{
 			var qsb = new PathAndQueryBuilder("/GetResolutionRoutesForOrganization");
 			qsb.AddParameter("orgId", orgId);
 			return PerformHttpRequestAsync<ResolutionRouteList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
+
+		[ItemNotNull]
+		public Task<ResolutionRouteList> GetResolutionRoutesAsync([NotNull] string authToken, [NotNull] string boxId)
+		{
+			var qsb = new PathAndQueryBuilder("/GetResolutionRoutes");
+			qsb.AddParameter("boxId", boxId);
+			return PerformHttpRequestAsync<ResolutionRouteList>(authToken, "GET", qsb.BuildPathAndQuery());
+		}		
 
 		public Task<GetDocumentTypesResponseV2> GetDocumentTypesV2Async(string authToken, string boxId)
 		{

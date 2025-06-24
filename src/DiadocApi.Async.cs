@@ -1433,6 +1433,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostExtendedSignerDetailsAsync(token, boxId, thumbprint, forBuyer, forCorrection, signerDetails);
 		}
 
+		[Obsolete("Use GetResolutionRoutesAsync")]
 		public Task<ResolutionRouteList> GetResolutionRoutesForOrganizationAsync(string authToken, string orgId)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1441,6 +1442,15 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("orgId");
 			return diadocHttpApi.GetResolutionRoutesForOrganizationAsync(authToken, orgId);
 		}
+
+		public Task<ResolutionRouteList> GetResolutionRoutesAsync(string authToken, string boxId)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException(nameof(authToken));
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException(nameof(boxId));
+			return diadocHttpApi.GetResolutionRoutesAsync(authToken, boxId);
+		}		
 
 		public Task<GetDocumentTypesResponseV2> GetDocumentTypesV2Async(string authToken, string boxId)
 		{
