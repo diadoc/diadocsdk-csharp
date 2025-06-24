@@ -1,4 +1,5 @@
-﻿using Diadoc.Api.Http;
+﻿using System;
+using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.PowersOfAttorney;
 
@@ -27,6 +28,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<PowerOfAttorneyRegisterResult>(authToken, "GET", queryString.BuildPathAndQuery());
 		}
 
+		[Obsolete("Use PrevalidatePowerOfAttorneyV2()")]
 		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(
 			string authToken,
 			string boxId,
@@ -39,6 +41,16 @@ namespace Diadoc.Api
 			queryString.AddParameter("registrationNumber", registrationNumber);
 			queryString.AddParameter("issuerInn", issuerInn);
 			return PerformHttpRequest<PowerOfAttorneyPrevalidateRequest, PowerOfAttorneyPrevalidateResult>(authToken, queryString.BuildPathAndQuery(), request);
+		}
+		
+		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorneyV2(
+			string authToken,
+			string boxId,
+			PowerOfAttorneyPrevalidateRequestV2 request)
+		{
+			var queryString = new PathAndQueryBuilder("/V2/PrevalidatePowerOfAttorney");
+			queryString.AddParameter("boxId", boxId);
+			return PerformHttpRequest<PowerOfAttorneyPrevalidateRequestV2, PowerOfAttorneyPrevalidateResult>(authToken, queryString.BuildPathAndQuery(), request);
 		}
 
 		public PowerOfAttorney GetPowerOfAttorneyInfo(
