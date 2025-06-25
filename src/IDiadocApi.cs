@@ -169,6 +169,7 @@ namespace Diadoc.Api
 		GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null);
 		GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
 		GeneratedFile GenerateUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
+		byte[] GenerateTtGisFixationCancellationRequest(string authToken, string boxId, string messageId, string documentId);
 		[Obsolete("Use GetMessageV6()")]
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
@@ -338,7 +339,9 @@ namespace Diadoc.Api
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
+		[Obsolete("Use GetResolutionRoutes()")]
 		ResolutionRouteList GetResolutionRoutesForOrganization(string authToken, string orgId);
+		ResolutionRouteList GetResolutionRoutes(string authToken, string boxId);
 		SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId);
 
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType);
@@ -560,6 +563,7 @@ namespace Diadoc.Api
 		Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion
  = null);
 		Task<GeneratedFile> GenerateUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
+		Task<byte[]> GenerateTtGisFixationCancellationRequestAsync(string authToken, string boxId, string messageId, string documentId);
 		[Obsolete("Use GetMessageV6Async()")]
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Task<Message> GetMessageV6Async(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
@@ -755,7 +759,9 @@ namespace Diadoc.Api
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
+		[Obsolete("Use GetResolutionRoutesAsync()")]
 		Task<ResolutionRouteList> GetResolutionRoutesForOrganizationAsync(string authToken, string orgId);
+		Task<ResolutionRouteList> GetResolutionRoutesAsync(string authToken, string boxId);
 		Task<GetDocumentTypesResponseV2> GetDocumentTypesV2Async(string authToken, string boxId);
 		Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, string nameOnShelf);
 		Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, byte[] content);

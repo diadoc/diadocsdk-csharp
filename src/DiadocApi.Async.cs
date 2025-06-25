@@ -629,7 +629,16 @@ namespace Diadoc.Api
 			if (userContractData == null) throw new ArgumentNullException(nameof(userContractData));
 			return diadocHttpApi.GenerateUniversalMessageAsync(authToken, boxId, messageId, attachmentId, userContractData);
 		}
-		
+
+		public Task<byte[]> GenerateTtGisFixationCancellationRequestAsync(string authToken, string boxId, string messageId, string documentId)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
+			if (documentId == null) throw new ArgumentNullException(nameof(documentId));
+			return diadocHttpApi.GenerateTtGisFixationCancellationRequestAsync(authToken, boxId, messageId, documentId);
+		}
+
 		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1433,6 +1442,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostExtendedSignerDetailsAsync(token, boxId, thumbprint, forBuyer, forCorrection, signerDetails);
 		}
 
+		[Obsolete("Use GetResolutionRoutesAsync")]
 		public Task<ResolutionRouteList> GetResolutionRoutesForOrganizationAsync(string authToken, string orgId)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1440,6 +1450,15 @@ namespace Diadoc.Api
 			if (string.IsNullOrEmpty(orgId))
 				throw new ArgumentNullException("orgId");
 			return diadocHttpApi.GetResolutionRoutesForOrganizationAsync(authToken, orgId);
+		}
+
+		public Task<ResolutionRouteList> GetResolutionRoutesAsync(string authToken, string boxId)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException(nameof(authToken));
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException(nameof(boxId));
+			return diadocHttpApi.GetResolutionRoutesAsync(authToken, boxId);
 		}
 
 		public Task<GetDocumentTypesResponseV2> GetDocumentTypesV2Async(string authToken, string boxId)

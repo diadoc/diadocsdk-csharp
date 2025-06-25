@@ -133,10 +133,17 @@ namespace Diadoc.Api
 			return PerformHttpRequest<SignatureInfo>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		[NotNull]
+		[Obsolete("Use GetResolutionRoutes")]
 		public ResolutionRouteList GetResolutionRoutesForOrganization([NotNull] string authToken, [NotNull] string orgId)
 		{
 			var queryString = string.Format("/GetResolutionRoutesForOrganization?orgId={0}", orgId);
+			return PerformHttpRequest<ResolutionRouteList>(authToken, "GET", queryString);
+		}
+
+		[NotNull]
+		public ResolutionRouteList GetResolutionRoutes([NotNull] string authToken, [NotNull] string boxId)
+		{
+			var queryString = $"/GetResolutionRoutes?boxId={boxId}";
 			return PerformHttpRequest<ResolutionRouteList>(authToken, "GET", queryString);
 		}
 

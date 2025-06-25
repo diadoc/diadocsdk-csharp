@@ -1,0 +1,8 @@
+package Diadoc.Api.Proto;
+
+enum TtGisFixationCancellationStatus
+{
+  TtGisFixationCancellationStatusNone = 0;
+  HaveToCreateTtGisFixationCancellationRequest = 1;
+  TtGisFixationCancellationRequestSigned = 2;
+}

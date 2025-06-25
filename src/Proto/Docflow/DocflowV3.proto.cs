@@ -11,9 +11,11 @@
 // Note: requires additional types generated from: Timestamp.proto
 // Note: requires additional types generated from: Documents/Document.proto
 // Note: requires additional types generated from: Docflow/AttachmentV3.proto
+// Note: requires additional types generated from: Docflow/Attachment.proto
 // Note: requires additional types generated from: Docflow/RoamingNotification.proto
 // Note: requires additional types generated from: Docflow/ResolutionDocflowV3.proto
 // Note: requires additional types generated from: OuterDocflows/OuterDocflowStatus.proto
+// Note: requires additional types generated from: TtGisFixationCancellationStatus.proto
 // Note: requires additional types generated from: DocflowStatusV3.proto
 namespace Diadoc.Api.Proto.Docflow
 {
@@ -130,6 +132,15 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _DocflowStatus; }
       set { _DocflowStatus = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.TtGisFixationDocflow _TtGisFixation = null;
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"TtGisFixation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.TtGisFixationDocflow TtGisFixation
+    {
+      get { return _TtGisFixation; }
+      set { _TtGisFixation = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -757,6 +768,58 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _Status; }
       set { _Status = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TtGisFixationDocflow")]
+  public partial class TtGisFixationDocflow : global::ProtoBuf.IExtensible
+  {
+    public TtGisFixationDocflow() {}
+    
+
+    private Diadoc.Api.Proto.TtGisFixationCancellationStatus _CancellationStatus = Diadoc.Api.Proto.TtGisFixationCancellationStatus.TtGisFixationCancellationStatusNone;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"CancellationStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.TtGisFixationCancellationStatus.TtGisFixationCancellationStatusNone)]
+    public Diadoc.Api.Proto.TtGisFixationCancellationStatus CancellationStatus
+    {
+      get { return _CancellationStatus; }
+      set { _CancellationStatus = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.TtGisFixationCancellation _Cancellation = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Cancellation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.TtGisFixationCancellation Cancellation
+    {
+      get { return _Cancellation; }
+      set { _Cancellation = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TtGisFixationCancellation")]
+  public partial class TtGisFixationCancellation : global::ProtoBuf.IExtensible
+  {
+    public TtGisFixationCancellation() {}
+    
+    private Diadoc.Api.Proto.Docflow.Entity _Entity;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Entity", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Docflow.Entity Entity
+    {
+      get { return _Entity; }
+      set { _Entity = value; }
+    }
+    private Diadoc.Api.Proto.Docflow.SignatureV3 _Signature;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"Signature", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Docflow.SignatureV3 Signature
+    {
+      get { return _Signature; }
+      set { _Signature = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
