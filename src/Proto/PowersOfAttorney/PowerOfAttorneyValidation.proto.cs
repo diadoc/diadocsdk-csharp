@@ -10,6 +10,7 @@
 // Generated from: PowersOfAttorney/PowerOfAttorneyValidation.proto
 // Note: requires additional types generated from: Severity.proto
 // Note: requires additional types generated from: Content_v3.proto
+// Note: requires additional types generated from: PowersOfAttorney/PowerOfAttorney.proto
 namespace Diadoc.Api.Proto.PowersOfAttorney
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyValidationStatus")]
@@ -105,6 +106,30 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
     
     private Diadoc.Api.Proto.PowersOfAttorney.ConfidantCertificateToPrevalidate _ConfidantCertificate;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ConfidantCertificate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.PowersOfAttorney.ConfidantCertificateToPrevalidate ConfidantCertificate
+    {
+      get { return _ConfidantCertificate; }
+      set { _ConfidantCertificate = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyPrevalidateRequestV2")]
+  public partial class PowerOfAttorneyPrevalidateRequestV2 : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyPrevalidateRequestV2() {}
+    
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyFullId _FullId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"FullId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyFullId FullId
+    {
+      get { return _FullId; }
+      set { _FullId = value; }
+    }
+    private Diadoc.Api.Proto.PowersOfAttorney.ConfidantCertificateToPrevalidate _ConfidantCertificate;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"ConfidantCertificate", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public Diadoc.Api.Proto.PowersOfAttorney.ConfidantCertificateToPrevalidate ConfidantCertificate
     {
       get { return _ConfidantCertificate; }
