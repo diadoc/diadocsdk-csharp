@@ -25,6 +25,7 @@
 // Note: requires additional types generated from: Events/DiadocMessage-PostApi.proto
 // Note: requires additional types generated from: OuterDocflows/OuterDocflow.proto
 // Note: requires additional types generated from: DocflowStatusV3.proto
+// Note: requires additional types generated from: TtGisFixationCancellationStatus.proto
 namespace Diadoc.Api.Proto.Documents
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"Document")]
@@ -691,6 +692,15 @@ namespace Diadoc.Api.Proto.Documents
     {
       get { return _DocflowStatus; }
       set { _DocflowStatus = value; }
+    }
+
+    private Diadoc.Api.Proto.TtGisFixationCancellationStatus _TtGisFixationCancellationStatus = Diadoc.Api.Proto.TtGisFixationCancellationStatus.TtGisFixationCancellationStatusNone;
+    [global::ProtoBuf.ProtoMember(81, IsRequired = false, Name=@"TtGisFixationCancellationStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.TtGisFixationCancellationStatus.TtGisFixationCancellationStatusNone)]
+    public Diadoc.Api.Proto.TtGisFixationCancellationStatus TtGisFixationCancellationStatus
+    {
+      get { return _TtGisFixationCancellationStatus; }
+      set { _TtGisFixationCancellationStatus = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

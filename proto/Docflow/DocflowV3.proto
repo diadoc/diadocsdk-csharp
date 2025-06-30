@@ -1,9 +1,11 @@
 import "Timestamp.proto";
 import "Documents/Document.proto";
 import "Docflow/AttachmentV3.proto";
+import "Docflow/Attachment.proto";
 import "Docflow/RoamingNotification.proto";
 import "Docflow/ResolutionDocflowV3.proto";
 import "OuterDocflows/OuterDocflowStatus.proto";
+import "TtGisFixationCancellationStatus.proto";
 import "DocflowStatusV3.proto";
 
 package Diadoc.Api.Proto.Docflow;
@@ -23,6 +25,7 @@ message DocflowV3
 	repeated OuterDocflow OuterDocflows = 12;
 	repeated OuterDocflowEntities OuterDocflowEntities = 13;
 	required DocflowStatusV3 DocflowStatus = 14;
+	optional TtGisFixationDocflow TtGisFixation = 15;
 }
 
 message SenderTitleDocflow
@@ -136,4 +139,16 @@ message StatusEntity
 {
 	required SignedAttachmentV3 Attachment = 1;
 	required OuterDocflows.Status Status = 2;
+}
+
+message TtGisFixationDocflow
+{
+	optional TtGisFixationCancellationStatus CancellationStatus = 1 [default = TtGisFixationCancellationStatusNone];
+	optional TtGisFixationCancellation Cancellation = 2;
+}
+
+message TtGisFixationCancellation
+{
+	required Entity Entity = 1;
+	required SignatureV3 Signature = 2;
 }

@@ -99,4 +99,5 @@ message DocflowV4
     repeated OuterDocflow OuterDocflows = 12;
     repeated OuterDocflowEntities OuterDocflowEntities = 13;
     required DocflowStatusV3 DocflowStatus = 14;
+    optional TtGisFixationDocflow TtGisFixation = 15;
 }
