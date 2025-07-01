@@ -189,6 +189,15 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       get { return _PhysicalEntity; }
       set { _PhysicalEntity = value; }
     }
+
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyIssuerLegalEntitySubsidiary _LegalEntitySubsidiary = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"LegalEntitySubsidiary", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyIssuerLegalEntitySubsidiary LegalEntitySubsidiary
+    {
+      get { return _LegalEntitySubsidiary; }
+      set { _LegalEntitySubsidiary = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -304,6 +313,70 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
     {
       get { return _PersonName; }
       set { _PersonName = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyIssuerLegalEntitySubsidiary")]
+  public partial class PowerOfAttorneyIssuerLegalEntitySubsidiary : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyIssuerLegalEntitySubsidiary() {}
+    
+    private string _OrganizationName;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"OrganizationName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string OrganizationName
+    {
+      get { return _OrganizationName; }
+      set { _OrganizationName = value; }
+    }
+    private string _InnUl;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"InnUl", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string InnUl
+    {
+      get { return _InnUl; }
+      set { _InnUl = value; }
+    }
+    private string _Kpp;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"Kpp", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Kpp
+    {
+      get { return _Kpp; }
+      set { _Kpp = value; }
+    }
+    private string _Ogrn;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"Ogrn", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Ogrn
+    {
+      get { return _Ogrn; }
+      set { _Ogrn = value; }
+    }
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyLegalEntitySubsidiaryHead _LegalEntitySubsidiaryHead;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"LegalEntitySubsidiaryHead", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyLegalEntitySubsidiaryHead LegalEntitySubsidiaryHead
+    {
+      get { return _LegalEntitySubsidiaryHead; }
+      set { _LegalEntitySubsidiaryHead = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyLegalEntitySubsidiaryHead")]
+  public partial class PowerOfAttorneyLegalEntitySubsidiaryHead : global::ProtoBuf.IExtensible
+  {
+    public PowerOfAttorneyLegalEntitySubsidiaryHead() {}
+    
+
+    private string _InnFl = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"InnFl", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string InnFl
+    {
+      get { return _InnFl; }
+      set { _InnFl = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -1002,7 +1075,10 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       IndividualEntity = 3,
             
       [global::ProtoBuf.ProtoEnum(Name=@"PhysicalEntity", Value=4)]
-      PhysicalEntity = 4
+      PhysicalEntity = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LegalEntitySubsidiary", Value=5)]
+      LegalEntitySubsidiary = 5
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneySendingType")]
