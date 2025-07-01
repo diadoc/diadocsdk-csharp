@@ -365,6 +365,7 @@ namespace Diadoc.Api
 
 		EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, [CanBeNull] string userId = null, bool onlyActual = false);
 
+		[Obsolete("Use UpdateEmployeePowerOfAttorneyV2")]
 		EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
@@ -372,20 +373,40 @@ namespace Diadoc.Api
 			string registrationNumber,
 			string issuerInn,
 			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate);
+		
+		EmployeePowerOfAttorney UpdateEmployeePowerOfAttorneyV2(
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
+			EmployeePowerOfAttorneyToUpdateV2 powerOfAttorneyToUpdate);
 
+		[Obsolete("Use AddEmployeePowerOfAttorneyV2")]
 		EmployeePowerOfAttorney AddEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
 			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
+		
+		EmployeePowerOfAttorney AddEmployeePowerOfAttorneyV2(
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
+			PowerOfAttorneyFullId fullId);
 
+		[Obsolete("Use DeleteEmployeePowerOfAttorneyV2")]
 		void DeleteEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
 			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
+		
+		void DeleteEmployeePowerOfAttorneyV2(
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
+			PowerOfAttorneyFullId fullId);
 
 		Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId);
 		Departments.DepartmentList GetDepartments(string authToken, string boxId, int? page = null, int? count = null);
@@ -784,6 +805,7 @@ namespace Diadoc.Api
 
 		Task<EmployeePowerOfAttorneyList> GetEmployeePowersOfAttorneyAsync(string authToken, string boxId, [CanBeNull] string userId = null, bool onlyActual = false);
 
+		[Obsolete("Use UpdateEmployeePowerOfAttorneyV2Async")]
 		Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyAsync(
 			string authToken,
 			string boxId,
@@ -791,20 +813,40 @@ namespace Diadoc.Api
 			string registrationNumber,
 			string issuerInn,
 			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate);
+		
+		Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyV2Async(
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
+			EmployeePowerOfAttorneyToUpdateV2 powerOfAttorneyToUpdate);
 
+		[Obsolete("Use AddEmployeePowerOfAttorneyV2Async")]
 		Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyAsync(
 			string authToken,
 			string boxId,
 			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
+		
+		Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyV2Async(
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
+			PowerOfAttorneyFullId fullId);
 
+		[Obsolete("Use DeleteEmployeePowerOfAttorneyV2Async")]
 		Task DeleteEmployeePowerOfAttorneyAsync(
 			string authToken,
 			string boxId,
 			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
+			
+		Task DeleteEmployeePowerOfAttorneyV2Async(
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
+			PowerOfAttorneyFullId fullId);
 
 		Task<EmployeeSubscriptions> GetSubscriptionsAsync(string authToken, string boxId, string userId);
 		Task<EmployeeSubscriptions> UpdateSubscriptionsAsync(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);

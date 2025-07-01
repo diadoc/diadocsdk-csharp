@@ -1601,6 +1601,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEmployeePowersOfAttorneyAsync(authToken, boxId, userId, onlyActual);
 		}
 
+		[Obsolete("Use UpdateEmployeePowerOfAttorneyV2Async")]
 		public Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyAsync(
 			string authToken,
 			string boxId,
@@ -1616,7 +1617,20 @@ namespace Diadoc.Api
 			if (powerOfAttorneyToUpdate == null) throw new ArgumentNullException("powerOfAttorneyToUpdate");
 			return diadocHttpApi.UpdateEmployeePowerOfAttorneyAsync(authToken, boxId, userId, registrationNumber, issuerInn, powerOfAttorneyToUpdate);
 		}
+		
+		public Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyV2Async(
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
+			EmployeePowerOfAttorneyToUpdateV2 powerOfAttorneyToUpdate)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (powerOfAttorneyToUpdate == null) throw new ArgumentNullException("powerOfAttorneyToUpdate");
+			return diadocHttpApi.UpdateEmployeePowerOfAttorneyV2Async(authToken, boxId, userId, powerOfAttorneyToUpdate);
+		}
 
+		[Obsolete("Use AddEmployeePowerOfAttorneyV2Async")]
 		public Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyAsync(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1625,7 +1639,20 @@ namespace Diadoc.Api
 			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
 			return diadocHttpApi.AddEmployeePowerOfAttorneyAsync(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
+		
+		public Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyV2Async(
+			string authToken, 
+			string boxId, 
+			[CanBeNull] string userId, 
+			PowerOfAttorneyFullId fullId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (fullId == null) throw new ArgumentNullException("fullId");
+			return diadocHttpApi.AddEmployeePowerOfAttorneyV2Async(authToken, boxId, userId, fullId);
+		}
 
+		[Obsolete("Use DeleteEmployeePowerOfAttorneyV2Async")]
 		public Task DeleteEmployeePowerOfAttorneyAsync(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1633,6 +1660,18 @@ namespace Diadoc.Api
 			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
 			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
 			return diadocHttpApi.DeleteEmployeePowerOfAttorneyAsync(authToken, boxId, userId, registrationNumber, issuerInn);
+		}
+		
+		public Task DeleteEmployeePowerOfAttorneyV2Async(
+			string authToken, 
+			string boxId, [CanBeNull] 
+			string userId, 
+			PowerOfAttorneyFullId fullId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (fullId == null) throw new ArgumentNullException("fullId");
+			return diadocHttpApi.DeleteEmployeePowerOfAttorneyV2Async(authToken, boxId, userId, fullId);
 		}
 
 		public Task<Departments.Department> GetDepartmentByFullIdAsync(string authToken, string boxId, string departmentId)

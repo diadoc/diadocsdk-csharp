@@ -52,6 +52,32 @@ namespace Diadoc.Api.Proto.Employees.PowersOfAttorney
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"EmployeePowerOfAttorneyToUpdateV2")]
+  public partial class EmployeePowerOfAttorneyToUpdateV2 : global::ProtoBuf.IExtensible
+  {
+    public EmployeePowerOfAttorneyToUpdateV2() {}
+    
+    private Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyFullId _PowerOfAttorneyFullId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"PowerOfAttorneyFullId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyFullId PowerOfAttorneyFullId
+    {
+      get { return _PowerOfAttorneyFullId; }
+      set { _PowerOfAttorneyFullId = value; }
+    }
+
+    private Diadoc.Api.Proto.Employees.PowersOfAttorney.EmployeePowerOfAttorneyIsDefaultPatch _IsDefaultPatch = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"IsDefaultPatch", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Employees.PowersOfAttorney.EmployeePowerOfAttorneyIsDefaultPatch IsDefaultPatch
+    {
+      get { return _IsDefaultPatch; }
+      set { _IsDefaultPatch = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"EmployeePowerOfAttorneyToUpdate")]
   public partial class EmployeePowerOfAttorneyToUpdate : global::ProtoBuf.IExtensible
   {
