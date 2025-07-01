@@ -11,6 +11,11 @@ message EmployeePowerOfAttorney {
     required bool IsDefault = 2;
 }
 
+message EmployeePowerOfAttorneyToUpdateV2 {
+	required Diadoc.Api.Proto.PowersOfAttorney.PowerOfAttorneyFullId PowerOfAttorneyFullId = 1; 
+	optional EmployeePowerOfAttorneyIsDefaultPatch IsDefaultPatch = 2;
+}
+
 message EmployeePowerOfAttorneyToUpdate {
     optional EmployeePowerOfAttorneyIsDefaultPatch IsDefaultPatch = 1;
 }
