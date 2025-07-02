@@ -1717,6 +1717,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.RegisterPowerOfAttorneyResultAsync(authToken, boxId, taskId);
 		}
 
+		[Obsolete("Use PrevalidatePowerOfAttorneyV2Async")]
 		public Task<PowerOfAttorneyPrevalidateResult> PrevalidatePowerOfAttorneyAsync(
 			string authToken,
 			string boxId,
@@ -1730,6 +1731,17 @@ namespace Diadoc.Api
 			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
 			if (request == null) throw new ArgumentNullException("request");
 			return diadocHttpApi.PrevalidatePowerOfAttorneyAsync(authToken, boxId, registrationNumber, issuerInn, request);
+		}
+		
+		public Task<PowerOfAttorneyPrevalidateResult> PrevalidatePowerOfAttorneyV2Async(
+			string authToken,
+			string boxId,
+			PowerOfAttorneyPrevalidateRequestV2 request)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (request == null) throw new ArgumentNullException("request");
+			return diadocHttpApi.PrevalidatePowerOfAttorneyV2Async(authToken, boxId, request);
 		}
 
 		public Task<PowerOfAttorney> GetPowerOfAttorneyInfoAsync(string authToken, string boxId, string messageId, string entityId)

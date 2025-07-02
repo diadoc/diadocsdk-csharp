@@ -1,5 +1,6 @@
 import "Severity.proto";
 import "Content_v3.proto";
+import "PowersOfAttorney/PowerOfAttorney.proto";
 
 package Diadoc.Api.Proto.PowersOfAttorney;
 
@@ -30,6 +31,12 @@ message PowerOfAttorneyValidationError {
 message PowerOfAttorneyPrevalidateRequest
 {
     required ConfidantCertificateToPrevalidate ConfidantCertificate = 1;
+}
+
+message PowerOfAttorneyPrevalidateRequestV2
+{
+	required PowerOfAttorneyFullId FullId = 1;
+	required ConfidantCertificateToPrevalidate ConfidantCertificate = 2;
 }
 
 message ConfidantCertificateToPrevalidate {

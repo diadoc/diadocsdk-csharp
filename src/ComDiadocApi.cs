@@ -709,11 +709,17 @@ namespace Diadoc.Api
 		AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object powerOfAttorneyToRegister);
 		PowerOfAttorneyRegisterResult RegisterPowerOfAttorneyResult(string authToken, string boxId, string taskId);
 
+		[Obsolete("Use PrevalidatePowerOfAttorneyV2")]
 		PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(
 			string authToken,
 			string boxId,
 			string registrationNumber,
 			string issuerInn,
+			[MarshalAs(UnmanagedType.IDispatch)] object request);
+		
+		PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorneyV2(
+			string authToken,
+			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
 		PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId);
@@ -1961,9 +1967,15 @@ namespace Diadoc.Api
 			return diadoc.RegisterPowerOfAttorneyResult(authToken, boxId, taskId);
 		}
 
+		[Obsolete("Use PrevalidatePowerOfAttorneyV2")]
 		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(string authToken, string boxId, string registrationNumber, string issuerInn, object request)
 		{
 			return diadoc.PrevalidatePowerOfAttorney(authToken, boxId, registrationNumber, issuerInn, (PowerOfAttorneyPrevalidateRequest) request);
+		}
+		
+		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorneyV2(string authToken, string boxId, object request)
+		{
+			return diadoc.PrevalidatePowerOfAttorneyV2(authToken, boxId, (PowerOfAttorneyPrevalidateRequestV2) request);
 		}
 
 		public PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId)
