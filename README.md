@@ -6,24 +6,24 @@
 
 # diadocsdk-csharp
 
-diadocsdk-csharp является официальной C#-реализацией клиента, использующего [публичный API Диадока](http://api-docs.diadoc.ru/).
+diadocsdk-csharp — официальная C#-реализацией клиента, использующего [публичный API Диадока](http://api-docs.diadoc.ru/).
 
-Для подключения diadocsdk-csharp к вашему проекту рекомендуется использовать [nuget-пакет diadocsdk](https://www.nuget.org/packages/DiadocSDK/). Также можно скачать готовую сборку diadocsdk [со страницы релизов](https://github.com/diadoc/diadocsdk-csharp/releases).
+Для подключения diadocsdk-csharp к вашему проекту используйте [nuget-пакет diadocsdk](https://www.nuget.org/packages/DiadocSDK/).
+Также вы можете скачать готовую сборку diadocsdk [со страницы релизов](https://github.com/diadoc/diadocsdk-csharp/releases).
 
 ## Документация
 
 Документация последней версии SDK доступна по ссылке: http://api-docs.diadoc.ru/.
 
-Мы планируем освежить документацию. Если у вас после её прочтения остаются вопросы, пожалуйста, выскажитесь в соответствующей [issue](https://github.com/diadoc/diadocsdk-csharp/issues/454).
+Обратную связь по документации вы можете оставить [здесь](https://forms.kontur.ru/form/ddapidoc-feedback).
 
 ## Примеры использования
 
 [Diadoc.Samples](https://github.com/diadoc/diadocsdk-csharp/tree/master/Samples/Diadoc.Samples) — примеры кода работы API с пояснениями.
 
-[Diadoc.Console](https://github.com/diadoc/diadocsdk-csharp/tree/master/Samples/Diadoc.Console) — пример консольного приложения, с помощью которого можно получать и отправлять документы, читать события, устанавливать связи с контрагентами.
+[Diadoc.Console](https://github.com/diadoc/diadocsdk-csharp/tree/master/Samples/Diadoc.Console) — пример консольного приложения, с помощью которого можно получать и отправлять документы, читать события, устанавливать связь с контрагентами.
 
-
-## Сборка проекта.
+## Сборка проекта
 
 Для окончательной сборки проекта используется утилита [Cake](http://cakebuild.net/).
 
@@ -31,7 +31,6 @@ diadocsdk-csharp является официальной C#-реализацие
 Из командной строки этот скрипт можно запустить с помощью `generate.bat`.
 
 Выполняется:
-
 - генерация версии на основе тега github
 - генерация C#-кода из proto-файлов
 - ILMerge (сборка protobuf-net включается в DiadocApi)
