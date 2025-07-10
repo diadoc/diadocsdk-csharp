@@ -1,5 +1,6 @@
 ﻿using System;
 using Diadoc.Api.Proto.Docflow;
+using Diadoc.Api.Proto.PartnerEvents;
 
 namespace Diadoc.Api
 {
@@ -59,6 +60,11 @@ namespace Diadoc.Api
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return docflowHttpApi.GetDocflowsByPacketIdV4(authToken, boxId, request);
+		}
+
+		public GetPartnerEventsResponse GetPartnerEventsV4(string authToken, GetPartnerEventsRequest request)
+		{
+			return docflowHttpApi.GetPartnerEventsV4(authToken, request);
 		}
 	}
 }
