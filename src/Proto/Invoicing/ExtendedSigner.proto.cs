@@ -402,7 +402,10 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       Utd970Seller = 12,
             
       [global::ProtoBuf.ProtoEnum(Name=@"Utd970Buyer", Value=13)]
-      Utd970Buyer = 13
+      Utd970Buyer = 13,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ProformaInvoice29", Value=14)]
+      ProformaInvoice29 = 14
     }
   
 }
