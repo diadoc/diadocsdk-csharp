@@ -1,6 +1,7 @@
 import "Content_v3.proto";
 import "Timestamp.proto";
 import "User.proto";
+import "DateTimeOffsetDto.proto";
 
 package Diadoc.Api.Proto.PowersOfAttorney;
 
@@ -22,6 +23,8 @@ message PowerOfAttorney {
     required PowerOfAttorneyPermissionsInfo PermissionsInfo = 9;
     optional PowerOfAttorneyDelegationInfo DelegationInfo = 10;
     repeated PowerOfAttorneyRepresentative Representatives = 11;
+    required DateTimeOffsetDto StartAtByMoscow = 12;
+    required DateTimeOffsetDto ExpireAtByMoscow = 13;
 }
 
 message PowerOfAttorneyIssuer {

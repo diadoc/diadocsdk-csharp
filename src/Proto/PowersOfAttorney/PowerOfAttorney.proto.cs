@@ -11,6 +11,7 @@
 // Note: requires additional types generated from: Content_v3.proto
 // Note: requires additional types generated from: Timestamp.proto
 // Note: requires additional types generated from: User.proto
+// Note: requires additional types generated from: DateTimeOffsetDto.proto
 namespace Diadoc.Api.Proto.PowersOfAttorney
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"PowerOfAttorneyFullId")]
@@ -134,6 +135,20 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
       get { return _Representatives; }
     }
   
+    private Diadoc.Api.Proto.DateTimeOffsetDto _StartAtByMoscow;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"StartAtByMoscow", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.DateTimeOffsetDto StartAtByMoscow
+    {
+      get { return _StartAtByMoscow; }
+      set { _StartAtByMoscow = value; }
+    }
+    private Diadoc.Api.Proto.DateTimeOffsetDto _ExpireAtByMoscow;
+    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"ExpireAtByMoscow", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.DateTimeOffsetDto ExpireAtByMoscow
+    {
+      get { return _ExpireAtByMoscow; }
+      set { _ExpireAtByMoscow = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
