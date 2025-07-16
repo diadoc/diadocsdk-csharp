@@ -26,11 +26,11 @@ namespace Diadoc.Api.Proto.PartnerEvents
       get { return _Cursor; }
       set { _Cursor = value; }
     }
-    private readonly global::System.Collections.Generic.List<string> _Directions = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(2, Name=@"Directions", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> Directions
+    private readonly global::System.Collections.Generic.List<string> _DocumentDirections = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"DocumentDirections", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> DocumentDirections
     {
-      get { return _Directions; }
+      get { return _DocumentDirections; }
     }
   
     private readonly global::System.Collections.Generic.List<string> _MessageTypes = new global::System.Collections.Generic.List<string>();

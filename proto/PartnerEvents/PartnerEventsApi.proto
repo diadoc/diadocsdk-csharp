@@ -10,7 +10,7 @@ package Diadoc.Api.Proto.PartnerEvents;
 message GetPartnerEventsRequest
 {
 	required string Cursor = 1;
-	repeated string Directions = 2;
+	repeated string DocumentDirections = 2;
 	repeated string MessageTypes = 3;
 	optional int32 Limit = 4 [default = 100];
 }
