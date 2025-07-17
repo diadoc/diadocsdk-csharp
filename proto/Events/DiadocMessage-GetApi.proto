@@ -92,6 +92,7 @@ message MessagePatch {
 	optional bool MessageIsDelivered = 11 [default = false];
 	optional string DeliveredPatchId = 12;
 	required string PatchId = 13;
+	optional string NotDeliveredEventId = 14;
 
 	required Documents.MessageType MessageType = 15;
 }
