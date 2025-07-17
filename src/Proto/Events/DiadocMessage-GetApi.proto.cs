@@ -531,6 +531,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _PatchId; }
       set { _PatchId = value; }
     }
+
+    private string _NotDeliveredEventId = "";
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"NotDeliveredEventId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string NotDeliveredEventId
+    {
+      get { return _NotDeliveredEventId; }
+      set { _NotDeliveredEventId = value; }
+    }
     private Diadoc.Api.Proto.Documents.MessageType _MessageType;
     [global::ProtoBuf.ProtoMember(15, IsRequired = true, Name=@"MessageType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public Diadoc.Api.Proto.Documents.MessageType MessageType
