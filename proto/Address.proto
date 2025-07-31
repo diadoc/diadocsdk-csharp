@@ -37,6 +37,9 @@ message GarAddress {
 	optional GarHouse Garhouse = 10;
 	optional GarAddressNumberElement RoomWithinBuilding = 11;
 	optional GarAddressNumberElement RoomWithinApartment = 12;
+	required GarAddressDivisionType DivisionType = 13 [default = Municipal];
+	optional GarAddressNameElement District = 14;
+	optional GarAddressNameElement Settlement = 15;
 }
 
 message GarHouse {
@@ -56,4 +59,11 @@ message GarAddressNameElement {
 message GarAddressNumberElement {
 	required string Abbreviation = 1;
 	required string Number = 2;
+}
+
+
+enum GarAddressDivisionType {
+	UnknownDivisionType = 0;
+	Municipal = 1;
+	Administrative = 2;
 }
