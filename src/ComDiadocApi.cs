@@ -659,6 +659,7 @@ namespace Diadoc.Api
 		EmployeeSubscriptions UpdateSubscriptions(string authToken, string boxId, string userId, [MarshalAs(UnmanagedType.IDispatch)] object subscriptionsToUpdate);
 		EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, [CanBeNull] string userId = null, bool onlyActual = false);
 
+		[Obsolete("Use UpdateEmployeePowerOfAttorneyV2")]
 		EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
@@ -666,20 +667,40 @@ namespace Diadoc.Api
 			string registrationNumber,
 			string issuerInn,
 			[MarshalAs(UnmanagedType.IDispatch)] object powerOfAttorneyToUpdate);
+		
+		EmployeePowerOfAttorney UpdateEmployeePowerOfAttorneyV2(
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
+			[MarshalAs(UnmanagedType.IDispatch)] object powerOfAttorneyToUpdate);
 
+		[Obsolete("Use AddEmployeePowerOfAttorneyV2")]
 		EmployeePowerOfAttorney AddEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
 			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
+		
+		EmployeePowerOfAttorney AddEmployeePowerOfAttorneyV2(
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
+			[MarshalAs(UnmanagedType.IDispatch)] object fullId);
 
+		[Obsolete("Use DeleteEmployeePowerOfAttorneyV2")]
 		void DeleteEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
 			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
+		
+		void DeleteEmployeePowerOfAttorneyV2(
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
+			[MarshalAs(UnmanagedType.IDispatch)] object fullId);
 
 		Proto.Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId);
 		DepartmentList GetDepartments(string authToken, string boxId, int page = 0, int count = 0);
@@ -1079,6 +1100,7 @@ namespace Diadoc.Api
 			return diadoc.GetEmployeePowersOfAttorney(authToken, boxId, userId, onlyActual);
 		}
 
+		[Obsolete("Use UpdateEmployeePowerOfAttorneyV2")]
 		public EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
 			string authToken,
 			string boxId,
@@ -1089,15 +1111,36 @@ namespace Diadoc.Api
 		{
 			return diadoc.UpdateEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn, (EmployeePowerOfAttorneyToUpdate) powerOfAttorneyToUpdate);
 		}
+		
+		public EmployeePowerOfAttorney UpdateEmployeePowerOfAttorneyV2(
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
+			object powerOfAttorneyToUpdate)
+		{
+			return diadoc.UpdateEmployeePowerOfAttorneyV2(authToken, boxId, userId, (EmployeePowerOfAttorneyToUpdateV2) powerOfAttorneyToUpdate);
+		}
 
+		[Obsolete("Use AddEmployeePowerOfAttorneyV2")]
 		public EmployeePowerOfAttorney AddEmployeePowerOfAttorney(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
 		{
 			return diadoc.AddEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
+		
+		public EmployeePowerOfAttorney AddEmployeePowerOfAttorneyV2(string authToken, string boxId, [CanBeNull] string userId, object fullId)
+		{
+			return diadoc.AddEmployeePowerOfAttorneyV2(authToken, boxId, userId, (PowerOfAttorneyFullId) fullId);
+		}
 
+		[Obsolete("Use DeleteEmployeePowerOfAttorneyV2")]
 		public void DeleteEmployeePowerOfAttorney(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
 		{
 			diadoc.DeleteEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
+		}
+		
+		public void DeleteEmployeePowerOfAttorneyV2(string authToken, string boxId, [CanBeNull] string userId, object fullId)
+		{
+			diadoc.DeleteEmployeePowerOfAttorneyV2(authToken, boxId, userId, (PowerOfAttorneyFullId) fullId);
 		}
 
 		public Proto.Departments.Department GetDepartmentByFullId(string authToken, string boxId, string departmentId)
