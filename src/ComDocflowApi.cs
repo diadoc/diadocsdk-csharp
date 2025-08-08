@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using Diadoc.Api.Proto.Docflow;
+using Diadoc.Api.Proto.PartnerEvents;
 
 namespace Diadoc.Api
 {
@@ -55,6 +56,11 @@ namespace Diadoc.Api
 		public GetDocflowsByPacketIdResponseV4 GetDocflowsByPacketIdV4(string authToken, string boxId, object request)
 		{
 			return docflowApi.GetDocflowsByPacketIdV4(authToken, boxId, (GetDocflowsByPacketIdRequest) request);
+		}
+
+		public GetPartnerEventsResponse GetPartnerEvents(string authToken, object request)
+		{
+			return docflowApi.GetPartnerEventsV4(authToken, (GetPartnerEventsRequest) request);
 		}
 	}
 }
