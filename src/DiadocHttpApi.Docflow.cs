@@ -1,4 +1,5 @@
 ﻿using Diadoc.Api.Proto.Docflow;
+using Diadoc.Api.Proto.PartnerEvents;
 using JetBrains.Annotations;
 
 namespace Diadoc.Api
@@ -96,6 +97,12 @@ namespace Diadoc.Api
 			{
 				var queryString = BuildQueryStringWithBoxId("/V4/GetDocflowsByPacketId", boxId);
 				return diadocHttpApi.PerformHttpRequest<GetDocflowsByPacketIdRequest, GetDocflowsByPacketIdResponseV4>(authToken, queryString, request);
+			}
+
+			[NotNull]
+			public GetPartnerEventsResponse GetPartnerEventsV4([NotNull] string authToken, [NotNull] GetPartnerEventsRequest request)
+			{
+				return diadocHttpApi.PerformHttpRequest<GetPartnerEventsRequest, GetPartnerEventsResponse>(authToken, "/GetPartnerEvents", request);
 			}
 		}
 	}
