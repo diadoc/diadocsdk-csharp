@@ -278,6 +278,31 @@ namespace Diadoc.Api.Proto
       get { return _RoomWithinApartment; }
       set { _RoomWithinApartment = value; }
     }
+    private Diadoc.Api.Proto.GarAddressDivisionType _DivisionType;
+    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"DivisionType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.GarAddressDivisionType DivisionType
+    {
+      get { return _DivisionType; }
+      set { _DivisionType = value; }
+    }
+
+    private Diadoc.Api.Proto.GarAddressNameElement _District = null;
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"District", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.GarAddressNameElement District
+    {
+      get { return _District; }
+      set { _District = value; }
+    }
+
+    private Diadoc.Api.Proto.GarAddressNameElement _Settlement = null;
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"Settlement", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.GarAddressNameElement Settlement
+    {
+      get { return _Settlement; }
+      set { _Settlement = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -390,5 +415,19 @@ namespace Diadoc.Api.Proto
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"GarAddressDivisionType")]
+    public enum GarAddressDivisionType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownDivisionType", Value=0)]
+      UnknownDivisionType = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Municipal", Value=1)]
+      Municipal = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Administrative", Value=2)]
+      Administrative = 2
+    }
   
 }
