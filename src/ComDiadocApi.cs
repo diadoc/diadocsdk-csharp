@@ -549,6 +549,11 @@ namespace Diadoc.Api
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		SignatureRejectionInfo ParseSignatureRejectionXmlFromFile(string fileName);
 		SignatureRejectionInfo ParseSignatureRejectionXmlFromFile(string authToken, string fileName);
+		
+		byte[] ParseUniversalMessageXml(string authToken, byte[] content);
+
+		byte[] ParseUniversalMessage(string authToken, string boxId, string messageId, string attachmentId);
+		
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByBoxId(string boxId);
 		Organization GetOrganizationByBoxId(string authToken, string boxId);
@@ -1403,7 +1408,17 @@ namespace Diadoc.Api
 		{
 			return ParseSignatureRejectionXml(authToken, File.ReadAllBytes(fileName));
 		}
-
+		
+		public byte[] ParseUniversalMessage(string authToken, string boxId, string messageId, string attachmentId)
+		{
+			return diadoc.ParseUniversalMessage(authToken, boxId, messageId, attachmentId);
+		}
+		
+		public byte[] ParseUniversalMessageXml(string authToken, byte[] content)
+		{
+			return diadoc.ParseUniversalMessageXml(authToken, content);
+		}
+		
 		public GeneratedFile GenerateInvoiceXml(string authToken, object invoiceInfo, bool disableValidation = false)
 		{
 			return diadoc.GenerateInvoiceXml(authToken, (InvoiceInfo) invoiceInfo, disableValidation);
