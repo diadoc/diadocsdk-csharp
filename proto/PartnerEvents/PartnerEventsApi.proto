@@ -1,0 +1,30 @@
+//partner events api
+
+import "Timestamp.proto";
+import "DocumentId.proto";
+import "TotalCountType.proto";
+import "Docflow/DocumentWithDocflowV4.proto";
+
+package Diadoc.Api.Proto.PartnerEvents;
+
+message GetPartnerEventsRequest
+{
+	optional string Cursor = 1;
+	repeated string DocumentDirections = 2;
+	repeated string MessageTypes = 3;
+	optional int32 Limit = 4 [default = 100];
+}
+
+message GetPartnerEventsResponse
+{
+	repeated PartnerEvent Events = 1;
+	optional string LastCursor = 2;
+}
+
+message PartnerEvent
+{
+	required string EventId = 1;
+	required Timestamp Timestamp = 2;
+	required DocumentId DocumentId = 3;
+	optional Docflow.DocumentWithDocflowV4 Document = 4;
+}
