@@ -19,8 +19,10 @@ namespace Diadoc.Api.Proto.PartnerEvents
   {
     public GetPartnerEventsRequest() {}
     
-    private string _Cursor;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Cursor", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _Cursor = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Cursor", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string Cursor
     {
       get { return _Cursor; }
@@ -66,8 +68,10 @@ namespace Diadoc.Api.Proto.PartnerEvents
       get { return _Events; }
     }
   
-    private string _LastCursor;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"LastCursor", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _LastCursor = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"LastCursor", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string LastCursor
     {
       get { return _LastCursor; }
