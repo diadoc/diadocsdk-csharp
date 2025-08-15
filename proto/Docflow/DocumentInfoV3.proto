@@ -7,6 +7,7 @@ import "ForwardDocumentEvent.proto";
 import "DocumentDirection.proto";
 import "Events/DiadocMessage-PostApi.proto";
 import "CustomDataItem.proto";
+import "TemplateTransformationChangeType.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
@@ -88,6 +89,15 @@ message TemplateTransformationInfo
 	required string TransformationId = 1;
 	optional DocumentId TransformedToDocumentId = 2;
 	optional string AuthorUserId = 3;
+	repeated TemplateTransformationChangeInfo Changes = 4;
+}
+
+message TemplateTransformationChangeInfo
+{
+	required string ChangeId = 1;
+	required TemplateTransformationChangeType ChangeType = 2;
+	required string ChangeInitiatorBoxId = 3;
+	optional string AuthorUserId = 4;
 }
 
 message TemplateRefusalInfo
