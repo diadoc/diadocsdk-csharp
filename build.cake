@@ -142,7 +142,8 @@ Task("Build")
 	.IsDependentOn("GenerateProtoFiles")
 	.Does(() =>
 	{
-		var assemblyInfoFilePath = "src/Properties/AssemblyInfo.cs";
+		CreateDirectory("./src/Properties");
+		var assemblyInfoFilePath = "./src/Properties/AssemblyInfo.cs";
 		CreateAssemblyInfo(assemblyInfoFilePath, new AssemblyInfoSettings {
 			ComVisible = false
 		});
