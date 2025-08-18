@@ -1,5 +1,6 @@
 ﻿using System;
 using Diadoc.Api.Proto.Docflow;
+using Diadoc.Api.Proto.PartnerEvents;
 
 #if !NET35
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace Diadoc.Api
 		GetDocflowEventsResponseV4 GetDocflowEventsV4(string authToken, string boxId, GetDocflowEventsRequest request);
 		SearchDocflowsResponseV4 SearchDocflowsV4(string authToken, string boxId, SearchDocflowsRequest request);
 		GetDocflowsByPacketIdResponseV4 GetDocflowsByPacketIdV4(string authToken, string boxId, GetDocflowsByPacketIdRequest request);
+		GetPartnerEventsResponse GetPartnerEventsV4(string authToken, GetPartnerEventsRequest request);
 
 #if !NET35
 		[Obsolete("Use GetDocflowsV4Async()")]
@@ -35,6 +37,7 @@ namespace Diadoc.Api
 		Task<GetDocflowEventsResponseV4> GetDocflowEventsV4Async(string authToken, string boxId, GetDocflowEventsRequest request);
 		Task<SearchDocflowsResponseV4> SearchDocflowsV4Async(string authToken, string boxId, SearchDocflowsRequest request);
 		Task<GetDocflowsByPacketIdResponseV4> GetDocflowsByPacketIdV4Async(string authToken, string boxId, GetDocflowsByPacketIdRequest request);
+		Task<GetPartnerEventsResponse> GetPartnerEventsV4Async(string authToken, GetPartnerEventsRequest request);
 #endif
 	}
 }
