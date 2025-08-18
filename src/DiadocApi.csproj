@@ -58,4 +58,11 @@
     <Compile Remove="*Async.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AssemblyAttribute
+      Include="System.Runtime.InteropServices.ComVisibleAttribute"
+      IsLiteral="true"
+      _Parameter1="false" />
+  </ItemGroup>
+
 </Project>
