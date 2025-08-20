@@ -145,7 +145,7 @@ Task("Build")
 		CreateDirectory("./src/Properties");
 		var assemblyInfoFilePath = "./src/Properties/AssemblyInfo.cs";
 		CreateAssemblyInfo(assemblyInfoFilePath, new AssemblyInfoSettings {
-			ComVisible = false
+			ComVisible = false,
 			Product = "Diadoc",
 			Title = "Diadoc.Api"
 			Version = assemblyVersion,
