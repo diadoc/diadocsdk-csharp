@@ -146,6 +146,13 @@ Task("Build")
 		var assemblyInfoFilePath = "./src/Properties/AssemblyInfo.cs";
 		CreateAssemblyInfo(assemblyInfoFilePath, new AssemblyInfoSettings {
 			ComVisible = false
+			Product = "Diadoc",
+			Title = "Diadoc.Api"
+			Version = assemblyVersion,
+			FileVersion = assemblyVersion,
+			Guid = "3fd36034-a4be-4110-b0a9-60e4b62d0332",
+			InformationalVersion = semanticVersion,
+			Company = "ЗАО «ПФ «СКБ Контур»"
 		});
 
 		var settings = new DotNetBuildSettings
