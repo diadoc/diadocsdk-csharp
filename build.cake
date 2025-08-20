@@ -150,6 +150,7 @@ Task("Build")
 			Title = "Diadoc.Api",
 			Version = assemblyVersion,
 			FileVersion = assemblyVersion,
+			Copyright= "© 2010-2024 ЗАО «ПФ «СКБ Контур»",
 			Guid = "3fd36034-a4be-4110-b0a9-60e4b62d0332",
 			InformationalVersion = semanticVersion,
 			Company = "ЗАО «ПФ «СКБ Контур»"
