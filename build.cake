@@ -147,7 +147,7 @@ Task("Build")
 		CreateAssemblyInfo(assemblyInfoFilePath, new AssemblyInfoSettings {
 			ComVisible = false,
 			Product = "Diadoc",
-			Title = "Diadoc.Api"
+			Title = "Diadoc.Api",
 			Version = assemblyVersion,
 			FileVersion = assemblyVersion,
 			Guid = "3fd36034-a4be-4110-b0a9-60e4b62d0332",
