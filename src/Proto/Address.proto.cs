@@ -42,6 +42,15 @@ namespace Diadoc.Api.Proto
       get { return _AddressCode; }
       set { _AddressCode = value; }
     }
+
+    private Diadoc.Api.Proto.GarAddress _GarAddress = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"GarAddress", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.GarAddress GarAddress
+    {
+      get { return _GarAddress; }
+      set { _GarAddress = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
