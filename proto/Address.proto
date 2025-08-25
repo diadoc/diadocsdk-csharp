@@ -4,6 +4,7 @@ message Address {
 	optional RussianAddress RussianAddress = 1;
 	optional ForeignAddress ForeignAddress = 2;
 	optional string AddressCode = 3;
+	optional GarAddress GarAddress = 4;
 }
 
 message RussianAddress {
@@ -45,7 +46,7 @@ message GarAddress {
 message GarHouse {
 	required string Abbreviation = 1;
 	required string Number = 2;
-	optional string AddNumber1 = 3; 
+	optional string AddNumber1 = 3;
 	optional string AddAbbreviation1 = 4;
 	optional string AddNumber2 = 5;
 	optional string AddAbbreviation2 = 6;
@@ -60,7 +61,6 @@ message GarAddressNumberElement {
 	required string Abbreviation = 1;
 	required string Number = 2;
 }
-
 
 enum GarAddressDivisionType {
 	UnknownDivisionType = 0;
