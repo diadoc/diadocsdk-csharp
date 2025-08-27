@@ -103,6 +103,13 @@ namespace Diadoc.Api.Proto
       get { return _CanDeleteRestoreDocuments; }
       set { _CanDeleteRestoreDocuments = value; }
     }
+    private bool _CanAttachUniversalMessages;
+    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"CanAttachUniversalMessages", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool CanAttachUniversalMessages
+    {
+      get { return _CanAttachUniversalMessages; }
+      set { _CanAttachUniversalMessages = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
