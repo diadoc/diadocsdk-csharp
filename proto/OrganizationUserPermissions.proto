@@ -21,6 +21,7 @@ message OrganizationUserPermissions {
 	required bool CanCreateDocuments = 11;
 	required AuthorizationPermission AuthorizationPermission = 12;
 	required bool CanDeleteRestoreDocuments = 13;
+	required bool CanAttachUniversalMessages = 14;
 }
 
 message AuthorizationPermission {
