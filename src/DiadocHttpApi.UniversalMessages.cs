@@ -16,5 +16,27 @@ namespace Diadoc.Api
 			var response = HttpClient.PerformHttpRequest(request);
 			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
 		}
+
+		public byte[] ParseUniversalMessage(string authToken, string boxId, string messageId, string attachmentId)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/ParseUniversalMessage");
+			queryBuilder.AddParameter("boxId", boxId);
+			queryBuilder.AddParameter("messageId", messageId);
+			queryBuilder.AddParameter("attachmentId", attachmentId);
+
+			var request = BuildHttpRequest(authToken, "POST", queryBuilder.BuildPathAndQuery(), null);
+			var response = HttpClient.PerformHttpRequest(request);
+			return response.Content;
+		}
+
+		public byte[] ParseUniversalMessageXml(string authToken, byte[] content)
+		{
+			var queryBuilder = new PathAndQueryBuilder("/ParseUniversalMessageXml");
+
+			var request = BuildHttpRequest(authToken, "POST", queryBuilder.BuildPathAndQuery(), content);
+			var response = HttpClient.PerformHttpRequest(request);
+
+			return response.Content;
+		}
 	}
 }
