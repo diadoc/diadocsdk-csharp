@@ -4,12 +4,15 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Diadoc.Api;
 using Diadoc.Api.Cryptography;
+using Diadoc.Api.DataXml.UniversalMessage;
+using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
+using UniversalMessageInfo = Diadoc.Api.DataXml.UniversalMessage.UniversalMessageInfo;
 
 namespace Diadoc.Samples
 {
-	internal static class PatchDocumentWithReceipt
+	internal static class PatchDocumentWithReceiptAndUm
 	{
 		private const string BoxId = "<Идентификатор ящика>";
 
@@ -63,6 +66,7 @@ namespace Diadoc.Samples
 				}
 			}
 
+
 			if (messageId == null && documentId == null)
 			{
 				Console.WriteLine("Подходящих документов нет, завершаем работу примера.");
@@ -95,13 +99,24 @@ namespace Diadoc.Samples
 
 			// ИоП, как и любой документ, также должен быть подписан. Создаём к нему подпись
 			Console.WriteLine("Создаём подпись...");
-			var content = generatedReceipt.Content;
+			var contentReceipt = generatedReceipt.Content;
 			var certificate = new X509Certificate2(File.ReadAllBytes(Constants.CertificatePath));
-			var signature = crypt.Sign(content, certificate.RawData);
+			var signatureReceipt = crypt.Sign(contentReceipt, certificate.RawData);
 			Console.WriteLine("Создана подпись к извещению о получении.");
 
-			// Теперь мы готовы к отправке ИоПа. Делается это через метод PostMessagePatch
-			var messagePatchToPost = new MessagePatchToPost
+			Console.WriteLine("Создаём УС ...");
+			var userDataContract = BuildUserDataContract();
+			var generatedUm = diadocApi.GenerateUniversalMessage(
+				authToken,
+				BoxId,
+				messageId,
+				documentId,
+				userDataContract.SerializeToXml());
+
+			Console.WriteLine("УС сгенерировано.");
+
+			// Теперь мы готовы к отправке ИоПа и УС. Делается это через метод PostMessagePatchV4
+			var messagePatchToPostV2 = new MessagePatchToPostV2
 			{
 				BoxId = BoxId,
 				MessageId = messageId
@@ -112,29 +127,56 @@ namespace Diadoc.Samples
 				ParentEntityId = documentId, // наш ИоП будет относиться к документу, поэтому явно показываем, к какой сущности мы создаем ИоП
 				SignedContent = new SignedContent
 				{
-					Content = content,
-					Signature = signature
+					Content = contentReceipt,
+					Signature = signatureReceipt
 				}
 			};
-			messagePatchToPost.Receipts.Add(receiptAttachment);
 
-			var response = diadocApi.PostMessagePatch(authToken, messagePatchToPost);
-			Console.WriteLine("Извещение о получении было успешно загружено.");
+			var umAttachment = new UniversalMessageAttachment
+			{
+				ParentEntityId = documentId,
+				CodeGroup = UniversalMessageCodeGroup.Receipt,
+				UniversalMessageContent = new UnsignedContent
+				{
+					Content = generatedUm.Content
+				}
+			};
 
-			var receipt = response.Entities.First(
-				e => e.ParentEntityId == documentId
-					&& (e.AttachmentType == AttachmentType.Receipt
-						|| e.AttachmentType == AttachmentType.InvoiceReceipt));
+			messagePatchToPostV2.Receipts.Add(receiptAttachment);
+			messagePatchToPostV2.UniversalMessages.Add(umAttachment);
+
+			var response = diadocApi.PostMessagePatchV4(authToken, messagePatchToPostV2);
+			Console.WriteLine("ИоП + УС были успешно загружены.");
+
+			var receipt = response.Entities.First(e => e.ParentEntityId == documentId
+			                                           && (e.AttachmentType == AttachmentType.Receipt
+			                                               || e.AttachmentType == AttachmentType.InvoiceReceipt));
 			Console.WriteLine($"Идентификатор: {receipt.EntityId}");
 		}
 
 		// Искать, есть ли в сообщении ИоПы на конкретную сущность можно так:
 		private static bool HasReceiptForAttachment(Message message, string attachmentId)
 		{
-			return message.Entities.Any(
-				e => e.ParentEntityId == attachmentId
-					&& (e.AttachmentType == AttachmentType.Receipt
-						|| e.AttachmentType == AttachmentType.InvoiceReceipt));
+			return message.Entities.Any(e => e.ParentEntityId == attachmentId
+			                                 && (e.AttachmentType == AttachmentType.Receipt
+			                                     || e.AttachmentType == AttachmentType.InvoiceReceipt));
+		}
+
+		private static UniversalMessage BuildUserDataContract()
+		{
+			// Ниже приведен пример заполнения полей для генерации УС.
+			var universalMessage = new UniversalMessage
+			{
+				UniversalMessageInfos = new[]
+				{
+					new UniversalMessageInfo
+					{
+						StatusCode = "1999"
+					}
+				}
+			};
+
+			return universalMessage;
 		}
 	}
 }
