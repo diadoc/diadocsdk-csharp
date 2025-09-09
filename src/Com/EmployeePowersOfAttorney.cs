@@ -61,6 +61,34 @@ namespace Diadoc.Api.Proto.Employees.PowersOfAttorney
 			IsDefaultPatch = (EmployeePowerOfAttorneyIsDefaultPatch) isDefaultPatch;
 		}
 	}
+	
+	[ComVisible(true)]
+	[Guid("5aaa8da0-42b3-4c63-a0e4-097f64b83422")]
+	public interface IEmployeePowerOfAttorneyToUpdateV2
+	{
+		PowerOfAttorneyFullId PowerOfAttorneyFullId { get; set; }
+		EmployeePowerOfAttorneyIsDefaultPatch IsDefaultPatch { get; set; }
+		void SetFullId([MarshalAs(UnmanagedType.IDispatch)] object fullId);
+		void SetIsDefaultPatch([MarshalAs(UnmanagedType.IDispatch)] object isDefaultPatch);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.EmployeePowerOfAttorneyToUpdateV2")]
+	[Guid("b3f84a7b-4a47-41c7-a106-fce70cea6f83")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IEmployeePowerOfAttorneyToUpdateV2))]
+	public partial class EmployeePowerOfAttorneyToUpdateV2 : SafeComObject, IEmployeePowerOfAttorneyToUpdateV2
+	{
+		public void SetFullId(object fullId)
+		{
+			PowerOfAttorneyFullId = (PowerOfAttorneyFullId) fullId;
+		}
+		
+		public void SetIsDefaultPatch(object isDefaultPatch)
+		{
+			IsDefaultPatch = (EmployeePowerOfAttorneyIsDefaultPatch) isDefaultPatch;
+		}
+	}
 
 	[ComVisible(true)]
 	[Guid("A63713EF-D9F1-4568-A98B-7B137A778717")]

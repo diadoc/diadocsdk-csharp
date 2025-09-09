@@ -12,6 +12,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	{
 		string RegistrationNumber { get; set; }
 		string IssuerInn { get; set; }
+		string RepresentativeInn { get; set; }
 	}
 
 	[ComVisible(true)]
@@ -300,6 +301,34 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 			ConfidantCertificate = (ConfidantCertificateToPrevalidate) confidantCertificate;
 		}
 	}
+	
+	[ComVisible(true)]
+	[Guid("2443cfb9-6118-4d82-b0aa-d827fe21d0da")]
+	public interface IPowerOfAttorneyPrevalidateRequestV2
+	{
+		PowerOfAttorneyFullId FullId { get; set; }
+		ConfidantCertificateToPrevalidate ConfidantCertificate { get; set; }
+		void SetFullId([MarshalAs(UnmanagedType.IDispatch)] object fullId);
+		void SetConfidantCertificate([MarshalAs(UnmanagedType.IDispatch)] object confidantCertificate);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.PowerOfAttorneyPrevalidateRequestV2")]
+	[Guid("d3340ea0-b3cf-49c0-9f78-f3b979751d26")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IPowerOfAttorneyPrevalidateRequestV2))]
+	public partial class PowerOfAttorneyPrevalidateRequestV2 : SafeComObject, IPowerOfAttorneyPrevalidateRequestV2
+	{
+		public void SetFullId(object fullId)
+		{
+			FullId = (PowerOfAttorneyFullId) fullId;
+		}
+		
+		public void SetConfidantCertificate(object confidantCertificate)
+		{
+			ConfidantCertificate = (ConfidantCertificateToPrevalidate) confidantCertificate;
+		}
+	}
 
 	[ComVisible(true)]
 	[Guid("4BB1DB4A-957D-4473-87AE-394A020E1153")]
@@ -559,6 +588,7 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 		byte[] Content { get; set; }
 		byte[] Signature { get; set; }
 		PowerOfAttorneyFullId FullId { get; set; }
+		void SetFullId([MarshalAs(UnmanagedType.IDispatch)] object fullId);
 	}
 
 	[ComVisible(true)]
@@ -568,6 +598,10 @@ namespace Diadoc.Api.Proto.PowersOfAttorney
 	[ComDefaultInterface(typeof(IPowerOfAttorneyContentV2))]
 	public partial class PowerOfAttorneyContentV2 : SafeComObject, IPowerOfAttorneyContentV2
 	{
+		public void SetFullId(object fullId)
+		{
+			FullId = (PowerOfAttorneyFullId) fullId;
+		}
 	}
 
 	[ComVisible(true)]
