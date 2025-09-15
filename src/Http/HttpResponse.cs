@@ -1,11 +1,15 @@
 using System;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using System.Text;
+using Diadoc.Api.Nel;
+using Diadoc.Api.Nel.Models;
 using JetBrains.Annotations;
+using Newtonsoft.Json;
 
 namespace Diadoc.Api.Http
 {
@@ -28,6 +32,18 @@ namespace Diadoc.Api.Http
 
 		[CanBeNull]
 		public string ContentDispositionFileName => TryGetContentDispositionFileName(headers);
+
+		[CanBeNull]
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public NelConfiguration NelConfiguration => TryGetNel(headers);
+
+		[CanBeNull]
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public ReportTo ReportTo => TryGetReportTo(headers);
+
+		[CanBeNull]
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public ReportingEndpoints[] ReportingEndpoints => TryGetReportingEndpoints(headers);
 
 		[CanBeNull]
 		public int? RetryAfter => TryGetRetryAfter(headers);
@@ -170,6 +186,75 @@ namespace Diadoc.Api.Http
 
 			// Content-Range: bytes 42-1233/1234
 			return new ContentRange(range, Convert.ToInt64(parts[3], CultureInfo.InvariantCulture));
+		}
+
+		[CanBeNull]
+		private static NelConfiguration TryGetNel([NotNull] NameValueCollection webResponseHeaders)
+		{
+			try
+			{
+				var nel = webResponseHeaders.GetValues("Nel");
+
+				if (nel == null || nel.Length == 0)
+				{
+					return null;
+				}
+
+				return JsonConvert.DeserializeObject<NelConfiguration>(string.Join("", nel));
+			}
+			catch
+			{
+				// ignored
+			}
+
+			return null;
+		}
+
+		[CanBeNull]
+		private static ReportTo TryGetReportTo([NotNull] NameValueCollection webResponseHeaders)
+		{
+			try
+			{
+				var reportTo = webResponseHeaders.GetValues("Report-To");
+				if (reportTo == null || reportTo.Length == 0)
+				{
+					return null;
+				}
+
+				return JsonConvert.DeserializeObject<ReportTo>(string.Join("", reportTo));
+			}
+			catch
+			{
+				// ignored
+			}
+
+			return null;
+		}
+
+
+		[CanBeNull]
+		private static ReportingEndpoints[] TryGetReportingEndpoints([NotNull] NameValueCollection webResponseHeaders)
+		{
+			try
+			{
+				var reportTo = webResponseHeaders.GetValues("Reporting-Endpoints");
+				if (reportTo == null || reportTo.Length == 0)
+				{
+					return null;
+				}
+
+				return reportTo.FirstOrDefault()?.Split(',').Select(s => new ReportingEndpoints()
+				{
+					Name = s.Split('=')[0],
+					Endpoint = s.Split('=')[1].Replace("\"", "")
+				}).ToArray();
+			}
+			catch
+			{
+				// ignored
+			}
+
+			return null;
 		}
 	}
 }
