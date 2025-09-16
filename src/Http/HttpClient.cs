@@ -6,7 +6,6 @@ using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Diadoc.Api.Nel;
-using Diadoc.Api.Proto;
 using JetBrains.Annotations;
 
 #if !NET35
@@ -129,7 +128,7 @@ namespace Diadoc.Api.Http
 					response = webResponse.ToHttpResponse();
 				}
 
-				SetNelInfo(response);
+				nelReporter.SetNelInfo(response);
 
 				if (!StatusCodeIsAllowed(response.StatusCode, allowedStatusCodes))
 				{
@@ -146,7 +145,7 @@ namespace Diadoc.Api.Http
 					if (webResponse != null)
 					{
 						response = webResponse.ToHttpResponse();
-						SetNelInfo(response);
+						nelReporter.SetNelInfo(response);
 					}
 				}
 
@@ -170,14 +169,14 @@ namespace Diadoc.Api.Http
 					additionalMessage += " Ошибка подключения: Возможно, неправильные аутентификационные данные для прокси.";
 				}
 
-				SendNelReport(request, response, e);
+				nelReporter.SendNelReport(request, response, e, baseUrl);
 
 				var message = string.Format("BaseUrl={0}, PathAndQuery={1}, AdditionalMessage={2}, StatusCode={3}, DiadocErrorCode: {4}", baseUrl, request.PathAndQuery, additionalMessage, statusCode, diadocErrorCode);
 				throw new HttpClientException(message, additionalMessage, request.PathAndQuery, e, response);
 			}
 			catch (Exception e)
 			{
-				SendNelReport(request, response, e);
+				nelReporter.SendNelReport(request, response, e, baseUrl);
 				throw;
 			}
 		}
@@ -196,7 +195,7 @@ namespace Diadoc.Api.Http
 					response = ((HttpWebResponse) webResponse).ToHttpResponse();
 				}
 
-				SetNelInfo(response);
+				nelReporter.SetNelInfo(response);
 
 				if (!StatusCodeIsAllowed(response.StatusCode, allowedStatusCodes))
 				{
@@ -213,7 +212,7 @@ namespace Diadoc.Api.Http
 					if (webResponse != null)
 					{
 						response = webResponse.ToHttpResponse();
-						SetNelInfo(response);
+						nelReporter.SetNelInfo(response);
 					}
 				}
 
@@ -237,14 +236,14 @@ namespace Diadoc.Api.Http
 					additionalMessage += " Ошибка подключения: Возможно, неправильные аутентификационные данные для прокси.";
 				}
 
-				SendNelReport(request, response, e);
+				nelReporter.SendNelReport(request, response, e, baseUrl);
 
 				var message = string.Format("BaseUrl={0}, PathAndQuery={1}, AdditionalMessage={2}, StatusCode={3}, DiadocErrorCode: {4}", baseUrl, request.PathAndQuery, additionalMessage, statusCode, diadocErrorCode);
 				throw new HttpClientException(message, additionalMessage, request.PathAndQuery, e, response);
 			}
 			catch (Exception e)
 			{
-				SendNelReport(request, response, e);
+				nelReporter.SendNelReport(request, response, e, baseUrl);
 				throw;
 			}
 		}
@@ -333,42 +332,6 @@ namespace Diadoc.Api.Http
 			else if (request.Proxy != null && proxyCredential != null)
 			{
 				request.Proxy.Credentials = proxyCredential;
-			}
-		}
-
-		private static void SetNelInfo([CanBeNull] HttpResponse response)
-		{
-			if (response?.NelConfiguration != null && response.ReportTo != null)
-			{
-				NelInfo.NelConfiguration = response.NelConfiguration;
-				NelInfo.ReportToConfigurations = response.ReportTo;
-				NelInfo.ReportToConfigurations.ExpirationDate = new Timestamp(TimeSpan.FromSeconds(response.ReportTo.MaxAge).Ticks + DateTime.UtcNow.Ticks);
-			}
-		}
-
-		private void SendNelReport([NotNull] HttpRequest request, [CanBeNull] HttpResponse response, [NotNull] Exception exception)
-		{
-			try
-			{
-				var nelConfig = NelInfo.NelConfiguration;
-				var reportToConfig = NelInfo.ReportToConfigurations;
-
-				if (nelConfig == null || reportToConfig == null)
-					return;
-
-				var report = nelReporter.GenerateReport(request, response, exception, baseUrl + request.PathAndQuery);
-
-				foreach (var endpoint in reportToConfig.Endpoints)
-				{
-					if (!string.IsNullOrEmpty(endpoint.Url) && reportToConfig.ExpirationDate.Ticks >= DateTime.UtcNow.Ticks)
-					{
-						NelReporter.SendReport(endpoint.Url, report);
-					}
-				}
-			}
-			catch
-			{
-				// No need to throw exceptions trying to send NEL reports
 			}
 		}
 	}

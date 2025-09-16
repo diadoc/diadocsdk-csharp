@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using Diadoc.Api.Http;
+using Diadoc.Api.Proto;
 using JetBrains.Annotations;
 
 namespace Diadoc.Api.Nel
@@ -16,8 +17,44 @@ namespace Diadoc.Api.Nel
 			this.userAgent = userAgent;
 		}
 
+		public void SetNelInfo([CanBeNull] HttpResponse response)
+		{
+			if (response?.NelConfiguration != null && response.ReportTo != null)
+			{
+				NelInfo.NelConfiguration = response.NelConfiguration;
+				NelInfo.ReportToConfigurations = response.ReportTo;
+				NelInfo.ReportToConfigurations.ExpirationDate = new Timestamp(TimeSpan.FromSeconds(response.ReportTo.MaxAge).Ticks + DateTime.UtcNow.Ticks);
+			}
+		}
+
+		public void SendNelReport([NotNull] HttpRequest request, [CanBeNull] HttpResponse response, [NotNull] Exception exception, string baseUrl)
+		{
+			try
+			{
+				var nelConfig = NelInfo.NelConfiguration;
+				var reportToConfig = NelInfo.ReportToConfigurations;
+
+				if (nelConfig == null || reportToConfig == null)
+					return;
+
+				var report = GenerateReport(request, response, exception, baseUrl + request.PathAndQuery);
+
+				foreach (var endpoint in reportToConfig.Endpoints)
+				{
+					if (!string.IsNullOrEmpty(endpoint.Url) && reportToConfig.ExpirationDate.Ticks >= DateTime.UtcNow.Ticks)
+					{
+						SendReport(endpoint.Url, report);
+					}
+				}
+			}
+			catch
+			{
+				// No need to throw exceptions trying to send NEL reports
+			}
+		}
+
 		[NotNull]
-		public NelReport GenerateReport(
+		private NelReport GenerateReport(
 			[NotNull] HttpRequest request,
 			[CanBeNull] HttpResponse response,
 			[NotNull] Exception exception,
@@ -55,24 +92,49 @@ namespace Diadoc.Api.Nel
 			return report;
 		}
 
-		public static void SendReport([NotNull] string endpointUrl, [NotNull] NelReport report)
+		private static void SendReport([NotNull] string endpointUrl, [NotNull] NelReport report)
 		{
 			if (string.IsNullOrEmpty(endpointUrl))
 				return;
 
-			System.Threading.ThreadPool.QueueUserWorkItem(_ =>
+			var json = Newtonsoft.Json.JsonConvert.SerializeObject(report);
+			var data = Encoding.UTF8.GetBytes(json);
+			var webRequest = (HttpWebRequest) WebRequest.Create(endpointUrl);
+			webRequest.Method = "POST";
+			webRequest.ContentType = "application/json";
+			webRequest.ContentLength = data.Length;
+			webRequest.Timeout = 15000;
+			webRequest.ReadWriteTimeout = 15000;
+
+			webRequest.BeginGetRequestStream(r =>
 			{
-				var json = Newtonsoft.Json.JsonConvert.SerializeObject(report);
-				var data = Encoding.UTF8.GetBytes(json);
-				var webRequest = (HttpWebRequest) WebRequest.Create(endpointUrl);
-				webRequest.Method = "POST";
-				webRequest.ContentType = "application/json";
-				webRequest.ContentLength = data.Length;
-				using (var requestStream = webRequest.GetRequestStream())
+				try
 				{
-					requestStream.Write(data, 0,data.Length);
+					using (var requestStream = webRequest.EndGetRequestStream(r))
+					{
+						requestStream.Write(data, 0, data.Length);
+					}
+
+					webRequest.BeginGetResponse(t =>
+					{
+						try
+						{
+							using ((HttpWebResponse) webRequest.EndGetResponse(t))
+							{
+								// Just for make sure the request has been sent and resources are released
+							}
+						}
+						catch
+						{
+							// ignored
+						}
+					}, null);
 				}
-			});
+				catch
+				{
+					// ignored
+				}
+			}, null);
 		}
 
 		private static FailureInfo DeterminePhaseAndType([NotNull] Exception exception)
@@ -113,6 +175,7 @@ namespace Diadoc.Api.Nel
 						return new FailureInfo(NelPhaseConstants.Connection, "tcp.failed");
 				}
 			}
+
 			return new FailureInfo(NelPhaseConstants.Unknown, "unknown");
 		}
 	}
