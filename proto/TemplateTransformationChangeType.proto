@@ -1,0 +1,6 @@
+package Diadoc.Api.Proto;
+
+enum TemplateTransformationChangeType {
+	UnknownTemplateTransformationChange = 0;
+	SignatureRejection = 1;
+}

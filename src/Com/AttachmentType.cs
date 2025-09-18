@@ -69,6 +69,7 @@ namespace Diadoc.Api.Com
 		PowerOfAttorney = 77,
 		PowerOfAttorneyStatus = 78,
 		UniversalMessage = 79,
-		TtGisFixationCancellationRequest = 87
+		TtGisFixationCancellationRequest = 87,
+		TemplateTransformationChange = 88
 	}
 }
