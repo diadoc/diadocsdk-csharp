@@ -19,6 +19,7 @@ import "Events/RevocationRequestInfo.proto";
 import "Events/PowerOfAttorneyInfo.proto";
 import "OuterDocflows/OuterDocflow.proto";
 import "UniversalMessage.proto";
+import "TemplateTransformationChangeType.proto";
 
 package Diadoc.Api.Proto.Events;
 
@@ -133,6 +134,7 @@ message Entity {
  	optional MoveDocumentInfo MoveDocumentInfo = 34;
 	optional Docflow.PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus = 35;  // only for EntityType.Signature
 	optional UniversalMessageInfo UniversalMessageInfo = 36;
+	optional TemplateTransformationChangeInfo TemplateTransformationChangeInfo = 37; // only for AttachmentType.TemplateTransformationChange
 }
 
 message EntityPatch {
@@ -158,6 +160,13 @@ message TemplateTransformationInfo
 {
 	optional DocumentId TransformedToDocumentId = 1;
 	optional string Author = 2;
+}
+
+message TemplateTransformationChangeInfo
+{
+	optional TemplateTransformationChangeType ChangeType = 1 [default = UnknownTemplateTransformationChange];
+	optional string ChangeInitiatorBoxId = 2;
+	optional string Author = 3;
 }
 
 message TemplateRefusalInfo
@@ -249,5 +258,6 @@ enum AttachmentType {
 	PowerOfAttorneyStatus = 78;
 	UniversalMessage = 79;
 	TtGisFixationCancellationRequest = 87;
+	TemplateTransformationChange = 90;
 	//Неизвестные типы должны обрабатываться как Title
 }
