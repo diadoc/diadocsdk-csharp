@@ -1351,8 +1351,8 @@ namespace Diadoc.Api.Proto.Events
       [global::ProtoBuf.ProtoEnum(Name=@"TtGisFixationCancellationRequest", Value=87)]
       TtGisFixationCancellationRequest = 87,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"TemplateTransformationChange", Value=88)]
-      TemplateTransformationChange = 88
+      [global::ProtoBuf.ProtoEnum(Name=@"TemplateTransformationChange", Value=90)]
+      TemplateTransformationChange = 90
     }
   
 }
