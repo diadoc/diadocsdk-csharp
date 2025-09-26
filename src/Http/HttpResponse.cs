@@ -5,7 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using System.Text;
+using Diadoc.Api.Nel;
 using JetBrains.Annotations;
+using Newtonsoft.Json;
 
 namespace Diadoc.Api.Http
 {
@@ -28,6 +30,12 @@ namespace Diadoc.Api.Http
 
 		[CanBeNull]
 		public string ContentDispositionFileName => TryGetContentDispositionFileName(headers);
+
+		[CanBeNull]
+		public NelConfiguration NelConfiguration => TryGetNel(headers);
+
+		[CanBeNull]
+		public ReportTo ReportTo => TryGetReportTo(headers);
 
 		[CanBeNull]
 		public int? RetryAfter => TryGetRetryAfter(headers);
@@ -170,6 +178,31 @@ namespace Diadoc.Api.Http
 
 			// Content-Range: bytes 42-1233/1234
 			return new ContentRange(range, Convert.ToInt64(parts[3], CultureInfo.InvariantCulture));
+		}
+
+		[CanBeNull]
+		private static NelConfiguration TryGetNel([NotNull] NameValueCollection webResponseHeaders)
+		{
+			var nel = webResponseHeaders.GetValues("Nel");
+
+			if (nel == null || nel.Length == 0)
+			{
+				return null;
+			}
+
+			return JsonConvert.DeserializeObject<NelConfiguration>(string.Join("", nel));
+		}
+
+		[CanBeNull]
+		private static ReportTo TryGetReportTo([NotNull] NameValueCollection webResponseHeaders)
+		{
+			var reportTo = webResponseHeaders.GetValues("Report-To");
+			if (reportTo == null || reportTo.Length == 0)
+			{
+				return null;
+			}
+
+			return JsonConvert.DeserializeObject<ReportTo>(string.Join("", reportTo));
 		}
 	}
 }
