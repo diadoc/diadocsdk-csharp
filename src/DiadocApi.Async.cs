@@ -220,6 +220,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDepartmentV2Async(authToken, boxId, departmentId);
 		}
 
+		[Obsolete("Method UpdateOrganizationPropertiesAsync will be removed soon")]
 		public Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
