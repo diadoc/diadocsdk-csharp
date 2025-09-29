@@ -14,7 +14,6 @@
 			System.Console.WriteLine("Authenticated: {0}", ConsoleContext.IsAuthenticated() ? "YES" : "NO");
 			if (ConsoleContext.IsAuthenticated())
 			{
-				System.Console.WriteLine("Selected Organization: {0}", ConsoleContext.CurrentOrgId ?? "None");
 				System.Console.WriteLine("Selected Box: {0}", ConsoleContext.CurrentBoxId ?? "None");
 			}
 		}

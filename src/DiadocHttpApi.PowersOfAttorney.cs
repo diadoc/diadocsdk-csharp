@@ -66,6 +66,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<PowerOfAttorney>(authToken, "GET", queryString.BuildPathAndQuery());
 		}
 
+		[Obsolete("Use GetPowerOfAttorneyContentV2")]
 		public PowerOfAttorneyContent GetPowerOfAttorneyContent(
 			string authToken,
 			string boxId,

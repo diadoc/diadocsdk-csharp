@@ -11,6 +11,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
+		[Obsolete("Use GetMyEmployee()")]
 		public Task<OrganizationUserPermissions> GetMyPermissionsAsync(string authToken, string orgId)
 		{
 			var qsb = new PathAndQueryBuilder("/GetMyPermissions");
@@ -25,6 +26,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<OrganizationList>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
 
+		[Obsolete("Use GetMyUserV2Async()")]
 		public Task<User> GetMyUserAsync(string authToken)
 		{
 			return PerformHttpRequestAsync<User>(authToken, "GET", "/GetMyUser");

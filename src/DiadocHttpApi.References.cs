@@ -10,6 +10,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
+		[Obsolete("Use GetMyEmployee()")]
 		public OrganizationUserPermissions GetMyPermissions(string authToken, string orgId)
 		{
 			var qsb = new PathAndQueryBuilder("/GetMyPermissions");
@@ -24,6 +25,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<OrganizationList>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
 
+		[Obsolete("Use GetMyUserV2()")]
 		public User GetMyUser(string authToken)
 		{
 			return PerformHttpRequest<User>(authToken, "GET", "/GetMyUser");
