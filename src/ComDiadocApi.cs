@@ -48,6 +48,7 @@ namespace Diadoc.Api
 		string AuthenticateWithPassword(string login, string password);
 		string AuthenticateWithCertificate(string thumbprint, bool useLocalSystemStorage = false);
 		string AuthenticateWithSid(string sid);
+		[Obsolete("Use GetMyEmployee()")]
 		OrganizationUserPermissions GetMyPermissions(string authToken, string orgId);
 		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
 
@@ -621,6 +622,7 @@ namespace Diadoc.Api
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
+		[Obsolete("Use GetMyUserV2()")]
 		User GetMyUser(string authToken);
 		UserV2 GetMyUserV2(string authToken);
 		CertificateList GetMyCertificates(string authToken, string boxId);

@@ -162,6 +162,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.AuthenticateWithKeyConfirm(thumbprint, token, saveBinding);
 		}
 
+		[Obsolete("Use GetMyEmployee()")]
 		public OrganizationUserPermissions GetMyPermissions(string authToken, string orgId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -175,6 +176,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetMyOrganizations(authToken, autoRegister);
 		}
 
+		[Obsolete("Use GetMyUserV2()")]
 		public User GetMyUser(string authToken)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1971,6 +1973,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetPowerOfAttorneyInfo(authToken, boxId, messageId, entityId);
 		}
 
+		[Obsolete("Use GetPowerOfAttorneyContentV2")]
 		public PowerOfAttorneyContent GetPowerOfAttorneyContent(string authToken, string boxId, string messageId, string entityId)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));

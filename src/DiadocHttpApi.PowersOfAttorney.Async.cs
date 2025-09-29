@@ -67,6 +67,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<PowerOfAttorney>(authToken, "GET", queryString.BuildPathAndQuery());
 		}
 
+		[Obsolete("Use GetPowerOfAttorneyContentV2Async")]
 		public Task<PowerOfAttorneyContent> GetPowerOfAttorneyContentAsync(
 			string authToken,
 			string boxId,
