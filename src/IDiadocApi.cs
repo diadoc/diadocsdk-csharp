@@ -192,11 +192,17 @@ namespace Diadoc.Api
 		GetDocflowEventsResponse GetDocflowEvents(string authToken, string boxId, GetDocflowEventsRequest request);
 		SearchDocflowsResponse SearchDocflows(string authToken, string boxId, SearchDocflowsRequest request);
 		GetDocflowsByPacketIdResponse GetDocflowsByPacketId(string authToken, string boxId, GetDocflowsByPacketIdRequest request);
+		[Obsolete("Method ForwardDocument will be removed soon")]
 		ForwardDocumentResponse ForwardDocument(string authToken, string boxId, ForwardDocumentRequest request);
+		[Obsolete("Method GetForwardedDocuments will be removed soon")]
 		GetForwardedDocumentsResponse GetForwardedDocuments(string authToken, string boxId, GetForwardedDocumentsRequest request);
+		[Obsolete("Method GetForwardedDocumentEvents will be removed soon")]
 		GetForwardedDocumentEventsResponse GetForwardedDocumentEvents(string authToken, string boxId, GetForwardedDocumentEventsRequest request);
+		[Obsolete("Method GetForwardedEntityContent will be removed soon")]
 		byte[] GetForwardedEntityContent(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId, string entityId);
+		[Obsolete("Method GenerateForwardedDocumentProtocol will be removed soon")]
 		DocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
+		[Obsolete("Method GenerateForwardedDocumentPrintForm will be removed soon")]
 		PrintFormResult GenerateForwardedDocumentPrintForm(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
 		bool CanSendInvoice(string authToken, string boxId, byte[] certificateBytes);
 		void SendFnsRegistrationMessage(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);
@@ -624,11 +630,17 @@ namespace Diadoc.Api
 		Task<GetDocflowEventsResponse> GetDocflowEventsAsync(string authToken, string boxId, GetDocflowEventsRequest request);
 		Task<SearchDocflowsResponse> SearchDocflowsAsync(string authToken, string boxId, SearchDocflowsRequest request);
 		Task<GetDocflowsByPacketIdResponse> GetDocflowsByPacketIdAsync(string authToken, string boxId, GetDocflowsByPacketIdRequest request);
+		[Obsolete("Method ForwardDocumentAsync will be removed soon")]
 		Task<ForwardDocumentResponse> ForwardDocumentAsync(string authToken, string boxId, ForwardDocumentRequest request);
+		[Obsolete("Method GetForwardedDocumentsAsync will be removed soon")]
 		Task<GetForwardedDocumentsResponse> GetForwardedDocumentsAsync(string authToken, string boxId, GetForwardedDocumentsRequest request);
+		[Obsolete("Method GetForwardedDocumentEventsAsync will be removed soon")]
 		Task<GetForwardedDocumentEventsResponse> GetForwardedDocumentEventsAsync(string authToken, string boxId, GetForwardedDocumentEventsRequest request);
+		[Obsolete("Method GetForwardedEntityContentAsync will be removed soon")]
 		Task<byte[]> GetForwardedEntityContentAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId, string entityId);
+		[Obsolete("Method GenerateForwardedDocumentProtocolAsync will be removed soon")]
 		Task<DocumentProtocolResult> GenerateForwardedDocumentProtocolAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
+		[Obsolete("Method GenerateForwardedDocumentPrintFormAsync will be removed soon")]
 		Task<PrintFormResult> GenerateForwardedDocumentPrintFormAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
 		Task<bool> CanSendInvoiceAsync(string authToken, string boxId, byte[] certificateBytes);
 		Task SendFnsRegistrationMessageAsync(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);

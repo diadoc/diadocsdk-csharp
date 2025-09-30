@@ -929,12 +929,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocflowsByPacketId(authToken, boxId, request);
 		}
 
+		[Obsolete("Method ForwardDocument will be removed soon")]
 		public ForwardDocumentResponse ForwardDocument(string authToken, string boxId, ForwardDocumentRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.ForwardDocument(authToken, boxId, request);
 		}
 
+		[Obsolete("Method GetForwardedDocuments will be removed soon")]
 		public GetForwardedDocumentsResponse GetForwardedDocuments(string authToken,
 			string boxId,
 			GetForwardedDocumentsRequest request)
@@ -943,6 +945,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetForwardedDocuments(authToken, boxId, request);
 		}
 
+		[Obsolete("Method GetForwardedDocumentEvents will be removed soon")]
 		public GetForwardedDocumentEventsResponse GetForwardedDocumentEvents(string authToken,
 			string boxId,
 			GetForwardedDocumentEventsRequest request)
@@ -951,6 +954,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetForwardedDocumentEvents(authToken, boxId, request);
 		}
 
+		[Obsolete("Method GetForwardedEntityContent will be removed soon")]
 		public byte[] GetForwardedEntityContent(string authToken,
 			string boxId,
 			ForwardedDocumentId forwardedDocumentId,
@@ -960,6 +964,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetForwardedEntityContent(authToken, boxId, forwardedDocumentId, entityId);
 		}
 
+		[Obsolete("Method GenerateForwardedDocumentProtocol will be removed soon")]
 		public DocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken,
 			string boxId,
 			ForwardedDocumentId forwardedDocumentId)
@@ -968,6 +973,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateForwardedDocumentProtocol(authToken, boxId, forwardedDocumentId);
 		}
 
+		[Obsolete("Method GenerateForwardedDocumentPrintForm will be removed soon")]
 		public PrintFormResult GenerateForwardedDocumentPrintForm(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");

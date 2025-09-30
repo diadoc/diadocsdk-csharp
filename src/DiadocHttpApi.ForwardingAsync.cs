@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Forwarding;
@@ -9,6 +10,7 @@ namespace Diadoc.Api
 	public partial class DiadocHttpApi
 	{
 		[ItemNotNull]
+		[Obsolete("Method ForwardDocumentAsync will be removed soon")]
 		public Task<ForwardDocumentResponse> ForwardDocumentAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardDocumentRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/ForwardDocument", boxId);
@@ -16,6 +18,7 @@ namespace Diadoc.Api
 		}
 
 		[ItemNotNull]
+		[Obsolete("Method GetForwardedDocumentsAsync will be removed soon")]
 		public Task<GetForwardedDocumentsResponse> GetForwardedDocumentsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetForwardedDocumentsRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetForwardedDocuments", boxId);
@@ -23,6 +26,7 @@ namespace Diadoc.Api
 		}
 
 		[ItemNotNull]
+		[Obsolete("Method GetForwardedDocumentEventsAsync will be removed soon")]
 		public Task<GetForwardedDocumentEventsResponse> GetForwardedDocumentEventsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetForwardedDocumentEventsRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetForwardedDocumentEvents", boxId);
@@ -30,6 +34,7 @@ namespace Diadoc.Api
 		}
 
 		[ItemNotNull]
+		[Obsolete("Method GetForwardedEntityContentAsync will be removed soon")]
 		public Task<byte[]> GetForwardedEntityContentAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardedDocumentId forwardedDocumentId, [NotNull] string entityId)
 		{
 			var queryString = new PathAndQueryBuilder("/V2/GetForwardedEntityContent")
@@ -41,6 +46,7 @@ namespace Diadoc.Api
 		}
 
 		[ItemNotNull]
+		[Obsolete("Method GenerateForwardedDocumentProtocolAsync will be removed soon")]
 		public Task<DocumentProtocolResult> GenerateForwardedDocumentProtocolAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardedDocumentId forwardedDocumentId)
 		{
 			var queryString = new PathAndQueryBuilder("/V2/GenerateForwardedDocumentProtocol")
@@ -52,6 +58,7 @@ namespace Diadoc.Api
 		}
 
 		[ItemNotNull]
+		[Obsolete("Method GenerateForwardedDocumentPrintFormAsync will be removed soon")]
 		public Task<PrintFormResult> GenerateForwardedDocumentPrintFormAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardedDocumentId forwardedDocumentId)
 		{
 			var queryString = new PathAndQueryBuilder("/GenerateForwardedDocumentPrintForm")

@@ -789,12 +789,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocflowsByPacketIdAsync(authToken, boxId, request);
 		}
 
+		[Obsolete("Method ForwardDocumentAsync will be removed soon")]
 		public Task<ForwardDocumentResponse> ForwardDocumentAsync(string authToken, string boxId, ForwardDocumentRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.ForwardDocumentAsync(authToken, boxId, request);
 		}
 
+		[Obsolete("Method GetForwardedDocumentsAsync will be removed soon")]
 		public Task<GetForwardedDocumentsResponse> GetForwardedDocumentsAsync(string authToken, string boxId,
 			GetForwardedDocumentsRequest request)
 		{
@@ -802,6 +804,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetForwardedDocumentsAsync(authToken, boxId, request);
 		}
 
+		[Obsolete("Method GetForwardedDocumentEventsAsync will be removed soon")]
 		public Task<GetForwardedDocumentEventsResponse> GetForwardedDocumentEventsAsync(string authToken, string boxId,
 			GetForwardedDocumentEventsRequest request)
 		{
@@ -809,6 +812,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetForwardedDocumentEventsAsync(authToken, boxId, request);
 		}
 
+		[Obsolete("Method GetForwardedEntityContentAsync will be removed soon")]
 		public Task<byte[]> GetForwardedEntityContentAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId,
 			string entityId)
 		{
@@ -816,6 +820,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetForwardedEntityContentAsync(authToken, boxId, forwardedDocumentId, entityId);
 		}
 
+		[Obsolete("Method GenerateForwardedDocumentProtocolAsync will be removed soon")]
 		public Task<DocumentProtocolResult> GenerateForwardedDocumentProtocolAsync(string authToken, string boxId,
 			ForwardedDocumentId forwardedDocumentId)
 		{
@@ -823,6 +828,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateForwardedDocumentProtocolAsync(authToken, boxId, forwardedDocumentId);
 		}
 
+		[Obsolete("Method GenerateForwardedDocumentPrintFormAsync will be removed soon")]
 		public Task<PrintFormResult> GenerateForwardedDocumentPrintFormAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
