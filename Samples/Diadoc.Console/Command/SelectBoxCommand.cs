@@ -19,7 +19,7 @@
 			}
 
 			ConsoleContext.SetCurrentBoxWithBoxId(InputHelpers.AutocompleteBoxId(ConsoleContext, boxId));
-			System.Console.WriteLine($"Текущий ящик, BoxId: {ConsoleContext.CurrentBoxId}, OrgId: {ConsoleContext.CurrentOrgId}");
+			System.Console.WriteLine($"Текущий ящик, BoxId: {ConsoleContext.CurrentBoxId}");
 			ConsoleContext.Events = null;
 		}
 	}

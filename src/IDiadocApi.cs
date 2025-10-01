@@ -58,6 +58,7 @@ namespace Diadoc.Api
 		string AuthenticateWithKey(byte[] certificateBytes, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true);
 		string AuthenticateWithKeyConfirm(byte[] certificateBytes, string token, bool saveBinding = false);
 		string AuthenticateWithKeyConfirm(string thumbprint, string token, bool saveBinding = false);
+		[Obsolete("Use GetMyEmployee()")]
 		OrganizationUserPermissions GetMyPermissions(string authToken, string orgId);
 		OrganizationList GetMyOrganizations(string authToken, bool autoRegister = true);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
@@ -449,6 +450,7 @@ namespace Diadoc.Api
 			PowerOfAttorneyPrevalidateRequestV2 request);
 
 		PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId);
+		[Obsolete("Use GetPowerOfAttorneyContentV2")]
 		PowerOfAttorneyContent GetPowerOfAttorneyContent(string authToken, string boxId, string messageId, string entityId);
 		PowerOfAttorneyContentResponse GetPowerOfAttorneyContentV2(string authToken, string boxId, string messageId, string entityId);
 

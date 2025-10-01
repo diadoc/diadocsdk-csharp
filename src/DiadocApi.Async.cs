@@ -88,6 +88,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.AuthenticateWithKeyConfirmAsync(thumbprint, token, saveBinding);
 		}
 
+		[Obsolete("Use GetMyEmployee()")]
 		public Task<OrganizationUserPermissions> GetMyPermissionsAsync(string authToken, string orgId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -101,6 +102,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetMyOrganizationsAsync(authToken, autoRegister);
 		}
 
+		[Obsolete("Use GetMyUserV2Async()")]
 		public Task<User> GetMyUserAsync(string authToken)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1825,6 +1827,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetPowerOfAttorneyInfoAsync(authToken, boxId, messageId, entityId);
 		}
 
+		[Obsolete("Use GetPowerOfAttorneyContentV2Async")]
 		public Task<PowerOfAttorneyContent> GetPowerOfAttorneyContentAsync(string authToken, string boxId, string messageId, string entityId)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
