@@ -8,15 +8,18 @@ using Diadoc.Api.DataXml.UniversalMessage;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
+using NUnit.Framework;
 using UniversalMessageInfo = Diadoc.Api.DataXml.UniversalMessage.UniversalMessageInfo;
 
 namespace Diadoc.Samples
 {
+	[TestFixture]
 	internal static class PatchDocumentWithReceiptAndUm
 	{
 		private const string BoxId = "<Идентификатор ящика>";
 
-		public static void RunSample()
+		[Test]
+		public static void Sample()
 		{
 			Console.WriteLine("Пример добавления извещения о получении к документу");
 			Console.WriteLine("===================================================");

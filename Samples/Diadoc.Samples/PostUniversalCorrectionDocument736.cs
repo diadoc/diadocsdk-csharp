@@ -6,12 +6,15 @@ using Diadoc.Api;
 using Diadoc.Api.Cryptography;
 using Diadoc.Api.DataXml.ON_NKORSCHFDOPPR_UserContract_1_996_03_05_01_03;
 using Diadoc.Api.Proto.Events;
+using NUnit.Framework;
 
 namespace Diadoc.Samples
 {
+	[TestFixture]
 	internal static class PostUniversalCorrectionDocument736
 	{
-		public static void RunSample()
+		[Test]
+		public static void Sample()
 		{
 			Console.WriteLine("Пример отправки универсального корректировочного документа (УКД) в формате приказа №736");
 			Console.WriteLine("===================================================================================");

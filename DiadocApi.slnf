@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "DiadocApi.sln",
+    "projects": [
+        "Samples\\Diadoc.Console\\Diadoc.Console.csproj",
+        "src\\DiadocApi.csproj",
+        "tests\\DiadocApi-Tests.csproj"
+    ]
+  }
+}

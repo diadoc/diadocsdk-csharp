@@ -3,14 +3,17 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Diadoc.Api;
 using Diadoc.Api.Cryptography;
+using NUnit.Framework;
 
 namespace Diadoc.Samples
 {
-	internal static class Authenticate
+	[TestFixture]
+	internal class Authenticate
 	{
 		private const string CertificateThumbprint = "<Подставьте сюда отпечаток публичной части сертификата>";
 
-		public static void RunSample()
+		[Test]
+		public void Sample()
 		{
 			Console.WriteLine("Пример аутентификации по сертификату");
 			Console.WriteLine("=====================================");

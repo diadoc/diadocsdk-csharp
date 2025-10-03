@@ -5,15 +5,18 @@ using System.Security.Cryptography.X509Certificates;
 using Diadoc.Api;
 using Diadoc.Api.Cryptography;
 using Diadoc.Api.Proto.Events;
+using NUnit.Framework;
 
 namespace Diadoc.Samples
 {
+	[TestFixture]
 	public class PostLargeDocumentWithShelf
 	{
 		// Подставьте сюда путь до неформализованного документа, который будет отправлен (пример: C:\file.txt)
 		private const string NonformalizedDocumentPath = @"<Путь до файла>";
 
-		public static void RunSample()
+		[Test]
+		public static void Sample()
 		{
 			Console.WriteLine("Пример отправки документа через Полку.");
 			Console.WriteLine("Актуально для тяжеловесных файлов (больше мегабайта)");

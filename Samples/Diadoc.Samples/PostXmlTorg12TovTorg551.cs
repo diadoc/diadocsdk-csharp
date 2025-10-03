@@ -6,6 +6,7 @@ using Diadoc.Api;
 using Diadoc.Api.Cryptography;
 using Diadoc.Api.DataXml.DP_TOVTORGPR_UserContract_tovtorg_05_02_01;
 using Diadoc.Api.Proto.Events;
+using NUnit.Framework;
 using Address = Diadoc.Api.DataXml.DP_TOVTORGPR_UserContract_tovtorg_05_02_01.Address;
 using ExtendedSignerDetailsBaseSignerType = Diadoc.Api.DataXml.ExtendedSignerDetailsBaseSignerType;
 using OrganizationType = Diadoc.Api.DataXml.OrganizationType;
@@ -13,9 +14,11 @@ using RussianAddress = Diadoc.Api.DataXml.DP_TOVTORGPR_UserContract_tovtorg_05_0
 
 namespace Diadoc.Samples
 {
+	[TestFixture]
 	internal static class PostXmlTorg12TovTorg551
 	{
-		public static void RunSample()
+		[Test]
+		public static void Sample()
 		{
 			Console.WriteLine("Пример отправки накладной в формате приказа №551");
 			Console.WriteLine("===================================================================================");

@@ -8,14 +8,17 @@ using Diadoc.Api.DataXml.ON_NSCHFDOPPR_UserContract_970_05_03_01;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.PowersOfAttorney;
+using NUnit.Framework;
 using Certificate = Diadoc.Api.DataXml.ON_NSCHFDOPPR_UserContract_970_05_03_01.Certificate;
 using PowerOfAttorney = Diadoc.Api.DataXml.ON_NSCHFDOPPR_UserContract_970_05_03_01.PowerOfAttorney;
 
 namespace Diadoc.Samples
 {
+	[TestFixture]
 	internal static class PostUniversalTransferDocument970
 	{
-		public static void RunSample()
+		[Test]
+		public static void Sample()
 		{
 			Console.WriteLine("Пример отправки универсального передаточного документа (УПД) в формате приказа №970");
 			Console.WriteLine("===================================================================================");

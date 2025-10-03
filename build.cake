@@ -17,7 +17,7 @@ var dbgSuffix = (configuration == "Debug" ? "-dbg" : "");
 
 var buildDir = new DirectoryPath("./bin").Combine(configuration);
 var buildDirNuget = buildDir.Combine("DiadocApi.Nuget");
-var DiadocApiSolutionPath = "./DiadocApi.sln";
+var DiadocApiSolutionPath = "./DiadocApi.slnf";
 var binariesNet35Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net35-binaries.zip");
 var binariesNet45Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net45-binaries.zip");
 var binariesNet461Zip = buildDir.CombineWithFilePath("diadocsdk-csharp-net461-binaries.zip");
