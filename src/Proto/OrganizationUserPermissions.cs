@@ -14,6 +14,7 @@ namespace Diadoc.Api.Proto
 		bool CanRequestResolutions { get; }
 		AuthorizationPermission AuthorizationPermission { get; }
 		bool CanDeleteRestoreDocuments { get; }
+		bool CanAttachUniversalMessages { get; }
 	}
 
 	[ComVisible(true)]
@@ -24,8 +25,8 @@ namespace Diadoc.Api.Proto
 	{
 		public override string ToString()
 		{
-			return string.Format("UserDepartmentId: {0}, IsAdministrator: {1}, DocumentAccessLevel: {2}, CanSignDocuments: {3}, CanAddResolutions: {4}, CanRequestResolutions: {5}, CanDeleteRestoreDocuments: {6}",
-				UserDepartmentId, IsAdministrator, DocumentAccessLevel, CanSignDocuments, CanAddResolutions, CanRequestResolutions, CanDeleteRestoreDocuments);
+			return string.Format("UserDepartmentId: {0}, IsAdministrator: {1}, DocumentAccessLevel: {2}, CanSignDocuments: {3}, CanAddResolutions: {4}, CanRequestResolutions: {5}, CanDeleteRestoreDocuments: {6}, CanAttachUniversalMessages: {7}",
+				UserDepartmentId, IsAdministrator, DocumentAccessLevel, CanSignDocuments, CanAddResolutions, CanRequestResolutions, CanDeleteRestoreDocuments, CanAttachUniversalMessages);
 		}
 
 		public Com.DocumentAccessLevel DocumentAccessLevelValue
