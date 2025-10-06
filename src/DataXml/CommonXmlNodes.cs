@@ -752,6 +752,8 @@
 		private string registrationNumberField;
 
 		private string issuerInnField;
+		
+		private string representativeInnField;
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlAttributeAttribute()]
@@ -767,6 +769,17 @@
 		{
 			get { return this.issuerInnField; }
 			set { this.issuerInnField = value; }
+		}
+		
+		/// <remarks/>
+		[System.Xml.Serialization.XmlAttributeAttribute()]
+		public string RepresentativeInn {
+			get {
+				return this.representativeInnField;
+			}
+			set {
+				this.representativeInnField = value;
+			}
 		}
 	}
 

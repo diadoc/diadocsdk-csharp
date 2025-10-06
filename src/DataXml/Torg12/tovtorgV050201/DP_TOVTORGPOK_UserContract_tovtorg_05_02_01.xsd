@@ -1468,6 +1468,11 @@
         <xs:complexType>
           <xs:attribute name="RegistrationNumber" type="guid" use="required" />
           <xs:attribute name="IssuerInn" type="inn" use="required" />
+          <xs:attribute name="RepresentativeInn" type="inn">
+            <xs:annotation>
+              <xs:documentation>ИНН доверенного лица</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
         </xs:complexType>
       </xs:element>
     </xs:sequence>

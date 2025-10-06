@@ -1554,6 +1554,11 @@
               <xs:documentation>ИНН организации, выдавшей доверенность</xs:documentation>
             </xs:annotation>
           </xs:attribute>
+          <xs:attribute name="RepresentativeInn" type="inn">
+            <xs:annotation>
+              <xs:documentation>ИНН доверенного лица</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
         </xs:complexType>
       </xs:element>
     </xs:sequence>

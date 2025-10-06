@@ -173,5 +173,17 @@
 	<xs:complexType name="PowerOfAttorneyFullId">
 		<xs:attribute name="RegistrationNumber" type="xs:string" use="required"/>
 		<xs:attribute name="IssuerInn" type="xs:string" use="required"/>
+		<xs:attribute name="RepresentativeInn" type="inn">
+			<xs:annotation>
+				<xs:documentation>ИНН доверенного лица</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
+	<xs:simpleType name="inn">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="10" />
+			<xs:maxLength value="12" />
+			<xs:pattern value="([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})([0-9]{10}|[0-9]{8})" />
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
