@@ -77,10 +77,11 @@ namespace Diadoc.Api.DataXml.CommonSignerUserContract
 		{
 		}
 
-		public PowerOfAttorneyFullId(string registrationNumber, string issuerInn)
+		public PowerOfAttorneyFullId(string registrationNumber, string issuerInn, [CanBeNull] string representativeInn = null)
 		{
 			RegistrationNumber = registrationNumber;
 			IssuerInn = issuerInn;
+			RepresentativeInn = representativeInn;
 		}
 	}
 

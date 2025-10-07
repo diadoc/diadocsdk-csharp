@@ -1801,6 +1801,8 @@ namespace Diadoc.Api.DataXml.DP_REZRUISP_UserContract_rezru_05_02_01 {
         
         private string issuerInnField;
         
+        private string representativeInnField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string RegistrationNumber {
@@ -1820,6 +1822,17 @@ namespace Diadoc.Api.DataXml.DP_REZRUISP_UserContract_rezru_05_02_01 {
             }
             set {
                 this.issuerInnField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string RepresentativeInn {
+            get {
+                return this.representativeInnField;
+            }
+            set {
+                this.representativeInnField = value;
             }
         }
     }

@@ -269,7 +269,8 @@ namespace Diadoc.Samples
 						FullId = new StorageFullId
 						{
 							IssuerInn = "<ИНН доверителя из МЧД>",
-							RegistrationNumber = "<Регистрационный номер МЧД в формате GUID>"
+							RegistrationNumber = "<Регистрационный номер МЧД в формате GUID>",
+							RepresentativeInn = "<ИНН доверенного лица>"
 						},
 						// Подробнее о флаге UseDefault - https://developer.kontur.ru/docs/diadoc-api/ru/latest/proto/PowerOfAttorneyToPost.html?highlight=usedefault
 						UseDefault = StorageUseDefault.@false
