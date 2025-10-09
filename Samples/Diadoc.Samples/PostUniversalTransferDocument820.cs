@@ -7,12 +7,15 @@ using Diadoc.Api.Cryptography;
 using Diadoc.Api.DataXml;
 using Diadoc.Api.DataXml.Utd820.Hyphens;
 using Diadoc.Api.Proto.Events;
+using NUnit.Framework;
 
 namespace Diadoc.Samples
 {
+	[TestFixture]
 	internal static class PostUniversalTransferDocument820
 	{
-		public static void RunSample()
+		[Test]
+		public static void Sample()
 		{
 			Console.WriteLine("Пример отправки универсального передаточного документа (УПД) в формате приказа №820");
 			Console.WriteLine("===================================================================================");

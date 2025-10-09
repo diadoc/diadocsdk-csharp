@@ -6,6 +6,7 @@ using Diadoc.Api;
 using Diadoc.Api.Cryptography;
 using Diadoc.Api.DataXml.DP_REZRUISP_UserContract_rezru_05_02_01;
 using Diadoc.Api.Proto.Events;
+using NUnit.Framework;
 using AcceptanceCertificate552SellerTitleInfo = Diadoc.Api.DataXml.DP_REZRUISP_UserContract_rezru_05_02_01.AcceptanceCertificate552SellerTitleInfo;
 using AcceptanceCertificate552WorkDescription = Diadoc.Api.DataXml.DP_REZRUISP_UserContract_rezru_05_02_01.AcceptanceCertificate552WorkDescription;
 using AcceptanceCertificate552WorkItem = Diadoc.Api.DataXml.DP_REZRUISP_UserContract_rezru_05_02_01.AcceptanceCertificate552WorkItem;
@@ -18,9 +19,11 @@ using RussianAddress = Diadoc.Api.DataXml.DP_REZRUISP_UserContract_rezru_05_02_0
 
 namespace Diadoc.Samples
 {
+	[TestFixture]
 	internal static class PostXmlAcceptanceCertificateRezru552
 	{
-		public static void RunSample()
+		[Test]
+		public static void Sample()
 		{
 			Console.WriteLine("Пример отправки акта в формате приказа №552");
 			Console.WriteLine("===================================================================================");

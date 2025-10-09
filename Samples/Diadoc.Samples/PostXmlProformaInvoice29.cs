@@ -8,6 +8,7 @@ using Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.PowersOfAttorney;
+using NUnit.Framework;
 using Certificate = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.Certificate;
 using Electronic = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.Electronic;
 using OrganizationType_DatabaseOrder = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.OrganizationType_DatabaseOrder;
@@ -25,9 +26,11 @@ using TaxRateUtd970 = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.TaxRate
 
 namespace Diadoc.Samples
 {
+	[TestFixture]
 	internal static class PostXmlProformaInvoice29
 	{
-		public static void RunSample()
+		[Test]
+		public static void Sample()
 		{
 			Console.WriteLine("Пример отправки Счета в формате приказа №29");
 			Console.WriteLine("===================================================================================");
