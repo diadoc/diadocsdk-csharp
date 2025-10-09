@@ -23,6 +23,7 @@
 // Note: requires additional types generated from: Events/PowerOfAttorneyInfo.proto
 // Note: requires additional types generated from: OuterDocflows/OuterDocflow.proto
 // Note: requires additional types generated from: UniversalMessage.proto
+// Note: requires additional types generated from: TemplateTransformationChangeType.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BoxEventList")]
@@ -868,6 +869,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _UniversalMessageInfo; }
       set { _UniversalMessageInfo = value; }
     }
+
+    private Diadoc.Api.Proto.Events.TemplateTransformationChangeInfo _TemplateTransformationChangeInfo = null;
+    [global::ProtoBuf.ProtoMember(37, IsRequired = false, Name=@"TemplateTransformationChangeInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.TemplateTransformationChangeInfo TemplateTransformationChangeInfo
+    {
+      get { return _TemplateTransformationChangeInfo; }
+      set { _TemplateTransformationChangeInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -1012,6 +1022,43 @@ namespace Diadoc.Api.Proto.Events
 
     private string _Author = "";
     [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Author", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Author
+    {
+      get { return _Author; }
+      set { _Author = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TemplateTransformationChangeInfo")]
+  public partial class TemplateTransformationChangeInfo : global::ProtoBuf.IExtensible
+  {
+    public TemplateTransformationChangeInfo() {}
+    
+
+    private Diadoc.Api.Proto.TemplateTransformationChangeType _ChangeType = Diadoc.Api.Proto.TemplateTransformationChangeType.UnknownTemplateTransformationChange;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ChangeType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.TemplateTransformationChangeType.UnknownTemplateTransformationChange)]
+    public Diadoc.Api.Proto.TemplateTransformationChangeType ChangeType
+    {
+      get { return _ChangeType; }
+      set { _ChangeType = value; }
+    }
+
+    private string _ChangeInitiatorBoxId = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ChangeInitiatorBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ChangeInitiatorBoxId
+    {
+      get { return _ChangeInitiatorBoxId; }
+      set { _ChangeInitiatorBoxId = value; }
+    }
+
+    private string _Author = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Author", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string Author
     {
@@ -1302,7 +1349,10 @@ namespace Diadoc.Api.Proto.Events
       UniversalMessage = 79,
             
       [global::ProtoBuf.ProtoEnum(Name=@"TtGisFixationCancellationRequest", Value=87)]
-      TtGisFixationCancellationRequest = 87
+      TtGisFixationCancellationRequest = 87,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TemplateTransformationChange", Value=90)]
+      TemplateTransformationChange = 90
     }
   
 }
