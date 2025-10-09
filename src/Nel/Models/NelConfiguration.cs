@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Diadoc.Api.Nel
+namespace Diadoc.Api.Nel.Models
 {
 	public class NelConfiguration
 	{
@@ -12,5 +12,8 @@ namespace Diadoc.Api.Nel
 
 		[JsonProperty("include_subdomains")]
 		public bool IncludeSubdomains { get; set; }
+		
+		[JsonProperty("failure_fraction")]
+		public double? FailureFraction { get; set; }
 	}
 }

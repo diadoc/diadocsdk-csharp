@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Diadoc.Api.Nel
+namespace Diadoc.Api.Nel.Models
 {
 	public class NelReport
 	{

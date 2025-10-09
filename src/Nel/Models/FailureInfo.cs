@@ -1,4 +1,4 @@
-namespace Diadoc.Api.Nel
+namespace Diadoc.Api.Nel.Models
 {
 	public class FailureInfo
 	{

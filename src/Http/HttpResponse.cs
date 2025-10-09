@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Mime;
 using System.Text;
 using Diadoc.Api.Nel;
+using Diadoc.Api.Nel.Models;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
@@ -36,6 +37,9 @@ namespace Diadoc.Api.Http
 
 		[CanBeNull]
 		public ReportTo ReportTo => TryGetReportTo(headers);
+
+		[CanBeNull]
+		public ReportingEndpoints[] ReportingEndpoints => TryGetReportingEndpoints(headers);
 
 		[CanBeNull]
 		public int? RetryAfter => TryGetRetryAfter(headers);
@@ -183,26 +187,70 @@ namespace Diadoc.Api.Http
 		[CanBeNull]
 		private static NelConfiguration TryGetNel([NotNull] NameValueCollection webResponseHeaders)
 		{
-			var nel = webResponseHeaders.GetValues("Nel");
-
-			if (nel == null || nel.Length == 0)
+			try
 			{
-				return null;
+				var nel = webResponseHeaders.GetValues("Nel");
+
+				if (nel == null || nel.Length == 0)
+				{
+					return null;
+				}
+
+				return JsonConvert.DeserializeObject<NelConfiguration>(string.Join("", nel));
+			}
+			catch
+			{
+				// ignored
 			}
 
-			return JsonConvert.DeserializeObject<NelConfiguration>(string.Join("", nel));
+			return null;
 		}
 
 		[CanBeNull]
 		private static ReportTo TryGetReportTo([NotNull] NameValueCollection webResponseHeaders)
 		{
-			var reportTo = webResponseHeaders.GetValues("Report-To");
-			if (reportTo == null || reportTo.Length == 0)
+			try
 			{
-				return null;
+				var reportTo = webResponseHeaders.GetValues("Report-To");
+				if (reportTo == null || reportTo.Length == 0)
+				{
+					return null;
+				}
+
+				return JsonConvert.DeserializeObject<ReportTo>(string.Join("", reportTo));
+			}
+			catch
+			{
+				// ignored
 			}
 
-			return JsonConvert.DeserializeObject<ReportTo>(string.Join("", reportTo));
+			return null;
+		}
+
+
+		[CanBeNull]
+		private static ReportingEndpoints[] TryGetReportingEndpoints([NotNull] NameValueCollection webResponseHeaders)
+		{
+			try
+			{
+				var reportTo = webResponseHeaders.GetValues("Reporting-Endpoints");
+				if (reportTo == null || reportTo.Length == 0)
+				{
+					return null;
+				}
+
+				return reportTo.Select(s => new ReportingEndpoints()
+				{
+					Name = s.Split('=')[0],
+					Endpoints = s.Split('=')[1].Replace("\"", "")
+				}).ToArray();
+			}
+			catch
+			{
+				// ignored
+			}
+
+			return null;
 		}
 	}
 }

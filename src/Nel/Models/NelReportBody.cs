@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Diadoc.Api.Nel
+namespace Diadoc.Api.Nel.Models
 {
 	public class NelReportBody
 	{
@@ -18,5 +18,8 @@ namespace Diadoc.Api.Nel
 
 		[JsonProperty("type")]
 		public string Type { get; set; }
+		
+		[JsonProperty("sampling_fraction")]
+		public double? SamplingFraction { get; set; }
 	}
 }

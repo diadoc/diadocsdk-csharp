@@ -1,8 +1,11 @@
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using Diadoc.Api.Http;
+using Diadoc.Api.Nel.Hepler;
+using Diadoc.Api.Nel.Models;
 using Diadoc.Api.Proto;
 using JetBrains.Annotations;
 
@@ -19,11 +22,21 @@ namespace Diadoc.Api.Nel
 
 		public void SetNelInfo([CanBeNull] HttpResponse response)
 		{
-			if (response?.NelConfiguration != null && response.ReportTo != null)
+			if (response?.NelConfiguration == null)
+			{
+				return;
+			}
+
+			if (response.ReportTo != null)
 			{
 				NelInfo.NelConfiguration = response.NelConfiguration;
 				NelInfo.ReportToConfigurations = response.ReportTo;
 				NelInfo.ReportToConfigurations.ExpirationDate = new Timestamp(TimeSpan.FromSeconds(response.ReportTo.MaxAge).Ticks + DateTime.UtcNow.Ticks);
+			}
+
+			if (response.ReportingEndpoints != null)
+			{
+				NelInfo.ReportingEndpoints = response.ReportingEndpoints;
 			}
 		}
 
@@ -31,20 +44,33 @@ namespace Diadoc.Api.Nel
 		{
 			try
 			{
-				var nelConfig = NelInfo.NelConfiguration;
-				var reportToConfig = NelInfo.ReportToConfigurations;
+				var nelConfig = response?.NelConfiguration ?? NelInfo.NelConfiguration;
+				var reportToConfig = response?.ReportTo ?? NelInfo.ReportToConfigurations;
+				var reportingEndpoints = response?.ReportingEndpoints ?? NelInfo.ReportingEndpoints;
+				var samplingFailureRate = response?.NelConfiguration?.FailureFraction ?? nelConfig?.FailureFraction ?? 1.0;
 
 				if (nelConfig == null || reportToConfig == null)
 					return;
 
-				var report = GenerateReport(request, response, exception, baseUrl + request.PathAndQuery);
+				if (reportToConfig.ExpirationDate.Ticks < DateTime.UtcNow.Ticks || Rolling() > samplingFailureRate)
+					return;
 
-				foreach (var endpoint in reportToConfig.Endpoints)
+				var report = GenerateReport(
+					request,
+					response,
+					exception,
+					baseUrl + request.PathAndQuery,
+					samplingFailureRate);
+
+				var isSending = false;
+				if (reportingEndpoints?.Any() ?? false)
 				{
-					if (!string.IsNullOrEmpty(endpoint.Url) && reportToConfig.ExpirationDate.Ticks >= DateTime.UtcNow.Ticks)
-					{
-						SendReport(endpoint.Url, report);
-					}
+					SendingReport(reportingEndpoints.Select(s => s.Endpoints).ToArray(), report, ref isSending);
+				}
+
+				if (reportToConfig.Endpoints != null)
+				{
+					SendingReport(reportToConfig.Endpoints.Select(s => s.Url).ToArray(), report, ref isSending);
 				}
 			}
 			catch
@@ -53,12 +79,25 @@ namespace Diadoc.Api.Nel
 			}
 		}
 
+		private void SendingReport(string[] endpoints, [NotNull] NelReport report, ref bool isSending)
+		{
+			if (!isSending) return;
+
+			foreach (var endpoint in endpoints)
+			{
+				var reportResponse = SendReport(endpoint, report);
+				if (reportResponse == null || (int) reportResponse < 200 || (int) reportResponse >= 400) continue;
+				isSending = true;
+				break;
+			}
+		}
+
 		[NotNull]
-		private NelReport GenerateReport(
-			[NotNull] HttpRequest request,
+		private NelReport GenerateReport([NotNull] HttpRequest request,
 			[CanBeNull] HttpResponse response,
 			[NotNull] Exception exception,
-			[NotNull] string url)
+			[NotNull] string url,
+			[NotNull] double samplingFraction)
 		{
 			var failureInfo = DeterminePhaseAndType(exception);
 			var report = new NelReport
@@ -69,10 +108,11 @@ namespace Diadoc.Api.Nel
 				UserAgent = userAgent,
 				Body = new NelReportBody
 				{
-					Protocol = "http/1.1",
+					Protocol = "http/1.1", //WebRequest does not support http2
 					Method = request.Method,
 					Phase = failureInfo.Phase,
-					Type = failureInfo.Detail
+					Type = failureInfo.Detail,
+					SamplingFraction = samplingFraction
 				}
 			};
 
@@ -92,10 +132,10 @@ namespace Diadoc.Api.Nel
 			return report;
 		}
 
-		private static void SendReport([NotNull] string endpointUrl, [NotNull] NelReport report)
+		private static HttpStatusCode? SendReport([NotNull] string endpointUrl, [NotNull] NelReport report)
 		{
 			if (string.IsNullOrEmpty(endpointUrl))
-				return;
+				return null;
 
 			var json = Newtonsoft.Json.JsonConvert.SerializeObject(report);
 			var data = Encoding.UTF8.GetBytes(json);
@@ -106,6 +146,7 @@ namespace Diadoc.Api.Nel
 			webRequest.Timeout = 15000;
 			webRequest.ReadWriteTimeout = 15000;
 
+			HttpStatusCode? reportResponse = null;
 			webRequest.BeginGetRequestStream(r =>
 			{
 				try
@@ -119,9 +160,9 @@ namespace Diadoc.Api.Nel
 					{
 						try
 						{
-							using ((HttpWebResponse) webRequest.EndGetResponse(t))
+							using (var response = (HttpWebResponse) webRequest.EndGetResponse(t))
 							{
-								// Just for make sure the request has been sent and resources are released
+								reportResponse = response.StatusCode;
 							}
 						}
 						catch
@@ -135,6 +176,7 @@ namespace Diadoc.Api.Nel
 					// ignored
 				}
 			}, null);
+			return reportResponse;
 		}
 
 		private static FailureInfo DeterminePhaseAndType([NotNull] Exception exception)
@@ -144,7 +186,7 @@ namespace Diadoc.Api.Nel
 				switch (webEx.Status)
 				{
 					case WebExceptionStatus.NameResolutionFailure:
-						return new FailureInfo(NelPhaseConstants.Dns, "dns.name_not_resolve");
+						return new FailureInfo(NelPhaseConstants.Dns, "dns.name_not_resolved");
 					case WebExceptionStatus.ProtocolError:
 						return new FailureInfo(NelPhaseConstants.Application, "http.error");
 					case WebExceptionStatus.TrustFailure:
@@ -178,5 +220,7 @@ namespace Diadoc.Api.Nel
 
 			return new FailureInfo(NelPhaseConstants.Unknown, "unknown");
 		}
+
+		private double Rolling() => new Random().NextDouble() * (1.0 - 0.0) + 0.0;
 	}
 }

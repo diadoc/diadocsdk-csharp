@@ -1,4 +1,4 @@
-namespace Diadoc.Api.Nel
+namespace Diadoc.Api.Nel.Hepler
 {
 	public static class NelPhaseConstants
 	{
