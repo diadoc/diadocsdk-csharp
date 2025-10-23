@@ -317,7 +317,7 @@ namespace Diadoc.Api
 			return GetExtendedSignerDetailsAsync(token, boxId, certificate.Thumbprint, documentTitleType);
 		}
 
-		[Obsolete("Use overload with DocumentTitleType parameter")]
+		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var documentTitleType = CreateUtdDocumentTitleType(forBuyer, forCorrection);
@@ -325,7 +325,7 @@ namespace Diadoc.Api
 			return PostExtendedSignerDetailsAsync(token, boxId, thumbprint, documentTitleType, signerDetails);
 		}
 
-		[Obsolete("Use overload with DocumentTitleType parameter")]
+		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		public Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			var certificate = new X509Certificate2(certificateBytes);

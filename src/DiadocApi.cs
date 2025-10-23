@@ -1594,6 +1594,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetExtendedSignerDetails(token, boxId, certificateBytes, forBuyer, forCorrection);
 		}
 
+		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			if (string.IsNullOrEmpty(token))
@@ -1607,6 +1608,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostExtendedSignerDetails(token, boxId, certificateBytes, forBuyer, forCorrection, signerDetails);
 		}
 
+		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
 		{
 			if (string.IsNullOrEmpty(token))
