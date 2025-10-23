@@ -349,7 +349,9 @@ namespace Diadoc.Api
 		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId, TimeSpan? timeout = null);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
+		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
+		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
 		[Obsolete("Use GetResolutionRoutes()")]
 		ResolutionRouteList GetResolutionRoutesForOrganization(string authToken, string orgId);
@@ -808,7 +810,9 @@ namespace Diadoc.Api
  = null);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
+		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
+		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
 		[Obsolete("Use GetResolutionRoutesAsync()")]
 		Task<ResolutionRouteList> GetResolutionRoutesForOrganizationAsync(string authToken, string orgId);
