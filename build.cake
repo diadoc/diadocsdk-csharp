@@ -207,7 +207,10 @@ Task("Repack")
 			ILMerge(
 					outputDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
 					sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
-					new FilePath[] { sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll") },
+					new FilePath[] {
+						 sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll"),
+						 sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll")
+					},
 					ilMergeSettings);
 		}
 
@@ -229,7 +232,10 @@ Task("Repack")
 			ILRepack(
 				outputDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
 				sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
-				new FilePath[] { sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll") },
+				new FilePath[] { 
+					sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll"),
+					sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll")
+				},
 				ilRepackSettings);
 
 			if (signWithKeyFile != null)
