@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Text;
 using Diadoc.Api.Nel.Models;
@@ -20,7 +17,7 @@ namespace Diadoc.Api.Nel
 			var data = Encoding.UTF8.GetBytes(json);
 			var webRequest = (HttpWebRequest) WebRequest.Create(endpointsUrl[iterator]);
 			webRequest.Method = "POST";
-			webRequest.ContentType = "application/json";
+			webRequest.ContentType = "application/reports+json";
 			webRequest.ContentLength = data.Length;
 			webRequest.Timeout = 15000;
 			webRequest.ReadWriteTimeout = 15000;
@@ -30,10 +27,8 @@ namespace Diadoc.Api.Nel
 				try
 				{
 					using (var requestStream = webRequest.EndGetRequestStream(r))
-					{
 						requestStream.Write(data, 0, data.Length);
-					}
-
+					
 					webRequest.BeginGetResponse(t =>
 					{
 						iterator++;

@@ -39,12 +39,12 @@ namespace Diadoc.Api.Nel
 				
 				var endpoints = new List<string>();
 
-				if (reportingEndpoints != null)
+				if (reportingEndpoints != null && reportingEndpoints.Any())
 				{
 					endpoints.AddRange(reportingEndpoints.Select(x => x.Endpoint));
 				}
 
-				if (reportToConfig?.Endpoints != null)
+				if (reportToConfig?.Endpoints != null && reportToConfig.Endpoints.Any())
 				{
 					endpoints.AddRange(reportToConfig.Endpoints.Select(s => s.Url));
 				}
