@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Diadoc.Api.Nel;
+using Diadoc.Api.Nel.Helper;
 using JetBrains.Annotations;
 
 #if !NET35
@@ -39,6 +40,7 @@ namespace Diadoc.Api.Http
 		private NetworkCredential proxyCredential;
 		private Uri proxyUri;
 		private string userAgentString;
+		private readonly NelReporter nelReporter;
 
 		public HttpClient([NotNull] string baseUrl)
 		{
@@ -55,6 +57,7 @@ namespace Diadoc.Api.Http
 			this.baseUrl = baseUrl.EndsWith("/") ? baseUrl.Substring(0, baseUrl.Length - 1) : baseUrl;
 			UseSystemProxy = true;
 			userAgentString = UserAgentBuilder.Build("C#");
+			nelReporter = new NelReporter();
 		}
 
 		/// <summary>
@@ -121,10 +124,12 @@ namespace Diadoc.Api.Http
 			try
 			{
 				var webRequest = PrepareWebRequest(request);
-				using (var webResponse = (HttpWebResponse)webRequest.GetResponse())
+				using (var webResponse = (HttpWebResponse) webRequest.GetResponse())
 				{
 					response = webResponse.ToHttpResponse();
 				}
+
+				response.SetNelInfo();
 
 				if (!StatusCodeIsAllowed(response.StatusCode, allowedStatusCodes))
 				{
@@ -141,6 +146,7 @@ namespace Diadoc.Api.Http
 					if (webResponse != null)
 					{
 						response = webResponse.ToHttpResponse();
+						response.SetNelInfo();
 					}
 				}
 
@@ -164,8 +170,15 @@ namespace Diadoc.Api.Http
 					additionalMessage += " Ошибка подключения: Возможно, неправильные аутентификационные данные для прокси.";
 				}
 
+				nelReporter.SendNelReport(request, response, e, baseUrl);
+
 				var message = string.Format("BaseUrl={0}, PathAndQuery={1}, AdditionalMessage={2}, StatusCode={3}, DiadocErrorCode: {4}", baseUrl, request.PathAndQuery, additionalMessage, statusCode, diadocErrorCode);
 				throw new HttpClientException(message, additionalMessage, request.PathAndQuery, e, response);
+			}
+			catch (Exception e)
+			{
+				nelReporter.SendNelReport(request, response, e, baseUrl);
+				throw;
 			}
 		}
 
@@ -180,8 +193,10 @@ namespace Diadoc.Api.Http
 				var webRequest = PrepareWebRequest(request);
 				using (var webResponse = await webRequest.GetResponseAsync().ConfigureAwait(false))
 				{
-					response = ((HttpWebResponse)webResponse).ToHttpResponse();
+					response = ((HttpWebResponse) webResponse).ToHttpResponse();
 				}
+
+				response.SetNelInfo();
 
 				if (!StatusCodeIsAllowed(response.StatusCode, allowedStatusCodes))
 				{
@@ -198,6 +213,7 @@ namespace Diadoc.Api.Http
 					if (webResponse != null)
 					{
 						response = webResponse.ToHttpResponse();
+						response.SetNelInfo();
 					}
 				}
 
@@ -221,8 +237,15 @@ namespace Diadoc.Api.Http
 					additionalMessage += " Ошибка подключения: Возможно, неправильные аутентификационные данные для прокси.";
 				}
 
+				nelReporter.SendNelReport(request, response, e, baseUrl);
+
 				var message = string.Format("BaseUrl={0}, PathAndQuery={1}, AdditionalMessage={2}, StatusCode={3}, DiadocErrorCode: {4}", baseUrl, request.PathAndQuery, additionalMessage, statusCode, diadocErrorCode);
 				throw new HttpClientException(message, additionalMessage, request.PathAndQuery, e, response);
+			}
+			catch (Exception e)
+			{
+				nelReporter.SendNelReport(request, response, e, baseUrl);
+				throw;
 			}
 		}
 
