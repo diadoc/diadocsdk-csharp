@@ -1,0 +1,15 @@
+import "Documents/Types/DocumentTypeDescriptionV2.proto";
+package Diadoc.Api.Proto.Documents.Types;
+
+message DocumentTypeDescriptionV3 {
+  required string Name = 1;
+  required string Title = 2;
+  repeated int32 SupportedDocflows = 3;
+  required bool RequiresFnsRegistration = 4;
+  repeated DocumentFunctionV2 Functions = 9;
+  required string UniversalMessagesStartDate = 10;
+}
+
+message GetDocumentTypesResponseV3 {
+  repeated DocumentTypeDescriptionV3 DocumentTypes = 1;
+}
