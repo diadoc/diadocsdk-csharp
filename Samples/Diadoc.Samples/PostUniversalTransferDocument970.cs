@@ -163,6 +163,14 @@ namespace Diadoc.Samples
 				Function = UniversalTransferDocumentFunction.СЧФ,
 				DocumentDate = "01.01.2020",
 				DocumentNumber = "134",
+				/*
+				Чтобы отметить в титуле признак алкогольной или табачной продукции нужно заполнить MetaData
+				MetaData = new [] 
+				{
+					"1", //алкогольная продукция, подлежащая маркировке
+					"2" //табачная продукция, сырье, никотинсодержащая продукция и никотиновое сырье
+				},
+				*/
 				Sellers = GetSellersInfo(), //Данные организации продавца
 				Buyers = GetBuyersInfo(), //Данные организации покупателя
 				Table = BuildTableSample(), //Табличная часть документа
@@ -220,15 +228,23 @@ namespace Diadoc.Samples
 						Vat = 10,
 						VatSpecified = true,
 						Subtotal = 110,
-						SubtotalSpecified = true
-					}
+						SubtotalSpecified = true,
+						/*
+						Пример заполнения сведений о маркированном товаре
+						ItemIdentificationNumbers = new[]						 
+						{
+							new InvoiceTableItemItemIdentificationNumber()
+								{TransPackageId = "PackageId"}
+						}
+						*/
+					},
 				},
 				Total = 110,
 				TotalSpecified = true,
 				TotalWithVatExcluded = 0,
 				TotalWithVatExcludedSpecified = true,
 				Vat = 10m,
-				VatSpecified = true
+				VatSpecified = true,
 			};
 		}
 
