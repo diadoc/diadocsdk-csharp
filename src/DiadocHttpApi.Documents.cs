@@ -153,6 +153,13 @@ namespace Diadoc.Api
 			qsb.AddParameter("boxId", boxId);
 			return PerformHttpRequest<GetDocumentTypesResponseV2>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
+		
+		public GetDocumentTypesResponseV3 GetDocumentTypesV3(string authToken, string boxId)
+		{
+			var qsb = new PathAndQueryBuilder("/V3/GetDocumentTypes");
+			qsb.AddParameter("boxId", boxId);
+			return PerformHttpRequest<GetDocumentTypesResponseV3>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
 
 		[Obsolete("Use DetectDocumentTitles")]
 		public DetectDocumentTypesResponse DetectDocumentTypes(string authToken, string boxId, string nameOnShelf)

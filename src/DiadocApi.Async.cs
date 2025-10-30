@@ -1496,6 +1496,15 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetDocumentTypesV2Async(authToken, boxId);
 		}
+		
+		public Task<GetDocumentTypesResponseV3> GetDocumentTypesV3Async(string authToken, string boxId)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException("authToken");
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetDocumentTypesV3Async(authToken, boxId);
+		}
 
 		[Obsolete("Use DetectDocumentTitlesAsync")]
 		public Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, string nameOnShelf)

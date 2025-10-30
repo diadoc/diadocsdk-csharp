@@ -153,7 +153,13 @@ namespace Diadoc.Api
 			qsb.AddParameter("boxId", boxId);
 			return PerformHttpRequestAsync<GetDocumentTypesResponseV2>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
-
+		public Task<GetDocumentTypesResponseV3> GetDocumentTypesV3Async(string authToken, string boxId)
+		{
+			var qsb = new PathAndQueryBuilder("/V3/GetDocumentTypes");
+			qsb.AddParameter("boxId", boxId);
+			return PerformHttpRequestAsync<GetDocumentTypesResponseV3>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+		
 		public Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, string nameOnShelf)
 		{
 			var qsb = new PathAndQueryBuilder("/DetectDocumentTypes");
