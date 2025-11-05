@@ -1,4 +1,4 @@
-REM Регистрирует сборку, чтобы Diadoc API стало доступно через COM.
+REM Р РµРіРёСЃС‚СЂРёСЂСѓРµС‚ СЃР±РѕСЂРєСѓ, С‡С‚РѕР±С‹ Diadoc API СЃС‚Р°Р»Рѕ РґРѕСЃС‚СѓРїРЅРѕ С‡РµСЂРµР· COM.
 
 c:\Windows\Microsoft.NET\Framework\v4.0.30319\RegAsm.exe "%~dp0DiadocApi.dll" /codebase /tlb:DiadocApi.tlb
 pause
