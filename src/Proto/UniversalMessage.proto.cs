@@ -32,6 +32,13 @@ namespace Diadoc.Api.Proto
       get { return _Events; }
     }
   
+    private Diadoc.Api.Proto.UniversalMessageCreator _UniversalMessageCreator;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"UniversalMessageCreator", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.UniversalMessageCreator UniversalMessageCreator
+    {
+      get { return _UniversalMessageCreator; }
+      set { _UniversalMessageCreator = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -57,6 +64,30 @@ namespace Diadoc.Api.Proto
     {
       get { return _PlainText; }
       set { _PlainText = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UniversalMessageCreator")]
+  public partial class UniversalMessageCreator : global::ProtoBuf.IExtensible
+  {
+    public UniversalMessageCreator() {}
+    
+    private string _BoxId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"BoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string BoxId
+    {
+      get { return _BoxId; }
+      set { _BoxId = value; }
+    }
+    private string _DepartmentId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"DepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DepartmentId
+    {
+      get { return _DepartmentId; }
+      set { _DepartmentId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
