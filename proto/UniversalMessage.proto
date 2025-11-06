@@ -5,11 +5,17 @@ package Diadoc.Api.Proto;
 message UniversalMessageInfo {
     optional UniversalMessageCodeGroup CodeGroup = 1 [default = UnknownUniversalMessageCodeGroup];
     repeated UniversalMessageEvent Events = 2;
+    required UniversalMessageCreator UniversalMessageCreator = 3;
 }
  
 message UniversalMessageEvent {
     required int32 StatusCode = 1;
     optional string PlainText = 2;
+}
+ 
+message UniversalMessageCreator {
+  required string BoxId = 1;
+  required string DepartmentId = 2;
 }
  
 enum UniversalMessageCodeGroup {
