@@ -330,7 +330,7 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetNewEvents(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
 		}
-		
+
 		public BoxEventList GetNewEventsV8(
 			string authToken,
 			string boxId,
@@ -744,17 +744,17 @@ namespace Diadoc.Api
 			if (userContractData == null) throw new ArgumentNullException(nameof(userContractData));
 			return diadocHttpApi.GenerateUniversalMessage(authToken, boxId, messageId, attachmentId, userContractData);
 		}
-		
+
 		public byte[] ParseUniversalMessage(string authToken, string boxId, string messageId, string attachmentId)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
 			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
 			if (attachmentId == null) throw new ArgumentNullException(nameof(attachmentId));
-			
+
 			return diadocHttpApi.ParseUniversalMessage(authToken, boxId, messageId, attachmentId);
 		}
-		
+
 		public byte[] ParseUniversalMessageXml(string authToken, byte[] content)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
@@ -964,22 +964,6 @@ namespace Diadoc.Api
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetForwardedEntityContent(authToken, boxId, forwardedDocumentId, entityId);
-		}
-
-		[Obsolete("Method GenerateForwardedDocumentProtocol will be removed soon")]
-		public DocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken,
-			string boxId,
-			ForwardedDocumentId forwardedDocumentId)
-		{
-			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GenerateForwardedDocumentProtocol(authToken, boxId, forwardedDocumentId);
-		}
-
-		[Obsolete("Method GenerateForwardedDocumentPrintForm will be removed soon")]
-		public PrintFormResult GenerateForwardedDocumentPrintForm(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId)
-		{
-			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GenerateForwardedDocumentPrintForm(authToken, boxId, forwardedDocumentId);
 		}
 
 		public bool CanSendInvoice(string authToken, string boxId, byte[] certificateBytes)
@@ -1649,7 +1633,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetDocumentTypesV2(authToken, boxId);
 		}
-		
+
 		public GetDocumentTypesResponseV3 GetDocumentTypesV3(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1806,7 +1790,7 @@ namespace Diadoc.Api
 			if (powerOfAttorneyToUpdate == null) throw new ArgumentNullException("powerOfAttorneyToUpdate");
 			return diadocHttpApi.UpdateEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn, powerOfAttorneyToUpdate);
 		}
-		
+
 		public EmployeePowerOfAttorney UpdateEmployeePowerOfAttorneyV2(
 			string authToken,
 			string boxId,
@@ -1828,7 +1812,7 @@ namespace Diadoc.Api
 			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
 			return diadocHttpApi.AddEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
-		
+
 		public EmployeePowerOfAttorney AddEmployeePowerOfAttorneyV2(string authToken, string boxId, [CanBeNull] string userId, PowerOfAttorneyFullId fullId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1846,7 +1830,7 @@ namespace Diadoc.Api
 			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
 			diadocHttpApi.DeleteEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
-		
+
 		public void DeleteEmployeePowerOfAttorneyV2(string authToken, string boxId, [CanBeNull] string userId, PowerOfAttorneyFullId fullId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1963,7 +1947,7 @@ namespace Diadoc.Api
 			if (request == null) throw new ArgumentNullException("request");
 			return diadocHttpApi.PrevalidatePowerOfAttorney(authToken, boxId, registrationNumber, issuerInn, request);
 		}
-		
+
 		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorneyV2(
 			string authToken,
 			string boxId,
