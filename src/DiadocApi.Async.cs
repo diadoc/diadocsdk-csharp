@@ -823,13 +823,6 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetForwardedEntityContentAsync(authToken, boxId, forwardedDocumentId, entityId);
 		}
 
-		[Obsolete("Method GenerateForwardedDocumentPrintFormAsync will be removed soon")]
-		public Task<PrintFormResult> GenerateForwardedDocumentPrintFormAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId)
-		{
-			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GenerateForwardedDocumentPrintFormAsync(authToken, boxId, forwardedDocumentId);
-		}
-
 		public Task<bool> CanSendInvoiceAsync(string authToken, string boxId, byte[] certificateBytes)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");

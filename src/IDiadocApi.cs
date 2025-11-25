@@ -250,9 +250,6 @@ namespace Diadoc.Api
 		[Obsolete("Method GetForwardedEntityContent will be removed soon")]
 		byte[] GetForwardedEntityContent(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId, string entityId);
 
-		[Obsolete("Method GenerateForwardedDocumentPrintForm will be removed soon")]
-		PrintFormResult GenerateForwardedDocumentPrintForm(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
-
 		bool CanSendInvoice(string authToken, string boxId, byte[] certificateBytes);
 		void SendFnsRegistrationMessage(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);
 
@@ -810,9 +807,6 @@ namespace Diadoc.Api
 
 		[Obsolete("Method GetForwardedEntityContentAsync will be removed soon")]
 		Task<byte[]> GetForwardedEntityContentAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId, string entityId);
-
-		[Obsolete("Method GenerateForwardedDocumentPrintFormAsync will be removed soon")]
-		Task<PrintFormResult> GenerateForwardedDocumentPrintFormAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
 
 		Task<bool> CanSendInvoiceAsync(string authToken, string boxId, byte[] certificateBytes);
 		Task SendFnsRegistrationMessageAsync(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);

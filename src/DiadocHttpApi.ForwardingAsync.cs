@@ -44,16 +44,5 @@ namespace Diadoc.Api
 				.BuildPathAndQuery();
 			return PerformHttpRequestAsync(authToken, "GET", queryString);
 		}
-
-		[ItemNotNull]
-		[Obsolete("Method GenerateForwardedDocumentPrintFormAsync will be removed soon")]
-		public Task<PrintFormResult> GenerateForwardedDocumentPrintFormAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardedDocumentId forwardedDocumentId)
-		{
-			var queryString = new PathAndQueryBuilder("/GenerateForwardedDocumentPrintForm")
-				.WithBoxId(boxId)
-				.WithForwardedDocumentId(forwardedDocumentId)
-				.BuildPathAndQuery();
-			return GetPrintFormResultAsync(authToken, queryString);
-		}
 	}
 }
