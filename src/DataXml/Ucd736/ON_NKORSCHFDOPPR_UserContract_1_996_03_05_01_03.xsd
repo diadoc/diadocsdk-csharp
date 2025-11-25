@@ -219,12 +219,12 @@
           <xs:documentation>ставка налога</xs:documentation>
         </xs:annotation>
         <xs:complexType>
-          <xs:attribute name="OriginalValue" type="TaxRateUcd736AndUtd820" use="required">
+          <xs:attribute name="OriginalValue" type="TaxRateUcd736WithTwentyTwoPercent" use="required">
             <xs:annotation>
               <xs:documentation>НалСтДо</xs:documentation>
             </xs:annotation>
           </xs:attribute>
-          <xs:attribute name="CorrectedValue" type="TaxRateUcd736AndUtd820" use="required">
+          <xs:attribute name="CorrectedValue" type="TaxRateUcd736WithTwentyTwoPercent" use="required">
             <xs:annotation>
               <xs:documentation>НалСтПосле</xs:documentation>
             </xs:annotation>
@@ -1404,6 +1404,28 @@
       <xs:enumeration value="TenFraction" />
       <xs:enumeration value="TwentyFraction" />
       <xs:enumeration value="TaxedByAgent" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TaxRateUcd736WithTwentyTwoPercent">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="0%"/>
+      <xs:enumeration value="5%"/>
+      <xs:enumeration value="7%"/>
+      <xs:enumeration value="9,09%"/>
+      <xs:enumeration value="10%"/>
+      <xs:enumeration value="16,67%"/>
+      <xs:enumeration value="18%"/>
+      <xs:enumeration value="18,03%"/>
+      <xs:enumeration value="20%"/>
+      <xs:enumeration value="22%"/>
+      <xs:enumeration value="5/105"/>
+      <xs:enumeration value="7/107"/>
+      <xs:enumeration value="10/110"/>
+      <xs:enumeration value="18/118"/>
+      <xs:enumeration value="20/120"/>
+      <xs:enumeration value="22/122"/>
+      <xs:enumeration value="без НДС"/>
+      <xs:enumeration value="НДС исчисляется налоговым агентом"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="Attorney">
