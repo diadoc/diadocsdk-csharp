@@ -581,7 +581,8 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForBuyerAsync(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
-		public Task<GeneratedFile> GenerateTitleXmlAsync(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, int titleIndex, byte[] userContractData, bool disableValidation = false, string editingSettingId = null, string letterId = null, string documentId = null)
+		public Task<GeneratedFile> GenerateTitleXmlAsync(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, int titleIndex, byte[] userContractData, bool disableValidation = false, string editingSettingId = null,
+			string letterId = null, string documentId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
@@ -820,14 +821,6 @@ namespace Diadoc.Api
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetForwardedEntityContentAsync(authToken, boxId, forwardedDocumentId, entityId);
-		}
-
-		[Obsolete("Method GenerateForwardedDocumentProtocolAsync will be removed soon")]
-		public Task<DocumentProtocolResult> GenerateForwardedDocumentProtocolAsync(string authToken, string boxId,
-			ForwardedDocumentId forwardedDocumentId)
-		{
-			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GenerateForwardedDocumentProtocolAsync(authToken, boxId, forwardedDocumentId);
 		}
 
 		[Obsolete("Method GenerateForwardedDocumentPrintFormAsync will be removed soon")]
@@ -1240,20 +1233,20 @@ namespace Diadoc.Api
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseSignatureRejectionXmlAsync(authToken, signatureRejectionXmlContent);
 		}
-		
+
 		public Task<byte[]> ParseUniversalMessageXmlAsync(string authToken, byte[] content)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseUniversalMessageXmlAsync(authToken, content);
 		}
-		
+
 		public Task<byte[]> ParseUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
 			if (messageId == null) throw new ArgumentNullException(nameof(messageId));
 			if (attachmentId == null) throw new ArgumentNullException(nameof(attachmentId));
-			
+
 			return diadocHttpApi.ParseUniversalMessageAsync(authToken, boxId, messageId, attachmentId);
 		}
 
@@ -1496,7 +1489,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetDocumentTypesV2Async(authToken, boxId);
 		}
-		
+
 		public Task<GetDocumentTypesResponseV3> GetDocumentTypesV3Async(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1653,7 +1646,7 @@ namespace Diadoc.Api
 			if (powerOfAttorneyToUpdate == null) throw new ArgumentNullException("powerOfAttorneyToUpdate");
 			return diadocHttpApi.UpdateEmployeePowerOfAttorneyAsync(authToken, boxId, userId, registrationNumber, issuerInn, powerOfAttorneyToUpdate);
 		}
-		
+
 		public Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyV2Async(
 			string authToken,
 			string boxId,
@@ -1675,11 +1668,11 @@ namespace Diadoc.Api
 			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
 			return diadocHttpApi.AddEmployeePowerOfAttorneyAsync(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
-		
+
 		public Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyV2Async(
-			string authToken, 
-			string boxId, 
-			[CanBeNull] string userId, 
+			string authToken,
+			string boxId,
+			[CanBeNull] string userId,
 			PowerOfAttorneyFullId fullId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1697,11 +1690,10 @@ namespace Diadoc.Api
 			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
 			return diadocHttpApi.DeleteEmployeePowerOfAttorneyAsync(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
-		
+
 		public Task DeleteEmployeePowerOfAttorneyV2Async(
-			string authToken, 
-			string boxId, [CanBeNull] 
-			string userId, 
+			string authToken,
+			string boxId, [CanBeNull] string userId,
 			PowerOfAttorneyFullId fullId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -1817,7 +1809,7 @@ namespace Diadoc.Api
 			if (request == null) throw new ArgumentNullException("request");
 			return diadocHttpApi.PrevalidatePowerOfAttorneyAsync(authToken, boxId, registrationNumber, issuerInn, request);
 		}
-		
+
 		public Task<PowerOfAttorneyPrevalidateResult> PrevalidatePowerOfAttorneyV2Async(
 			string authToken,
 			string boxId,

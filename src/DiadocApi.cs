@@ -966,15 +966,6 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetForwardedEntityContent(authToken, boxId, forwardedDocumentId, entityId);
 		}
 
-		[Obsolete("Method GenerateForwardedDocumentProtocol will be removed soon")]
-		public DocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken,
-			string boxId,
-			ForwardedDocumentId forwardedDocumentId)
-		{
-			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GenerateForwardedDocumentProtocol(authToken, boxId, forwardedDocumentId);
-		}
-
 		[Obsolete("Method GenerateForwardedDocumentPrintForm will be removed soon")]
 		public PrintFormResult GenerateForwardedDocumentPrintForm(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId)
 		{
