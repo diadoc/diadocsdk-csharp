@@ -11,7 +11,7 @@
 // 
 // Этот исходный код был создан с помощью xsd, версия=4.8.3928.0.
 // 
-namespace Diadoc.WebAdminApp.Models.DocumentTypeConfiguration.Models {
+namespace Diadoc.Api.DataXml.ON_NKORSCHFDOPPR_UserContract_1_996_03_05_01_03 {
     using System.Xml.Serialization;
     
     
