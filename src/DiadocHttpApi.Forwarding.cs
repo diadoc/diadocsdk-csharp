@@ -43,28 +43,5 @@ namespace Diadoc.Api
 				.BuildPathAndQuery();
 			return PerformHttpRequest(authToken, "GET", queryString);
 		}
-
-		[NotNull]
-		[Obsolete("Method GenerateForwardedDocumentProtocol will be removed soon")]
-		public DocumentProtocolResult GenerateForwardedDocumentProtocol([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardedDocumentId forwardedDocumentId)
-		{
-			var queryString = new PathAndQueryBuilder("/V2/GenerateForwardedDocumentProtocol")
-				.WithBoxId(boxId)
-				.WithForwardedDocumentId(forwardedDocumentId)
-				.BuildPathAndQuery();
-			var request = BuildHttpRequest(authToken, "GET", queryString, null);
-			return GenerateDocumentProtocol(request);
-		}
-		
-		[NotNull]
-		[Obsolete("Method GenerateForwardedDocumentPrintForm will be removed soon")]
-		public PrintFormResult GenerateForwardedDocumentPrintForm([NotNull] string authToken, [NotNull] string boxId, [NotNull] ForwardedDocumentId forwardedDocumentId)
-		{
-			var queryString = new PathAndQueryBuilder("/GenerateForwardedDocumentPrintForm")
-				.WithBoxId(boxId)
-				.WithForwardedDocumentId(forwardedDocumentId)
-				.BuildPathAndQuery();
-			return GetPrintFormResult(authToken, queryString);
-		}
 	}
 }

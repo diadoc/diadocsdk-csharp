@@ -58,34 +58,53 @@ namespace Diadoc.Api
 		string AuthenticateWithKey(byte[] certificateBytes, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true);
 		string AuthenticateWithKeyConfirm(byte[] certificateBytes, string token, bool saveBinding = false);
 		string AuthenticateWithKeyConfirm(string thumbprint, string token, bool saveBinding = false);
+
 		[Obsolete("Use GetMyEmployee()")]
 		OrganizationUserPermissions GetMyPermissions(string authToken, string orgId);
+
 		OrganizationList GetMyOrganizations(string authToken, bool autoRegister = true);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false);
+
 		OrganizationList GetOrganizationsByInnKpp(string authToken, string inn, string kpp, bool includeRelations = false);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationById(string orgId);
+
 		Organization GetOrganizationById(string authToken, string orgId);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByBoxId(string boxId);
+
 		Organization GetOrganizationByBoxId(string authToken, string boxId);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByFnsParticipantId(string fnsParticipantId);
+
 		Organization GetOrganizationByFnsParticipantId(string authToken, string fnsParticipantId);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByInnKpp(string inn, string kpp);
+
 		Organization GetOrganizationByInnKpp(string authToken, string inn, string kpp);
 		RoamingOperatorList GetRoamingOperators(string authToken, string boxId);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Box GetBox(string boxId);
+
 		Box GetBox(string authToken, string boxId);
+
 		[Obsolete("Use a similar method with boxId: GetDepartmentV2()")]
 		Department GetDepartment(string authToken, string orgId, string departmentId);
+
 		Department GetDepartmentV2(string authToken, string boxId, string departmentId);
+
 		[Obsolete("Method UpdateOrganizationProperties will be removed soon")]
 		void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps);
+
 		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
+
 		[Obsolete("Use GetNewEventsV8()")]
 		BoxEventList GetNewEvents(
 			string authToken,
@@ -116,14 +135,18 @@ namespace Diadoc.Api
 			string counteragentBoxId = null,
 			string orderBy = null,
 			int? limit = null);
+
 		[Obsolete("Use GetEventV3()")]
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
+
 		BoxEvent GetEventV3(string authToken, string boxId, string eventId);
 		Message PostMessage(string authToken, MessageToPost msg, string operationId = null);
 		Template PostTemplate(string authToken, TemplateToPost template, string operationId = null);
 		Message TransformTemplateToMessage(string authToken, TemplateTransformationToPost templateTransformation, string operationId = null);
+
 		[Obsolete("Use PostMessagePatchV4()")]
 		MessagePatch PostMessagePatch(string authToken, MessagePatchToPost patch, string operationId = null);
+
 		MessagePatch PostMessagePatchV4(string authToken, MessagePatchToPostV2 patch, string operationId = null);
 		MessagePatch PostTemplatePatch(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null);
 		void PostRoamingNotification(string authToken, RoamingNotificationToPost notification);
@@ -133,15 +156,21 @@ namespace Diadoc.Api
 		byte[] GetEntityContent(string authToken, string boxId, string messageId, string entityId);
 		GeneratedFile GenerateDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
 		GeneratedFile GenerateInvoiceDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
+
 		[Obsolete("Use GenerateReceiptXmlV2()")]
 		GeneratedFile GenerateReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
+
 		GeneratedFile GenerateReceiptXmlV2(string authToken, string boxId, ReceiptGenerationRequestV2 receiptGenerationRequest);
+
 		[Obsolete("Use GenerateInvoiceCorrectionRequestXmlV2()")]
 		GeneratedFile GenerateInvoiceCorrectionRequestXml(string authToken, string boxId, string messageId, string attachmentId, InvoiceCorrectionRequestInfo correctionInfo);
+
 		GeneratedFile GenerateInvoiceCorrectionRequestXmlV2(string authToken, string boxId, InvoiceCorrectionRequestGenerationRequestV2 invoiceCorrectionRequestGenerationRequest);
 		GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null);
+
 		[Obsolete("Use GenerateSignatureRejectionXmlV2()")]
 		GeneratedFile GenerateSignatureRejectionXml(string authToken, string boxId, string messageId, string attachmentId, SignatureRejectionInfo signatureRejectionInfo);
+
 		GeneratedFile GenerateSignatureRejectionXmlV2(string authToken, string boxId, SignatureRejectionGenerationRequestV2 signatureRejectionGenerationRequest);
 		InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId, string entityId);
 		GeneratedFile GenerateInvoiceXml(string authToken, InvoiceInfo invoiceInfo, bool disableValidation = false);
@@ -156,73 +185,94 @@ namespace Diadoc.Api
 		GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
 		GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(string authToken, AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation = false);
 		GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(string authToken, AcceptanceCertificate552BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
 		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
 			string authToken,
 			UniversalTransferDocumentSellerTitleInfo sellerInfo,
 			bool disableValidation = false,
 			string documentVersion = null);
+
 		GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
 			string authToken,
 			UniversalCorrectionDocumentSellerTitleInfo sellerInfo,
 			bool disableValidation = false,
 			string documentVersion = null);
+
 		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
-		GeneratedFile GenerateTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, int titleIndex, byte[] userContractData, bool disableValidation = false, string editingSettingId = null, string letterId = null, string documentId = null);
+
+		GeneratedFile GenerateTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, int titleIndex, byte[] userContractData, bool disableValidation = false, string editingSettingId = null,
+			string letterId = null, string documentId = null);
+
 		GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null);
 		GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
 		GeneratedFile GenerateUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
 		byte[] GenerateTtGisFixationCancellationRequest(string authToken, string boxId, string messageId, string documentId);
+
 		[Obsolete("Use GetMessageV6()")]
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		[Obsolete("Use GetMessageV6()")]
 		Message GetMessage(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		Message GetMessageV6(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, DraftToSend draftToSend, string operationId = null);
 		PrintFormResult GeneratePrintForm(string authToken, string boxId, string messageId, string documentId);
 		string GeneratePrintFormFromAttachment(string authToken, DocumentType documentType, byte[] content, string fromBoxId = null);
+
 		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
 		PrintFormResult GetGeneratedPrintForm(string authToken, DocumentType documentType, string printFormId);
+
 		PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId);
-		DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count = null);
+
+		DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments,
+			string afterIndexKey, int? count = null);
+
 		DocumentList GetDocuments(string authToken, DocumentsFilter filter);
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
 		GetDocflowBatchResponse GetDocflows(string authToken, string boxId, GetDocflowBatchRequest request);
 		GetDocflowEventsResponse GetDocflowEvents(string authToken, string boxId, GetDocflowEventsRequest request);
 		SearchDocflowsResponse SearchDocflows(string authToken, string boxId, SearchDocflowsRequest request);
 		GetDocflowsByPacketIdResponse GetDocflowsByPacketId(string authToken, string boxId, GetDocflowsByPacketIdRequest request);
+
 		[Obsolete("Method ForwardDocument will be removed soon")]
 		ForwardDocumentResponse ForwardDocument(string authToken, string boxId, ForwardDocumentRequest request);
+
 		[Obsolete("Method GetForwardedDocuments will be removed soon")]
 		GetForwardedDocumentsResponse GetForwardedDocuments(string authToken, string boxId, GetForwardedDocumentsRequest request);
+
 		[Obsolete("Method GetForwardedDocumentEvents will be removed soon")]
 		GetForwardedDocumentEventsResponse GetForwardedDocumentEvents(string authToken, string boxId, GetForwardedDocumentEventsRequest request);
+
 		[Obsolete("Method GetForwardedEntityContent will be removed soon")]
 		byte[] GetForwardedEntityContent(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId, string entityId);
-		[Obsolete("Method GenerateForwardedDocumentProtocol will be removed soon")]
-		DocumentProtocolResult GenerateForwardedDocumentProtocol(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
-		[Obsolete("Method GenerateForwardedDocumentPrintForm will be removed soon")]
-		PrintFormResult GenerateForwardedDocumentPrintForm(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
+
 		bool CanSendInvoice(string authToken, string boxId, byte[] certificateBytes);
 		void SendFnsRegistrationMessage(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);
 
 		[Obsolete("Use GetCounteragentV3()")]
 		Counteragent GetCounteragent(string authToken, string myOrgId, string counteragentOrgId);
+
 		Counteragent GetCounteragentV3(string authToken, string myBoxId, string counteragentBoxId);
 
 		[Obsolete("Use GetCounteragentCertificatesV2()")]
 		CounteragentCertificateList GetCounteragentCertificates(string authToken, string myOrgId, string counteragentOrgId);
+
 		CounteragentCertificateList GetCounteragentCertificatesV2(string authToken, string myBoxId, string counteragentBoxId);
 
 		[Obsolete("Use GetCounteragentsV3()")]
 		CounteragentList GetCounteragents(string authToken, string myOrgId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null);
+
 		CounteragentList GetCounteragentsV3(string authToken, string myBoxId, string counteragentStatus, string afterIndexKey, string query = null, int? pageSize = null);
 
 		[Obsolete("Use BreakWithCounteragentV2()")]
 		void BreakWithCounteragent(string authToken, string myOrgId, string counteragentOrgId, string comment);
+
 		void BreakWithCounteragentV2(string authToken, string myBoxId, string counteragentBoxId, string comment);
+
 		BoxCounteragentEventList GetCounteragentEvents(
 			string authToken,
 			string boxId,
@@ -230,56 +280,87 @@ namespace Diadoc.Api
 			long? timestampFromTicks = null,
 			long? timestampToTicks = null,
 			int? limit = null);
+
 		[Obsolete("Use UploadFileToShelfV2 or UploadLargeFileToShelf")]
 		string UploadFileToShelf(string authToken, byte[] data);
+
 		string UploadFileToShelfV2(string authToken, byte[] content, [CanBeNull] string fileExtension);
 		string UploadLargeFileToShelf(string authToken, byte[] content, [CanBeNull] string fileExtension);
+
 		[Obsolete("Use GetFileFromShelfV2")]
 		byte[] GetFileFromShelf(string authToken, string nameOnShelf);
+
 		byte[] GetFileFromShelfV2(string authToken, string fileName);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RussianAddress ParseRussianAddress(string address);
+
 		RussianAddress ParseRussianAddress(string authToken, string address);
 		GarAddress ParseGarAddress(string authToken, string address);
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
+
 		InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent);
+
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] xmlContent);
+
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent);
+
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent);
+
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
+
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent);
+
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent);
+
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent);
+
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
+
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
+
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
+
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent);
+
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(string authToken, byte[] xmlContent);
 
 		byte[] ParseTitleXml(
@@ -290,13 +371,14 @@ namespace Diadoc.Api
 			string documentVersion,
 			int titleIndex,
 			byte[] content);
-		
+
 		byte[] ParseUniversalMessageXml(string authToken, byte[] content);
-		
+
 		byte[] ParseUniversalMessage(string authToken, string boxId, string messageId, string attachmentId);
 
 		[Obsolete("Use GetOrganizationUsersV2()")]
 		OrganizationUsersList GetOrganizationUsers(string authToken, string orgId);
+
 		OrganizationUsersList GetOrganizationUsersV2(string authToken, string boxId);
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
@@ -314,16 +396,21 @@ namespace Diadoc.Api
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		RevocationRequestInfo ParseRevocationRequestXml(byte[] revocationRequestXmlContent);
+
 		RevocationRequestInfo ParseRevocationRequestXml(string authToken, byte[] revocationRequestXmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		SignatureRejectionInfo ParseSignatureRejectionXml(byte[] signatureRejectionXmlContent);
+
 		SignatureRejectionInfo ParseSignatureRejectionXml(string authToken, byte[] signatureRejectionXmlContent);
 		DocumentProtocolResult GenerateDocumentProtocol(string authToken, string boxId, string messageId, string documentId);
 		DocumentZipGenerationResult GenerateDocumentZip(string authToken, string boxId, string messageId, string documentId, bool fullDocflow);
 		DocumentList GetDocumentsByCustomId(string authToken, string boxId, string customDocumentId);
 		PrepareDocumentsToSignResponse PrepareDocumentsToSign(string authToken, PrepareDocumentsToSignRequest request, bool excludeContent = false);
+
 		[Obsolete("Use GetMyUserV2")]
 		User GetMyUser(string authToken);
+
 		UserV2 GetMyUserV2(string authToken);
 		CertificateList GetMyCertificates(string authToken, string boxId);
 		AsyncMethodResult CloudSign(string authToken, CloudSignRequest request, string certificateThumbprint);
@@ -335,10 +422,12 @@ namespace Diadoc.Api
 
 		[Obsolete("Use AcquireCounteragentV3()")]
 		AsyncMethodResult AcquireCounteragent(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
+
 		AsyncMethodResult AcquireCounteragentV3(string authToken, string myBoxId, AcquireCounteragentRequest request, string myDepartmentId = null);
 
 		[Obsolete("Use WaitAcquireCounteragentResultV2()")]
 		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
+
 		AcquireCounteragentResultV2 WaitAcquireCounteragentResultV2(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
 
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
@@ -349,12 +438,16 @@ namespace Diadoc.Api
 		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId, TimeSpan? timeout = null);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
+
 		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
+
 		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
+
 		[Obsolete("Use GetResolutionRoutes()")]
 		ResolutionRouteList GetResolutionRoutesForOrganization(string authToken, string orgId);
+
 		ResolutionRouteList GetResolutionRoutes(string authToken, string boxId);
 		SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId);
 
@@ -388,7 +481,7 @@ namespace Diadoc.Api
 			string registrationNumber,
 			string issuerInn,
 			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate);
-		
+
 		EmployeePowerOfAttorney UpdateEmployeePowerOfAttorneyV2(
 			string authToken,
 			string boxId,
@@ -402,7 +495,7 @@ namespace Diadoc.Api
 			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
-		
+
 		EmployeePowerOfAttorney AddEmployeePowerOfAttorneyV2(
 			string authToken,
 			string boxId,
@@ -416,7 +509,7 @@ namespace Diadoc.Api
 			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
-		
+
 		void DeleteEmployeePowerOfAttorneyV2(
 			string authToken,
 			string boxId,
@@ -432,8 +525,10 @@ namespace Diadoc.Api
 		RegistrationResponse Register(string authToken, RegistrationRequest registrationRequest);
 		void RegisterConfirm(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
 		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, CustomPrintFormDetectionRequest request);
+
 		[Obsolete("Use GetLastEventV2()")]
 		BoxEvent GetLastEvent(string authToken, string boxId);
+
 		BoxEvent GetLastEventV2(string authToken, string boxId);
 
 		AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister);
@@ -446,15 +541,17 @@ namespace Diadoc.Api
 			string registrationNumber,
 			string issuerInn,
 			PowerOfAttorneyPrevalidateRequest request);
-		
+
 		PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorneyV2(
 			string authToken,
 			string boxId,
 			PowerOfAttorneyPrevalidateRequestV2 request);
 
 		PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId);
+
 		[Obsolete("Use GetPowerOfAttorneyContentV2")]
 		PowerOfAttorneyContent GetPowerOfAttorneyContent(string authToken, string boxId, string messageId, string entityId);
+
 		PowerOfAttorneyContentResponse GetPowerOfAttorneyContentV2(string authToken, string boxId, string messageId, string entityId);
 
 		CounteragentGroup CreateCounteragentGroup(string authToken, string boxId, CounteragentGroupToCreate counteragentGroupToCreate);
@@ -472,43 +569,65 @@ namespace Diadoc.Api
 		Task<string> AuthenticateBySidAsync([NotNull] string sid);
 		Task<string> AuthenticateAsync(byte[] certificateBytes, bool useLocalSystemStorage = false);
 		Task<string> AuthenticateAsync(string thumbprint, bool useLocalSystemStorage = false);
+
 		Task<string> AuthenticateWithKeyAsync(string thumbprint, bool useLocalSystemStorage = false, string key =
- null, string id = null, bool autoConfirm = true);
+			null, string id = null, bool autoConfirm = true);
+
 		Task<string> AuthenticateWithKeyAsync(byte[] certificateBytes, bool useLocalSystemStorage = false, string key =
- null, string id = null, bool autoConfirm = true);
+			null, string id = null, bool autoConfirm = true);
+
 		Task<string> AuthenticateWithKeyConfirmAsync(byte[] certificateBytes, string token, bool saveBinding = false);
 		Task<string> AuthenticateWithKeyConfirmAsync(string thumbprint, string token, bool saveBinding = false);
 		Task<OrganizationUserPermissions> GetMyPermissionsAsync(string authToken, string orgId);
 		Task<OrganizationList> GetMyOrganizationsAsync(string authToken, bool autoRegister = true);
+
 		[Obsolete("Use GetMyUserV2Async")]
 		Task<User> GetMyUserAsync(string authToken);
+
 		Task<UserV2> GetMyUserV2Async(string authToken);
 		Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false);
+
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string authToken, string inn, string kpp, bool includeRelations = false);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Organization> GetOrganizationByIdAsync(string orgId);
+
 		Task<Organization> GetOrganizationByIdAsync(string authToken, string orgId);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Organization> GetOrganizationByBoxIdAsync(string boxId);
+
 		Task<Organization> GetOrganizationByBoxIdAsync(string authToken, string boxId);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Organization> GetOrganizationByFnsParticipantIdAsync(string fnsParticipantId);
+
 		Task<Organization> GetOrganizationByFnsParticipantIdAsync(string authToken, string fnsParticipantId);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Organization> GetOrganizationByInnKppAsync(string inn, string kpp);
+
 		Task<Organization> GetOrganizationByInnKppAsync(string authToken, string inn, string kpp);
 		Task<RoamingOperatorList> GetRoamingOperatorsAsync(string authToken, string boxId);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Box> GetBoxAsync(string boxId);
+
 		Task<Box> GetBoxAsync(string authToken, string boxId);
+
 		[Obsolete("Use a similar method with boxId: GetDepartmentV2Async()")]
 		Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId);
+
 		Task<Department> GetDepartmentV2Async(string authToken, string boxId, string departmentId);
+
 		[Obsolete("Method UpdateOrganizationPropertiesAsync will be removed soon")]
 		Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps);
+
 		Task<OrganizationFeatures> GetOrganizationFeaturesAsync(string authToken, string boxId);
+
 		[Obsolete("Use GetNewEventsV8Async()")]
 		Task<BoxEventList> GetNewEventsAsync(
 			string authToken,
@@ -524,6 +643,7 @@ namespace Diadoc.Api
 			string counteragentBoxId = null,
 			string orderBy = null,
 			int? limit = null);
+
 		Task<BoxEventList> GetNewEventsV8Async(
 			string authToken,
 			string boxId,
@@ -538,17 +658,22 @@ namespace Diadoc.Api
 			string counteragentBoxId = null,
 			string orderBy = null,
 			int? limit = null);
+
 		[Obsolete("Use GetEventV3Async()")]
 		Task<BoxEvent> GetEventAsync(string authToken, string boxId, string eventId);
+
 		Task<BoxEvent> GetEventV3Async(string authToken, string boxId, string eventId);
 		Task<Message> PostMessageAsync(string authToken, MessageToPost msg, string operationId = null);
 		Task<Template> PostTemplateAsync(string authToken, TemplateToPost template, string operationId = null);
+
 		Task<Message> TransformTemplateToMessageAsync(
 			string authToken,
 			TemplateTransformationToPost templateTransformation,
 			string operationId = null);
+
 		[Obsolete("Use PostMessagePatchV4Async()")]
 		Task<MessagePatch> PostMessagePatchAsync(string authToken, MessagePatchToPost patch, string operationId = null);
+
 		Task<MessagePatch> PostMessagePatchV4Async(string authToken, MessagePatchToPostV2 patch, string operationId = null);
 		Task<MessagePatch> PostTemplatePatchAsync(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null);
 		Task PostRoamingNotificationAsync(string authToken, RoamingNotificationToPost notification);
@@ -558,72 +683,107 @@ namespace Diadoc.Api
 		Task<byte[]> GetEntityContentAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<GeneratedFile> GenerateDocumentReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
 		Task<GeneratedFile> GenerateInvoiceDocumentReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
+
 		[Obsolete("Use GenerateReceiptXmlV2Async()")]
 		Task<GeneratedFile> GenerateReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
+
 		Task<GeneratedFile> GenerateReceiptXmlV2Async(string authToken, string boxId, ReceiptGenerationRequestV2 receiptGenerationRequest);
+
 		[Obsolete("Use GenerateInvoiceCorrectionRequestXmlV2Async()")]
 		Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, InvoiceCorrectionRequestInfo correctionInfo);
+
 		Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlV2Async(string authToken, string boxId, InvoiceCorrectionRequestGenerationRequestV2 invoiceCorrectionRequestGenerationRequest);
 		Task<GeneratedFile> GenerateRevocationRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null);
+
 		[Obsolete("Use GenerateSignatureRejectionXmlV2Async()")]
 		Task<GeneratedFile> GenerateSignatureRejectionXmlAsync(string authToken, string boxId, string messageId, string attachmentId, SignatureRejectionInfo signatureRejectionInfo);
+
 		Task<GeneratedFile> GenerateSignatureRejectionXmlV2Async(string authToken, string boxId, SignatureRejectionGenerationRequestV2 signatureRejectionGenerationRequest);
 		Task<InvoiceCorrectionRequestInfo> GetInvoiceCorrectionRequestInfoAsync(string authToken, string boxId, string messageId, string entityId);
+
 		Task<GeneratedFile> GenerateInvoiceXmlAsync(string authToken, InvoiceInfo invoiceInfo, bool disableValidation =
- false);
+			false);
+
 		Task<GeneratedFile> GenerateInvoiceRevisionXmlAsync(string authToken, InvoiceInfo invoiceRevisionInfo, bool disableValidation
- = false);
+			= false);
+
 		Task<GeneratedFile> GenerateInvoiceCorrectionXmlAsync(string authToken, InvoiceCorrectionInfo invoiceCorrectionInfo, bool disableValidation
- = false);
+			= false);
+
 		Task<GeneratedFile> GenerateInvoiceCorrectionRevisionXmlAsync(string authToken, InvoiceCorrectionInfo invoiceCorrectionRevision, bool disableValidation
- = false);
+			= false);
+
 		Task<GeneratedFile> GenerateTorg12XmlForSellerAsync(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation
- = false);
+			= false);
+
 		Task<GeneratedFile> GenerateTovTorg551XmlForSellerAsync(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation
- = false);
+			= false);
+
 		Task<GeneratedFile> GenerateTorg12XmlForBuyerAsync(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
 		Task<GeneratedFile> GenerateTovTorg551XmlForBuyerAsync(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion
- = null);
+			= null);
+
 		Task<GeneratedFile> GenerateAcceptanceCertificateXmlForSellerAsync(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation
- = false);
+			= false);
+
 		Task<GeneratedFile> GenerateAcceptanceCertificateXmlForBuyerAsync(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
 		Task<GeneratedFile> GenerateAcceptanceCertificate552XmlForSellerAsync(string authToken, AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation
- = false);
+			= false);
+
 		Task<GeneratedFile> GenerateAcceptanceCertificate552XmlForBuyerAsync(string authToken, AcceptanceCertificate552BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
 		Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForSellerAsync(
 			string authToken,
 			UniversalTransferDocumentSellerTitleInfo sellerInfo,
 			bool disableValidation = false,
 			string documentVersion = null);
+
 		Task<GeneratedFile> GenerateUniversalCorrectionDocumentXmlForSellerAsync(
 			string authToken,
 			UniversalCorrectionDocumentSellerTitleInfo sellerInfo,
 			bool disableValidation = false,
 			string documentVersion = null);
+
 		Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForBuyerAsync(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
-		Task<GeneratedFile> GenerateTitleXmlAsync(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, int titleIndex, byte[] userContractData, bool disableValidation = false, string editingSettingId = null, string letterId = null, string documentId = null);
+
+		Task<GeneratedFile> GenerateTitleXmlAsync(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, int titleIndex, byte[] userContractData, bool disableValidation = false, string editingSettingId = null,
+			string letterId = null, string documentId = null);
+
 		Task<GeneratedFile> GenerateSenderTitleXmlAsync(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation
- = false, string editingSettingId = null);
+			= false, string editingSettingId = null);
+
 		Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion
- = null);
+			= null);
+
 		Task<GeneratedFile> GenerateUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
 		Task<byte[]> GenerateTtGisFixationCancellationRequestAsync(string authToken, string boxId, string messageId, string documentId);
+
 		[Obsolete("Use GetMessageV6Async()")]
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		Task<Message> GetMessageV6Async(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		[Obsolete("Use GetMessageV6Async()")]
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		Task<Message> GetMessageV6Async(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Task<Template> GetTemplateAsync(string authToken, string boxId, string templateId, string entityId = null);
 		Task RecycleDraftAsync(string authToken, string boxId, string draftId);
 		Task<Message> SendDraftAsync(string authToken, DraftToSend draftToSend, string operationId = null);
 		Task<PrintFormResult> GeneratePrintFormAsync(string authToken, string boxId, string messageId, string documentId);
 		Task<string> GeneratePrintFormFromAttachmentAsync(string authToken, DocumentType documentType, byte[] content, string fromBoxId = null);
+
 		[Obsolete("Use GetGeneratedPrintFormAsync without `documentType` parameter")]
 		Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, DocumentType documentType, string printFormId);
+
 		Task<PrintFormResult> GetGeneratedPrintFormAsync(string authToken, string printFormId);
-		Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count
- = null);
+
+		Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments,
+			string afterIndexKey, int? count
+				= null);
+
 		Task<DocumentList> GetDocumentsAsync(string authToken, DocumentsFilter filter);
 		Task<Document> GetDocumentAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<SignatureInfo> GetSignatureInfoAsync(string authToken, string boxId, string messageId, string entityId);
@@ -635,47 +795,52 @@ namespace Diadoc.Api
 		Task<GetDocflowEventsResponse> GetDocflowEventsAsync(string authToken, string boxId, GetDocflowEventsRequest request);
 		Task<SearchDocflowsResponse> SearchDocflowsAsync(string authToken, string boxId, SearchDocflowsRequest request);
 		Task<GetDocflowsByPacketIdResponse> GetDocflowsByPacketIdAsync(string authToken, string boxId, GetDocflowsByPacketIdRequest request);
+
 		[Obsolete("Method ForwardDocumentAsync will be removed soon")]
 		Task<ForwardDocumentResponse> ForwardDocumentAsync(string authToken, string boxId, ForwardDocumentRequest request);
+
 		[Obsolete("Method GetForwardedDocumentsAsync will be removed soon")]
 		Task<GetForwardedDocumentsResponse> GetForwardedDocumentsAsync(string authToken, string boxId, GetForwardedDocumentsRequest request);
+
 		[Obsolete("Method GetForwardedDocumentEventsAsync will be removed soon")]
 		Task<GetForwardedDocumentEventsResponse> GetForwardedDocumentEventsAsync(string authToken, string boxId, GetForwardedDocumentEventsRequest request);
+
 		[Obsolete("Method GetForwardedEntityContentAsync will be removed soon")]
 		Task<byte[]> GetForwardedEntityContentAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId, string entityId);
-		[Obsolete("Method GenerateForwardedDocumentProtocolAsync will be removed soon")]
-		Task<DocumentProtocolResult> GenerateForwardedDocumentProtocolAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
-		[Obsolete("Method GenerateForwardedDocumentPrintFormAsync will be removed soon")]
-		Task<PrintFormResult> GenerateForwardedDocumentPrintFormAsync(string authToken, string boxId, ForwardedDocumentId forwardedDocumentId);
+
 		Task<bool> CanSendInvoiceAsync(string authToken, string boxId, byte[] certificateBytes);
 		Task SendFnsRegistrationMessageAsync(string authToken, string boxId, FnsRegistrationMessageInfo fnsRegistrationMessageInfo);
 
 		[Obsolete("Use GetCounteragentV3Async()")]
 		Task<Counteragent> GetCounteragentAsync(string authToken, string myOrgId, string counteragentOrgId);
+
 		Task<Counteragent> GetCounteragentV3Async(string authToken, string myBoxId, string counteragentBoxId);
 
 		[Obsolete("Use GetCounteragentCertificatesV2Async()")]
 		Task<CounteragentCertificateList> GetCounteragentCertificatesAsync(string authToken, string myOrgId, string counteragentOrgId);
+
 		Task<CounteragentCertificateList> GetCounteragentCertificatesV2Async(string authToken, string myBoxId, string counteragentBoxId);
 
 		[Obsolete("Use GetCounteragentsV3Async()")]
 		Task<CounteragentList> GetCounteragentsAsync(
-			string authToken, 
-			string myOrgId, 
+			string authToken,
+			string myOrgId,
 			string counteragentStatus,
-			string afterIndexKey, 
-			string query = null, 
+			string afterIndexKey,
+			string query = null,
 			int? pageSize = null);
+
 		Task<CounteragentList> GetCounteragentsV3Async(
-			string authToken, 
-			string myBoxId, 
-			string counteragentStatus, 
-			string afterIndexKey, 
-			string query = null, 
+			string authToken,
+			string myBoxId,
+			string counteragentStatus,
+			string afterIndexKey,
+			string query = null,
 			int? pageSize = null);
 
 		[Obsolete("Use BreakWithCounteragentV2Async()")]
 		Task BreakWithCounteragentAsync(string authToken, string myOrgId, string counteragentOrgId, string comment);
+
 		Task BreakWithCounteragentV2Async(string authToken, string myBoxId, string counteragentBoxId, string comment);
 
 		Task<BoxCounteragentEventList> GetCounteragentEventsAsync(
@@ -685,56 +850,87 @@ namespace Diadoc.Api
 			long? timestampFromTicks = null,
 			long? timestampToTicks = null,
 			int? limit = null);
+
 		[Obsolete("Use UploadFileToShelfV2Async or UploadLargeFileToShelfAsync")]
 		Task<string> UploadFileToShelfAsync(string authToken, byte[] data);
+
 		Task<string> UploadFileToShelfV2Async(string authToken, byte[] content, [CanBeNull] string fileExtension);
 		Task<string> UploadLargeFileToShelfAsync(string authToken, byte[] content, [CanBeNull] string fileExtension);
+
 		[Obsolete("Use GetFileFromShelfV2Async")]
 		Task<byte[]> GetFileFromShelfAsync(string authToken, string nameOnShelf);
+
 		Task<byte[]> GetFileFromShelfV2Async(string authToken, string fileName);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<RussianAddress> ParseRussianAddressAsync(string address);
+
 		Task<RussianAddress> ParseRussianAddressAsync(string authToken, string address);
 		Task<GarAddress> ParseGarAddressAsync(string authToken, string address);
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<InvoiceInfo> ParseInvoiceXmlAsync(byte[] invoiceXmlContent);
+
 		Task<InvoiceInfo> ParseInvoiceXmlAsync(string authToken, byte[] invoiceXmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(byte[] xmlContent);
+
 		Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(byte[] xmlContent);
+
 		Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(byte[] xmlContent);
+
 		Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(byte[] xmlContent);
+
 		Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(byte[] xmlContent);
+
 		Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(byte[] xmlContent);
+
 		Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(byte[] xmlContent);
+
 		Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(byte[] xmlContent);
+
 		Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
+
 		Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalTransferDocumentBuyerTitleXmlAsync(byte[] xmlContent);
+
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalTransferDocumentBuyerTitleXmlAsync(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
+
 		Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(byte[] xmlContent);
+
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(string authToken, byte[] xmlContent);
 
 		Task<byte[]> ParseTitleXmlAsync(
@@ -745,13 +941,14 @@ namespace Diadoc.Api
 			string documentVersion,
 			int titleIndex,
 			byte[] content);
-		
+
 		Task<byte[]> ParseUniversalMessageXmlAsync(string authToken, byte[] content);
-		
+
 		Task<byte[]> ParseUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId);
 
 		[Obsolete("Use GetOrganizationUsersV2Async()")]
 		Task<OrganizationUsersList> GetOrganizationUsersAsync(string authToken, string orgId);
+
 		Task<OrganizationUsersList> GetOrganizationUsersV2Async(string authToken, string boxId);
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
@@ -768,38 +965,48 @@ namespace Diadoc.Api
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(byte[] revocationRequestXmlContent);
+
 		Task<RevocationRequestInfo> ParseRevocationRequestXmlAsync(string authToken, byte[] revocationRequestXmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<SignatureRejectionInfo> ParseSignatureRejectionXmlAsync(byte[] signatureRejectionXmlContent);
+
 		Task<SignatureRejectionInfo> ParseSignatureRejectionXmlAsync(string authToken, byte[] signatureRejectionXmlContent);
 		Task<DocumentProtocolResult> GenerateDocumentProtocolAsync(string authToken, string boxId, string messageId, string documentId);
 		Task<DocumentZipGenerationResult> GenerateDocumentZipAsync(string authToken, string boxId, string messageId, string documentId, bool fullDocflow);
 		Task<DocumentList> GetDocumentsByCustomIdAsync(string authToken, string boxId, string customDocumentId);
+
 		Task<PrepareDocumentsToSignResponse> PrepareDocumentsToSignAsync(string authToken, PrepareDocumentsToSignRequest request, bool excludeContent
- = false);
+			= false);
+
 		Task<AsyncMethodResult> CloudSignAsync(string authToken, CloudSignRequest request, string certificateThumbprint);
 		Task<CloudSignResult> WaitCloudSignResultAsync(string authToken, string taskId, TimeSpan? timeout = null);
+
 		Task<AsyncMethodResult> CloudSignConfirmAsync(string authToken, string cloudSignToken, string confirmationCode, ContentLocationPreference? locationPreference
- = null);
+			= null);
+
 		Task<CloudSignConfirmResult> WaitCloudSignConfirmResultAsync(string authToken, string taskId, TimeSpan? timeout
- = null);
+			= null);
+
 		Task<AsyncMethodResult> DssSignAsync(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null);
 		Task<DssSignResult> DssSignResultAsync(string authToken, string boxId, string taskId);
 
 		[Obsolete("Use AcquireCounteragentV3Async()")]
 		Task<AsyncMethodResult> AcquireCounteragentAsync(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
+
 		Task<AsyncMethodResult> AcquireCounteragentV3Async(string authToken, string myBoxId, AcquireCounteragentRequest request, string myDepartmentId = null);
 
 		[Obsolete("Use WaitAcquireCounteragentResultV2Async()")]
 		Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(
-			string authToken, 
-			string taskId, 
-			TimeSpan? timeout = null, 
+			string authToken,
+			string taskId,
+			TimeSpan? timeout = null,
 			TimeSpan? delay = null);
+
 		Task<AcquireCounteragentResultV2> WaitAcquireCounteragentResultV2Async(
-			string authToken, 
-			string taskId, 
-			TimeSpan? timeout = null, 
+			string authToken,
+			string taskId,
+			TimeSpan? timeout = null,
 			TimeSpan? delay = null);
 
 		Task<DocumentList> GetDocumentsByMessageIdAsync(string authToken, string boxId, string messageId);
@@ -807,16 +1014,22 @@ namespace Diadoc.Api
 		Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<string> keys);
 		Task PutOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<KeyValueStorageEntry> entries);
 		Task<AsyncMethodResult> AutoSignReceiptsAsync(string authToken, string boxId, string certificateThumbprint, string batchKey);
+
 		Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout
- = null);
+			= null);
+
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
+
 		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
+
 		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails);
+
 		[Obsolete("Use GetResolutionRoutesAsync()")]
 		Task<ResolutionRouteList> GetResolutionRoutesForOrganizationAsync(string authToken, string orgId);
+
 		Task<ResolutionRouteList> GetResolutionRoutesAsync(string authToken, string boxId);
 		Task<GetDocumentTypesResponseV2> GetDocumentTypesV2Async(string authToken, string boxId);
 		Task<GetDocumentTypesResponseV3> GetDocumentTypesV3Async(string authToken, string boxId);
@@ -824,8 +1037,10 @@ namespace Diadoc.Api
 		Task<DetectDocumentTypesResponse> DetectDocumentTypesAsync(string authToken, string boxId, byte[] content);
 		Task<DetectTitleResponse> DetectDocumentTitlesAsync(string authToken, string boxId, string nameOnShelf);
 		Task<DetectTitleResponse> DetectDocumentTitlesAsync(string authToken, string boxId, byte[] content);
+
 		[Obsolete("In order to download XSD schema use the link provided in DocumentTitle.XsdUrl")]
 		Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex, XsdContentType contentType = default(XsdContentType));
+
 		Task<Employee> GetEmployeeAsync(string authToken, string boxId, string userId);
 		Task<EmployeeList> GetEmployeesAsync(string authToken, string boxId, int? page, int? count);
 		Task<Employee> CreateEmployeeAsync(string authToken, string boxId, EmployeeToCreate employeeToCreate);
@@ -843,7 +1058,7 @@ namespace Diadoc.Api
 			string registrationNumber,
 			string issuerInn,
 			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate);
-		
+
 		Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyV2Async(
 			string authToken,
 			string boxId,
@@ -857,7 +1072,7 @@ namespace Diadoc.Api
 			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
-		
+
 		Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyV2Async(
 			string authToken,
 			string boxId,
@@ -871,7 +1086,7 @@ namespace Diadoc.Api
 			[CanBeNull] string userId,
 			string registrationNumber,
 			string issuerInn);
-			
+
 		Task DeleteEmployeePowerOfAttorneyV2Async(
 			string authToken,
 			string boxId,
@@ -881,16 +1096,20 @@ namespace Diadoc.Api
 		Task<EmployeeSubscriptions> GetSubscriptionsAsync(string authToken, string boxId, string userId);
 		Task<EmployeeSubscriptions> UpdateSubscriptionsAsync(string authToken, string boxId, string userId, SubscriptionsToUpdate subscriptionsToUpdate);
 		Task<Departments.Department> GetDepartmentByFullIdAsync(string authToken, string boxId, string departmentId);
+
 		Task<Departments.DepartmentList> GetDepartmentsAsync(string authToken, string boxId, int? page =
- null, int? count = null);
+			null, int? count = null);
+
 		Task<Departments.Department> CreateDepartmentAsync(string authToken, string boxId, Departments.DepartmentToCreate departmentToCreate);
 		Task<Departments.Department> UpdateDepartmentAsync(string authToken, string boxId, string departmentId, Departments.DepartmentToUpdate departmentToUpdate);
 		Task DeleteDepartmentAsync(string authToken, string boxId, string departmentId);
 		Task<RegistrationResponse> RegisterAsync(string authToken, RegistrationRequest registrationRequest);
 		Task RegisterConfirmAsync(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
 		Task<CustomPrintFormDetectionResult> DetectCustomPrintFormsAsync(string authToken, string boxId, CustomPrintFormDetectionRequest request);
+
 		[Obsolete("Use GetLastEventV2Async()")]
 		Task<BoxEvent> GetLastEventAsync(string authToken, string boxId);
+
 		Task<BoxEvent> GetLastEventV2Async(string authToken, string boxId);
 
 		Task<AsyncMethodResult> RegisterPowerOfAttorneyAsync(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister);
