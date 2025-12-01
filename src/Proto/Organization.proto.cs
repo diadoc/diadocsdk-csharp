@@ -246,6 +246,22 @@ namespace Diadoc.Api.Proto
       get { return _HasCertificateToSign; }
       set { _HasCertificateToSign = value; }
     }
+    private Diadoc.Api.Proto.OrganizationType _OrganizationType;
+    [global::ProtoBuf.ProtoMember(27, IsRequired = true, Name=@"OrganizationType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.OrganizationType OrganizationType
+    {
+      get { return _OrganizationType; }
+      set { _OrganizationType = value; }
+    }
+
+    private bool _IsOwner = (bool)false;
+    [global::ProtoBuf.ProtoMember(28, IsRequired = false, Name=@"IsOwner", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsOwner
+    {
+      get { return _IsOwner; }
+      set { _IsOwner = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -396,6 +412,23 @@ namespace Diadoc.Api.Proto
             
       [global::ProtoBuf.ProtoEnum(Name=@"CounteragentsOnly", Value=1)]
       CounteragentsOnly = 1
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"OrganizationType")]
+    public enum OrganizationType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownOrganizationType", Value=0)]
+      UnknownOrganizationType = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Individual", Value=1)]
+      Individual = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Juridical", Value=2)]
+      Juridical = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PhysicalPerson", Value=3)]
+      PhysicalPerson = 3
     }
   
 }

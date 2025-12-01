@@ -32,6 +32,8 @@ message Organization {
 	optional string CertificateOfRegistryInfo = 24;
 	optional bool IsForeign = 25;
 	optional bool HasCertificateToSign = 26;
+	required OrganizationType OrganizationType = 27;
+	optional bool IsOwner = 28 [default = false];
 }
 
 message Department {
@@ -61,4 +63,11 @@ message Box {
 enum Sociability {
 	AllOrganizations = 0;
 	CounteragentsOnly = 1;
+}
+
+enum OrganizationType {
+	UnknownOrganizationType = 0;
+	Individual = 1;
+	Juridical = 2;
+	PhysicalPerson = 3;
 }
