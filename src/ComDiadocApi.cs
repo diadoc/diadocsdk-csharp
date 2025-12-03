@@ -584,11 +584,6 @@ namespace Diadoc.Api
 			[MarshalAs(UnmanagedType.IDispatch)] object forwardedDocumentId,
 			string entityId);
 
-		IDocumentProtocolResult GenerateForwardedDocumentProtocol(
-			string authToken,
-			string boxId,
-			[MarshalAs(UnmanagedType.IDispatch)] object forwardedDocumentId);
-
 		GetDocflowBatchResponse GetDocflows(
 			string authToken,
 			string boxId,
@@ -1856,14 +1851,6 @@ namespace Diadoc.Api
 			string entityId)
 		{
 			return diadoc.GetForwardedEntityContent(authToken, boxId, (ForwardedDocumentId) forwardedDocumentId, entityId);
-		}
-
-		public IDocumentProtocolResult GenerateForwardedDocumentProtocol(
-			string authToken,
-			string boxId,
-			object forwardedDocumentId)
-		{
-			return diadoc.GenerateForwardedDocumentProtocol(authToken, boxId, (ForwardedDocumentId) forwardedDocumentId);
 		}
 
 		public bool CanSendInvoice(string authToken, string boxId, byte[] certificateBytes)
