@@ -1815,7 +1815,7 @@
       <xs:enumeration value="TenPercent" />
       <xs:enumeration value="SixteenPointSixtySevenPercent" />
       <xs:enumeration value="EighteenPercent" />
-      <xs:enumeration value="EighteenPointThreePercent" />
+      <xs:enumeration value="EighteenPointZeroThreePercent" />
       <xs:enumeration value="TwentyPercent" />
       <xs:enumeration value="TwentyTwoPercent" />
       <xs:enumeration value="FiveFraction" />

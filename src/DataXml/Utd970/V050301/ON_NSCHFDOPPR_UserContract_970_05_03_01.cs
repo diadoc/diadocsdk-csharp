@@ -2527,7 +2527,7 @@ namespace Diadoc.Api.DataXml.ON_NSCHFDOPPR_UserContract_970_05_03_01 {
         EighteenPercent,
         
         /// <remarks/>
-        EighteenPointThreePercent,
+        EighteenPointZeroThreePercent,
         
         /// <remarks/>
         TwentyPercent,
