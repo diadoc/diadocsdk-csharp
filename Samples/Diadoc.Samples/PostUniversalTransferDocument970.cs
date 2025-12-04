@@ -220,7 +220,7 @@ namespace Diadoc.Samples
 						Unit = "796",
 						Quantity = 10,
 						QuantitySpecified = true,
-						TaxRate = TaxRateUtd970.TenPercent,
+						TaxRate = TaxRateWithTwentyTwoPercent.TenPercent,
 						Price = 10,
 						PriceSpecified = true,
 						SubtotalWithVatExcluded = 100,

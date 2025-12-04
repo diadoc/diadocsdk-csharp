@@ -205,7 +205,7 @@ namespace Diadoc.Samples
 							},
 							TaxRate = new ExtendedInvoiceCorrectionItemTaxRate
 							{
-								OriginalValue = TaxRateUcd736AndUtd820.НДСисчисляетсяналоговымагентом
+								OriginalValue = TaxRateUcd736WithTwentyTwoPercent.НДСисчисляетсяналоговымагентом
 							}
 						},
 					},
