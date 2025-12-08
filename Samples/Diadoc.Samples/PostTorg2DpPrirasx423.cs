@@ -164,7 +164,8 @@ namespace Diadoc.Samples
 			{
 				new ExtendedSignerDetails_Torg2Buyer
 				{
-					
+					SignerPowers = ExtendedSignerDetails_Torg2BuyerSignerPowers.Item1,
+					SignerStatus = ExtendedSignerDetails_Torg2BuyerSignerStatus.Item3
 				}
 			};
 		}
@@ -179,7 +180,7 @@ namespace Diadoc.Samples
 					{
 						Assets = new AcceptanceResultAssets
 						{
-							PassportNumber = "2345"
+							PassportNumber = "123123123"
 						}
 					}
 				}
