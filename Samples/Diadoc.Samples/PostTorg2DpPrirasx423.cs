@@ -142,7 +142,6 @@ namespace Diadoc.Samples
 				DocumentNumber = "1",
 				CircumstancesAcceptanceInfo = GetCircumstancesAcceptanceInfo(),
 				EvidenceAcceptanceInfo = GetEvidenceAcceptanceInfo(),
-				//Signers = GetSigners(),
 				DocumentCreator = "НаимЭконСубСост - Составитель файла информации продавца",
 				
 				
@@ -150,7 +149,7 @@ namespace Diadoc.Samples
 			
 			// Передадим информацию о подписанте документа, т.е. персональные данные подписываемого сотрудника,
 			// которые осядут в самом xml:
-			torg2SellerTitleInfo.Signers = BuildSigners();
+			torg2SellerTitleInfo.Signers = GetSigners();
 			// Альтернативный способ заполнения данных подписанта:
 			// отправить в хранилище Диадока аналогичный набор данных через метод PostExtendedSignerDetails
 			// и затем использовать universalTransferDocumentWithHyphens.UseSignerReferences(new SignerReference[])
@@ -226,24 +225,6 @@ namespace Diadoc.Samples
 					}
 				}
 			};
-		}
-
-		private static ExtendedSignerDetailsBase[] BuildSigners()
-		{
-			return new[]
-				{
-					new ExtendedSignerDetailsBase
-					{
-						SignerPowersBase = "SignerPowersBase",
-						SignerType = (Api.DataXml.DP_PRIRASXPRIN_UserContract_1_994_01_05_01_01.ExtendedSignerDetailsBaseSignerType)ExtendedSignerDetailsBaseSignerType.LegalEntity,
-						FirstName = "Иван",
-						MiddleName = "Иванович",
-						LastName = "Иванов",
-						SignerOrganizationName = "ЗАО Очень Древний Папирус",
-						Inn = "7750370238",
-						Position = "директор"
-					}
-				};
 		}
 	}
 }
