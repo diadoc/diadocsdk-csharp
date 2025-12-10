@@ -135,8 +135,8 @@ namespace Diadoc.Samples
 			// Ниже перечислены минимально необходимые поля для генерации титула отправителя.
 			var torg2SellerTitleInfo = new Torg2SenderTitle
 			{
-				SenderFnsParticipantId = "2BM-1000000002-100000001-202512081043346217464",
-				RecipientFnsParticipantId = "2BM-1000000010-100000000-202512081044266911309",
+				SenderFnsParticipantId = "<Идентификатор участника ЭДО>",
+				RecipientFnsParticipantId = "<Идентификатор участника ЭДО>",
 				DocumentName = "Акт об установленном расхождении",
 				DocumentDate = "01.01.2024",
 				DocumentNumber = "1",
@@ -164,11 +164,12 @@ namespace Diadoc.Samples
 			{
 				new ExtendedSignerDetails_Torg2Buyer
 				{
-					LastName = "Лукьянов",
-					FirstName = "Андрей",
+					FirstName = "Иван",
+					MiddleName = "Иванович",
+					LastName = "Иванов",
 					SignerStatus = ExtendedSignerDetails_Torg2BuyerSignerStatus.Item5,
-					Inn = "1000000002",
-					Position = "Директор"
+					Inn = "7750370238",
+					Position = "директор"
 				}
 			};
 		}
@@ -187,7 +188,7 @@ namespace Diadoc.Samples
 							Product = "Покрышки"
 						},
 						Unit = "796",
-						UnitName = "Штука",
+						UnitName = "штука",
 						AccordingToSellerDocument = new AcceptedProductData
 						{
 							Quantity = 100,
@@ -219,7 +220,7 @@ namespace Diadoc.Samples
 								Region = "66"
 							}
 						},
-						FnsParticipantId = "2BM-1000000002-100000001-202512081043346217464"
+						FnsParticipantId = "<Идентификатор участника ЭДО>"
 					}
 				},
 				Buyer = new ExtendedOrganizationInfo_Torg2
@@ -237,7 +238,7 @@ namespace Diadoc.Samples
 								Region = "66"
 							}
 						},
-						FnsParticipantId = "2BM-1000000010-100000000-202512081044266911309"
+						FnsParticipantId = "<Идентификатор участника ЭДО>"
 					}
 				}
 			};
