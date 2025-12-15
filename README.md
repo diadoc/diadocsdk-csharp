@@ -44,3 +44,9 @@ diadocsdk-csharp — официальная C#-реализацией клиен
 - Сделайте Commit изменений (git commit -am 'Add some feature')
 - Сделайте Push новой ветки (git push origin my-new-feature)
 - Создайте новый Pull Request
+
+## Наши контакты
+
+- Клиентская поддержка [Контур.Диадок](https://support.kontur.ru/?support_widget=diadoc) - для решения ошибок в работе интеграционного решения
+- [Заявка на интеграцию](https://www.diadoc.ru/integrations/api) - для подключения интеграции и связанных вопросов. Например, если нужен сертификат, узнать тарифы и стоимость подключения
+- [Форма ОС](https://forms.kontur.ru/form/ddapidoc-feedback) в Документации - для исправления ошибок в Документации
