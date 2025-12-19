@@ -980,6 +980,169 @@ namespace Diadoc.Api.Proto.Events
 		}
 	}
 
+	[ComVisible(true)]
+	[Guid("B2B7A7E6-6A3B-4D3B-8F8A-4B2E9C0F4E3A")]
+	public interface IMessagePatchToPostV2
+	{
+		string BoxId { get; set; }
+		string MessageId { get; set; }
+
+		void AddReceipt([MarshalAs(UnmanagedType.IDispatch)] object receipt);
+		void AddCorrectionRequest([MarshalAs(UnmanagedType.IDispatch)] object correctionRequest);
+		void AddSignature([MarshalAs(UnmanagedType.IDispatch)] object signature);
+
+		void AddResolution([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+
+		void AddResolutionRequest([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddResolutionRequestCancellation([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddResolutionRequestDenial([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddResolutionRequestDenialCancellation([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+
+		void AddRevocationRequest([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+
+		void AddXmlSignatureRejection([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+
+		void AddCustomDataPatch([MarshalAs(UnmanagedType.IDispatch)] object patch);
+
+		void AddResolutionRouteAssignment([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+		void AddResolutionRouteRemoval([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+
+		void AddSignatureVerification([MarshalAs(UnmanagedType.IDispatch)] object verification);
+		void AddEditDocumentPacketCommand([MarshalAs(UnmanagedType.IDispatch)] object command);
+
+		void AddRecipientTitle([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+
+		void AddEditingPatch([MarshalAs(UnmanagedType.IDispatch)] object patch);
+
+		void AddUniversalMessage([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+
+		void AddTtGisFixationCancellationRequest([MarshalAs(UnmanagedType.IDispatch)] object attachment);
+	}
+
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.MessagePatchToPostV2")]
+	[Guid("4F9E9D0A-2A66-4B2D-9E2F-AB1E6A7C9E2D")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IMessagePatchToPostV2))]
+	public partial class MessagePatchToPostV2 : SafeComObject, IMessagePatchToPostV2
+	{
+		public void AddReceipt(object receipt)
+		{
+			Receipts.Add((ReceiptAttachment) receipt);
+		}
+
+		public void AddCorrectionRequest(object correctionRequest)
+		{
+			CorrectionRequests.Add((CorrectionRequestAttachment) correctionRequest);
+		}
+
+		public void AddSignature(object signature)
+		{
+			Signatures.Add((DocumentSignature) signature);
+		}
+
+		public void AddResolution(object attachment)
+		{
+			Resolutions.Add((ResolutionAttachment) attachment);
+		}
+
+		public void AddResolutionRequest(object attachment)
+		{
+			ResolutionRequests.Add((ResolutionRequestAttachment) attachment);
+		}
+
+		public void AddResolutionRequestCancellation(object attachment)
+		{
+			ResolutionRequestCancellations.Add((ResolutionRequestCancellationAttachment) attachment);
+		}
+
+		public void AddResolutionRequestDenial(object attachment)
+		{
+			ResolutionRequestDenials.Add((ResolutionRequestDenialAttachment) attachment);
+		}
+
+		public void AddResolutionRequestDenialCancellation(object attachment)
+		{
+			ResolutionRequestDenialCancellations.Add((ResolutionRequestDenialCancellationAttachment) attachment);
+		}
+
+		public void AddRevocationRequest(object attachment)
+		{
+			RevocationRequests.Add((RevocationRequestAttachment) attachment);
+		}
+
+		public void AddXmlSignatureRejection(object attachment)
+		{
+			XmlSignatureRejections.Add((XmlSignatureRejectionAttachment) attachment);
+		}
+
+		public void AddCustomDataPatch(object patch)
+		{
+			CustomDataPatches.Add((CustomDataPatch) patch);
+		}
+
+		public void AddResolutionRouteAssignment(object attachment)
+		{
+			ResolutionRouteAssignments.Add((ResolutionRouteAssignment) attachment);
+		}
+
+		public void AddResolutionRouteRemoval(object attachment)
+		{
+			ResolutionRouteRemovals.Add((ResolutionRouteRemoval) attachment);
+		}
+
+		public void AddSignatureVerification(object verification)
+		{
+			SignatureVerifications.Add((SignatureVerification) verification);
+		}
+
+		public void AddEditDocumentPacketCommand(object command)
+		{
+			EditDocumentPacketCommands.Add((EditDocumentPacketCommand) command);
+		}
+
+		public void AddRecipientTitle(object attachment)
+		{
+			RecipientTitles.Add(ConvertRecipientTitle(attachment));
+		}
+
+		public void AddEditingPatch(object patch)
+		{
+			EditingPatches.Add((EditingPatch) patch);
+		}
+
+		public void AddUniversalMessage(object attachment)
+		{
+			UniversalMessages.Add((UniversalMessageAttachment) attachment);
+		}
+
+		public void AddTtGisFixationCancellationRequest(object attachment)
+		{
+			TtGisFixationCancellationRequests.Add((TtGisFixationCancellationRequestAttachment) attachment);
+		}
+
+		private RecipientTitleAttachment ConvertRecipientTitle(object attachment)
+		{
+			if (attachment is ReceiptAttachment receiptAttachment)
+			{
+				var recipientTitleAttachment = new RecipientTitleAttachment
+				{
+					ParentEntityId = receiptAttachment.ParentEntityId,
+					SignedContent = receiptAttachment.SignedContent,
+					NeedReceipt = false
+				};
+
+				foreach (var label in receiptAttachment.Labels)
+				{
+					recipientTitleAttachment.AddLabel(label);
+				}
+
+				return recipientTitleAttachment;
+			}
+
+			return (RecipientTitleAttachment) attachment;
+		}
+	}
 
 	[ComVisible(true)]
 	[Guid("10AC1159-A121-4F3E-9437-7CF22A1B60A1")]
