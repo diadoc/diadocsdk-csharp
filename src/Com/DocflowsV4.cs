@@ -35,7 +35,7 @@ namespace Diadoc.Api.Proto.Docflow
 	[ComDefaultInterface(typeof(ISearchDocflowsResponseV4))]
 	public partial class SearchDocflowsResponseV4 : SafeComObject, ISearchDocflowsResponseV4
 	{
-		public ReadonlyList DocumentsList { get; }
+		public ReadonlyList DocumentsList => new ReadonlyList(Documents);
 	}
 
 	[ComVisible(true)]
