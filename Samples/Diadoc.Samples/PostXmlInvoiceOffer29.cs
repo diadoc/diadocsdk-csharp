@@ -21,7 +21,6 @@ using SignerPowersConfirmationMethod = Diadoc.Api.DataXml.ON_CHETOP_UserContract
 using Storage = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.Storage;
 using StorageFullId = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.StorageFullId;
 using StorageUseDefault = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.StorageUseDefault;
-using TaxRateWithTwentyTwoPercent = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.TaxRateWithTwentyTwoPercent;
 
 namespace Diadoc.Samples
 {
@@ -198,7 +197,7 @@ namespace Diadoc.Samples
 						Unit = "796",
 						Quantity = 10,
 						QuantitySpecified = true,
-						TaxRate = TaxRateWithTwentyTwoPercent.TenPercent,
+						TaxRate = TaxRateWithTwentyTwoPercentInvoice29.TenPercent,
 						TaxRateSpecified = true,
 						Price = 10,
 						PriceSpecified = true,
