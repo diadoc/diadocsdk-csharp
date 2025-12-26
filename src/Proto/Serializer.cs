@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Diadoc.Api.Proto.Docflow;
+using Diadoc.Api.Proto.Events;
 
 namespace Diadoc.Api.Proto
 {
@@ -11,6 +12,8 @@ namespace Diadoc.Api.Proto
 			ProtoBuf.Serializer.PrepareSerializer<Box>();
 			ProtoBuf.Serializer.PrepareSerializer<ConfirmationDocflow>();
 			ProtoBuf.Serializer.PrepareSerializer<ReceiptDocflowV3>();
+			ProtoBuf.Serializer.PrepareSerializer<Message>();
+			ProtoBuf.Serializer.PrepareSerializer<MessageToPost>();
 		}
 
 		public static T Deserialize<T>(Stream source)
