@@ -281,7 +281,7 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
-          <xs:attribute name="TaxRate" type="TaxRateWithTwentyTwoPercent">
+          <xs:attribute name="TaxRate" type="TaxRateWithTwentyTwoPercentInvoice29">
             <xs:annotation>
               <xs:documentation>НалСт - ставка налога</xs:documentation>
             </xs:annotation>
@@ -1426,6 +1426,26 @@
       <xs:enumeration value="SevenFraction" />
       <xs:enumeration value="TenFraction" />
       <xs:enumeration value="EighteenFraction" />
+      <xs:enumeration value="TwentyFraction" />
+      <xs:enumeration value="TwentyTwoFraction" />
+      <xs:enumeration value="TaxedByAgent" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TaxRateWithTwentyTwoPercentInvoice29">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoVat" />
+      <xs:enumeration value="ZeroPercent" />
+      <xs:enumeration value="FivePercent" />
+      <xs:enumeration value="SevenPercent" />
+      <xs:enumeration value="NinePointZeroNinePercent" />
+      <xs:enumeration value="TenPercent" />
+      <xs:enumeration value="SixteenPointSixtySevenPercent" />
+      <xs:enumeration value="EighteenPointZeroThreePercent" />
+      <xs:enumeration value="TwentyPercent" />
+      <xs:enumeration value="TwentyTwoPercent" />
+      <xs:enumeration value="FiveFraction" />
+      <xs:enumeration value="SevenFraction" />
+      <xs:enumeration value="TenFraction" />
       <xs:enumeration value="TwentyFraction" />
       <xs:enumeration value="TwentyTwoFraction" />
       <xs:enumeration value="TaxedByAgent" />

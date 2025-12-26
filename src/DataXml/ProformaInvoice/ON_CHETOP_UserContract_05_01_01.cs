@@ -1469,7 +1469,7 @@ namespace Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01 {
         
         private bool priceWithoutDiscountFieldSpecified;
         
-        private TaxRateWithTwentyTwoPercent taxRateField;
+        private TaxRateWithTwentyTwoPercentInvoice29 taxRateField;
         
         private bool taxRateFieldSpecified;
         
@@ -1654,7 +1654,7 @@ namespace Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public TaxRateWithTwentyTwoPercent TaxRate {
+        public TaxRateWithTwentyTwoPercentInvoice29 TaxRate {
             get {
                 return this.taxRateField;
             }
@@ -2094,7 +2094,7 @@ namespace Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01 {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
-    public enum TaxRateWithTwentyTwoPercent {
+    public enum TaxRateWithTwentyTwoPercentInvoice29 {
         
         /// <remarks/>
         NoVat,
@@ -2118,9 +2118,6 @@ namespace Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01 {
         SixteenPointSixtySevenPercent,
         
         /// <remarks/>
-        EighteenPercent,
-        
-        /// <remarks/>
         EighteenPointZeroThreePercent,
         
         /// <remarks/>
@@ -2137,9 +2134,6 @@ namespace Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01 {
         
         /// <remarks/>
         TenFraction,
-        
-        /// <remarks/>
-        EighteenFraction,
         
         /// <remarks/>
         TwentyFraction,
