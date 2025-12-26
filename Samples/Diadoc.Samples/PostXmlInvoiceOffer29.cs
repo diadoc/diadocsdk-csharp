@@ -15,14 +15,13 @@ using OrganizationType_DatabaseOrder = Diadoc.Api.DataXml.ON_CHETOP_UserContract
 using PowerOfAttorney = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.PowerOfAttorney;
 using RussianAddressUtd970 = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.RussianAddressUtd970;
 using Signer = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.Signer;
-using SignerPosition = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.SignerPosition;
-using SignerPositionPositionSource = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.SignerPositionPositionSource;
+using Position = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.Position;
 using Signers = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.Signers;
-using SignerSignerPowersConfirmationMethod = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.SignerSignerPowersConfirmationMethod;
+using SignerPowersConfirmationMethod = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.SignerPowersConfirmationMethod;
 using Storage = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.Storage;
 using StorageFullId = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.StorageFullId;
 using StorageUseDefault = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.StorageUseDefault;
-using TaxRateUtd970 = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.TaxRateUtd970;
+using TaxRateWithTwentyTwoPercent = Diadoc.Api.DataXml.ON_CHETOP_UserContract_05_01_01.TaxRateWithTwentyTwoPercent;
 
 namespace Diadoc.Samples
 {
@@ -199,7 +198,7 @@ namespace Diadoc.Samples
 						Unit = "796",
 						Quantity = 10,
 						QuantitySpecified = true,
-						TaxRate = TaxRateUtd970.TenPercent,
+						TaxRate = TaxRateWithTwentyTwoPercent.TenPercent,
 						TaxRateSpecified = true,
 						Price = 10,
 						PriceSpecified = true,
@@ -228,11 +227,12 @@ namespace Diadoc.Samples
 					new Signer
 					{
 						Certificate = new Certificate { CertificateBytes = certificateRawData },
-						Position = new SignerPosition
+						Position = new Position
 						{
 							// Автоматическое заполнение должности из настроек сотрудника указанных в сервисе
 							// Более подробное описание работы см. в xsd-cхеме
-							PositionSource = SignerPositionPositionSource.StorageByTitleTypeId
+							PositionSource = PositionPositionSource.StorageByTitleTypeId,
+							Value = "<Должность>"
 						},
 						SignerPowersConfirmationMethod = SignerPowersConfirmationMethodConvert(powerOfAttorneyType),
 						SignerPowersConfirmationMethodSpecified = true
@@ -313,19 +313,19 @@ namespace Diadoc.Samples
 			};
 		}
 
-		private static SignerSignerPowersConfirmationMethod SignerPowersConfirmationMethodConvert(PowerOfAttorneyType signerPowersConfirmationMethod)
+		private static SignerPowersConfirmationMethod SignerPowersConfirmationMethodConvert(PowerOfAttorneyType signerPowersConfirmationMethod)
 		{
 			switch (signerPowersConfirmationMethod)
 			{
 				// Описание значений и другие варианты см. в xsd-схеме
 				case PowerOfAttorneyType.None:
-					return SignerSignerPowersConfirmationMethod.Item6;
+					return SignerPowersConfirmationMethod.Item6;
 				case PowerOfAttorneyType.FileAsMeta:
-					return SignerSignerPowersConfirmationMethod.Item4;
+					return SignerPowersConfirmationMethod.Item4;
 				case PowerOfAttorneyType.InDocumentContent:
-					return SignerSignerPowersConfirmationMethod.Item3;
+					return SignerPowersConfirmationMethod.Item3;
 				default:
-					return SignerSignerPowersConfirmationMethod.Item6;
+					return SignerPowersConfirmationMethod.Item6;
 			}
 		}
 
