@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Diadoc.Api.Proto;
 
 namespace Diadoc.Api
 {
@@ -54,6 +55,7 @@ namespace Diadoc.Api
 		public string SortDirection { get; set; }
 		public string AfterIndexKey { get; set; }
 		public int? Count { get; set; }
+		public CustomDataItem[] CustomData { get; set; }
 
 		[Obsolete("Use TimestampFromTicks instead")]
 		public object TimestampFromValue

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
+using System.Text;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Documents;
@@ -30,6 +32,21 @@ namespace Diadoc.Api
 			if (!string.IsNullOrEmpty(filter.AfterIndexKey)) qsb.AddParameter("afterIndexKey", filter.AfterIndexKey);
 			if (!string.IsNullOrEmpty(filter.SortDirection)) qsb.AddParameter("sortDirection", filter.SortDirection);
 			if (filter.Count.HasValue) qsb.AddParameter("count", filter.Count.ToString());
+			if (filter.CustomData != null)
+			{
+				var builder = new StringBuilder();
+				for (int i = 0; i < filter.CustomData.Length; i++)
+				{
+					builder.Append($"customData[{i}].Key={filter.CustomData[i].Key}");
+					builder.Append("&");
+					builder.Append($"customData[{i}].Value={filter.CustomData[i].Value}");
+					if (i < filter.CustomData.Length - 1)
+					{
+						builder.Append("&"); // Разделяем элементы массива амперсандом
+					}
+				}
+				qsb.AddParameter(builder.ToString());
+			}
 			return PerformHttpRequest<DocumentList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
