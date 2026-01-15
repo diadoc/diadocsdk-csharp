@@ -14,6 +14,7 @@
 // Note: requires additional types generated from: Docflow/Attachment.proto
 // Note: requires additional types generated from: Docflow/RoamingNotification.proto
 // Note: requires additional types generated from: Docflow/ResolutionDocflowV3.proto
+// Note: requires additional types generated from: Docflow/UniversalMessageAttachmentDocflow.proto
 // Note: requires additional types generated from: OuterDocflows/OuterDocflowStatus.proto
 // Note: requires additional types generated from: TtGisFixationCancellationStatus.proto
 // Note: requires additional types generated from: DocflowStatusV3.proto
@@ -200,6 +201,13 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _SenderSignatureStatus; }
       set { _SenderSignatureStatus = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow> _OutOfWorkflowUniversalMessages = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"OutOfWorkflowUniversalMessages", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow> OutOfWorkflowUniversalMessages
+    {
+      get { return _OutOfWorkflowUniversalMessages; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -39,6 +39,7 @@ message ParticipantResponseDocflowV4
     optional Timestamp DeliveredAt = 6;
     required Documents.RecipientResponseStatus ResponseStatus = 7;
     optional ConfirmationDocflowV4 Confirmation = 8;
+    repeated UniversalMessageAttachmentDocflow OutOfWorkflowUniversalMessages = 9;
 }
 
 message SignatureRejectionDocflowV4
