@@ -185,6 +185,13 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _Confirmation; }
       set { _Confirmation = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow> _OutOfWorkflowUniversalMessages = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow>();
+    [global::ProtoBuf.ProtoMember(9, Name=@"OutOfWorkflowUniversalMessages", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow> OutOfWorkflowUniversalMessages
+    {
+      get { return _OutOfWorkflowUniversalMessages; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
