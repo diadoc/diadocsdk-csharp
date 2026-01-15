@@ -1296,11 +1296,13 @@ namespace Diadoc.Api
 			diadoc.RegisterConfirm(authToken, (RegistrationConfirmRequest) registrationConfirmRequest);
 		}
 
+		[Obsolete("Use PostMessagePatchV4()")]
 		public MessagePatch PostMessagePatch(string authToken, object patch)
 		{
 			return diadoc.PostMessagePatch(authToken, (MessagePatchToPost) patch);
 		}
 
+		[Obsolete("Use PostMessagePatchV4()")]
 		public MessagePatch PostMessagePatch(string authToken, object patch, string operationId)
 		{
 			return diadoc.PostMessagePatch(authToken, (MessagePatchToPost) patch, operationId);
@@ -1746,6 +1748,7 @@ namespace Diadoc.Api
 			return diadoc.GetMessageV6(authToken, boxId, messageId, documentId, withOriginalSignature, injectEntityContent);
 		}
 
+		[Obsolete("Use GetMessageV6()")]
 		public Template GetTemplate(string authToken, string boxId, string messageId)
 		{
 			return diadoc.GetTemplate(authToken, boxId, messageId);
