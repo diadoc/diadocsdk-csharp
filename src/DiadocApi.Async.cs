@@ -314,6 +314,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.TransformTemplateToMessageAsync(authToken, templateTransformation, operationId);
 		}
 
+		[Obsolete("Use PostMessagePatchV4Async()")]
 		public Task<MessagePatch> PostMessagePatchAsync(string authToken, MessagePatchToPost patch, string operationId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -677,6 +678,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetMessageV6Async(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
 		}
 
+		[Obsolete("Use GetMessageV6Async()")]
 		public Task<Template> GetTemplateAsync(string authToken, string boxId, string templateId, string entityId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
