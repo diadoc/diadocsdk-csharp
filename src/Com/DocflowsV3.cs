@@ -506,6 +506,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp DeliveredAt { get; }
 		RoamingNotification RoamingNotification { get; }
 		Com.SenderSignatureStatus SenderSignatureStatusValue { get; }
+		OutOfWorkflowUniversalMessageDocflow OutOfWorkflowUniversalMessageDocflow { get; }
 	}
 
 	[ComVisible(true)]

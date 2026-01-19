@@ -1,0 +1,8 @@
+import "Docflow/UniversalMessageAttachmentDocflow.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message OutOfWorkflowUniversalMessageDocflow
+{
+	repeated UniversalMessageAttachmentDocflow Messages = 1;
+}

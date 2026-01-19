@@ -14,7 +14,7 @@
 // Note: requires additional types generated from: Docflow/Attachment.proto
 // Note: requires additional types generated from: Docflow/RoamingNotification.proto
 // Note: requires additional types generated from: Docflow/ResolutionDocflowV3.proto
-// Note: requires additional types generated from: Docflow/UniversalMessageAttachmentDocflow.proto
+// Note: requires additional types generated from: Docflow/OutOfWorkflowUniversalMessageDocflow.proto
 // Note: requires additional types generated from: OuterDocflows/OuterDocflowStatus.proto
 // Note: requires additional types generated from: TtGisFixationCancellationStatus.proto
 // Note: requires additional types generated from: DocflowStatusV3.proto
@@ -201,13 +201,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _SenderSignatureStatus; }
       set { _SenderSignatureStatus = value; }
     }
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow> _OutOfWorkflowUniversalMessages = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow>();
-    [global::ProtoBuf.ProtoMember(7, Name=@"OutOfWorkflowUniversalMessages", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow> OutOfWorkflowUniversalMessages
+
+    private Diadoc.Api.Proto.Docflow.OutOfWorkflowUniversalMessageDocflow _OutOfWorkflowUniversalMessageDocflow = null;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"OutOfWorkflowUniversalMessageDocflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.OutOfWorkflowUniversalMessageDocflow OutOfWorkflowUniversalMessageDocflow
     {
-      get { return _OutOfWorkflowUniversalMessages; }
+      get { return _OutOfWorkflowUniversalMessageDocflow; }
+      set { _OutOfWorkflowUniversalMessageDocflow = value; }
     }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -39,6 +39,15 @@ namespace Diadoc.Api.Proto
       get { return _UniversalMessageCreator; }
       set { _UniversalMessageCreator = value; }
     }
+
+    private bool _IsOutOfWorkflow = (bool)false;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"IsOutOfWorkflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsOutOfWorkflow
+    {
+      get { return _IsOutOfWorkflow; }
+      set { _IsOutOfWorkflow = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

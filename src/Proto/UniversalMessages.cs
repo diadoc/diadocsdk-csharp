@@ -44,6 +44,7 @@ namespace Diadoc.Api.Proto
 		Com.UniversalMessageCodeGroup CodeGroupValue { get; }
 		ReadonlyList EventsList { get; }
 		UniversalMessageCreator UniversalMessageCreator { get; }
+		bool IsOutOfWorkflow { get; }
 	}
 
 	[ComVisible(true)]

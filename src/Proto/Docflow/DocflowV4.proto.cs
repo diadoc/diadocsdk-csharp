@@ -19,6 +19,7 @@
 // Note: requires additional types generated from: Docflow/UniversalMessageAttachmentDocflow.proto
 // Note: requires additional types generated from: Docflow/DocflowV3.proto
 // Note: requires additional types generated from: Docflow/LastEvent.proto
+// Note: requires additional types generated from: Docflow/OutOfWorkflowUniversalMessageDocflow.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RevocationDocflowV4")]
@@ -185,13 +186,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _Confirmation; }
       set { _Confirmation = value; }
     }
-    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow> _OutOfWorkflowUniversalMessages = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow>();
-    [global::ProtoBuf.ProtoMember(9, Name=@"OutOfWorkflowUniversalMessages", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.UniversalMessageAttachmentDocflow> OutOfWorkflowUniversalMessages
+
+    private Diadoc.Api.Proto.Docflow.OutOfWorkflowUniversalMessageDocflow _OutOfWorkflowUniversalMessageDocflow = null;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"OutOfWorkflowUniversalMessageDocflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.OutOfWorkflowUniversalMessageDocflow OutOfWorkflowUniversalMessageDocflow
     {
-      get { return _OutOfWorkflowUniversalMessages; }
+      get { return _OutOfWorkflowUniversalMessageDocflow; }
+      set { _OutOfWorkflowUniversalMessageDocflow = value; }
     }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

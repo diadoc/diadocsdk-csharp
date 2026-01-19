@@ -6,6 +6,7 @@ message UniversalMessageInfo {
     optional UniversalMessageCodeGroup CodeGroup = 1 [default = UnknownUniversalMessageCodeGroup];
     repeated UniversalMessageEvent Events = 2;
     required UniversalMessageCreator UniversalMessageCreator = 3;
+    optional bool IsOutOfWorkflow = 4 [default = false];
 }
  
 message UniversalMessageEvent {

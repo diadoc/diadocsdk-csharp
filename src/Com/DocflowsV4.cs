@@ -217,6 +217,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp DeliveredAt { get; }
 		Com.RecipientResponseStatus ResponseStatusValue { get; }
 		ConfirmationDocflowV4 Confirmation { get; }
+		OutOfWorkflowUniversalMessageDocflow OutOfWorkflowUniversalMessageDocflow { get; }
 	}
 
 	[ComVisible(true)]

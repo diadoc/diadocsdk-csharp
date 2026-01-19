@@ -9,6 +9,7 @@ import "DocumentId.proto";
 import "Docflow/UniversalMessageAttachmentDocflow.proto";
 import "Docflow/DocflowV3.proto";
 import "Docflow/LastEvent.proto";
+import "Docflow/OutOfWorkflowUniversalMessageDocflow.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
@@ -39,7 +40,7 @@ message ParticipantResponseDocflowV4
     optional Timestamp DeliveredAt = 6;
     required Documents.RecipientResponseStatus ResponseStatus = 7;
     optional ConfirmationDocflowV4 Confirmation = 8;
-    repeated UniversalMessageAttachmentDocflow OutOfWorkflowUniversalMessages = 9;
+    optional OutOfWorkflowUniversalMessageDocflow OutOfWorkflowUniversalMessageDocflow = 9;
 }
 
 message SignatureRejectionDocflowV4
