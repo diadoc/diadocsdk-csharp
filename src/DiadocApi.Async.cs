@@ -736,11 +736,6 @@ namespace Diadoc.Api
 		{
 			return diadocHttpApi.GetDocumentsAsync(authToken, filter);
 		}
-		
-		public Task<DocumentList> GetDocumentsV4Async(string authToken, GetDocumentsV4Request request)
-		{
-			return diadocHttpApi.GetDocumentsV4Async(authToken, request);
-		}
 
 		public Task<Document> GetDocumentAsync(string authToken, string boxId, string messageId, string entityId)
 		{
