@@ -19,6 +19,7 @@
 // Note: requires additional types generated from: Docflow/UniversalMessageAttachmentDocflow.proto
 // Note: requires additional types generated from: Docflow/DocflowV3.proto
 // Note: requires additional types generated from: Docflow/LastEvent.proto
+// Note: requires additional types generated from: Docflow/OutOfWorkflowUniversalMessageDocflow.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RevocationDocflowV4")]
@@ -184,6 +185,15 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _Confirmation; }
       set { _Confirmation = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.OutOfWorkflowUniversalMessageDocflow _OutOfWorkflowUniversalMessageDocflow = null;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"OutOfWorkflowUniversalMessageDocflow", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.OutOfWorkflowUniversalMessageDocflow OutOfWorkflowUniversalMessageDocflow
+    {
+      get { return _OutOfWorkflowUniversalMessageDocflow; }
+      set { _OutOfWorkflowUniversalMessageDocflow = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

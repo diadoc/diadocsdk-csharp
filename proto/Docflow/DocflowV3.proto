@@ -4,6 +4,7 @@ import "Docflow/AttachmentV3.proto";
 import "Docflow/Attachment.proto";
 import "Docflow/RoamingNotification.proto";
 import "Docflow/ResolutionDocflowV3.proto";
+import "Docflow/OutOfWorkflowUniversalMessageDocflow.proto";
 import "OuterDocflows/OuterDocflowStatus.proto";
 import "TtGisFixationCancellationStatus.proto";
 import "DocflowStatusV3.proto";
@@ -36,6 +37,7 @@ message SenderTitleDocflow
 	optional Timestamp DeliveredAt = 4;
 	optional RoamingNotification RoamingNotification = 5;
 	required Documents.SenderSignatureStatus SenderSignatureStatus = 6;
+	optional OutOfWorkflowUniversalMessageDocflow OutOfWorkflowUniversalMessageDocflow = 7;
 }
 
 message ConfirmationDocflow
