@@ -870,6 +870,11 @@ namespace Diadoc.Api
 				fromDocumentDate, toDocumentDate, departmentId, excludeSubdepartments, afterIndexKey, count);
 		}
 
+		public DocumentList GetDocumentsV4(string authToken, string boxId, GetDocumentsV4Request request)
+		{
+			return diadocHttpApi.GetDocumentsV4(authToken, boxId, request);
+		}
+
 		public DocumentList GetDocuments(string authToken, DocumentsFilter filter)
 		{
 			return diadocHttpApi.GetDocuments(authToken, filter);
