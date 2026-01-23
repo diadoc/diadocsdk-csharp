@@ -66,6 +66,13 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
+		public DocumentList GetDocumentsV4([NotNull] string authToken, GetDocumentsV4Request request)
+		{
+			var qsb = new PathAndQueryBuilder("/V4/GetDocuments");
+			return PerformHttpRequest<GetDocumentsV4Request, DocumentList>(authToken, qsb.BuildPathAndQuery(), request);
+		}
+
+		[NotNull]
 		public Document GetDocument([NotNull] string authToken, [NotNull] string boxId, [NotNull] string messageId, [NotNull] string entityId)
 		{
 			var qsb = new PathAndQueryBuilder("/V3/GetDocument");

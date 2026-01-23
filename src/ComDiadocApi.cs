@@ -1796,6 +1796,11 @@ namespace Diadoc.Api
 				afterIndexKey);
 		}
 
+		public DocumentList GetDocumentsV4(string authToken, GetDocumentsV4Request request)
+		{
+			return diadoc.GetDocumentsV4(authToken, request);
+		}
+
 		public Document GetDocument(string authToken, string boxId, string messageId, string entityId)
 		{
 			return diadoc.GetDocument(authToken, boxId, messageId, entityId);

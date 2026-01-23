@@ -188,6 +188,7 @@ namespace Diadoc.Api
 		PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId);
 		DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count = null);
 		DocumentList GetDocuments(string authToken, DocumentsFilter filter);
+		DocumentList GetDocumentsV4(string authToken, GetDocumentsV4Request request);
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
 		GetDocflowBatchResponse GetDocflows(string authToken, string boxId, GetDocflowBatchRequest request);
 		GetDocflowEventsResponse GetDocflowEvents(string authToken, string boxId, GetDocflowEventsRequest request);
@@ -621,6 +622,7 @@ namespace Diadoc.Api
 		Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count
  = null);
 		Task<DocumentList> GetDocumentsAsync(string authToken, DocumentsFilter filter);
+		Task<DocumentList> GetDocumentsV4Async(string authToken, GetDocumentsV4Request request);
 		Task<Document> GetDocumentAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<SignatureInfo> GetSignatureInfoAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType);
