@@ -36,23 +36,6 @@ namespace Diadoc.Api
 			return WaitTaskResultAsync<CloudSignConfirmResult>(authToken, "/CloudSignConfirmResult", taskId, timeout);
 		}
 
-		public Task<AsyncMethodResult> AutoSignReceiptsAsync(string authToken, string boxId, string certificateThumbprint, string batchKey)
-		{
-			if (boxId == null) throw new ArgumentNullException(nameof(boxId));
-			var queryString = new PathAndQueryBuilder("/AutoSignReceipts");
-			queryString.AddParameter("boxId", boxId);
-			if (!string.IsNullOrEmpty(certificateThumbprint))
-				queryString.AddParameter("certificateThumbprint", certificateThumbprint);
-			if (!string.IsNullOrEmpty(batchKey))
-				queryString.AddParameter("batchKey", batchKey);
-			return PerformHttpRequestAsync<AsyncMethodResult>(authToken, "POST", queryString.BuildPathAndQuery());
-		}
-
-		public Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout = null)
-		{
-			return WaitTaskResultAsync<AutosignReceiptsResult>(authToken, "/AutosignReceiptsResult", taskId, timeout);
-		}
-
 		public Task<AsyncMethodResult> DssSignAsync(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null)
 		{
 			var queryString = new PathAndQueryBuilder("/DssSign");

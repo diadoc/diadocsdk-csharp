@@ -80,21 +80,4 @@ namespace Diadoc.Api.Proto
 			get { return new ReadonlyList(Signatures); }
 		}
 	}
-
-	[ComVisible(true)]
-	[Guid("B28C21AF-FE53-4327-A193-05F42A0CC614")]
-	public interface IAutosignReceiptsResult
-	{
-		long SignedReceiptsCount { get; set; }
-		string NextBatchKey { get; set; }
-	}
-
-	[ComVisible(true)]
-	[ProgId("Diadoc.Api.AutosignReceiptsResult")]
-	[Guid("2467CFAD-BA7F-44D0-A6CB-0D38664BBB0F")]
-	[ClassInterface(ClassInterfaceType.None)]
-	[ComDefaultInterface(typeof(IAutosignReceiptsResult))]
-	public partial class AutosignReceiptsResult : SafeComObject, IAutosignReceiptsResult
-	{
-	}
 }

@@ -1387,24 +1387,6 @@ namespace Diadoc.Api
 			return diadocHttpApi.PutOrganizationStorageEntriesAsync(authToken, boxId, entries);
 		}
 
-		public Task<AsyncMethodResult> AutoSignReceiptsAsync(string authToken, string boxId, string certificateThumbprint, string batchKey)
-		{
-			if (string.IsNullOrEmpty(authToken))
-				throw new ArgumentNullException("authToken");
-			if (string.IsNullOrEmpty(boxId))
-				throw new ArgumentNullException("boxId");
-			return diadocHttpApi.AutoSignReceiptsAsync(authToken, boxId, certificateThumbprint, batchKey);
-		}
-
-		public Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout = null)
-		{
-			if (string.IsNullOrEmpty(authToken))
-				throw new ArgumentNullException("authToken");
-			if (string.IsNullOrEmpty(taskId))
-				throw new ArgumentNullException("taskId");
-			return diadocHttpApi.WaitAutosignReceiptsResultAsync(authToken, taskId, timeout);
-		}
-
 		public Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection)
 		{
 			if (string.IsNullOrEmpty(token))
