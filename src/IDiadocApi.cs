@@ -341,8 +341,6 @@ namespace Diadoc.Api
 		DocumentWorkflowSettingsListV2 GetWorkflowsSettings(string authToken, string boxId);
 		List<KeyValueStorageEntry> GetOrganizationStorageEntries(string authToken, string boxId, IEnumerable<string> keys);
 		void PutOrganizationStorageEntries(string authToken, string boxId, IEnumerable<KeyValueStorageEntry> entries);
-		AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey);
-		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId, TimeSpan? timeout = null);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
 		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
@@ -798,9 +796,6 @@ namespace Diadoc.Api
 		Task<DocumentWorkflowSettingsListV2> GetWorkflowsSettingsAsync(string authToken, string boxId);
 		Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<string> keys);
 		Task PutOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<KeyValueStorageEntry> entries);
-		Task<AsyncMethodResult> AutoSignReceiptsAsync(string authToken, string boxId, string certificateThumbprint, string batchKey);
-		Task<AutosignReceiptsResult> WaitAutosignReceiptsResultAsync(string authToken, string taskId, TimeSpan? timeout
- = null);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection);
 		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]

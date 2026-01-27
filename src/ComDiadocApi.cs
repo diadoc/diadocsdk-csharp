@@ -716,9 +716,6 @@ namespace Diadoc.Api
 		Message TransformTemplateToMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object templateTransformation);
 		Message TransformTemplateToMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object templateTransformation, string operationId);
 
-		AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey);
-		AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId);
-
 		void SendFnsRegistrationMessage(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object fnsRegistrationMessageInfo);
 
 		RegistrationResponse Register(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object registrationRequest);
@@ -1193,16 +1190,6 @@ namespace Diadoc.Api
 		public Message TransformTemplateToMessage(string authToken, object templateTransformation, string operationId)
 		{
 			return diadoc.TransformTemplateToMessage(authToken, (TemplateTransformationToPost) templateTransformation, operationId);
-		}
-
-		public AsyncMethodResult AutoSignReceipts(string authToken, string boxId, string certificateThumbprint, string batchKey)
-		{
-			return diadoc.AutoSignReceipts(authToken, boxId, certificateThumbprint, batchKey);
-		}
-
-		public AutosignReceiptsResult WaitAutosignReceiptsResult(string authToken, string taskId)
-		{
-			return diadoc.WaitAutosignReceiptsResult(authToken, taskId);
 		}
 
 		public void SendFnsRegistrationMessage(string authToken, string boxId, object fnsRegistrationMessageInfo)

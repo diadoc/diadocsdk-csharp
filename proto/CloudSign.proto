@@ -18,8 +18,3 @@ message CloudSignResult {
 message CloudSignConfirmResult {
 	repeated Content_v2 Signatures = 1;
 }
-
-message AutosignReceiptsResult {
-	required int64 SignedReceiptsCount = 1;
-	required string NextBatchKey = 2;
-}
