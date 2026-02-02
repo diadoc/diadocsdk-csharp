@@ -18,32 +18,32 @@ namespace Diadoc.Api.Proto.Documents
   {
     public GetDocumentsV4Request() {}
     
-    private readonly global::System.Collections.Generic.List<string> _RecipientBoxId = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"RecipientBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> RecipientBoxId
+    private readonly global::System.Collections.Generic.List<string> _RecipientBoxIds = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"RecipientBoxIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> RecipientBoxIds
     {
-      get { return _RecipientBoxId; }
+      get { return _RecipientBoxIds; }
     }
   
-    private readonly global::System.Collections.Generic.List<string> _FromDepartmentId = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(2, Name=@"FromDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> FromDepartmentId
+    private readonly global::System.Collections.Generic.List<string> _FromDepartmentIds = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"FromDepartmentIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> FromDepartmentIds
     {
-      get { return _FromDepartmentId; }
+      get { return _FromDepartmentIds; }
     }
   
-    private readonly global::System.Collections.Generic.List<string> _ToDepartmentId = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(3, Name=@"ToDepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> ToDepartmentId
+    private readonly global::System.Collections.Generic.List<string> _ToDepartmentIds = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"ToDepartmentIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> ToDepartmentIds
     {
-      get { return _ToDepartmentId; }
+      get { return _ToDepartmentIds; }
     }
   
-    private readonly global::System.Collections.Generic.List<string> _DepartmentId = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(4, Name=@"DepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> DepartmentId
+    private readonly global::System.Collections.Generic.List<string> _DepartmentIds = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"DepartmentIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> DepartmentIds
     {
-      get { return _DepartmentId; }
+      get { return _DepartmentIds; }
     }
   
 
@@ -55,11 +55,11 @@ namespace Diadoc.Api.Proto.Documents
       get { return _ExcludeSubdepartments; }
       set { _ExcludeSubdepartments = value; }
     }
-    private readonly global::System.Collections.Generic.List<string> _DocumentTypeNamedId = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(6, Name=@"DocumentTypeNamedId", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> DocumentTypeNamedId
+    private readonly global::System.Collections.Generic.List<string> _DocumentTypeNamedIds = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(6, Name=@"DocumentTypeNamedIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> DocumentTypeNamedIds
     {
-      get { return _DocumentTypeNamedId; }
+      get { return _DocumentTypeNamedIds; }
     }
   
     private string _DocumentCategory;
@@ -69,25 +69,25 @@ namespace Diadoc.Api.Proto.Documents
       get { return _DocumentCategory; }
       set { _DocumentCategory = value; }
     }
-    private readonly global::System.Collections.Generic.List<string> _DocumentStatus = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(8, Name=@"DocumentStatus", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> DocumentStatus
+    private readonly global::System.Collections.Generic.List<string> _DocumentStatuses = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(8, Name=@"DocumentStatuses", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> DocumentStatuses
     {
-      get { return _DocumentStatus; }
+      get { return _DocumentStatuses; }
     }
   
-    private readonly global::System.Collections.Generic.List<string> _FileName = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(9, Name=@"FileName", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> FileName
+    private readonly global::System.Collections.Generic.List<string> _FileNames = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(9, Name=@"FileNames", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> FileNames
     {
-      get { return _FileName; }
+      get { return _FileNames; }
     }
   
-    private readonly global::System.Collections.Generic.List<string> _DocumentNumber = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(10, Name=@"DocumentNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> DocumentNumber
+    private readonly global::System.Collections.Generic.List<string> _DocumentNumbers = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(10, Name=@"DocumentNumbers", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> DocumentNumbers
     {
-      get { return _DocumentNumber; }
+      get { return _DocumentNumbers; }
     }
   
 
@@ -126,11 +126,11 @@ namespace Diadoc.Api.Proto.Documents
       get { return _ToTimestamp; }
       set { _ToTimestamp = value; }
     }
-    private readonly global::System.Collections.Generic.List<string> _TotalSum = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(15, Name=@"TotalSum", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> TotalSum
+    private readonly global::System.Collections.Generic.List<string> _TotalSums = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(15, Name=@"TotalSums", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> TotalSums
     {
-      get { return _TotalSum; }
+      get { return _TotalSums; }
     }
   
 
