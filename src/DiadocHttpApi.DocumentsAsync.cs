@@ -63,6 +63,14 @@ namespace Diadoc.Api
 			});
 		}
 
+		[NotNull]
+		public Task<DocumentList> GetDocumentsV4Async([NotNull] string authToken, string boxId, GetDocumentsV4Request request)
+		{
+			var qsb = new PathAndQueryBuilder("/V4/GetDocuments");
+			qsb.AddParameter("boxId", boxId);
+			return PerformHttpRequestAsync<DocumentList>(authToken, "POST", qsb.BuildPathAndQuery(), Serialize(request));
+		}
+
 		[ItemNotNull]
 		public Task<Document> GetDocumentAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] string messageId, [NotNull] string entityId)
 		{
