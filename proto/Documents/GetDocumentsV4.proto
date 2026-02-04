@@ -4,28 +4,32 @@ import "CustomDataItem.proto";
 import "TimeBasedFilter.proto";
 
 message GetDocumentsV4Request {
-	repeated string RecipientBoxIds = 1;
+	repeated string CounteragentBoxIds = 1;
 	repeated string FromDepartmentIds = 2;
 	repeated string ToDepartmentIds = 3;
-	repeated string DepartmentIds = 4;
-	optional bool ExcludeSubdepartments = 5 [default = false];
+	repeated DepartmentFilter Departments = 4;
 
-	repeated string DocumentTypeNamedIds = 6;
-	required string DocumentCategory = 7; 
-	repeated string DocumentStatuses = 8;
-	repeated string FileNames = 9;
-	repeated string DocumentNumbers = 10;
-	optional string FromDocumentDate = 11;
-	optional string ToDocumentDate = 12;
-	optional Timestamp FromTimestamp = 13;
-	optional Timestamp ToTimestamp = 14;
-	repeated string TotalSums = 15;
-	optional string ToTotalSum = 16;
-	optional string FromTotalSum = 17;
-	repeated CustomDataItem CustomData = 18;
+	repeated string DocumentTypeNamedIds = 5;
+	required string DocumentCategory = 6;
+	repeated string DocumentStatuses = 7;
+	repeated string FileNames = 8;
+	repeated string DocumentNumbers = 9;
+	optional string FromDocumentDate = 10;
+	optional string ToDocumentDate = 11;
+	optional Timestamp FromTimestamp = 12;
+	optional Timestamp ToTimestamp = 13;
+	repeated string TotalSums = 14;
+	optional string ToTotalSum = 15;
+	optional string FromTotalSum = 16;
+	repeated CustomDataItem CustomData = 17;
 
 
-	optional SortDirection SortDirection = 19 [default = Ascending];
-	optional int32 Count = 20 [default = 100];
-	optional string AfterIndexKey = 21;
+	optional SortDirection SortDirection = 18 [default = Ascending];
+	optional int32 Count = 19 [default = 100];
+	optional string AfterIndexKey = 20;
+}
+
+message DepartmentFilter {
+	required string DepartmentId = 1;
+	optional bool ExcludeSubdepartments = 2 [default = false];
 }

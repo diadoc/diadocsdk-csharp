@@ -18,11 +18,11 @@ namespace Diadoc.Api.Proto.Documents
   {
     public GetDocumentsV4Request() {}
     
-    private readonly global::System.Collections.Generic.List<string> _RecipientBoxIds = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(1, Name=@"RecipientBoxIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> RecipientBoxIds
+    private readonly global::System.Collections.Generic.List<string> _CounteragentBoxIds = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"CounteragentBoxIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> CounteragentBoxIds
     {
-      get { return _RecipientBoxIds; }
+      get { return _CounteragentBoxIds; }
     }
   
     private readonly global::System.Collections.Generic.List<string> _FromDepartmentIds = new global::System.Collections.Generic.List<string>();
@@ -39,52 +39,43 @@ namespace Diadoc.Api.Proto.Documents
       get { return _ToDepartmentIds; }
     }
   
-    private readonly global::System.Collections.Generic.List<string> _DepartmentIds = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(4, Name=@"DepartmentIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> DepartmentIds
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DepartmentFilter> _Departments = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DepartmentFilter>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Departments", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DepartmentFilter> Departments
     {
-      get { return _DepartmentIds; }
+      get { return _Departments; }
     }
   
-
-    private bool _ExcludeSubdepartments = (bool)false;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ExcludeSubdepartments", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue((bool)false)]
-    public bool ExcludeSubdepartments
-    {
-      get { return _ExcludeSubdepartments; }
-      set { _ExcludeSubdepartments = value; }
-    }
     private readonly global::System.Collections.Generic.List<string> _DocumentTypeNamedIds = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(6, Name=@"DocumentTypeNamedIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(5, Name=@"DocumentTypeNamedIds", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<string> DocumentTypeNamedIds
     {
       get { return _DocumentTypeNamedIds; }
     }
   
     private string _DocumentCategory;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"DocumentCategory", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"DocumentCategory", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string DocumentCategory
     {
       get { return _DocumentCategory; }
       set { _DocumentCategory = value; }
     }
     private readonly global::System.Collections.Generic.List<string> _DocumentStatuses = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(8, Name=@"DocumentStatuses", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(7, Name=@"DocumentStatuses", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<string> DocumentStatuses
     {
       get { return _DocumentStatuses; }
     }
   
     private readonly global::System.Collections.Generic.List<string> _FileNames = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(9, Name=@"FileNames", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(8, Name=@"FileNames", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<string> FileNames
     {
       get { return _FileNames; }
     }
   
     private readonly global::System.Collections.Generic.List<string> _DocumentNumbers = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(10, Name=@"DocumentNumbers", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(9, Name=@"DocumentNumbers", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<string> DocumentNumbers
     {
       get { return _DocumentNumbers; }
@@ -92,7 +83,7 @@ namespace Diadoc.Api.Proto.Documents
   
 
     private string _FromDocumentDate = "";
-    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"FromDocumentDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"FromDocumentDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string FromDocumentDate
     {
@@ -101,7 +92,7 @@ namespace Diadoc.Api.Proto.Documents
     }
 
     private string _ToDocumentDate = "";
-    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"ToDocumentDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"ToDocumentDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string ToDocumentDate
     {
@@ -110,7 +101,7 @@ namespace Diadoc.Api.Proto.Documents
     }
 
     private Diadoc.Api.Proto.Timestamp _FromTimestamp = null;
-    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"FromTimestamp", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"FromTimestamp", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
     public Diadoc.Api.Proto.Timestamp FromTimestamp
     {
@@ -119,7 +110,7 @@ namespace Diadoc.Api.Proto.Documents
     }
 
     private Diadoc.Api.Proto.Timestamp _ToTimestamp = null;
-    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"ToTimestamp", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(13, IsRequired = false, Name=@"ToTimestamp", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
     public Diadoc.Api.Proto.Timestamp ToTimestamp
     {
@@ -127,7 +118,7 @@ namespace Diadoc.Api.Proto.Documents
       set { _ToTimestamp = value; }
     }
     private readonly global::System.Collections.Generic.List<string> _TotalSums = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(15, Name=@"TotalSums", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(14, Name=@"TotalSums", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<string> TotalSums
     {
       get { return _TotalSums; }
@@ -135,7 +126,7 @@ namespace Diadoc.Api.Proto.Documents
   
 
     private string _ToTotalSum = "";
-    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"ToTotalSum", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"ToTotalSum", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string ToTotalSum
     {
@@ -144,7 +135,7 @@ namespace Diadoc.Api.Proto.Documents
     }
 
     private string _FromTotalSum = "";
-    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"FromTotalSum", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"FromTotalSum", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string FromTotalSum
     {
@@ -152,7 +143,7 @@ namespace Diadoc.Api.Proto.Documents
       set { _FromTotalSum = value; }
     }
     private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.CustomDataItem> _CustomData = new global::System.Collections.Generic.List<Diadoc.Api.Proto.CustomDataItem>();
-    [global::ProtoBuf.ProtoMember(18, Name=@"CustomData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(17, Name=@"CustomData", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<Diadoc.Api.Proto.CustomDataItem> CustomData
     {
       get { return _CustomData; }
@@ -160,7 +151,7 @@ namespace Diadoc.Api.Proto.Documents
   
 
     private Diadoc.Api.Proto.SortDirection _SortDirection = Diadoc.Api.Proto.SortDirection.Ascending;
-    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"SortDirection", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(18, IsRequired = false, Name=@"SortDirection", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.SortDirection.Ascending)]
     public Diadoc.Api.Proto.SortDirection SortDirection
     {
@@ -169,7 +160,7 @@ namespace Diadoc.Api.Proto.Documents
     }
 
     private int _Count = (int)100;
-    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"Count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"Count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)100)]
     public int Count
     {
@@ -178,12 +169,38 @@ namespace Diadoc.Api.Proto.Documents
     }
 
     private string _AfterIndexKey = "";
-    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"AfterIndexKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"AfterIndexKey", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue("")]
     public string AfterIndexKey
     {
       get { return _AfterIndexKey; }
       set { _AfterIndexKey = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DepartmentFilter")]
+  public partial class DepartmentFilter : global::ProtoBuf.IExtensible
+  {
+    public DepartmentFilter() {}
+    
+    private string _DepartmentId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"DepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string DepartmentId
+    {
+      get { return _DepartmentId; }
+      set { _DepartmentId = value; }
+    }
+
+    private bool _ExcludeSubdepartments = (bool)false;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ExcludeSubdepartments", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool ExcludeSubdepartments
+    {
+      get { return _ExcludeSubdepartments; }
+      set { _ExcludeSubdepartments = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
