@@ -682,7 +682,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetMessageV6Async(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
 		}
 
-		[Obsolete("Use GetMessageV6Async()")]
+		[Obsolete("Use GetMessageV6Async() for get template")]
 		public Task<Template> GetTemplateAsync(string authToken, string boxId, string templateId, string entityId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

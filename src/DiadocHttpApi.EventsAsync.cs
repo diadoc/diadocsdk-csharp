@@ -185,7 +185,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		[Obsolete("Use GetMessageV6Async()")]
+		[Obsolete("Use GetMessageV6Async() for get template")]
 		public Task<Template> GetTemplateAsync(string authToken, string boxId, string templateId, string entityId = null)
 		{
 			var qsb = new PathAndQueryBuilder("/GetTemplate");

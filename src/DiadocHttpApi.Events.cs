@@ -191,7 +191,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
-		[Obsolete("Use GetMessageV6()")]
+		[Obsolete("Use GetMessageV6() for get template")]
 		public Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null)
 		{
 			var qsb = new PathAndQueryBuilder("/GetTemplate");
