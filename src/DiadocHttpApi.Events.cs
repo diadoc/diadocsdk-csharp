@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
 
@@ -186,6 +187,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		[Obsolete("Use GetMessageV6() for get template")]
 		public Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null)
 		{
 			var qsb = new PathAndQueryBuilder("/GetTemplate");
@@ -222,6 +224,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<TemplateTransformationToPost, Message>(authToken, qsb.BuildPathAndQuery(), templateTransformation);
 		}
 
+		[Obsolete("Use PostMessagePatchV4()")]
 		public MessagePatch PostMessagePatch(string authToken, MessagePatchToPost patch, string operationId = null)
 		{
 			var qsb = new PathAndQueryBuilder("/V3/PostMessagePatch");
