@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
 
@@ -6,6 +7,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
+		[Obsolete("Use GetNewEventsV8")]
 		public BoxEventList GetNewEvents(
 			string authToken,
 			string boxId,
@@ -116,6 +118,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<BoxEventList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		[Obsolete("Use GetEventV3")]
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)
 		{
 			var queryString = string.Format("/V2/GetEvent?eventId={0}&boxId={1}", eventId, boxId);
@@ -128,6 +131,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<BoxEvent>(authToken, "GET", queryString);
 		}
 
+		[Obsolete("Use GetMessageV6")]
 		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			var qsb = new PathAndQueryBuilder("/V5/GetMessage");
@@ -150,6 +154,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		[Obsolete("Use GetMessageV6()")]
 		public Message GetMessage(
 			string authToken,
 			string boxId,
@@ -261,6 +266,7 @@ namespace Diadoc.Api
 			return PerformHttpRequest<PrepareDocumentsToSignRequest, PrepareDocumentsToSignResponse>(authToken, queryString, request);
 		}
 
+		[Obsolete("Use GetLastEventV2()")]
 		public BoxEvent GetLastEvent(string authToken, string boxId)
 		{
 			var queryString = BuildQueryStringWithBoxId("GetLastEvent", boxId);

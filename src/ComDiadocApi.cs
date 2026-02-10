@@ -92,6 +92,7 @@ namespace Diadoc.Api
 		Box GetBox(string authToken, string boxId);
 		Department GetDepartment(string authToken, string orgId, string departmentId);
 
+		[Obsolete("Use GetNewEventsV8()")]
 		BoxEventList GetNewEvents(
 			string authToken,
 			string boxId,
@@ -122,7 +123,10 @@ namespace Diadoc.Api
 			string orderBy,
 			int limit);
 
+		[Obsolete("Use GetEventV3()")]
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
+
+		BoxEvent GetEventV3(string authToken, string boxId, string eventId);
 		void SaveEntityContent(string authToken, string boxId, string messageId, string entityId, string filePath);
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message);
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message, string operationId);
@@ -278,14 +282,25 @@ namespace Diadoc.Api
 			string messageId,
 			string entityId);
 
+		[Obsolete("Use GetMessageV6()")]
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
 
+		[Obsolete("Use GetMessageForDocumentV6()")]
 		Message GetMessageForDocument(
 			string authToken,
 			string boxId,
 			string messageId,
 			string entityId,
+			bool withOriginalSignature = false,
+			bool injectEntityContent = false);
+
+		Message GetMessageForDocumentV6(
+			string authToken,
+			string boxId,
+			string messageId,
+			string documentId,
 			bool withOriginalSignature = false,
 			bool injectEntityContent = false);
 
@@ -584,21 +599,25 @@ namespace Diadoc.Api
 			[MarshalAs(UnmanagedType.IDispatch)] object forwardedDocumentId,
 			string entityId);
 
+		[Obsolete("Use GetDocflowsV4() from DocflowApi property")]
 		GetDocflowBatchResponse GetDocflows(
 			string authToken,
 			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
+		[Obsolete("Use GetDocflowEventsV4() from DocflowApi property")]
 		GetDocflowEventsResponse GetDocflowEvents(
 			string authToken,
 			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
+		[Obsolete("Use SearchDocflowsV4() from DocflowApi property")]
 		SearchDocflowsResponse SearchDocflows(
 			string authToken,
 			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object request);
 
+		[Obsolete("Use GetDocflowsByPacketIdV4() from DocflowApi property")]
 		GetDocflowsByPacketIdResponse GetDocflowsByPacketId(
 			string authToken,
 			string boxId,
@@ -721,7 +740,9 @@ namespace Diadoc.Api
 		RegistrationResponse Register(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object registrationRequest);
 		void RegisterConfirm(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object registrationConfirmRequest);
 
+		[Obsolete("Use GetLastEventV2()")]
 		BoxEvent GetLastEvent(string token, string boxId);
+
 		BoxEvent GetLastEventV2(string token, string boxId);
 
 		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
@@ -969,6 +990,7 @@ namespace Diadoc.Api
 			return diadoc.GetDepartmentV2(authToken, boxId, departmentId);
 		}
 
+		[Obsolete("Use GetNewEventsV8()")]
 		public BoxEventList GetNewEvents(
 			string authToken,
 			string boxId,
@@ -1030,6 +1052,7 @@ namespace Diadoc.Api
 				limit != 0 ? limit : (int?) null);
 		}
 
+		[Obsolete("Use GetEventV3()")]
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)
 		{
 			return diadoc.GetEvent(authToken, boxId, eventId);
@@ -1623,6 +1646,7 @@ namespace Diadoc.Api
 			return diadoc.GetInvoiceCorrectionRequestInfo(authToken, boxId, messageId, entityId);
 		}
 
+		[Obsolete("Use GetMessageV6()")]
 		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			return diadoc.GetMessage(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
@@ -1633,6 +1657,7 @@ namespace Diadoc.Api
 			return diadoc.GetMessageV6(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
 		}
 
+		[Obsolete("Use GetMessageForDocumentV6()")]
 		public Message GetMessageForDocument(
 			string authToken,
 			string boxId,
@@ -1793,21 +1818,25 @@ namespace Diadoc.Api
 			return diadoc.GetSignatureInfo(authToken, boxId, messageId, entityId);
 		}
 
+		[Obsolete("Use GetDocflowsV4() from DocflowApi property")]
 		public GetDocflowBatchResponse GetDocflows(string authToken, string boxId, object request)
 		{
 			return diadoc.GetDocflows(authToken, boxId, (GetDocflowBatchRequest) request);
 		}
 
+		[Obsolete("Use GetDocflowEventsV4() from DocflowApi property")]
 		public GetDocflowEventsResponse GetDocflowEvents(string authToken, string boxId, object request)
 		{
 			return diadoc.GetDocflowEvents(authToken, boxId, (GetDocflowEventsRequest) request);
 		}
 
+		[Obsolete("Use SearchDocflowsV4() from DocflowApi property")]
 		public SearchDocflowsResponse SearchDocflows(string authToken, string boxId, object request)
 		{
 			return diadoc.SearchDocflows(authToken, boxId, (SearchDocflowsRequest) request);
 		}
 
+		[Obsolete("Use GetDocflowsByPacketIdV4() from DocflowApi property")]
 		public GetDocflowsByPacketIdResponse GetDocflowsByPacketId(string authToken, string boxId, object request)
 		{
 			return diadoc.GetDocflowsByPacketId(authToken, boxId, (GetDocflowsByPacketIdRequest) request);
@@ -1973,6 +2002,7 @@ namespace Diadoc.Api
 			return diadoc.GetContent(token, typeNamedId, function, version, titleIndex, (XsdContentType) contentType);
 		}
 
+		[Obsolete("Use GetLastEventV2()")]
 		public BoxEvent GetLastEvent(string token, string boxId)
 		{
 			return diadoc.GetLastEvent(token, boxId);

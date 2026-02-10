@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
@@ -8,6 +9,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
+		[Obsolete("Use GetNewEventsV8Async()")]
 		public Task<BoxEventList> GetNewEventsAsync(
 			string authToken,
 			string boxId,
@@ -118,6 +120,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<BoxEventList>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		[Obsolete("Use GetEventV3Async")]
 		public Task<BoxEvent> GetEventAsync(string authToken, string boxId, string eventId)
 		{
 			var qsb = new PathAndQueryBuilder("/V2/GetEvent");
@@ -134,6 +137,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<BoxEvent>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		[Obsolete("Use GetMessageV6Async()")]
 		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			var qsb = new PathAndQueryBuilder("/V5/GetMessage");
@@ -156,6 +160,7 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Message>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		[Obsolete("Use GetMessageV6Async()")]
 		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			var qsb = new PathAndQueryBuilder("/V5/GetMessage");
@@ -265,6 +270,7 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
+		[Obsolete("Use GetLastEventV2Async()")]
 		public Task<BoxEvent> GetLastEventAsync([NotNull] string authToken, [NotNull] string boxId)
 		{
 			var queryString = BuildQueryStringWithBoxId("GetLastEvent", boxId);
