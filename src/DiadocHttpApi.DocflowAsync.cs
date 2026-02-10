@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.PartnerEvents;
 using JetBrains.Annotations;
@@ -8,6 +9,7 @@ namespace Diadoc.Api
 	public partial class DiadocHttpApi
 	{
 		[ItemNotNull]
+		[Obsolete("Use GetDocflowsV4Async() from property Docflow")]
 		public Task<GetDocflowBatchResponse> GetDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowBatchRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetDocflows", boxId);
@@ -15,6 +17,7 @@ namespace Diadoc.Api
 		}
 
 		[ItemNotNull]
+		[Obsolete("Use GetDocflowEventsV4Async() from property Docflow")]
 		public Task<GetDocflowEventsResponse> GetDocflowEventsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowEventsRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetDocflowEvents", boxId);
@@ -22,6 +25,7 @@ namespace Diadoc.Api
 		}
 
 		[ItemNotNull]
+		[Obsolete("Use SearchDocflowsV4Async() from property Docflow")]
 		public Task<SearchDocflowsResponse> SearchDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] SearchDocflowsRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/SearchDocflows", boxId);
@@ -29,6 +33,7 @@ namespace Diadoc.Api
 		}
 
 		[ItemNotNull]
+		[Obsolete("Use GetDocflowsByPacketIdV4Async() from property Docflow")]
 		public Task<GetDocflowsByPacketIdResponse> GetDocflowsByPacketIdAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowsByPacketIdRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetDocflowsByPacketId", boxId);
@@ -38,6 +43,7 @@ namespace Diadoc.Api
 		public partial class DocflowHttpApi
 		{
 			[ItemNotNull]
+			[Obsolete("Use GetDocflowsV4Async()")]
 			public Task<GetDocflowBatchResponseV3> GetDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowBatchRequest request)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/GetDocflows", boxId);
@@ -45,6 +51,7 @@ namespace Diadoc.Api
 			}
 
 			[ItemNotNull]
+			[Obsolete("Use GetDocflowEventsV4Async()")]
 			public Task<GetDocflowEventsResponseV3> GetDocflowEventsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowEventsRequest request)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/GetDocflowEvents", boxId);
@@ -52,6 +59,7 @@ namespace Diadoc.Api
 			}
 
 			[ItemNotNull]
+			[Obsolete("Use SearchDocflowsV4Async()")]
 			public Task<SearchDocflowsResponseV3> SearchDocflowsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] SearchDocflowsRequest request)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/SearchDocflows", boxId);
@@ -59,6 +67,7 @@ namespace Diadoc.Api
 			}
 
 			[ItemNotNull]
+			[Obsolete("Use GetDocflowsByPacketIdV4Async()")]
 			public Task<GetDocflowsByPacketIdResponseV3> GetDocflowsByPacketIdAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowsByPacketIdRequest request)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/GetDocflowsByPacketId", boxId);

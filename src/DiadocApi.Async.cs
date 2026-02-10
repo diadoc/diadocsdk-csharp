@@ -237,6 +237,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationFeaturesAsync(authToken, boxId);
 		}
 
+		[Obsolete("Use GetNewEventsV8Async()")]
 		public Task<BoxEventList> GetNewEventsAsync(
 			string authToken,
 			string boxId,
@@ -277,6 +278,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetNewEventsV8Async(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
 		}
 
+		[Obsolete("Use GetEventV3Async()")]
 		public Task<BoxEvent> GetEventAsync(string authToken, string boxId, string eventId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -643,6 +645,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateTtGisFixationCancellationRequestAsync(authToken, boxId, messageId, documentId);
 		}
 
+		[Obsolete("Use GetMessageV6Async()")]
 		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -659,6 +662,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetMessageV6Async(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
 		}
 
+		[Obsolete("Use GetMessageV6Async()")]
 		public Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -767,24 +771,28 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostExtendedSignerDetailsAsync(token, boxId, certificateBytes, documentTitleType, signerDetails);
 		}
 
+		[Obsolete("Use GetDocflowsV4Async() from property Docflow")]
 		public Task<GetDocflowBatchResponse> GetDocflowsAsync(string authToken, string boxId, GetDocflowBatchRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetDocflowsAsync(authToken, boxId, request);
 		}
 
+		[Obsolete("Use GetDocflowEventsV4Async() from property Docflow")]
 		public Task<GetDocflowEventsResponse> GetDocflowEventsAsync(string authToken, string boxId, GetDocflowEventsRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetDocflowEventsAsync(authToken, boxId, request);
 		}
 
+		[Obsolete("Use SearchDocflowsV4Async() from property Docflow")]
 		public Task<SearchDocflowsResponse> SearchDocflowsAsync(string authToken, string boxId, SearchDocflowsRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.SearchDocflowsAsync(authToken, boxId, request);
 		}
 
+		[Obsolete("Use GetDocflowsByPacketIdV4Async() from property Docflow")]
 		public Task<GetDocflowsByPacketIdResponse> GetDocflowsByPacketIdAsync(string authToken, string boxId,
 			GetDocflowsByPacketIdRequest request)
 		{
@@ -1761,6 +1769,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.DetectCustomPrintFormsAsync(authToken, boxId, request);
 		}
 
+		[Obsolete("Use GetLastEventV2()")]
 		public Task<BoxEvent> GetLastEventAsync(string authToken, string boxId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

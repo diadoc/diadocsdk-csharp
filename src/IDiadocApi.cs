@@ -86,6 +86,7 @@ namespace Diadoc.Api
 		[Obsolete("Method UpdateOrganizationProperties will be removed soon")]
 		void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps);
 		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
+
 		[Obsolete("Use GetNewEventsV8()")]
 		BoxEventList GetNewEvents(
 			string authToken,
@@ -116,8 +117,10 @@ namespace Diadoc.Api
 			string counteragentBoxId = null,
 			string orderBy = null,
 			int? limit = null);
+
 		[Obsolete("Use GetEventV3()")]
 		BoxEvent GetEvent(string authToken, string boxId, string eventId);
+
 		BoxEvent GetEventV3(string authToken, string boxId, string eventId);
 		Message PostMessage(string authToken, MessageToPost msg, string operationId = null);
 		Template PostTemplate(string authToken, TemplateToPost template, string operationId = null);
@@ -172,11 +175,15 @@ namespace Diadoc.Api
 		GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
 		GeneratedFile GenerateUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
 		byte[] GenerateTtGisFixationCancellationRequest(string authToken, string boxId, string messageId, string documentId);
+
 		[Obsolete("Use GetMessageV6()")]
 		Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		Message GetMessageV6(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		[Obsolete("Use GetMessageV6()")]
 		Message GetMessage(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		Message GetMessageV6(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null);
 		void RecycleDraft(string authToken, string boxId, string draftId);
@@ -189,10 +196,19 @@ namespace Diadoc.Api
 		DocumentList GetDocuments(string authToken, string boxId, string filterCategory, string counteragentBoxId, DateTime? timestampFrom, DateTime? timestampTo, string fromDocumentDate, string toDocumentDate, string departmentId, bool excludeSubdepartments, string afterIndexKey, int? count = null);
 		DocumentList GetDocuments(string authToken, DocumentsFilter filter);
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
+
+		[Obsolete("Use GetDocflowsV4() from Docflow property")]
 		GetDocflowBatchResponse GetDocflows(string authToken, string boxId, GetDocflowBatchRequest request);
+
+		[Obsolete("Use GetDocflowEventsV4() from Docflow property")]
 		GetDocflowEventsResponse GetDocflowEvents(string authToken, string boxId, GetDocflowEventsRequest request);
+
+		[Obsolete("Use SearchDocflowsV4() from Docflow property")]
 		SearchDocflowsResponse SearchDocflows(string authToken, string boxId, SearchDocflowsRequest request);
+
+		[Obsolete("Use GetDocflowsByPacketIdV4() from Docflow property")]
 		GetDocflowsByPacketIdResponse GetDocflowsByPacketId(string authToken, string boxId, GetDocflowsByPacketIdRequest request);
+
 		[Obsolete("Method ForwardDocument will be removed soon")]
 		ForwardDocumentResponse ForwardDocument(string authToken, string boxId, ForwardDocumentRequest request);
 		[Obsolete("Method GetForwardedDocuments will be removed soon")]
@@ -459,8 +475,10 @@ namespace Diadoc.Api
 		RegistrationResponse Register(string authToken, RegistrationRequest registrationRequest);
 		void RegisterConfirm(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
 		CustomPrintFormDetectionResult DetectCustomPrintForms(string authToken, string boxId, CustomPrintFormDetectionRequest request);
+
 		[Obsolete("Use GetLastEventV2()")]
 		BoxEvent GetLastEvent(string authToken, string boxId);
+
 		BoxEvent GetLastEventV2(string authToken, string boxId);
 
 		AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister);
@@ -536,6 +554,7 @@ namespace Diadoc.Api
 		[Obsolete("Method UpdateOrganizationPropertiesAsync will be removed soon")]
 		Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps);
 		Task<OrganizationFeatures> GetOrganizationFeaturesAsync(string authToken, string boxId);
+
 		[Obsolete("Use GetNewEventsV8Async()")]
 		Task<BoxEventList> GetNewEventsAsync(
 			string authToken,
@@ -551,6 +570,7 @@ namespace Diadoc.Api
 			string counteragentBoxId = null,
 			string orderBy = null,
 			int? limit = null);
+
 		Task<BoxEventList> GetNewEventsV8Async(
 			string authToken,
 			string boxId,
@@ -565,8 +585,10 @@ namespace Diadoc.Api
 			string counteragentBoxId = null,
 			string orderBy = null,
 			int? limit = null);
+
 		[Obsolete("Use GetEventV3Async()")]
 		Task<BoxEvent> GetEventAsync(string authToken, string boxId, string eventId);
+
 		Task<BoxEvent> GetEventV3Async(string authToken, string boxId, string eventId);
 		Task<Message> PostMessageAsync(string authToken, MessageToPost msg, string operationId = null);
 		Task<Template> PostTemplateAsync(string authToken, TemplateToPost template, string operationId = null);
@@ -635,11 +657,15 @@ namespace Diadoc.Api
  = null);
 		Task<GeneratedFile> GenerateUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
 		Task<byte[]> GenerateTtGisFixationCancellationRequestAsync(string authToken, string boxId, string messageId, string documentId);
+
 		[Obsolete("Use GetMessageV6Async()")]
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		Task<Message> GetMessageV6Async(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		[Obsolete("Use GetMessageV6Async()")]
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
 		Task<Message> GetMessageV6Async(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
 		Task<Template> GetTemplateAsync(string authToken, string boxId, string templateId, string entityId = null);
 		Task RecycleDraftAsync(string authToken, string boxId, string draftId);
@@ -658,14 +684,25 @@ namespace Diadoc.Api
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType);
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails);
 		Task<ExtendedSignerDetails> PostExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails);
+
+		[Obsolete("Use GetDocflowsV4Async() from property Docflow")]
 		Task<GetDocflowBatchResponse> GetDocflowsAsync(string authToken, string boxId, GetDocflowBatchRequest request);
+
+		[Obsolete("Use GetDocflowEventsV4Async() from property Docflow")]
 		Task<GetDocflowEventsResponse> GetDocflowEventsAsync(string authToken, string boxId, GetDocflowEventsRequest request);
+
+		[Obsolete("Use SearchDocflowsV4Async() from property Docflow")]
 		Task<SearchDocflowsResponse> SearchDocflowsAsync(string authToken, string boxId, SearchDocflowsRequest request);
+
+		[Obsolete("Use GetDocflowsByPacketIdV4Async() from property Docflow")]
 		Task<GetDocflowsByPacketIdResponse> GetDocflowsByPacketIdAsync(string authToken, string boxId, GetDocflowsByPacketIdRequest request);
+
 		[Obsolete("Method ForwardDocumentAsync will be removed soon")]
 		Task<ForwardDocumentResponse> ForwardDocumentAsync(string authToken, string boxId, ForwardDocumentRequest request);
+
 		[Obsolete("Method GetForwardedDocumentsAsync will be removed soon")]
 		Task<GetForwardedDocumentsResponse> GetForwardedDocumentsAsync(string authToken, string boxId, GetForwardedDocumentsRequest request);
+
 		[Obsolete("Method GetForwardedDocumentEventsAsync will be removed soon")]
 		Task<GetForwardedDocumentEventsResponse> GetForwardedDocumentEventsAsync(string authToken, string boxId, GetForwardedDocumentEventsRequest request);
 		[Obsolete("Method GetForwardedEntityContentAsync will be removed soon")]
@@ -942,8 +979,10 @@ namespace Diadoc.Api
 		Task<RegistrationResponse> RegisterAsync(string authToken, RegistrationRequest registrationRequest);
 		Task RegisterConfirmAsync(string authToken, RegistrationConfirmRequest registrationConfirmRequest);
 		Task<CustomPrintFormDetectionResult> DetectCustomPrintFormsAsync(string authToken, string boxId, CustomPrintFormDetectionRequest request);
+
 		[Obsolete("Use GetLastEventV2Async()")]
 		Task<BoxEvent> GetLastEventAsync(string authToken, string boxId);
+
 		Task<BoxEvent> GetLastEventV2Async(string authToken, string boxId);
 
 		Task<AsyncMethodResult> RegisterPowerOfAttorneyAsync(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister);
