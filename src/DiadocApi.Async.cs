@@ -1769,7 +1769,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.DetectCustomPrintFormsAsync(authToken, boxId, request);
 		}
 
-		[Obsolete("Use GetLastEventV2()")]
+		[Obsolete("Use GetLastEventV2Async()")]
 		public Task<BoxEvent> GetLastEventAsync(string authToken, string boxId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
