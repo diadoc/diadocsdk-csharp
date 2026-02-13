@@ -971,99 +971,117 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseGarAddressAsync(authToken, address);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<InvoiceInfo> ParseInvoiceXmlAsync(byte[] invoiceXmlContent)
 		{
 			return diadocHttpApi.ParseInvoiceXmlAsync(invoiceXmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<InvoiceInfo> ParseInvoiceXmlAsync(string authToken, byte[] invoiceXmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseInvoiceXmlAsync(authToken, invoiceXmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseTorg12SellerTitleXmlAsync(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseTorg12SellerTitleXmlAsync(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseTorg12BuyerTitleXmlAsync(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseTorg12BuyerTitleXmlAsync(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseTovTorg551SellerTitleXmlAsync(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseTovTorg551SellerTitleXmlAsync(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseTovTorg551BuyerTitleXmlAsync(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseTovTorg551BuyerTitleXmlAsync(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXmlAsync(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXmlAsync(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXmlAsync(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXmlAsync(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXmlAsync(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXmlAsync(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXmlAsync(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
@@ -1092,22 +1110,26 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXmlAsync(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXmlAsync(xmlContent, documentVersion);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXmlAsync(authToken, xmlContent, documentVersion);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		public Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));

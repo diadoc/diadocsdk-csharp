@@ -238,44 +238,77 @@ namespace Diadoc.Api
 		RussianAddress ParseRussianAddress(string authToken, string address);
 		GarAddress ParseGarAddress(string authToken, string address);
 
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+		[Obsolete("Use ParseTitleXml()")]
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(byte[] xmlContent);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(string authToken, byte[] xmlContent);
 
 		byte[] ParseTitleXml(
@@ -687,44 +720,77 @@ namespace Diadoc.Api
 		Task<RussianAddress> ParseRussianAddressAsync(string authToken, string address);
 		Task<GarAddress> ParseGarAddressAsync(string authToken, string address);
 
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<InvoiceInfo> ParseInvoiceXmlAsync(byte[] invoiceXmlContent);
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<InvoiceInfo> ParseInvoiceXmlAsync(string authToken, byte[] invoiceXmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<Torg12SellerTitleInfo> ParseTorg12SellerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<Torg12BuyerTitleInfo> ParseTorg12BuyerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<TovTorgSellerTitleInfo> ParseTovTorg551SellerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<TovTorgBuyerTitleInfo> ParseTovTorg551BuyerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<AcceptanceCertificateSellerTitleInfo> ParseAcceptanceCertificateSellerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<AcceptanceCertificateBuyerTitleInfo> ParseAcceptanceCertificateBuyerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<AcceptanceCertificate552SellerTitleInfo> ParseAcceptanceCertificate552SellerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<AcceptanceCertificate552BuyerTitleInfo> ParseAcceptanceCertificate552BuyerTitleXmlAsync(string authToken, byte[] xmlContent);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
 		Task<UniversalTransferDocumentSellerTitleInfo> ParseUniversalTransferDocumentSellerTitleXmlAsync(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalTransferDocumentBuyerTitleXmlAsync(byte[] xmlContent);
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalTransferDocumentBuyerTitleXmlAsync(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<UniversalCorrectionDocumentSellerTitleInfo> ParseUniversalCorrectionDocumentSellerTitleXmlAsync(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXmlAsync()")]
 		Task<UniversalTransferDocumentBuyerTitleInfo> ParseUniversalCorrectionDocumentBuyerTitleXmlAsync(string authToken, byte[] xmlContent);
 
 		Task<byte[]> ParseTitleXmlAsync(

@@ -407,11 +407,17 @@ namespace Diadoc.Api
 		RussianAddress ParseRussianAddress(string address);
 		RussianAddress ParseRussianAddress(string authToken, string address);
 		GarAddress ParseGarAddress(string authToken, string address);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		InvoiceInfo ParseInvoiceXmlFromFile(string fileName);
+
+		[Obsolete("Use ParseTitleXml()")]
 		InvoiceInfo ParseInvoiceXmlFromFile(string authToken, string fileName);
 
 		[Obsolete("Use GenerateReceiptXmlV2()")]
@@ -435,54 +441,102 @@ namespace Diadoc.Api
 			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object receiptGenerationRequest);
 
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] torg12SellerTitleXmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXml(string authToken, byte[] torg12SellerTitleXmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string fileName);
+
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string authToken, string fileName);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] content);
+
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(string authToken, byte[] content);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string fileName);
+
+		[Obsolete("Use ParseTitleXml()")]
 		Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string authToken, string fileName);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] torg12SellerTitleXmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(string authToken, byte[] torg12SellerTitleXmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string fileName);
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string authToken, string fileName);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] content);
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(string authToken, byte[] content);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string fileName);
+
+		[Obsolete("Use ParseTitleXml()")]
 		TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string authToken, string fileName);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string fileName);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string authToken, string fileName);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string fileName);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string authToken, string fileName);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string fileName);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string authToken, string fileName);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string fileName);
+
+		[Obsolete("Use ParseTitleXml()")]
 		AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string authToken, string fileName);
+
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
 		UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd);
@@ -495,17 +549,29 @@ namespace Diadoc.Api
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string fileName);
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalTransferDocumentBuyerTitleXmlFromFile(string authToken, string fileName);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Ucd);
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string authToken, string fileName, string documentVersion = DefaultDocumentVersions.Ucd);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent);
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(string authToken, byte[] xmlContent);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string fileName);
+
+		[Obsolete("Use ParseTitleXml()")]
 		UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string authToken, string fileName);
 
 		byte[] ParseTitleXml(
@@ -2262,181 +2328,217 @@ namespace Diadoc.Api
 			return diadoc.ParseGarAddress(authToken, address);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent)
 		{
 			return diadoc.ParseInvoiceXml(invoiceXmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent)
 		{
 			return diadoc.ParseInvoiceXml(authToken, invoiceXmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public InvoiceInfo ParseInvoiceXmlFromFile(string fileName)
 		{
 			return ParseInvoiceXml(File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public InvoiceInfo ParseInvoiceXmlFromFile(string authToken, string fileName)
 		{
 			return ParseInvoiceXml(authToken, File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] torg12SellerTitleXmlContent)
 		{
 			return diadoc.ParseTorg12SellerTitleXml(torg12SellerTitleXmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(string authToken, byte[] torg12SellerTitleXmlContent)
 		{
 			return diadoc.ParseTorg12SellerTitleXml(authToken, torg12SellerTitleXmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string fileName)
 		{
 			return ParseTorg12SellerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXmlFromFile(string authToken, string fileName)
 		{
 			return ParseTorg12SellerTitleXml(authToken, File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] content)
 		{
 			return diadoc.ParseTorg12BuyerTitleXml(content);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(string authToken, byte[] content)
 		{
 			return diadoc.ParseTorg12BuyerTitleXml(authToken, content);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string fileName)
 		{
 			return ParseTorg12BuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXmlFromFile(string authToken, string fileName)
 		{
 			return ParseTorg12BuyerTitleXml(authToken, File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] torg12SellerTitleXmlContent)
 		{
 			return diadoc.ParseTovTorg551SellerTitleXml(torg12SellerTitleXmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(string authToken, byte[] torg12SellerTitleXmlContent)
 		{
 			return diadoc.ParseTovTorg551SellerTitleXml(authToken, torg12SellerTitleXmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string fileName)
 		{
 			return ParseTovTorg551SellerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXmlFromFile(string authToken, string fileName)
 		{
 			return ParseTovTorg551SellerTitleXml(authToken, File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] content)
 		{
 			return diadoc.ParseTovTorg551BuyerTitleXml(content);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(string authToken, byte[] content)
 		{
 			return diadoc.ParseTovTorg551BuyerTitleXml(authToken, content);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string fileName)
 		{
 			return ParseTovTorg551BuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXmlFromFile(string authToken, string fileName)
 		{
 			return ParseTovTorg551BuyerTitleXml(authToken, File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificateSellerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(string authToken, byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificateSellerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string fileName)
 		{
 			return ParseAcceptanceCertificateSellerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXmlFromFile(string authToken, string fileName)
 		{
 			return ParseAcceptanceCertificateSellerTitleXml(authToken, File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificateBuyerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(string authToken, byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificateBuyerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string fileName)
 		{
 			return ParseAcceptanceCertificateBuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXmlFromFile(string authToken, string fileName)
 		{
 			return ParseAcceptanceCertificateBuyerTitleXml(authToken, File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificate552SellerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(string authToken, byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificate552SellerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string fileName)
 		{
 			return ParseAcceptanceCertificate552SellerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXmlFromFile(string authToken, string fileName)
 		{
 			return ParseAcceptanceCertificate552SellerTitleXml(authToken, File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificate552BuyerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(string authToken, byte[] xmlContent)
 		{
 			return diadoc.ParseAcceptanceCertificate552BuyerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string fileName)
 		{
 			return ParseAcceptanceCertificate552BuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXmlFromFile(string authToken, string fileName)
 		{
 			return ParseAcceptanceCertificate552BuyerTitleXml(authToken, File.ReadAllBytes(fileName));
@@ -2482,41 +2584,49 @@ namespace Diadoc.Api
 			return ParseUniversalTransferDocumentBuyerTitleXml(authToken, File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			return diadoc.ParseUniversalCorrectionDocumentSellerTitleXml(xmlContent, documentVersion);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			return diadoc.ParseUniversalCorrectionDocumentSellerTitleXml(authToken, xmlContent, documentVersion);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string fileName, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			return ParseUniversalCorrectionDocumentSellerTitleXml(File.ReadAllBytes(fileName), documentVersion);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXmlFromFile(string authToken, string fileName, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			return ParseUniversalCorrectionDocumentSellerTitleXml(authToken, File.ReadAllBytes(fileName), documentVersion);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent)
 		{
 			return diadoc.ParseUniversalCorrectionDocumentBuyerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(string authToken, byte[] xmlContent)
 		{
 			return diadoc.ParseUniversalCorrectionDocumentBuyerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string fileName)
 		{
 			return ParseUniversalCorrectionDocumentBuyerTitleXml(File.ReadAllBytes(fileName));
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXmlFromFile(string authToken, string fileName)
 		{
 			return ParseUniversalCorrectionDocumentBuyerTitleXml(authToken, File.ReadAllBytes(fileName));

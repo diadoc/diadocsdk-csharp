@@ -1121,99 +1121,117 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseGarAddress(authToken, address);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public InvoiceInfo ParseInvoiceXml(byte[] invoiceXmlContent)
 		{
 			return diadocHttpApi.ParseInvoiceXml(invoiceXmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public InvoiceInfo ParseInvoiceXml(string authToken, byte[] invoiceXmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseInvoiceXml(authToken, invoiceXmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseTorg12SellerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12SellerTitleInfo ParseTorg12SellerTitleXml(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseTorg12SellerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseTorg12BuyerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public Torg12BuyerTitleInfo ParseTorg12BuyerTitleXml(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseTorg12BuyerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseTovTorg551SellerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgSellerTitleInfo ParseTovTorg551SellerTitleXml(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseTovTorg551SellerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseTovTorg551BuyerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public TovTorgBuyerTitleInfo ParseTovTorg551BuyerTitleXml(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseTovTorg551BuyerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateSellerTitleInfo ParseAcceptanceCertificateSellerTitleXml(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseAcceptanceCertificateSellerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificateBuyerTitleInfo ParseAcceptanceCertificateBuyerTitleXml(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseAcceptanceCertificateBuyerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552SellerTitleInfo ParseAcceptanceCertificate552SellerTitleXml(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseAcceptanceCertificate552SellerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseAcceptanceCertificate552BuyerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public AcceptanceCertificate552BuyerTitleInfo ParseAcceptanceCertificate552BuyerTitleXml(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
@@ -1242,22 +1260,26 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseUniversalTransferDocumentBuyerTitleXml(authToken, xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(xmlContent, documentVersion);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(authToken, xmlContent, documentVersion);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(byte[] xmlContent)
 		{
 			return diadocHttpApi.ParseUniversalCorrectionDocumentBuyerTitleXml(xmlContent);
 		}
 
+		[Obsolete("Use ParseTitleXml()")]
 		public UniversalTransferDocumentBuyerTitleInfo ParseUniversalCorrectionDocumentBuyerTitleXml(string authToken, byte[] xmlContent)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
