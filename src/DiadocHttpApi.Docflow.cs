@@ -1,4 +1,5 @@
-﻿using Diadoc.Api.Proto.Docflow;
+﻿using System;
+using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.PartnerEvents;
 using JetBrains.Annotations;
 
@@ -7,6 +8,7 @@ namespace Diadoc.Api
 	public partial class DiadocHttpApi
 	{
 		[NotNull]
+		[Obsolete("Use GetDocflowsV4() from Docflow property")]
 		public GetDocflowBatchResponse GetDocflows([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowBatchRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetDocflows", boxId);
@@ -14,6 +16,7 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
+		[Obsolete("Use GetDocflowEventsV4() from Docflow property")]
 		public GetDocflowEventsResponse GetDocflowEvents([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowEventsRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetDocflowEvents", boxId);
@@ -21,6 +24,7 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
+		[Obsolete("Use SearchDocflowsV4() from Docflow property")]
 		public SearchDocflowsResponse SearchDocflows([NotNull] string authToken, [NotNull] string boxId, [NotNull] SearchDocflowsRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/SearchDocflows", boxId);
@@ -28,6 +32,7 @@ namespace Diadoc.Api
 		}
 
 		[NotNull]
+		[Obsolete("Use GetDocflowsByPacketIdV4() from Docflow property")]
 		public GetDocflowsByPacketIdResponse GetDocflowsByPacketId([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowsByPacketIdRequest request)
 		{
 			var queryString = BuildQueryStringWithBoxId("/V2/GetDocflowsByPacketId", boxId);
@@ -44,6 +49,7 @@ namespace Diadoc.Api
 			}
 
 			[NotNull]
+			[Obsolete("Use GetDocflowsV4()")]
 			public GetDocflowBatchResponseV3 GetDocflows([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowBatchRequest request)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/GetDocflows", boxId);
@@ -51,6 +57,7 @@ namespace Diadoc.Api
 			}
 
 			[NotNull]
+			[Obsolete("Use GetDocflowEventsV4()")]
 			public GetDocflowEventsResponseV3 GetDocflowEvents([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowEventsRequest request)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/GetDocflowEvents", boxId);
@@ -58,6 +65,7 @@ namespace Diadoc.Api
 			}
 
 			[NotNull]
+			[Obsolete("Use SearchDocflowsV4()")]
 			public SearchDocflowsResponseV3 SearchDocflows([NotNull] string authToken, [NotNull] string boxId, [NotNull] SearchDocflowsRequest request)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/SearchDocflows", boxId);
@@ -65,6 +73,7 @@ namespace Diadoc.Api
 			}
 
 			[NotNull]
+			[Obsolete("Use GetDocflowsByPacketIdV4()")]
 			public GetDocflowsByPacketIdResponseV3 GetDocflowsByPacketId([NotNull] string authToken, [NotNull] string boxId, [NotNull] GetDocflowsByPacketIdRequest request)
 			{
 				var queryString = BuildQueryStringWithBoxId("/V3/GetDocflowsByPacketId", boxId);
