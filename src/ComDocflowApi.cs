@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.PartnerEvents;
@@ -18,6 +19,7 @@ namespace Diadoc.Api
 			this.docflowApi = docflowApi;
 		}
 
+		[Obsolete("Use GetDocflowsV4()")]
 		public GetDocflowBatchResponseV3 GetDocflows(string authToken, string boxId, object request)
 		{
 			return docflowApi.GetDocflows(authToken, boxId, (GetDocflowBatchRequest) request);
@@ -28,6 +30,7 @@ namespace Diadoc.Api
 			return docflowApi.GetDocflowsV4(authToken, boxId, (GetDocflowBatchRequest) request);
 		}
 
+		[Obsolete("Use GetDocflowEventsV4()")]
 		public GetDocflowEventsResponseV3 GetDocflowEvents(string authToken, string boxId, object request)
 		{
 			return docflowApi.GetDocflowEvents(authToken, boxId, (GetDocflowEventsRequest) request);
@@ -38,6 +41,7 @@ namespace Diadoc.Api
 			return docflowApi.GetDocflowEventsV4(authToken, boxId, (GetDocflowEventsRequest) request);
 		}
 
+		[Obsolete("Use SearchDocflowsV4()")]
 		public SearchDocflowsResponseV3 SearchDocflows(string authToken, string boxId, object request)
 		{
 			return docflowApi.SearchDocflows(authToken, boxId, (SearchDocflowsRequest) request);
@@ -48,6 +52,7 @@ namespace Diadoc.Api
 			return docflowApi.SearchDocflowsV4(authToken, boxId, (SearchDocflowsRequest) request);
 		}
 
+		[Obsolete("Use GetDocflowsByPacketIdV4()")]
 		public GetDocflowsByPacketIdResponseV3 GetDocflowsByPacketId(string authToken, string boxId, object request)
 		{
 			return docflowApi.GetDocflowsByPacketId(authToken, boxId, (GetDocflowsByPacketIdRequest) request);

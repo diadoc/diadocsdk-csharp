@@ -14,24 +14,28 @@ namespace Diadoc.Api
 			this.docflowHttpApi = docflowHttpApi;
 		}
 
+		[Obsolete("Use GetDocflowsV4()")]
 		public GetDocflowBatchResponseV3 GetDocflows(string authToken, string boxId, GetDocflowBatchRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return docflowHttpApi.GetDocflows(authToken, boxId, request);
 		}
 
+		[Obsolete("Use GetDocflowEventsV4()")]
 		public GetDocflowEventsResponseV3 GetDocflowEvents(string authToken, string boxId, GetDocflowEventsRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return docflowHttpApi.GetDocflowEvents(authToken, boxId, request);
 		}
 
+		[Obsolete("Use SearchDocflowsV4()")]
 		public SearchDocflowsResponseV3 SearchDocflows(string authToken, string boxId, SearchDocflowsRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return docflowHttpApi.SearchDocflows(authToken, boxId, request);
 		}
 
+		[Obsolete("Use GetDocflowsByPacketIdV4()")]
 		public GetDocflowsByPacketIdResponseV3 GetDocflowsByPacketId(string authToken, string boxId, GetDocflowsByPacketIdRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");

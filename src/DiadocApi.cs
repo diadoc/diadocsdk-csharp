@@ -311,6 +311,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationFeatures(authToken, boxId);
 		}
 
+		[Obsolete("Use GetNewEventsV8()")]
 		public BoxEventList GetNewEvents(
 			string authToken,
 			string boxId,
@@ -351,6 +352,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetNewEventsV8(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
 		}
 
+		[Obsolete("Use GetEventV3()")]
 		public BoxEvent GetEvent(string authToken, string boxId, string eventId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -770,6 +772,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateTtGisFixationCancellationRequest(authToken, boxId, messageId, documentId);
 		}
 
+		[Obsolete("Use GetMessageV6()")]
 		public Message GetMessage(string authToken, string boxId, string messageId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -786,6 +789,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetMessageV6(authToken, boxId, messageId, withOriginalSignature, injectEntityContent);
 		}
 
+		[Obsolete("Use GetMessageV6()")]
 		public Message GetMessage(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -905,24 +909,28 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostExtendedSignerDetails(token, boxId, certificateBytes, documentTitleType, signerDetails);
 		}
 
+		[Obsolete("Use GetDocflowsV4() from Docflow property")]
 		public GetDocflowBatchResponse GetDocflows(string authToken, string boxId, GetDocflowBatchRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetDocflows(authToken, boxId, request);
 		}
 
+		[Obsolete("Use GetDocflowEventsV4() from Docflow property")]
 		public GetDocflowEventsResponse GetDocflowEvents(string authToken, string boxId, GetDocflowEventsRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.GetDocflowEvents(authToken, boxId, request);
 		}
 
+		[Obsolete("Use SearchDocflowsV4() from Docflow property")]
 		public SearchDocflowsResponse SearchDocflows(string authToken, string boxId, SearchDocflowsRequest request)
 		{
 			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
 			return diadocHttpApi.SearchDocflows(authToken, boxId, request);
 		}
 
+		[Obsolete("Use GetDocflowsByPacketIdV4() from Docflow property")]
 		public GetDocflowsByPacketIdResponse GetDocflowsByPacketId(string authToken,
 			string boxId,
 			GetDocflowsByPacketIdRequest request)
@@ -1906,6 +1914,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.DetectCustomPrintForms(authToken, boxId, request);
 		}
 
+		[Obsolete("Use GetLastEventV2()")]
 		public BoxEvent GetLastEvent(string authToken, string boxId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
