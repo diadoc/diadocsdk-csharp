@@ -185,6 +185,7 @@ namespace Diadoc.Api
 		Message GetMessage(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false);
 
 		Message GetMessageV6(string authToken, string boxId, string messageId, string documentId, bool withOriginalSignature = false, bool injectEntityContent = false);
+		[Obsolete("Use GetMessageV6() for get template")]
 		Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, DraftToSend draftToSend, string operationId = null);
@@ -667,6 +668,8 @@ namespace Diadoc.Api
 		Task<Message> GetMessageAsync(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
 
 		Task<Message> GetMessageV6Async(string authToken, string boxId, string messageId, string entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
+
+		[Obsolete("Use GetMessageV6Async() for get template")]
 		Task<Template> GetTemplateAsync(string authToken, string boxId, string templateId, string entityId = null);
 		Task RecycleDraftAsync(string authToken, string boxId, string draftId);
 		Task<Message> SendDraftAsync(string authToken, DraftToSend draftToSend, string operationId = null);

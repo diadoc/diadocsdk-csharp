@@ -130,7 +130,9 @@ namespace Diadoc.Api
 		void SaveEntityContent(string authToken, string boxId, string messageId, string entityId, string filePath);
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message);
 		Message PostMessage(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object message, string operationId);
+		[Obsolete("Use PostMessagePatchV4()")]
 		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch);
+		[Obsolete("Use PostMessagePatchV4()")]
 		MessagePatch PostMessagePatch(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch, string operationId);
 		MessagePatch PostMessagePatchV4(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch);
 		MessagePatch PostMessagePatchV4(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object patch, string operationId);
@@ -304,6 +306,7 @@ namespace Diadoc.Api
 			bool withOriginalSignature = false,
 			bool injectEntityContent = false);
 
+		[Obsolete("Use GetMessageV6() for get template")]
 		Template GetTemplate(string authToken, string boxId, string messageId);
 		void RecycleDraft(string authToken, string boxId, string draftId);
 		Message SendDraft(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object draftToSend);
@@ -1296,11 +1299,13 @@ namespace Diadoc.Api
 			diadoc.RegisterConfirm(authToken, (RegistrationConfirmRequest) registrationConfirmRequest);
 		}
 
+		[Obsolete("Use PostMessagePatchV4()")]
 		public MessagePatch PostMessagePatch(string authToken, object patch)
 		{
 			return diadoc.PostMessagePatch(authToken, (MessagePatchToPost) patch);
 		}
 
+		[Obsolete("Use PostMessagePatchV4()")]
 		public MessagePatch PostMessagePatch(string authToken, object patch, string operationId)
 		{
 			return diadoc.PostMessagePatch(authToken, (MessagePatchToPost) patch, operationId);
@@ -1746,6 +1751,7 @@ namespace Diadoc.Api
 			return diadoc.GetMessageV6(authToken, boxId, messageId, documentId, withOriginalSignature, injectEntityContent);
 		}
 
+		[Obsolete("Use GetMessageV6() for get template")]
 		public Template GetTemplate(string authToken, string boxId, string messageId)
 		{
 			return diadoc.GetTemplate(authToken, boxId, messageId);

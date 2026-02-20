@@ -390,6 +390,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.TransformTemplateToMessage(authToken, templateTransformation, operationId);
 		}
 
+		[Obsolete("Use PostMessagePatchV4()")]
 		public MessagePatch PostMessagePatch(string authToken, MessagePatchToPost patch, string operationId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -808,6 +809,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetMessageV6(authToken, boxId, messageId, entityId, withOriginalSignature, injectEntityContent);
 		}
 
+		[Obsolete("Use GetMessageV6() for get template")]
 		public Template GetTemplate(string authToken, string boxId, string templateId, string entityId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
