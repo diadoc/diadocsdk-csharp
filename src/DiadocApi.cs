@@ -561,12 +561,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetInvoiceCorrectionRequestInfo(authToken, boxId, messageId, entityId);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceXml(string authToken, InvoiceInfo invoiceInfo, bool disableValidation = false)
 		{
 			if (invoiceInfo == null) throw new ArgumentNullException("invoiceInfo");
 			return diadocHttpApi.GenerateInvoiceXml(authToken, invoiceInfo, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceRevisionXml(string authToken,
 			InvoiceInfo invoiceRevisionInfo,
 			bool disableValidation = false)
@@ -575,6 +577,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateInvoiceRevisionXml(authToken, invoiceRevisionInfo, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceCorrectionXml(string authToken,
 			InvoiceCorrectionInfo invoiceCorrectionInfo,
 			bool disableValidation = false)
@@ -583,6 +586,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateInvoiceCorrectionXml(authToken, invoiceCorrectionInfo, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceCorrectionRevisionXml(string authToken,
 			InvoiceCorrectionInfo invoiceCorrectionRevision,
 			bool disableValidation = false)
@@ -591,30 +595,35 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateInvoiceCorrectionRevisionXml(authToken, invoiceCorrectionRevision, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTorg12XmlForSeller(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
 			return diadocHttpApi.GenerateTorg12XmlForSeller(authToken, sellerInfo, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			if (sellerInfo == null) throw new ArgumentNullException("sellerInfo");
 			return diadocHttpApi.GenerateTovTorg551XmlForSeller(authToken, sellerInfo, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTorg12XmlForBuyer(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
 			return diadocHttpApi.GenerateTorg12XmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null)
 		{
 			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
 			return diadocHttpApi.GenerateTovTorg551XmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId, documentVersion);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken,
 			AcceptanceCertificateSellerTitleInfo sellerInfo,
 			bool disableValidation = false)
@@ -623,6 +632,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateAcceptanceCertificateXmlForSeller(authToken, sellerInfo, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken,
 			AcceptanceCertificateBuyerTitleInfo buyerInfo,
 			string boxId,
@@ -634,6 +644,7 @@ namespace Diadoc.Api
 				sellerTitleAttachmentId);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(string authToken,
 			AcceptanceCertificate552SellerTitleInfo sellerInfo,
 			bool disableValidation = false)
@@ -642,6 +653,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateAcceptanceCertificate552XmlForSeller(authToken, sellerInfo, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(string authToken,
 			AcceptanceCertificate552BuyerTitleInfo buyerInfo,
 			string boxId,
@@ -653,6 +665,7 @@ namespace Diadoc.Api
 				sellerTitleAttachmentId);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
 			string authToken,
 			UniversalTransferDocumentSellerTitleInfo sellerInfo,
@@ -663,6 +676,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateUniversalTransferDocumentXmlForSeller(authToken, sellerInfo, disableValidation, documentVersion);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
 			string authToken,
 			UniversalCorrectionDocumentSellerTitleInfo sellerInfo,
@@ -673,6 +687,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateUniversalCorrectionDocumentXmlForSeller(authToken, sellerInfo, disableValidation, documentVersion);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken,
 			UniversalTransferDocumentBuyerTitleInfo buyerInfo,
 			string boxId,
@@ -717,6 +732,7 @@ namespace Diadoc.Api
 				documentId);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -728,6 +744,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.GenerateSenderTitleXml(authToken, boxId, documentTypeNamedId, documentFunction, documentVersion, userContractData, disableValidation, editingSettingId);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

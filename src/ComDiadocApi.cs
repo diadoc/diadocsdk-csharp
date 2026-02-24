@@ -158,30 +158,37 @@ namespace Diadoc.Api
 			string boxId,
 			[MarshalAs(UnmanagedType.IDispatch)] object invoiceCorrectionRequestGenerationRequest);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateInvoiceXml(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object invoiceInfo,
 			bool disableValidation = false);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateInvoiceRevisionXml(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object invoiceRevisionInfo,
 			bool disableValidation = false);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateInvoiceCorrectionXml(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object invoiceCorrectionInfo,
 			bool disableValidation = false);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateInvoiceCorrectionRevisionXml(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object invoiceCorrectionRevisionInfo,
 			bool disableValidation = false);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateTorg12XmlForSeller(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object sellerInfo, bool disableValidation = false);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object sellerInfo, bool disableValidation = false);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateTorg12XmlForBuyer(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
@@ -189,6 +196,7 @@ namespace Diadoc.Api
 			string sellerTitleMessageId,
 			string sellerTitleAttachmentId);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateTovTorg551XmlForBuyer(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
@@ -197,11 +205,13 @@ namespace Diadoc.Api
 			string sellerTitleAttachmentId,
 			string documentVersion = null);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateAcceptanceCertificateXmlForSeller(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object sellerInfo,
 			bool disableValidation = false);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
@@ -209,11 +219,13 @@ namespace Diadoc.Api
 			string sellerTitleMessageId,
 			string sellerTitleAttachmentId);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object sellerInfo,
 			bool disableValidation = false);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
@@ -221,18 +233,21 @@ namespace Diadoc.Api
 			string sellerTitleMessageId,
 			string sellerTitleAttachmentId);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object info,
 			bool disableValidation = false,
 			string documentVersion = null);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object correctionInfo,
 			bool disableValidation = false,
 			string documentVersion = null);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(
 			string authToken,
 			[MarshalAs(UnmanagedType.IDispatch)] object buyerInfo,
@@ -253,6 +268,7 @@ namespace Diadoc.Api
 			string letterId = null,
 			string documentId = null);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateSenderTitleXml(
 			string authToken,
 			string boxId,
@@ -263,6 +279,7 @@ namespace Diadoc.Api
 			bool disableValidation = false,
 			string editingSettingId = null);
 
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateRecipientTitleXml(
 			string authToken,
 			string boxId,
@@ -1496,12 +1513,14 @@ namespace Diadoc.Api
 		{
 			return diadoc.ParseUniversalMessageXml(authToken, content);
 		}
-		
+
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceXml(string authToken, object invoiceInfo, bool disableValidation = false)
 		{
 			return diadoc.GenerateInvoiceXml(authToken, (InvoiceInfo) invoiceInfo, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceRevisionXml(
 			string authToken,
 			object invoiceRevisionInfo,
@@ -1510,6 +1529,7 @@ namespace Diadoc.Api
 			return diadoc.GenerateInvoiceRevisionXml(authToken, (InvoiceInfo) invoiceRevisionInfo, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceCorrectionXml(
 			string authToken,
 			object invoiceCorrectionInfo,
@@ -1520,6 +1540,7 @@ namespace Diadoc.Api
 				disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceCorrectionRevisionXml(
 			string authToken,
 			object invoiceCorrectionRevisionInfo,
@@ -1530,16 +1551,19 @@ namespace Diadoc.Api
 				disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTorg12XmlForSeller(string authToken, object sellerInfo, bool disableValidation = false)
 		{
 			return diadoc.GenerateTorg12XmlForSeller(authToken, (Torg12SellerTitleInfo) sellerInfo, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, object sellerInfo, bool disableValidation = false)
 		{
 			return diadoc.GenerateTovTorg551XmlForSeller(authToken, (TovTorgSellerTitleInfo) sellerInfo, disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTorg12XmlForBuyer(string authToken, object buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			return diadoc.GenerateTorg12XmlForBuyer(authToken,
@@ -1549,6 +1573,7 @@ namespace Diadoc.Api
 				sellerTitleAttachmentId);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTovTorg551XmlForBuyer(
 			string authToken,
 			object buyerInfo,
@@ -1565,6 +1590,7 @@ namespace Diadoc.Api
 				documentVersion);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificateXmlForSeller(
 			string authToken,
 			object sellerInfo,
@@ -1575,6 +1601,7 @@ namespace Diadoc.Api
 				disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(
 			string authToken,
 			object buyerInfo,
@@ -1589,6 +1616,7 @@ namespace Diadoc.Api
 				sellerTitleAttachmentId);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(
 			string authToken,
 			object sellerInfo,
@@ -1599,6 +1627,7 @@ namespace Diadoc.Api
 				disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(
 			string authToken,
 			object buyerInfo,
@@ -1613,6 +1642,7 @@ namespace Diadoc.Api
 				sellerTitleAttachmentId);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
 			string authToken,
 			object info,
@@ -1626,6 +1656,7 @@ namespace Diadoc.Api
 				documentVersion);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
 			string authToken,
 			object correctionInfo,
@@ -1639,6 +1670,7 @@ namespace Diadoc.Api
 				documentVersion);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(
 			string authToken,
 			object buyerInfo,
@@ -1676,6 +1708,7 @@ namespace Diadoc.Api
 				documentId);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateSenderTitleXml(
 			string authToken,
 			string boxId,
@@ -1697,6 +1730,7 @@ namespace Diadoc.Api
 				editingSettingId);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateRecipientTitleXml(
 			string authToken,
 			string boxId,

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
@@ -7,6 +8,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForSellerAsync(
 			string authToken,
 			UniversalTransferDocumentSellerTitleInfo info,
@@ -17,6 +19,7 @@ namespace Diadoc.Api
 			return GenerateUniversalTransferDocumentXmlAsync(authToken, info, false, disableValidation, documentVersion);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateUniversalCorrectionDocumentXmlForSellerAsync(
 			string authToken,
 			UniversalCorrectionDocumentSellerTitleInfo correctionInfo,
@@ -26,6 +29,7 @@ namespace Diadoc.Api
 			return GenerateUniversalTransferDocumentXmlAsync(authToken, correctionInfo, true, disableValidation, documentVersion);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		private Task<GeneratedFile> GenerateUniversalTransferDocumentXmlAsync<T>(
 			string authToken, 
 			T protoInfo, 
@@ -43,6 +47,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, query.BuildPathAndQuery(), protoInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForBuyerAsync(string authToken, UniversalTransferDocumentBuyerTitleInfo info,
 			string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
