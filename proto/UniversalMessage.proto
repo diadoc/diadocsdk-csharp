@@ -26,3 +26,9 @@ enum UniversalMessageCodeGroup {
     Rejection = 3;
     InformationMessage = 4;
 }
+
+enum UniversalMessageBehaviour {
+  Undefined = 0;
+  AffectsWorkflow = 1;
+  DoesNotAffectWorkflow = 2;
+}

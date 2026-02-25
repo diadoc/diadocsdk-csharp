@@ -90,6 +90,7 @@ message UniversalMessageAttachment {
     optional UniversalMessageCodeGroup CodeGroup = 2 [default = UnknownUniversalMessageCodeGroup];
     required UnsignedContent UniversalMessageContent = 3;
     repeated string Labels = 4;
+    optional UniversalMessageBehaviour Behaviour = 5 [default = Undefined];
 }
 
 message EncryptedXmlDocumentAttachment {
