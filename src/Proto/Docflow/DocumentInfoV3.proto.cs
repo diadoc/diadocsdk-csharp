@@ -212,6 +212,13 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _IsInternal; }
       set { _IsInternal = value; }
     }
+    private bool _IsCrossBorder;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"IsCrossBorder", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool IsCrossBorder
+    {
+      get { return _IsCrossBorder; }
+      set { _IsCrossBorder = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
