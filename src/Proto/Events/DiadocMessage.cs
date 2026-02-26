@@ -1921,6 +1921,46 @@ namespace Diadoc.Api.Proto.Events
 	}
 
 	[ComVisible(true)]
+	[Guid("39A383EA-6873-4ABD-A49D-36BA2B4E28C9")]
+	public interface IUniversalMessageAttachment
+	{
+		UnsignedContent UniversalMessageContent { get; set; }
+		string ParentEntityId { get; set; }
+		Com.UniversalMessageCodeGroup CodeGroupValue { get; set; }
+		void SetUnsignedContent([MarshalAs(UnmanagedType.IDispatch)] object unsignedContent);
+		ReadonlyList LabelsList { get; }
+		void AddLabel(string label);
+	}
+	
+	[ComVisible(true)]
+	[ProgId("Diadoc.Api.UniversalMessageAttachment")]
+	[Guid("A5206CBA-FD1B-42A0-8A9E-0A7E927E5F2D")]
+	[ClassInterface(ClassInterfaceType.None)]
+	[ComDefaultInterface(typeof(IUniversalMessageAttachment))]
+	public partial class UniversalMessageAttachment : SafeComObject, IUniversalMessageAttachment
+	{
+		public void SetUnsignedContent(object unsignedContent)
+		{
+			UniversalMessageContent = (UnsignedContent)unsignedContent;
+		}
+
+		public Com.UniversalMessageCodeGroup CodeGroupValue
+		{
+			get { return (Com.UniversalMessageCodeGroup)CodeGroup; }
+			set { CodeGroup = (UniversalMessageCodeGroup)value; }
+		}
+		public ReadonlyList LabelsList
+		{
+			get { return new ReadonlyList(Labels); }
+		}
+
+		public void AddLabel(string label)
+		{
+			Labels.Add(label);
+		}
+	}
+
+	[ComVisible(true)]
 	[Guid("B0D2DEF2-E5B3-41FA-9D2C-10E464000141")]
 	public interface ICustomDataPatch
 	{
