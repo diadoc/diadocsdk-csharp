@@ -26,6 +26,7 @@ message DocumentVersionV2 {
 	repeated DocumentTitleV2 Titles = 4;
 	required bool IsActual = 5;
 	repeated DocumentWorkflowV2 Workflows = 6;
+	optional SupportedRejectionType RejectionType = 9 [default = UnknownSupportedRejectionType];
 }
 
 message DocumentWorkflowV2 {
@@ -54,4 +55,11 @@ message DocumentMetadataItemV2 {
 	required int32 Type = 2;
 	required bool IsRequired = 3;
 	required int32 Source = 4;
+}
+
+enum SupportedRejectionType {
+	UnknownSupportedRejectionType = -1; // Reserved status to report to legacy clients for newly introduced statuses
+	None = 0;
+	TypeSpecificRejection = 1;
+	UniversalMessage = 2;
 }
