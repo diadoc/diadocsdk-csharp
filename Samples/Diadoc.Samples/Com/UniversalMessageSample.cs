@@ -50,11 +50,10 @@ namespace Diadoc.Samples.Com
 
 			var receiptAttachment = new ReceiptAttachment();
 			receiptAttachment.ParentEntityId = documentId;
-			receiptAttachment.SetSignedContent(new SignedContent
-			{
-				Content = contentReceipt,
-				Signature = receiptSignature
-			});
+			var receiptSignedContent = new SignedContent();
+			receiptSignedContent.Content = contentReceipt;
+			receiptSignedContent.Signature = receiptSignature;
+			receiptAttachment.SetSignedContent(receiptSignedContent);
 
 			var umAttachment = new UniversalMessageAttachment();
 			umAttachment.ParentEntityId = documentId;
