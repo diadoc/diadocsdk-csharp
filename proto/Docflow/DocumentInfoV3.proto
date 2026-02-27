@@ -40,6 +40,7 @@ message DocumentParticipants
 	optional DocumentParticipant Proxy = 2;
 	optional DocumentParticipant Recipient = 3;
 	required bool IsInternal = 4;
+	required bool IsCrossBorder = 5;
 }
 
 message DocumentParticipant
