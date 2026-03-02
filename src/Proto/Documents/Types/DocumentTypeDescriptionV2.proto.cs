@@ -157,6 +157,15 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _Workflows; }
     }
   
+
+    private Diadoc.Api.Proto.Documents.Types.SupportedRejectionType _RejectionType = Diadoc.Api.Proto.Documents.Types.SupportedRejectionType.UnknownSupportedRejectionType;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"RejectionType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Documents.Types.SupportedRejectionType.UnknownSupportedRejectionType)]
+    public Diadoc.Api.Proto.Documents.Types.SupportedRejectionType RejectionType
+    {
+      get { return _RejectionType; }
+      set { _RejectionType = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -319,5 +328,22 @@ namespace Diadoc.Api.Proto.Documents.Types
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"SupportedRejectionType")]
+    public enum SupportedRejectionType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownSupportedRejectionType", Value=-1)]
+      UnknownSupportedRejectionType = -1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"None", Value=0)]
+      None = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"TypeSpecificRejection", Value=1)]
+      TypeSpecificRejection = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UniversalMessage", Value=2)]
+      UniversalMessage = 2
+    }
   
 }
