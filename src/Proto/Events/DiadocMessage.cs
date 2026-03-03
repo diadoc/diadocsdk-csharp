@@ -139,7 +139,8 @@ namespace Diadoc.Api.Proto.Events
 		PowerOfAttorneyInfo PowerOfAttorneyInfo { get; }
 		MoveDocumentInfo MoveDocumentInfo { get; }
 		PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus { get; }
-	}
+		UniversalMessageInfo UniversalMessageInfo { get; }
+}
 
 	[ComVisible(true)]
 	[Guid("E7D82A2C-A0BF-4D0B-9466-9E8DA15B99B7")]
