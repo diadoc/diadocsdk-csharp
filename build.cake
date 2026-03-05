@@ -192,14 +192,24 @@ Task("Repack")
 		{
 			var ilMergeSettings = new ILMergeSettings
 			{
-				Internalize = true
+				Internalize = true,
+
+        
+		        ArgumentCustomization = args =>
+		            args.Append("/rename:Newtonsoft.Json=Diadoc.Internal.Newtonsoft.Json")
 			};
 
 			if (needSigning)
-			{
-				var keyFileAbsolutePath = signWithKeyFile.MakeAbsolute(Context.Environment).FullPath;
-				ilMergeSettings.ArgumentCustomization = args => args.Append("/keyfile:" + keyFileAbsolutePath);
-			}
+		    {
+		        var keyFileAbsolutePath = signWithKeyFile
+		            .MakeAbsolute(Context.Environment)
+		            .FullPath;
+		
+		        ilMergeSettings.ArgumentCustomization = args =>
+		            args
+		                .Append("/rename:Newtonsoft.Json=Diadoc.Internal.Newtonsoft.Json")
+		                .Append("/keyfile:" + keyFileAbsolutePath);
+		    }
 
 			ilMergeSettings.TargetPlatform = new TargetPlatform(targetPlatformVersion);
 
