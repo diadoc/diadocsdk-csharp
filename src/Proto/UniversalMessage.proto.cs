@@ -123,4 +123,18 @@ namespace Diadoc.Api.Proto
       InformationMessage = 4
     }
   
+    [global::ProtoBuf.ProtoContract(Name=@"UniversalMessageBehaviour")]
+    public enum UniversalMessageBehaviour
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Undefined", Value=0)]
+      Undefined = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"AffectsWorkflow", Value=1)]
+      AffectsWorkflow = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"DoesNotAffectWorkflow", Value=2)]
+      DoesNotAffectWorkflow = 2
+    }
+  
 }

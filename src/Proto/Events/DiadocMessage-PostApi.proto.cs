@@ -511,6 +511,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _Labels; }
     }
   
+
+    private Diadoc.Api.Proto.UniversalMessageBehaviour _Behaviour = Diadoc.Api.Proto.UniversalMessageBehaviour.Undefined;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Behaviour", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.UniversalMessageBehaviour.Undefined)]
+    public Diadoc.Api.Proto.UniversalMessageBehaviour Behaviour
+    {
+      get { return _Behaviour; }
+      set { _Behaviour = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
