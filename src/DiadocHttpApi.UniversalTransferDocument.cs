@@ -1,4 +1,5 @@
-﻿using Diadoc.Api.Http;
+﻿using System;
+using Diadoc.Api.Http;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Invoicing;
 
@@ -6,6 +7,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
 			string authToken,
 			UniversalTransferDocumentSellerTitleInfo info,
@@ -15,6 +17,7 @@ namespace Diadoc.Api
 			return GenerateUniversalTransferDocumentXml(authToken, info, false, disableValidation, documentVersion);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
 			string authToken,
 			UniversalCorrectionDocumentSellerTitleInfo correctionInfo,
@@ -24,6 +27,7 @@ namespace Diadoc.Api
 			return GenerateUniversalTransferDocumentXml(authToken, correctionInfo, true, disableValidation, documentVersion);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		private GeneratedFile GenerateUniversalTransferDocumentXml<T>(
 			string authToken,
 			T protoInfo, 
@@ -41,6 +45,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, query.BuildPathAndQuery(), protoInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(
 			string authToken, 
 			UniversalTransferDocumentBuyerTitleInfo info,

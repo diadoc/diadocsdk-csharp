@@ -134,45 +134,91 @@ namespace Diadoc.Api
 		void Restore(string authToken, string boxId, string messageId, string documentId);
 		void MoveDocuments(string authToken, DocumentsMoveOperation query);
 		byte[] GetEntityContent(string authToken, string boxId, string messageId, string entityId);
+
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		GeneratedFile GenerateDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
+
+		[Obsolete("Use GenerateReceiptXmlV2()")]
 		GeneratedFile GenerateInvoiceDocumentReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
+
 		[Obsolete("Use GenerateReceiptXmlV2()")]
 		GeneratedFile GenerateReceiptXml(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
+
 		GeneratedFile GenerateReceiptXmlV2(string authToken, string boxId, ReceiptGenerationRequestV2 receiptGenerationRequest);
+
 		[Obsolete("Use GenerateInvoiceCorrectionRequestXmlV2()")]
 		GeneratedFile GenerateInvoiceCorrectionRequestXml(string authToken, string boxId, string messageId, string attachmentId, InvoiceCorrectionRequestInfo correctionInfo);
+
 		GeneratedFile GenerateInvoiceCorrectionRequestXmlV2(string authToken, string boxId, InvoiceCorrectionRequestGenerationRequestV2 invoiceCorrectionRequestGenerationRequest);
 		GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null);
+
 		[Obsolete("Use GenerateSignatureRejectionXmlV2()")]
 		GeneratedFile GenerateSignatureRejectionXml(string authToken, string boxId, string messageId, string attachmentId, SignatureRejectionInfo signatureRejectionInfo);
+
 		GeneratedFile GenerateSignatureRejectionXmlV2(string authToken, string boxId, SignatureRejectionGenerationRequestV2 signatureRejectionGenerationRequest);
 		InvoiceCorrectionRequestInfo GetInvoiceCorrectionRequestInfo(string authToken, string boxId, string messageId, string entityId);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateInvoiceXml(string authToken, InvoiceInfo invoiceInfo, bool disableValidation = false);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateInvoiceRevisionXml(string authToken, InvoiceInfo invoiceRevisionInfo, bool disableValidation = false);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateInvoiceCorrectionXml(string authToken, InvoiceCorrectionInfo invoiceCorrectionInfo, bool disableValidation = false);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateInvoiceCorrectionRevisionXml(string authToken, InvoiceCorrectionInfo invoiceCorrectionRevision, bool disableValidation = false);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateTorg12XmlForSeller(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation = false);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation = false);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateTorg12XmlForBuyer(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(string authToken, AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation = false);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(string authToken, AcceptanceCertificate552BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateUniversalTransferDocumentXmlForSeller(
 			string authToken,
 			UniversalTransferDocumentSellerTitleInfo sellerInfo,
 			bool disableValidation = false,
 			string documentVersion = null);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateUniversalCorrectionDocumentXmlForSeller(
 			string authToken,
 			UniversalCorrectionDocumentSellerTitleInfo sellerInfo,
 			bool disableValidation = false,
 			string documentVersion = null);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateUniversalTransferDocumentXmlForBuyer(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
 		GeneratedFile GenerateTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, int titleIndex, byte[] userContractData, bool disableValidation = false, string editingSettingId = null, string letterId = null, string documentId = null);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null);
+
+		[Obsolete("Use GenerateTitleXml()")]
 		GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null);
+
 		GeneratedFile GenerateUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);
 		byte[] GenerateTtGisFixationCancellationRequest(string authToken, string boxId, string messageId, string documentId);
 
@@ -607,54 +653,99 @@ namespace Diadoc.Api
 		Task RestoreAsync(string authToken, string boxId, string messageId, string documentId);
 		Task MoveDocumentsAsync(string authToken, DocumentsMoveOperation query);
 		Task<byte[]> GetEntityContentAsync(string authToken, string boxId, string messageId, string entityId);
+
+		[Obsolete("Use GenerateReceiptXmlV2Async()")]
 		Task<GeneratedFile> GenerateDocumentReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
+
+		[Obsolete("Use GenerateReceiptXmlV2Async()")]
 		Task<GeneratedFile> GenerateInvoiceDocumentReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
+
 		[Obsolete("Use GenerateReceiptXmlV2Async()")]
 		Task<GeneratedFile> GenerateReceiptXmlAsync(string authToken, string boxId, string messageId, string attachmentId, Signer signer);
+
 		Task<GeneratedFile> GenerateReceiptXmlV2Async(string authToken, string boxId, ReceiptGenerationRequestV2 receiptGenerationRequest);
+
 		[Obsolete("Use GenerateInvoiceCorrectionRequestXmlV2Async()")]
 		Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, InvoiceCorrectionRequestInfo correctionInfo);
+
 		Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlV2Async(string authToken, string boxId, InvoiceCorrectionRequestGenerationRequestV2 invoiceCorrectionRequestGenerationRequest);
 		Task<GeneratedFile> GenerateRevocationRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null);
+
 		[Obsolete("Use GenerateSignatureRejectionXmlV2Async()")]
 		Task<GeneratedFile> GenerateSignatureRejectionXmlAsync(string authToken, string boxId, string messageId, string attachmentId, SignatureRejectionInfo signatureRejectionInfo);
+
 		Task<GeneratedFile> GenerateSignatureRejectionXmlV2Async(string authToken, string boxId, SignatureRejectionGenerationRequestV2 signatureRejectionGenerationRequest);
 		Task<InvoiceCorrectionRequestInfo> GetInvoiceCorrectionRequestInfoAsync(string authToken, string boxId, string messageId, string entityId);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateInvoiceXmlAsync(string authToken, InvoiceInfo invoiceInfo, bool disableValidation =
  false);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateInvoiceRevisionXmlAsync(string authToken, InvoiceInfo invoiceRevisionInfo, bool disableValidation
  = false);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateInvoiceCorrectionXmlAsync(string authToken, InvoiceCorrectionInfo invoiceCorrectionInfo, bool disableValidation
  = false);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateInvoiceCorrectionRevisionXmlAsync(string authToken, InvoiceCorrectionInfo invoiceCorrectionRevision, bool disableValidation
  = false);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateTorg12XmlForSellerAsync(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation
  = false);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateTovTorg551XmlForSellerAsync(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation
  = false);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateTorg12XmlForBuyerAsync(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateTovTorg551XmlForBuyerAsync(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion
  = null);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateAcceptanceCertificateXmlForSellerAsync(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation
  = false);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateAcceptanceCertificateXmlForBuyerAsync(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateAcceptanceCertificate552XmlForSellerAsync(string authToken, AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation
  = false);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateAcceptanceCertificate552XmlForBuyerAsync(string authToken, AcceptanceCertificate552BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForSellerAsync(
 			string authToken,
 			UniversalTransferDocumentSellerTitleInfo sellerInfo,
 			bool disableValidation = false,
 			string documentVersion = null);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateUniversalCorrectionDocumentXmlForSellerAsync(
 			string authToken,
 			UniversalCorrectionDocumentSellerTitleInfo sellerInfo,
 			bool disableValidation = false,
 			string documentVersion = null);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateUniversalTransferDocumentXmlForBuyerAsync(string authToken, UniversalTransferDocumentBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId);
+
 		Task<GeneratedFile> GenerateTitleXmlAsync(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, int titleIndex, byte[] userContractData, bool disableValidation = false, string editingSettingId = null, string letterId = null, string documentId = null);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateSenderTitleXmlAsync(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation
  = false, string editingSettingId = null);
+
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion
  = null);
 		Task<GeneratedFile> GenerateUniversalMessageAsync(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData);

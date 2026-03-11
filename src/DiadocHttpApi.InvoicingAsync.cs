@@ -84,26 +84,31 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<InvoiceCorrectionRequestInfo>(authToken, "GET", queryString);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateInvoiceXmlAsync(string authToken, InvoiceInfo invoiceInfo, bool disableValidation = false)
 		{
 			return GenerateInvoiceXmlAsync(authToken, invoiceInfo, "Invoice", disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateInvoiceRevisionXmlAsync(string authToken, InvoiceInfo invoiceRevisionInfo, bool disableValidation = false)
 		{
 			return GenerateInvoiceXmlAsync(authToken, invoiceRevisionInfo, "InvoiceRevision", disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateInvoiceCorrectionXmlAsync(string authToken, InvoiceCorrectionInfo invoiceCorrectionInfo, bool disableValidation = false)
 		{
 			return GenerateInvoiceXmlAsync(authToken, invoiceCorrectionInfo, "InvoiceCorrection", disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateInvoiceCorrectionRevisionXmlAsync(string authToken, InvoiceCorrectionInfo invoiceCorrectionRevision, bool disableValidation = false)
 		{
 			return GenerateInvoiceXmlAsync(authToken, invoiceCorrectionRevision, "InvoiceCorrectionRevision", disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		private Task<GeneratedFile> GenerateInvoiceXmlAsync<T>(string authToken, T protoInvoice, string invoiceType, bool disableValidation = false) where T : class
 		{
 			var qsb = new PathAndQueryBuilder("/GenerateInvoiceXml").With("invoiceType", invoiceType);
@@ -113,6 +118,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, qsb.BuildPathAndQuery(), protoInvoice);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateTorg12XmlForSellerAsync(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
@@ -121,6 +127,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateTovTorg551XmlForSellerAsync(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
@@ -130,6 +137,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateTorg12XmlForBuyerAsync(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForBuyer");
@@ -140,6 +148,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateTovTorg551XmlForBuyerAsync(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForBuyer");
@@ -151,6 +160,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateAcceptanceCertificateXmlForSellerAsync(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			var queryString = string.Format("/GenerateAcceptanceCertificateXmlForSeller{0}", disableValidation ? "?disableValidation" : "");
@@ -158,6 +168,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, sellerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateAcceptanceCertificateXmlForBuyerAsync(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			var queryString = string.Format("/GenerateAcceptanceCertificateXmlForBuyer?boxId={0}&sellerTitleMessageId={1}&sellerTitleAttachmentId={2}", boxId, sellerTitleMessageId, sellerTitleAttachmentId);
@@ -165,6 +176,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryString, buyerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateAcceptanceCertificate552XmlForSellerAsync(string authToken, AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateAcceptanceCertificateXmlForSeller");
@@ -174,6 +186,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequestAsync(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public Task<GeneratedFile> GenerateAcceptanceCertificate552XmlForBuyerAsync(string authToken, AcceptanceCertificate552BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateAcceptanceCertificateXmlForBuyer");
@@ -215,6 +228,7 @@ namespace Diadoc.Api
 			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public async Task<GeneratedFile> GenerateSenderTitleXmlAsync(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateSenderTitleXml");
@@ -231,6 +245,7 @@ namespace Diadoc.Api
 			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
 		}
 
+		[Obsolete("Use GenerateTitleXmlAsync()")]
 		public async Task<GeneratedFile> GenerateRecipientTitleXmlAsync(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateRecipientTitleXml");

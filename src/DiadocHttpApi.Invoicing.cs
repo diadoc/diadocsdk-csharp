@@ -75,26 +75,31 @@ namespace Diadoc.Api
 			return PerformHttpRequest<InvoiceCorrectionRequestInfo>(authToken, "GET", queryString);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceXml(string authToken, InvoiceInfo invoiceInfo, bool disableValidation = false)
 		{
 			return GenerateInvoiceXml(authToken, invoiceInfo, "Invoice", disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceRevisionXml(string authToken, InvoiceInfo invoiceRevisionInfo, bool disableValidation = false)
 		{
 			return GenerateInvoiceXml(authToken, invoiceRevisionInfo, "InvoiceRevision", disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceCorrectionXml(string authToken, InvoiceCorrectionInfo invoiceCorrectionInfo, bool disableValidation = false)
 		{
 			return GenerateInvoiceXml(authToken, invoiceCorrectionInfo, "InvoiceCorrection", disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateInvoiceCorrectionRevisionXml(string authToken, InvoiceCorrectionInfo invoiceCorrectionRevision, bool disableValidation = false)
 		{
 			return GenerateInvoiceXml(authToken, invoiceCorrectionRevision, "InvoiceCorrectionRevision", disableValidation);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		private GeneratedFile GenerateInvoiceXml<T>(string authToken, T protoInvoice, string invoiceType, bool disableValidation = false) where T : class
 		{
 			var queryString = string.Format("/GenerateInvoiceXml?invoiceType={0}{1}", invoiceType, disableValidation ? "&disableValidation" : "");
@@ -102,6 +107,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryString, protoInvoice);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTorg12XmlForSeller(string authToken, Torg12SellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
@@ -110,6 +116,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTovTorg551XmlForSeller(string authToken, TovTorgSellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForSeller");
@@ -119,6 +126,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTorg12XmlForBuyer(string authToken, Torg12BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForBuyer");
@@ -129,6 +137,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateTorg12XmlForBuyer");
@@ -140,6 +149,8 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), buyerInfo);
 		}
 
+
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificateXmlForSeller(string authToken, AcceptanceCertificateSellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			var queryString = string.Format("/GenerateAcceptanceCertificateXmlForSeller{0}", disableValidation ? "?disableValidation" : "");
@@ -147,6 +158,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryString, sellerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificateXmlForBuyer(string authToken, AcceptanceCertificateBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			var queryString = string.Format("/GenerateAcceptanceCertificateXmlForBuyer?boxId={0}&sellerTitleMessageId={1}&sellerTitleAttachmentId={2}", boxId, sellerTitleMessageId, sellerTitleAttachmentId);
@@ -154,6 +166,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryString, buyerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificate552XmlForSeller(string authToken, AcceptanceCertificate552SellerTitleInfo sellerInfo, bool disableValidation = false)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateAcceptanceCertificateXmlForSeller");
@@ -163,6 +176,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), sellerInfo);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateAcceptanceCertificate552XmlForBuyer(string authToken, AcceptanceCertificate552BuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateAcceptanceCertificateXmlForBuyer");
@@ -204,6 +218,7 @@ namespace Diadoc.Api
 			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateSenderTitleXml");
@@ -220,6 +235,7 @@ namespace Diadoc.Api
 			return new GeneratedFile(response.ContentDispositionFileName, response.Content);
 		}
 
+		[Obsolete("Use GenerateTitleXml()")]
 		public GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GenerateRecipientTitleXml");
