@@ -1653,6 +1653,12 @@ namespace Diadoc.Api.Proto.Events
 		{
 			Labels.Add(label);
 		}
+		
+		public Com.UniversalMessageBehaviour BehaviourValue
+		{
+			get => (Com.UniversalMessageBehaviour) Behaviour;
+			set => Behaviour = (UniversalMessageBehaviour) value;
+		}
 	}
 
 
