@@ -1,7 +1,5 @@
-#tool "nuget:?package=ILMerge&version=2.12.803"
 #addin "nuget:?package=Cake.Git&version=1.0.0"
 #tool nuget:?package=ILRepack&version=2.0.30
-#addin nuget:?package=Cake.ILRepack&version=1.1.0
 #tool "nuget:?package=protobuf-net&version=1.0.0.280"
 #tool "nuget:?package=secure-file&version=1.0.31"
 #tool "nuget:?package=Brutal.Dev.StrongNameSigner&version=2.7.1"
@@ -193,38 +191,47 @@ Task("Repack")
 		foreach (var (framework, platform) in targets)
 			RepackWithILRepack(framework, platform, keyFile);
 
-		void RepackWithILRepack(string framework, string platform)
+		void RepackWithILRepack(string targetFramework)
 		{
-			var outputDir = Directory($"bin/{configuration}/DiadocApi.Nuget/{framework}");
-			CreateDirectory(outputDir);
+			var source = sourceDir.Combine(targetFramework);
+			var output = outputDir.Combine(targetFramework);
 
-			var primaryAssembly = File($"bin/{configuration}/DiadocApi/{framework}/DiadocApi.dll");
+			CreateDirectory(output);
+
+			var primaryAssembly = source.CombineWithFilePath("DiadocApi.dll");
 
 			var assemblies = new[]
 			{
-				File($"bin/{configuration}/DiadocApi/{framework}/protobuf-net.dll"),
-				File($"bin/{configuration}/DiadocApi/{framework}/Newtonsoft.Json.dll")
+				source.CombineWithFilePath("Newtonsoft.Json.dll"),
+				source.CombineWithFilePath("protobuf-net.dll")
 			};
 
 			var settings = new ILRepackSettings
 			{
-				ToolPath = Context.Tools.Resolve("ilrepack.exe"),
+				ToolPath = MakeAbsolute(File("./tools/ILRepack.2.0.30/tools/ilrepack.exe")),
 				Internalize = true,
-				RenameInternalized = true,
-				InternalizeAssemblies = new[] { "Newtonsoft.Json", "protobuf-net" },
-
 				DelaySign = true,
-				KeyFile = File("src/diadoc.snk"),
-				TargetPlatformVersion = platform,
-				Verbose = true
+				KeyFile = signWithKeyFile,
+				TargetPlatformVersion = "v2",
+
+				ArgumentCustomization = args =>
+				{
+					var newArgs = new ProcessArgumentBuilder();
+
+					newArgs.Append("/renameinternalized");
+					newArgs.Append("/internalizeassembly:Newtonsoft.Json");
+					newArgs.Append("/internalizeassembly:protobuf-net");
+
+					newArgs.Append(args);
+					return newArgs;
+				}
 			};
 
 			ILRepack(
-				outputFile: outputDir + File("DiadocApi.dll"),
-				primaryAssembly: primaryAssembly,
-				assemblyPaths: assemblies,
-				settings: settings
-			);
+				output.CombineWithFilePath("DiadocApi.dll"),
+				primaryAssembly,
+				assemblies,
+				settings);
 		}
 	});
 
