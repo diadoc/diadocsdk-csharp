@@ -201,25 +201,22 @@ Task("Repack")
 			var ilRepackPath = "./tools/ILRepack.2.0.30/tools/ilrepack.exe";
 
 			var args = new ProcessArgumentBuilder();
+
 			args.Append("/internalize");
 			args.Append("/renameinternalized");
 			args.Append("/internalizeassembly:Newtonsoft.Json");
 			args.Append("/internalizeassembly:protobuf-net");
 
-			if (targetFramework != "netstandard2.0")
-			{
-				var platform = targetFramework switch
-				{
-					"net35" => "v2",
-					_ => "v4"
-				};
-				args.Append($"/targetplatform:{platform}");
-			}
+			args.Append("/lib:" + source.FullPath.Quote());
 
 			args.Append("/out:" + output.CombineWithFilePath("DiadocApi.dll").FullPath.Quote());
+
 			args.Append(primaryDll.FullPath.Quote());
-			foreach (var dll in otherDlls)
+
+			foreach(var dll in otherDlls)
+			{
 				args.Append(dll.FullPath.Quote());
+			}
 
 			Information("ILRepack path: {0}", ilRepackPath);
 			Information("ILRepack arguments: {0}", string.Join(" ", args));
