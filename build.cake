@@ -198,39 +198,38 @@ Task("Repack")
 			CreateDirectory(outDir);
 
 			var primaryDll = sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll");
-
-			var otherDlls = new FilePath[]
-			{
-				sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll"),
-				sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll")
-			};
-
+			var protobufDll = sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll");
+			var newtonsoftDll = sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll");
 			var outputDll = outDir.CombineWithFilePath("DiadocApi.dll");
+			var ilrepack = toolsDir.CombineWithFilePath("ILRepack.MSBuild.Task.2.0.13/tools/ilrepack.exe");
+			var args = new ProcessArgumentBuilder();
 
-			var settings = new ILRepackSettings
+			args.Append("/internalize");
+			args.Append("/renameinternalized");
+			args.Append("/internalizeassembly:Newtonsoft.Json");
+			args.Append("/internalizeassembly:protobuf-net");
+
+			args.Append($"/targetplatform:{targetPlatformVersion}");
+			args.Append($"/keyfile:\"{signWithKeyFile}\"");
+			args.Append("/delaysign");
+			args.Append($"/lib:\"{sourceDir.Combine(targetFramework)}\"");
+			args.Append($"/out:\"{outputDll}\"");
+
+			args.AppendQuoted(primaryDll.FullPath);
+			args.AppendQuoted(protobufDll.FullPath);
+			args.AppendQuoted(newtonsoftDll.FullPath);
+
+			var exitCode = StartProcess(ilrepack, new ProcessSettings
 			{
-				Internalize = true,
-				TargetPlatform = targetPlatformVersion,
-				WorkingDirectory = outDir,
-				Libs = new [] { sourceDir.Combine(targetFramework) }.ToList(),
-				Keyfile = signWithKeyFile,
-				DelaySign = signWithKeyFile != null
-			};
+				Arguments = args,
+				RedirectStandardOutput = true,
+				RedirectStandardError = true
+			});
 
-			settings.ArgumentCustomization = args =>
+			if (exitCode != 0)
 			{
-				args.Append("/renameinternalized");
-				args.Append("/internalizeassembly:Newtonsoft.Json");
-				args.Append("/internalizeassembly:protobuf-net");
-				return args;
-			};
-
-			ILRepack(
-				outputDll,
-				primaryDll,
-				otherDlls,
-				settings
-			);
+				throw new Exception("ILRepack failed with exit code " + exitCode);
+			}
 
 			if (signWithKeyFile != null)
 			{
