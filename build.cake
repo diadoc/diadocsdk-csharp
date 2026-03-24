@@ -215,10 +215,13 @@ Task("Repack")
 				Libs = new [] { sourceDir.Combine(targetFramework) }.ToList(),
 				Keyfile = signWithKeyFile,
 				DelaySign = signWithKeyFile != null,
-				ArgumentCustomization = args => args
-					.Append("/renameinternalized")
-					.Append(@"/rename:Newtonsoft\.Json=Diadoc.Internal.Newtonsoft.Json")
-					.Append("/repackdrop:Newtonsoft.Json")
+				Options = new []
+				{
+					"/renameinternalized",
+					@"/rename:Newtonsoft\.Json=Diadoc.Internal.Newtonsoft.Json",
+					"/internalizeassembly:Newtonsoft.Json",
+					"/repackdrop:Newtonsoft.Json"
+				}
 			};
 
 			ILRepack(outputDll, primaryDll, otherDlls, ilRepackSettings);
