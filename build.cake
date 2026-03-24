@@ -1,6 +1,7 @@
 #tool "nuget:?package=ILMerge&version=2.12.803"
 #addin "nuget:?package=Cake.Git&version=1.0.0"
-#tool "nuget:?package=ILRepack.MSBuild.Task&version=2.0.13"
+#tool nuget:?package=ILRepack&version=2.0.30
+#addin nuget:?package=Cake.ILRepack&version=1.1.0
 #tool "nuget:?package=protobuf-net&version=1.0.0.280"
 #tool "nuget:?package=secure-file&version=1.0.31"
 #tool "nuget:?package=Brutal.Dev.StrongNameSigner&version=2.7.1"
@@ -192,58 +193,38 @@ Task("Repack")
 		foreach (var (framework, platform) in targets)
 			RepackWithILRepack(framework, platform, keyFile);
 
-		void RepackWithILRepack(string targetFramework, TargetPlatformVersion targetPlatformVersion, FilePath signWithKeyFile)
+		void RepackWithILRepack(string framework, string platform)
 		{
-			var outDir = outputDir.Combine(targetFramework);
-			CreateDirectory(outDir);
+			var outputDir = Directory($"bin/{configuration}/DiadocApi.Nuget/{framework}");
+			CreateDirectory(outputDir);
 
-			var primaryDll = sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll");
-			var protobufDll = sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll");
-			var newtonsoftDll = sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll");
+			var primaryAssembly = File($"bin/{configuration}/DiadocApi/{framework}/DiadocApi.dll");
 
-			var outputDll = outDir.CombineWithFilePath("DiadocApi.dll");
-
-			var ilrepack = GetFiles("./tools/**/ilrepack.exe").FirstOrDefault();
-			if (ilrepack == null)
-				throw new Exception("ilrepack.exe not found in ./tools folder");
-
-			var args = new ProcessArgumentBuilder();
-
-			args.Append("/internalize");
-			args.Append("/renameinternalized");
-			args.Append("/internalizeassembly:Newtonsoft.Json");
-			args.Append("/internalizeassembly:protobuf-net");
-
-			args.Append($"/targetplatform:{targetPlatformVersion}");
-			args.Append($"/keyfile:\"{signWithKeyFile}\"");
-			args.Append("/delaysign");
-			args.Append($"/lib:\"{sourceDir.Combine(targetFramework)}\"");
-			args.Append($"/out:\"{outputDll}\"");
-
-			args.AppendQuoted(primaryDll.FullPath);
-			args.AppendQuoted(protobufDll.FullPath);
-			args.AppendQuoted(newtonsoftDll.FullPath);
-
-			Information("ILRepack path: " + ilrepack);
-			Information("ILRepack arguments: " + args);
-
-			var exitCode = StartProcess(ilrepack.FullPath, new ProcessSettings
+			var assemblies = new[]
 			{
-				Arguments = args
-			});
+				File($"bin/{configuration}/DiadocApi/{framework}/protobuf-net.dll"),
+				File($"bin/{configuration}/DiadocApi/{framework}/Newtonsoft.Json.dll")
+			};
 
-			if (exitCode != 0)
-				throw new Exception("ILRepack failed with exit code " + exitCode);
-
-			if (signWithKeyFile != null)
+			var settings = new ILRepackSettings
 			{
-				StrongNameSigner(new StrongNameSignerSettings {
-					AssemblyFile = outputDll,
-					KeyFile = signWithKeyFile
-				});
+				ToolPath = Context.Tools.Resolve("ilrepack.exe"),
+				Internalize = true,
+				RenameInternalized = true,
+				InternalizeAssemblies = new[] { "Newtonsoft.Json", "protobuf-net" },
 
-				DeleteFiles(GetFiles(outDir.FullPath + "/*.unsigned"));
-			}
+				DelaySign = true,
+				KeyFile = File("src/diadoc.snk"),
+				TargetPlatformVersion = platform,
+				Verbose = true
+			};
+
+			ILRepack(
+				outputFile: outputDir + File("DiadocApi.dll"),
+				primaryAssembly: primaryAssembly,
+				assemblyPaths: assemblies,
+				settings: settings
+			);
 		}
 	});
 
