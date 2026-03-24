@@ -222,6 +222,7 @@ Task("Repack")
 				args.Append("/renameinternalized");
 				args.Append("/internalizeassembly:Newtonsoft.Json");
 				args.Append("/internalizeassembly:protobuf-net");
+				return args;
 			};
 
 			ILRepack(
