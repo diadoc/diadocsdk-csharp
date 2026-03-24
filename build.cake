@@ -174,77 +174,61 @@ Task("Build")
 	});
 
 Task("Repack")
-	.IsDependentOn("Build")
-	.Does(() =>
+    .IsDependentOn("Build")
+    .Does(() =>
 	{
 		var sourceDir = buildDir.Combine("DiadocApi");
 		var outputDir = buildDir.Combine("DiadocApi.Nuget");
-		var keyFile = needSigning
-			? new FilePath("./src/diadoc.snk")
-			: null;
+		var keyFile = needSigning ? new FilePath("./src/diadoc.snk") : null;
 
-		RepackWithILMerge("net35", TargetPlatformVersion.v2, keyFile);
-		RepackWithILMerge("net45", TargetPlatformVersion.v4, keyFile);
-		RepackWithILMerge("net461", TargetPlatformVersion.v4, keyFile);
-		RepackWithILRepack("netstandard2.0", TargetPlatformVersion.v4, keyFile);
-
-		void RepackWithILMerge(string targetFramework, TargetPlatformVersion targetPlatformVersion, FilePath signWithKeyFile)
+		var targets = new (string framework, TargetPlatformVersion platform)[]
 		{
-			var ilMergeSettings = new ILMergeSettings
-			{
-				Internalize = true
-			};
+			("net35", TargetPlatformVersion.v2),
+			("net45", TargetPlatformVersion.v4),
+			("net461", TargetPlatformVersion.v4),
+			("netstandard2.0", TargetPlatformVersion.v4)
+		};
 
-			if (needSigning)
-			{
-				var keyFileAbsolutePath = signWithKeyFile.MakeAbsolute(Context.Environment).FullPath;
-				ilMergeSettings.ArgumentCustomization = args => args.Append("/keyfile:" + keyFileAbsolutePath);
-			}
-
-			ilMergeSettings.TargetPlatform = new TargetPlatform(targetPlatformVersion);
-
-			CreateDirectory(outputDir.Combine(targetFramework));
-			ILMerge(
-					outputDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
-					sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
-					new FilePath[] {
-						 sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll"),
-						 sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll")
-					},
-					ilMergeSettings);
-		}
+		foreach (var (framework, platform) in targets)
+			RepackWithILRepack(framework, platform, keyFile);
 
 		void RepackWithILRepack(string targetFramework, TargetPlatformVersion targetPlatformVersion, FilePath signWithKeyFile)
 		{
+			var outDir = outputDir.Combine(targetFramework);
+			CreateDirectory(outDir);
+
 			var ilRepackSettings = new ILRepackSettings
 			{
 				Internalize = true,
 				TargetPlatform = targetPlatformVersion,
-				WorkingDirectory = outputDir.Combine(targetFramework),
+				WorkingDirectory = outDir,
 				Libs = new [] { sourceDir.Combine(targetFramework) }.ToList(),
 				Keyfile = signWithKeyFile,
-				DelaySign = signWithKeyFile != null
-					? true
-					: false
+				DelaySign = signWithKeyFile != null,
+				ArgumentCustomization = args => args
+					.Append("/renameinternalized")
+					.Append(@"/rename:Newtonsoft\.Json=Diadoc.Internal.Newtonsoft.Json")
+					.Append("/repackdrop:Newtonsoft.Json")
 			};
 
-			CreateDirectory(outputDir.Combine(targetFramework));
-			ILRepack(
-				outputDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
+			var inputDlls = new FilePath[]
+			{
 				sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
-				new FilePath[] { 
-					sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll"),
-					sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll")
-				},
-				ilRepackSettings);
+				sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll"),
+				sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll")
+			};
+
+			var outputDll = outDir.CombineWithFilePath("DiadocApi.dll");
+
+			ILRepack(outputDll, inputDlls, ilRepackSettings);
 
 			if (signWithKeyFile != null)
 			{
 				StrongNameSigner(new StrongNameSignerSettings {
-					AssemblyFile = outputDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
-					KeyFile =  signWithKeyFile
+					AssemblyFile = outputDll,
+					KeyFile = signWithKeyFile
 				});
-				DeleteFiles(GetFiles(outputDir.Combine(targetFramework).FullPath + "/*.unsigned"));
+				DeleteFiles(GetFiles(outDir.FullPath + "/*.unsigned"));
 			}
 		}
 	});
