@@ -197,6 +197,16 @@ Task("Repack")
 			var outDir = outputDir.Combine(targetFramework);
 			CreateDirectory(outDir);
 
+			var primaryDll = sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll");
+
+			var otherDlls = new FilePath[]
+			{
+				sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll"),
+				sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll")
+			};
+
+			var outputDll = outDir.CombineWithFilePath("DiadocApi.dll");
+
 			var ilRepackSettings = new ILRepackSettings
 			{
 				Internalize = true,
@@ -211,16 +221,7 @@ Task("Repack")
 					.Append("/repackdrop:Newtonsoft.Json")
 			};
 
-			var inputDlls = new FilePath[]
-			{
-				sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll"),
-				sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll"),
-				sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll")
-			};
-
-			var outputDll = outDir.CombineWithFilePath("DiadocApi.dll");
-
-			ILRepack(outputDll, inputDlls, ilRepackSettings);
+			ILRepack(outputDll, primaryDll, otherDlls, ilRepackSettings);
 
 			if (signWithKeyFile != null)
 			{
