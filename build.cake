@@ -191,7 +191,7 @@ Task("Repack")
 		foreach (var (framework, platform) in targets)
 			RepackWithILRepack(framework, platform, keyFile);
 
-		void RepackWithILRepack(string targetFramework, FilePath signWithKeyFile)
+		void RepackWithILRepack(string targetFramework, FilePath signWithKeyFile = null)
 		{
 			var source = sourceDir.Combine(targetFramework);
 			var output = outputDir.Combine(targetFramework);
@@ -204,7 +204,7 @@ Task("Repack")
 				source.CombineWithFilePath("protobuf-net.dll")
 			};
 
-			var ilRepackPath = Tools.Resolve("ILRepack.2.0.30/tools/ilrepack.exe");
+			var ilRepackPath = "./tools/ILRepack.2.0.30/tools/ilrepack.exe";
 
 			var args = new ProcessArgumentBuilder();
 			args.Append("/internalize");
