@@ -198,42 +198,38 @@ Task("Repack")
 			CreateDirectory(outDir);
 
 			var primaryDll = sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll");
-
-			var otherDlls = new FilePath[]
-			{
-				sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll"),
-				sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll")
-			};
+			var protobufDll = sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll");
+			var jsonDll = sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll");
 
 			var outputDll = outDir.CombineWithFilePath("DiadocApi.dll");
 			var ilRepackExe = Context.Tools.Resolve("ILRepack.exe");
+
 			var args = new ProcessArgumentBuilder();
 
-			args.Append($"-out:{outputDll.MakeAbsolute(Context.Environment).FullPath}");
-			args.Append(primaryDll.MakeAbsolute(Context.Environment).FullPath);
+			args.Append("/internalize");
+			args.Append("/renameinternalized");
 
-			foreach (var dll in otherDlls)
-			{
-				args.Append(dll.MakeAbsolute(Context.Environment).FullPath);
-			}
+			args.Append(@"/rename:Newtonsoft\.Json=Diadoc.Internal.Newtonsoft.Json");
+			args.Append(@"/rename:ProtoBuf=Diadoc.Internal.ProtoBuf");
 
 			if (targetPlatformVersion == TargetPlatformVersion.v2)
 				args.Append("/targetplatform:v2");
 			else
 				args.Append("/targetplatform:v4");
 
-			args.Append("/internalize");
-			args.Append("/renameinternalized");
-			args.Append("/internalizeassembly:Newtonsoft.Json");
-			args.Append("/repackdrop:Newtonsoft.Json");
-
 			args.Append($"/lib:{sourceDir.Combine(targetFramework).MakeAbsolute(Context.Environment).FullPath}");
+
+			args.Append($"/out:{outputDll.MakeAbsolute(Context.Environment).FullPath}");
 
 			if (signWithKeyFile != null)
 			{
 				args.Append($"/keyfile:{signWithKeyFile.MakeAbsolute(Context.Environment).FullPath}");
 				args.Append("/delaysign");
 			}
+
+			args.Append(primaryDll.MakeAbsolute(Context.Environment).FullPath);
+			args.Append(protobufDll.MakeAbsolute(Context.Environment).FullPath);
+			args.Append(jsonDll.MakeAbsolute(Context.Environment).FullPath);
 
 			var result = StartProcess(ilRepackExe, new ProcessSettings
 			{
