@@ -191,47 +191,45 @@ Task("Repack")
 		foreach (var (framework, platform) in targets)
 			RepackWithILRepack(framework, platform, keyFile);
 
-		void RepackWithILRepack(string targetFramework)
+		void RepackWithILRepack(string targetFramework, FilePath signWithKeyFile)
 		{
 			var source = sourceDir.Combine(targetFramework);
 			var output = outputDir.Combine(targetFramework);
-
 			CreateDirectory(output);
 
-			var primaryAssembly = source.CombineWithFilePath("DiadocApi.dll");
-
-			var assemblies = new[]
+			var primaryDll = source.CombineWithFilePath("DiadocApi.dll");
+			var otherDlls = new[]
 			{
 				source.CombineWithFilePath("Newtonsoft.Json.dll"),
 				source.CombineWithFilePath("protobuf-net.dll")
 			};
 
-			var settings = new ILRepackSettings
+			var ilRepackPath = Tools.Resolve("ILRepack.2.0.30/tools/ilrepack.exe");
+
+			var args = new ProcessArgumentBuilder();
+			args.Append("/internalize");
+			args.Append("/renameinternalized");
+			args.Append("/internalizeassembly:Newtonsoft.Json");
+			args.Append("/internalizeassembly:protobuf-net");
+			args.Append("/out:" + output.CombineWithFilePath("DiadocApi.dll").FullPath.Quote());
+			args.Append(primaryDll.FullPath.Quote());
+			foreach(var dll in otherDlls)
+				args.Append(dll.FullPath.Quote());
+
+			Information("ILRepack path: {0}", ilRepackPath);
+			Information("ILRepack arguments: {0}", string.Join(" ", args));
+
+			var exitCode = StartProcess(ilRepackPath, new ProcessSettings { Arguments = args });
+			if (exitCode != 0)
+				throw new CakeException("ILRepack failed with exit code " + exitCode);
+
+			if (signWithKeyFile != null)
 			{
-				ToolPath = MakeAbsolute(File("./tools/ILRepack.2.0.30/tools/ilrepack.exe")),
-				Internalize = true,
-				DelaySign = true,
-				KeyFile = signWithKeyFile,
-				TargetPlatformVersion = "v2",
-
-				ArgumentCustomization = args =>
-				{
-					var newArgs = new ProcessArgumentBuilder();
-
-					newArgs.Append("/renameinternalized");
-					newArgs.Append("/internalizeassembly:Newtonsoft.Json");
-					newArgs.Append("/internalizeassembly:protobuf-net");
-
-					newArgs.Append(args);
-					return newArgs;
-				}
-			};
-
-			ILRepack(
-				output.CombineWithFilePath("DiadocApi.dll"),
-				primaryAssembly,
-				assemblies,
-				settings);
+				StrongNameSigner(new StrongNameSignerSettings {
+					AssemblyFile = output.CombineWithFilePath("DiadocApi.dll"),
+					KeyFile = signWithKeyFile
+				});
+			}
 		}
 	});
 
