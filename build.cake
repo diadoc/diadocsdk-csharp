@@ -196,18 +196,24 @@ Task("Repack")
 		{
 			var outDir = outputDir.Combine(targetFramework);
 			CreateDirectory(outDir);
+
 			var primaryDll = sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll");
 			var protobufDll = sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll");
 			var newtonsoftDll = sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll");
+
 			var outputDll = outDir.CombineWithFilePath("DiadocApi.dll");
-			var ilrepack = Tools.Resolve("ilrepack.exe");
+
+			var ilrepack = GetFiles("./tools/**/ilrepack.exe").FirstOrDefault();
+			if (ilrepack == null)
+				throw new Exception("ilrepack.exe not found in ./tools folder");
+
 			var args = new ProcessArgumentBuilder();
 
 			args.Append("/internalize");
 			args.Append("/renameinternalized");
 			args.Append("/internalizeassembly:Newtonsoft.Json");
 			args.Append("/internalizeassembly:protobuf-net");
-			
+
 			args.Append($"/targetplatform:{targetPlatformVersion}");
 			args.Append($"/keyfile:\"{signWithKeyFile}\"");
 			args.Append("/delaysign");
@@ -218,19 +224,16 @@ Task("Repack")
 			args.AppendQuoted(protobufDll.FullPath);
 			args.AppendQuoted(newtonsoftDll.FullPath);
 
+			Information("ILRepack path: " + ilrepack);
 			Information("ILRepack arguments: " + args);
 
-			var exitCode = StartProcess(ilrepack, new ProcessSettings
+			var exitCode = StartProcess(ilrepack.FullPath, new ProcessSettings
 			{
-				Arguments = args,
-				RedirectStandardOutput = true,
-				RedirectStandardError = true
+				Arguments = args
 			});
 
 			if (exitCode != 0)
-			{
 				throw new Exception("ILRepack failed with exit code " + exitCode);
-			}
 
 			if (signWithKeyFile != null)
 			{
