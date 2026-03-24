@@ -196,19 +196,18 @@ Task("Repack")
 		{
 			var outDir = outputDir.Combine(targetFramework);
 			CreateDirectory(outDir);
-
 			var primaryDll = sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll");
 			var protobufDll = sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll");
 			var newtonsoftDll = sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll");
 			var outputDll = outDir.CombineWithFilePath("DiadocApi.dll");
-			var ilrepack = toolsDir.CombineWithFilePath("ILRepack.MSBuild.Task.2.0.13/tools/ilrepack.exe");
+			var ilrepack = Tools.Resolve("ilrepack.exe");
 			var args = new ProcessArgumentBuilder();
 
 			args.Append("/internalize");
 			args.Append("/renameinternalized");
 			args.Append("/internalizeassembly:Newtonsoft.Json");
 			args.Append("/internalizeassembly:protobuf-net");
-
+			
 			args.Append($"/targetplatform:{targetPlatformVersion}");
 			args.Append($"/keyfile:\"{signWithKeyFile}\"");
 			args.Append("/delaysign");
@@ -218,6 +217,8 @@ Task("Repack")
 			args.AppendQuoted(primaryDll.FullPath);
 			args.AppendQuoted(protobufDll.FullPath);
 			args.AppendQuoted(newtonsoftDll.FullPath);
+
+			Information("ILRepack arguments: " + args);
 
 			var exitCode = StartProcess(ilrepack, new ProcessSettings
 			{
