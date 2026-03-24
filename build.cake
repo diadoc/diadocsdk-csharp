@@ -206,25 +206,43 @@ Task("Repack")
 			};
 
 			var outputDll = outDir.CombineWithFilePath("DiadocApi.dll");
+			var ilRepackExe = Context.Tools.Resolve("ILRepack.exe");
+			var args = new ProcessArgumentBuilder();
 
-			var ilRepackSettings = new ILRepackSettings
+			args.Append($"-out:{outputDll.MakeAbsolute(Context.Environment).FullPath}");
+			args.Append(primaryDll.MakeAbsolute(Context.Environment).FullPath);
+
+			foreach (var dll in otherDlls)
 			{
-				Internalize = true,
-				TargetPlatform = targetPlatformVersion,
-				WorkingDirectory = outDir,
-				Libs = new [] { sourceDir.Combine(targetFramework) }.ToList(),
-				Keyfile = signWithKeyFile,
-				DelaySign = signWithKeyFile != null,
-				Options = new []
-				{
-					"/renameinternalized",
-					@"/rename:Newtonsoft\.Json=Diadoc.Internal.Newtonsoft.Json",
-					"/internalizeassembly:Newtonsoft.Json",
-					"/repackdrop:Newtonsoft.Json"
-				}
-			};
+				args.Append(dll.MakeAbsolute(Context.Environment).FullPath);
+			}
 
-			ILRepack(outputDll, primaryDll, otherDlls, ilRepackSettings);
+			if (targetPlatformVersion == TargetPlatformVersion.v2)
+				args.Append("/targetplatform:v2");
+			else
+				args.Append("/targetplatform:v4");
+
+			args.Append("/internalize");
+			args.Append("/renameinternalized");
+			args.Append("/internalizeassembly:Newtonsoft.Json");
+			args.Append("/repackdrop:Newtonsoft.Json");
+
+			args.Append($"/lib:{sourceDir.Combine(targetFramework).MakeAbsolute(Context.Environment).FullPath}");
+
+			if (signWithKeyFile != null)
+			{
+				args.Append($"/keyfile:{signWithKeyFile.MakeAbsolute(Context.Environment).FullPath}");
+				args.Append("/delaysign");
+			}
+
+			var result = StartProcess(ilRepackExe, new ProcessSettings
+			{
+				Arguments = args,
+				WorkingDirectory = outDir
+			});
+
+			if (result != 0)
+				throw new Exception($"ILRepack failed with exit code {result}");
 
 			if (signWithKeyFile != null)
 			{
@@ -232,6 +250,7 @@ Task("Repack")
 					AssemblyFile = outputDll,
 					KeyFile = signWithKeyFile
 				});
+
 				DeleteFiles(GetFiles(outDir.FullPath + "/*.unsigned"));
 			}
 		}
