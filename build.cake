@@ -180,16 +180,10 @@ Task("Repack")
 		var outputDir = buildDir.Combine("DiadocApi.Nuget");
 		var keyFile = needSigning ? new FilePath("./src/diadoc.snk") : null;
 
-		var targets = new (string framework, TargetPlatformVersion platform)[]
-		{
-			("net35", TargetPlatformVersion.v2),
-			("net45", TargetPlatformVersion.v4),
-			("net461", TargetPlatformVersion.v4),
-			("netstandard2.0", TargetPlatformVersion.v4)
-		};
+		var frameworks = new[] { "net35", "net45", "net461", "netstandard2.0" };
 
-		foreach (var (framework, platform) in targets)
-			RepackWithILRepack(framework, platform, keyFile);
+		foreach (var framework in frameworks)
+			RepackWithILRepack(framework, keyFile);
 
 		void RepackWithILRepack(string targetFramework, FilePath signWithKeyFile = null)
 		{
@@ -211,9 +205,20 @@ Task("Repack")
 			args.Append("/renameinternalized");
 			args.Append("/internalizeassembly:Newtonsoft.Json");
 			args.Append("/internalizeassembly:protobuf-net");
+
+			if (targetFramework != "netstandard2.0")
+			{
+				var platform = targetFramework switch
+				{
+					"net35" => "v2",
+					_ => "v4"
+				};
+				args.Append($"/targetplatform:{platform}");
+			}
+
 			args.Append("/out:" + output.CombineWithFilePath("DiadocApi.dll").FullPath.Quote());
 			args.Append(primaryDll.FullPath.Quote());
-			foreach(var dll in otherDlls)
+			foreach (var dll in otherDlls)
 				args.Append(dll.FullPath.Quote());
 
 			Information("ILRepack path: {0}", ilRepackPath);
@@ -225,7 +230,8 @@ Task("Repack")
 
 			if (signWithKeyFile != null)
 			{
-				StrongNameSigner(new StrongNameSignerSettings {
+				StrongNameSigner(new StrongNameSignerSettings
+				{
 					AssemblyFile = output.CombineWithFilePath("DiadocApi.dll"),
 					KeyFile = signWithKeyFile
 				});
