@@ -210,18 +210,18 @@ Task("Repack")
 			var settings = new ILRepackSettings
 			{
 				Internalize = true,
-				RenameInternalized = true,
 				TargetPlatform = targetPlatformVersion,
 				WorkingDirectory = outDir,
 				Libs = new [] { sourceDir.Combine(targetFramework) }.ToList(),
 				Keyfile = signWithKeyFile,
-				DelaySign = signWithKeyFile != null,
+				DelaySign = signWithKeyFile != null
+			};
 
-				InternalizeAssemblies = new [] 
-				{ 
-					"Newtonsoft.Json", 
-					"protobuf-net" 
-				}
+			settings.ArgumentCustomization = args =>
+			{
+				args.Append("/renameinternalized");
+				args.Append("/internalizeassembly:Newtonsoft.Json");
+				args.Append("/internalizeassembly:protobuf-net");
 			};
 
 			ILRepack(
