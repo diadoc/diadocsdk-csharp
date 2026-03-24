@@ -198,47 +198,38 @@ Task("Repack")
 			CreateDirectory(outDir);
 
 			var primaryDll = sourceDir.Combine(targetFramework).CombineWithFilePath("DiadocApi.dll");
-			var protobufDll = sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll");
-			var jsonDll = sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll");
+
+			var otherDlls = new FilePath[]
+			{
+				sourceDir.Combine(targetFramework).CombineWithFilePath("protobuf-net.dll"),
+				sourceDir.Combine(targetFramework).CombineWithFilePath("Newtonsoft.Json.dll")
+			};
 
 			var outputDll = outDir.CombineWithFilePath("DiadocApi.dll");
-			var ilRepackExe = Context.Tools.Resolve("ILRepack.exe");
 
-			var args = new ProcessArgumentBuilder();
-
-			args.Append("/internalize");
-			args.Append("/renameinternalized");
-
-			args.Append(@"/rename:Newtonsoft\.Json=Diadoc.Internal.Newtonsoft.Json");
-			args.Append(@"/rename:ProtoBuf=Diadoc.Internal.ProtoBuf");
-
-			if (targetPlatformVersion == TargetPlatformVersion.v2)
-				args.Append("/targetplatform:v2");
-			else
-				args.Append("/targetplatform:v4");
-
-			args.Append($"/lib:{sourceDir.Combine(targetFramework).MakeAbsolute(Context.Environment).FullPath}");
-
-			args.Append($"/out:{outputDll.MakeAbsolute(Context.Environment).FullPath}");
-
-			if (signWithKeyFile != null)
+			var settings = new ILRepackSettings
 			{
-				args.Append($"/keyfile:{signWithKeyFile.MakeAbsolute(Context.Environment).FullPath}");
-				args.Append("/delaysign");
-			}
+				Internalize = true,
+				RenameInternalized = true,
+				TargetPlatform = targetPlatformVersion,
+				WorkingDirectory = outDir,
+				Libs = new [] { sourceDir.Combine(targetFramework) }.ToList(),
+				Keyfile = signWithKeyFile,
+				DelaySign = signWithKeyFile != null,
 
-			args.Append(primaryDll.MakeAbsolute(Context.Environment).FullPath);
-			args.Append(protobufDll.MakeAbsolute(Context.Environment).FullPath);
-			args.Append(jsonDll.MakeAbsolute(Context.Environment).FullPath);
+				InternalizeAssemblies = new [] 
+				{ 
+					"Newtonsoft.Json", 
+					"protobuf-net" 
+				}
+			};
 
-			var result = StartProcess(ilRepackExe, new ProcessSettings
-			{
-				Arguments = args,
-				WorkingDirectory = outDir
-			});
-
-			if (result != 0)
-				throw new Exception($"ILRepack failed with exit code {result}");
+			ILRepack(
+				outputDll,
+				primaryDll,
+				otherDlls,
+				settings
+			);
 
 			if (signWithKeyFile != null)
 			{
