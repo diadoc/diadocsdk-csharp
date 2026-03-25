@@ -204,8 +204,7 @@ Task("Repack")
 
 			args.Append("/internalize");
 			args.Append("/renameinternalized");
-			args.Append("/internalizeassembly:Newtonsoft.Json");
-			args.Append("/internalizeassembly:protobuf-net");
+			args.Append("/verbose");
 
 			args.Append("/lib:" + source.FullPath.Quote());
 
