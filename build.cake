@@ -204,7 +204,6 @@ Task("Repack")
 
 			args.Append("/internalize");
 			args.Append("/renameinternalized");
-			args.Append("/verbose");
 
 			args.Append("/lib:" + source.FullPath.Quote());
 
