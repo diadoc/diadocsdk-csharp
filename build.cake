@@ -192,42 +192,44 @@ Task("Repack")
 			CreateDirectory(output);
 
 			var primaryDll = source.CombineWithFilePath("DiadocApi.dll");
-			var otherDlls = new[]
-			{
-				source.CombineWithFilePath("Newtonsoft.Json.dll"),
-				source.CombineWithFilePath("protobuf-net.dll")
-			};
+			var newtonsoftDll = source.CombineWithFilePath("Newtonsoft.Json.dll");
+			var protobufDll = source.CombineWithFilePath("protobuf-net.dll");
+			
+			var tempDll = output.CombineWithFilePath("DiadocApi.Internal.dll");
+			var finalDll = output.CombineWithFilePath("DiadocApi.dll");
 
 			var ilRepackPath = "./tools/ILRepack.2.0.30/tools/ilrepack.exe";
 
-			var args = new ProcessArgumentBuilder();
+			var args1 = new ProcessArgumentBuilder();
+			args1.Append("/internalize");
+			args1.Append("/renameinternalized");
+			args1.Append("/lib:" + source.FullPath.Quote());
+			args1.Append("/out:" + tempDll.FullPath.Quote());
+			args1.Append(primaryDll.FullPath.Quote());
+			args1.Append(newtonsoftDll.FullPath.Quote());
 
-			args.Append("/internalize");
-			args.Append("/renameinternalized");
+			Information("Step 1: Repacking Newtonsoft with renaming...");
+			if (StartProcess(ilRepackPath, new ProcessSettings { Arguments = args1 }) != 0)
+				throw new CakeException("ILRepack Step 1 failed");
 
-			args.Append("/lib:" + source.FullPath.Quote());
+			var args2 = new ProcessArgumentBuilder();
+			args2.Append("/internalize"); 
+			args2.Append("/lib:" + source.FullPath.Quote());
+			args2.Append("/out:" + finalDll.FullPath.Quote());
+			args2.Append(tempDll.FullPath.Quote());
+			args2.Append(protobufDll.FullPath.Quote());
 
-			args.Append("/out:" + output.CombineWithFilePath("DiadocApi.dll").FullPath.Quote());
+			Information("Step 2: Repacking Protobuf without renaming...");
+			if (StartProcess(ilRepackPath, new ProcessSettings { Arguments = args2 }) != 0)
+				throw new CakeException("ILRepack Step 2 failed");
 
-			args.Append(primaryDll.FullPath.Quote());
-
-			foreach(var dll in otherDlls)
-			{
-				args.Append(dll.FullPath.Quote());
-			}
-
-			Information("ILRepack path: {0}", ilRepackPath);
-			Information("ILRepack arguments: {0}", string.Join(" ", args));
-
-			var exitCode = StartProcess(ilRepackPath, new ProcessSettings { Arguments = args });
-			if (exitCode != 0)
-				throw new CakeException("ILRepack failed with exit code " + exitCode);
+			if (FileExists(tempDll)) DeleteFile(tempDll);
 
 			if (signWithKeyFile != null)
 			{
-				StrongNameSigner(new StrongNameSignerSettings
-				{
-					AssemblyFile = output.CombineWithFilePath("DiadocApi.dll"),
+				Information("Signing final assembly...");
+				StrongNameSigner(new StrongNameSignerSettings {
+					AssemblyFile = finalDll,
 					KeyFile = signWithKeyFile
 				});
 			}
