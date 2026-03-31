@@ -170,6 +170,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _EditingSettingId; }
       set { _EditingSettingId = value; }
     }
+
+    private bool _HasUnreadOutOfWorkflowUniversalMessages = (bool)false;
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"HasUnreadOutOfWorkflowUniversalMessages", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool HasUnreadOutOfWorkflowUniversalMessages
+    {
+      get { return _HasUnreadOutOfWorkflowUniversalMessages; }
+      set { _HasUnreadOutOfWorkflowUniversalMessages = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -259,6 +259,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Origin Origin { get; }
 		Com.MessageType MessageTypeValue { get; }
 		string EditingSettingId { get; set; }
+		bool HasUnreadOutOfWorkflowUniversalMessages { get; }
 	}
 
 	[ComVisible(true)]
