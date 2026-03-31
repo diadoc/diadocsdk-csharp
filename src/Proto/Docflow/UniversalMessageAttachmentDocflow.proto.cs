@@ -38,6 +38,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _ContentTypeId; }
       set { _ContentTypeId = value; }
     }
+
+    private bool _IsRead = (bool)false;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"IsRead", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsRead
+    {
+      get { return _IsRead; }
+      set { _IsRead = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
