@@ -703,9 +703,9 @@ namespace Diadoc.Api.Proto.Documents
       set { _TtGisFixationCancellationStatus = value; }
     }
 
-    private bool _HasUnreadOutOfWorkflowUniversalMessages = (bool)false;
+    private bool _HasUnreadOutOfWorkflowUniversalMessages = (bool)true;
     [global::ProtoBuf.ProtoMember(82, IsRequired = false, Name=@"HasUnreadOutOfWorkflowUniversalMessages", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue((bool)false)]
+    [global::System.ComponentModel.DefaultValue((bool)true)]
     public bool HasUnreadOutOfWorkflowUniversalMessages
     {
       get { return _HasUnreadOutOfWorkflowUniversalMessages; }

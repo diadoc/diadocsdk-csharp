@@ -171,9 +171,9 @@ namespace Diadoc.Api.Proto.Docflow
       set { _EditingSettingId = value; }
     }
 
-    private bool _HasUnreadOutOfWorkflowUniversalMessages = (bool)false;
+    private bool _HasUnreadOutOfWorkflowUniversalMessages = (bool)true;
     [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"HasUnreadOutOfWorkflowUniversalMessages", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue((bool)false)]
+    [global::System.ComponentModel.DefaultValue((bool)true)]
     public bool HasUnreadOutOfWorkflowUniversalMessages
     {
       get { return _HasUnreadOutOfWorkflowUniversalMessages; }
