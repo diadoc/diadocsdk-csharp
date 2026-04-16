@@ -9,6 +9,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Attachment Attachment { get; }
 		Diadoc.Api.Proto.UniversalMessageInfo MessageInfo { get; }
 		string ContentTypeId { get; }
+		bool IsRead { get; }
 	}
 
 	[ComVisible(true)]

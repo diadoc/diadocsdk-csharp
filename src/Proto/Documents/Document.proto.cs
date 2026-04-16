@@ -702,6 +702,15 @@ namespace Diadoc.Api.Proto.Documents
       get { return _TtGisFixationCancellationStatus; }
       set { _TtGisFixationCancellationStatus = value; }
     }
+
+    private bool _HasUnreadOutOfWorkflowUniversalMessages = (bool)true;
+    [global::ProtoBuf.ProtoMember(82, IsRequired = false, Name=@"HasUnreadOutOfWorkflowUniversalMessages", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)true)]
+    public bool HasUnreadOutOfWorkflowUniversalMessages
+    {
+      get { return _HasUnreadOutOfWorkflowUniversalMessages; }
+      set { _HasUnreadOutOfWorkflowUniversalMessages = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

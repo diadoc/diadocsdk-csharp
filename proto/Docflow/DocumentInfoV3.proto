@@ -32,6 +32,7 @@ message DocumentInfoV3
 	optional DocumentTemplateInfo TemplateInfo = 17;
 	optional Documents.Origin Origin = 18;
 	optional string EditingSettingId = 19 [default = ""];
+	optional bool HasUnreadOutOfWorkflowUniversalMessages = 20 [default = true];
 }
 
 message DocumentParticipants

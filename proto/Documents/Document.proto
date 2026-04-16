@@ -100,6 +100,7 @@ message Document {
 	optional string ProxyDepartmentId = 79;
 	required DocflowStatusV3 DocflowStatus = 80;
 	optional TtGisFixationCancellationStatus TtGisFixationCancellationStatus = 81 [default = TtGisFixationCancellationStatusNone];
+	optional bool HasUnreadOutOfWorkflowUniversalMessages = 82 [default = true];
 }
 
 message LastOuterDocflow {

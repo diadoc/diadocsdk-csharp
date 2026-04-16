@@ -7,4 +7,5 @@ message UniversalMessageAttachmentDocflow {
     required Attachment Attachment = 1; 
     required UniversalMessageInfo MessageInfo = 2;
     required string ContentTypeId = 3;
+    optional bool IsRead = 4 [default = false];
 }

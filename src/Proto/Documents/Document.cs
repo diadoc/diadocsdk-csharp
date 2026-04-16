@@ -95,6 +95,8 @@ namespace Diadoc.Api.Proto.Documents
 		string ProxyBoxId { get; }
 		string ProxyDepartmentId { get; }
 		DocflowStatusV3 DocflowStatus { get; }
+		
+		bool HasUnreadOutOfWorkflowUniversalMessages { get; }
 	}
 
 	[ComVisible(true)]
