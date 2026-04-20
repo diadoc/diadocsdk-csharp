@@ -13,6 +13,7 @@ message GetPartnerEventsRequest
 	repeated string DocumentDirections = 2;
 	repeated string MessageTypes = 3;
 	optional int32 Limit = 4 [default = 100];
+	optional bool PopulatePreviousDocumentStates = 5 [default = false];
 }
 
 message GetPartnerEventsResponse
@@ -27,4 +28,5 @@ message PartnerEvent
 	required Timestamp Timestamp = 2;
 	required DocumentId DocumentId = 3;
 	optional Docflow.DocumentWithDocflowV4 Document = 4;
+	optional Docflow.DocumentWithDocflowV4 PreviousDocumentState = 5;
 }

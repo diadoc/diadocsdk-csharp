@@ -51,6 +51,15 @@ namespace Diadoc.Api.Proto.PartnerEvents
       get { return _Limit; }
       set { _Limit = value; }
     }
+
+    private bool _PopulatePreviousDocumentStates = (bool)false;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"PopulatePreviousDocumentStates", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool PopulatePreviousDocumentStates
+    {
+      get { return _PopulatePreviousDocumentStates; }
+      set { _PopulatePreviousDocumentStates = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -116,6 +125,15 @@ namespace Diadoc.Api.Proto.PartnerEvents
     {
       get { return _Document; }
       set { _Document = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.DocumentWithDocflowV4 _PreviousDocumentState = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"PreviousDocumentState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.DocumentWithDocflowV4 PreviousDocumentState
+    {
+      get { return _PreviousDocumentState; }
+      set { _PreviousDocumentState = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
