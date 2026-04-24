@@ -1933,5 +1933,12 @@ namespace Diadoc.Api
 			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
 			return diadocHttpApi.GetCounteragentsFromGroupAsync(authToken, boxId, counteragentGroupId, count, afterIndexKey);
 		}
+
+		public Task<SecurityEventList> GetSecurityEventsAsync(string authToken, string boxId, string afterIndexKey = null, int? count = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetSecurityEventsAsync(authToken, boxId, afterIndexKey, count);
+		}
 	}
 }

@@ -558,6 +558,8 @@ namespace Diadoc.Api
 		void AddCounteragentToGroup(string authToken, string boxId, string counteragentBoxId, string counteragentGroupId);
 		CounteragentFromGroupResponse GetCounteragentsFromGroup(string authToken, string boxId, string counteragentGroupId, int? count = null, string afterIndexKey = null);
 
+		SecurityEventList GetSecurityEvents(string authToken, string boxId, string afterIndexKey = null, int? count = null);
+
 #if !NET35
 
 		Task<string> AuthenticateAsync(string login, string password, string key = null, string id = null);
@@ -1107,6 +1109,7 @@ namespace Diadoc.Api
 		Task<CounteragentGroupsList> GetCounteragentGroupsAsync(string authToken, string boxId, int? page = null, int? count = null);
 		Task AddCounteragentToGroupAsync(string authToken, string boxId, string counteragentBoxId, string counteragentGroupId);
 		Task<CounteragentFromGroupResponse> GetCounteragentsFromGroupAsync(string authToken, string boxId, string counteragentGroupId, int? count = null, string afterIndexKey = null);
+		Task<SecurityEventList> GetSecurityEventsAsync(string authToken, string boxId, string afterIndexKey = null, int? count = null);
 #endif
 	}
 }

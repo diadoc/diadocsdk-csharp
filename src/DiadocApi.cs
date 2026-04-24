@@ -2078,5 +2078,12 @@ namespace Diadoc.Api
 			if (counteragentGroupId == null) throw new ArgumentNullException("counteragentGroupId");
 			return diadocHttpApi.GetCounteragentsFromGroup(authToken, boxId, counteragentGroupId, count, afterIndexKey);
 		}
+
+		public SecurityEventList GetSecurityEvents(string authToken, string boxId, string afterIndexKey = null, int? count = null)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			return diadocHttpApi.GetSecurityEvents(authToken, boxId, afterIndexKey, count);
+		}
 	}
 }

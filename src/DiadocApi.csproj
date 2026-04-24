@@ -17,7 +17,7 @@
     <Company>ЗАО «ПФ «СКБ Контур»</Company>
     <Product>Diadoc</Product>
     <AssemblyTitle>Diadoc.Api</AssemblyTitle>
-    <Copyright>© 2010-2024 ЗАО «ПФ «СКБ Контур»</Copyright>
+    <Copyright>© 2010-2026 ЗАО «ПФ «СКБ Контур»</Copyright>
     <Description>Official Diadoc SDK</Description>
     <NoWarn>1591</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
