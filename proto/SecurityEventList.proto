@@ -1,0 +1,35 @@
+package Diadoc.Api.Proto;
+
+message SecurityEventList {
+	repeated SecurityEvent Events = 1;
+	optional string LastIndexKey = 2;
+}
+
+message SecurityEvent {
+	required string EventId = 1;
+	required SecurityEventType EventType = 2;
+	required SecurityEventTarget Target = 3;
+	required sfixed64 TimestampTicks = 4;
+	required string Details = 5;
+	required string IndexKey = 6;
+}
+
+message SecurityEventTarget {
+	required SecurityEventTargetType Type = 1;
+	optional DocumentTarget Document = 2;
+}
+
+message DocumentTarget {
+	required string LetterId = 1;
+	required string DocumentId = 2;
+}
+
+enum SecurityEventTargetType {
+	UnknownTargetType = 0;
+	Document = 1;
+}
+
+enum SecurityEventType {
+	UnknownEventType = 0;
+	MalwareDetected = 1;
+}

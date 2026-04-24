@@ -2168,6 +2168,11 @@ namespace Diadoc.Api
 			return diadoc.GetMyEmployee(authToken, boxId);
 		}
 
+		public SecurityEventList GetSecurityEvents(string authToken, string boxId, string afterIndexKey = null, int? count = null)
+		{
+			return diadoc.GetSecurityEvents(authToken, boxId, afterIndexKey, count);
+		}
+
 		#region CounteragentGroups
 
 		public CounteragentGroup CreateCounteragentGroup(string authToken, string boxId, object counteragentGroupToCreate)
