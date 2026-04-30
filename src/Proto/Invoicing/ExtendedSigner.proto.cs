@@ -405,7 +405,34 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       Utd970Buyer = 13,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ProformaInvoice29", Value=14)]
-      ProformaInvoice29 = 14
+      ProformaInvoice29 = 14,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LogisticsOrderRequest108", Value=15)]
+      LogisticsOrderRequest108 = 15,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LogisticsWaybillReception1065Sender", Value=16)]
+      LogisticsWaybillReception1065Sender = 16,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LogisticsWaybillReception1065Recipient", Value=17)]
+      LogisticsWaybillReception1065Recipient = 17,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LogisticsWaybillDelivery1065Sender", Value=18)]
+      LogisticsWaybillDelivery1065Sender = 18,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LogisticsWaybillDelivery1065Recipient", Value=19)]
+      LogisticsWaybillDelivery1065Recipient = 19,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LogisticsWaybillConsignorCost1065", Value=20)]
+      LogisticsWaybillConsignorCost1065 = 20,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LogisticsWaybillCarrierCost1065", Value=21)]
+      LogisticsWaybillCarrierCost1065 = 21,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LogisticsWaybillReaddress1065", Value=22)]
+      LogisticsWaybillReaddress1065 = 22,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"LogisticsWaybillRelay1065", Value=23)]
+      LogisticsWaybillRelay1065 = 23
     }
   
 }
