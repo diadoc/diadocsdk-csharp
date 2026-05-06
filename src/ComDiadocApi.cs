@@ -733,6 +733,7 @@ namespace Diadoc.Api
 		CloudSignConfirmResult WaitCloudSignConfirmResult(string authToken, string taskId);
 
 		AsyncMethodResult DssSign(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request, string certificateThumbprint);
+		AsyncMethodResult DssSignV2(string authToken, string boxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
 		DssSignResult DssSignResult(string authToken, string boxId, string taskId);
 
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
@@ -2038,6 +2039,11 @@ namespace Diadoc.Api
 		public AsyncMethodResult DssSign(string authToken, string boxId, object request, string certificateThumbprint)
 		{
 			return diadoc.DssSign(authToken, boxId, (DssSignRequest) request, certificateThumbprint);
+		}
+
+		public AsyncMethodResult DssSignV2(string authToken, string boxId, object request)
+		{
+			return diadoc.DssSignV2(authToken, boxId, (DssSignRequestV2) request);
 		}
 
 		public DssSignResult DssSignResult(string authToken, string boxId, string taskId)
