@@ -262,6 +262,33 @@ namespace Diadoc.Api.Proto
       get { return _IsOwner; }
       set { _IsOwner = value; }
     }
+
+    private string _ForeignIdentificationOfStatus = "";
+    [global::ProtoBuf.ProtoMember(29, IsRequired = false, Name=@"ForeignIdentificationOfStatus", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ForeignIdentificationOfStatus
+    {
+      get { return _ForeignIdentificationOfStatus; }
+      set { _ForeignIdentificationOfStatus = value; }
+    }
+
+    private string _ForeignOtherInformation = "";
+    [global::ProtoBuf.ProtoMember(30, IsRequired = false, Name=@"ForeignOtherInformation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ForeignOtherInformation
+    {
+      get { return _ForeignOtherInformation; }
+      set { _ForeignOtherInformation = value; }
+    }
+
+    private string _ForeignTaxpayerCode = "";
+    [global::ProtoBuf.ProtoMember(31, IsRequired = false, Name=@"ForeignTaxpayerCode", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ForeignTaxpayerCode
+    {
+      get { return _ForeignTaxpayerCode; }
+      set { _ForeignTaxpayerCode = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
