@@ -189,11 +189,11 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetMyUserV2(authToken);
 		}
 
-		public CertificateList GetMyCertificates(string authToken, string boxId)
+		public CertificateList GetMyCertificates(string authToken, string boxId, bool includeGoskeyCertificates = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetMyCertificates(authToken, boxId);
+			return diadocHttpApi.GetMyCertificates(authToken, boxId, includeGoskeyCertificates);
 		}
 
 		public OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false)

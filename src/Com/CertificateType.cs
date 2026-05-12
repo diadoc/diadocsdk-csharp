@@ -11,6 +11,7 @@ namespace Diadoc.Api.Com
 		Unknown = Proto.Certificates.CertificateType.Unknown,
 		Token = Proto.Certificates.CertificateType.Token,
 		Dss = Proto.Certificates.CertificateType.Dss,
-		KonturCertificate = Proto.Certificates.CertificateType.KonturCertificate
+		KonturCertificate = Proto.Certificates.CertificateType.KonturCertificate,
+		Goskey = Proto.Certificates.CertificateType.Goskey
 	}
 }

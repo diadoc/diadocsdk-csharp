@@ -424,7 +424,7 @@ namespace Diadoc.Api
 		[Obsolete("Use GetMyUserV2")]
 		User GetMyUser(string authToken);
 		UserV2 GetMyUserV2(string authToken);
-		CertificateList GetMyCertificates(string authToken, string boxId);
+		CertificateList GetMyCertificates(string authToken, string boxId, bool includeGoskeyCertificates = false);
 		AsyncMethodResult CloudSign(string authToken, CloudSignRequest request, string certificateThumbprint);
 		CloudSignResult WaitCloudSignResult(string authToken, string taskId, TimeSpan? timeout = null);
 		AsyncMethodResult CloudSignConfirm(string authToken, string cloudSignToken, string confirmationCode, ContentLocationPreference? locationPreference = null);
@@ -585,7 +585,7 @@ namespace Diadoc.Api
 		[Obsolete("Use GetMyUserV2Async")]
 		Task<User> GetMyUserAsync(string authToken);
 		Task<UserV2> GetMyUserV2Async(string authToken);
-		Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId);
+		Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId, bool includeGoskeyCertificates = false);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false);
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string authToken, string inn, string kpp, bool includeRelations = false);

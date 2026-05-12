@@ -37,11 +37,12 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<UserV2>(authToken, "GET", "/V2/GetMyUser");
 		}
 		
-		public Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId)
+		public Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId, bool includeGoskeyCertificates = false)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/GetMyCertificates");
 			queryBuilder.AddParameter("boxId", boxId);
-
+			if (includeGoskeyCertificates)
+				queryBuilder.AddParameter("includeGoskeyCertificates", "true");
 			return PerformHttpRequestAsync<CertificateList>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
 
