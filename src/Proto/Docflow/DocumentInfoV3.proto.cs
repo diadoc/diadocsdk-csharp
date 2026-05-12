@@ -254,6 +254,13 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _DepartmentId; }
       set { _DepartmentId = value; }
     }
+    private bool _IsRoaming;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"IsRoaming", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool IsRoaming
+    {
+      get { return _IsRoaming; }
+      set { _IsRoaming = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
