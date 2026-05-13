@@ -2,6 +2,12 @@ import "Address.proto";
 
 package Diadoc.Api.Proto;
 
+message ForeignInformation {
+	required string ForeignTaxpayerCode = 1;
+	optional string IdentificationOfStatus = 2;
+	optional string OtherInformation = 3;
+}
+
 message OrganizationList {
 	repeated Organization Organizations = 1;
 }
@@ -34,9 +40,7 @@ message Organization {
 	optional bool HasCertificateToSign = 26;
 	required OrganizationType OrganizationType = 27;
 	optional bool IsOwner = 28 [default = false];
-	optional string ForeignIdentificationOfStatus = 29;
-	optional string ForeignOtherInformation = 30;
-	optional string ForeignTaxpayerCode = 31;
+	optional ForeignInformation ForeignInformation = 29;
 }
 
 message Department {
