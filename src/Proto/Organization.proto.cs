@@ -306,6 +306,13 @@ namespace Diadoc.Api.Proto
       get { return _ForeignInformation; }
       set { _ForeignInformation = value; }
     }
+    private Diadoc.Api.Proto.ReadyForEpdStatus _ReadyForEpdStatus;
+    [global::ProtoBuf.ProtoMember(30, IsRequired = true, Name=@"ReadyForEpdStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.ReadyForEpdStatus ReadyForEpdStatus
+    {
+      get { return _ReadyForEpdStatus; }
+      set { _ReadyForEpdStatus = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -473,6 +480,23 @@ namespace Diadoc.Api.Proto
             
       [global::ProtoBuf.ProtoEnum(Name=@"PhysicalPerson", Value=3)]
       PhysicalPerson = 3
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ReadyForEpdStatus")]
+    public enum ReadyForEpdStatus
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UnknownEpdStatus", Value=0)]
+      UnknownEpdStatus = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"UndefinedEpdStatus", Value=1)]
+      UndefinedEpdStatus = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Ready", Value=2)]
+      Ready = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"NotReady", Value=3)]
+      NotReady = 3
     }
   
 }
