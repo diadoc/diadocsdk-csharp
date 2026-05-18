@@ -863,6 +863,12 @@ namespace Diadoc.Api
 		CounteragentGroupsList GetCounteragentGroups(string authToken, string boxId, int? page = null, int? count = null);
 		void AddCounteragentToGroup(string authToken, string boxId, string counteragentBoxId, string counteragentGroupId);
 		CounteragentFromGroupResponse GetCounteragentsFromGroup(string authToken, string boxId, string counteragentGroupId, int? count = null, string afterIndexKey = null);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+		ReadonlyList GetOrganizationsByForeignTaxpayerCode(string foreignTaxpayerCode, bool includeRelations = false);
+		ReadonlyList GetOrganizationsByForeignTaxpayerCode(string authToken, string foreignTaxpayerCode, bool includeRelations = false);
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+		Organization GetOrganizationByForeignTaxpayerCode(string foreignTaxpayerCode);
+		Organization GetOrganizationByForeignTaxpayerCode(string authToken, string foreignTaxpayerCode);
 	}
 
 	[ComVisible(true)]
@@ -964,6 +970,16 @@ namespace Diadoc.Api
 			return new ReadonlyList(diadoc.GetOrganizationsByInnKpp(authToken, inn, kpp).Organizations);
 		}
 
+		public ReadonlyList GetOrganizationsByForeignTaxpayerCode(string foreignTaxpayerCode, bool includeRelations = false)
+		{
+			return new ReadonlyList(diadoc.GetOrganizationsByForeignTaxpayerCode(foreignTaxpayerCode, includeRelations).Organizations);
+		}
+
+		public ReadonlyList GetOrganizationsByForeignTaxpayerCode(string authToken, string foreignTaxpayerCode, bool includeRelations = false)
+		{
+			return new ReadonlyList(diadoc.GetOrganizationsByForeignTaxpayerCode(authToken, foreignTaxpayerCode, includeRelations).Organizations);
+		}
+
 		public Organization GetOrganizationById(string orgId)
 		{
 			return diadoc.GetOrganizationById(orgId);
@@ -1012,6 +1028,16 @@ namespace Diadoc.Api
 		public Organization GetOrganizationByInnKpp(string authToken, string inn, string kpp)
 		{
 			return diadoc.GetOrganizationByInnKpp(authToken, inn, kpp);
+		}
+
+		public Organization GetOrganizationByForeignTaxpayerCode(string foreignTaxpayerCode)
+		{
+			return diadoc.GetOrganizationByForeignTaxpayerCode(foreignTaxpayerCode);
+		}
+
+		public Organization GetOrganizationByForeignTaxpayerCode(string authToken, string foreignTaxpayerCode)
+		{
+			return diadoc.GetOrganizationByForeignTaxpayerCode(authToken, foreignTaxpayerCode);
 		}
 
 		public IDocumentProtocolResult GenerateDocumentProtocol(

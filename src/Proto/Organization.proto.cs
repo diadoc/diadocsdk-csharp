@@ -11,6 +11,41 @@
 // Note: requires additional types generated from: Address.proto
 namespace Diadoc.Api.Proto
 {
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ForeignInformation")]
+  public partial class ForeignInformation : global::ProtoBuf.IExtensible
+  {
+    public ForeignInformation() {}
+    
+    private string _ForeignTaxpayerCode;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ForeignTaxpayerCode", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ForeignTaxpayerCode
+    {
+      get { return _ForeignTaxpayerCode; }
+      set { _ForeignTaxpayerCode = value; }
+    }
+
+    private string _IdentificationOfStatus = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"IdentificationOfStatus", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string IdentificationOfStatus
+    {
+      get { return _IdentificationOfStatus; }
+      set { _IdentificationOfStatus = value; }
+    }
+
+    private string _OtherInformation = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"OtherInformation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string OtherInformation
+    {
+      get { return _OtherInformation; }
+      set { _OtherInformation = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"OrganizationList")]
   public partial class OrganizationList : global::ProtoBuf.IExtensible
   {
@@ -261,6 +296,15 @@ namespace Diadoc.Api.Proto
     {
       get { return _IsOwner; }
       set { _IsOwner = value; }
+    }
+
+    private Diadoc.Api.Proto.ForeignInformation _ForeignInformation = null;
+    [global::ProtoBuf.ProtoMember(29, IsRequired = false, Name=@"ForeignInformation", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.ForeignInformation ForeignInformation
+    {
+      get { return _ForeignInformation; }
+      set { _ForeignInformation = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

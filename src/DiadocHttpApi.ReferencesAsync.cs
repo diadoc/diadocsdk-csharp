@@ -62,6 +62,21 @@ namespace Diadoc.Api
 		}
 
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+		public Task<OrganizationList> GetOrganizationsByForeignTaxpayerCodeAsync(string foreignTaxpayerCode, bool includeRelations = false)
+		{
+			return GetOrganizationsByForeignTaxpayerCodeAsync(null, foreignTaxpayerCode, includeRelations);
+		}
+
+		public Task<OrganizationList> GetOrganizationsByForeignTaxpayerCodeAsync(string authToken, string foreignTaxpayerCode, bool includeRelations = false)
+		{
+			var qsb = new PathAndQueryBuilder("/GetOrganizationsByForeignTaxpayerCode");
+			qsb.AddParameter("foreignTaxpayerCode", foreignTaxpayerCode);
+			if (includeRelations)
+				qsb.AddParameter("includeRelations", "true");
+			return PerformHttpRequestAsync<OrganizationList>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		public Task<Organization> GetOrganizationByIdAsync(string orgId)
 		{
 			return GetOrganizationByIdAsync(null, orgId);
@@ -108,6 +123,19 @@ namespace Diadoc.Api
 				qsb.AddParameter("kpp", kpp);
 			var queryString = qsb.BuildPathAndQuery();
 			return GetOrganizationAsync(authToken, queryString);
+		}
+
+		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
+		public Task<Organization> GetOrganizationByForeignTaxpayerCodeAsync(string foreignTaxpayerCode)
+		{
+			return GetOrganizationByForeignTaxpayerCodeAsync(null, foreignTaxpayerCode);
+		}
+
+		public Task<Organization> GetOrganizationByForeignTaxpayerCodeAsync(string authToken, string foreignTaxpayerCode)
+		{
+			var qsb = new PathAndQueryBuilder("/GetOrganization");
+			qsb.AddParameter("foreignTaxpayerCode", foreignTaxpayerCode);
+			return GetOrganizationAsync(authToken, qsb.BuildPathAndQuery());
 		}
 
 		private Task<Organization> GetOrganizationAsync(string authToken, string queryString)

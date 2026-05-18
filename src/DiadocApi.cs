@@ -209,6 +209,19 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnKpp(authToken, inn, kpp, includeRelations);
 		}
 
+		public OrganizationList GetOrganizationsByForeignTaxpayerCode(string foreignTaxpayerCode, bool includeRelations = false)
+		{
+			if (foreignTaxpayerCode == null) throw new ArgumentNullException(nameof(foreignTaxpayerCode));
+			return diadocHttpApi.GetOrganizationsByForeignTaxpayerCode(foreignTaxpayerCode, includeRelations);
+		}
+
+		public OrganizationList GetOrganizationsByForeignTaxpayerCode(string authToken, string foreignTaxpayerCode, bool includeRelations = false)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (foreignTaxpayerCode == null) throw new ArgumentNullException(nameof(foreignTaxpayerCode));
+			return diadocHttpApi.GetOrganizationsByForeignTaxpayerCode(authToken, foreignTaxpayerCode, includeRelations);
+		}
+
 		public Organization GetOrganizationById(string orgId)
 		{
 			if (orgId == null) throw new ArgumentNullException("orgId");
@@ -259,6 +272,19 @@ namespace Diadoc.Api
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			if (inn == null) throw new ArgumentNullException(nameof(inn));
 			return diadocHttpApi.GetOrganizationByInnKpp(authToken, inn, kpp);
+		}
+
+		public Organization GetOrganizationByForeignTaxpayerCode(string foreignTaxpayerCode)
+		{
+			if (foreignTaxpayerCode == null) throw new ArgumentNullException(nameof(foreignTaxpayerCode));
+			return diadocHttpApi.GetOrganizationByForeignTaxpayerCode(foreignTaxpayerCode);
+		}
+
+		public Organization GetOrganizationByForeignTaxpayerCode(string authToken, string foreignTaxpayerCode)
+		{
+			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+			if (foreignTaxpayerCode == null) throw new ArgumentNullException(nameof(foreignTaxpayerCode));
+			return diadocHttpApi.GetOrganizationByForeignTaxpayerCode(authToken, foreignTaxpayerCode);
 		}
 
 		public RoamingOperatorList GetRoamingOperators(string authToken, string boxId)
