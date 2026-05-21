@@ -41,6 +41,7 @@ message Organization {
 	required OrganizationType OrganizationType = 27;
 	optional bool IsOwner = 28 [default = false];
 	optional ForeignInformation ForeignInformation = 29;
+	required ReadyForEpdStatus ReadyForEpdStatus = 30;
 }
 
 message Department {
@@ -77,4 +78,11 @@ enum OrganizationType {
 	Individual = 1;
 	Juridical = 2;
 	PhysicalPerson = 3;
+}
+
+enum ReadyForEpdStatus {
+	UnknownEpdStatus = 0;
+	UndefinedEpdStatus = 1;
+	Ready = 2;
+	NotReady = 3;
 }
