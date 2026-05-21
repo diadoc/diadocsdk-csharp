@@ -209,12 +209,6 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnKpp(authToken, inn, kpp, includeRelations);
 		}
 
-		public OrganizationList GetOrganizationsByForeignTaxpayerCode(string foreignTaxpayerCode, bool includeRelations = false)
-		{
-			if (foreignTaxpayerCode == null) throw new ArgumentNullException(nameof(foreignTaxpayerCode));
-			return diadocHttpApi.GetOrganizationsByForeignTaxpayerCode(foreignTaxpayerCode, includeRelations);
-		}
-
 		public OrganizationList GetOrganizationsByForeignTaxpayerCode(string authToken, string foreignTaxpayerCode, bool includeRelations = false)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
@@ -272,12 +266,6 @@ namespace Diadoc.Api
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			if (inn == null) throw new ArgumentNullException(nameof(inn));
 			return diadocHttpApi.GetOrganizationByInnKpp(authToken, inn, kpp);
-		}
-
-		public Organization GetOrganizationByForeignTaxpayerCode(string foreignTaxpayerCode)
-		{
-			if (foreignTaxpayerCode == null) throw new ArgumentNullException(nameof(foreignTaxpayerCode));
-			return diadocHttpApi.GetOrganizationByForeignTaxpayerCode(foreignTaxpayerCode);
 		}
 
 		public Organization GetOrganizationByForeignTaxpayerCode(string authToken, string foreignTaxpayerCode)

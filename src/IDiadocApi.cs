@@ -64,8 +64,6 @@ namespace Diadoc.Api
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		OrganizationList GetOrganizationsByInnKpp(string inn, string kpp, bool includeRelations = false);
 		OrganizationList GetOrganizationsByInnKpp(string authToken, string inn, string kpp, bool includeRelations = false);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
-		OrganizationList GetOrganizationsByForeignTaxpayerCode(string foreignTaxpayerCode, bool includeRelations = false);
 		OrganizationList GetOrganizationsByForeignTaxpayerCode(string authToken, string foreignTaxpayerCode, bool includeRelations = false);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationById(string orgId);
@@ -79,8 +77,6 @@ namespace Diadoc.Api
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Organization GetOrganizationByInnKpp(string inn, string kpp);
 		Organization GetOrganizationByInnKpp(string authToken, string inn, string kpp);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
-		Organization GetOrganizationByForeignTaxpayerCode(string foreignTaxpayerCode);
 		Organization GetOrganizationByForeignTaxpayerCode(string authToken, string foreignTaxpayerCode);
 		RoamingOperatorList GetRoamingOperators(string authToken, string boxId);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
@@ -589,8 +585,6 @@ namespace Diadoc.Api
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false);
 		Task<OrganizationList> GetOrganizationsByInnKppAsync(string authToken, string inn, string kpp, bool includeRelations = false);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
-		Task<OrganizationList> GetOrganizationsByForeignTaxpayerCodeAsync(string foreignTaxpayerCode, bool includeRelations = false);
 		Task<OrganizationList> GetOrganizationsByForeignTaxpayerCodeAsync(string authToken, string foreignTaxpayerCode, bool includeRelations = false);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Organization> GetOrganizationByIdAsync(string orgId);
@@ -604,8 +598,6 @@ namespace Diadoc.Api
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
 		Task<Organization> GetOrganizationByInnKppAsync(string inn, string kpp);
 		Task<Organization> GetOrganizationByInnKppAsync(string authToken, string inn, string kpp);
-		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]
-		Task<Organization> GetOrganizationByForeignTaxpayerCodeAsync(string foreignTaxpayerCode);
 		Task<Organization> GetOrganizationByForeignTaxpayerCodeAsync(string authToken, string foreignTaxpayerCode);
 		Task<RoamingOperatorList> GetRoamingOperatorsAsync(string authToken, string boxId);
 		[Obsolete(ObsoleteReasons.UseAuthTokenOverload)]

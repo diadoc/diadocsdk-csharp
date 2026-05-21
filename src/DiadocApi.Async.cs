@@ -135,12 +135,6 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetOrganizationsByInnKppAsync(authToken, inn, kpp, includeRelations);
 		}
 
-		public Task<OrganizationList> GetOrganizationsByForeignTaxpayerCodeAsync(string foreignTaxpayerCode, bool includeRelations = false)
-		{
-			if (foreignTaxpayerCode == null) throw new ArgumentNullException(nameof(foreignTaxpayerCode));
-			return diadocHttpApi.GetOrganizationsByForeignTaxpayerCodeAsync(foreignTaxpayerCode, includeRelations);
-		}
-
 		public Task<OrganizationList> GetOrganizationsByForeignTaxpayerCodeAsync(string authToken, string foreignTaxpayerCode, bool includeRelations = false)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
@@ -198,12 +192,6 @@ namespace Diadoc.Api
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			if (inn == null) throw new ArgumentNullException(nameof(inn));
 			return diadocHttpApi.GetOrganizationByInnKppAsync(authToken, inn, kpp);
-		}
-
-		public Task<Organization> GetOrganizationByForeignTaxpayerCodeAsync(string foreignTaxpayerCode)
-		{
-			if (foreignTaxpayerCode == null) throw new ArgumentNullException(nameof(foreignTaxpayerCode));
-			return diadocHttpApi.GetOrganizationByForeignTaxpayerCodeAsync(foreignTaxpayerCode);
 		}
 
 		public Task<Organization> GetOrganizationByForeignTaxpayerCodeAsync(string authToken, string foreignTaxpayerCode)
