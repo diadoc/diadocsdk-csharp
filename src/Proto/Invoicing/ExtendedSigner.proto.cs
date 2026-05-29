@@ -432,7 +432,16 @@ namespace Diadoc.Api.Proto.Invoicing.Signers
       LogisticsWaybillReaddress1065 = 22,
             
       [global::ProtoBuf.ProtoEnum(Name=@"LogisticsWaybillRelay1065", Value=23)]
-      LogisticsWaybillRelay1065 = 23
+      LogisticsWaybillRelay1065 = 23,
+
+      [global::ProtoBuf.ProtoEnum(Name=@"Ucd29Seller", Value=24)]
+      Ucd29Seller = 24,
+
+      [global::ProtoBuf.ProtoEnum(Name=@"Ucd29Buyer", Value=25)]
+      Ucd29Buyer = 25,
+
+      [global::ProtoBuf.ProtoEnum(Name=@"LogisticsOrderRequestRecipient108", Value=26)]
+      LogisticsOrderRequestRecipient108 = 26
     }
   
 }
