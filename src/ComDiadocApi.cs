@@ -725,7 +725,7 @@ namespace Diadoc.Api
 		[Obsolete("Use GetMyUserV2()")]
 		User GetMyUser(string authToken);
 		UserV2 GetMyUserV2(string authToken);
-		CertificateList GetMyCertificates(string authToken, string boxId);
+		CertificateList GetMyCertificates(string authToken, string boxId, bool includeGoskeyCertificates = false);
 
 		AsyncMethodResult CloudSign(string authToken, [MarshalAs(UnmanagedType.IDispatch)] object request, string certificateThumbprint);
 		CloudSignResult WaitCloudSignResult(string authToken, string taskId);
@@ -2037,9 +2037,9 @@ namespace Diadoc.Api
 			return diadoc.GetMyUserV2(authToken);
 		}
 
-		public CertificateList GetMyCertificates(string authToken, string boxId)
+		public CertificateList GetMyCertificates(string authToken, string boxId, bool includeGoskeyCertificates = false)
 		{
-			return diadoc.GetMyCertificates(authToken, boxId);
+			return diadoc.GetMyCertificates(authToken, boxId, includeGoskeyCertificates);
 		}
 
 		public AsyncMethodResult CloudSign(string authToken, object request, string certificateThumbprint)

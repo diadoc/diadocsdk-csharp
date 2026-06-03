@@ -172,7 +172,10 @@ namespace Diadoc.Api.Proto.Certificates
       Dss = 2,
             
       [global::ProtoBuf.ProtoEnum(Name=@"KonturCertificate", Value=3)]
-      KonturCertificate = 3
+      KonturCertificate = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Goskey", Value=4)]
+      Goskey = 4
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"CertificateSubjectType")]

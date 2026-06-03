@@ -115,11 +115,11 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetMyUserV2Async(authToken);
 		}
 
-		public Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId)
+		public Task<CertificateList> GetMyCertificatesAsync(string authToken, string boxId, bool includeGoskeyCertificates = false)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetMyCertificatesAsync(authToken, boxId);
+			return diadocHttpApi.GetMyCertificatesAsync(authToken, boxId, includeGoskeyCertificates);
 		}
 
 		public Task<OrganizationList> GetOrganizationsByInnKppAsync(string inn, string kpp, bool includeRelations = false)
