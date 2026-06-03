@@ -48,6 +48,7 @@ message DocumentParticipant
 {
 	required string BoxId = 1;
 	optional string DepartmentId = 2;
+	required bool IsRoaming = 3;
 }
 
 message DocumentLinks
