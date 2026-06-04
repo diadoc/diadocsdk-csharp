@@ -110,6 +110,15 @@ namespace Diadoc.Api.Proto
       get { return _CanAttachUniversalMessages; }
       set { _CanAttachUniversalMessages = value; }
     }
+
+    private bool _CanUseGoskeyFL = default(bool);
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"CanUseGoskeyFL", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool CanUseGoskeyFL
+    {
+      get { return _CanUseGoskeyFL; }
+      set { _CanUseGoskeyFL = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
