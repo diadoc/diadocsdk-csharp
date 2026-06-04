@@ -1,0 +1,42 @@
+import "FullVersion.proto";
+import "Documents/Document.proto";
+import "Documents/DocumentParticipantV2.proto";
+import "DocumentDirection.proto";
+import "Events/DiadocMessage-PostApi.proto";
+import "CustomDataItem.proto";
+import "Docflow/DocumentInfoV3.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message DocumentTemplateInfoV2
+{
+	required Documents.DocumentParticipantsV2 LetterParticipants = 1;
+	repeated string TransformedToLetterIds = 2;
+	repeated TemplateTransformationInfo TemplateTransformationInfos = 3;
+	optional TemplateRefusalInfo TemplateRefusalInfo = 4;
+	optional bool IsReusable = 5 [default = false];
+}
+
+message DocumentInfoV5
+{
+	required FullVersion FullVersion = 1;
+	required Documents.MessageType MessageType = 2;
+	required int32 WorkflowId = 3;
+	required Documents.DocumentParticipantsV2 Participants = 4;
+	required DocumentDirection DocumentDirection = 5;
+	required string DepartmentId = 6;
+	optional string CustomDocumentId = 7;
+	repeated Events.MetadataItem Metadata = 8;
+	repeated CustomDataItem CustomData = 9;
+	required DocumentLinks DocumentLinks = 10;
+	required PacketInfo PacketInfo = 11;
+	required bool IsRead = 12;
+	required bool IsDeleted = 13;
+	required bool IsInvitation = 14;
+	optional DocumentLetterInfo LetterInfo = 15;
+	optional DocumentDraftInfo DraftInfo = 16;
+	optional DocumentTemplateInfoV2 TemplateInfo = 17;
+	optional Documents.Origin Origin = 18;
+	optional string EditingSettingId = 19 [default = ""];
+	optional bool HasUnreadOutOfWorkflowUniversalMessages = 20 [default = true];
+}

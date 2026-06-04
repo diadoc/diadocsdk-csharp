@@ -59,6 +59,30 @@ namespace Diadoc.Api
 			return docflowHttpApi.GetDocflowsByPacketIdV4Async(authToken, boxId, request);
 		}
 
+		public Task<GetDocflowBatchResponseV5> GetDocflowsV5Async(string authToken, string boxId, GetDocflowBatchRequest request)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return docflowHttpApi.GetDocflowsV5Async(authToken, boxId, request);
+		}
+
+		public Task<GetDocflowEventsResponseV5> GetDocflowEventsV5Async(string authToken, string boxId, GetDocflowEventsRequest request)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return docflowHttpApi.GetDocflowEventsV5Async(authToken, boxId, request);
+		}
+
+		public Task<SearchDocflowsResponseV5> SearchDocflowsV5Async(string authToken, string boxId, SearchDocflowsRequest request)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return docflowHttpApi.SearchDocflowsV5Async(authToken, boxId, request);
+		}
+
+		public Task<GetDocflowsByPacketIdResponseV5> GetDocflowsByPacketIdV5Async(string authToken, string boxId, GetDocflowsByPacketIdRequest request)
+		{
+			if (string.IsNullOrEmpty(boxId)) throw new ArgumentNullException("boxId");
+			return docflowHttpApi.GetDocflowsByPacketIdV5Async(authToken, boxId, request);
+		}
+
 		public Task<GetPartnerEventsResponse> GetPartnerEventsV4Async(string authToken, GetPartnerEventsRequest request)
 		{
 			return docflowHttpApi.GetPartnerEventsV4Async(authToken, request);

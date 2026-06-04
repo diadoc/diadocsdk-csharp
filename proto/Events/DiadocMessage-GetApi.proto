@@ -20,6 +20,7 @@ import "Events/PowerOfAttorneyInfo.proto";
 import "OuterDocflows/OuterDocflow.proto";
 import "UniversalMessage.proto";
 import "TemplateTransformationChangeType.proto";
+import "Events/RecipientInfo.proto";
 
 package Diadoc.Api.Proto.Events;
 
@@ -61,6 +62,7 @@ message Message {
 	required Documents.MessageType MessageType = 22;
 	optional TemplateToLetterTransformationInfo TemplateToLetterTransformationInfo = 23;
 	optional bool IsReusable = 24 [default = false];
+	repeated RecipientInfo Recipients = 25;
 }
 
 message Template {
@@ -76,7 +78,8 @@ message Template {
     required LockMode LockMode = 10;
     optional string MessageProxyBoxId = 11;
     optional string MessageProxyDepartmentId = 12;
-	optional bool IsReusable = 13 [default = false];
+    optional bool IsReusable = 13 [default = false];
+    repeated RecipientInfo MessageRecipients = 14;
 }
 
 message MessagePatch {

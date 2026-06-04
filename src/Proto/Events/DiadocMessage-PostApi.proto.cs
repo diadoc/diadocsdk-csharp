@@ -20,6 +20,7 @@
 // Note: requires additional types generated from: Invoicing/OrganizationInfo.proto
 // Note: requires additional types generated from: Docflow/DocumentInfo.proto
 // Note: requires additional types generated from: Events/PowerOfAttorneyToPost.proto
+// Note: requires additional types generated from: Events/RecipientInfo.proto
 // Note: requires additional types generated from: UniversalMessage.proto
 namespace Diadoc.Api.Proto.Events
 {
@@ -289,6 +290,22 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _LockMode; }
       set { _LockMode = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo> _Recipients = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo>();
+    [global::ProtoBuf.ProtoMember(36, Name=@"Recipients", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo> Recipients
+    {
+      get { return _Recipients; }
+    }
+  
+
+    private string _FromRole = "";
+    [global::ProtoBuf.ProtoMember(37, IsRequired = false, Name=@"FromRole", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string FromRole
+    {
+      get { return _FromRole; }
+      set { _FromRole = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -2346,6 +2363,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _Labels; }
     }
   
+
+    private int _TitleIndex = default(int);
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"TitleIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int TitleIndex
+    {
+      get { return _TitleIndex; }
+      set { _TitleIndex = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2386,6 +2412,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _Labels; }
     }
   
+
+    private int _TitleIndex = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"TitleIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int TitleIndex
+    {
+      get { return _TitleIndex; }
+      set { _TitleIndex = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2509,6 +2544,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _Labels; }
     }
   
+
+    private int _TitleIndex = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"TitleIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int TitleIndex
+    {
+      get { return _TitleIndex; }
+      set { _TitleIndex = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2577,6 +2621,15 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _NeedReceipt; }
       set { _NeedReceipt = value; }
+    }
+
+    private int _TitleIndex = default(int);
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"TitleIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int TitleIndex
+    {
+      get { return _TitleIndex; }
+      set { _TitleIndex = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -2902,6 +2955,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _ProxyDepartmentId; }
       set { _ProxyDepartmentId = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo> _Recipients = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo>();
+    [global::ProtoBuf.ProtoMember(8, Name=@"Recipients", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo> Recipients
+    {
+      get { return _Recipients; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -3523,6 +3583,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _IsReusable; }
       set { _IsReusable = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo> _MessageRecipients = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo>();
+    [global::ProtoBuf.ProtoMember(13, Name=@"MessageRecipients", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo> MessageRecipients
+    {
+      get { return _MessageRecipients; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
