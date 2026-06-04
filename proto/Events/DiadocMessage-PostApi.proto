@@ -15,6 +15,7 @@ import "Events/ResolutionRequestInfo.proto";
 import "Invoicing/OrganizationInfo.proto";
 import "Docflow/DocumentInfo.proto";
 import "Events/PowerOfAttorneyToPost.proto";
+import "Events/RecipientInfo.proto";
 import "UniversalMessage.proto";
 
 package Diadoc.Api.Proto.Events;
@@ -54,6 +55,8 @@ message MessageToPost {
 	repeated XmlDocumentAttachment UniversalTransferDocumentSellerTitles = 33;
 	repeated DocumentAttachment DocumentAttachments = 34;
 	optional LockMode LockMode = 35 [default = None];
+	repeated RecipientInfo Recipients = 36;
+	optional string FromRole = 37;
 }
 
 message MessagePatchToPostV2 {
@@ -375,6 +378,7 @@ message ResolutionRequestAttachment {
 	optional string TargetDepartmentId = 4;
 	optional string Comment = 5;
 	repeated string Labels = 6;
+	optional int32 TitleIndex = 7;
 }
 
 message ResolutionRouteAssignment
@@ -383,6 +387,7 @@ message ResolutionRouteAssignment
 	required string RouteId = 2;
 	optional string Comment = 3;
 	repeated string Labels = 4;
+	optional int32 TitleIndex = 5;
 }
 
 message ResolutionRequestCancellationAttachment {
@@ -406,6 +411,7 @@ message ResolutionAttachment {
 	required ResolutionType ResolutionType = 2;
 	optional string Comment = 3;
 	repeated string Labels = 4;
+	optional int32 TitleIndex = 5;
 }
 
 message ReceiptAttachment {
@@ -420,6 +426,7 @@ message RecipientTitleAttachment {
 	required SignedContent SignedContent = 2;
 	repeated string Labels = 4;
 	required bool NeedReceipt = 5 [default = false];
+	optional int32 TitleIndex = 6;
 }
 
 message CorrectionRequestAttachment {
@@ -471,6 +478,7 @@ message DraftToSend {
 	repeated DocumentSenderSignature DocumentSignatures = 5;
 	optional string ProxyBoxId = 6;
 	optional string ProxyDepartmentId = 7;
+	repeated RecipientInfo Recipients = 8;
 }
 
 message PrepareDocumentsToSignRequest {
@@ -581,6 +589,7 @@ message TemplateToPost {
 	optional string MessageProxyBoxId = 10;
 	optional string MessageProxyDepartmentId = 11;
 	optional bool IsReusable = 12 [default = false];
+	repeated RecipientInfo MessageRecipients = 13;
 }
 
 message TemplateDocumentAttachment {

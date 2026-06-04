@@ -1,0 +1,26 @@
+import "Timestamp.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message DeliveryDocflowV5
+{
+	required DeliveryStatusV5 Status = 1;
+	optional Timestamp SentAt = 2;
+	optional Timestamp DeliveredAt = 3;
+	optional DeliveryError Error = 4;
+}
+
+enum DeliveryStatusV5
+{
+	DeliveryStatusUnknown = 0;
+	DeliveryStatusNotReady = 1;
+	DeliveryStatusInProgress = 2;
+	DeliveryStatusDelivered = 3;
+	DeliveryStatusFailed = 4;
+}
+
+message DeliveryError
+{
+	required string SourceNamedId = 1;
+	required string ErrorMessage = 2;
+}

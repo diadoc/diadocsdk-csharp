@@ -24,6 +24,7 @@
 // Note: requires additional types generated from: OuterDocflows/OuterDocflow.proto
 // Note: requires additional types generated from: UniversalMessage.proto
 // Note: requires additional types generated from: TemplateTransformationChangeType.proto
+// Note: requires additional types generated from: Events/RecipientInfo.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BoxEventList")]
@@ -306,6 +307,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _IsReusable; }
       set { _IsReusable = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo> _Recipients = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo>();
+    [global::ProtoBuf.ProtoMember(25, Name=@"Recipients", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo> Recipients
+    {
+      get { return _Recipients; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -417,6 +425,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _IsReusable; }
       set { _IsReusable = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo> _MessageRecipients = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo>();
+    [global::ProtoBuf.ProtoMember(14, Name=@"MessageRecipients", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RecipientInfo> MessageRecipients
+    {
+      get { return _MessageRecipients; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

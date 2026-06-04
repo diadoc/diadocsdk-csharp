@@ -1,0 +1,39 @@
+import "Timestamp.proto";
+import "Documents/Document.proto";
+import "Documents/DocumentParticipantV2.proto";
+import "Docflow/AttachmentV3.proto";
+import "Docflow/DocflowV4.proto";
+import "Docflow/DocflowV3.proto";
+import "Docflow/DocumentInfoV5.proto";
+import "Docflow/RoamingNotification.proto";
+import "Docflow/ResolutionDocflowV5.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message RevocationRequestDocflowV5
+{
+	required SignedAttachmentV3 RevocationRequest = 1;
+	optional Timestamp SentAt = 2;
+	optional Timestamp DeliveredAt = 3;
+	optional RoamingNotification RoamingNotification = 4;
+	optional string PlainText = 5;
+}
+
+message RevocationResponseDocflowV5
+{
+	required Documents.DocumentParticipantV2 Participant = 1;
+	required bool IsFinished = 2;
+	optional SignatureV3 Signature = 3;
+	optional SignatureRejectionDocflowV4 Rejection = 4;
+}
+
+message RevocationDocflowV5
+{
+	required bool IsFinished = 1;
+	required RevocationRequestDocflowV5 RevocationRequest = 2;
+	repeated RevocationResponseDocflowV5 RevocationResponse = 3;
+	required Documents.DocumentParticipantV2 Initiator = 4;
+	required Documents.RevocationStatus RevocationStatus = 5;
+	optional ResolutionDocflowV5 Resolution = 6;
+	repeated OuterDocflowEntities OuterDocflowEntities = 7;
+}
