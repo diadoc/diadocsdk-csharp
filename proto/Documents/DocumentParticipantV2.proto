@@ -1,0 +1,25 @@
+import "Workflows/ParticipantType.proto";
+
+package Diadoc.Api.Proto.Documents;
+
+message DocumentParticipantFlags
+{
+	required bool IsRoaming = 1;
+	required bool IsCrossborder = 2;
+	required bool IsForeign = 3;
+}
+
+message DocumentParticipantV2
+{
+	required string BoxId = 1;
+	optional string DepartmentId = 2;
+	required string Role = 3;
+	required DocumentParticipantFlags Flags = 4;
+	required Diadoc.Api.Proto.Workflows.ParticipantType.ParticipantType Type = 5;
+	required bool IsCurrentBox = 6;
+}
+
+message DocumentParticipantsV2
+{
+	repeated DocumentParticipantV2 Participants = 1;
+}
