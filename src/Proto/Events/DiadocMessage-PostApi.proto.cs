@@ -2578,6 +2578,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _NeedReceipt; }
       set { _NeedReceipt = value; }
     }
+
+    private int _TitleIndex = default(int);
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"TitleIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int TitleIndex
+    {
+      get { return _TitleIndex; }
+      set { _TitleIndex = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

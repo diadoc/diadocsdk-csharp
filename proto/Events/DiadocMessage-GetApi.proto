@@ -76,7 +76,7 @@ message Template {
     required LockMode LockMode = 10;
     optional string MessageProxyBoxId = 11;
     optional string MessageProxyDepartmentId = 12;
-	optional bool IsReusable = 13 [default = false];
+    optional bool IsReusable = 13 [default = false];
 }
 
 message MessagePatch {
