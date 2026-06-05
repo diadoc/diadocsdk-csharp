@@ -529,7 +529,7 @@
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element maxOccurs="20" name="AdditionalInfo" type="AdditionalInfo100" />
+            <xs:element maxOccurs="unbounded" name="AdditionalInfo" type="AdditionalInfo100" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -545,7 +545,7 @@
               </xs:annotation>
               <xs:complexType>
                 <xs:all>
-                  <xs:element minOccurs="0" name="QuantityDiff">
+                  <xs:element name="QuantityDiff">
                     <xs:annotation>
                       <xs:documentation>ИзмКолВЕдПрослеж - изменение количества товара в единицах прослеживаемости</xs:documentation>
                     </xs:annotation>
@@ -572,7 +572,7 @@
                       </xs:attribute>
                     </xs:complexType>
                   </xs:element>
-                  <xs:element minOccurs="0" name="CostDiff">
+                  <xs:element name="CostDiff">
                     <xs:annotation>
                       <xs:documentation>ИзмСтТовБезНДСПрослеж - изменение стоимости товара без НДС в целях прослеживаемости</xs:documentation>
                     </xs:annotation>

@@ -295,6 +295,13 @@ namespace Diadoc.Samples.Helpers
 							CorrectedQuantity = 12m,
 							QuantityIncSpecified = true,
 							QuantityInc = 2m
+						},
+						CostDiff = new InvoiceCorrectionItemItemTracingInfoCostDiff
+						{
+							OriginalCost = 1000m,
+							CorrectedCost = 1200m,
+							CostIncSpecified = true,
+							CostInc = 200m
 						}
 					}
 				},
