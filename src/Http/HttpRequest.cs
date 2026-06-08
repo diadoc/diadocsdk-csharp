@@ -54,8 +54,15 @@ namespace Diadoc.Api.Http
 		{
 			var additionalHeaders = AdditionalHeaders == null
 				? string.Empty
-				: AdditionalHeaders.Aggregate("\r\nAdditionalHeaders:", (s, kvp) => s + "\r\n  " + kvp.Key + ": " + kvp.Value);
+				: AdditionalHeaders
+					.Select(kvp => string.Equals(kvp.Key, "Authorization", System.StringComparison.OrdinalIgnoreCase)
+						? new KeyValuePair<string, string>(kvp.Key, MaskAuthorizationHeader(kvp.Value))
+						: kvp
+					)
+					.Aggregate("\r\nAdditionalHeaders:", (s, kvp) => s + "\r\n  " + kvp.Key + ": " + kvp.Value);
 			return string.Format("{0} {1}{2}", Method, PathAndQuery, additionalHeaders);
 		}
+
+		private string MaskAuthorizationHeader(string rawValue) => $"{rawValue.Substring(0, 12)}***";
 	}
 }
