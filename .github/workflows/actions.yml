@@ -40,11 +40,23 @@ jobs:
   publish:
     runs-on: ubuntu-22.04
     needs: build_and_test
-    if: startsWith(github.ref, 'refs/tags/version') && github.event.base_ref == 'refs/heads/master'
+    if: startsWith(github.ref, 'refs/tags/version')
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          
+      - name: Check if tag is on master branch
+        run: |
+          # Получаем ветку, на которой находится этот тег
+          TAG_BRANCH=$(git branch -r --contains ${{ github.ref }} | grep -E 'origin/(master|main)' || true)
+          if [ -z "$TAG_BRANCH" ]; then
+            echo "❌ Tag ${{ github.ref_name }} is not on master/main branch"
+            echo "Current tag branches:"
+            git branch -r --contains ${{ github.ref }}
+            exit 1
+          fi
+          echo "✅ Tag is on master branch"
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
