@@ -10,7 +10,7 @@ namespace Diadoc.Api
 {
 	public partial class DiadocHttpApi
 	{
-		private const int partLength = 512 * 1024;
+		private const int partLength = 3 * 1024 * 1024;
 		private const int maxAttempts = 3;
 		private readonly HttpStatusCode[] nonRetriableStatusCodes =
 		{
