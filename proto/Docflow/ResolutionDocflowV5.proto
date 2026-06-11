@@ -1,0 +1,11 @@
+import "Docflow/ResolutionDocflowV3.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message ResolutionDocflowV5
+{
+	required bool IsFinished = 1;
+	required ResolutionStatus ResolutionStatus = 2;
+	optional string CurrentResolutionEntityId = 3;
+	optional ResolutionEntitiesV3 ResolutionEntities = 4;
+}

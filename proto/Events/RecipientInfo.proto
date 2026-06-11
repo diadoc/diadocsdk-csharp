@@ -1,0 +1,7 @@
+package Diadoc.Api.Proto.Events;
+
+message RecipientInfo {
+	required string BoxId = 1;
+	optional string DepartmentId = 2;
+	optional string Role = 3;
+}

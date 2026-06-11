@@ -10,6 +10,7 @@ import "Documents/InvoiceDocument.proto";
 import "Documents/NonformalizedDocument.proto";
 import "Documents/UnilateralDocument.proto";
 import "Documents/UniversalTransferDocument.proto";
+import "Documents/DocumentParticipantV2.proto";
 import "ResolutionTarget.proto";
 import "ForwardDocumentEvent.proto";
 import "Events/DiadocMessage-PostApi.proto";
@@ -101,6 +102,8 @@ message Document {
 	required DocflowStatusV3 DocflowStatus = 80;
 	optional TtGisFixationCancellationStatus TtGisFixationCancellationStatus = 81 [default = TtGisFixationCancellationStatusNone];
 	optional bool HasUnreadOutOfWorkflowUniversalMessages = 82 [default = true];
+	repeated string CounteragentBoxIds = 83;
+	repeated DocumentParticipantInfo Participants = 84;
 }
 
 message LastOuterDocflow {
@@ -201,6 +204,11 @@ enum RecipientResponseStatus {
 message Origin {
 	required MessageType MessageType = 1;
 	required string MessageId = 2;
+}
+
+message DocumentParticipantInfo {
+	required DocumentParticipantV2 Participant = 1;
+	optional RecipientResponseStatus RecipientResponseStatus = 2;
 }
 
 enum MessageType {

@@ -1,0 +1,161 @@
+import "Timestamp.proto";
+import "Documents/Document.proto";
+import "Documents/DocumentParticipantV2.proto";
+import "Docflow/AttachmentV3.proto";
+import "Docflow/DocflowV4.proto";
+import "Docflow/DocflowV3.proto";
+import "Docflow/DocumentInfoV5.proto";
+import "Docflow/DeliveryDocflowV5.proto";
+import "Docflow/OuterDocflowV5.proto";
+import "Docflow/OutOfWorkflowUniversalMessageDocflow.proto";
+import "Docflow/RoamingNotification.proto";
+import "Docflow/RevocationDocflowV5.proto";
+import "Docflow/ResolutionDocflowV5.proto";
+import "Docflow/UniversalMessageAttachmentDocflow.proto";
+import "DocflowStatusV3.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message TitleDocflow
+{
+	required int32 TitleIndex = 1;
+	required TitleVersionV5 Version = 2;
+	required Documents.DocumentParticipantV2 Author = 3;
+	required TitleAuthorDocflow AuthorSigning = 4;
+	repeated TitleParticipantDocflow ParticipantDocflows = 5;
+	optional OutOfWorkflowUniversalMessageDocflow OutOfWorkflowUniversalMessageDocflow = 6;
+}
+
+message TitleVersionV5
+{
+	required string EntityId = 1;
+	required int32 Revision = 2;
+	required TitleVersionStatusV5 Status = 3;
+	optional string PreviousVersionEntityId = 4;
+}
+
+enum TitleVersionStatusV5
+{
+	TitleVersionStatusUnknown = 0;
+	TitleVersionStatusCurrent = 1;
+	TitleVersionStatusPending = 2;
+	TitleVersionStatusHistorical = 3;
+}
+
+message TitleAuthorDocflow
+{
+	required bool IsFinished = 1;
+	required TitleAuthorStatusV5 Status = 2;
+	required SignedAttachmentV3 Title = 3;
+	optional TitleOperationResultV5 OperationResult = 4;
+}
+
+enum TitleAuthorStatusV5
+{
+	TitleAuthorStatusUnknown = 0;
+	TitleAuthorStatusWaiting = 1;
+	TitleAuthorStatusNotReadyToSign = 2;
+	TitleAuthorStatusVerifying = 3;
+	TitleAuthorStatusSigned = 4;
+	TitleAuthorStatusInvalidSignature = 5;
+}
+
+message TitleOperationResultV5
+{
+	optional WellKnownTitleOperationResult WellKnown = 1;
+}
+
+enum WellKnownTitleOperationResult
+{
+	WellKnownTitleOperationResultUnknown = 0;
+	WellKnownTitleOperationResultSigned = 1;
+	WellKnownTitleOperationResultPartiallySigned = 2;
+	WellKnownTitleOperationResultRejected = 3;
+}
+
+message TitleParticipantDocflow
+{
+	required Documents.DocumentParticipantV2 Participant = 1;
+	optional TitleDeliveryDocflowV5 TitleDelivery = 2;
+	optional TitleParticipantResponseDocflow Response = 3;
+	optional ReceiptDocflowV5 Receipt = 4;
+}
+
+message TitleDeliveryDocflowV5
+{
+	optional DeliveryDocflowV5 Delivery = 1;
+	optional ConfirmationDocflowV5 Confirmation = 2;
+	optional RoamingNotification RoamingNotification = 3;
+}
+
+message TitleParticipantResponseDocflow
+{
+	required bool IsFinished = 1;
+	required TitleParticipantResponseStatusV5 Status = 2;
+	optional SignatureV3 Signature = 3;
+	optional SignatureRejectionDocflowV4 Rejection = 4;
+	optional ConfirmationDocflowV5 Confirmation = 5;
+	optional DeliveryDocflowV5 Delivery = 6;
+}
+
+enum TitleParticipantResponseStatusV5
+{
+	TitleParticipantResponseStatusUnknown = 0;
+	TitleParticipantResponseStatusNotAcceptable = 1;
+	TitleParticipantResponseStatusWaiting = 2;
+	TitleParticipantResponseStatusVerifying = 3;
+	TitleParticipantResponseStatusSigned = 4;
+	TitleParticipantResponseStatusSignatureRejected = 5;
+	TitleParticipantResponseStatusInvalidSignature = 6;
+}
+
+message ReceiptDocflowV5
+{
+	required bool IsFinished = 1;
+	optional SignedAttachmentV3 ReceiptAttachment = 2;
+	optional Timestamp SentAt = 3;
+	optional Timestamp DeliveredAt = 4;
+	required Documents.GeneralReceiptStatus Status = 5;
+	optional ConfirmationDocflowV5 Confirmation = 6;
+	optional UniversalMessageAttachmentDocflow UniversalMessage = 7;
+}
+
+message ConfirmationDocflowV5
+{
+	required bool IsFinished = 1;
+	optional SignedAttachmentV3 ConfirmationAttachment = 2;
+	optional Timestamp ConfirmedAt = 3;
+	optional ReceiptDocflowV5 Receipt = 4;
+	optional OperatorConfirmationDocflow RoamingConfirmation = 5;
+}
+
+message AmendmentRequestRecipientDocflow
+{
+	required Documents.DocumentParticipantV2 Recipient = 1;
+	optional ReceiptDocflowV5 Receipt = 2;
+	optional DeliveryDocflowV5 Delivery = 3;
+	optional ConfirmationDocflowV5 Confirmation = 4;
+}
+
+message AmendmentRequestDocflowV5
+{
+	required Documents.DocumentParticipantV2 Requester = 1;
+	repeated AmendmentRequestRecipientDocflow RecipientDocflows = 2;
+	required bool IsFinished = 3;
+	optional SignedAttachmentV3 AmendmentRequest = 4;
+	required int32 AmendmentFlags = 5;
+	optional string PlainText = 6;
+	optional UniversalMessageAttachmentDocflow UniversalMessage = 7;
+	optional string TargetEntityId = 8;
+}
+
+message DocflowV5
+{
+	repeated TitleDocflow Titles = 1;
+	repeated AmendmentRequestDocflowV5 AmendmentRequests = 2;
+	optional RevocationDocflowV5 Revocation = 3;
+	repeated OuterDocflowV5 OuterDocflows = 4;
+	required DocflowStatusV3 DocflowStatus = 5;
+	optional TtGisFixationDocflow TtGisFixation = 6;
+	optional ResolutionDocflowV5 Resolution = 7;
+}
