@@ -942,7 +942,7 @@ namespace Diadoc.Api
 
 		public string AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken)
 		{
-			return diadoc.AuthenticateByOidc(clientId, clientSecret, refreshToken);
+			return diadoc.AuthenticateWithOidc(clientId, clientSecret, refreshToken);
 		}
 
 		public OrganizationUserPermissions GetMyPermissions(string authToken, string orgId)

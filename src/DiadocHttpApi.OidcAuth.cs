@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Diadoc.Api.Http;
@@ -30,14 +30,14 @@ namespace Diadoc.Api
         /// <param name="clientSecret">Client Secret интегратора</param>
         /// <param name="refreshToken">Refresh token интегратора</param>
         /// <returns>Access_token в виде строки</returns>
-        public string AuthenticateByOidc(string clientId, string clientSecret, string refreshToken)
+        public string AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken)
         {
             var response = PerformOidcTokenRequest(clientId, clientSecret, refreshToken);
             return response.AccessToken;
         }
 
 #if !NET35
-        public async Task<string> AuthenticateByOidcAsync(string clientId, string clientSecret, string refreshToken)
+        public async Task<string> AuthenticateWithOidcAsync(string clientId, string clientSecret, string refreshToken)
         {
             var response = await PerformOidcTokenRequestAsync(clientId, clientSecret, refreshToken)
                 .ConfigureAwait(false);
