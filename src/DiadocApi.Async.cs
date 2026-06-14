@@ -88,7 +88,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.AuthenticateWithKeyConfirmAsync(thumbprint, token, saveBinding);
 		}
 
-		public Task<string> AuthenticateByOidcAsync(string clientId, string clientSecret, string refreshToken)
+		public Task<string> AuthenticateWithOidcAsync(string clientId, string clientSecret, string refreshToken)
 		{
 			if (clientId == null) throw new ArgumentNullException("clientId");
 			if (clientSecret == null) throw new ArgumentNullException("clientSecret");
@@ -96,7 +96,7 @@ namespace Diadoc.Api
 
 			UseOidc();
 
-			return diadocHttpApi.AuthenticateByOidcAsync(clientId, clientSecret, refreshToken);
+			return diadocHttpApi.AuthenticateWithOidcAsync(clientId, clientSecret, refreshToken);
 		}
 
 		[Obsolete("Use GetMyEmployee()")]

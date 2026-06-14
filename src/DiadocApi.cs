@@ -172,7 +172,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.AuthenticateWithKeyConfirm(thumbprint, token, saveBinding);
 		}
 
-		public string AuthenticateByOidc(string clientId, string clientSecret, string refreshToken)
+		public string AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken)
 		{
 			if (clientId == null) throw new ArgumentNullException("clientId");
 			if (clientSecret == null) throw new ArgumentNullException("clientSecret");
@@ -180,7 +180,7 @@ namespace Diadoc.Api
 
 			UseOidc();
 
-			return diadocHttpApi.AuthenticateByOidc(clientId, clientSecret, refreshToken);
+			return diadocHttpApi.AuthenticateWithOidc(clientId, clientSecret, refreshToken);
 		}
 
 		[Obsolete("Use GetMyEmployee()")]
