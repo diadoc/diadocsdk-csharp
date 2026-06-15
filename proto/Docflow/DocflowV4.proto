@@ -10,6 +10,7 @@ import "Docflow/UniversalMessageAttachmentDocflow.proto";
 import "Docflow/DocflowV3.proto";
 import "Docflow/LastEvent.proto";
 import "Docflow/OutOfWorkflowUniversalMessageDocflow.proto";
+import "Docflow/RoamingNotification.proto";
 
 package Diadoc.Api.Proto.Docflow;
 
@@ -28,6 +29,7 @@ message RevocationResponseDocflowV4
 {
     optional SignatureV3 RecipientSignature = 1;
     optional SignatureRejectionDocflowV4 SignatureRejection = 2;
+    optional RoamingNotification RoamingNotification = 3;
 }
  
 message ParticipantResponseDocflowV4
@@ -41,6 +43,7 @@ message ParticipantResponseDocflowV4
     required Documents.RecipientResponseStatus ResponseStatus = 7;
     optional ConfirmationDocflowV4 Confirmation = 8;
     optional OutOfWorkflowUniversalMessageDocflow OutOfWorkflowUniversalMessageDocflow = 9;
+    optional RoamingNotification RoamingNotification = 10;
 }
 
 message SignatureRejectionDocflowV4
@@ -50,6 +53,7 @@ message SignatureRejectionDocflowV4
     optional Timestamp DeliveredAt = 3;
     optional string PlainText = 4;
     optional UniversalMessageAttachmentDocflow UniversalMessage = 5;
+    optional RoamingNotification RoamingNotification = 6;
 }
 
 message AmendmentRequestDocflowV4
@@ -62,7 +66,8 @@ message AmendmentRequestDocflowV4
     required int32 AmendmentFlags = 6;
     optional string PlainText = 7;
     optional ConfirmationDocflowV4 ConfirmationDocflow = 8;
-    optional UniversalMessageAttachmentDocflow UniversalMessage = 9; 
+    optional UniversalMessageAttachmentDocflow UniversalMessage = 9;
+    optional RoamingNotification RoamingNotification = 10;
 }
 
 message ReceiptDocflowV4
@@ -74,6 +79,7 @@ message ReceiptDocflowV4
     optional ConfirmationDocflowV4 Confirmation = 5;
     required Documents.GeneralReceiptStatus Status = 6;
     optional UniversalMessageAttachmentDocflow UniversalMessage = 7;
+    optional RoamingNotification RoamingNotification = 8;
 }
 
 message ConfirmationDocflowV4

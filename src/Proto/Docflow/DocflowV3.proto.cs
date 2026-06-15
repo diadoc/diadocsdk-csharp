@@ -333,6 +333,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _PlainText; }
       set { _PlainText = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
+    {
+      get { return _RoamingNotification; }
+      set { _RoamingNotification = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -411,6 +420,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _Confirmation; }
       set { _Confirmation = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
+    {
+      get { return _RoamingNotification; }
+      set { _RoamingNotification = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -488,6 +506,15 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _ConfirmationDocflow; }
       set { _ConfirmationDocflow = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
+    {
+      get { return _RoamingNotification; }
+      set { _RoamingNotification = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -633,6 +660,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _SignatureRejection; }
       set { _SignatureRejection = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
+    {
+      get { return _RoamingNotification; }
+      set { _RoamingNotification = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -692,6 +728,15 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _Status; }
       set { _Status = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
+    {
+      get { return _RoamingNotification; }
+      set { _RoamingNotification = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
