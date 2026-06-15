@@ -61,6 +61,7 @@ message SignatureRejectionDocflow
 	required bool IsFormal = 2;
 	optional Timestamp DeliveredAt = 3;
 	optional string PlainText = 4;
+  optional RoamingNotification RoamingNotification = 5;
 }
 
 message ParticipantResponseDocflow
@@ -73,6 +74,7 @@ message ParticipantResponseDocflow
 	optional Timestamp DeliveredAt = 6;
 	required Documents.RecipientResponseStatus ResponseStatus = 7;
 	optional ConfirmationDocflow Confirmation = 8;
+  optional RoamingNotification RoamingNotification = 9;
 }
 
 message AmendmentRequestDocflow
@@ -85,6 +87,7 @@ message AmendmentRequestDocflow
 	required int32 AmendmentFlags = 6;
 	optional string PlainText = 7;
 	optional ConfirmationDocflow ConfirmationDocflow = 8;
+  optional RoamingNotification RoamingNotification = 9;
 }
 
 message RevocationDocflowV3
@@ -111,6 +114,7 @@ message RevocationResponseDocflow
 {
 	optional SignatureV3 RecipientSignature = 1;
 	optional SignatureRejectionDocflow SignatureRejection = 2;
+  optional RoamingNotification RoamingNotification = 3;
 }
 
 message ReceiptDocflowV3
@@ -121,6 +125,7 @@ message ReceiptDocflowV3
 	optional Timestamp DeliveredAt = 4;
 	optional ConfirmationDocflow Confirmation = 5;
 	required Documents.GeneralReceiptStatus Status = 6;
+  optional RoamingNotification RoamingNotification = 7;
 }
 
 message OuterDocflow
