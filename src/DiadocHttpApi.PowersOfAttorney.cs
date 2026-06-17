@@ -27,21 +27,6 @@ namespace Diadoc.Api
 			queryString.AddParameter("taskId", taskId);
 			return PerformHttpRequest<PowerOfAttorneyRegisterResult>(authToken, "GET", queryString.BuildPathAndQuery());
 		}
-
-		[Obsolete("Use PrevalidatePowerOfAttorneyV2()")]
-		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(
-			string authToken,
-			string boxId,
-			string registrationNumber,
-			string issuerInn,
-			PowerOfAttorneyPrevalidateRequest request)
-		{
-			var queryString = new PathAndQueryBuilder("/PrevalidatePowerOfAttorney");
-			queryString.AddParameter("boxId", boxId);
-			queryString.AddParameter("registrationNumber", registrationNumber);
-			queryString.AddParameter("issuerInn", issuerInn);
-			return PerformHttpRequest<PowerOfAttorneyPrevalidateRequest, PowerOfAttorneyPrevalidateResult>(authToken, queryString.BuildPathAndQuery(), request);
-		}
 		
 		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorneyV2(
 			string authToken,

@@ -1843,23 +1843,6 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEmployeePowersOfAttorney(authToken, boxId, userId, onlyActual);
 		}
 
-		[Obsolete("Use UpdateEmployeePowerOfAttorneyV2")]
-		public EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
-			string authToken,
-			string boxId,
-			[CanBeNull] string userId,
-			string registrationNumber,
-			string issuerInn,
-			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
-			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
-			if (powerOfAttorneyToUpdate == null) throw new ArgumentNullException("powerOfAttorneyToUpdate");
-			return diadocHttpApi.UpdateEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn, powerOfAttorneyToUpdate);
-		}
-
 		public EmployeePowerOfAttorney UpdateEmployeePowerOfAttorneyV2(
 			string authToken,
 			string boxId,
@@ -1872,32 +1855,12 @@ namespace Diadoc.Api
 			return diadocHttpApi.UpdateEmployeePowerOfAttorneyV2(authToken, boxId, userId, powerOfAttorneyToUpdate);
 		}
 
-		[Obsolete("Use AddEmployeePowerOfAttorneyV2")]
-		public EmployeePowerOfAttorney AddEmployeePowerOfAttorney(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
-			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
-			return diadocHttpApi.AddEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
-		}
-
 		public EmployeePowerOfAttorney AddEmployeePowerOfAttorneyV2(string authToken, string boxId, [CanBeNull] string userId, PowerOfAttorneyFullId fullId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (fullId == null) throw new ArgumentNullException("fullId");
 			return diadocHttpApi.AddEmployeePowerOfAttorneyV2(authToken, boxId, userId, fullId);
-		}
-
-		[Obsolete("Use DeleteEmployeePowerOfAttorneyV2")]
-		public void DeleteEmployeePowerOfAttorney(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
-			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
-			diadocHttpApi.DeleteEmployeePowerOfAttorney(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
 
 		public void DeleteEmployeePowerOfAttorneyV2(string authToken, string boxId, [CanBeNull] string userId, PowerOfAttorneyFullId fullId)
@@ -2000,22 +1963,6 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (taskId == null) throw new ArgumentNullException("taskId");
 			return diadocHttpApi.RegisterPowerOfAttorneyResult(authToken, boxId, taskId);
-		}
-
-		[Obsolete("Use PrevalidatePowerOfAttorneyV2()")]
-		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(
-			string authToken,
-			string boxId,
-			string registrationNumber,
-			string issuerInn,
-			PowerOfAttorneyPrevalidateRequest request)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
-			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
-			if (request == null) throw new ArgumentNullException("request");
-			return diadocHttpApi.PrevalidatePowerOfAttorney(authToken, boxId, registrationNumber, issuerInn, request);
 		}
 
 		public PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorneyV2(
