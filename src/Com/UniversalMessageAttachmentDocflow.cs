@@ -10,6 +10,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Diadoc.Api.Proto.UniversalMessageInfo MessageInfo { get; }
 		string ContentTypeId { get; }
 		bool IsRead { get; }
+		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]
