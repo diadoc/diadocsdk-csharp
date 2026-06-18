@@ -10,6 +10,7 @@
 // Generated from: Docflow/UniversalMessageAttachmentDocflow.proto
 // Note: requires additional types generated from: Docflow/Attachment.proto
 // Note: requires additional types generated from: UniversalMessage.proto
+// Note: requires additional types generated from: Docflow/RoamingNotification.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"UniversalMessageAttachmentDocflow")]
@@ -46,6 +47,15 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _IsRead; }
       set { _IsRead = value; }
+    }
+
+    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
+    {
+      get { return _RoamingNotification; }
+      set { _RoamingNotification = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
