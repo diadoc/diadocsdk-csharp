@@ -1,0 +1,47 @@
+import "Timestamp.proto";
+import "DocumentId.proto";
+import "TotalCountType.proto";
+import "Docflow/DocumentWithDocflowV5.proto";
+
+package Diadoc.Api.Proto.Docflow;
+
+message GetDocflowBatchResponseV5
+{
+	repeated DocumentWithDocflowV5 Documents = 1;
+}
+
+message SearchDocflowsResponseV5
+{
+	repeated DocumentWithDocflowV5 Documents = 1;
+	required bool HaveMoreDocuments = 2;
+}
+
+message FetchedDocumentV5
+{
+	required DocumentWithDocflowV5 Document = 1;
+	required bytes IndexKey = 2;
+}
+
+message GetDocflowsByPacketIdResponseV5
+{
+	repeated FetchedDocumentV5 Documents = 1;
+	optional bytes NextPageIndexKey = 2;
+}
+
+message GetDocflowEventsResponseV5
+{
+	optional int32 TotalCount = 1;
+	repeated DocflowEventV5 Events = 2;
+	required TotalCountType TotalCountType = 3;
+}
+
+message DocflowEventV5
+{
+	required string EventId = 1;
+	required Timestamp Timestamp = 2;
+	required DocumentId DocumentId = 3;
+	required bytes IndexKey = 4;
+	optional DocumentWithDocflowV5 Document = 5;
+	optional string PreviousEventId = 6;
+	optional DocumentWithDocflowV5 PreviousDocumentState = 7;
+}
