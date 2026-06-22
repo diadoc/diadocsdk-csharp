@@ -62,7 +62,7 @@ message AmendmentRequestDocflowV4
     required int32 AmendmentFlags = 6;
     optional string PlainText = 7;
     optional ConfirmationDocflowV4 ConfirmationDocflow = 8;
-    optional UniversalMessageAttachmentDocflow UniversalMessage = 9; 
+    optional UniversalMessageAttachmentDocflow UniversalMessage = 9;
 }
 
 message ReceiptDocflowV4

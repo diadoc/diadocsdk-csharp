@@ -174,7 +174,7 @@ namespace Diadoc.Api.Proto.Docflow
 
 		public Com.TotalCountType TotalCountTypeValue
 		{
-			get { return (Com.TotalCountType)TotalCountType; }
+			get { return (Com.TotalCountType) TotalCountType; }
 		}
 	}
 
@@ -271,7 +271,7 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.DocumentDirection DocumentDirectionValue
 		{
-			get { return (Com.DocumentDirection)DocumentDirection; }
+			get { return (Com.DocumentDirection) DocumentDirection; }
 		}
 
 		public ReadonlyList MetadataList
@@ -286,7 +286,7 @@ namespace Diadoc.Api.Proto.Docflow
 
 		public Com.MessageType MessageTypeValue
 		{
-			get { return (Com.MessageType)MessageType; }
+			get { return (Com.MessageType) MessageType; }
 		}
 	}
 
@@ -370,7 +370,7 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.LockMode LockModeValue
 		{
-			get { return (Com.LockMode)LockMode; }
+			get { return (Com.LockMode) LockMode; }
 		}
 	}
 
@@ -519,7 +519,7 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.SenderSignatureStatus SenderSignatureStatusValue
 		{
-			get { return (Com.SenderSignatureStatus)SenderSignatureStatus; }
+			get { return (Com.SenderSignatureStatus) SenderSignatureStatus; }
 		}
 	}
 
@@ -585,7 +585,7 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.RecipientResponseStatus ResponseStatusValue
 		{
-			get { return (Com.RecipientResponseStatus)ResponseStatus; }
+			get { return (Com.RecipientResponseStatus) ResponseStatus; }
 		}
 	}
 
@@ -633,7 +633,7 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.RevocationStatus RevocationStatusValue
 		{
-			get { return (Com.RevocationStatus)RevocationStatus; }
+			get { return (Com.RevocationStatus) RevocationStatus; }
 		}
 
 		public ReadonlyList OuterDocflowEntitiesList
@@ -698,7 +698,7 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.ResolutionStatus ResolutionStatusValue
 		{
-			get { return (Com.ResolutionStatus)ResolutionStatus; }
+			get { return (Com.ResolutionStatus) ResolutionStatus; }
 		}
 	}
 
@@ -761,13 +761,13 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.ResolutionRequestType RequestTypeValue
 		{
-			get { return (Com.ResolutionRequestType)RequestType; }
-			set { RequestType = (ResolutionRequestType)value; }
+			get { return (Com.ResolutionRequestType) RequestType; }
+			set { RequestType = (ResolutionRequestType) value; }
 		}
 
 		public ReadonlyList ActionsList
 		{
-			get { return new ReadonlyList(Actions.Select(a => (Com.ResolutionAction)a).ToArray()); }
+			get { return new ReadonlyList(Actions.Select(a => (Com.ResolutionAction) a).ToArray()); }
 		}
 	}
 
@@ -790,8 +790,8 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.ResolutionType ResolutionTypeValue
 		{
-			get { return (Com.ResolutionType)ResolutionType; }
-			set { ResolutionType = (ResolutionType)value; }
+			get { return (Com.ResolutionType) ResolutionType; }
+			set { ResolutionType = (ResolutionType) value; }
 		}
 	}
 
@@ -852,7 +852,7 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		public Com.GeneralReceiptStatus StatusValue
 		{
-			get { return (Com.GeneralReceiptStatus)Status; }
+			get { return (Com.GeneralReceiptStatus) Status; }
 		}
 	}
 
@@ -985,7 +985,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Com.StatusName StatusName { get; }
 		string Comment { get; }
 	}
-	
+
 	[ComVisible(true)]
 	[ProgId("Diadoc.Api.PowerOfAttorneyAttachmentStatus")]
 	[Guid("AFD8A332-B774-48CE-941C-3349029B31AB")]
