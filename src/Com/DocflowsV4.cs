@@ -194,7 +194,6 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp DeliveredAt { get; }
 		string PlainText { get; }
 		UniversalMessageAttachmentDocflow UniversalMessage { get; }
-		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]
@@ -219,7 +218,6 @@ namespace Diadoc.Api.Proto.Docflow
 		Com.RecipientResponseStatus ResponseStatusValue { get; }
 		ConfirmationDocflowV4 Confirmation { get; }
 		OutOfWorkflowUniversalMessageDocflow OutOfWorkflowUniversalMessageDocflow { get; }
-		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]
@@ -245,7 +243,6 @@ namespace Diadoc.Api.Proto.Docflow
 		string PlainText { get; }
 		ConfirmationDocflowV4 ConfirmationDocflow { get; }
 		UniversalMessageAttachmentDocflow UniversalMessage { get; }
-		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]
@@ -287,7 +284,6 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		SignatureV3 RecipientSignature { get; }
 		SignatureRejectionDocflowV4 SignatureRejection { get; }
-		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]
@@ -310,7 +306,6 @@ namespace Diadoc.Api.Proto.Docflow
 		ConfirmationDocflowV4 Confirmation { get; }
 		Com.GeneralReceiptStatus StatusValue { get; }
 		UniversalMessageAttachmentDocflow UniversalMessage { get; }
-		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]

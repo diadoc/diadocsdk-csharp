@@ -20,7 +20,6 @@
 // Note: requires additional types generated from: Docflow/DocflowV3.proto
 // Note: requires additional types generated from: Docflow/LastEvent.proto
 // Note: requires additional types generated from: Docflow/OutOfWorkflowUniversalMessageDocflow.proto
-// Note: requires additional types generated from: Docflow/RoamingNotification.proto
 namespace Diadoc.Api.Proto.Docflow
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RevocationDocflowV4")]
@@ -109,15 +108,6 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _SignatureRejection; }
       set { _SignatureRejection = value; }
     }
-
-    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
-    {
-      get { return _RoamingNotification; }
-      set { _RoamingNotification = value; }
-    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -205,15 +195,6 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _OutOfWorkflowUniversalMessageDocflow; }
       set { _OutOfWorkflowUniversalMessageDocflow = value; }
     }
-
-    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
-    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
-    {
-      get { return _RoamingNotification; }
-      set { _RoamingNotification = value; }
-    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -266,15 +247,6 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _UniversalMessage; }
       set { _UniversalMessage = value; }
-    }
-
-    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
-    {
-      get { return _RoamingNotification; }
-      set { _RoamingNotification = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -363,15 +335,6 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _UniversalMessage; }
       set { _UniversalMessage = value; }
     }
-
-    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
-    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
-    {
-      get { return _RoamingNotification; }
-      set { _RoamingNotification = value; }
-    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -440,15 +403,6 @@ namespace Diadoc.Api.Proto.Docflow
     {
       get { return _UniversalMessage; }
       set { _UniversalMessage = value; }
-    }
-
-    private Diadoc.Api.Proto.Docflow.RoamingNotification _RoamingNotification = null;
-    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"RoamingNotification", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public Diadoc.Api.Proto.Docflow.RoamingNotification RoamingNotification
-    {
-      get { return _RoamingNotification; }
-      set { _RoamingNotification = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

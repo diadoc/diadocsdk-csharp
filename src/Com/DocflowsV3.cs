@@ -551,7 +551,6 @@ namespace Diadoc.Api.Proto.Docflow
 		bool IsFormal { get; }
 		Timestamp DeliveredAt { get; }
 		string PlainText { get; }
-		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]
@@ -575,7 +574,6 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp DeliveredAt { get; }
 		Com.RecipientResponseStatus ResponseStatusValue { get; }
 		ConfirmationDocflow Confirmation { get; }
-		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]
@@ -603,7 +601,6 @@ namespace Diadoc.Api.Proto.Docflow
 		int AmendmentFlags { get; }
 		string PlainText { get; }
 		ConfirmationDocflow ConfirmationDocflow { get; }
-		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]
@@ -671,7 +668,6 @@ namespace Diadoc.Api.Proto.Docflow
 	{
 		SignatureV3 RecipientSignature { get; }
 		SignatureRejectionDocflow SignatureRejection { get; }
-		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]
@@ -845,7 +841,6 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp DeliveredAt { get; }
 		ConfirmationDocflow Confirmation { get; }
 		Com.GeneralReceiptStatus StatusValue { get; }
-		RoamingNotification RoamingNotification { get; }
 	}
 
 	[ComVisible(true)]
