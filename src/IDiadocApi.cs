@@ -478,43 +478,18 @@ namespace Diadoc.Api
 
 		EmployeePowerOfAttorneyList GetEmployeePowersOfAttorney(string authToken, string boxId, [CanBeNull] string userId = null, bool onlyActual = false);
 
-		[Obsolete("Use UpdateEmployeePowerOfAttorneyV2")]
-		EmployeePowerOfAttorney UpdateEmployeePowerOfAttorney(
-			string authToken,
-			string boxId,
-			[CanBeNull] string userId,
-			string registrationNumber,
-			string issuerInn,
-			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate);
-		
 		EmployeePowerOfAttorney UpdateEmployeePowerOfAttorneyV2(
 			string authToken,
 			string boxId,
 			[CanBeNull] string userId,
 			EmployeePowerOfAttorneyToUpdateV2 powerOfAttorneyToUpdate);
 
-		[Obsolete("Use AddEmployeePowerOfAttorneyV2")]
-		EmployeePowerOfAttorney AddEmployeePowerOfAttorney(
-			string authToken,
-			string boxId,
-			[CanBeNull] string userId,
-			string registrationNumber,
-			string issuerInn);
-		
 		EmployeePowerOfAttorney AddEmployeePowerOfAttorneyV2(
 			string authToken,
 			string boxId,
 			[CanBeNull] string userId,
 			PowerOfAttorneyFullId fullId);
 
-		[Obsolete("Use DeleteEmployeePowerOfAttorneyV2")]
-		void DeleteEmployeePowerOfAttorney(
-			string authToken,
-			string boxId,
-			[CanBeNull] string userId,
-			string registrationNumber,
-			string issuerInn);
-		
 		void DeleteEmployeePowerOfAttorneyV2(
 			string authToken,
 			string boxId,
@@ -538,14 +513,6 @@ namespace Diadoc.Api
 
 		AsyncMethodResult RegisterPowerOfAttorney(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister);
 		PowerOfAttorneyRegisterResult RegisterPowerOfAttorneyResult(string authToken, string boxId, string taskId);
-
-		[Obsolete("Use PrevalidatePowerOfAttorneyV2")]
-		PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorney(
-			string authToken,
-			string boxId,
-			string registrationNumber,
-			string issuerInn,
-			PowerOfAttorneyPrevalidateRequest request);
 		
 		PowerOfAttorneyPrevalidateResult PrevalidatePowerOfAttorneyV2(
 			string authToken,
@@ -1037,43 +1004,18 @@ namespace Diadoc.Api
 
 		Task<EmployeePowerOfAttorneyList> GetEmployeePowersOfAttorneyAsync(string authToken, string boxId, [CanBeNull] string userId = null, bool onlyActual = false);
 
-		[Obsolete("Use UpdateEmployeePowerOfAttorneyV2Async")]
-		Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyAsync(
-			string authToken,
-			string boxId,
-			[CanBeNull] string userId,
-			string registrationNumber,
-			string issuerInn,
-			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate);
-		
 		Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyV2Async(
 			string authToken,
 			string boxId,
 			[CanBeNull] string userId,
 			EmployeePowerOfAttorneyToUpdateV2 powerOfAttorneyToUpdate);
 
-		[Obsolete("Use AddEmployeePowerOfAttorneyV2Async")]
-		Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyAsync(
-			string authToken,
-			string boxId,
-			[CanBeNull] string userId,
-			string registrationNumber,
-			string issuerInn);
-		
 		Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyV2Async(
 			string authToken,
 			string boxId,
 			[CanBeNull] string userId,
 			PowerOfAttorneyFullId fullId);
 
-		[Obsolete("Use DeleteEmployeePowerOfAttorneyV2Async")]
-		Task DeleteEmployeePowerOfAttorneyAsync(
-			string authToken,
-			string boxId,
-			[CanBeNull] string userId,
-			string registrationNumber,
-			string issuerInn);
-			
 		Task DeleteEmployeePowerOfAttorneyV2Async(
 			string authToken,
 			string boxId,
@@ -1099,14 +1041,6 @@ namespace Diadoc.Api
 
 		Task<AsyncMethodResult> RegisterPowerOfAttorneyAsync(string authToken, string boxId, PowerOfAttorneyToRegister powerOfAttorneyToRegister);
 		Task<PowerOfAttorneyRegisterResult> RegisterPowerOfAttorneyResultAsync(string authToken, string boxId, string taskId);
-
-		[Obsolete("Use PrevalidatePowerOfAttorneyV2Async()")]
-		Task<PowerOfAttorneyPrevalidateResult> PrevalidatePowerOfAttorneyAsync(
-			string authToken,
-			string boxId,
-			string registrationNumber,
-			string issuerInn,
-			PowerOfAttorneyPrevalidateRequest request);
 
 		Task<PowerOfAttorneyPrevalidateResult> PrevalidatePowerOfAttorneyV2Async(
 			string authToken,

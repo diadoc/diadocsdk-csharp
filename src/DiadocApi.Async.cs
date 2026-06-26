@@ -1692,23 +1692,6 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEmployeePowersOfAttorneyAsync(authToken, boxId, userId, onlyActual);
 		}
 
-		[Obsolete("Use UpdateEmployeePowerOfAttorneyV2Async")]
-		public Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyAsync(
-			string authToken,
-			string boxId,
-			[CanBeNull] string userId,
-			string registrationNumber,
-			string issuerInn,
-			EmployeePowerOfAttorneyToUpdate powerOfAttorneyToUpdate)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
-			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
-			if (powerOfAttorneyToUpdate == null) throw new ArgumentNullException("powerOfAttorneyToUpdate");
-			return diadocHttpApi.UpdateEmployeePowerOfAttorneyAsync(authToken, boxId, userId, registrationNumber, issuerInn, powerOfAttorneyToUpdate);
-		}
-
 		public Task<EmployeePowerOfAttorney> UpdateEmployeePowerOfAttorneyV2Async(
 			string authToken,
 			string boxId,
@@ -1721,16 +1704,6 @@ namespace Diadoc.Api
 			return diadocHttpApi.UpdateEmployeePowerOfAttorneyV2Async(authToken, boxId, userId, powerOfAttorneyToUpdate);
 		}
 
-		[Obsolete("Use AddEmployeePowerOfAttorneyV2Async")]
-		public Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyAsync(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
-			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
-			return diadocHttpApi.AddEmployeePowerOfAttorneyAsync(authToken, boxId, userId, registrationNumber, issuerInn);
-		}
-
 		public Task<EmployeePowerOfAttorney> AddEmployeePowerOfAttorneyV2Async(
 			string authToken,
 			string boxId,
@@ -1741,16 +1714,6 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (fullId == null) throw new ArgumentNullException("fullId");
 			return diadocHttpApi.AddEmployeePowerOfAttorneyV2Async(authToken, boxId, userId, fullId);
-		}
-
-		[Obsolete("Use DeleteEmployeePowerOfAttorneyV2Async")]
-		public Task DeleteEmployeePowerOfAttorneyAsync(string authToken, string boxId, [CanBeNull] string userId, string registrationNumber, string issuerInn)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
-			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
-			return diadocHttpApi.DeleteEmployeePowerOfAttorneyAsync(authToken, boxId, userId, registrationNumber, issuerInn);
 		}
 
 		public Task DeleteEmployeePowerOfAttorneyV2Async(
@@ -1855,22 +1818,6 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (taskId == null) throw new ArgumentNullException("taskId");
 			return diadocHttpApi.RegisterPowerOfAttorneyResultAsync(authToken, boxId, taskId);
-		}
-
-		[Obsolete("Use PrevalidatePowerOfAttorneyV2Async")]
-		public Task<PowerOfAttorneyPrevalidateResult> PrevalidatePowerOfAttorneyAsync(
-			string authToken,
-			string boxId,
-			string registrationNumber,
-			string issuerInn,
-			PowerOfAttorneyPrevalidateRequest request)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (boxId == null) throw new ArgumentNullException("boxId");
-			if (registrationNumber == null) throw new ArgumentNullException("registrationNumber");
-			if (issuerInn == null) throw new ArgumentNullException("issuerInn");
-			if (request == null) throw new ArgumentNullException("request");
-			return diadocHttpApi.PrevalidatePowerOfAttorneyAsync(authToken, boxId, registrationNumber, issuerInn, request);
 		}
 
 		public Task<PowerOfAttorneyPrevalidateResult> PrevalidatePowerOfAttorneyV2Async(
