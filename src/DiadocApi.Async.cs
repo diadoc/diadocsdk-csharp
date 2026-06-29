@@ -94,8 +94,6 @@ namespace Diadoc.Api
 			if (clientSecret == null) throw new ArgumentNullException("clientSecret");
 			if (refreshToken == null) throw new ArgumentNullException("refreshToken");
 
-			UseOidc();
-
 			return diadocHttpApi.AuthenticateWithOidcAsync(clientId, clientSecret, refreshToken);
 		}
 
