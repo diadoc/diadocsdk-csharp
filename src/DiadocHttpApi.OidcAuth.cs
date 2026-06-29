@@ -23,13 +23,12 @@ namespace Diadoc.Api
 				string.IsNullOrEmpty(oidcBaseUrl) ? DefaultOidcBaseUrl : oidcBaseUrl));
 
 		/// <summary>
-		///     Получает access_token через OIDC grant_type=refresh_token.
-		///     Используйте вместо устаревшего Authenticate(login, password).
+		///     Gets an access token via OIDC grant_type=refresh_token.
 		/// </summary>
-		/// <param name="clientId">Client ID интегратора из кабинета интегратора</param>
-		/// <param name="clientSecret">Client Secret интегратора</param>
-		/// <param name="refreshToken">Refresh token интегратора</param>
-		/// <returns>Access_token в виде строки</returns>
+		/// <param name="clientId">Integrator's Client ID from the integrator cabinet</param>
+		/// <param name="clientSecret">Integrator's Client Secret</param>
+		/// <param name="refreshToken">Integrator's Refresh Token</param>
+		/// <returns>Access token as a string</returns>
 		public string AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken)
 		{
 			var response = PerformOidcTokenRequest(clientId, clientSecret, refreshToken);
