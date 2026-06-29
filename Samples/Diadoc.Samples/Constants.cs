@@ -7,6 +7,12 @@ namespace Diadoc.Samples
 
 		// Идентификатор клиента, он же ключ разработчика
 		internal const string DefaultClientId = "<Вставьте ключ>";
+		
+		// Секретный ключ вашего приложения
+		internal const string DefaultClientSecret = "<Вставьте ключ>";
+		
+		// Токен для обновления токена доступа
+		internal const string DefaultRefreshToken = "<Вставьте токен>";
 
 		// Логин для авторизации на сервере Диадок
 		internal const string DefaultLogin = "<Вставьте логин>";
