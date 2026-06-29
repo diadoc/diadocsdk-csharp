@@ -89,8 +89,7 @@ namespace Diadoc.Api
 			var result = JsonConvert.DeserializeObject<OidcTokenResponse>(json);
 
 			if (result == null || string.IsNullOrEmpty(result.AccessToken))
-				throw new InvalidOperationException(
-					"OIDC token endpoint вернул ответ без access_token. Тело ответа: " + json);
+				throw new InvalidOperationException("OIDC token endpoint returned response without access_token. Response body: " + json);
 
 			return result;
 		}
