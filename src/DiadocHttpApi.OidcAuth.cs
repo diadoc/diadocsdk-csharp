@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Diadoc.Api.Http;
 using Newtonsoft.Json;
 #if !NET35
@@ -18,9 +19,17 @@ namespace Diadoc.Api
 		private readonly string oidcBaseUrl;
 		private HttpClient oidcHttpClient;
 
-		private HttpClient OidcHttpClient =>
-			oidcHttpClient ?? (oidcHttpClient = new HttpClient(
-				string.IsNullOrEmpty(oidcBaseUrl) ? DefaultOidcBaseUrl : oidcBaseUrl));
+		private HttpClient OidcHttpClient
+		{
+			get
+			{
+				if (oidcHttpClient != null)
+					return oidcHttpClient;
+
+				var newClient = new HttpClient(string.IsNullOrEmpty(oidcBaseUrl) ? DefaultOidcBaseUrl : oidcBaseUrl);
+				return Interlocked.CompareExchange(ref oidcHttpClient, newClient, null) ?? newClient;
+			}
+		}
 
 		/// <summary>
 		///     Gets an access token via OIDC grant_type=refresh_token.
