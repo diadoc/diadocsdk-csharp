@@ -38,17 +38,24 @@ namespace Diadoc.Api
 		/// <param name="clientSecret">Integrator's Client Secret</param>
 		/// <param name="refreshToken">Integrator's Refresh Token</param>
 		/// <returns>Access token as a string</returns>
-		public string AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken)
+		public OidcTokenResponse AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken)
 		{
 			var response = PerformOidcTokenRequest(clientId, clientSecret, refreshToken);
-			return response.AccessToken;
+			return response;
 		}
 
 #if !NET35
-		public async Task<string> AuthenticateWithOidcAsync(string clientId, string clientSecret, string refreshToken)
+		/// <summary>
+        ///     Gets an access token via OIDC grant_type=refresh_token.
+        /// </summary>
+        /// <param name="clientId">Integrator's Client ID from the integrator cabinet</param>
+        /// <param name="clientSecret">Integrator's Client Secret</param>
+        /// <param name="refreshToken">Integrator's Refresh Token</param>
+        /// <returns>Access token as a string</returns>
+		public async Task<OidcTokenResponse> AuthenticateWithOidcAsync(string clientId, string clientSecret, string refreshToken)
 		{
 			var response = await PerformOidcTokenRequestAsync(clientId, clientSecret, refreshToken).ConfigureAwait(false);
-			return response.AccessToken;
+			return response;
 		}
 #endif
 
@@ -110,9 +117,16 @@ namespace Diadoc.Api
 
 	public class OidcTokenResponse
 	{
-		[JsonProperty("access_token")] public string AccessToken { get; set; }
-		[JsonProperty("token_type")] public string TokenType { get; set; }
-		[JsonProperty("expires_in")] public int ExpiresIn { get; set; }
-		[JsonProperty("refresh_token")] public string RefreshToken { get; set; }
+		[JsonProperty("access_token")] 
+		public string AccessToken { get; set; }
+
+		[JsonProperty("token_type")] 
+		public string TokenType { get; set; }
+
+		[JsonProperty("expires_in")] 
+		public int ExpiresIn { get; set; }
+
+		[JsonProperty("refresh_token")] 
+		public string RefreshToken { get; set; }
 	}
 }

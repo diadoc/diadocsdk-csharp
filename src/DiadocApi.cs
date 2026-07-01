@@ -172,7 +172,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.AuthenticateWithKeyConfirm(thumbprint, token, saveBinding);
 		}
 
-		public string AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken)
+		public OidcTokenResponse AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken)
 		{
 			if (clientId == null) throw new ArgumentNullException("clientId");
 			if (clientSecret == null) throw new ArgumentNullException("clientSecret");
