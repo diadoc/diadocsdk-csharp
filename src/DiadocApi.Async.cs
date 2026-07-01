@@ -4,28 +4,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Diadoc.Api.Constants;
 using Diadoc.Api.Proto;
+using Diadoc.Api.Proto.Certificates;
+using Diadoc.Api.Proto.CounteragentGroups;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
 using Diadoc.Api.Proto.Dss;
-using Diadoc.Api.Proto.Employees.Subscriptions;
 using Diadoc.Api.Proto.Employees;
+using Diadoc.Api.Proto.Employees.PowersOfAttorney;
+using Diadoc.Api.Proto.Employees.Subscriptions;
 using Diadoc.Api.Proto.Events;
 using Diadoc.Api.Proto.Forwarding;
 using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Organizations;
+using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Registration;
+using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
 using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Departments = Diadoc.Api.Proto.Departments;
-using Diadoc.Api.Proto.Certificates;
-using Diadoc.Api.Proto.CounteragentGroups;
-using Diadoc.Api.Proto.Employees.PowersOfAttorney;
-using Diadoc.Api.Proto.PowersOfAttorney;
-using Diadoc.Api.Proto.Workflows;
 using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
 
 namespace Diadoc.Api
@@ -86,6 +86,15 @@ namespace Diadoc.Api
 			if (thumbprint == null) throw new ArgumentNullException("thumbprint");
 			if (string.IsNullOrEmpty(token)) throw new ArgumentNullException("token");
 			return diadocHttpApi.AuthenticateWithKeyConfirmAsync(thumbprint, token, saveBinding);
+		}
+
+		public Task<string> AuthenticateWithOidcAsync(string clientId, string clientSecret, string refreshToken)
+		{
+			if (clientId == null) throw new ArgumentNullException("clientId");
+			if (clientSecret == null) throw new ArgumentNullException("clientSecret");
+			if (refreshToken == null) throw new ArgumentNullException("refreshToken");
+
+			return diadocHttpApi.AuthenticateWithOidcAsync(clientId, clientSecret, refreshToken);
 		}
 
 		[Obsolete("Use GetMyEmployee()")]
@@ -785,7 +794,7 @@ namespace Diadoc.Api
 		{
 			return diadocHttpApi.GetDocumentsAsync(authToken, filter);
 		}
-		
+
 		public Task<DocumentList> GetDocumentsV4Async(string authToken, string boxId, GetDocumentsV4Request request)
 		{
 			return diadocHttpApi.GetDocumentsV4Async(authToken, boxId, request);
@@ -1603,7 +1612,7 @@ namespace Diadoc.Api
 			return diadocHttpApi.DetectDocumentTitlesAsync(authToken, boxId, content);
 		}
 
-		public Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex, XsdContentType contentType = default(XsdContentType))
+		public Task<FileContent> GetContentAsync(string authToken, string typeNamedId, string function, string version, int titleIndex, XsdContentType contentType = default)
 		{
 			if (string.IsNullOrEmpty(authToken))
 				throw new ArgumentNullException("authToken");

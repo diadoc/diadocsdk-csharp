@@ -58,6 +58,7 @@ namespace Diadoc.Api
 		string AuthenticateWithKey(byte[] certificateBytes, bool useLocalSystemStorage = false, string key = null, string id = null, bool autoConfirm = true);
 		string AuthenticateWithKeyConfirm(byte[] certificateBytes, string token, bool saveBinding = false);
 		string AuthenticateWithKeyConfirm(string thumbprint, string token, bool saveBinding = false);
+		string AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken);
 		[Obsolete("Use GetMyEmployee()")]
 		OrganizationUserPermissions GetMyPermissions(string authToken, string orgId);
 		OrganizationList GetMyOrganizations(string authToken, bool autoRegister = true);
@@ -547,6 +548,7 @@ namespace Diadoc.Api
  null, string id = null, bool autoConfirm = true);
 		Task<string> AuthenticateWithKeyConfirmAsync(byte[] certificateBytes, string token, bool saveBinding = false);
 		Task<string> AuthenticateWithKeyConfirmAsync(string thumbprint, string token, bool saveBinding = false);
+		Task<string> AuthenticateWithOidcAsync(string clientId, string clientSecret, string refreshToken);
 		Task<OrganizationUserPermissions> GetMyPermissionsAsync(string authToken, string orgId);
 		Task<OrganizationList> GetMyOrganizationsAsync(string authToken, bool autoRegister = true);
 		[Obsolete("Use GetMyUserV2Async")]
