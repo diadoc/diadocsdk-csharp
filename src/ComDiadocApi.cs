@@ -48,7 +48,7 @@ namespace Diadoc.Api
 		string AuthenticateWithPassword(string login, string password);
 		string AuthenticateWithCertificate(string thumbprint, bool useLocalSystemStorage = false);
 		string AuthenticateWithSid(string sid);
-		OidcTokenResponse AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken);
+		string AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken);
 		[Obsolete("Use GetMyEmployee()")]
 		OrganizationUserPermissions GetMyPermissions(string authToken, string orgId);
 		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
@@ -907,7 +907,7 @@ namespace Diadoc.Api
 			return diadoc.AuthenticateBySid(sid);
 		}
 
-		public OidcTokenResponse AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken)
+		public string AuthenticateWithOidc(string clientId, string clientSecret, string refreshToken)
 		{
 			return diadoc.AuthenticateWithOidc(clientId, clientSecret, refreshToken);
 		}
