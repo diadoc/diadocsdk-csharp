@@ -1,5 +1,6 @@
 using System.IO;
 using System.Linq;
+using Diadoc.Api.DataXml;
 using Diadoc.Api.DataXml.ON_NKORSCHFDOPPR_UserContract_1_996_03_05_02_01;
 using Diadoc.Api.Proto;
 using Diadoc.Api.Proto.Events;
@@ -313,7 +314,8 @@ namespace Diadoc.Samples.Helpers
 					{
 						Gtin = "46070274787520",
 						QuantityMark = "1",
-						Units = new[] { "010460702747875021cTDJJ10ckV2Os" }
+						Items = new[] { "010460702747875021cTDJJ10ckV2Os" },
+						ItemsElementName = new[] { ItemsChoiceType.Unit }
 					}
 				},
 				CorrectedItemIdentificationNumbers = new[]
@@ -322,7 +324,8 @@ namespace Diadoc.Samples.Helpers
 					{
 						Gtin = "46070274787520",
 						QuantityMark = "2",
-						Units = new[] { "010460702747875021cTDJJ10ckV2Os", "010460702747875021xYZab10fgH3Kp" }
+						Items = new[] { "010460702747875021cTDJJ10ckV2Os", "010460702747875021xYZab10fgH3Kp" },
+						ItemsElementName = new[] { ItemsChoiceType.Unit, ItemsChoiceType.Unit }
 					}
 				},
 

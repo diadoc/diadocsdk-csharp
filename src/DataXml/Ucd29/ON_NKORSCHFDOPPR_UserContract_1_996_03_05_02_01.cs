@@ -3047,10 +3047,10 @@ namespace Diadoc.Api.DataXml.ON_NKORSCHFDOPPR_UserContract_1_996_03_05_02_01 {
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
     public partial class ItemIdentificationNumbersItemIdentificationNumber {
         
-        private string[] unitsField;
-        
-        private string[] packageIdsField;
-        
+        private string[] itemsField;
+
+        private ItemsChoiceType[] itemsElementNameField;
+
         private string gtinField;
         
         private string quantityMarkField;
@@ -3064,26 +3064,27 @@ namespace Diadoc.Api.DataXml.ON_NKORSCHFDOPPR_UserContract_1_996_03_05_02_01 {
         private string transPackageIdField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("Unit", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public string[] Units {
+        [System.Xml.Serialization.XmlElementAttribute("PackageId", typeof(string), Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlElementAttribute("Unit", typeof(string), Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
+        public string[] Items {
             get {
-                return this.unitsField;
+                return this.itemsField;
             }
             set {
-                this.unitsField = value;
+                this.itemsField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("PackageId", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public string[] PackageIds {
+        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public ItemsChoiceType[] ItemsElementName {
             get {
-                return this.packageIdsField;
+                return this.itemsElementNameField;
             }
             set {
-                this.packageIdsField = value;
+                this.itemsElementNameField = value;
             }
         }
         

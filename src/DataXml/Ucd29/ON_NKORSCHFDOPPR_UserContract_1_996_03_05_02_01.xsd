@@ -859,30 +859,18 @@
           <xs:documentation>Номер средства идентификации товаров</xs:documentation>
         </xs:annotation>
         <xs:complexType>
-          <xs:all>
-            <xs:element minOccurs="0" name="Units">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element maxOccurs="unbounded" name="Unit" type="string255">
-                    <xs:annotation>
-                      <xs:documentation>КИЗ - контрольный идентификационный знак</xs:documentation>
-                    </xs:annotation>
-                  </xs:element>
-                </xs:sequence>
-              </xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Unit" type="string255">
+              <xs:annotation>
+                <xs:documentation>КИЗ - контрольный идентификационный знак</xs:documentation>
+              </xs:annotation>
             </xs:element>
-            <xs:element minOccurs="0" name="PackageIds">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element maxOccurs="unbounded" name="PackageId" type="string255">
-                    <xs:annotation>
-                      <xs:documentation>НомУпак - уникальный идентификатор вторичной/третичной упаковки</xs:documentation>
-                    </xs:annotation>
-                  </xs:element>
-                </xs:sequence>
-              </xs:complexType>
+            <xs:element name="PackageId" type="string255">
+              <xs:annotation>
+                <xs:documentation>НомУпак - уникальный идентификатор вторичной/третичной упаковки</xs:documentation>
+              </xs:annotation>
             </xs:element>
-          </xs:all>
+          </xs:choice>
           <xs:attribute name="Gtin" type="string14f">
             <xs:annotation>
               <xs:documentation>ГТИН - глобальный идентификационный номер товара</xs:documentation>
