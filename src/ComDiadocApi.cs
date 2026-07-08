@@ -341,6 +341,7 @@ namespace Diadoc.Api
 		PrintFormResult GetGeneratedPrintForm(string authToken, string printFormId);
 
 		string GeneratePrintFormFromAttachment(string authToken, int documentType, byte[] content);
+		string GeneratePrintFormFromAttachment(string authToken, string documentType, byte[] content, string fromBoxId = null);
 
 		DateTime NullDateTime();
 
@@ -1820,6 +1821,11 @@ namespace Diadoc.Api
 		public string GeneratePrintFormFromAttachment(string authToken, int documentType, byte[] content)
 		{
 			return diadoc.GeneratePrintFormFromAttachment(authToken, (DocumentType) documentType, content);
+		}
+
+		public string GeneratePrintFormFromAttachment(string authToken, string documentType, byte[] content, string fromBoxId = null)
+		{
+			return diadoc.GeneratePrintFormFromAttachment(authToken, documentType, content, fromBoxId);
 		}
 
 		public DateTime NullDateTime()

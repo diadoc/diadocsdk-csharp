@@ -889,6 +889,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GeneratePrintFormFromAttachment(authToken, documentType, content, fromBoxId);
 		}
 
+		public string GeneratePrintFormFromAttachment(string authToken,
+			string documentType,
+			byte[] content,
+			string fromBoxId = null)
+		{
+			return diadocHttpApi.GeneratePrintFormFromAttachment(authToken, documentType, content, fromBoxId);
+		}
+
 		[Obsolete("Use GetGeneratedPrintForm without `documentType` parameter")]
 		public PrintFormResult GetGeneratedPrintForm(string authToken, DocumentType documentType, string printFormId)
 		{

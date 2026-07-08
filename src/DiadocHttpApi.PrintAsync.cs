@@ -13,8 +13,14 @@ namespace Diadoc.Api
 		[ItemNotNull]
 		public async Task<string> GeneratePrintFormFromAttachmentAsync(string authToken, DocumentType documentType, byte[] content, string fromBoxId = null)
 		{
+			return await GeneratePrintFormFromAttachmentAsync(authToken, documentType.ToString(), content, fromBoxId).ConfigureAwait(false);
+		}
+
+		[ItemNotNull]
+		public async Task<string> GeneratePrintFormFromAttachmentAsync(string authToken, string documentType, byte[] content, string fromBoxId = null)
+		{
 			var qsb = new PathAndQueryBuilder("/GeneratePrintFormFromAttachment")
-				.With("documentType", documentType.ToString());
+				.With("documentType", documentType);
 			if (!string.IsNullOrEmpty(fromBoxId))
 				qsb.AddParameter("fromBoxId", fromBoxId);
 			var responseBytes = await PerformHttpRequestAsync(authToken, "POST", qsb.BuildPathAndQuery(), content).ConfigureAwait(false);

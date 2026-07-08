@@ -12,6 +12,12 @@ namespace Diadoc.Api
 		[NotNull]
 		public string GeneratePrintFormFromAttachment(string authToken, DocumentType documentType, byte[] content, string fromBoxId = null)
 		{
+			return GeneratePrintFormFromAttachment(authToken, documentType.ToString(), content, fromBoxId);
+		}
+
+		[NotNull]
+		public string GeneratePrintFormFromAttachment(string authToken, string documentType, byte[] content, string fromBoxId = null)
+		{
 			var queryString = new StringBuilder();
 			queryString.AppendFormat("/GeneratePrintFormFromAttachment?documentType={0}", documentType);
 			if (!string.IsNullOrEmpty(fromBoxId))
