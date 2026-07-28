@@ -11,6 +11,7 @@ message Employee
 	required string Position = 3;
 	required bool CanBeInvitedForChat = 4;
 	optional Timestamp CreationTimestamp = 5;
+	optional EmployeeExternalIdentity ExternalIdentity = 6;
 }
 
 message EmployeePermissions {
@@ -30,4 +31,9 @@ message EmployeeAction {
 message EmployeeList {
 	repeated Employee Employees = 1;
 	required int32 TotalCount = 2;
+}
+
+message EmployeeExternalIdentity {
+	optional string ExternalId = 1;
+	optional string Email = 2;
 }

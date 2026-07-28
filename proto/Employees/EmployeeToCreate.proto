@@ -14,6 +14,7 @@ message EmployeeToCreateCredentials
 {
 	optional EmployeeToCreateByLogin Login = 1;
 	optional EmployeeToCreateByCertificate Certificate = 2;
+	optional EmployeeToCreateBySsoProvider SsoProvider = 3;
 }
 message EmployeeToCreateByLogin
 {
@@ -26,4 +27,11 @@ message EmployeeToCreateByCertificate
 	required bytes Content = 1;
 	optional string AccessBasis = 2;
 	optional string Email = 3;
+}
+
+message EmployeeToCreateBySsoProvider
+{
+	required string Email = 1;
+	optional FullName FullName = 2;
+	required string ProviderId = 3;
 }

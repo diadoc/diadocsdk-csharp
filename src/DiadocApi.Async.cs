@@ -799,7 +799,7 @@ namespace Diadoc.Api
 		{
 			return diadocHttpApi.GetDocumentsAsync(authToken, filter);
 		}
-		
+
 		public Task<DocumentList> GetDocumentsV4Async(string authToken, string boxId, GetDocumentsV4Request request)
 		{
 			return diadocHttpApi.GetDocumentsV4Async(authToken, boxId, request);
@@ -1638,6 +1638,14 @@ namespace Diadoc.Api
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (userId == null) throw new ArgumentNullException("userId");
 			return diadocHttpApi.GetEmployeeAsync(authToken, boxId, userId);
+		}
+
+		public Task<EmployeeList> GetEmployeesByExternalIdAsync(string authToken, string boxId, string externalId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (externalId == null) throw new ArgumentNullException("externalId");
+			return diadocHttpApi.GetEmployeesByExternalIdAsync(authToken, boxId, externalId);
 		}
 
 		public Task<EmployeeList> GetEmployeesAsync(string authToken, string boxId, int? page, int? count)

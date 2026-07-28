@@ -1793,6 +1793,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEmployee(authToken, boxId, userId);
 		}
 
+		public EmployeeList GetEmployeesByExternalId(string authToken, string boxId, string externalId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (externalId == null) throw new ArgumentNullException("externalId");
+			return diadocHttpApi.GetEmployeesByExternalId(authToken, boxId, externalId);
+		}
+
 		public EmployeeList GetEmployees(string authToken, string boxId, int? page, int? count)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
