@@ -19,6 +19,144 @@
 // Note: requires additional types generated from: Workflows/RoamingConfirmationBehavior.proto
 namespace Diadoc.Api.Proto.Workflows
 {
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentWorkflowSettingsListV3")]
+  public partial class DocumentWorkflowSettingsListV3 : global::ProtoBuf.IExtensible
+  {
+    public DocumentWorkflowSettingsListV3() {}
+    
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Workflows.DocumentWorkflowSettingsV3> _DocumentWorkflowSettings = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Workflows.DocumentWorkflowSettingsV3>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"DocumentWorkflowSettings", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Workflows.DocumentWorkflowSettingsV3> DocumentWorkflowSettings
+    {
+      get { return _DocumentWorkflowSettings; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentWorkflowSettingsV3")]
+  public partial class DocumentWorkflowSettingsV3 : global::ProtoBuf.IExtensible
+  {
+    public DocumentWorkflowSettingsV3() {}
+    
+    private int _Id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int Id
+    {
+      get { return _Id; }
+      set { _Id = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Workflows.ParticipantSettingV3> _Participants = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Workflows.ParticipantSettingV3>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"Participants", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Workflows.ParticipantSettingV3> Participants
+    {
+      get { return _Participants; }
+    }
+  
+    private Diadoc.Api.Proto.Workflows.OperatorConfirmationReceiptBehavior.OperatorConfirmationReceiptBehavior _OperatorConfirmationReceiptBehavior;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"OperatorConfirmationReceiptBehavior", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Workflows.OperatorConfirmationReceiptBehavior.OperatorConfirmationReceiptBehavior OperatorConfirmationReceiptBehavior
+    {
+      get { return _OperatorConfirmationReceiptBehavior; }
+      set { _OperatorConfirmationReceiptBehavior = value; }
+    }
+    private Diadoc.Api.Proto.Workflows.ReceiptOperatorConfirmationReceiptBehavior.ReceiptOperatorConfirmationReceiptBehavior _ReceiptOperatorConfirmationReceiptBehavior;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"ReceiptOperatorConfirmationReceiptBehavior", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Workflows.ReceiptOperatorConfirmationReceiptBehavior.ReceiptOperatorConfirmationReceiptBehavior ReceiptOperatorConfirmationReceiptBehavior
+    {
+      get { return _ReceiptOperatorConfirmationReceiptBehavior; }
+      set { _ReceiptOperatorConfirmationReceiptBehavior = value; }
+    }
+    private Diadoc.Api.Proto.Workflows.OperatorConfirmationBehavior.OperatorConfirmationBehavior _ReceiptOperatorConfirmationBehavior;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"ReceiptOperatorConfirmationBehavior", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Workflows.OperatorConfirmationBehavior.OperatorConfirmationBehavior ReceiptOperatorConfirmationBehavior
+    {
+      get { return _ReceiptOperatorConfirmationBehavior; }
+      set { _ReceiptOperatorConfirmationBehavior = value; }
+    }
+    private Diadoc.Api.Proto.Workflows.AmendmentRequestResponseBehavior.AmendmentRequestResponseBehavior _AmendmentRequestResponseBehavior;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"AmendmentRequestResponseBehavior", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Workflows.AmendmentRequestResponseBehavior.AmendmentRequestResponseBehavior AmendmentRequestResponseBehavior
+    {
+      get { return _AmendmentRequestResponseBehavior; }
+      set { _AmendmentRequestResponseBehavior = value; }
+    }
+    private Diadoc.Api.Proto.Workflows.RoamingConfirmationBehavior.RoamingConfirmationBehavior _ReceiptRoamingConfirmationBehavior;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"ReceiptRoamingConfirmationBehavior", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Workflows.RoamingConfirmationBehavior.RoamingConfirmationBehavior ReceiptRoamingConfirmationBehavior
+    {
+      get { return _ReceiptRoamingConfirmationBehavior; }
+      set { _ReceiptRoamingConfirmationBehavior = value; }
+    }
+    private Diadoc.Api.Proto.Workflows.InvitationBehavior.InvitationBehavior _InvitationBehavior;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"InvitationBehavior", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Workflows.InvitationBehavior.InvitationBehavior InvitationBehavior
+    {
+      get { return _InvitationBehavior; }
+      set { _InvitationBehavior = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ParticipantSettingV3")]
+  public partial class ParticipantSettingV3 : global::ProtoBuf.IExtensible
+  {
+    public ParticipantSettingV3() {}
+    
+    private Diadoc.Api.Proto.Workflows.ParticipantType.ParticipantType _Participant;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Participant", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Workflows.ParticipantType.ParticipantType Participant
+    {
+      get { return _Participant; }
+      set { _Participant = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Workflows.ParticipantActionSettingV3> _Actions = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Workflows.ParticipantActionSettingV3>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"Actions", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Workflows.ParticipantActionSettingV3> Actions
+    {
+      get { return _Actions; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ParticipantActionSettingV3")]
+  public partial class ParticipantActionSettingV3 : global::ProtoBuf.IExtensible
+  {
+    public ParticipantActionSettingV3() {}
+    
+    private int _TitleIndex;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"TitleIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int TitleIndex
+    {
+      get { return _TitleIndex; }
+      set { _TitleIndex = value; }
+    }
+    private Diadoc.Api.Proto.Workflows.ParticipantAction.ParticipantAction _ParticipantAction;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"ParticipantAction", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Workflows.ParticipantAction.ParticipantAction ParticipantAction
+    {
+      get { return _ParticipantAction; }
+      set { _ParticipantAction = value; }
+    }
+    private Diadoc.Api.Proto.Workflows.TitleReceiptBehavior.TitleReceiptBehavior _TitleReceiptBehavior;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"TitleReceiptBehavior", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Workflows.TitleReceiptBehavior.TitleReceiptBehavior TitleReceiptBehavior
+    {
+      get { return _TitleReceiptBehavior; }
+      set { _TitleReceiptBehavior = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentWorkflowSettingsListV2")]
   public partial class DocumentWorkflowSettingsListV2 : global::ProtoBuf.IExtensible
   {

@@ -448,7 +448,9 @@ namespace Diadoc.Api
 		AcquireCounteragentResultV2 WaitAcquireCounteragentResultV2(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
 
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
+		[Obsolete("Use GetWorkflowsSettingsV3()")]
 		DocumentWorkflowSettingsListV2 GetWorkflowsSettings(string authToken, string boxId);
+		DocumentWorkflowSettingsListV3 GetWorkflowsSettingsV3(string authToken, string boxId);
 		List<KeyValueStorageEntry> GetOrganizationStorageEntries(string authToken, string boxId, IEnumerable<string> keys);
 		void PutOrganizationStorageEntries(string authToken, string boxId, IEnumerable<KeyValueStorageEntry> entries);
 		ExtendedSignerDetails GetExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);
@@ -986,7 +988,9 @@ namespace Diadoc.Api
 			TimeSpan? delay = null);
 
 		Task<DocumentList> GetDocumentsByMessageIdAsync(string authToken, string boxId, string messageId);
+		[Obsolete("Use GetWorkflowsSettingsV3Async()")]
 		Task<DocumentWorkflowSettingsListV2> GetWorkflowsSettingsAsync(string authToken, string boxId);
+		Task<DocumentWorkflowSettingsListV3> GetWorkflowsSettingsV3Async(string authToken, string boxId);
 		Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<string> keys);
 		Task PutOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<KeyValueStorageEntry> entries);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection);

@@ -6,4 +6,5 @@ enum ParticipantAction
     Title = 1;
     Signature = 2;
     OptionalSignature = 3;
+    OptionalTitle = 4;
 }

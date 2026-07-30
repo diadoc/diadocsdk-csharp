@@ -20,6 +20,7 @@
 // Note: requires additional types generated from: Documents/NonformalizedDocument.proto
 // Note: requires additional types generated from: Documents/UnilateralDocument.proto
 // Note: requires additional types generated from: Documents/UniversalTransferDocument.proto
+// Note: requires additional types generated from: Documents/DocumentParticipantV2.proto
 // Note: requires additional types generated from: ResolutionTarget.proto
 // Note: requires additional types generated from: ForwardDocumentEvent.proto
 // Note: requires additional types generated from: Events/DiadocMessage-PostApi.proto
@@ -711,6 +712,13 @@ namespace Diadoc.Api.Proto.Documents
       get { return _HasUnreadOutOfWorkflowUniversalMessages; }
       set { _HasUnreadOutOfWorkflowUniversalMessages = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentParticipantInfo> _Participants = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentParticipantInfo>();
+    [global::ProtoBuf.ProtoMember(83, Name=@"Participants", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentParticipantInfo> Participants
+    {
+      get { return _Participants; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -891,6 +899,32 @@ namespace Diadoc.Api.Proto.Documents
     {
       get { return _MessageId; }
       set { _MessageId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentParticipantInfo")]
+  public partial class DocumentParticipantInfo : global::ProtoBuf.IExtensible
+  {
+    public DocumentParticipantInfo() {}
+    
+    private Diadoc.Api.Proto.Documents.DocumentParticipantV2 _Participant;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Participant", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Documents.DocumentParticipantV2 Participant
+    {
+      get { return _Participant; }
+      set { _Participant = value; }
+    }
+
+    private Diadoc.Api.Proto.Documents.RecipientResponseStatus _RecipientResponseStatus = Diadoc.Api.Proto.Documents.RecipientResponseStatus.RecipientResponseStatusUnknown;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"RecipientResponseStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Diadoc.Api.Proto.Documents.RecipientResponseStatus.RecipientResponseStatusUnknown)]
+    public Diadoc.Api.Proto.Documents.RecipientResponseStatus RecipientResponseStatus
+    {
+      get { return _RecipientResponseStatus; }
+      set { _RecipientResponseStatus = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

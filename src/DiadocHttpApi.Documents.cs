@@ -131,6 +131,13 @@ namespace Diadoc.Api
 			qsb.AddParameter("boxId", boxId);
 			return PerformHttpRequest<DocumentWorkflowSettingsListV2>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
+		
+		public DocumentWorkflowSettingsListV3 GetWorkflowsSettingsV3([NotNull] string authToken, string boxId)
+		{
+			var qsb = new PathAndQueryBuilder("/V3/GetWorkflowsSettings");
+			qsb.AddParameter("boxId", boxId);
+			return PerformHttpRequest<DocumentWorkflowSettingsListV3>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
 
 		public SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId)
 		{

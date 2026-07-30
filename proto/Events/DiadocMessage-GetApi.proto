@@ -69,7 +69,7 @@ message Template {
     required string FromBoxId = 3;
     required string ToBoxId = 4;
     required string MessageFromBoxId = 5;
-    required string MessageToBoxId = 6;
+    optional string MessageToBoxId = 6;
     repeated Entity Entities = 7;
     optional bool IsDeleted = 8 [default = false];
     optional string MessageToDepartmentId = 9;

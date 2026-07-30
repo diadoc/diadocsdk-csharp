@@ -24,7 +24,10 @@ namespace Diadoc.Api.Proto.Workflows.ParticipantAction
       Signature = 2,
             
       [global::ProtoBuf.ProtoEnum(Name=@"OptionalSignature", Value=3)]
-      OptionalSignature = 3
+      OptionalSignature = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"OptionalTitle", Value=4)]
+      OptionalTitle = 4
     }
   
 }
