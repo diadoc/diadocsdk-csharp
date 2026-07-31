@@ -51,6 +51,17 @@ namespace Diadoc.Api
 			Docflow = new DocflowApi(diadocHttpApi.Docflow);
 		}
 
+		public DiadocApi(string apiClientId, string serverUrl, ICrypt crypt, string oidcClientSecret, string oidcBaseUrl = null)
+			: this(apiClientId, serverUrl, crypt)
+		{
+			diadocHttpApi = new DiadocHttpApi(
+				apiClientId,
+				new HttpClient(serverUrl),
+				crypt,
+				oidcClientSecret,
+				oidcBaseUrl);
+		}
+
 		/// <summary>
 		///     The default value is true
 		/// </summary>
@@ -161,6 +172,12 @@ namespace Diadoc.Api
 			if (thumbprint == null) throw new ArgumentNullException("thumbprint");
 			if (string.IsNullOrEmpty(token)) throw new ArgumentNullException("token");
 			return diadocHttpApi.AuthenticateWithKeyConfirm(thumbprint, token, saveBinding);
+		}
+
+		public string AuthenticateWithOidc(string refreshToken)
+		{
+			if (refreshToken == null) throw new ArgumentNullException("refreshToken");
+			return diadocHttpApi.AuthenticateWithOidc(refreshToken);
 		}
 
 		[Obsolete("Use GetMyEmployee()")]

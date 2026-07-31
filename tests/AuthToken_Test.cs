@@ -75,6 +75,8 @@ namespace Diadoc.Api.Tests
 			"AuthenticateByKey",
 			"AuthenticateBySid",
 			"AuthenticateWithKey",
+			"AuthenticateWithOidc",
+			"AuthenticateWithOidcAsync",
 			"Recognize",
 			"GetRecognized",
 			"RecognizeAsync",

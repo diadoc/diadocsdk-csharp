@@ -44,6 +44,18 @@ namespace Diadoc.Api
 			Docflow = new DocflowHttpApi(this);
 		}
 
+		public DiadocHttpApi(
+			string apiClientId,
+			HttpClient httpClient,
+			ICrypt crypt,
+			string oidcClientSecret,
+			string oidcBaseUrl = null)
+			: this(apiClientId, httpClient, crypt)
+		{
+			this.oidcClientSecret = oidcClientSecret;
+			this.oidcBaseUrl = oidcBaseUrl;
+		}
+
 		[NotNull] public IHttpClient HttpClient { get; }
 
 		[NotNull] public DocflowHttpApi Docflow { get; }
