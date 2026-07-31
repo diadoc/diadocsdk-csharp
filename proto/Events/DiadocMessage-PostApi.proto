@@ -321,6 +321,13 @@ message DocumentAttachment {
 	optional int32 WorkflowId = 16;
 	optional bool IsEncrypted = 17 [default = false];
 	optional string EditingSettingId = 18;
+	repeated DocumentParticipantRoleInfo ParticipantRoles = 19;
+}
+
+message DocumentParticipantRoleInfo {
+	required string BoxId = 1;
+	optional string DepartmentId = 2;
+	required string Role = 3;
 }
 
 message MetadataItem {
@@ -573,7 +580,7 @@ message TemplateToPost {
 	required string FromBoxId = 1;
 	required string ToBoxId = 2;
 	required string MessageFromBoxId = 3;
-	required string MessageToBoxId = 4;
+	optional string MessageToBoxId = 4;
 	optional string MessageToDepartmentId = 5;
 	repeated TemplateDocumentAttachment DocumentAttachments = 6;
 	optional LockMode LockMode = 7 [default = None];
@@ -598,6 +605,7 @@ message TemplateDocumentAttachment {
 	optional PredefinedRecipientTitle PredefinedRecipientTitle = 11;
 	optional bool RefusalDisabled = 12 [default = false];
 	repeated CustomDataItem CustomData = 13;
+	repeated DocumentParticipantRoleInfo ParticipantRoles = 14;
 }
 
 message TemplatePatchToPost {

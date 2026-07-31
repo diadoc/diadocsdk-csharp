@@ -351,8 +351,10 @@ namespace Diadoc.Api.Proto.Events
       get { return _MessageFromBoxId; }
       set { _MessageFromBoxId = value; }
     }
-    private string _MessageToBoxId;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"MessageToBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _MessageToBoxId = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"MessageToBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string MessageToBoxId
     {
       get { return _MessageToBoxId; }

@@ -2015,6 +2015,46 @@ namespace Diadoc.Api.Proto.Events
       get { return _EditingSettingId; }
       set { _EditingSettingId = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.DocumentParticipantRoleInfo> _ParticipantRoles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.DocumentParticipantRoleInfo>();
+    [global::ProtoBuf.ProtoMember(19, Name=@"ParticipantRoles", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.DocumentParticipantRoleInfo> ParticipantRoles
+    {
+      get { return _ParticipantRoles; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DocumentParticipantRoleInfo")]
+  public partial class DocumentParticipantRoleInfo : global::ProtoBuf.IExtensible
+  {
+    public DocumentParticipantRoleInfo() {}
+    
+    private string _BoxId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"BoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string BoxId
+    {
+      get { return _BoxId; }
+      set { _BoxId = value; }
+    }
+
+    private string _DepartmentId = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DepartmentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DepartmentId
+    {
+      get { return _DepartmentId; }
+      set { _DepartmentId = value; }
+    }
+    private string _Role;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"Role", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Role
+    {
+      get { return _Role; }
+      set { _Role = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -3455,8 +3495,10 @@ namespace Diadoc.Api.Proto.Events
       get { return _MessageFromBoxId; }
       set { _MessageFromBoxId = value; }
     }
-    private string _MessageToBoxId;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"MessageToBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private string _MessageToBoxId = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"MessageToBoxId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string MessageToBoxId
     {
       get { return _MessageToBoxId; }
@@ -3649,6 +3691,13 @@ namespace Diadoc.Api.Proto.Events
     public global::System.Collections.Generic.List<Diadoc.Api.Proto.CustomDataItem> CustomData
     {
       get { return _CustomData; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.DocumentParticipantRoleInfo> _ParticipantRoles = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.DocumentParticipantRoleInfo>();
+    [global::ProtoBuf.ProtoMember(14, Name=@"ParticipantRoles", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.DocumentParticipantRoleInfo> ParticipantRoles
+    {
+      get { return _ParticipantRoles; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;

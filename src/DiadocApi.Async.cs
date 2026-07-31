@@ -1488,6 +1488,15 @@ namespace Diadoc.Api
 				throw new ArgumentNullException(nameof(boxId));
 			return diadocHttpApi.GetWorkflowsSettingsAsync(authToken, boxId);
 		}
+		
+		public Task<DocumentWorkflowSettingsListV3> GetWorkflowsSettingsV3Async(string authToken, string boxId)
+		{
+			if (string.IsNullOrEmpty(authToken))
+				throw new ArgumentNullException(nameof(authToken));
+			if (string.IsNullOrEmpty(boxId))
+				throw new ArgumentNullException(nameof(boxId));
+			return diadocHttpApi.GetWorkflowsSettingsV3Async(authToken, boxId);
+		}
 
 		public Task<List<KeyValueStorageEntry>> GetOrganizationStorageEntriesAsync(string authToken, string boxId, IEnumerable<string> keys)
 		{

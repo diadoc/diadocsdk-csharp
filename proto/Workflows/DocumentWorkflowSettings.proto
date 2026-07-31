@@ -10,6 +10,32 @@ import "Workflows/RoamingConfirmationBehavior.proto";
 
 package Diadoc.Api.Proto.Workflows;
 
+message DocumentWorkflowSettingsListV3 {
+	repeated DocumentWorkflowSettingsV3 DocumentWorkflowSettings = 1;
+}
+
+message DocumentWorkflowSettingsV3 {
+	required int32 Id = 1;
+	repeated ParticipantSettingV3 Participants = 2;
+	required OperatorConfirmationReceiptBehavior.OperatorConfirmationReceiptBehavior OperatorConfirmationReceiptBehavior = 3;
+	required ReceiptOperatorConfirmationReceiptBehavior.ReceiptOperatorConfirmationReceiptBehavior ReceiptOperatorConfirmationReceiptBehavior = 4;
+	required OperatorConfirmationBehavior.OperatorConfirmationBehavior ReceiptOperatorConfirmationBehavior = 5;
+	required AmendmentRequestResponseBehavior.AmendmentRequestResponseBehavior AmendmentRequestResponseBehavior = 6;
+	required RoamingConfirmationBehavior.RoamingConfirmationBehavior ReceiptRoamingConfirmationBehavior = 7;
+	required InvitationBehavior.InvitationBehavior InvitationBehavior = 8;
+}
+
+message ParticipantSettingV3 {
+	required ParticipantType.ParticipantType Participant = 1;
+	repeated ParticipantActionSettingV3 Actions = 2;
+}
+
+message ParticipantActionSettingV3 {
+	required int32 TitleIndex = 1;
+	required ParticipantAction.ParticipantAction ParticipantAction = 2;
+	required TitleReceiptBehavior.TitleReceiptBehavior TitleReceiptBehavior = 3;
+}
+
 message DocumentWorkflowSettingsListV2 {
 	repeated DocumentWorkflowSettingsV2 DocumentWorkflowSettings = 1;
 }
