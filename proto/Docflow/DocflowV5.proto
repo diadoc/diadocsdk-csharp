@@ -139,7 +139,7 @@ message AmendmentRequestRecipientDocflow
 
 message AmendmentRequestDocflowV5
 {
-	required Documents.DocumentParticipantV2 Requester = 1;
+	optional Documents.DocumentParticipantV2 Requester = 1;
 	repeated AmendmentRequestRecipientDocflow RecipientDocflows = 2;
 	required bool IsFinished = 3;
 	optional SignedAttachmentV3 AmendmentRequest = 4;
