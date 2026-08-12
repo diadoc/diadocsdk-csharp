@@ -64,7 +64,7 @@ namespace Diadoc.Api.Http
 				: string.Empty;
 			var sb = new StringBuilder();
 			sb.AppendFormat("{0} ({1})", (int)StatusCode, StatusCode);
-			sb.AppendFormat(responseHeaders);
+			sb.AppendFormat("{0}", responseHeaders);
 			sb.AppendFormat("\r\nContent: {0}", FormatContent());
 
 			return sb.ToString();
