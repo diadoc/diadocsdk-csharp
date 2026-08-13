@@ -890,6 +890,8 @@ namespace Diadoc.Api
 		Organization GetOrganizationByForeignTaxpayerCode(string authToken, string foreignTaxpayerCode);
 		Organization GetOrCreateRoamingOrganizationByFnsParticipantId(string authToken, string myBoxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
 		SearchFnsParticipantsResponse SearchFnsParticipants(string authToken, string myBoxId, [MarshalAs(UnmanagedType.IDispatch)] object request);
+
+		PowerOfAttorneyContentResponse GetPowerOfAttorneyContentV2(string authToken, string boxId, string messageId, string entityId);
 	}
 
 	[ComVisible(true)]
@@ -2211,6 +2213,11 @@ namespace Diadoc.Api
 		public PowerOfAttorney GetPowerOfAttorneyInfo(string authToken, string boxId, string messageId, string entityId)
 		{
 			return diadoc.GetPowerOfAttorneyInfo(authToken, boxId, messageId, entityId);
+		}
+
+		public PowerOfAttorneyContentResponse GetPowerOfAttorneyContentV2(string authToken, string boxId, string messageId, string entityId)
+		{
+			return diadoc.GetPowerOfAttorneyContentV2(authToken, boxId, messageId, entityId);
 		}
 
 		public RoamingOperatorList GetRoamingOperators(string authToken, string boxId)
