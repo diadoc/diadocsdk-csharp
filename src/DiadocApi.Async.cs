@@ -833,6 +833,11 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDocumentAsync(authToken, boxId, messageId, entityId);
 		}
 
+		public Task<DocumentActionList> GetDocumentActionsAsync(string authToken, string boxId, string messageId, string entityId)
+		{
+			return diadocHttpApi.GetDocumentActionsAsync(authToken, boxId, messageId, entityId);
+		}
+
 		public Task<SignatureInfo> GetSignatureInfoAsync(string authToken, string boxId, string messageId, string entityId)
 		{
 			return diadocHttpApi.GetSignatureInfoAsync(authToken, boxId, messageId, entityId);

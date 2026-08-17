@@ -1,0 +1,159 @@
+package Diadoc.Api.Proto.Documents;
+
+message DocumentActionList {
+	repeated DocumentAction Actions = 1;
+}
+
+message DocumentAction {
+	required DocumentActionType Type = 1;
+	optional DocumentActionPayload Payload = 2;
+}
+
+enum DocumentActionType {
+	UnknownDocumentAction = 0;
+
+	Edit = 1;
+	RequestAmendment = 2;
+	RejectParticipantTitleSigning = 3;
+	AttachParticipantTitleSvr = 4;
+	ChangePacket = 5;
+	PatchCustomData = 6;
+	SignApprovingly = 7;
+
+	RequestApprovement = 10;
+	RequestPrimarySignature = 11;
+	RequestApprovementSignature = 12;
+	ResolveWithApprove = 13;
+	ResolveWithDisapprove = 14;
+	CancelResolution = 15;
+	CancelResolutionRequest = 16;
+	DenySignatureRequest = 17;
+	CancelSignatureRequestDenial = 18;
+	AssignResolutionRouteToParticipantTitle = 19;
+	RemoveResolutionRouteFromParticipantTitle = 20;
+
+	RevokeUnilaterally = 30;
+	RequestRevocation = 31;
+	SignRevocationRequestByInitiator = 32;
+	SignRevocationRequestByEndParticipant = 33;
+	SignRevocationRequestApprovingly = 34;
+	RejectRevocationRequestSigning = 35;
+	RequestRevocationRequestApprovement = 36;
+	RequestRevocationRequestPrimarySignature = 37;
+	RequestRevocationRequestApprovementSignature = 38;
+	ResolveRevocationRequestWithApprove = 39;
+	ResolveRevocationRequestWithDisapprove = 40;
+	CancelRevocationRequestResolution = 41;
+	CancelRevocationRequestResolutionRequest = 42;
+	DenyRevocationRequestSignatureRequest = 43;
+	CancelRevocationRequestSignatureRequestDenial = 44;
+	AssignResolutionRouteToRevocationRequest = 45;
+	RemoveResolutionRouteFromRevocationRequest = 46;
+
+	RequestTtGisFixationCancellation = 50;
+
+	AttachParticipantTitle = 60;
+	SignParticipantTitle = 61;
+	ConfirmReceiptOfTitle = 62;
+	AddInformationMessageForTitle = 63;
+
+	Delete = 70;
+	Restore = 71;
+	Move = 72;
+	MarkDocumentAsRead = 73;
+	MarkUniversalMessageAsRead = 74;
+
+	RefuseTemplate = 80;
+	TemplateTransformToDocument = 81;
+}
+
+message DocumentActionPayload {
+	optional RejectParticipantTitleSigningDocumentActionPayload RejectParticipantTitleSigning = 1;
+	optional AttachParticipantTitleSvrDocumentActionPayload AttachParticipantTitleSvr = 2;
+	optional SignApprovinglyDocumentActionPayload SignApprovingly = 3;
+	optional RequestApprovementDocumentActionPayload RequestApprovement = 4;
+	optional RequestPrimarySignatureDocumentActionPayload RequestPrimarySignature = 5;
+	optional RequestApprovementSignatureDocumentActionPayload RequestApprovementSignature = 6;
+	optional ResolveWithApproveDocumentActionPayload ResolveWithApprove = 7;
+	optional ResolveWithDisapproveDocumentActionPayload ResolveWithDisapprove = 8;
+	optional CancelResolutionDocumentActionPayload CancelResolution = 9;
+	optional CancelResolutionRequestDocumentActionPayload CancelResolutionRequest = 10;
+	optional DenySignatureRequestDocumentActionPayload DenySignatureRequest = 11;
+	optional CancelSignatureRequestDenialDocumentActionPayload CancelSignatureRequestDenial = 12;
+	optional AssignResolutionRouteToParticipantTitleDocumentActionPayload AssignResolutionRouteToParticipantTitle = 13;
+	optional RemoveResolutionRouteFromParticipantTitleDocumentActionPayload RemoveResolutionRouteFromParticipantTitle = 14;
+	optional AttachParticipantTitleDocumentActionPayload AttachParticipantTitle = 15;
+	optional SignParticipantTitleDocumentActionPayload SignParticipantTitle = 16;
+	optional ConfirmReceiptOfTitleDocumentActionPayload ConfirmReceiptOfTitle = 17;
+	optional AddInformationMessageForTitleDocumentActionPayload AddInformationMessageForTitle = 18;
+}
+
+message RejectParticipantTitleSigningDocumentActionPayload {
+	required int32 TitleIndex = 1;
+}
+
+message AttachParticipantTitleSvrDocumentActionPayload {
+	required int32 TitleIndex = 1;
+}
+
+message SignApprovinglyDocumentActionPayload {
+}
+
+message RequestApprovementDocumentActionPayload {
+}
+
+message RequestPrimarySignatureDocumentActionPayload {
+}
+
+message RequestApprovementSignatureDocumentActionPayload {
+}
+
+message ResolveWithApproveDocumentActionPayload {
+}
+
+message ResolveWithDisapproveDocumentActionPayload {
+}
+
+message CancelResolutionDocumentActionPayload {
+}
+
+message CancelResolutionRequestDocumentActionPayload {
+}
+
+message DenySignatureRequestDocumentActionPayload {
+}
+
+message CancelSignatureRequestDenialDocumentActionPayload {
+}
+
+message AssignResolutionRouteToParticipantTitleDocumentActionPayload {
+	required int32 TitleIndex = 1;
+}
+
+message RemoveResolutionRouteFromParticipantTitleDocumentActionPayload {
+	required int32 TitleIndex = 1;
+}
+
+message AttachParticipantTitleDocumentActionPayload {
+	required int32 TitleIndex = 1;
+	required bool IsOptional = 2;
+	optional TitleActionPredefinedOperationResult PredefinedOperationResult = 3;
+}
+
+message SignParticipantTitleDocumentActionPayload {
+	required int32 TitleIndex = 1;
+	optional TitleActionPredefinedOperationResult PredefinedOperationResult = 2;
+}
+
+message ConfirmReceiptOfTitleDocumentActionPayload {
+	required int32 TitleIndex = 1;
+}
+
+message AddInformationMessageForTitleDocumentActionPayload {
+	required int32 TitleIndex = 1;
+}
+
+enum TitleActionPredefinedOperationResult {
+	NoPredefinedOperationResult = 0;
+	Withdrawn = 1;
+}

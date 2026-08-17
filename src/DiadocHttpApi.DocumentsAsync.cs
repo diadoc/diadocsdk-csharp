@@ -81,6 +81,16 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Document>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
+		[ItemNotNull]
+		public Task<DocumentActionList> GetDocumentActionsAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] string messageId, [NotNull] string entityId)
+		{
+			var qsb = new PathAndQueryBuilder("/GetDocumentActions");
+			qsb.AddParameter("boxId", boxId);
+			qsb.AddParameter("messageId", messageId);
+			qsb.AddParameter("entityId", entityId);
+			return PerformHttpRequestAsync<DocumentActionList>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+
 		public Task DeleteAsync([NotNull] string authToken, [NotNull] string boxId, [NotNull] string messageId, [CanBeNull] string documentId)
 		{
 			return MessageOrDocumentCommandAsync("/Delete", authToken, boxId, messageId, documentId);

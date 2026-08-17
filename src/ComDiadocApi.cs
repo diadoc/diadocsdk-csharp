@@ -394,6 +394,7 @@ namespace Diadoc.Api
 			long timestampToTicks = 0);
 
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
+		DocumentActionList GetDocumentActions(string authToken, string boxId, string messageId, string entityId);
 		SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId);
 
 		[Obsolete("Use GetCounteragentV3()")]
@@ -1967,6 +1968,11 @@ namespace Diadoc.Api
 		public Document GetDocument(string authToken, string boxId, string messageId, string entityId)
 		{
 			return diadoc.GetDocument(authToken, boxId, messageId, entityId);
+		}
+
+		public DocumentActionList GetDocumentActions(string authToken, string boxId, string messageId, string entityId)
+		{
+			return diadoc.GetDocumentActions(authToken, boxId, messageId, entityId);
 		}
 
 		public SignatureInfo GetSignatureInfo(string authToken, string boxId, string messageId, string entityId)
