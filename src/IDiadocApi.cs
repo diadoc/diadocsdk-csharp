@@ -257,6 +257,7 @@ namespace Diadoc.Api
 		DocumentList GetDocuments(string authToken, DocumentsFilter filter);
 		DocumentList GetDocumentsV4(string authToken, string boxId, GetDocumentsV4Request request);
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
+		DocumentActionList GetDocumentActions(string authToken, string boxId, string messageId, string entityId);
 
 		[Obsolete("Use GetDocflowsV4() from Docflow property")]
 		GetDocflowBatchResponse GetDocflows(string authToken, string boxId, GetDocflowBatchRequest request);
@@ -772,6 +773,7 @@ namespace Diadoc.Api
 		Task<DocumentList> GetDocumentsAsync(string authToken, DocumentsFilter filter);
 		Task<DocumentList> GetDocumentsV4Async(string authToken, string boxId, GetDocumentsV4Request request);
 		Task<Document> GetDocumentAsync(string authToken, string boxId, string messageId, string entityId);
+		Task<DocumentActionList> GetDocumentActionsAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<SignatureInfo> GetSignatureInfoAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType);
