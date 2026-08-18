@@ -494,8 +494,10 @@ namespace Diadoc.Api.Proto.Docflow
   {
     public AmendmentRequestDocflowV5() {}
     
-    private Diadoc.Api.Proto.Documents.DocumentParticipantV2 _Requester;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Requester", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private Diadoc.Api.Proto.Documents.DocumentParticipantV2 _Requester = null;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Requester", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
     public Diadoc.Api.Proto.Documents.DocumentParticipantV2 Requester
     {
       get { return _Requester; }
