@@ -719,6 +719,15 @@ namespace Diadoc.Api.Proto.Documents
       get { return _Participants; }
     }
   
+
+    private Diadoc.Api.Proto.Documents.AmendmentRequestMetadata _RecipientResponseAmendmentRequestMetadata = null;
+    [global::ProtoBuf.ProtoMember(84, IsRequired = false, Name=@"RecipientResponseAmendmentRequestMetadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.AmendmentRequestMetadata RecipientResponseAmendmentRequestMetadata
+    {
+      get { return _RecipientResponseAmendmentRequestMetadata; }
+      set { _RecipientResponseAmendmentRequestMetadata = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

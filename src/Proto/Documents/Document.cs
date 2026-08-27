@@ -56,6 +56,7 @@ namespace Diadoc.Api.Proto.Documents
 		RecipientReceiptMetadata RecipientReceiptMetadata { get; }
 		ConfirmationMetadata ConfirmationMetadata { get; }
 		AmendmentRequestMetadata AmendmentRequestMetadata { get; }
+		AmendmentRequestMetadata RecipientResponseAmendmentRequestMetadata { get; }
 		ReadonlyList MetadataList { get; }
 		bool IsDeleted { get; }
 		bool IsTest { get; }
