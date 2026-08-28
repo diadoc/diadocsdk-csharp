@@ -1592,6 +1592,7 @@ namespace Diadoc.Api.Proto.Events
 		ReadonlyList LabelsList { get; }
 		void AddLabel(string label);
 		bool NeedReceipt { get; set; }
+		void AddMetadataItem([MarshalAs(UnmanagedType.IDispatch)] object metadataItem);
 	}
 
 	[ComVisible(true)]
@@ -1614,6 +1615,11 @@ namespace Diadoc.Api.Proto.Events
 		public void AddLabel(string label)
 		{
 			Labels.Add(label);
+		}
+
+		public void AddMetadataItem(object metadataItem)
+		{
+			Metadata.Add((MetadataItem) metadataItem);
 		}
 	}
 
