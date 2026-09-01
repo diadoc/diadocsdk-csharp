@@ -6,6 +6,9 @@ using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
 using Diadoc.Api.Proto.Workflows;
 using JetBrains.Annotations;
+using System.Linq;
+using DocumentHistory = Diadoc.Api.Proto.Documents.DocumentHistory.DocumentHistory;
+using DocumentHistoryEmbed = Diadoc.Api.Proto.Documents.DocumentHistory.DocumentHistoryEmbed;
 
 namespace Diadoc.Api
 {
@@ -81,6 +84,22 @@ namespace Diadoc.Api
 			qsb.AddParameter("messageId", messageId);
 			qsb.AddParameter("entityId", entityId);
 			return PerformHttpRequest<Document>(authToken, "GET", qsb.BuildPathAndQuery());
+		}
+
+		[NotNull]
+		public DocumentHistory GetDocumentHistory(
+			[NotNull] string authToken,
+			[NotNull] string boxId,
+			[NotNull] string messageId,
+			[NotNull] string entityId,
+			params DocumentHistoryEmbed[] embeds)
+		{
+			var qsb = new PathAndQueryBuilder("/GetDocumentHistory");
+			qsb.AddParameter("boxId", boxId);
+			qsb.AddParameter("messageId", messageId);
+			qsb.AddParameter("entityId", entityId);
+			qsb.AddCommaSeparatedParameter("embed", embeds?.Select(x => x.ToString()).ToArray());
+			return PerformHttpRequest<DocumentHistory>(authToken, "GET", qsb.BuildPathAndQuery());
 		}
 
 		[NotNull]

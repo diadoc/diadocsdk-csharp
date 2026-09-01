@@ -1,0 +1,474 @@
+import "DocumentId.proto";
+import "Organization.proto";
+import "ResolutionAction.proto";
+import "ResolutionTarget.proto";
+import "Timestamp.proto";
+import "UniversalMessage.proto";
+import "Documents/DocumentParticipantV2.proto";
+import "Docflow/Attachment.proto";
+import "Docflow/AttachmentV3.proto";
+import "Docflow/DocflowV3.proto";
+import "Docflow/ResolutionDocflowV3.proto";
+
+package Diadoc.Api.Proto.Documents.DocumentHistory;
+
+enum DocumentHistoryEmbed {
+  None = 0;
+  Comments = 1;
+  ResolutionEntities = 2;
+}
+
+message DocumentHistory {
+  repeated DocumentHistoryItem Items = 1;
+  optional DocumentHistoryReferenceData ReferenceData = 2;
+}
+
+message DocumentHistoryReferenceData {
+  repeated HistoryOrganizationBoxReference Boxes = 1;
+  repeated HistoryDepartmentReference Departments = 2;
+}
+
+message HistoryOrganizationBoxReference {
+  required string BoxId = 1;
+  required string BoxTitle = 2;
+  required string OrganizationId = 3;
+  required string OrganizationInn = 4;
+  optional string OrganizationKpp = 5;
+  required string OrganizationFullName = 6;
+  optional string OrganizationShortName = 7;
+}
+
+message HistoryDepartmentReference {
+  required string BoxId = 1;
+  required Department Department = 2;
+}
+
+message DocumentHistoryItem {
+  enum EventType {
+    Unknown = 0;
+    CreatedFromTemplate = 1;
+    OutOfWorkflowUniversalMessageAdded = 2;
+    WillBeSentTo = 3;
+    Sent = 4;
+    Received = 5;
+    TtGisFixationCancellationSigned = 6;
+    RoamingDeliveryError = 7;
+    Signed = 8;
+    PartiallySigned = 9;
+    Rejected = 10;
+    ReceiptSent = 11;
+    ApprovedWithSignature = 12;
+    AmendmentRequested = 13;
+    RevokedUnilaterally = 14;
+    RevokedForcibly = 15;
+    RevocationRequested = 16;
+    RevocationAccepted = 17;
+    RevocationRejected = 18;
+    ResolutionRouteActions = 19;
+    MoveToDepartmentResolutionRoute = 20;
+    ResolutionRequested = 21;
+    ResolutionRequestCancelled = 22;
+    SignatureRequestDenied = 23;
+    Resolved = 24;
+    ResolutionRouteAssigned = 25;
+    ResolutionRouteRemoved = 26;
+    Moved = 27;
+    Deleted = 28;
+    Restored = 29;
+    Edited = 30;
+    Forwarded = 31;
+    TagsChanged = 32;
+    AmendmentSent = 33;
+    OuterDocflowChanged = 34;
+    TransformedTo = 35;
+    DocumentTemplateRefused = 36;
+    TemplateRefused = 37;
+  }
+
+  optional Timestamp OccurredAt = 1;
+  // required
+  optional DocumentHistoryItemCategory Category = 2;
+  // required
+  optional EventType Type = 3;
+  required string BoxId = 4;
+  optional HistoryAuthor Author = 5;
+  optional string DepartmentId = 6;
+  optional DocumentHistoryItemPayload Payload = 7;
+}
+
+message DocumentHistoryItemPayload {
+  optional CreatedFromTemplatePayload CreatedFromTemplate = 1;
+  optional OutOfWorkflowUniversalMessageAddedPayload OutOfWorkflowUniversalMessageAdded = 2;
+  optional WillBeSentToPayload WillBeSentTo = 3;
+  optional SentPayload Sent = 4;
+  optional ReceivedPayload Received = 5;
+  optional TtGisFixationCancellationSignedPayload TtGisFixationCancellationSigned = 6;
+  optional RoamingDeliveryErrorPayload RoamingDeliveryError = 7;
+  optional SignedPayload Signed = 8;
+  optional PartiallySignedPayload PartiallySigned = 9;
+  optional RejectedPayload Rejected = 10;
+  optional ReceiptSentPayload ReceiptSent = 11;
+  optional ApprovedWithSignaturePayload ApprovedWithSignature = 12;
+  optional AmendmentRequestedPayload AmendmentRequested = 13;
+  optional RevokedPayload RevokedUnilaterally = 14;
+  optional RevokedPayload RevokedForcibly = 15;
+  optional RevocationRequestedPayload RevocationRequested = 16;
+  optional RevocationAcceptedPayload RevocationAccepted = 17;
+  optional RevocationRejectedPayload RevocationRejected = 18;
+  optional ResolutionRouteActionsPayload ResolutionRouteActions = 19;
+  optional MoveToDepartmentResolutionRoutePayload MoveToDepartmentResolutionRoute = 20;
+  optional ResolutionRequestedPayload ResolutionRequested = 21;
+  optional ResolutionRequestCancelledPayload ResolutionRequestCancelled = 22;
+  optional SignatureRequestDeniedPayload SignatureRequestDenied = 23;
+  optional ResolvedPayload Resolved = 24;
+  optional ResolutionRouteAssignedPayload ResolutionRouteAssigned = 25;
+  optional ResolutionRouteRemovedPayload ResolutionRouteRemoved = 26;
+  optional MovedPayload Moved = 27;
+  optional EditedPayload Edited = 30;
+  optional ForwardedPayload Forwarded = 31;
+  optional TagsChangedPayload TagsChanged = 32;
+  optional AmendmentSentPayload AmendmentSent = 33;
+  optional OuterDocflowChangedPayload OuterDocflowChanged = 34;
+  optional TransformedToPayload TransformedTo = 35;
+  optional DocumentTemplateRefusedPayload DocumentTemplateRefused = 36;
+  optional TemplateRefusedPayload TemplateRefused = 37;
+}
+
+enum DocumentHistoryItemCategory {
+  UnknownDocumentHistoryItemCategory = 0;
+  Incoming = 1;
+  Outgoing = 2;
+  Internal = 3;
+  Error = 4;
+}
+
+message HistoryAuthor {
+  optional string UserId = 1;
+  optional string DisplayName = 2;
+  optional HistoryGender Gender = 3;
+  optional string Position = 4;
+}
+
+message HistoryParentEntity {
+  // required
+  optional HistoryParentEntityType Type = 1;
+  required string EntityId = 2;
+}
+
+enum HistoryParentEntityType {
+  UnknownHistoryParentEntityType = 0;
+  Document = 1;
+  Revocation = 2;
+  UnilateralRevocation = 3;
+}
+
+message CreatedFromTemplatePayload {
+  // required
+  optional DocumentId TemplateDocumentId = 1;
+}
+
+message SentPayload {
+  optional Docflow.SignatureV3 Signature = 1;
+  optional Docflow.Entity CommentEntity = 2;
+}
+
+message ReceivedPayload {
+  repeated Documents.DocumentParticipantV2 Recipients = 1;
+  optional int32 TitleIndex = 2;
+  optional string TitleEntityId = 3;
+}
+
+message RoamingDeliveryErrorPayload {
+  // required
+  optional string NotificationId = 1;
+  optional string ErrorText = 2;
+}
+
+message SignedPayload {
+  // required
+  optional Docflow.SignatureV3 Signature = 1;
+  // required
+  optional int32 TitleIndex = 2;
+  // required
+  optional string TitleEntityId = 3;
+  // required
+  optional Documents.DocumentParticipantV2 SignedBy = 4;
+}
+
+message PartiallySignedPayload {
+  // required
+  optional Docflow.SignatureV3 Signature = 1;
+  // required
+  optional int32 TitleIndex = 2;
+  // required
+  optional string TitleEntityId = 3;
+  // required
+  optional Documents.DocumentParticipantV2 SignedBy = 4;
+}
+
+message RejectedPayload {
+  optional Docflow.SignedAttachmentV3 Rejection = 1;
+  // required
+  optional int32 TitleIndex = 2;
+  // required
+  optional string TitleEntityId = 3;
+  optional UniversalMessageInfo UniversalMessage = 4;
+  // required
+  optional Documents.DocumentParticipantV2 RejectedBy = 5;
+  optional string PlainText = 6;
+}
+
+message ReceiptSentPayload {
+  optional Docflow.SignedAttachmentV3 Receipt = 1;
+  optional int32 TitleIndex = 2;
+  optional string TitleEntityId = 3;
+  optional UniversalMessageInfo UniversalMessage = 4;
+  // required
+  optional Documents.DocumentParticipantV2 ReceiptSentBy = 5;
+}
+
+message ApprovedWithSignaturePayload {
+  // required
+  optional Docflow.SignatureV3 Signature = 1;
+  // required
+  optional HistoryParentEntity Parent = 2;
+  optional string ResolutionRequestId = 3;
+}
+
+message AmendmentRequestedPayload {
+  optional Docflow.SignedAttachmentV3 AmendmentRequest = 1;
+  optional UniversalMessageInfo UniversalMessage = 2;
+  // required
+  optional Documents.DocumentParticipantV2 AmendmentRequestedBy = 3;
+  optional string PlainText = 4;
+}
+
+message AmendmentSentPayload {
+  // required
+  optional DocumentId AmendmentDocumentId = 1;
+  // required
+  optional Docflow.SignatureV3 Signature = 2;
+  // required
+  optional DocumentTypePresentation DocumentTypePresentation = 3;
+  optional Docflow.Entity CommentEntity = 4;
+}
+
+message DocumentTypePresentation {
+  // required
+  optional string Name = 1;
+  // required
+  optional string NameAccusative = 2;
+  // required
+  optional HistoryGender Gender = 3;
+}
+
+enum HistoryGender {
+  UnknownHistoryGender = 0;
+  Male = 1;
+  Female = 2;
+  Neuter = 3;
+  Plural = 4;
+}
+
+message RevokedPayload {
+  // required
+  optional Docflow.SignedAttachmentV3 RevocationRequest = 1;
+  // required
+  optional Documents.DocumentParticipantV2 RevokedBy = 2;
+  optional string PlainText = 3;
+}
+
+message RevocationRequestedPayload {
+  // required
+  optional Docflow.SignedAttachmentV3 RevocationRequest = 1;
+  // required
+  optional Documents.DocumentParticipantV2 RevocationRequestedBy = 2;
+  optional string PlainText = 3;
+}
+
+message RevocationAcceptedPayload {
+  // required
+  optional Docflow.SignatureV3 AcceptanceSignature = 1;
+  // required
+  optional Documents.DocumentParticipantV2 RevocationAcceptedBy = 2;
+}
+
+message RevocationRejectedPayload {
+  optional Docflow.SignedAttachmentV3 Rejection = 1;
+  optional UniversalMessageInfo UniversalMessage = 2;
+  // required
+  optional Documents.DocumentParticipantV2 RevocationRejectedBy = 3;
+  optional string PlainText = 4;
+}
+
+message WillBeSentToPayload {
+  repeated Documents.DocumentParticipantV2 Participants = 1;
+  optional Docflow.Entity CommentEntity = 2;
+}
+
+message ResolutionRouteActionsPayload {
+  // required
+  optional ResolutionTarget Target = 1;
+  repeated ResolutionAction Actions = 2;
+  // required
+  optional HistoryParentEntity Parent = 3;
+  optional sfixed64 TimeLimitTicks = 4;
+}
+
+message MoveToDepartmentResolutionRoutePayload {
+  // required
+  optional string TargetDepartmentId = 1;
+}
+
+message ResolutionRequestedPayload {
+  // required
+  optional Docflow.ResolutionRequestV3 Request = 1;
+  // required
+  optional HistoryParentEntity Parent = 2;
+  // required
+  optional bool IsCancellable = 3;
+}
+
+message ResolutionRequestCancelledPayload {
+  // required
+  optional Docflow.ResolutionRequestV3 Request = 1;
+  optional Docflow.Entity CancellationCommentEntity = 2;
+  // required
+  optional HistoryParentEntity Parent = 3;
+}
+
+message SignatureRequestDeniedPayload {
+  // required
+  optional Docflow.SignatureDenialV3 Denial = 1;
+  // required
+  optional HistoryParentEntity Parent = 2;
+  // required
+  optional bool IsCancellable = 3;
+}
+
+message ResolvedPayload {
+  // required
+  optional Docflow.ResolutionV3 Resolution = 1;
+  // required
+  optional HistoryParentEntity Parent = 2;
+  // required
+  optional bool IsCancellable = 3;
+}
+
+message ResolutionRouteAssignedPayload {
+  optional Docflow.Entity AssignmentEntity = 1;
+  // required
+  optional string RouteId = 2;
+  optional string RouteName = 3;
+  // required
+  optional HistoryParentEntity Parent = 4;
+  optional sfixed64 TimeLimitTicks = 5;
+}
+
+message ResolutionRouteRemovedPayload {
+  // required
+  optional Docflow.Entity RemovalEntity = 1;
+  // required
+  optional string RouteId = 2;
+  optional string RouteName = 3;
+  // required
+  optional HistoryParentEntity Parent = 4;
+}
+
+message MovedPayload {
+  // required
+  optional string TargetDepartmentId = 1;
+}
+
+message EditedPayload {
+  // required
+  optional Docflow.Entity EditionEntity = 1;
+}
+
+message ForwardedPayload {
+  // required
+  optional string TargetBoxId = 1;
+}
+
+message TagsChangedPayload {
+  repeated TagChange Added = 1;
+  repeated TagChange Edited = 2;
+  repeated TagChange Removed = 3;
+  optional Docflow.Entity CommentEntity = 4;
+}
+
+message TagChange {
+  required string Key = 1;
+  optional string OldValue = 2;
+  optional string NewValue = 3;
+}
+
+message OuterDocflowChangedPayload {
+  optional string DocflowNamedId = 1;
+  optional string StatusNamedId = 2;
+  optional Docflow.StatusEntity StatusEntity = 3;
+  // required
+  optional OuterDocflowStatusPresentation Presentation = 4;
+  // required
+  optional HistoryParentEntity Parent = 5;
+}
+
+message OuterDocflowStatusPresentation {
+  required string Name = 1;
+  // required
+  optional HistoryOuterDocflowSeverity Severity = 2;
+  optional string HelpText = 3;
+  optional string HelpUrl = 4;
+  optional string Details = 5;
+}
+
+enum HistoryOuterDocflowSeverity {
+  UnknownHistoryOuterDocflowSeverity = 0;
+  Normal = 1;
+  Success = 2;
+  Warning = 3;
+  ErrorSeverity = 4;
+}
+
+message TransformedToPayload {
+  // required
+  optional DocumentId TargetDocumentId = 1;
+}
+
+message DocumentTemplateRefusedPayload {
+  // required
+  optional HistoryTemplateRefusalType RefusalType = 1;
+  // required
+  optional DocumentId TemplateDocumentId = 2;
+  optional Docflow.Entity CommentEntity = 3;
+}
+
+message TemplateRefusedPayload {
+  // required
+  optional HistoryTemplateRefusalType RefusalType = 1;
+  optional Docflow.Entity CommentEntity = 2;
+}
+
+enum HistoryTemplateRefusalType {
+  UnknownHistoryTemplateRefusalType = 0;
+  Refusal = 1;
+  Withdrawal = 2;
+}
+
+message TtGisFixationCancellationSignedPayload {
+  // required
+  optional Docflow.SignatureV3 Signature = 1;
+  // required
+  optional Docflow.Entity CancellationRequestEntity = 2;
+}
+
+message OutOfWorkflowUniversalMessageAddedPayload {
+  // required
+  optional UniversalMessageInfo MessageInfo = 1;
+  // required
+  optional int32 TitleIndex = 2;
+  // required
+  optional string TitleEntityId = 3;
+  // required
+  optional Docflow.Entity MessageEntity = 4;
+}
