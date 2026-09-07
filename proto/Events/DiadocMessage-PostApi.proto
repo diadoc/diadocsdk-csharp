@@ -428,6 +428,7 @@ message RecipientTitleAttachment {
 	repeated string Labels = 4;
 	required bool NeedReceipt = 5 [default = false];
 	optional int32 TitleIndex = 6;
+	repeated MetadataItem Metadata = 7;
 }
 
 message CorrectionRequestAttachment {

@@ -2627,6 +2627,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _TitleIndex; }
       set { _TitleIndex = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.MetadataItem> _Metadata = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.MetadataItem>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"Metadata", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.MetadataItem> Metadata
+    {
+      get { return _Metadata; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
