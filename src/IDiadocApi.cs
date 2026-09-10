@@ -28,6 +28,8 @@ using Diadoc.Api.Proto.Employees.PowersOfAttorney;
 using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Workflows;
 using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
+using DocumentHistory = Diadoc.Api.Proto.Documents.DocumentHistory.DocumentHistory;
+using DocumentHistoryEmbed = Diadoc.Api.Proto.Documents.DocumentHistory.DocumentHistoryEmbed;
 
 #if !NET35
 using System.Threading.Tasks;
@@ -257,6 +259,7 @@ namespace Diadoc.Api
 		DocumentList GetDocuments(string authToken, DocumentsFilter filter);
 		DocumentList GetDocumentsV4(string authToken, string boxId, GetDocumentsV4Request request);
 		Document GetDocument(string authToken, string boxId, string messageId, string entityId);
+		DocumentHistory GetDocumentHistory(string authToken, string boxId, string messageId, string entityId, params DocumentHistoryEmbed[] embeds);
 		DocumentActionList GetDocumentActions(string authToken, string boxId, string messageId, string entityId);
 
 		[Obsolete("Use GetDocflowsV4() from Docflow property")]
@@ -773,6 +776,7 @@ namespace Diadoc.Api
 		Task<DocumentList> GetDocumentsAsync(string authToken, DocumentsFilter filter);
 		Task<DocumentList> GetDocumentsV4Async(string authToken, string boxId, GetDocumentsV4Request request);
 		Task<Document> GetDocumentAsync(string authToken, string boxId, string messageId, string entityId);
+		Task<DocumentHistory> GetDocumentHistoryAsync(string authToken, string boxId, string messageId, string entityId, params DocumentHistoryEmbed[] embeds);
 		Task<DocumentActionList> GetDocumentActionsAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<SignatureInfo> GetSignatureInfoAsync(string authToken, string boxId, string messageId, string entityId);
 		Task<ExtendedSignerDetails> GetExtendedSignerDetailsAsync(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType);

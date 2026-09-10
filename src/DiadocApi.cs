@@ -32,6 +32,8 @@ using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Departments = Diadoc.Api.Proto.Departments;
 using RevocationRequestInfo = Diadoc.Api.Proto.Invoicing.RevocationRequestInfo;
+using DocumentHistory = Diadoc.Api.Proto.Documents.DocumentHistory.DocumentHistory;
+using DocumentHistoryEmbed = Diadoc.Api.Proto.Documents.DocumentHistory.DocumentHistoryEmbed;
 
 namespace Diadoc.Api
 {
@@ -982,6 +984,11 @@ namespace Diadoc.Api
 		public Document GetDocument(string authToken, string boxId, string messageId, string entityId)
 		{
 			return diadocHttpApi.GetDocument(authToken, boxId, messageId, entityId);
+		}
+
+		public DocumentHistory GetDocumentHistory(string authToken, string boxId, string messageId, string entityId, params DocumentHistoryEmbed[] embeds)
+		{
+			return diadocHttpApi.GetDocumentHistory(authToken, boxId, messageId, entityId, embeds);
 		}
 
 		public DocumentActionList GetDocumentActions(string authToken, string boxId, string messageId, string entityId)
