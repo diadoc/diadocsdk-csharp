@@ -15,6 +15,7 @@ namespace Diadoc.Api.Com
 		AmendmentRequested = 1,
 		Revised = 2,
 		Corrected = 4,
+		PoaAmendmentRequested = 8
 	}
 
 	public static class InvoiceAmendmentFlagsExtensions
@@ -32,6 +33,11 @@ namespace Diadoc.Api.Com
 		public static bool IsAmendmentRequested(this InvoiceAmendmentFlags status)
 		{
 			return (status & InvoiceAmendmentFlags.AmendmentRequested) == InvoiceAmendmentFlags.AmendmentRequested;
+		}
+		
+		public static bool IsPoaAmendmentRequested(this InvoiceAmendmentFlags status)
+		{
+			return (status & InvoiceAmendmentFlags.PoaAmendmentRequested) == InvoiceAmendmentFlags.PoaAmendmentRequested;
 		}
 	}
 }

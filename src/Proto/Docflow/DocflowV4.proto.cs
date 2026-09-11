@@ -195,6 +195,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _OutOfWorkflowUniversalMessageDocflow; }
       set { _OutOfWorkflowUniversalMessageDocflow = value; }
     }
+
+    private Diadoc.Api.Proto.Docflow.AmendmentRequestDocflowV4 _AmendmentRequest = null;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"AmendmentRequest", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.AmendmentRequestDocflowV4 AmendmentRequest
+    {
+      get { return _AmendmentRequest; }
+      set { _AmendmentRequest = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -41,6 +41,7 @@ message ParticipantResponseDocflowV4
     required Documents.RecipientResponseStatus ResponseStatus = 7;
     optional ConfirmationDocflowV4 Confirmation = 8;
     optional OutOfWorkflowUniversalMessageDocflow OutOfWorkflowUniversalMessageDocflow = 9;
+    optional AmendmentRequestDocflowV4 AmendmentRequest = 10;
 }
 
 message SignatureRejectionDocflowV4
