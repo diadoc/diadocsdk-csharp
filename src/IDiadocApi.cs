@@ -24,6 +24,7 @@ using DocumentType = Diadoc.Api.Proto.DocumentType;
 using Employee = Diadoc.Api.Proto.Employees.Employee;
 using Diadoc.Api.Proto.Certificates;
 using Diadoc.Api.Proto.CounteragentGroups;
+using Diadoc.Api.Proto.DocumentSigning;
 using Diadoc.Api.Proto.Employees.PowersOfAttorney;
 using Diadoc.Api.Proto.PowersOfAttorney;
 using Diadoc.Api.Proto.Workflows;
@@ -137,11 +138,13 @@ namespace Diadoc.Api
 		MessageValidationResult CanPostMessage(string authToken, MessageToPostPrototype prototype);
 		Message PostMessage(string authToken, MessageToPost msg, string operationId = null);
 		Template PostTemplate(string authToken, TemplateToPost template, string operationId = null);
+		SigningResponse PostMessageToSign(string authToken, MessageToPost msg);
 		Message TransformTemplateToMessage(string authToken, TemplateTransformationToPost templateTransformation, string operationId = null);
 		[Obsolete("Use PostMessagePatchV4()")]
 		MessagePatch PostMessagePatch(string authToken, MessagePatchToPost patch, string operationId = null);
 		MessagePatch PostMessagePatchV4(string authToken, MessagePatchToPostV2 patch, string operationId = null);
 		MessagePatch PostTemplatePatch(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null);
+		SigningResponse PostMessagePatchToSign(string authToken, MessagePatchToPostV2 patch);
 		void PostRoamingNotification(string authToken, RoamingNotificationToPost notification);
 		void Delete(string authToken, string boxId, string messageId, string documentId);
 		void Restore(string authToken, string boxId, string messageId, string documentId);
@@ -643,10 +646,12 @@ namespace Diadoc.Api
 			string authToken,
 			TemplateTransformationToPost templateTransformation,
 			string operationId = null);
+		Task<SigningResponse> PostMessageToSignAsync(string authToken, MessageToPost msg);
 		[Obsolete("Use PostMessagePatchV4Async()")]
 		Task<MessagePatch> PostMessagePatchAsync(string authToken, MessagePatchToPost patch, string operationId = null);
 		Task<MessagePatch> PostMessagePatchV4Async(string authToken, MessagePatchToPostV2 patch, string operationId = null);
 		Task<MessagePatch> PostTemplatePatchAsync(string authToken, string boxId, string templateId, TemplatePatchToPost patch, string operationId = null);
+		Task<SigningResponse> PostMessagePatchToSignAsync(string authToken, MessagePatchToPostV2 patch);
 		Task PostRoamingNotificationAsync(string authToken, RoamingNotificationToPost notification);
 		Task DeleteAsync(string authToken, string boxId, string messageId, string documentId);
 		Task RestoreAsync(string authToken, string boxId, string messageId, string documentId);

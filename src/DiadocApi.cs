@@ -12,6 +12,7 @@ using Diadoc.Api.Proto.CounteragentGroups;
 using Diadoc.Api.Proto.Docflow;
 using Diadoc.Api.Proto.Documents;
 using Diadoc.Api.Proto.Documents.Types;
+using Diadoc.Api.Proto.DocumentSigning;
 using Diadoc.Api.Proto.Dss;
 using Diadoc.Api.Proto.Employees.Subscriptions;
 using Diadoc.Api.Proto.Employees;
@@ -391,7 +392,8 @@ namespace Diadoc.Api
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetNewEvents(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
+			return diadocHttpApi.GetNewEvents(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks,
+				timestampToTicks, counteragentBoxId, orderBy, limit);
 		}
 
 		public BoxEventList GetNewEventsV8(
@@ -411,7 +413,8 @@ namespace Diadoc.Api
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
-			return diadocHttpApi.GetNewEventsV8(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks, timestampToTicks, counteragentBoxId, orderBy, limit);
+			return diadocHttpApi.GetNewEventsV8(authToken, boxId, afterEventId, afterIndexKey, departmentId, messageTypes, typeNamedIds, documentDirections, timestampFromTicks,
+				timestampToTicks, counteragentBoxId, orderBy, limit);
 		}
 
 		[Obsolete("Use GetEventV3()")]
@@ -452,6 +455,13 @@ namespace Diadoc.Api
 			return diadocHttpApi.PostTemplate(authToken, template, operationId);
 		}
 
+		public SigningResponse PostMessageToSign(string authToken, MessageToPost msg)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (msg == null) throw new ArgumentNullException("msg");
+			return diadocHttpApi.PostMessageToSign(authToken, msg);
+		}
+
 		public Message TransformTemplateToMessage(string authToken, TemplateTransformationToPost templateTransformation, string operationId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
@@ -481,6 +491,13 @@ namespace Diadoc.Api
 			if (templateId == null) throw new ArgumentNullException("templateId");
 			if (patch == null) throw new ArgumentNullException("patch");
 			return diadocHttpApi.PostTemplatePatch(authToken, boxId, templateId, patch, operationId);
+		}
+
+		public SigningResponse PostMessagePatchToSign(string authToken, MessagePatchToPostV2 patch)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (patch == null) throw new ArgumentNullException("patch");
+			return diadocHttpApi.PostMessagePatchToSign(authToken, patch);
 		}
 
 		public void PostRoamingNotification(string authToken, RoamingNotificationToPost notification)
@@ -686,7 +703,8 @@ namespace Diadoc.Api
 		}
 
 		[Obsolete("Use GenerateTitleXml()")]
-		public GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId, string sellerTitleAttachmentId, string documentVersion = null)
+		public GeneratedFile GenerateTovTorg551XmlForBuyer(string authToken, TovTorgBuyerTitleInfo buyerInfo, string boxId, string sellerTitleMessageId,
+			string sellerTitleAttachmentId, string documentVersion = null)
 		{
 			if (buyerInfo == null) throw new ArgumentNullException("buyerInfo");
 			return diadocHttpApi.GenerateTovTorg551XmlForBuyer(authToken, buyerInfo, boxId, sellerTitleMessageId, sellerTitleAttachmentId, documentVersion);
@@ -802,7 +820,8 @@ namespace Diadoc.Api
 		}
 
 		[Obsolete("Use GenerateTitleXml()")]
-		public GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion, byte[] userContractData, bool disableValidation = false, string editingSettingId = null)
+		public GeneratedFile GenerateSenderTitleXml(string authToken, string boxId, string documentTypeNamedId, string documentFunction, string documentVersion,
+			byte[] userContractData, bool disableValidation = false, string editingSettingId = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
@@ -810,11 +829,13 @@ namespace Diadoc.Api
 			if (documentFunction == null) throw new ArgumentNullException("documentFunction");
 			if (documentVersion == null) throw new ArgumentNullException("documentVersion");
 			if (userContractData == null) throw new ArgumentNullException("userContractData");
-			return diadocHttpApi.GenerateSenderTitleXml(authToken, boxId, documentTypeNamedId, documentFunction, documentVersion, userContractData, disableValidation, editingSettingId);
+			return diadocHttpApi.GenerateSenderTitleXml(authToken, boxId, documentTypeNamedId, documentFunction, documentVersion, userContractData, disableValidation,
+				editingSettingId);
 		}
 
 		[Obsolete("Use GenerateTitleXml()")]
-		public GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData, string documentVersion = null)
+		public GeneratedFile GenerateRecipientTitleXml(string authToken, string boxId, string senderTitleMessageId, string senderTitleAttachmentId, byte[] userContractData,
+			string documentVersion = null)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");
 			if (boxId == null) throw new ArgumentNullException("boxId");
@@ -1011,12 +1032,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetExtendedSignerDetails(token, boxId, certificateBytes, documentTitleType);
 		}
 
-		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails)
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, DocumentTitleType documentTitleType,
+			ExtendedSignerDetailsToPost signerDetails)
 		{
 			return diadocHttpApi.PostExtendedSignerDetails(token, boxId, thumbprint, documentTitleType, signerDetails);
 		}
 
-		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType, ExtendedSignerDetailsToPost signerDetails)
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, DocumentTitleType documentTitleType,
+			ExtendedSignerDetailsToPost signerDetails)
 		{
 			return diadocHttpApi.PostExtendedSignerDetails(token, boxId, certificateBytes, documentTitleType, signerDetails);
 		}
@@ -1363,7 +1386,8 @@ namespace Diadoc.Api
 			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXml(xmlContent, documentVersion);
 		}
 
-		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Utd)
+		public UniversalTransferDocumentSellerTitleInfo ParseUniversalTransferDocumentSellerTitleXml(string authToken, byte[] xmlContent,
+			string documentVersion = DefaultDocumentVersions.Utd)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseUniversalTransferDocumentSellerTitleXml(authToken, xmlContent, documentVersion);
@@ -1387,7 +1411,8 @@ namespace Diadoc.Api
 		}
 
 		[Obsolete("Use ParseTitleXml()")]
-		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent, string documentVersion = DefaultDocumentVersions.Ucd)
+		public UniversalCorrectionDocumentSellerTitleInfo ParseUniversalCorrectionDocumentSellerTitleXml(string authToken, byte[] xmlContent,
+			string documentVersion = DefaultDocumentVersions.Ucd)
 		{
 			if (authToken == null) throw new ArgumentNullException(nameof(authToken));
 			return diadocHttpApi.ParseUniversalCorrectionDocumentSellerTitleXml(authToken, xmlContent, documentVersion);
@@ -1658,7 +1683,7 @@ namespace Diadoc.Api
 				throw new ArgumentNullException(nameof(boxId));
 			return diadocHttpApi.GetWorkflowsSettings(authToken, boxId);
 		}
-		
+
 		public DocumentWorkflowSettingsListV3 GetWorkflowsSettingsV3(string authToken, string boxId)
 		{
 			if (string.IsNullOrEmpty(authToken))
@@ -1719,7 +1744,8 @@ namespace Diadoc.Api
 		}
 
 		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
-		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, byte[] certificateBytes, bool forBuyer, bool forCorrection,
+			ExtendedSignerDetailsToPost signerDetails)
 		{
 			if (string.IsNullOrEmpty(token))
 				throw new ArgumentNullException("token");
@@ -1733,7 +1759,8 @@ namespace Diadoc.Api
 		}
 
 		[Obsolete("Use overload with DocumentTitleType parameter. This overload will be removed soon")]
-		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection, ExtendedSignerDetailsToPost signerDetails)
+		public ExtendedSignerDetails PostExtendedSignerDetails(string token, string boxId, string thumbprint, bool forBuyer, bool forCorrection,
+			ExtendedSignerDetailsToPost signerDetails)
 		{
 			if (string.IsNullOrEmpty(token))
 				throw new ArgumentNullException("token");
