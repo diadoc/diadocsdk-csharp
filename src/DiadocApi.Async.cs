@@ -1684,6 +1684,14 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetEmployeeAsync(authToken, boxId, userId);
 		}
 
+		public Task<EmployeeList> GetEmployeesByExternalIdAsync(string authToken, string boxId, string externalId)
+		{
+			if (authToken == null) throw new ArgumentNullException("authToken");
+			if (boxId == null) throw new ArgumentNullException("boxId");
+			if (externalId == null) throw new ArgumentNullException("externalId");
+			return diadocHttpApi.GetEmployeesByExternalIdAsync(authToken, boxId, externalId);
+		}
+
 		public Task<EmployeeList> GetEmployeesAsync(string authToken, string boxId, int? page, int? count)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

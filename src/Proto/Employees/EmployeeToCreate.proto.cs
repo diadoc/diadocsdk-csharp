@@ -75,6 +75,15 @@ namespace Diadoc.Api.Proto.Employees
       get { return _Certificate; }
       set { _Certificate = value; }
     }
+
+    private Diadoc.Api.Proto.Employees.EmployeeToCreateBySsoProvider _SsoProvider = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SsoProvider", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Employees.EmployeeToCreateBySsoProvider SsoProvider
+    {
+      get { return _SsoProvider; }
+      set { _SsoProvider = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -135,6 +144,39 @@ namespace Diadoc.Api.Proto.Employees
     {
       get { return _Email; }
       set { _Email = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"EmployeeToCreateBySsoProvider")]
+  public partial class EmployeeToCreateBySsoProvider : global::ProtoBuf.IExtensible
+  {
+    public EmployeeToCreateBySsoProvider() {}
+    
+    private string _Email;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Email", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string Email
+    {
+      get { return _Email; }
+      set { _Email = value; }
+    }
+
+    private Diadoc.Api.Proto.FullName _FullName = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"FullName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.FullName FullName
+    {
+      get { return _FullName; }
+      set { _FullName = value; }
+    }
+    private string _ProviderId;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"ProviderId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ProviderId
+    {
+      get { return _ProviderId; }
+      set { _ProviderId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
