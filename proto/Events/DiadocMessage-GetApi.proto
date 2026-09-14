@@ -135,6 +135,7 @@ message Entity {
 	optional Docflow.PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus = 35;  // only for EntityType.Signature
 	optional UniversalMessageInfo UniversalMessageInfo = 36;
 	optional TemplateTransformationChangeInfo TemplateTransformationChangeInfo = 37; // only for AttachmentType.TemplateTransformationChange
+	optional bool IsAttachedSignature = 38 [default = false]; // only for EntityType.Signature
 }
 
 message EntityPatch {
