@@ -112,6 +112,7 @@ namespace Diadoc.Api.Proto.Events
 		bool NeedReceipt { get; }
 		string PacketId { get; }
 		bool IsApprovementSignature { get; set; }
+		bool IsAttachedSignature { get; set; }
 		bool IsEncryptedContent { get; set; }
 		Content Content { get; }
 

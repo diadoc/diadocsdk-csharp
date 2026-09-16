@@ -25,6 +25,7 @@ namespace Diadoc.Api.Proto.Docflow
 		Timestamp DeliveredAt { get; }
 		SignaturePowerOfAttorney PowerOfAttorney { get; set; }
 		PowerOfAttorneyAttachmentStatus PowerOfAttorneyAttachmentStatus { get; set; }
+		bool IsAttached { get; }
 	}
 
 	[ComVisible(true)]
