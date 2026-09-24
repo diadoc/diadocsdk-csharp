@@ -320,6 +320,15 @@ namespace Diadoc.Api.Proto
       get { return _Comment; }
       set { _Comment = value; }
     }
+
+    private string _DisconnectionFromOperatorDate = "";
+    [global::ProtoBuf.ProtoMember(32, IsRequired = false, Name=@"DisconnectionFromOperatorDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DisconnectionFromOperatorDate
+    {
+      get { return _DisconnectionFromOperatorDate; }
+      set { _DisconnectionFromOperatorDate = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
