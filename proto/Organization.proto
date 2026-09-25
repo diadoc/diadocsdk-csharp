@@ -43,6 +43,7 @@ message Organization {
 	optional ForeignInformation ForeignInformation = 29;
 	required ReadyForEpdStatus ReadyForEpdStatus = 30;
 	required string Comment = 31;
+	optional sfixed64 DisconnectionFromOperatorTicks = 32;
 }
 
 message Department {
