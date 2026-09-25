@@ -95,8 +95,6 @@ namespace Diadoc.Api
 		[Obsolete("Use a similar method with boxId: GetDepartmentV2()")]
 		Department GetDepartment(string authToken, string orgId, string departmentId);
 		Department GetDepartmentV2(string authToken, string boxId, string departmentId);
-		[Obsolete("Method UpdateOrganizationProperties will be removed soon")]
-		void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps);
 		OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId);
 
 		[Obsolete("Use GetNewEventsV8()")]
@@ -597,8 +595,6 @@ namespace Diadoc.Api
 		[Obsolete("Use a similar method with boxId: GetDepartmentV2Async()")]
 		Task<Department> GetDepartmentAsync(string authToken, string orgId, string departmentId);
 		Task<Department> GetDepartmentV2Async(string authToken, string boxId, string departmentId);
-		[Obsolete("Method UpdateOrganizationPropertiesAsync will be removed soon")]
-		Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps);
 		Task<OrganizationFeatures> GetOrganizationFeaturesAsync(string authToken, string boxId);
 
 		[Obsolete("Use GetNewEventsV8Async()")]
