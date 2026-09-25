@@ -1144,6 +1144,24 @@ namespace Diadoc.Api.Proto.Documents.DocumentHistory
       get { return _PlainText; }
       set { _PlainText = value; }
     }
+
+    private int _TitleIndex = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"TitleIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int TitleIndex
+    {
+      get { return _TitleIndex; }
+      set { _TitleIndex = value; }
+    }
+
+    private string _TitleEntityId = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"TitleEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string TitleEntityId
+    {
+      get { return _TitleEntityId; }
+      set { _TitleEntityId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
