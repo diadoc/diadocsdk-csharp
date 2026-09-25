@@ -241,6 +241,8 @@ message AmendmentRequestedPayload {
   // required
   optional Documents.DocumentParticipantV2 AmendmentRequestedBy = 3;
   optional string PlainText = 4;
+  optional int32 TitleIndex = 5;
+  optional string TitleEntityId = 6;
 }
 
 message AmendmentSentPayload {
