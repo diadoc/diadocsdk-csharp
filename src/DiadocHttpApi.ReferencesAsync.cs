@@ -180,12 +180,6 @@ namespace Diadoc.Api
 			return PerformHttpRequestAsync<Department>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
 
-		[Obsolete("Method UpdateOrganizationPropertiesAsync will be removed soon")]
-		public Task UpdateOrganizationPropertiesAsync(string authToken, OrganizationPropertiesToUpdate orgProps)
-		{
-			return PerformHttpRequestAsync(authToken, "POST", "/UpdateOrganizationProperties", Serialize(orgProps));
-		}
-
 		[Obsolete("Use GetOrganizationUsersV2Async()")]
 		public Task<OrganizationUsersList> GetOrganizationUsersAsync(string authToken, string orgId)
 		{
