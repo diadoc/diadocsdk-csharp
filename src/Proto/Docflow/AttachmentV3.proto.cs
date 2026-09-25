@@ -103,6 +103,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _SignatureTypeInfo; }
       set { _SignatureTypeInfo = value; }
     }
+
+    private bool _IsAttached = (bool)false;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"IsAttached", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsAttached
+    {
+      get { return _IsAttached; }
+      set { _IsAttached = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
