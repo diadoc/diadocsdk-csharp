@@ -117,15 +117,21 @@ namespace Diadoc.Api
 			return PerformHttpRequest<AsyncMethodResult>(authToken, "POST", queryString.BuildPathAndQuery(), Serialize(request));
 		}
 
-		[Obsolete("Use WaitAcquireCounteragentResultV2()")]
+		[Obsolete("Use WaitAcquireCounteragentResultV3()")]
 		public AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
 		{
 			return WaitTaskResult<AcquireCounteragentResult>(authToken, "/AcquireCounteragentResult", taskId, timeout, delay);
 		}
 		
+		[Obsolete("Use WaitAcquireCounteragentResultV3()")]
 		public AcquireCounteragentResultV2 WaitAcquireCounteragentResultV2(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
 		{
 			return WaitTaskResult<AcquireCounteragentResultV2>(authToken, "/V2/AcquireCounteragentResult", taskId, timeout, delay);
+		}
+
+		public AcquireCounteragentResultV2 WaitAcquireCounteragentResultV3(string authToken, string myBoxId, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
+		{
+			return WaitTaskResult<AcquireCounteragentResultV2>(authToken, "/V3/AcquireCounteragentResult", myBoxId, taskId, timeout, delay);
 		}
 
 		public BoxCounteragentEventList GetCounteragentEvents(

@@ -2379,15 +2379,21 @@ namespace Diadoc.Api
 				myDepartmentId);
 		}
 
-		[Obsolete("Use WaitAcquireCounteragentResultV2()")]
+		[Obsolete("Use WaitAcquireCounteragentResultV3()")]
 		public AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId)
 		{
 			return diadoc.WaitAcquireCounteragentResult(authToken, taskId);
 		}
 
+		[Obsolete("Use WaitAcquireCounteragentResultV3()")]
 		public AcquireCounteragentResultV2 WaitAcquireCounteragentResultV2(string authToken, string taskId)
 		{
 			return diadoc.WaitAcquireCounteragentResultV2(authToken, taskId);
+		}
+
+		public AcquireCounteragentResultV2 WaitAcquireCounteragentResultV3(string authToken, string myBoxId, string taskId)
+		{
+			return diadoc.WaitAcquireCounteragentResultV3(authToken, myBoxId, taskId);
 		}
 
 		[Obsolete("Use BreakWithCounteragentV2()")]
