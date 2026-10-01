@@ -55,6 +55,15 @@ namespace Diadoc.Api.Proto.Employees
       get { return _CreationTimestamp; }
       set { _CreationTimestamp = value; }
     }
+
+    private Diadoc.Api.Proto.Employees.EmployeeExternalIdentity _ExternalIdentity = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"ExternalIdentity", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Employees.EmployeeExternalIdentity ExternalIdentity
+    {
+      get { return _ExternalIdentity; }
+      set { _ExternalIdentity = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -156,6 +165,34 @@ namespace Diadoc.Api.Proto.Employees
     {
       get { return _TotalCount; }
       set { _TotalCount = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"EmployeeExternalIdentity")]
+  public partial class EmployeeExternalIdentity : global::ProtoBuf.IExtensible
+  {
+    public EmployeeExternalIdentity() {}
+    
+
+    private string _ExternalId = "";
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ExternalId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ExternalId
+    {
+      get { return _ExternalId; }
+      set { _ExternalId = value; }
+    }
+
+    private string _Email = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Email", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Email
+    {
+      get { return _Email; }
+      set { _Email = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
