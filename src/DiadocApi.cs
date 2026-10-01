@@ -358,14 +358,6 @@ namespace Diadoc.Api
 			return diadocHttpApi.GetDepartmentV2(authToken, boxId, departmentId);
 		}
 
-		[Obsolete("Method UpdateOrganizationProperties will be removed soon")]
-		public void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps)
-		{
-			if (authToken == null) throw new ArgumentNullException("authToken");
-			if (orgProps == null) throw new ArgumentNullException("orgProps");
-			diadocHttpApi.UpdateOrganizationProperties(authToken, orgProps);
-		}
-
 		public OrganizationFeatures GetOrganizationFeatures(string authToken, string boxId)
 		{
 			if (authToken == null) throw new ArgumentNullException("authToken");

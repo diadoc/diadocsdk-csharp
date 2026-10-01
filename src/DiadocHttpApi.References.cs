@@ -179,12 +179,6 @@ namespace Diadoc.Api
 			return PerformHttpRequest<Department>(authToken, "GET", queryBuilder.BuildPathAndQuery());
 		}
 
-		[Obsolete("Method UpdateOrganizationProperties will be removed soon")]
-		public void UpdateOrganizationProperties(string authToken, OrganizationPropertiesToUpdate orgProps)
-		{
-			PerformHttpRequest(authToken, "POST", "/UpdateOrganizationProperties", Serialize(orgProps));
-		}
-
 		[Obsolete("Use GetOrganizationUsersV2()")]
 		public OrganizationUsersList GetOrganizationUsers(string authToken, string orgId)
 		{
