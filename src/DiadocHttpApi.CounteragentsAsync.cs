@@ -111,18 +111,18 @@ namespace Diadoc.Api
 		[Obsolete("Use WaitAcquireCounteragentResultV3Async()")]
 		public Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
 		{
-			return WaitTaskResultAsync<AcquireCounteragentResult>(authToken, "/AcquireCounteragentResult", taskId, timeout, delay);
+			return WaitTaskResultAsync<AcquireCounteragentResult>(authToken, "/AcquireCounteragentResult", taskId, null, timeout, delay);
 		}
 
 		[Obsolete("Use WaitAcquireCounteragentResultV3Async()")]
 		public Task<AcquireCounteragentResultV2> WaitAcquireCounteragentResultV2Async(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
 		{
-			return WaitTaskResultAsync<AcquireCounteragentResultV2>(authToken, "/V2/AcquireCounteragentResult", taskId, timeout, delay);
+			return WaitTaskResultAsync<AcquireCounteragentResultV2>(authToken, "/V2/AcquireCounteragentResult", taskId, null, timeout, delay);
 		}
 
 		public Task<AcquireCounteragentResultV2> WaitAcquireCounteragentResultV3Async(string authToken, string myBoxId, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
 		{
-			return WaitTaskResultAsync<AcquireCounteragentResultV2>(authToken, "/V3/AcquireCounteragentResult", myBoxId, taskId, timeout, delay);
+			return WaitTaskResultAsync<AcquireCounteragentResultV2>(authToken, "/V3/AcquireCounteragentResult", taskId, myBoxId, timeout, delay);
 		}
 
 		public Task<BoxCounteragentEventList> GetCounteragentEventsAsync(
