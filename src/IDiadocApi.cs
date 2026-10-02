@@ -448,9 +448,11 @@ namespace Diadoc.Api
 		AsyncMethodResult AcquireCounteragent(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
 		AsyncMethodResult AcquireCounteragentV3(string authToken, string myBoxId, AcquireCounteragentRequest request, string myDepartmentId = null);
 
-		[Obsolete("Use WaitAcquireCounteragentResultV2()")]
+		[Obsolete("Use WaitAcquireCounteragentResultV3()")]
 		AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
+		[Obsolete("Use WaitAcquireCounteragentResultV3()")]
 		AcquireCounteragentResultV2 WaitAcquireCounteragentResultV2(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
+		AcquireCounteragentResultV2 WaitAcquireCounteragentResultV3(string authToken, string myBoxId, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null);
 
 		DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId);
 		[Obsolete("Use GetWorkflowsSettingsV3()")]
@@ -984,16 +986,23 @@ namespace Diadoc.Api
 		Task<AsyncMethodResult> AcquireCounteragentAsync(string authToken, string myOrgId, AcquireCounteragentRequest request, string myDepartmentId = null);
 		Task<AsyncMethodResult> AcquireCounteragentV3Async(string authToken, string myBoxId, AcquireCounteragentRequest request, string myDepartmentId = null);
 
-		[Obsolete("Use WaitAcquireCounteragentResultV2Async()")]
+		[Obsolete("Use WaitAcquireCounteragentResultV3Async()")]
 		Task<AcquireCounteragentResult> WaitAcquireCounteragentResultAsync(
-			string authToken, 
-			string taskId, 
-			TimeSpan? timeout = null, 
+			string authToken,
+			string taskId,
+			TimeSpan? timeout = null,
 			TimeSpan? delay = null);
+		[Obsolete("Use WaitAcquireCounteragentResultV3Async()")]
 		Task<AcquireCounteragentResultV2> WaitAcquireCounteragentResultV2Async(
-			string authToken, 
-			string taskId, 
-			TimeSpan? timeout = null, 
+			string authToken,
+			string taskId,
+			TimeSpan? timeout = null,
+			TimeSpan? delay = null);
+		Task<AcquireCounteragentResultV2> WaitAcquireCounteragentResultV3Async(
+			string authToken,
+			string myBoxId,
+			string taskId,
+			TimeSpan? timeout = null,
 			TimeSpan? delay = null);
 
 		Task<DocumentList> GetDocumentsByMessageIdAsync(string authToken, string boxId, string messageId);

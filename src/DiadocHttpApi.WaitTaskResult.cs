@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Net;
 using System.Threading;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api
 {
@@ -10,10 +11,21 @@ namespace Diadoc.Api
 		private const int DefaultDelayInSeconds = 15;
 		public static TimeSpan WaitTaskDefaultTimeout = TimeSpan.FromMinutes(5);
 
-		public TResult WaitTaskResult<TResult>(string authToken, string url, string taskId, TimeSpan? timeout = null,
+		public TResult WaitTaskResult<TResult>(
+			string authToken,
+			string url,
+			string taskId,
+			[CanBeNull] string myBoxId = null,
+			TimeSpan? timeout = null,
 			TimeSpan? delay = null) where TResult: class
 		{
-			var queryString = string.Format("{0}?taskId={1}", url, taskId);
+			var queryString = $"{url}?taskId={taskId}";
+
+			if (myBoxId != null)
+			{
+				queryString += $"&myBoxId={myBoxId}";
+			}
+
 			var stopwatch = Stopwatch.StartNew();
 			timeout = timeout ?? WaitTaskDefaultTimeout;
 			while (true)

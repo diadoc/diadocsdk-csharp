@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Net;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Diadoc.Api
 {
@@ -11,11 +12,18 @@ namespace Diadoc.Api
 			string authToken,
 			string url,
 			string taskId,
+			[CanBeNull] string myBoxId = null,
 			TimeSpan? timeout = null,
 			TimeSpan? delay = null)
 			where TResult: class
 		{
 			var queryString = $"{url}?taskId={taskId}";
+
+			if (myBoxId != null)
+			{
+				queryString += $"&myBoxId={myBoxId}";
+			}
+
 			var stopwatch = Stopwatch.StartNew();
 			timeout = timeout ?? WaitTaskDefaultTimeout;
 			while (true)
