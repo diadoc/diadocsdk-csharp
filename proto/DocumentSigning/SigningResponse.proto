@@ -1,0 +1,10 @@
+package Diadoc.Api.Proto.DocumentSigning;
+
+message SigningResponse {
+	repeated EntityToSign EntitiesToSign = 1;
+}
+
+message EntityToSign {
+	required string Id = 1;
+	required string CryptoPlatformDocumentId = 2;
+}
