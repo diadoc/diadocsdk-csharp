@@ -18,7 +18,7 @@ namespace Diadoc.Api
 
 		public Task<CloudSignResult> WaitCloudSignResultAsync(string authToken, string taskId, TimeSpan? timeout = null)
 		{
-			return WaitTaskResultAsync<CloudSignResult>(authToken, "/CloudSignResult", taskId, timeout);
+			return WaitTaskResultAsync<CloudSignResult>(authToken, "/CloudSignResult", taskId, null, timeout);
 		}
 
 		public Task<AsyncMethodResult> CloudSignConfirmAsync(string authToken, string cloudSignToken, string confirmationCode, ContentLocationPreference? locationPreference = null)
@@ -33,7 +33,7 @@ namespace Diadoc.Api
 
 		public Task<CloudSignConfirmResult> WaitCloudSignConfirmResultAsync(string authToken, string taskId, TimeSpan? timeout = null)
 		{
-			return WaitTaskResultAsync<CloudSignConfirmResult>(authToken, "/CloudSignConfirmResult", taskId, timeout);
+			return WaitTaskResultAsync<CloudSignConfirmResult>(authToken, "/CloudSignConfirmResult", taskId, null, timeout);
 		}
 
 		public Task<AsyncMethodResult> DssSignAsync(string authToken, string boxId, DssSignRequest request, string certificateThumbprint = null)

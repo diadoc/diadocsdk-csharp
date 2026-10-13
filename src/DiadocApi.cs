@@ -1626,17 +1626,25 @@ namespace Diadoc.Api
 			return diadocHttpApi.AcquireCounteragentV3(authToken, myBoxId, request, myDepartmentId);
 		}
 
-		[Obsolete("Use WaitAcquireCounteragentResultV2()")]
+		[Obsolete("Use WaitAcquireCounteragentResultV3()")]
 		public AcquireCounteragentResult WaitAcquireCounteragentResult(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
 		{
 			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
 			return diadocHttpApi.WaitAcquireCounteragentResult(authToken, taskId, timeout, delay);
 		}
 
+		[Obsolete("Use WaitAcquireCounteragentResultV3()")]
 		public AcquireCounteragentResultV2 WaitAcquireCounteragentResultV2(string authToken, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
 		{
 			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
 			return diadocHttpApi.WaitAcquireCounteragentResultV2(authToken, taskId, timeout, delay);
+		}
+
+		public AcquireCounteragentResultV2 WaitAcquireCounteragentResultV3(string authToken, string myBoxId, string taskId, TimeSpan? timeout = null, TimeSpan? delay = null)
+		{
+			if (string.IsNullOrEmpty(myBoxId)) throw new ArgumentNullException("myBoxId");
+			if (string.IsNullOrEmpty(taskId)) throw new ArgumentNullException("taskId");
+			return diadocHttpApi.WaitAcquireCounteragentResultV3(authToken, myBoxId, taskId, timeout, delay);
 		}
 
 		public DocumentList GetDocumentsByMessageId(string authToken, string boxId, string messageId)
