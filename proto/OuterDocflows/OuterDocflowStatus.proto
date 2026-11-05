@@ -6,6 +6,7 @@ message Status {
     required OuterStatusType Type = 3;
     optional string Description = 4;
     repeated StatusDetail Details = 5;
+    optional string EntityId = 6;
 }
 message StatusDetail {
     optional string Code = 1;
