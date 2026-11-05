@@ -52,6 +52,15 @@ namespace Diadoc.Api.Proto.OuterDocflows
       get { return _Details; }
     }
   
+
+    private string _EntityId = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"EntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string EntityId
+    {
+      get { return _EntityId; }
+      set { _EntityId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

@@ -728,6 +728,127 @@ namespace Diadoc.Api.Proto.Documents
       get { return _RecipientResponseAmendmentRequestMetadata; }
       set { _RecipientResponseAmendmentRequestMetadata = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.TitleDocflowSummary> _TitleDocflows = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.TitleDocflowSummary>();
+    [global::ProtoBuf.ProtoMember(85, Name=@"TitleDocflows", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.TitleDocflowSummary> TitleDocflows
+    {
+      get { return _TitleDocflows; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TitleDocflowSummary")]
+  public partial class TitleDocflowSummary : global::ProtoBuf.IExtensible
+  {
+    public TitleDocflowSummary() {}
+    
+    private int _TitleIndex;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"TitleIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int TitleIndex
+    {
+      get { return _TitleIndex; }
+      set { _TitleIndex = value; }
+    }
+
+    private string _TitleEntityId = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TitleEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string TitleEntityId
+    {
+      get { return _TitleEntityId; }
+      set { _TitleEntityId = value; }
+    }
+
+    private string _TitleAttachmentFilename = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"TitleAttachmentFilename", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string TitleAttachmentFilename
+    {
+      get { return _TitleAttachmentFilename; }
+      set { _TitleAttachmentFilename = value; }
+    }
+
+    private string _TitleDisplayFilename = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"TitleDisplayFilename", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string TitleDisplayFilename
+    {
+      get { return _TitleDisplayFilename; }
+      set { _TitleDisplayFilename = value; }
+    }
+    private Diadoc.Api.Proto.Documents.DocumentParticipantV2 _Author;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"Author", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Documents.DocumentParticipantV2 Author
+    {
+      get { return _Author; }
+      set { _Author = value; }
+    }
+    private Diadoc.Api.Proto.Documents.SenderSignatureStatus _AuthorSignatureStatus;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"AuthorSignatureStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.SenderSignatureStatus AuthorSignatureStatus
+    {
+      get { return _AuthorSignatureStatus; }
+      set { _AuthorSignatureStatus = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.TitleParticipantDocflowSummary> _ParticipantDocflows = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.TitleParticipantDocflowSummary>();
+    [global::ProtoBuf.ProtoMember(7, Name=@"ParticipantDocflows", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.TitleParticipantDocflowSummary> ParticipantDocflows
+    {
+      get { return _ParticipantDocflows; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TitleParticipantDocflowSummary")]
+  public partial class TitleParticipantDocflowSummary : global::ProtoBuf.IExtensible
+  {
+    public TitleParticipantDocflowSummary() {}
+    
+    private Diadoc.Api.Proto.Documents.DocumentParticipantV2 _Participant;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"Participant", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Documents.DocumentParticipantV2 Participant
+    {
+      get { return _Participant; }
+      set { _Participant = value; }
+    }
+    private Diadoc.Api.Proto.Documents.RecipientResponseStatus _ResponseStatus;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"ResponseStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.RecipientResponseStatus ResponseStatus
+    {
+      get { return _ResponseStatus; }
+      set { _ResponseStatus = value; }
+    }
+
+    private string _ResponseEntityId = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"ResponseEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ResponseEntityId
+    {
+      get { return _ResponseEntityId; }
+      set { _ResponseEntityId = value; }
+    }
+    private Diadoc.Api.Proto.Documents.GeneralReceiptStatus _ReceiptStatus;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"ReceiptStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public Diadoc.Api.Proto.Documents.GeneralReceiptStatus ReceiptStatus
+    {
+      get { return _ReceiptStatus; }
+      set { _ReceiptStatus = value; }
+    }
+
+    private string _ReceiptEntityId = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ReceiptEntityId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ReceiptEntityId
+    {
+      get { return _ReceiptEntityId; }
+      set { _ReceiptEntityId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
