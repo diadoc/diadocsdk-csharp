@@ -24,6 +24,7 @@ message OrganizationUserPermissions {
 	required bool CanAttachUniversalMessages = 14;
 	optional bool CanUseGoskeyFL = 15;
 	optional bool CanCreatePaymentOrders = 16;
+	optional bool CanAccessReports = 17;
 }
 
 message AuthorizationPermission {

@@ -25,8 +25,8 @@ namespace Diadoc.Api.Proto
 	{
 		public override string ToString()
 		{
-			return string.Format("UserDepartmentId: {0}, IsAdministrator: {1}, DocumentAccessLevel: {2}, CanSignDocuments: {3}, CanAddResolutions: {4}, CanRequestResolutions: {5}, CanDeleteRestoreDocuments: {6}, CanAttachUniversalMessages: {7}",
-				UserDepartmentId, IsAdministrator, DocumentAccessLevel, CanSignDocuments, CanAddResolutions, CanRequestResolutions, CanDeleteRestoreDocuments, CanAttachUniversalMessages);
+			return string.Format("UserDepartmentId: {0}, IsAdministrator: {1}, DocumentAccessLevel: {2}, CanSignDocuments: {3}, CanAddResolutions: {4}, CanRequestResolutions: {5}, CanDeleteRestoreDocuments: {6}, CanAttachUniversalMessages: {7}, CanUseGoskeyFL: {8}, CanCreatePaymentOrders: {9}, CanAccessReports: {10}",
+				UserDepartmentId, IsAdministrator, DocumentAccessLevel, CanSignDocuments, CanAddResolutions, CanRequestResolutions, CanDeleteRestoreDocuments, CanAttachUniversalMessages, CanUseGoskeyFL, CanCreatePaymentOrders, CanAccessReports);
 		}
 
 		public Com.DocumentAccessLevel DocumentAccessLevelValue

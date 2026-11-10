@@ -128,6 +128,15 @@ namespace Diadoc.Api.Proto
       get { return _CanCreatePaymentOrders; }
       set { _CanCreatePaymentOrders = value; }
     }
+
+    private bool _CanAccessReports = default(bool);
+    [global::ProtoBuf.ProtoMember(17, IsRequired = false, Name=@"CanAccessReports", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool CanAccessReports
+    {
+      get { return _CanAccessReports; }
+      set { _CanAccessReports = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
