@@ -54,6 +54,7 @@ message MessageToPost {
 	repeated XmlDocumentAttachment UniversalTransferDocumentSellerTitles = 33;
 	repeated DocumentAttachment DocumentAttachments = 34;
 	optional LockMode LockMode = 35 [default = None];
+	optional string FromDraftId = 36;
 }
 
 message MessagePatchToPostV2 {
@@ -322,6 +323,7 @@ message DocumentAttachment {
 	optional bool IsEncrypted = 17 [default = false];
 	optional string EditingSettingId = 18;
 	repeated DocumentParticipantRoleInfo ParticipantRoles = 19;
+	optional string FromDraftDocumentId = 20;
 }
 
 message DocumentParticipantRoleInfo {

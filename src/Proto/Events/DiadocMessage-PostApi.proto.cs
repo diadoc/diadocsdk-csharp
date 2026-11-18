@@ -290,6 +290,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _LockMode; }
       set { _LockMode = value; }
     }
+
+    private string _FromDraftId = "";
+    [global::ProtoBuf.ProtoMember(36, IsRequired = false, Name=@"FromDraftId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string FromDraftId
+    {
+      get { return _FromDraftId; }
+      set { _FromDraftId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -2022,6 +2031,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _ParticipantRoles; }
     }
   
+
+    private string _FromDraftDocumentId = "";
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"FromDraftDocumentId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string FromDraftDocumentId
+    {
+      get { return _FromDraftDocumentId; }
+      set { _FromDraftDocumentId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
