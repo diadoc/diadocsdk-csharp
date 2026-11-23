@@ -164,7 +164,7 @@ namespace Diadoc.Api
 		GeneratedFile GenerateInvoiceCorrectionRequestXml(string authToken, string boxId, string messageId, string attachmentId, InvoiceCorrectionRequestInfo correctionInfo);
 
 		GeneratedFile GenerateInvoiceCorrectionRequestXmlV2(string authToken, string boxId, InvoiceCorrectionRequestGenerationRequestV2 invoiceCorrectionRequestGenerationRequest);
-		GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null);
+		GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null, string participantId = null);
 
 		[Obsolete("Use GenerateSignatureRejectionXmlV2()")]
 		GeneratedFile GenerateSignatureRejectionXml(string authToken, string boxId, string messageId, string attachmentId, SignatureRejectionInfo signatureRejectionInfo);
@@ -672,7 +672,7 @@ namespace Diadoc.Api
 		Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, InvoiceCorrectionRequestInfo correctionInfo);
 
 		Task<GeneratedFile> GenerateInvoiceCorrectionRequestXmlV2Async(string authToken, string boxId, InvoiceCorrectionRequestGenerationRequestV2 invoiceCorrectionRequestGenerationRequest);
-		Task<GeneratedFile> GenerateRevocationRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null);
+		Task<GeneratedFile> GenerateRevocationRequestXmlAsync(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null, string participantId = null);
 
 		[Obsolete("Use GenerateSignatureRejectionXmlV2Async()")]
 		Task<GeneratedFile> GenerateSignatureRejectionXmlAsync(string authToken, string boxId, string messageId, string attachmentId, SignatureRejectionInfo signatureRejectionInfo);

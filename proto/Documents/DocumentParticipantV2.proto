@@ -17,6 +17,7 @@ message DocumentParticipantV2
 	required DocumentParticipantFlags Flags = 4;
 	required Diadoc.Api.Proto.Workflows.ParticipantType.ParticipantType Type = 5;
 	required bool IsCurrentBox = 6;
+	optional string ParticipantId = 7;
 }
 
 message DocumentParticipantsV2

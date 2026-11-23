@@ -1282,6 +1282,13 @@ namespace Diadoc.Api.Proto.Documents.DocumentHistory
       get { return _PlainText; }
       set { _PlainText = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentHistory.HistoryRevocationRequest> _RevocationRequests = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentHistory.HistoryRevocationRequest>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"RevocationRequests", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentHistory.HistoryRevocationRequest> RevocationRequests
+    {
+      get { return _RevocationRequests; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -1309,6 +1316,50 @@ namespace Diadoc.Api.Proto.Documents.DocumentHistory
     {
       get { return _RevocationRequestedBy; }
       set { _RevocationRequestedBy = value; }
+    }
+
+    private string _PlainText = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"PlainText", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string PlainText
+    {
+      get { return _PlainText; }
+      set { _PlainText = value; }
+    }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentHistory.HistoryRevocationRequest> _RevocationRequests = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentHistory.HistoryRevocationRequest>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"RevocationRequests", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentHistory.HistoryRevocationRequest> RevocationRequests
+    {
+      get { return _RevocationRequests; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HistoryRevocationRequest")]
+  public partial class HistoryRevocationRequest : global::ProtoBuf.IExtensible
+  {
+    public HistoryRevocationRequest() {}
+    
+
+    private Diadoc.Api.Proto.Docflow.SignedAttachmentV3 _RevocationRequest = null;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"RevocationRequest", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Docflow.SignedAttachmentV3 RevocationRequest
+    {
+      get { return _RevocationRequest; }
+      set { _RevocationRequest = value; }
+    }
+
+    private Diadoc.Api.Proto.Documents.DocumentParticipantV2 _Participant = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Participant", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.DocumentParticipantV2 Participant
+    {
+      get { return _Participant; }
+      set { _Participant = value; }
     }
 
     private string _PlainText = "";

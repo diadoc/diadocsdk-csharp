@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Events/RevocationRequestInfo.proto
+// Note: requires additional types generated from: Documents/DocumentParticipantV2.proto
 namespace Diadoc.Api.Proto.Events
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RevocationRequestInfo")]
@@ -22,6 +23,13 @@ namespace Diadoc.Api.Proto.Events
       get { return _InitiatorBoxId; }
       set { _InitiatorBoxId = value; }
     }
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentParticipantV2> _TargetParticipants = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentParticipantV2>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"TargetParticipants", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Documents.DocumentParticipantV2> TargetParticipants
+    {
+      get { return _TargetParticipants; }
+    }
+  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

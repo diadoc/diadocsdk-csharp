@@ -278,6 +278,7 @@ message RevokedPayload {
   // required
   optional Documents.DocumentParticipantV2 RevokedBy = 2;
   optional string PlainText = 3;
+  repeated HistoryRevocationRequest RevocationRequests = 4;
 }
 
 message RevocationRequestedPayload {
@@ -285,6 +286,15 @@ message RevocationRequestedPayload {
   optional Docflow.SignedAttachmentV3 RevocationRequest = 1;
   // required
   optional Documents.DocumentParticipantV2 RevocationRequestedBy = 2;
+  optional string PlainText = 3;
+  repeated HistoryRevocationRequest RevocationRequests = 4;
+}
+
+message HistoryRevocationRequest {
+  // required
+  optional Docflow.SignedAttachmentV3 RevocationRequest = 1;
+  // required
+  optional Documents.DocumentParticipantV2 Participant = 2;
   optional string PlainText = 3;
 }
 

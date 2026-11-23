@@ -68,6 +68,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _PlainText; }
       set { _PlainText = value; }
     }
+
+    private Diadoc.Api.Proto.Documents.DocumentParticipantV2 _Participant = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Participant", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.DocumentParticipantV2 Participant
+    {
+      get { return _Participant; }
+      set { _Participant = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -169,6 +178,13 @@ namespace Diadoc.Api.Proto.Docflow
     public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.OuterDocflowV5> OuterDocflows
     {
       get { return _OuterDocflows; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.RevocationRequestDocflowV5> _RevocationRequests = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.RevocationRequestDocflowV5>();
+    [global::ProtoBuf.ProtoMember(8, Name=@"RevocationRequests", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Docflow.RevocationRequestDocflowV5> RevocationRequests
+    {
+      get { return _RevocationRequests; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;

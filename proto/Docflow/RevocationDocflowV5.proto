@@ -18,6 +18,7 @@ message RevocationRequestDocflowV5
 	optional Timestamp DeliveredAt = 3;
 	optional RoamingNotification RoamingNotification = 4;
 	optional string PlainText = 5;
+	optional Documents.DocumentParticipantV2 Participant = 6;
 }
 
 message RevocationResponseDocflowV5
@@ -37,4 +38,5 @@ message RevocationDocflowV5
 	required Documents.RevocationStatus RevocationStatus = 5;
 	optional ResolutionDocflowV5 Resolution = 6;
 	repeated OuterDocflowV5 OuterDocflows = 7;
+	repeated RevocationRequestDocflowV5 RevocationRequests = 8;
 }
