@@ -889,6 +889,15 @@ namespace Diadoc.Api.Proto.Events
       get { return _IsAttachedSignature; }
       set { _IsAttachedSignature = value; }
     }
+
+    private Diadoc.Api.Proto.Events.RecognitionInfo _RecognitionInfo = null;
+    [global::ProtoBuf.ProtoMember(39, IsRequired = false, Name=@"RecognitionInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Events.RecognitionInfo RecognitionInfo
+    {
+      get { return _RecognitionInfo; }
+      set { _RecognitionInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -950,6 +959,25 @@ namespace Diadoc.Api.Proto.Events
     {
       get { return _ForwardedToBoxId; }
       set { _ForwardedToBoxId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RecognitionInfo")]
+  public partial class RecognitionInfo : global::ProtoBuf.IExtensible
+  {
+    public RecognitionInfo() {}
+    
+
+    private Diadoc.Api.Proto.Documents.RecognizedDocumentInfo _RecognizedDocumentInfo = null;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"RecognizedDocumentInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.RecognizedDocumentInfo RecognizedDocumentInfo
+    {
+      get { return _RecognizedDocumentInfo; }
+      set { _RecognizedDocumentInfo = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -1626,7 +1654,10 @@ namespace Diadoc.Api.Proto.Events
       TtGisFixationCancellationRequest = 87,
             
       [global::ProtoBuf.ProtoEnum(Name=@"TemplateTransformationChange", Value=90)]
-      TemplateTransformationChange = 90
+      TemplateTransformationChange = 90,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Recognition", Value=98)]
+      Recognition = 98
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"MessageValidationErrorSeverity")]

@@ -179,6 +179,15 @@ namespace Diadoc.Api.Proto.Docflow
       get { return _HasUnreadOutOfWorkflowUniversalMessages; }
       set { _HasUnreadOutOfWorkflowUniversalMessages = value; }
     }
+
+    private Diadoc.Api.Proto.Documents.RecognizedDocumentInfo _RecognizedDocumentInfo = null;
+    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"RecognizedDocumentInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.RecognizedDocumentInfo RecognizedDocumentInfo
+    {
+      get { return _RecognizedDocumentInfo; }
+      set { _RecognizedDocumentInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

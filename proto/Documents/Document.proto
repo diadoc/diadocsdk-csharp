@@ -105,6 +105,7 @@ message Document {
 	repeated DocumentParticipantInfo Participants = 83;
 	optional AmendmentRequestMetadata RecipientResponseAmendmentRequestMetadata = 84;
   repeated TitleDocflowSummary TitleDocflows = 85;
+	optional RecognizedDocumentInfo RecognizedDocumentInfo = 86;
 }
 
 message TitleDocflowSummary {
@@ -123,6 +124,15 @@ message TitleParticipantDocflowSummary {
   optional string ResponseEntityId = 3;
   required GeneralReceiptStatus ReceiptStatus = 4;
   optional string ReceiptEntityId = 5;
+}
+
+message RecognizedDocumentInfo
+{
+	required string TypeNamedId = 1;
+	optional string DocumentNumber = 2;
+	optional string DocumentDate = 3;
+	optional string TotalSum = 4;
+	optional int32 CurrencyCode = 5;
 }
 
 message LastOuterDocflow {

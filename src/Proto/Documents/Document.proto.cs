@@ -735,6 +735,15 @@ namespace Diadoc.Api.Proto.Documents
       get { return _TitleDocflows; }
     }
   
+
+    private Diadoc.Api.Proto.Documents.RecognizedDocumentInfo _RecognizedDocumentInfo = null;
+    [global::ProtoBuf.ProtoMember(86, IsRequired = false, Name=@"RecognizedDocumentInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Diadoc.Api.Proto.Documents.RecognizedDocumentInfo RecognizedDocumentInfo
+    {
+      get { return _RecognizedDocumentInfo; }
+      set { _RecognizedDocumentInfo = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -848,6 +857,59 @@ namespace Diadoc.Api.Proto.Documents
     {
       get { return _ReceiptEntityId; }
       set { _ReceiptEntityId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RecognizedDocumentInfo")]
+  public partial class RecognizedDocumentInfo : global::ProtoBuf.IExtensible
+  {
+    public RecognizedDocumentInfo() {}
+    
+    private string _TypeNamedId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"TypeNamedId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string TypeNamedId
+    {
+      get { return _TypeNamedId; }
+      set { _TypeNamedId = value; }
+    }
+
+    private string _DocumentNumber = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DocumentNumber", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DocumentNumber
+    {
+      get { return _DocumentNumber; }
+      set { _DocumentNumber = value; }
+    }
+
+    private string _DocumentDate = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"DocumentDate", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DocumentDate
+    {
+      get { return _DocumentDate; }
+      set { _DocumentDate = value; }
+    }
+
+    private string _TotalSum = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"TotalSum", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string TotalSum
+    {
+      get { return _TotalSum; }
+      set { _TotalSum = value; }
+    }
+
+    private int _CurrencyCode = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"CurrencyCode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int CurrencyCode
+    {
+      get { return _CurrencyCode; }
+      set { _CurrencyCode = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

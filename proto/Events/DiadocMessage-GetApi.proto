@@ -136,6 +136,7 @@ message Entity {
 	optional UniversalMessageInfo UniversalMessageInfo = 36;
 	optional TemplateTransformationChangeInfo TemplateTransformationChangeInfo = 37; // only for AttachmentType.TemplateTransformationChange
 	optional bool IsAttachedSignature = 38 [default = false]; // only for EntityType.Signature
+	optional RecognitionInfo RecognitionInfo = 39; // only for AttachmentType.Recognition
 }
 
 message EntityPatch {
@@ -145,6 +146,10 @@ message EntityPatch {
 	optional bool DocumentIsRestored = 4 [default = false];
 	optional bool ContentIsPatched = 5 [default = false];
 	optional string ForwardedToBoxId = 6;
+}
+
+message RecognitionInfo {
+	optional Documents.RecognizedDocumentInfo RecognizedDocumentInfo = 1;
 }
 
 message TemplateToLetterTransformationInfo
@@ -260,6 +265,7 @@ enum AttachmentType {
 	UniversalMessage = 79;
 	TtGisFixationCancellationRequest = 87;
 	TemplateTransformationChange = 90;
+	Recognition = 98;
 	//Неизвестные типы должны обрабатываться как Title
 }
 
