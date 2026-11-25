@@ -8,6 +8,7 @@ message DocumentTypeDescriptionV3 {
   required bool RequiresFnsRegistration = 4;
   repeated DocumentFunctionV2 Functions = 9;
   required string UniversalMessagesStartDate = 10;
+  optional string DocumentClass = 11;
 }
 
 message GetDocumentTypesResponseV3 {

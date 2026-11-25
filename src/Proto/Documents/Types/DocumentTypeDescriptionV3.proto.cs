@@ -58,6 +58,15 @@ namespace Diadoc.Api.Proto.Documents.Types
       get { return _UniversalMessagesStartDate; }
       set { _UniversalMessagesStartDate = value; }
     }
+
+    private string _DocumentClass = "";
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"DocumentClass", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string DocumentClass
+    {
+      get { return _DocumentClass; }
+      set { _DocumentClass = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
