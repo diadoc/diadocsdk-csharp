@@ -37,7 +37,7 @@ namespace Diadoc.Api
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), invoiceCorrectionRequestGenerationRequest);
 		}
 
-		public GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null)
+		public GeneratedFile GenerateRevocationRequestXml(string authToken, string boxId, string messageId, string attachmentId, RevocationRequestInfo revocationRequestInfo, string contentTypeId = null, string participantId = null)
 		{
 			var queryBuilder = new PathAndQueryBuilder("/V2/GenerateRevocationRequestXml");
 			queryBuilder.AddParameter("boxId", boxId);
@@ -45,6 +45,8 @@ namespace Diadoc.Api
 			queryBuilder.AddParameter("attachmentId", attachmentId);
 			if (!string.IsNullOrEmpty(contentTypeId))
 				queryBuilder.AddParameter("contentTypeId", contentTypeId);
+			if (!string.IsNullOrEmpty(participantId))
+				queryBuilder.AddParameter("participantId", participantId);
 
 			return PerformGenerateXmlHttpRequest(authToken, queryBuilder.BuildPathAndQuery(), revocationRequestInfo);
 		}

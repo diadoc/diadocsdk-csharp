@@ -3277,8 +3277,10 @@ namespace Diadoc.Api.Proto.Events
       get { return _ParentEntityId; }
       set { _ParentEntityId = value; }
     }
-    private Diadoc.Api.Proto.Events.SignedContent _SignedContent;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"SignedContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private Diadoc.Api.Proto.Events.SignedContent _SignedContent = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SignedContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
     public Diadoc.Api.Proto.Events.SignedContent SignedContent
     {
       get { return _SignedContent; }
@@ -3291,6 +3293,37 @@ namespace Diadoc.Api.Proto.Events
       get { return _Labels; }
     }
   
+    private readonly global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RevocationRequestContentToPost> _Contents = new global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RevocationRequestContentToPost>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"Contents", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Diadoc.Api.Proto.Events.RevocationRequestContentToPost> Contents
+    {
+      get { return _Contents; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RevocationRequestContentToPost")]
+  public partial class RevocationRequestContentToPost : global::ProtoBuf.IExtensible
+  {
+    public RevocationRequestContentToPost() {}
+    
+    private string _ParticipantId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ParticipantId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string ParticipantId
+    {
+      get { return _ParticipantId; }
+      set { _ParticipantId = value; }
+    }
+    private Diadoc.Api.Proto.Events.SignedContent _SignedContent;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"SignedContent", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Diadoc.Api.Proto.Events.SignedContent SignedContent
+    {
+      get { return _SignedContent; }
+      set { _SignedContent = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

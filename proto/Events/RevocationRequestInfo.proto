@@ -1,5 +1,8 @@
+import "Documents/DocumentParticipantV2.proto";
+
 package Diadoc.Api.Proto.Events;
 
 message RevocationRequestInfo {
     required string InitiatorBoxId = 1;
+    repeated Documents.DocumentParticipantV2 TargetParticipants = 2;
 }

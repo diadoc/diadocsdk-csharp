@@ -597,12 +597,13 @@ namespace Diadoc.Api
 			string messageId,
 			string attachmentId,
 			RevocationRequestInfo revocationRequestInfo,
-			string contentTypeId = null)
+			string contentTypeId = null,
+			string participantId = null)
 		{
 			if (boxId == null) throw new ArgumentNullException("boxId");
 			if (messageId == null) throw new ArgumentNullException("messageId");
 			if (attachmentId == null) throw new ArgumentNullException("attachmentId");
-			return diadocHttpApi.GenerateRevocationRequestXml(authToken, boxId, messageId, attachmentId, revocationRequestInfo, contentTypeId);
+			return diadocHttpApi.GenerateRevocationRequestXml(authToken, boxId, messageId, attachmentId, revocationRequestInfo, contentTypeId, participantId);
 		}
 
 		[Obsolete("Use GenerateSignatureRejectionXmlV2()")]

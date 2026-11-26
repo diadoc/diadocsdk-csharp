@@ -660,7 +660,8 @@ namespace Diadoc.Api
 			string messageId,
 			string attachmentId,
 			[MarshalAs(UnmanagedType.IDispatch)] object revocationRequestInfo,
-			string contentTypeId = null);
+			string contentTypeId = null,
+			string participantId = null);
 
 		[Obsolete("Use GenerateSignatureRejectionXmlV2()")]
 		GeneratedFile GenerateSignatureRejectionXml(
@@ -1454,14 +1455,16 @@ namespace Diadoc.Api
 			string messageId,
 			string attachmentId,
 			object revocationRequestInfo,
-			string contentTypeId = null)
+			string contentTypeId = null,
+			string participantId = null)
 		{
 			return diadoc.GenerateRevocationRequestXml(authToken,
 				boxId,
 				messageId,
 				attachmentId,
 				(RevocationRequestInfo) revocationRequestInfo,
-				contentTypeId);
+				contentTypeId,
+				participantId);
 		}
 
 		[Obsolete("Use GenerateSignatureRejectionXmlV2()")]

@@ -91,6 +91,15 @@ namespace Diadoc.Api.Proto.Documents
       get { return _IsCurrentBox; }
       set { _IsCurrentBox = value; }
     }
+
+    private string _ParticipantId = "";
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"ParticipantId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string ParticipantId
+    {
+      get { return _ParticipantId; }
+      set { _ParticipantId = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

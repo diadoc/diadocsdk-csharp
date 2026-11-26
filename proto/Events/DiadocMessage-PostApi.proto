@@ -535,8 +535,14 @@ message MessageToSend {
 
 message RevocationRequestAttachment {
 	required string ParentEntityId = 1;
-	required SignedContent SignedContent = 2;
+	optional SignedContent SignedContent = 2;
 	repeated string Labels = 3;
+	repeated RevocationRequestContentToPost Contents = 4;
+}
+
+message RevocationRequestContentToPost {
+	required string ParticipantId = 1;
+	required SignedContent SignedContent = 2;
 }
 
 message XmlSignatureRejectionAttachment {
